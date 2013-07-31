@@ -44,7 +44,7 @@ group :test do
 end
 
 gem 'jquery-ui-rails', '~> 3.0' # RailsThemes
-gem 'compass-rails', :group => 'assets' # RailsThemes
+gem 'compass-rails' #, :group => 'assets' # RailsThemes
 gem 'zurb-foundation', '~> 4.0', :group => 'assets' # RailsThemes
 
 #gem 'mocha', :group => :test
