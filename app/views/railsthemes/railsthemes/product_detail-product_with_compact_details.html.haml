@@ -1,0 +1,61 @@
+.row
+  .large-6.small-6.columns
+    %h1 Red-y for Inspiration
+  .large-6.small-6.columns
+    = link_to "Demo", "#", :class => "button secondary light"
+    = link_to "Buy Theme", "#", :class => "button"
+.row
+  .large-2.small-12.column
+    %h5 Preview
+    %p Description of Image
+    %h5 Released
+    %strong March 2013
+  .large-10.small-12.columns
+    = image_tag "http://placehold.it/1000x500&text=[Preview Image]"
+.row
+  .large-12.small-12.columns
+    %h2.majorheading Theme Details
+.row
+  .large-12.small-12.columns
+    .section-container.tabs{ "data-section" => "tabs" }
+      .section
+        %h5.title{ "data-section-title" => "" }
+          = link_to "Features", "#featuresTab"
+        .content{ "data-section-content" => "" }
+          %p This simple yet popping design is waiting for your creativity. Make it your own and it will be sure to grab attention.
+
+          %h5 Features:
+
+          %ul
+            %li Custom form styling
+            %li html5
+            %li Includes jQuery UI theme
+            %li= link_to "Full feature list..", "#"
+
+          %p Theme Last Updated: 2012-08-28 12:14:58 +0000
+
+      .section
+        %h5.title{ "data-section-title" => "" }
+          = link_to "Browser Compatibility", "#compatibilityTab"
+        .content
+          %p We test in the following browsers:
+
+          %h5 Browser Support
+          %p [The browser images go here]
+          %ul
+            %li Chrome, latest (currently 20)
+            %li Firefox 11
+            %li IE 7, 8, 9
+            %li Android (2.2)
+            %li iPad (OS 5.1)
+            %li iPhone (OS 5.1)
+      .section
+        %h5.title{ "data-section-title" => "" }
+          = link_to "Testing Report", "#testingTab"
+        .content
+          This would be a testing report list
+      .section
+        %h5.title{ "data-section-title" => "" }
+          = link_to "Changelog", "#changelogTab"
+        .content
+          This would be a changelog

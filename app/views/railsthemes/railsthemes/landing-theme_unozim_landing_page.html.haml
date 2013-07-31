@@ -1,0 +1,46 @@
+.main-highlight
+  %h1 This is one very amazing app
+  .row
+    .large-8.columns
+      = image_tag "http://placehold.it/600x400/ef5741/ffffff&text=[+img+1+]", style: "width: 100%", class: "border"
+    .large-4.columns
+      %h3 You'll love our secondary CTA
+      %p
+        Lorem ipsum dolor sit amet, et tollit veniam vis, te iusto scaevola appellantur usu. Ex cum paulo vocent postulant, no labitur inciderint eos. Pro cu tota omnis perfecto, homero electram te quo, in meis movet eum. Idque equidem suavitate mei te. Ea est quot doctus.
+      .text-centered-small
+        = link_to "Sign Up Now!", "#", class: "button radius large"
+
+.row
+  .large-12.columns
+    %h4 Our happy customers:
+    .happy_customers
+      .row
+        - 3.times do
+          .large-4.columns
+            .customer.text-centered-small
+              .row
+                .large-4.columns
+                  = image_tag "/assets/railsthemes_unozim/customer.png"
+                .large-8.columns
+                  %br
+                  %p
+                    %span.name Bob Smith,
+                    %br
+                    %span.business Startup Co.
+
+.row
+  .large-12.columns
+    %h4 All our features:
+    .row
+      - 4.times do
+        .large-3.columns
+          .home_page_feature.border
+            = image_tag "http://placehold.it/600x400/ef5741/ffffff&text=[+img+1+]", style: "width: 100%"
+            %p
+              Lorem Ipsum
+              %br
+              %span.caption
+                A little more detail
+    .right
+      = link_to "See More", "#", class: "button radius small"
+
