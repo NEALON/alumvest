@@ -9,6 +9,9 @@ Av::Application.routes.draw do
 
   get "home/index"
 
+  resources :sessions
+  resources :identities
+
   ### Begin RailsThemes basic generated routes ###
 
   # Routes to RailsThemes Theme Example markup:

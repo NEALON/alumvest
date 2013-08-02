@@ -47,9 +47,9 @@ railsthemes.com/terms. -->
                       = link_to('Sign out', logout_path, :class => "button small", :method => :delete)
                   - else
                     %li
-                      = link_to('Register', "/auth/identity/register", :class => "button small")
+                      = link_to('Register', new_identity_path, :class => "button small")
                     %li
-                      = link_to('Login', "/auth/identity", :class => "button small")
+                      = link_to('Login', new_session_path, :class => "button small")
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
           .top-bar
             %ul.title-area
