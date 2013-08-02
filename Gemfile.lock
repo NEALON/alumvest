@@ -219,8 +219,6 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sexp_processor (4.2.1)
-    shelly-dependencies (0.2.3)
-      thin
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -281,7 +279,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   selenium-webdriver
-  shelly-dependencies
   simple_form
   sqlite3
   thin
