@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730212459) do
+ActiveRecord::Schema.define(:version => 20130806062622) do
 
   create_table "identities", :force => true do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "email"
     t.string   "password_digest"
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "last_name"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -39,8 +40,24 @@ ActiveRecord::Schema.define(:version => 20130730212459) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.string   "email"
+    t.string   "facebook"
+    t.string   "linkedin"
+    t.string   "mobile_phone"
+    t.string   "home_phone"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.text     "personal_statement"
   end
 
   create_table "versions", :force => true do |t|

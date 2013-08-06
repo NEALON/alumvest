@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_paper_trail
 
-  attr_accessible :provider, :uid, :name
+  attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth, :email, :facebook, :linkedin, :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement
+
 
   has_many :identities
 
@@ -13,7 +14,8 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
+      user.first_name = auth["info"]["first_name"]
+      user.last_name = auth["info"]["last_name"]
     end
   end
 end
