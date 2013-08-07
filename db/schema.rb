@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730212459) do
+ActiveRecord::Schema.define(:version => 20130806214948) do
+
+  create_table "campaign_worksheets", :force => true do |t|
+    t.string "permalink"
+    t.string "name"
+    t.string "headline"
+    t.text   "summary"
+    t.text   "about"
+  end
 
   create_table "identities", :force => true do |t|
     t.string   "name"

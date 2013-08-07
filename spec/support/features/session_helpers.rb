@@ -1,6 +1,11 @@
 module Features
   module SessionHelpers
-    def sign_up_with(name, email, password)
+    def sign_up(
+        name = Faker::Name.first_name,
+            email = Faker::Internet.email,
+            password = Faker::Internet.password)
+
+      @name, @email, @password = name, email, password
       visit '/'
       click_link "Register"
       fill_in 'name', :with => name
@@ -14,7 +19,7 @@ module Features
       click_link "Sign out"
     end
 
-    def sign_in_with(email, password)
+    def sign_in(email = @email, password = @password)
       visit '/'
       click_link 'Login'
       fill_in 'Email', :with => email

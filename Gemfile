@@ -15,7 +15,7 @@ gem 'jquery-rails'
 
 gem 'haml-rails'
 gem 'pg'
-gem 'simple_form'
+gem 'formtastic'
 gem 'thin'
 
 group :development do

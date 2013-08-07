@@ -106,6 +106,8 @@ GEM
     ffi (1.9.0)
     font-awesome-rails (3.2.1.2)
       railties (>= 3.2, < 5.0)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
     fssm (0.2.10)
     haml (4.0.3)
       tilt
@@ -219,9 +221,6 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sexp_processor (4.2.1)
-    simple_form (2.1.0)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -262,6 +261,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   faker
+  formtastic
   haml-rails
   html2haml
   hub
@@ -279,7 +279,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   selenium-webdriver
-  simple_form
   sqlite3
   thin
   uglifier (>= 1.0.3)
