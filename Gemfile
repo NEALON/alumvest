@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'pg'
 gem 'formtastic'
+gem 'ckeditor_rails'
 gem 'thin'
 
 group :development do

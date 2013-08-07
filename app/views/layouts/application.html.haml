@@ -19,6 +19,8 @@ railsthemes.com/terms. -->
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
   = stylesheet_link_tag "railsthemes_meta"
   = javascript_include_tag "railsthemes_samples" unless Rails.env.production?
+  = javascript_include_tag "application"
+
   = csrf_meta_tags
   = yield :head
   :plain
