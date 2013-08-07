@@ -11,6 +11,8 @@ Av::Application.routes.draw do
 
   resources :sessions
   resources :identities
+  resources :users
+  post '/users/:id', to: 'users#update'
 
   ### Begin RailsThemes basic generated routes ###
 

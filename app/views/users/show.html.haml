@@ -1,0 +1,82 @@
+%h2
+  = @user.first_name
+  = @user.last_name
+%form{ :action => "#{user_path(@user.id)}", :method => "post" }
+  .fields
+    .row
+      .small-12.columns
+        %label First Name
+        %input{ :type => "text", :name => "user[first_name]", :value => "#{@user.first_name}"}
+    .row
+      .small-12.columns
+        %label Middle Name
+        %input{ :type => "text", :name => "user[middle_name]", :value => "#{@user.middle_name}" }
+    .row
+      .small-12.columns
+        %label Last Name
+        %input{ :type => "text", :name => "user[last_name]", :value => "#{@user.last_name}" }
+    .row
+      .small-12.columns
+        %label Gender
+        %input{ :type => "text", :name => "user[gender]", :value => "#{@user.gender}" }
+    .row
+      .small-12.columns
+        %label Date of Birth
+        %input{ :type => "text", :name => "user[date_of_birth]", :value => "#{@user.date_of_birth}" }
+    .row
+      .small-12.columns
+        %label Email
+        %input{ :type => "text", :name => "user[email]", :value => "#{@user.email}" }
+    .row
+      .small-12.columns
+        %label Facebook
+        %input{ :type => "text", :name => "user[facebook]", :value => "#{@user.facebook}" }
+    .row
+      .small-12.columns
+        %label LinkedIn
+        %input{ :type => "text", :name => "user[linkedin]", :value => "#{@user.linkedin}" }
+    .row
+      .small-12.columns
+        %label Mobile Phone
+        %input{ :type => "text", :name => "user[mobile_phone]", :value => "#{@user.mobile_phone}" }
+    .row
+      .small-12.columns
+        %label Home Phone
+        %input{ :type => "text", :name => "user[home_phone]", :value => "#{@user.home_phone}" }
+    .row
+      .small-12.columns
+        %label Adress 1
+        %input{ :type => "text", :name => "user[address_1]", :value => "#{@user.address_1}" }
+    .row
+      .small-12.columns
+        %label Address 2
+        %input{ :type => "text", :name => "user[address_2]", :value => "#{@user.address_2}" }
+    .row
+      .small-12.columns
+        %label City
+        %input{ :type => "text", :name => "user[city]", :value => "#{@user.city}" }
+    .row
+      .small-12.columns
+        %label State
+        %input{ :type => "text", :name => "user[state]", :value => "#{@user.state}" }
+    .row
+      .small-12.columns
+        %label ZipCode
+        %input{ :type => "text", :name => "user[zipcode]", :value => "#{@user.zipcode}" }
+    .row
+      .small-12.columns
+        %label Personal Statement
+        %textarea{ :rows => "5", :name => "user[personal_statement]", :value => "#{@user.personal_statement}" }
+    .rows
+      .small-9.columns
+      .small-3.columns
+        %input{ :type => "submit" }
+
+    -#
+      .row
+        .small-12.columns
+          %label Country
+          %select
+            - ['United States','Australia','Canada','France','Germany','Mexico','New Zealand','United Kingdom'].each do |country|
+              %option{ :value => country } #{country}
+
