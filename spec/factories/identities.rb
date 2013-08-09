@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :identity do
-    name "MyString"
+    first_name "FirstName"
+    last_name "LastName"
     email "MyString"
     password_digest "MyString"
   end

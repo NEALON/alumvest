@@ -12,8 +12,12 @@
     </div>
   <% end %>
   <div class="field">
-    <%= label_tag :name %><br>
-    <%= text_field_tag :name, @identity.try(:name) %>
+    <%= label_tag :first_name %><br>
+    <%= text_field_tag :first_name, @identity.try(:first_name) %>
+  </div>
+  <div class="field">
+    <%= label_tag :last_name %><br>
+    <%= text_field_tag :last_name, @identity.try(:last_name) %>
   </div>
   <div class="field">
     <%= label_tag :email %><br>
@@ -26,6 +30,14 @@
   <div class="field">
     <%= label_tag :password_confirmation %><br>
     <%= password_field_tag :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= label_tag :i_am %><br>
+    <select name="description">
+      <option value="guest"></option>
+      <option value="investor">Investor</option>
+      <option value="owner">Owner</option>
+    </select>
   </div>
   <div class="actions"><%= submit_tag "Register" %></div>
 <% end %>
