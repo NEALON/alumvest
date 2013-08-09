@@ -33,7 +33,11 @@
   </div>
   <div class="field">
     <%= label_tag :i_am %><br>
-    <%= select "identity", "user_type", {:Guest=>"guest", :Investor=>"investor", :Owner=>"owner"} %>
+    <select name="description">
+      <option value="guest"></option>
+      <option value="investor">Investor</option>
+      <option value="owner">Owner</option>
+    </select>
   </div>
   <div class="actions"><%= submit_tag "Register" %></div>
 <% end %>

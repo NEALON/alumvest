@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :identity, fields: [:first_name, :last_name, :email, :user_type], on_failed_registration: lambda { |env|
+  provider :identity, fields: [:first_name, :last_name, :email, :description], on_failed_registration: lambda { |env|
       IdentitiesController.action(:new).call(env)
     }
   # provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
