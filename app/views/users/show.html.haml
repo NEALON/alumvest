@@ -3,6 +3,7 @@
   = @user.last_name
 %form{ :action => "#{user_path(@user.id)}", :method => "post" }
   .fields
+    %input{:type=>"hidden", :name=>"authenticity_token", :value=>form_authenticity_token.to_s}
     .row
       .small-12.columns
         %label First Name
