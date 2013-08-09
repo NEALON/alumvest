@@ -4,6 +4,7 @@
 %form{ :action => "#{user_path(@user.id)}", :method => "post" }
   .fields
     %input{:type=>"hidden", :name=>"authenticity_token", :value=>form_authenticity_token.to_s}
+    %h3 Profile Information
     .row
       .small-12.columns
         %label First Name
@@ -67,7 +68,71 @@
     .row
       .small-12.columns
         %label Personal Statement
-        %textarea{ :rows => "5", :name => "user[personal_statement]", :value => "#{@user.personal_statement}" }
+        %textarea{ :rows => "5", :name => "user[personal_statement]" }
+          =@user.personal_statement
+
+    - if @user.is_investor?
+      %h3 Investor Information
+      .row
+        .small-12.columns
+          %label SSN
+          %input{ :type => "text", :name => "investor[ssn]", :value => "#{@user.investor.ssn}" }
+      .row
+        .small-12.columns
+          %label Marital Status
+          %input{ :type => "text", :name => "investor[marital_status]", :value => "#{@user.investor.marital_status}" }
+      .row
+        .small-12.columns
+          %label Financial Info
+          %textarea{ :rows => "5", :name => "investor[financial_info]" }
+            =@user.investor.financial_info
+      .row
+        .small-12.columns
+          %label Spending Habits
+          %textarea{ :rows => "5", :name => "investor[spending_habits]" }
+            =@user.investor.spending_habits
+      .row
+        .small-12.columns
+          %label Income
+          %input{ :type => "text", :name => "investor[income]", :value => "#{@user.investor.income}" }
+      .row
+        .small-12.columns
+          %label Income Type
+          %input{ :type => "text", :name => "investor[income_type]", :value => "#{@user.investor.income_type}" }
+      .row
+        .small-12.columns
+          %label Net Worth
+          %input{ :type => "text", :name => "investor[net_worth]", :value => "#{@user.investor.net_worth}" }
+      .row
+        .small-12.columns
+          %label Investor Representations
+          %input{ :type => "text", :name => "investor[investor_representations]", :value => "#{@user.investor.investor_representations}" }
+      .row
+        .small-12.columns
+          %label Industry
+          %input{ :type => "text", :name => "investor[industry]", :value => "#{@user.investor.industry}" }
+      .row
+        .small-12.columns
+          %label Company
+          %input{ :type => "text", :name => "investor[company]", :value => "#{@user.investor.company}" }
+      .row
+        .small-12.columns
+          %label Job Title
+          %input{ :type => "text", :name => "investor[company]", :value => "#{@user.investor.job_title}" }
+      .row
+        .small-12.columns
+          %label Experience
+          %input{ :type => "text", :name => "investor[experience]", :value => "#{@user.investor.experience}" }
+      .row
+        .small-12.columns
+          %label Expertise
+          %input{ :type => "text", :name => "investor[expertise]", :value => "#{@user.investor.expertise}" }
+      .row
+        .small-12.columns
+          %label Personal Message
+          %textarea{ :rows => "5", :name => "investor[personal_message]" }
+            =@user.investor.personal_message
+
     .rows
       %input{ :type => "submit", :value => "Save", :class => "right"}
 
