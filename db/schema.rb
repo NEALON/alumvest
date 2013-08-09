@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807053414) do
+ActiveRecord::Schema.define(:version => 20130809043455) do
 
   create_table "identities", :force => true do |t|
     t.string   "first_name"
@@ -22,6 +22,29 @@ ActiveRecord::Schema.define(:version => 20130807053414) do
     t.datetime "updated_at",      :null => false
     t.string   "last_name"
   end
+
+  create_table "investors", :force => true do |t|
+    t.string   "ssn"
+    t.string   "marital_status"
+    t.text     "financial_info"
+    t.text     "spending_habits"
+    t.string   "income"
+    t.string   "income_type"
+    t.string   "net_worth"
+    t.string   "investor_representations"
+    t.string   "industry"
+    t.string   "company"
+    t.string   "job_title"
+    t.string   "experience"
+    t.string   "expertise"
+    t.string   "accredited_investor_status"
+    t.text     "personal_message"
+    t.integer  "user_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "investors", ["user_id"], :name => "index_investors_on_user_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
