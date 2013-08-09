@@ -3,9 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_to root_url, notice: "Signed in!"
+    @user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = @user.id
+    if @user.profile_complete
+      redirect_to root_url, notice: "Signed in!"
+    else
+      redirect_to user_path(@user.id), notice: "Please finish your profile"
+    end
   end
 
   def destroy

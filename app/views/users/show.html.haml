@@ -69,9 +69,7 @@
         %label Personal Statement
         %textarea{ :rows => "5", :name => "user[personal_statement]", :value => "#{@user.personal_statement}" }
     .rows
-      .small-9.columns
-      .small-3.columns
-        %input{ :type => "submit" }
+      %input{ :type => "submit", :value => "Save", :class => "right"}
 
     -#
       .row
