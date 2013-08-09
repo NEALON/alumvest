@@ -11,14 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806214948) do
+ActiveRecord::Schema.define(:version => 20130808203752) do
 
   create_table "campaign_worksheets", :force => true do |t|
-    t.string "permalink"
-    t.string "name"
-    t.string "headline"
-    t.text   "summary"
-    t.text   "about"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "headline"
+    t.text     "summary"
+    t.text     "about"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "company_basic_forms", :force => true do |t|
+    t.string   "name"
+    t.string   "logo_url"
+    t.string   "url"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.date     "founded_on"
+    t.text     "summary"
+    t.integer  "category_id"
+    t.integer  "industry_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "company_personnel_forms", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "identities", :force => true do |t|
@@ -28,6 +59,22 @@ ActiveRecord::Schema.define(:version => 20130806214948) do
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "industries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "type"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "populatable_id"
+    t.string   "populatable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

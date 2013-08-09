@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 ruby '2.0.0'
 gem 'rails', '3.2.13'
 
@@ -11,17 +12,19 @@ end
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'omniauth-identity'
 
-gem 'jquery-rails'
-
 gem 'haml-rails'
-gem 'pg'
+gem 'jquery-rails'
 gem 'formtastic'
-gem 'ckeditor_rails'
+gem 'has_filepicker_image', :git => 'git://github.com/polmiro/has_filepicker_image.git'
+gem 'ckeditor_rails', '~> 4.1.2'
+gem "cocoon"
+
 gem 'thin'
+gem 'pg'
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
+  gem 'binding_of_caller', :platforms=>[:mri_20, :rbx]
   gem 'html2haml'
   gem 'hub', :require=>nil
   gem 'quiet_assets'

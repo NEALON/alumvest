@@ -14,11 +14,9 @@ module Av
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
-      
       g.test_framework :rspec, fixture: true
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
-      
-      
+
       g.view_specs false
       g.helper_specs false
     end
@@ -30,7 +28,6 @@ module Av
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{config.root}/lib)
-
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -74,5 +71,19 @@ module Av
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false # for heroku
+
+    config.has_filepicker_image.api_key = 'A0dGDMmqbRkCZ9CvDO32az' # TODO: replace with AV-specific key
+
+    config.has_filepicker_image.defaults = {
+            :delete_button_html => 'Remove',
+            :pick_button_html   => 'Select a file...',
+            :html_options => {
+              :'data-location'      => 'S3',
+              :'data-extensions'    => '.png,.jpg,.jpeg',
+              :'data-services'      => 'COMPUTER',
+              :'data-delete_button' => true,
+              :'onchange'           => "HasFilepickerImage.previewPickedFile(event);"
+            }
+          }
   end
 end

@@ -11,7 +11,8 @@ Av::Application.routes.draw do
 
   resources :sessions
   resources :identities
-  resources :campaign_worksheets
+  resources :company_basic_forms
+  resources :company_personnel_forms
 
   ### Begin RailsThemes basic generated routes ###
 

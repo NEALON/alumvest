@@ -2,7 +2,10 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "campaign management", :type => :feature do
 
-  # needs to create a campaign in steps
+  before :each do
+    visit "/"
+    page.driver.browser.manage.window.resize_to(1600,1000)
+  end
 
   it "creates stuff" do
     visit new_campaign_worksheet_path

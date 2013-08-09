@@ -1,0 +1,1 @@
+class BoardMember < Person; end

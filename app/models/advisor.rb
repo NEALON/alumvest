@@ -1,0 +1,1 @@
+class Advisor < Person; end

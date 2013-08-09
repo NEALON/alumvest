@@ -4,8 +4,8 @@
     = f.input :permalink
     = f.input :name
     = f.input :headline
-    = f.input :summary
-    = f.input :about
+    = f.input :summary, :class => 'ckeditor'
+    = f.input :about, :class => 'ckeditor'
 
   = f.actions do
     = f.action :submit, :as => :input

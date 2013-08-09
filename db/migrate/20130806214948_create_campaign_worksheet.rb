@@ -6,6 +6,8 @@ class CreateCampaignWorksheet < ActiveRecord::Migration
       t.string :headline
       t.text :summary
       t.text :about
+
+      t.timestamps
     end
   end
 end

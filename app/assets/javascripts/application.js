@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require filepicker_async
 //= require ckeditor-jquery
+//= require cocoon
 //= require_tree .
