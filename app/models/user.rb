@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_paper_trail
 
-  attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth, :email, :facebook, :linkedin, :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement
+  attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth, :email, :facebook, :linkedin, :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement, :user_type
 
   has_many :identities
 
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
       user.last_name = auth["info"]["last_name"]
       user.name = user.first_name + " " + user.last_name
       user.email = auth["info"]["email"]
+      user.user_type = auth["info"]["user_type"]
     end
   end
 end

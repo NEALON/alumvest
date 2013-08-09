@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809043455) do
+ActiveRecord::Schema.define(:version => 20130809050411) do
 
   create_table "identities", :force => true do |t|
     t.string   "first_name"
     t.string   "email"
     t.string   "password_digest"
     t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "last_name"
+    t.string   "user_type",       :default => "guest"
   end
 
   create_table "investors", :force => true do |t|
@@ -63,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20130809043455) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20130809043455) do
     t.string   "zipcode"
     t.text     "personal_statement"
     t.boolean  "profile_complete",   :default => false
+    t.string   "user_type",          :default => "guest"
   end
 
   create_table "versions", :force => true do |t|
