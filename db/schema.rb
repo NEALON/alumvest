@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809071800) do
+ActiveRecord::Schema.define(:version => 20130810070529) do
 
   create_table "campaign_worksheets", :force => true do |t|
     t.string   "permalink"
@@ -91,6 +91,20 @@ ActiveRecord::Schema.define(:version => 20130809071800) do
   end
 
   add_index "investors", ["user_id"], :name => "index_investors_on_user_id"
+
+  create_table "owners", :force => true do |t|
+    t.string   "ssn"
+    t.text     "financial_info"
+    t.text     "experience"
+    t.text     "expertise"
+    t.string   "marital_status"
+    t.text     "personal_message"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "owners", ["user_id"], :name => "index_owners_on_user_id"
 
   create_table "people", :force => true do |t|
     t.string   "type"

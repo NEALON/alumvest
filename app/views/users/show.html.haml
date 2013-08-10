@@ -133,14 +133,34 @@
           %textarea{ :rows => "5", :name => "investor[personal_message]" }
             =@user.investor.personal_message
 
-    .rows
-      %input{ :type => "submit", :value => "Save", :class => "right"}
-
-    -#
+    - if @user.is_owner?
+      %h3 Owner Information
       .row
         .small-12.columns
-          %label Country
-          %select
-            - ['United States','Australia','Canada','France','Germany','Mexico','New Zealand','United Kingdom'].each do |country|
-              %option{ :value => country } #{country}
+          %label SSN
+          %input{ :type => "text", :name => "owner[ssn]", :value => "#{@user.owner.ssn}" }
+      .row
+        .small-12.columns
+          %label Marital Status
+          %input{ :type => "text", :name => "owner[marital_status]", :value => "#{@user.owner.marital_status}" }
+      .row
+        .small-12.columns
+          %label Financial Info
+          %textarea{ :rows => "5", :name => "owner[financial_info]" }
+            =@user.owner.financial_info
+      .row
+        .small-12.columns
+          %label Experience
+          %input{ :type => "text", :name => "owner[experience]", :value => "#{@user.owner.experience}" }
+      .row
+        .small-12.columns
+          %label Expertise
+          %input{ :type => "text", :name => "owner[expertise]", :value => "#{@user.owner.expertise}" }
+      .row
+        .small-12.columns
+          %label Personal Message
+          %textarea{ :rows => "5", :name => "owner[personal_message]" }
+            =@user.owner.personal_message
 
+    .rows
+      %input{ :type => "submit", :value => "Save", :class => "right"}
