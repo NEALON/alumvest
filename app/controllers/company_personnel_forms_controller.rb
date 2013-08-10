@@ -1,6 +1,8 @@
 class CompanyPersonnelFormsController < ApplicationController
   def new
     @cpf = CompanyPersonnelForm.new
+
+    @cpf.legal_counsel.build
     @cpf.founders.build
     @cpf.team_members.build
     @cpf.board_members.build

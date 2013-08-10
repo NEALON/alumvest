@@ -1,0 +1,6 @@
+%h2= title
+= f.semantic_fields_for entity do |member|
+  .nested-fields
+    = member.inputs do
+      = member.input :first_name
+      = member.input :last_name

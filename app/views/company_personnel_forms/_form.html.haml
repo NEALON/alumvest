@@ -1,9 +1,10 @@
 = semantic_form_for [@cpf] do |f|
 
-  = render :partial => 'people', :locals => {:title => 'Founders', :grouping => :founders, :add_title => 'Add Founder', :f => f}
-  = render :partial => 'people', :locals => {:title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f}
-  = render :partial => 'people', :locals => {:title => 'Board Members', :grouping => :board_members, :add_title => 'Add Board Member', :f => f}
-  = render :partial => 'people', :locals => {:title => 'Advisors', :grouping => :advisors, :add_title => 'Add Advisor', :f => f}
+  = render 'person', :title => 'Legal Counsel', :entity => :legal_counsel, :f => f
+  = render 'people', :title => 'Founders', :grouping => :founders, :add_title => 'Add Founder', :f => f
+  = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f
+  = render 'people', :title => 'Board Members', :grouping => :board_members, :add_title => 'Add Board Member', :f => f
+  = render 'people', :title => 'Advisors', :grouping => :advisors, :add_title => 'Add Advisor', :f => f
 
   = f.actions do
     = f.action :submit, :as => :input
