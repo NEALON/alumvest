@@ -1,0 +1,12 @@
+= semantic_form_for [@cfdf] do |f|
+  = f.inputs do
+    = f.input :business_plan_url
+    = f.input :tbd_financial_document_url
+    = f.input :tbd_funding_document_url
+    = f.input :tbd_detailed_metrics_document_url
+    = f.input :recent_investors
+    = f.input :roadmap
+    = f.input :shareholder_message
+
+  = f.actions do
+    = f.action :submit, :as => :input

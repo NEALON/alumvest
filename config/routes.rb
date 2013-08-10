@@ -12,6 +12,7 @@ Av::Application.routes.draw do
   resources :sessions
   resources :identities
   resources :company_basic_forms
+  resources :company_funding_doc_forms
   resources :company_personnel_forms
   resources :users
   post '/users/:id', to: 'users#update'
