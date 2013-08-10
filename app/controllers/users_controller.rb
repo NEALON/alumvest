@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    @user.investor.update_attributes(params[:investor])
+    @user.investor.update_attributes(params[:investor]) if @user.is_investor?
+    @user.owner.update_attributes(params[:owner]) if @user.is_owner?
     @user.complete!
     render "show"
   end

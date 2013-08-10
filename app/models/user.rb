@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :identities
   has_one :investor
+  has_one :owner
 
   def self.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
       if user.is_investor?
         user.investor = Investor.new
       end
+
+      if user.is_owner?
+        user.owner = Owner.new
+      end
     end
   end
 
@@ -32,5 +37,9 @@ class User < ActiveRecord::Base
 
   def is_investor?
     user_type == "investor"
+  end
+
+  def is_owner?
+    user_type == "owner"
   end
 end
