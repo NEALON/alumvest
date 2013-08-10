@@ -1,0 +1,5 @@
+%h2= title
+= f.semantic_fields_for grouping do |member|
+  = render 'people_fields', :f => member
+  .links
+    = link_to_add_association 'Add Team Member', f, grouping, :partial => 'people_fields', :force_non_association_create => true

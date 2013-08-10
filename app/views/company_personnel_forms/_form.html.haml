@@ -1,22 +1,9 @@
 = semantic_form_for [@cpf] do |f|
 
-  %h2 Team Members
-  = f.semantic_fields_for :team_members do |team_member|
-    = render 'people_fields', :f => team_member
-    .links
-      = link_to_add_association 'Add Team Member', f, :team_members, :partial => 'people_fields', :force_non_association_create => true
-
-  %h2 Board Members
-  = f.semantic_fields_for :board_members do |board_member|
-    = render 'people_fields', :f => board_member
-    .links
-      = link_to_add_association 'Add Board Member', f, :board_members, :partial => 'people_fields', :force_non_association_create => true
-
-  %h2 Advisors
-  = f.semantic_fields_for :advisors do |advisor|
-    = render 'people_fields', :f => advisor
-    .links
-      = link_to_add_association 'Add Advisor', f, :advisors, :partial => 'people_fields', :force_non_association_create => true
+  = render :partial => 'people', :locals => {:title => 'Founders', :grouping => :founders, :add_title => 'Add Founder', :f => f}
+  = render :partial => 'people', :locals => {:title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f}
+  = render :partial => 'people', :locals => {:title => 'Board Members', :grouping => :board_members, :add_title => 'Add Board Member', :f => f}
+  = render :partial => 'people', :locals => {:title => 'Advisors', :grouping => :advisors, :add_title => 'Add Advisor', :f => f}
 
   = f.actions do
     = f.action :submit, :as => :input

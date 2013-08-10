@@ -2,11 +2,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "user sessions", :type => :feature do
 
-  before :each do
-    visit "/"
-    page.driver.browser.manage.window.resize_to(1600,1000)
-  end
-
   it "registers" do
     sign_up
     expect(page).to have_content('Signed in!')
