@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810182332) do
+ActiveRecord::Schema.define(:version => 20130810185645) do
 
   create_table "campaign_worksheets", :force => true do |t|
     t.string   "permalink"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(:version => 20130810182332) do
     t.text     "shareholder_message"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "company_market_forms", :force => true do |t|
+    t.string   "product_media_url"
+    t.text     "market_info"
+    t.text     "competitive_landscape"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "company_personnel_forms", :force => true do |t|
