@@ -5,7 +5,7 @@
     = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
     = @user.first_name
     = @user.last_name
-  - if @curent_user != nil and @user.id == @current_user.id
+  - if @current_user != nil and @user.id == @current_user.id
     =link_to "[edit]", edit_user_path(@user.id)
   %h3 Profile Information
   .row
