@@ -15,9 +15,7 @@ Av::Application.routes.draw do
   resources :company_funding_doc_forms
   resources :company_market_forms
   resources :company_personnel_forms
-
   resources :users
-  post '/users/:id', to: 'users#update'
 
   ### Begin RailsThemes basic generated routes ###
 
