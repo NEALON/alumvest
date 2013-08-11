@@ -12,4 +12,15 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def ownership_structures
+    [
+      'Sole Proprietorship',
+      'General Partnership',
+      'Limited Partnership',
+      'Limited Liability Partnership',
+      'Limited Liability Company (LLC)',
+      'Corporation',
+      'Nonprofit Corporation'
+    ]
+  end
 end

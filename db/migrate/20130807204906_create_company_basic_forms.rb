@@ -2,6 +2,7 @@ class CreateCompanyBasicForms < ActiveRecord::Migration
   def change
     create_table :company_basic_forms do |t|
       t.string :name
+      t.string :ownership_structure
       t.string :logo_url
       t.string :url
       t.string :address_1

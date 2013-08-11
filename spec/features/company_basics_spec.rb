@@ -12,6 +12,7 @@ describe "company basics management", :type => :feature do
 
     'company_basic_form'.tap do |form|
       fill_in "#{form}_name", :with => Faker::Lorem.sentence(3)
+      select 'Corporation', :from => "#{form}_ownership_structure"
       fill_in "#{form}_logo_url", :with => Faker::Internet.url
       fill_in "#{form}_url", :with => Faker::Internet.url
       fill_in "#{form}_address_1", :with => Faker::Address.street_address
