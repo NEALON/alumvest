@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810185645) do
+ActiveRecord::Schema.define(:version => 20130811053450) do
 
   create_table "campaign_worksheets", :force => true do |t|
     t.string   "permalink"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20130810185645) do
     t.text     "personal_statement"
     t.boolean  "profile_complete",   :default => false
     t.string   "user_type",          :default => "guest"
+    t.string   "avatar_url"
   end
 
   create_table "versions", :force => true do |t|

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user.profile_complete
       redirect_to root_url, notice: "Signed in!"
     else
-      redirect_to user_path(@user.id), notice: "Please finish your profile"
+      redirect_to user_path(@user.id), notice: "Please complete your profile. Click 'edit' to start."
     end
   end
 

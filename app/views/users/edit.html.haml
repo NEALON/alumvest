@@ -1,0 +1,56 @@
+-if @user.nil?
+  %h2 User not found
+-else
+  %h2
+    = @user.first_name
+    = @user.last_name
+  - if @current_user != nil and @user.id == @current_user.id
+    = semantic_form_for [@user] do |f|
+      .fields
+        =f.inputs "Profile Information" do
+          =f.input :first_name
+          =f.input :middle_name
+          =f.input :last_name
+          =f.input :avatar_url, :as => :formtastic_filepicker_image
+          =f.input :gender,     :as => :select, :collection => ["Male", "Female"]
+          =f.input :date_of_birth, :as => :date, :start_year => 1900
+          =f.input :email
+          =f.input :facebook
+          =f.input :linkedin
+          =f.input :mobile_phone
+          =f.input :home_phone
+          =f.input :address_1
+          =f.input :address_2
+          =f.input :city
+          =f.input :state
+          =f.input :zipcode
+          =f.input :personal_statement, :input_html => { :class => 'ckeditor' }
+
+        - if @user.is_investor?
+          =f.inputs :name => "Investor Information", :for => :investor do |inf|
+            =inf.input :ssn
+            =inf.input :marital_status, :as => :select, :collection => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            =inf.input :financial_info, :input_html => { :class => 'ckeditor' }
+            =inf.input :spending_habits
+            =inf.input :income
+            =inf.input :income_type
+            =inf.input :net_worth
+            =inf.input :investor_representations
+            =inf.input :industry
+            =inf.input :company
+            =inf.input :job_title
+            =inf.input :experience, :input_html => { :class => 'ckeditor' }
+            =inf.input :expertise, :input_html => { :class => 'ckeditor' }
+            =inf.input :personal_message, :input_html => { :class => 'ckeditor' }
+
+        - if @user.is_owner?
+          =f.inputs :name => "Owner Information", :for => :owner do |owf|
+            =owf.input :ssn
+            =owf.input :marital_status, :as => :select, :collection => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            =owf.input :financial_info, :input_html => { :class => 'ckeditor' }
+            =owf.input :experience, :input_html => { :class => 'ckeditor' }
+            =owf.input :expertise, :input_html => { :class => 'ckeditor' }
+            =owf.input :personal_message, :input_html => { :class => 'ckeditor' }
+
+        .rows
+          =f.submit "Save"

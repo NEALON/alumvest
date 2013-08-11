@@ -72,7 +72,7 @@ module Av
 
     config.assets.initialize_on_precompile = false # for heroku
 
-    config.has_filepicker_image.api_key = 'A0dGDMmqbRkCZ9CvDO32az' # TODO: replace with AV-specific key
+    config.has_filepicker_image.api_key = 'Ag9xlSqkGT63t76SagTVsz'
 
     config.has_filepicker_image.defaults = {
             :delete_button_html => 'Remove',

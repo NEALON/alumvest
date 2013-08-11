@@ -1,166 +1,197 @@
-%h2
-  = @user.first_name
-  = @user.last_name
-%form{ :action => "#{user_path(@user.id)}", :method => "post" }
-  .fields
-    %input{:type=>"hidden", :name=>"authenticity_token", :value=>form_authenticity_token.to_s}
-    %h3 Profile Information
-    .row
-      .small-12.columns
-        %label First Name
-        %input{ :type => "text", :name => "user[first_name]", :value => "#{@user.first_name}"}
-    .row
-      .small-12.columns
-        %label Middle Name
-        %input{ :type => "text", :name => "user[middle_name]", :value => "#{@user.middle_name}" }
-    .row
-      .small-12.columns
-        %label Last Name
-        %input{ :type => "text", :name => "user[last_name]", :value => "#{@user.last_name}" }
-    .row
-      .small-12.columns
-        %label Gender
-        %input{ :type => "text", :name => "user[gender]", :value => "#{@user.gender}" }
-    .row
-      .small-12.columns
-        %label Date of Birth
-        %input{ :type => "text", :name => "user[date_of_birth]", :value => "#{@user.date_of_birth}" }
-    .row
-      .small-12.columns
-        %label Email
-        %input{ :type => "text", :name => "user[email]", :value => "#{@user.email}" }
-    .row
-      .small-12.columns
-        %label Facebook
-        %input{ :type => "text", :name => "user[facebook]", :value => "#{@user.facebook}" }
-    .row
-      .small-12.columns
-        %label LinkedIn
-        %input{ :type => "text", :name => "user[linkedin]", :value => "#{@user.linkedin}" }
-    .row
-      .small-12.columns
-        %label Mobile Phone
-        %input{ :type => "text", :name => "user[mobile_phone]", :value => "#{@user.mobile_phone}" }
-    .row
-      .small-12.columns
-        %label Home Phone
-        %input{ :type => "text", :name => "user[home_phone]", :value => "#{@user.home_phone}" }
-    .row
-      .small-12.columns
-        %label Adress 1
-        %input{ :type => "text", :name => "user[address_1]", :value => "#{@user.address_1}" }
-    .row
-      .small-12.columns
-        %label Address 2
-        %input{ :type => "text", :name => "user[address_2]", :value => "#{@user.address_2}" }
-    .row
-      .small-12.columns
-        %label City
-        %input{ :type => "text", :name => "user[city]", :value => "#{@user.city}" }
-    .row
-      .small-12.columns
-        %label State
-        %input{ :type => "text", :name => "user[state]", :value => "#{@user.state}" }
-    .row
-      .small-12.columns
-        %label ZipCode
-        %input{ :type => "text", :name => "user[zipcode]", :value => "#{@user.zipcode}" }
-    .row
-      .small-12.columns
-        %label Personal Statement
-        %textarea{ :rows => "5", :name => "user[personal_statement]" }
-          =@user.personal_statement
+-if @user.nil?
+  %h2 User not found
+-else
+  %h2
+    = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
+    = @user.first_name
+    = @user.last_name
+  - if @current_user != nil and @user.id == @current_user.id
+    =link_to "[edit]", edit_user_path(@user.id)
+  %h3 Profile Information
+  .row
+    .small-3.columns
+      First Name
+    .small-9.columns
+      =@user.first_name
+  .row
+    .small-3.columns
+      Middle Name
+    .small-9.columns
+      =@user.middle_name
+  .row
+    .small-3.columns
+      Last Name
+    .small-9.columns
+      =@user.last_name
+  .row
+    .small-3.columns
+      Gender
+    .small-9.columns
+      =@user.gender
+  .row
+    .small-3.columns
+      Date of Birth
+    .small-9.columns
+      =@user.date_of_birth
+  .row
+    .small-3.columns
+      Email
+    .small-9.columns
+      =@user.email
+  .row
+    .small-3.columns
+      Facebook
+    .small-9.columns
+      =@user.facebook
+  .row
+    .small-3.columns
+      LinkedIn
+    .small-9.columns
+      =@user.linkedin
+  .row
+    .small-3.columns
+      Mobile Phone
+    .small-9.columns
+      =@user.mobile_phone
+  .row
+    .small-3.columns
+      Home Phone
+    .small-9.columns
+      =@user.home_phone
+  .row
+    .small-3.columns
+      Adress 1
+    .small-9.columns
+      =@user.address_1
+  .row
+    .small-3.columns
+      Address 2
+    .small-9.columns
+      =@user.address_2
+  .row
+    .small-3.columns
+      City
+    .small-9.columns
+      =@user.city
+  .row
+    .small-3.columns
+      State
+    .small-9.columns
+      =@user.state
+  .row
+    .small-3.columns
+      ZipCode
+    .small-9.columns
+      =@user.zipcode
+  .row
+    .small-3.columns
+      Personal Statement
+    .small-9.columns
+      =raw @user.personal_statement
 
-    - if @user.is_investor?
-      %h3 Investor Information
-      .row
-        .small-12.columns
-          %label SSN
-          %input{ :type => "text", :name => "investor[ssn]", :value => "#{@user.investor.ssn}" }
-      .row
-        .small-12.columns
-          %label Marital Status
-          %input{ :type => "text", :name => "investor[marital_status]", :value => "#{@user.investor.marital_status}" }
-      .row
-        .small-12.columns
-          %label Financial Info
-          %textarea{ :rows => "5", :name => "investor[financial_info]" }
-            =@user.investor.financial_info
-      .row
-        .small-12.columns
-          %label Spending Habits
-          %textarea{ :rows => "5", :name => "investor[spending_habits]" }
-            =@user.investor.spending_habits
-      .row
-        .small-12.columns
-          %label Income
-          %input{ :type => "text", :name => "investor[income]", :value => "#{@user.investor.income}" }
-      .row
-        .small-12.columns
-          %label Income Type
-          %input{ :type => "text", :name => "investor[income_type]", :value => "#{@user.investor.income_type}" }
-      .row
-        .small-12.columns
-          %label Net Worth
-          %input{ :type => "text", :name => "investor[net_worth]", :value => "#{@user.investor.net_worth}" }
-      .row
-        .small-12.columns
-          %label Investor Representations
-          %input{ :type => "text", :name => "investor[investor_representations]", :value => "#{@user.investor.investor_representations}" }
-      .row
-        .small-12.columns
-          %label Industry
-          %input{ :type => "text", :name => "investor[industry]", :value => "#{@user.investor.industry}" }
-      .row
-        .small-12.columns
-          %label Company
-          %input{ :type => "text", :name => "investor[company]", :value => "#{@user.investor.company}" }
-      .row
-        .small-12.columns
-          %label Job Title
-          %input{ :type => "text", :name => "investor[company]", :value => "#{@user.investor.job_title}" }
-      .row
-        .small-12.columns
-          %label Experience
-          %input{ :type => "text", :name => "investor[experience]", :value => "#{@user.investor.experience}" }
-      .row
-        .small-12.columns
-          %label Expertise
-          %input{ :type => "text", :name => "investor[expertise]", :value => "#{@user.investor.expertise}" }
-      .row
-        .small-12.columns
-          %label Personal Message
-          %textarea{ :rows => "5", :name => "investor[personal_message]" }
-            =@user.investor.personal_message
+  - if @user.is_investor?
+    %h3 Investor Information
+    .row
+      .small-3.columns
+        SSN
+      .small-9.columns
+        =@user.investor.ssn
+    .row
+      .small-3.columns
+        Marital Status
+      .small-9.columns
+        =@user.investor.marital_status
+    .row
+      .small-3.columns
+        Financial Info
+      .small-9.columns
+        =raw @user.investor.financial_info
+    .row
+      .small-3.columns
+        Spending Habits
+      .small-9.columns
+        =@user.investor.spending_habits
+    .row
+      .small-3.columns
+        Income
+      .small-9.columns
+        =@user.investor.income
+    .row
+      .small-3.columns
+        Income Type
+      .small-9.columns
+        =@user.investor.income_type
+    .row
+      .small-3.columns
+        Net Worth
+      .small-9.columns
+        =@user.investor.net_worth
+    .row
+      .small-3.columns
+        Investor Representations
+      .small-9.columns
+        =@user.investor.investor_representations
+    .row
+      .small-3.columns
+        Industry
+      .small-9.columns
+        =@user.investor.industry
+    .row
+      .small-3.columns
+        Company
+      .small-9.columns
+        =@user.investor.company
+    .row
+      .small-3.columns
+        Job Title
+      .small-9.columns
+        =@user.investor.job_title
+    .row
+      .small-3.columns
+        Experience
+      .small-9.columns
+        =raw @user.investor.experience
+    .row
+      .small-3.columns
+        Expertise
+      .small-9.columns
+        =raw @user.investor.expertise
+    .row
+      .small-3.columns
+        Personal Message
+      .small-9.columns
+        =raw @user.investor.personal_message
 
-    - if @user.is_owner?
-      %h3 Owner Information
-      .row
-        .small-12.columns
-          %label SSN
-          %input{ :type => "text", :name => "owner[ssn]", :value => "#{@user.owner.ssn}" }
-      .row
-        .small-12.columns
-          %label Marital Status
-          %input{ :type => "text", :name => "owner[marital_status]", :value => "#{@user.owner.marital_status}" }
-      .row
-        .small-12.columns
-          %label Financial Info
-          %textarea{ :rows => "5", :name => "owner[financial_info]" }
-            =@user.owner.financial_info
-      .row
-        .small-12.columns
-          %label Experience
-          %input{ :type => "text", :name => "owner[experience]", :value => "#{@user.owner.experience}" }
-      .row
-        .small-12.columns
-          %label Expertise
-          %input{ :type => "text", :name => "owner[expertise]", :value => "#{@user.owner.expertise}" }
-      .row
-        .small-12.columns
-          %label Personal Message
-          %textarea{ :rows => "5", :name => "owner[personal_message]" }
-            =@user.owner.personal_message
+  - if @user.is_owner?
+    %h3 Owner Information
+    .row
+      .small-3.columns
+        SSN
+      .small-9.columns
+        =@user.owner.ssn
+    .row
+      .small-3.columns
+        Marital Status
+      .small-9.columns
+        =@user.owner.marital_status
+    .row
+      .small-3.columns
+        Financial Info
+      .small-9.columns
+        =raw @user.owner.financial_info
+    .row
+      .small-3.columns
+        Experience
+      .small-9.columns
+        =raw @user.owner.experience
+    .row
+      .small-3.columns
+        Expertise
+      .small-9.columns
+        =raw @user.owner.expertise
+    .row
+      .small-3.columns
+        Personal Message
+      .small-9.columns
+        =raw @user.owner.personal_message # XXX this might be vularable to XSS attack
 
-    .rows
-      %input{ :type => "submit", :value => "Save", :class => "right"}
