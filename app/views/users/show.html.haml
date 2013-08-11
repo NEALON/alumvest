@@ -87,7 +87,7 @@
     .small-3.columns
       Personal Statement
     .small-9.columns
-      =@user.personal_statement
+      =@user.personal_statement.html_safe
 
   - if @user.is_investor?
     %h3 Investor Information
@@ -105,7 +105,7 @@
       .small-3.columns
         Financial Info
       .small-9.columns
-        =@user.investor.financial_info
+        =@user.investor.financial_info.html_safe
     .row
       .small-3.columns
         Spending Habits
@@ -150,17 +150,17 @@
       .small-3.columns
         Experience
       .small-9.columns
-        =@user.investor.experience
+        =@user.investor.experience.html_safe
     .row
       .small-3.columns
         Expertise
       .small-9.columns
-        =@user.investor.expertise
+        =@user.investor.expertise.html_safe
     .row
       .small-3.columns
         Personal Message
       .small-9.columns
-        =@user.investor.personal_message
+        =@user.investor.personal_message.html_safe
 
   - if @user.is_owner?
     %h3 Owner Information
@@ -178,20 +178,20 @@
       .small-3.columns
         Financial Info
       .small-9.columns
-        =@user.owner.financial_info
+        =@user.owner.financial_info.html_safe
     .row
       .small-3.columns
         Experience
       .small-9.columns
-        =@user.owner.experience
+        =@user.owner.experience.html_safe
     .row
       .small-3.columns
         Expertise
       .small-9.columns
-        =@user.owner.expertise
+        =@user.owner.expertise.html_safe
     .row
       .small-3.columns
         Personal Message
       .small-9.columns
-        =@user.owner.personal_message
+        =@user.owner.personal_message.html_safe
 
