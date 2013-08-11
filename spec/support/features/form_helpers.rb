@@ -9,7 +9,7 @@ module Features
       'company_basic_form'.tap do |form|
         fill_in "#{form}_name", :with => Faker::Lorem.sentence(3)
         select 'Corporation', :from => "#{form}_ownership_structure"
-        fill_in "#{form}_logo_url", :with => Faker::Internet.url
+        # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
         fill_in "#{form}_url", :with => Faker::Internet.url
         fill_in "#{form}_address_1", :with => Faker::Address.street_address
         fill_in "#{form}_address_2", :with => Faker::Address.secondary_address
@@ -30,10 +30,10 @@ module Features
 
     def fill_in_company_funding_doc_form
       'company_funding_doc_form'.tap do |form|
-        fill_in "#{form}_business_plan_url", :with => Faker::Internet.url
-        fill_in "#{form}_tbd_financial_document_url", :with => Faker::Internet.url
-        fill_in "#{form}_tbd_funding_document_url", :with => Faker::Internet.url
-        fill_in "#{form}_tbd_detailed_metrics_document_url", :with => Faker::Internet.url
+        # filepicker fill_in "#{form}_business_plan_url", :with => Faker::Internet.url
+        # filepicker fill_in "#{form}_tbd_financial_document_url", :with => Faker::Internet.url
+        # filepicker fill_in "#{form}_tbd_funding_document_url", :with => Faker::Internet.url
+        # filepicker fill_in "#{form}_tbd_detailed_metrics_document_url", :with => Faker::Internet.url
         fill_in_ckeditor "#{form}_recent_investors", Faker::Lorem.sentence(6)
         fill_in_ckeditor "#{form}_roadmap", Faker::Lorem.sentence(6)
         fill_in_ckeditor "#{form}_shareholder_message", Faker::Lorem.sentence(6)

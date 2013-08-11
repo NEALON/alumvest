@@ -4,7 +4,7 @@ class CompanyFundingDocFormsController < ApplicationController
   end
 
   def create
-    @cfdf = CompanyFundingDocForm.create(params[:company_funding_doc_form])
+    @cfdf = CompanyFundingDocForm.create(add_images_if_test!(params[:company_funding_doc_form]))
     if @cfdf.valid?
       redirect_to @cfdf, :notice => 'Company funding doc info saved.'
     else
@@ -30,4 +30,19 @@ class CompanyFundingDocFormsController < ApplicationController
   def show
     @cfdf = CompanyFundingDocForm.find(params[:id])
   end
+
+  private
+
+  def add_images_if_test!(params)
+    if Rails.env.test?
+      params[:business_plan_url] = 'http://placehold.it/30x30'
+      params[:tbd_financial_document_url] = 'http://placehold.it/30x30'
+      params[:tbd_funding_document_url] = 'http://placehold.it/30x30'
+      params[:tbd_detailed_metrics_document_url] = 'http://placehold.it/30x30'
+      params
+    else
+      params
+    end
+  end
 end
+

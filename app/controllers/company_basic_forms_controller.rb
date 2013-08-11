@@ -4,7 +4,7 @@ class CompanyBasicFormsController < ApplicationController
   end
 
   def create
-    @cbf = CompanyBasicForm.create(params[:company_basic_form])
+    @cbf = CompanyBasicForm.create(add_images_if_test!(params[:company_basic_form]))
     if @cbf.valid?
       redirect_to @cbf, :notice => 'Company demographic info saved.'
     else
@@ -30,4 +30,16 @@ class CompanyBasicFormsController < ApplicationController
   def show
     @cbf = CompanyBasicForm.find(params[:id])
   end
+
+  private
+
+  def add_images_if_test!(params)
+    if Rails.env.test?
+      params[:logo_url] = 'http://placehold.it/30x30'
+      params
+    else
+      params
+    end
+  end
 end
+
