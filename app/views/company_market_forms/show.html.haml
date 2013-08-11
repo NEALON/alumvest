@@ -1,1 +1,6 @@
 = render 'company_worksheets/navigation', :active => :market, :company_worksheet => current_user.owner.company_worksheet
+
+= link_to 'Edit', edit_company_market_form_path(@cmf)
+
+= @cmf.inspect
+

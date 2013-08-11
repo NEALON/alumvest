@@ -167,7 +167,7 @@
     %h3 Owner Information
 
     = link_to company_worksheet_path(@user.owner.company_worksheet || CompanyWorksheet.create(:owner_id => @user.owner.id)) do
-      %button#button Build your company profile
+      %button#button Manage your company profile
 
     .row
       .small-3.columns

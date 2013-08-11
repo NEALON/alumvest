@@ -12,6 +12,21 @@ class CompanyBasicFormsController < ApplicationController
     end
   end
 
+  def edit
+    @cbf = CompanyBasicForm.find(params[:id])
+    render :new
+  end
+
+  def update
+    @cbf = CompanyBasicForm.find(params[:id])
+    @cbf.update_attributes(params[:company_basic_form])
+    if @cbf.valid?
+      redirect_to @cbf, :notice => 'Company demographic info saved.'
+    else
+      render :edit
+    end
+  end
+
   def show
     @cbf = CompanyBasicForm.find(params[:id])
   end

@@ -9,7 +9,17 @@ describe "owner builds company", :type => :feature do
 
   it do
     sign_up :owner
-    click_button 'Build your company profile'
+    # create
+    click_button 'Manage your company profile'
+    fill_in_company_basic_form
+    click_link 'People'
+    fill_in_company_personnel_form
+    click_link 'Funding Docs'
+    fill_in_company_funding_doc_form
+    click_link 'Market'
+    fill_in_company_market_form
+    # edit
+    click_link 'Demographic Info'
     fill_in_company_basic_form
     click_link 'People'
     fill_in_company_personnel_form

@@ -20,7 +20,7 @@ module Features
         select @industry.name, :from => "#{form}_industry_id"
       end
 
-      click_button "Create Company basic form"
+      click_button 'Save changes'
     end
 
     def fill_in_company_funding_doc_form
@@ -34,7 +34,7 @@ module Features
         fill_in "#{form}_shareholder_message", :with => Faker::Lorem.sentence(6)
       end
 
-      click_button "Create Company funding doc form"
+      click_button 'Save changes'
     end
 
     def fill_in_company_personnel_form
@@ -61,7 +61,7 @@ module Features
         end
       end
 
-      click_button "Create Company personnel form"
+      click_button 'Save changes'
     end
 
     def fill_in_company_market_form
@@ -71,7 +71,7 @@ module Features
         fill_in "#{form}_competitive_landscape", :with => Faker::Lorem.sentence(6)
       end
 
-      click_button "Create Company market form"
+      click_button 'Save changes'
     end
   end
 end

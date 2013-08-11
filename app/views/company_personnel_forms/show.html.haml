@@ -1,1 +1,6 @@
 = render 'company_worksheets/navigation', :active => :people, :company_worksheet => current_user.owner.company_worksheet
+
+= link_to 'Edit', edit_company_personnel_form_path(@cpf)
+
+= @cpf.inspect
+

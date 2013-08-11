@@ -1,1 +1,5 @@
 = render 'company_worksheets/navigation', :active => :funding, :company_worksheet => current_user.owner.company_worksheet
+
+= link_to 'Edit', edit_company_funding_doc_form_path(@cfdf)
+
+= @cfdf.inspect

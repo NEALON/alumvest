@@ -17,6 +17,21 @@ class CompanyPersonnelFormsController < ApplicationController
       render :action => :new
     end
   end
+  
+  def edit
+    @cpf = CompanyPersonnelForm.find(params[:id])
+    render :new
+  end
+
+  def update
+    @cpf = CompanyPersonnelForm.find(params[:id])
+    @cpf.update_attributes(params[:company_personnel_form])
+    if @cpf.valid?
+      redirect_to @cpf, :notice => 'Company people info saved.'
+    else
+      render :edit
+    end
+  end  
 
   def show
     @cpf = CompanyPersonnelForm.find(params[:id])

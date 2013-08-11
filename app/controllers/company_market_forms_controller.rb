@@ -12,6 +12,21 @@ class CompanyMarketFormsController < ApplicationController
     end
   end
 
+  def edit
+    @cmf = CompanyMarketForm.find(params[:id])
+    render :new
+  end
+
+  def update
+    @cmf = CompanyMarketForm.find(params[:id])
+    @cmf.update_attributes(params[:company_market_form])
+    if @cmf.valid?
+      redirect_to @cmf, :notice => 'Company market info saved.'
+    else
+      render :edit
+    end
+  end
+  
   def show
     @cmf = CompanyMarketForm.find(params[:id])
   end

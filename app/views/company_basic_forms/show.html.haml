@@ -1,1 +1,5 @@
 = render 'company_worksheets/navigation', :active => :demographic, :company_worksheet => current_user.owner.company_worksheet
+
+= link_to 'Edit', edit_company_basic_form_path(@cbf)
+
+= @cbf.inspect

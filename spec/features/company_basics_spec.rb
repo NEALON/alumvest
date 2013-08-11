@@ -13,4 +13,12 @@ describe "company basics management", :type => :feature do
     fill_in_company_basic_form
     expect(page).to have_content('Company demographic info saved.')
   end
+
+  it "edits" do
+    visit new_company_basic_form_path
+    fill_in_company_basic_form
+    click_link 'Edit'
+    fill_in_company_basic_form
+    expect(page).to have_content('Company demographic info saved.')
+  end
 end
