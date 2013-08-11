@@ -20,12 +20,16 @@ describe "owner builds company", :type => :feature do
     fill_in_company_market_form
     # edit
     click_link 'Demographic Info'
+    click_link 'Edit'
     fill_in_company_basic_form
     click_link 'People'
+    click_link 'Edit'
     fill_in_company_personnel_form
     click_link 'Funding Docs'
+    click_link 'Edit'
     fill_in_company_funding_doc_form
     click_link 'Market'
+    click_link 'Edit'
     fill_in_company_market_form
 
     #expect(page).to have_content('ok')

@@ -1,5 +1,10 @@
 module Features
   module FormHelpers
+
+    def fill_in_ckeditor(item, value)
+      page.driver.browser.execute_script("CKEDITOR.instances['#{item}'].setData('#{value}');")
+    end
+
     def fill_in_company_basic_form
       'company_basic_form'.tap do |form|
         fill_in "#{form}_name", :with => Faker::Lorem.sentence(3)
@@ -15,7 +20,7 @@ module Features
         select '2008', :from => "#{form}_founded_on_1i"
         select 'January', :from => "#{form}_founded_on_2i"
         select '1', :from => "#{form}_founded_on_3i"
-        fill_in "#{form}_summary", :with => Faker::Lorem.sentence(20)
+        fill_in_ckeditor "#{form}_summary", Faker::Lorem.sentence(20)
         select @category.name, :from => "#{form}_category_id"
         select @industry.name, :from => "#{form}_industry_id"
       end
@@ -29,9 +34,9 @@ module Features
         fill_in "#{form}_tbd_financial_document_url", :with => Faker::Internet.url
         fill_in "#{form}_tbd_funding_document_url", :with => Faker::Internet.url
         fill_in "#{form}_tbd_detailed_metrics_document_url", :with => Faker::Internet.url
-        fill_in "#{form}_recent_investors", :with => Faker::Lorem.sentence(6)
-        fill_in "#{form}_roadmap", :with => Faker::Lorem.sentence(6)
-        fill_in "#{form}_shareholder_message", :with => Faker::Lorem.sentence(6)
+        fill_in_ckeditor "#{form}_recent_investors", Faker::Lorem.sentence(6)
+        fill_in_ckeditor "#{form}_roadmap", Faker::Lorem.sentence(6)
+        fill_in_ckeditor "#{form}_shareholder_message", Faker::Lorem.sentence(6)
       end
 
       click_button 'Save changes'
@@ -67,8 +72,8 @@ module Features
     def fill_in_company_market_form
       'company_market_form'.tap do |form|
         fill_in "#{form}_product_media_url", :with => Faker::Internet.url
-        fill_in "#{form}_market_info", :with => Faker::Lorem.sentence(6)
-        fill_in "#{form}_competitive_landscape", :with => Faker::Lorem.sentence(6)
+        fill_in_ckeditor "#{form}_market_info", Faker::Lorem.sentence(6)
+        fill_in_ckeditor "#{form}_competitive_landscape", Faker::Lorem.sentence(6)
       end
 
       click_button 'Save changes'

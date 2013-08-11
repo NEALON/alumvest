@@ -12,7 +12,7 @@
     = f.input :zip
     = f.input :phone
     = f.input :founded_on #, :input_html => {:class => 'datePicker'}
-    = f.input :summary
+    = f.input :summary, :input_html => { :class => 'ckeditor' }
     = f.input :category_id, :as => :select, :collection => Category.order(:name), :include_blank => false
     = f.input :industry_id, :as => :select, :collection => Industry.order(:name), :include_blank => false
 
