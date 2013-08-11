@@ -4,7 +4,7 @@
   %h2
     = @user.first_name
     = @user.last_name
-  - if @user.id == @current_user.id
+  - if @curent_user != nil and @user.id == @current_user.id
     = semantic_form_for [@user] do |f|
       .fields
         =f.inputs "Profile Information" do
