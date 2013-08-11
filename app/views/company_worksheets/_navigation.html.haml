@@ -1,0 +1,25 @@
+%h4
+  Company profile
+%dl.sub-nav
+  %dt Sections:
+  %dd{:class => "#{'active' if active == :demographic}"}
+    - unless entity = company_worksheet.company_basic_form
+      = link_to('Demographic Info', new_company_basic_form_path)
+    - else
+      = link_to('Demographic Info', edit_company_basic_form_path(entity))
+  %dd{:class => "#{'active' if active == :people}"}
+    - unless entity = company_worksheet.company_personnel_form
+      = link_to('People', new_company_personnel_form_path)
+    - else
+      = link_to('People', edit_company_personnel_form_path(entity))
+  %dd{:class => "#{'active' if active == :funding}"}
+    - unless entity = company_worksheet.company_funding_doc_form
+      = link_to('Funding Docs', new_company_funding_doc_form_path)
+    - else
+      = link_to('Funding Docs', edit_company_funding_doc_form_path(entity))
+  %dd{:class => "#{'active' if active == :market}"}
+    - unless entity = company_worksheet.company_market_form
+      = link_to('Market', new_company_market_form_path)
+    - else
+      = link_to('Market', edit_company_market_form_path(entity))
+

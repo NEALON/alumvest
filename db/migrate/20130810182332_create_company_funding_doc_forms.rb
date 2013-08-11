@@ -9,6 +9,7 @@ class CreateCompanyFundingDocForms < ActiveRecord::Migration
       t.text :roadmap
       t.text :shareholder_message
 
+      t.references :company_worksheet
       t.timestamps
     end
   end

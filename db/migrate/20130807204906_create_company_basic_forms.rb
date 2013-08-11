@@ -16,6 +16,7 @@ class CreateCompanyBasicForms < ActiveRecord::Migration
 
       t.references :category
       t.references :industry
+      t.references :company_worksheet
 
       t.timestamps
     end

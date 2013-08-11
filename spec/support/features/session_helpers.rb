@@ -1,17 +1,27 @@
 module Features
   module SessionHelpers
     def sign_up(
-        name = Faker::Name.first_name,
-            email = Faker::Internet.email,
-            password = Faker::Internet.password)
+        role = :owner,
+        first_name = Faker::Name.first_name,
+        last_name = Faker::Name.last_name,
+        email = Faker::Internet.email,
+        password = Faker::Internet.password)
 
-      @name, @email, @password = name, email, password
+      @first_name, @last_name, @email, @password = first_name, last_name, email, password
+
       visit '/'
       click_link "Register"
-      fill_in 'name', :with => name
+      fill_in 'first_name', :with => first_name
+      fill_in 'last_name', :with => last_name
       fill_in 'email', :with => email
       fill_in 'password', :with => password
       fill_in 'password_confirmation', :with => password
+
+      case role
+        when :owner
+          select 'Owner', :from => :description
+      end
+
       click_button 'Register'
     end
 

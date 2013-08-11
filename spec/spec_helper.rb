@@ -38,7 +38,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include Features::SessionHelpers, type: :feature
+  config.include Features::SessionHelpers, :type => :feature
+  config.include Features::FormHelpers, :type => :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

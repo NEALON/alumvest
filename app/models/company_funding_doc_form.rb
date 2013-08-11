@@ -6,6 +6,9 @@ class CompanyFundingDocForm < ActiveRecord::Base
     :tbd_detailed_metrics_document_url,
     :recent_investors,
     :roadmap,
-    :shareholder_message
-  
+    :shareholder_message,
+    :company_worksheet_id
+
+  belongs_to :company_worksheet
+
 end

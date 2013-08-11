@@ -14,10 +14,11 @@ class CompanyBasicForm < ActiveRecord::Base
                   :founded_on,
                   :summary,
                   :category_id,
-                  :industry_id
+                  :industry_id,
+                  :company_worksheet_id
 
   has_filepicker_image :logo,
-                    :styles => {:medium => [300,300], :thumb => [100,100]}
+                       :styles => {:medium => [300, 300], :thumb => [100, 100]}
 
   validates_presence_of [:name,
                          :ownership_structure,
@@ -33,4 +34,5 @@ class CompanyBasicForm < ActiveRecord::Base
                          :category_id,
                          :industry_id]
 
+  belongs_to :company_worksheet
 end

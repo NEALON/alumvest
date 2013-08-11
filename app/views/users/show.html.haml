@@ -163,7 +163,12 @@
         =raw @user.investor.personal_message
 
   - if @user.is_owner?
+
     %h3 Owner Information
+
+    = link_to company_worksheet_path(@user.owner.company_worksheet || CompanyWorksheet.create(:owner_id => @user.owner.id)) do
+      %button#button Build your company profile
+
     .row
       .small-3.columns
         SSN

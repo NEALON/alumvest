@@ -6,6 +6,7 @@ class CreateCompanyMarketForms < ActiveRecord::Migration
       t.text :market_info
       t.text :competitive_landscape
 
+      t.references :company_worksheet
       t.timestamps
     end
   end

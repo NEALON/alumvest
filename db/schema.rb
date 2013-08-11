@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130811053450) do
+ActiveRecord::Schema.define(:version => 20130811122427) do
 
   create_table "campaign_worksheets", :force => true do |t|
     t.string   "permalink"
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(:version => 20130811053450) do
     t.text     "summary"
     t.integer  "category_id"
     t.integer  "industry_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.integer  "company_worksheet_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "company_funding_doc_forms", :force => true do |t|
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130811053450) do
     t.text     "recent_investors"
     t.text     "roadmap"
     t.text     "shareholder_message"
+    t.integer  "company_worksheet_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
@@ -64,11 +66,19 @@ ActiveRecord::Schema.define(:version => 20130811053450) do
     t.string   "product_media_url"
     t.text     "market_info"
     t.text     "competitive_landscape"
+    t.integer  "company_worksheet_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   create_table "company_personnel_forms", :force => true do |t|
+    t.integer  "company_worksheet_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "company_worksheets", :force => true do |t|
+    t.integer  "owner_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

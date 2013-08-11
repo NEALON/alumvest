@@ -1,4 +1,6 @@
 = semantic_form_for [@cpf] do |f|
+  = f.inputs do
+    = f.input :company_worksheet_id, :as => :hidden
 
   = render 'person', :title => 'Legal Counsel', :entity => :legal_counsel, :f => f
   = render 'people', :title => 'Founders', :grouping => :founders, :add_title => 'Add Founder', :f => f
