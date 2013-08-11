@@ -2,10 +2,15 @@ class User < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth, :email, :facebook, :linkedin, :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement, :profile_complete, :user_type
+  attr_accessible :avatar_url
+  attr_accessible :investor_attributes, :owner_attributes
+
+  has_filepicker_image :avatar, styles: {medium: [300, 300], thumb: [128, 128]}
 
   has_many :identities
   has_one :investor
   has_one :owner
+  accepts_nested_attributes_for :investor, :owner
 
   def self.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)

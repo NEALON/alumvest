@@ -2,6 +2,7 @@
   %h2 User not found
 -else
   %h2
+    = image_tag @user.avatar(:thumb) unless @user.avatar.nil?
     = @user.first_name
     = @user.last_name
   - if @user.id == @current_user.id

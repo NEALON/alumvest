@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user.id == @current_user.id
       @user.update_attributes(params[:user])
-      @user.investor.update_attributes(params[:investor]) if @user.is_investor?
-      @user.owner.update_attributes(params[:owner]) if @user.is_owner?
+      #@user.investor.update_attributes(params[:investor]) if @user.is_investor?
+      #@user.owner.update_attributes(params[:owner]) if @user.is_owner?
       @user.complete!
     end
     render "show"
