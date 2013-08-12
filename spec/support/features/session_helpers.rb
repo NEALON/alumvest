@@ -20,6 +20,8 @@ module Features
       case role
         when :owner
           select 'Owner', :from => :description
+        when :investor
+          select 'Investor', :from => :description
       end
 
       click_button 'Register'
