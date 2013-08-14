@@ -4,6 +4,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if params[:tab] == 'basice_info' or
+        params[:tab] == 'advanced_info' or
+        params[:tab] == 'investor_profile' or
+        params[:tab] == 'founder_profile' or
+        params[:tab] == 'settings' or
+        params[:tab] == 'notifications' or
+        params[:tab] == 'bank_account'
+      @active = params[:tab]
+    else
+      @active = 'basic_info'
+    end
     @user = User.find_by_id(params[:id])
   end
 
