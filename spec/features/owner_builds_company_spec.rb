@@ -31,7 +31,5 @@ describe "owner builds company", :type => :feature do
     click_link 'Market'
     click_link 'Edit'
     fill_in_company_market_form
-
-    #expect(page).to have_content('ok')
   end
 end
