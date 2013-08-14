@@ -1,5 +1,14 @@
 = render 'company_worksheets/navigation', :active => :funding, :company_worksheet => current_user.owner.company_worksheet
 
-= link_to 'Edit', edit_company_funding_doc_form_path(@cfdf)
+%h4
+  = link_to 'Edit', edit_company_funding_doc_form_path(@cfdf)
 
-%p= @cfdf.to_yaml
+%ul
+  %li= link_to_unless @cfdf.business_plan_url.blank?, 'Business plan', @cfdf.business_plan_url
+  %li= link_to_unless @cfdf.tbd_financial_document_url.blank?, 'TBD Financial document', @cfdf.tbd_financial_document_url
+  %li= link_to_unless @cfdf.tbd_funding_document_url.blank?, 'TBD Funding document', @cfdf.tbd_funding_document_url
+  %li= link_to_unless @cfdf.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @cfdf.tbd_detailed_metrics_document_url
+
+= render 'shared/property_row', :header => 'Recent investors', :value => @cfdf.recent_investors.html_safe
+= render 'shared/property_row', :header => 'Roadmap', :value => @cfdf.roadmap.html_safe
+= render 'shared/property_row', :header => 'Shareholder message', :value => @cfdf.shareholder_message.html_safe

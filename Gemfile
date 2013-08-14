@@ -20,6 +20,8 @@ gem 'has_filepicker_image', :git => 'git://github.com/polmiro/has_filepicker_ima
 gem 'ckeditor_rails', '~> 4.1.2'
 gem "cocoon"
 
+gem 'httparty'
+
 gem 'thin'
 gem 'pg'
 

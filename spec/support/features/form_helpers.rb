@@ -74,7 +74,7 @@ module Features
 
     def fill_in_company_market_form
       'company_market_form'.tap do |form|
-        fill_in "#{form}_product_media_url", :with => Faker::Internet.url
+        fill_in "#{form}_product_media_url", :with => 'http://www.youtube.com/watch?v=OQSNhk5ICTI'
         fill_in_ckeditor "#{form}_market_info", Faker::Lorem.sentence(6)
         fill_in_ckeditor "#{form}_competitive_landscape", Faker::Lorem.sentence(6)
       end

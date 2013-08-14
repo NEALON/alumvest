@@ -1,6 +1,10 @@
 = render 'company_worksheets/navigation', :active => :market, :company_worksheet => current_user.owner.company_worksheet
 
-= link_to 'Edit', edit_company_market_form_path(@cmf)
+%h4
+  = link_to 'Edit', edit_company_market_form_path(@cmf)
 
-%p= @cmf.to_yaml
+%p
+  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@cmf.image_for_product_media_url}"
 
+= render 'shared/property_row', :header => 'Market info', :value => @cmf.market_info.html_safe
+= render 'shared/property_row', :header => 'Recent investors', :value => @cmf.competitive_landscape.html_safe
