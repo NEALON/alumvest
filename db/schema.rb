@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
 
   create_table "company_basic_forms", :force => true do |t|
     t.string   "name"
-    t.string   "ownership_structure"
     t.string   "logo_url"
     t.string   "url"
     t.string   "address_1"
@@ -44,9 +43,8 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
     t.text     "summary"
     t.integer  "category_id"
     t.integer  "industry_id"
-    t.integer  "company_worksheet_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "company_funding_doc_forms", :force => true do |t|
@@ -72,9 +70,8 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
   end
 
   create_table "company_personnel_forms", :force => true do |t|
-    t.integer  "company_worksheet_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "company_worksheets", :force => true do |t|

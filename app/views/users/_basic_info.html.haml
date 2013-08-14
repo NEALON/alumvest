@@ -1,0 +1,17 @@
+-if @user.nil?
+  %h2 User not found
+-else
+  %h2
+  - if @current_user != nil and @user.id == @current_user.id
+    = semantic_form_for [@user] do |f|
+      .fields
+        =f.inputs "Basic Information" do
+          =f.input :avatar_url, :as => :formtastic_filepicker_image
+          =f.input :first_name
+          =f.input :middle_name
+          =f.input :last_name
+          =f.input :email
+          =f.input :facebook
+          =f.input :linkedin
+        .rows
+          =f.submit "Save"

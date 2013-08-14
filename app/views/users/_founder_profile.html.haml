@@ -1,0 +1,18 @@
+-if @user.nil?
+  %h2 User not found
+-else
+  - if @current_user != nil and @user.id == @current_user.id
+    = semantic_form_for [@user] do |f|
+      .fields
+        - if @user.is_owner?
+          =f.inputs :name => "Owner Profile", :for => :owner do |owf|
+            =owf.input :ssn
+            =owf.input :marital_status, :as => :select, :collection => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            =owf.input :financial_info, :input_html => { :class => 'ckeditor' }
+            =owf.input :experience, :input_html => { :class => 'ckeditor' }
+            =owf.input :expertise, :input_html => { :class => 'ckeditor' }
+            =owf.input :personal_message, :input_html => { :class => 'ckeditor' }
+          .rows
+            =f.submit "Save"
+        - else
+          You are not a founder.
