@@ -2,19 +2,21 @@
   = f.inputs do
     = f.input :company_worksheet_id, :as => :hidden
     = f.input :name
-    = f.input :ownership_structure, :as => :select, :collection => ownership_structures, :include_blank => false
     = f.input :logo_url, :as => :formtastic_filepicker_image
+    = f.input :founded_on #, :input_html => {:class => 'datePicker'}
     = f.input :url
+
+    = f.input :ownership_structure, :as => :select, :collection => ownership_structures, :include_blank => false
+    = f.input :category_id, :as => :select, :collection => Category.order(:name), :include_blank => false
+    = f.input :industry_id, :as => :select, :collection => Industry.order(:name), :include_blank => false
+    = f.input :summary, :input_html => { :class => 'ckeditor' }
+
     = f.input :address_1
     = f.input :address_2
     = f.input :city
     = f.input :state
     = f.input :zip
     = f.input :phone
-    = f.input :founded_on #, :input_html => {:class => 'datePicker'}
-    = f.input :summary, :input_html => { :class => 'ckeditor' }
-    = f.input :category_id, :as => :select, :collection => Category.order(:name), :include_blank => false
-    = f.input :industry_id, :as => :select, :collection => Industry.order(:name), :include_blank => false
 
   = f.actions do
     = f.action :submit, :as => :input, :label => 'Save changes'

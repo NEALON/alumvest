@@ -20,4 +20,6 @@ class CompanyBasicForm < ActiveRecord::Base
   has_filepicker_image :logo, :styles => {:medium => [300, 300], :thumb => [100, 100]}
 
   belongs_to :company_worksheet
+  belongs_to :category
+  belongs_to :industry
 end

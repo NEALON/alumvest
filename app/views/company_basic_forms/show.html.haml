@@ -1,5 +1,18 @@
 = render 'company_worksheets/navigation', :active => :demographic, :company_worksheet => current_user.owner.company_worksheet
 
-= link_to 'Edit', edit_company_basic_form_path(@cbf)
+%h4
+  = link_to 'Edit', edit_company_basic_form_path(@cbf)
 
-%p= @cbf.to_yaml
+= render 'shared/property_row', :header => 'Company name', :value => @cbf.name
+= render 'shared/property_row', :header => 'Logo', :value => (image_tag @cbf.logo(w:32, h:32) unless @cbf.logo.blank?)
+= render 'shared/property_row', :header => 'Founded', :value => @cbf.founded_on
+= render 'shared/property_row', :header => 'Website', :value => @cbf.url
+= render 'shared/property_row', :header => 'Structure', :value => @cbf.ownership_structure
+= render 'shared/property_row', :header => 'Category', :value => @cbf.category.name
+= render 'shared/property_row', :header => 'Industry', :value => @cbf.industry.name
+= render 'shared/property_row', :header => 'Summary', :value => @cbf.summary.html_safe
+= render 'shared/property_row', :header => 'Address', :value => @cbf.address_1
+= render 'shared/property_row', :header => '', :value => @cbf.address_2
+= render 'shared/property_row', :header => '', :value => "#{@cbf.city} #{@cbf.state} #{@cbf.zip}"
+= render 'shared/property_row', :header => 'Phone', :value => @cbf.phone
+
