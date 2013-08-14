@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
     t.text     "recent_investors"
     t.text     "roadmap"
     t.text     "shareholder_message"
+    t.integer  "company_worksheet_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
     t.string   "product_media_url"
     t.text     "market_info"
     t.text     "competitive_landscape"
+    t.integer  "company_worksheet_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
