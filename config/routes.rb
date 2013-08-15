@@ -16,7 +16,9 @@ Av::Application.routes.draw do
   resources :company_market_forms
   resources :company_personnel_forms
   resources :users
-  resources :company_worksheets
+  resources :company_worksheets do
+    resources :campaigns
+  end
 
   ### Begin RailsThemes basic generated routes ###
 

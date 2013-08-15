@@ -13,14 +13,20 @@
 
 ActiveRecord::Schema.define(:version => 20130811122427) do
 
-  create_table "campaign_worksheets", :force => true do |t|
+  create_table "campaigns", :force => true do |t|
     t.string   "permalink"
-    t.string   "name"
+    t.string   "title"
     t.string   "headline"
     t.text     "summary"
-    t.text     "about"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "pitch"
+    t.integer  "amount"
+    t.text     "planned_fund_usage"
+    t.integer  "length_in_days"
+    t.string   "photo_url"
+    t.string   "video_url"
+    t.integer  "company_worksheet_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "categories", :force => true do |t|

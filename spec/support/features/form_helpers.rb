@@ -5,6 +5,21 @@ module Features
       page.driver.browser.execute_script("CKEDITOR.instances['#{item}'].setData('#{value}');")
     end
 
+    def fill_in_campaign
+      'campaign'.tap do |form|
+        fill_in "#{form}_permalink", :with => Faker::Lorem.word
+        fill_in "#{form}_title", :with => Faker::Lorem.sentence(4)
+        fill_in "#{form}_headline", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_summary", :with => Faker::Lorem.sentence(20)
+        fill_in "#{form}_pitch", :with => "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
+        fill_in "#{form}_amount", :with => 100
+        fill_in "#{form}_planned_fund_usage", :with => "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
+        fill_in "#{form}_length_in_days", :with => 90
+        fill_in "#{form}_video_url", :with => 'http://www.youtube.com/watch?v=OQSNhk5ICTI'
+      end
+      click_button 'Save changes'
+    end
+
     def fill_in_company_basic_form
       'company_basic_form'.tap do |form|
         fill_in "#{form}_name", :with => Faker::Lorem.sentence(3)

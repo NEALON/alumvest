@@ -1,0 +1,16 @@
+= semantic_form_for [@company_worksheet, @campaign] do |f|
+  = f.inputs do
+    = f.input :company_worksheet_id, :as => :hidden
+    = f.input :permalink
+    = f.input :title
+    = f.input :headline
+    = f.input :summary
+    = f.input :pitch, :class => 'ckeditor'
+    = f.input :amount
+    = f.input :planned_fund_usage
+    = f.input :length_in_days
+    = f.input :photo_url, :as => :formtastic_filepicker_image
+    = f.input :video_url
+
+  = f.actions do
+    = f.action :submit, :as => :input, :label => 'Save changes'
