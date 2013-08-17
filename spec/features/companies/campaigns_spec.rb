@@ -19,8 +19,16 @@ describe "company campaigns management", :type => :feature do
     visit new_company_basic_form_path
     click_link 'Create a campaign'
     fill_in_campaign
-    click_link 'Edit'
+    #click_link 'Edit'
   #  fill_in_company_basic_form
   #  expect(page).to have_content('Company demographic info saved.')
-  #end
+  end
+
+  it "shows" do
+    #raise FactoryGirl.create(:company_basic_form).inspect
+    #@company_worksheet = FactoryGirl.create(:company_worksheet, :owner => @owner)
+    #raise @company_worksheet.inspect
+
+    # screenshot_and_open_image
+  end
 end

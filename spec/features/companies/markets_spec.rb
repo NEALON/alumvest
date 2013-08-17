@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "company funding docs management", :type => :feature do
+describe "company markets management", :type => :feature do
 
   before :each do
     sign_up :owner
