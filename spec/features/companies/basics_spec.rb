@@ -9,8 +9,7 @@ describe "managing company basics", :type => :feature do
   end
 
   it "by creating one" do
-    visit new_company_basic_form_path
-    fill_in_company_basic_form
+    create_new_company_basic_form
     expect(page).to have_content('Company demographic info saved.')
   end
 

@@ -5,16 +5,17 @@ module Features
     end
 
     def fill_in_campaign
+      c = FactoryGirl.build(:campaign)
       'campaign'.tap do |form|
-        fill_in "#{form}_permalink", :with => Faker::Lorem.word
-        fill_in "#{form}_title", :with => Faker::Lorem.sentence(4)
-        fill_in "#{form}_headline", :with => Faker::Lorem.sentence(10)
-        fill_in "#{form}_summary", :with => Faker::Lorem.sentence(20)
-        fill_in "#{form}_pitch", :with => "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
-        fill_in "#{form}_amount", :with => 100
-        fill_in "#{form}_planned_fund_usage", :with => "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
-        fill_in "#{form}_length_in_days", :with => 90
-        fill_in "#{form}_video_url", :with => 'http://www.youtube.com/watch?v=OQSNhk5ICTI'
+        fill_in "#{form}_permalink", :with => c.permalink
+        fill_in "#{form}_title", :with => c.title
+        fill_in "#{form}_headline", :with => c.headline
+        fill_in "#{form}_summary", :with => c.summary
+        fill_in "#{form}_pitch", :with => c.pitch
+        fill_in "#{form}_amount", :with => c.amount
+        fill_in "#{form}_planned_fund_usage", :with => c.planned_fund_usage
+        fill_in "#{form}_length_in_days", :with => c.length_in_days
+        fill_in "#{form}_video_url", :with => c.video_url
       end
       click_button 'Save changes'
     end
@@ -72,12 +73,7 @@ module Features
     end
 
     def fill_in_company_personnel_form
-      cpf = FactoryGirl.build(:company_personnel_form)
-      cpf.legal_counsel << FactoryGirl.create(:legal_counsel)
-      cpf.founders << FactoryGirl.create(:founder)
-      cpf.team_members << FactoryGirl.create(:team_member)
-      cpf.board_members << FactoryGirl.create(:board_member)
-      cpf.advisors << FactoryGirl.create(:advisor)
+      cpf = create_personnel_form_via_factories
 
       'company_personnel_form'.tap do |form|
         'legal_counsel'.tap do |entity|

@@ -9,7 +9,7 @@ describe "managing campaigns", :type => :feature do
   end
 
   it "by creating a new one" do
-    visit new_company_basic_form_path
+    create_new_company_basic_form
     click_link 'Create a campaign'
     fill_in_campaign
     expect(page).to have_content('Campaign info saved.')
@@ -21,14 +21,12 @@ describe "managing campaigns", :type => :feature do
     fill_in_campaign
     # click_link 'Edit'
     # fill_in_company_basic_form
-    # expect(page).to have_content('Company demographic info saved.')
+    # expect(page).to have_content('Campaign info saved.')
   end
 
   it "by displaying one" do
     # raise FactoryGirl.create(:company_basic_form).inspect
     # @company_worksheet = FactoryGirl.create(:company_worksheet, :owner => @owner)
     # raise @company_worksheet.inspect
-
-    # screenshot_and_open_image
   end
 end

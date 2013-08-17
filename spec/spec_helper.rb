@@ -6,6 +6,7 @@ require 'email_spec'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
+require 'factory_girl_rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -40,6 +41,7 @@ RSpec.configure do |config|
 
   config.include Features::SessionHelpers, :type => :feature
   config.include Features::FormHelpers, :type => :feature
+  config.include Features::WorkflowStepHelpers, :type => :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

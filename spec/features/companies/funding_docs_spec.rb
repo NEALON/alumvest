@@ -7,8 +7,7 @@ describe "managing company funding docs", :type => :feature do
   end
 
   it "by creating one" do
-    visit new_company_funding_doc_form_path
-    fill_in_company_funding_doc_form
+    create_company_funding_doc_form
     expect(page).to have_content('Company funding doc info saved.')
   end
   

@@ -7,8 +7,7 @@ describe "managing company markets", :type => :feature do
   end
   
   it "by creating one" do
-    visit new_company_market_form_path
-    fill_in_company_market_form
+    create_new_company_market_form
     expect(page).to have_content('Company market info saved.')
   end
   
