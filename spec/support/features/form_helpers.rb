@@ -73,6 +73,12 @@ module Features
 
     def fill_in_company_personnel_form
       cpf = FactoryGirl.build(:company_personnel_form)
+      cpf.legal_counsel << FactoryGirl.create(:legal_counsel)
+      cpf.founders << FactoryGirl.create(:founder)
+      cpf.team_members << FactoryGirl.create(:team_member)
+      cpf.board_members << FactoryGirl.create(:board_member)
+      cpf.advisors << FactoryGirl.create(:advisor)
+
       'company_personnel_form'.tap do |form|
         'legal_counsel'.tap do |entity|
           fill_in "#{form}_#{entity}_attributes_0_first_name", :with => cpf.legal_counsel.first.first_name

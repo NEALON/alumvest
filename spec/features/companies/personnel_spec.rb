@@ -14,9 +14,14 @@ describe "company personnel management", :type => :feature do
   end
 
   it "edits" do
-    visit new_company_personnel_form_path
-    fill_in_company_personnel_form
-    click_link 'Edit'
+    cpf = FactoryGirl.create(:company_personnel_form)
+    cpf.legal_counsel << FactoryGirl.create(:legal_counsel)
+    cpf.founders << FactoryGirl.create(:founder)
+    cpf.team_members << FactoryGirl.create(:team_member)
+    cpf.board_members << FactoryGirl.create(:board_member)
+    cpf.advisors << FactoryGirl.create(:advisor)
+
+    visit edit_company_personnel_form_path cpf
     fill_in_company_personnel_form
     expect(page).to have_content('Company people info saved.')
   end
