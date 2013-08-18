@@ -1,0 +1,51 @@
+= render 'heading'
+= render 'navigation'
+%h3 Campaign
+= render 'shared/property_row', :header => 'Permalink', :value => @campaign.permalink
+= render 'shared/property_row', :header => 'Title', :value => @campaign.title
+= render 'shared/property_row', :header => 'Headline', :value => @campaign.headline
+= render 'shared/property_row', :header => 'Summary', :value => @campaign.summary
+= render 'shared/property_row', :header => 'Pitch', :value => @campaign.pitch
+= render 'shared/property_row', :header => 'Amount', :value => @campaign.amount
+= render 'shared/property_row', :header => 'Planned fund usage', :value => @campaign.planned_fund_usage
+= render 'shared/property_row', :header => 'Length in days', :value => @campaign.length_in_days
+= render 'shared/property_row', :header => 'Image', :value => @campaign.photo_url
+= render 'shared/property_row', :header => 'Video', :value => @campaign.video_url
+
+%h3 Company - Basics
+- @cbf = @company_worksheet.company_basic_form
+= render 'shared/property_row', :header => 'Company name', :value => @cbf.name
+= render 'shared/property_row', :header => 'Logo', :value => (image_tag @cbf.logo(w:32, h:32) unless @cbf.logo.blank?)
+= render 'shared/property_row', :header => 'Founded', :value => @cbf.founded_on
+= render 'shared/property_row', :header => 'Website', :value => @cbf.url
+= render 'shared/property_row', :header => 'Structure', :value => @cbf.ownership_structure
+= render 'shared/property_row', :header => 'Category', :value => @cbf.category.name
+= render 'shared/property_row', :header => 'Industry', :value => @cbf.industry.name
+= render 'shared/property_row', :header => 'Summary', :value => @cbf.summary.html_safe
+= render 'shared/property_row', :header => 'Address', :value => @cbf.address_1
+= render 'shared/property_row', :header => '', :value => @cbf.address_2
+= render 'shared/property_row', :header => '', :value => "#{@cbf.city} #{@cbf.state} #{@cbf.zip}"
+= render 'shared/property_row', :header => 'Phone', :value => @cbf.phone
+
+%h3 Company - Funding Docs
+- @cfdf = @company_worksheet.company_funding_doc_form
+%ul
+  %li= link_to_unless @cfdf.business_plan_url.blank?, 'Business plan', @cfdf.business_plan_url
+  %li= link_to_unless @cfdf.tbd_financial_document_url.blank?, 'TBD Financial document', @cfdf.tbd_financial_document_url
+  %li= link_to_unless @cfdf.tbd_funding_document_url.blank?, 'TBD Funding document', @cfdf.tbd_funding_document_url
+  %li= link_to_unless @cfdf.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @cfdf.tbd_detailed_metrics_document_url
+
+= render 'shared/property_row', :header => 'Recent investors', :value => @cfdf.recent_investors.html_safe
+= render 'shared/property_row', :header => 'Roadmap', :value => @cfdf.roadmap.html_safe
+= render 'shared/property_row', :header => 'Shareholder message', :value => @cfdf.shareholder_message.html_safe
+
+%h3 Company - Market
+- @cmf = @company_worksheet.company_market_form
+
+%p
+  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@cmf.image_for_product_media_url}"
+
+= render 'shared/property_row', :header => 'Market info', :value => @cmf.market_info.html_safe
+= render 'shared/property_row', :header => 'Recent investors', :value => @cmf.competitive_landscape.html_safe
+
+

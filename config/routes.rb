@@ -22,6 +22,7 @@ Av::Application.routes.draw do
       get :investment_term
       get :updates
       get :join_us
+      get :other
     end
   end
 
