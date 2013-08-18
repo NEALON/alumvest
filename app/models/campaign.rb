@@ -25,4 +25,6 @@ class Campaign < ActiveRecord::Base
   validates_numericality_of [:amount, :length_in_days]
 
   belongs_to :company_worksheet
+
+  has_filepicker_image :photo
 end
