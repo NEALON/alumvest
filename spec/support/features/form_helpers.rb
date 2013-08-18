@@ -5,6 +5,67 @@ module Features
       page.driver.browser.execute_script("CKEDITOR.instances['#{item}'].setData('#{value}');")
     end
 
+    def fill_in_user_basic_info(
+          first_name = Faker::Name.first_name,
+          middle_name = Faker::Name.first_name,
+          last_name = Faker::Name.last_name
+        )
+      'user'.tap do |form|
+        fill_in "#{form}_first_name", :with => first_name
+        fill_in "#{form}_middle_name", :with => middle_name
+        fill_in "#{form}_last_name", :with => last_name
+      end
+      click_button 'Save'
+    end
+
+    def fill_in_user_advanced_info(
+          mobile_phone = Faker::PhoneNumber.cell_phone,
+          home_phone = Faker::PhoneNumber.phone_number,
+          address1 = Faker::Address.street_address,
+          city = Faker::Address.city,
+          state = Faker::Address.state,
+          zip_code = Faker::Address.zip_code,
+          ps = Faker::Lorem.sentence(10)
+        )
+      'user'.tap do |form|
+        select '1988', :from => "#{form}_date_of_birth_1i"
+        select 'January', :from => "#{form}_date_of_birth_2i"
+        select '1', :from => "#{form}_date_of_birth_3i"
+        fill_in "#{form}_mobile_phone", :with => mobile_phone
+        fill_in "#{form}_home_phone", :with => home_phone
+        fill_in "#{form}_address_1", :with => address1
+        fill_in "#{form}_city", :with => city
+        fill_in "#{form}_state", :with => state
+        fill_in "#{form}_zipcode", :with => zip_code
+        fill_in_ckeditor "#{form}_personal_statement", ps
+      end
+      click_button 'Save'
+    end
+
+    def fill_in_user_owner_profile
+      'user'.tap do |form|
+        fill_in "#{form}_owner_attributes_ssn", :with => '000-00-0000'
+        select 'Married', :from => "#{form}_owner_attributes_marital_status"
+        fill_in_ckeditor "#{form}_owner_attributes_financial_info", Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_owner_attributes_experience", Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_owner_attributes_expertise", Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_owner_attributes_personal_message", Faker::Lorem.sentence(10)
+      end
+      click_button 'Save'
+    end
+
+    def fill_in_user_investor_profile
+      'user'.tap do |form|
+        fill_in "#{form}_investor_attributes_ssn", :with => '000-00-0000'
+        select 'Married', :from => "#{form}_investor_attributes_marital_status"
+        fill_in_ckeditor "#{form}_investor_attributes_financial_info", Faker::Lorem.sentence(10)
+        fill_in "#{form}_investor_attributes_experience", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_investor_attributes_expertise", :with => Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_investor_attributes_personal_message", Faker::Lorem.sentence(10)
+      end
+      click_button 'Save'
+    end
+
     def fill_in_campaign
       'campaign'.tap do |form|
         fill_in "#{form}_permalink", :with => Faker::Lorem.word

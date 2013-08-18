@@ -22,5 +22,5 @@ describe "company campaigns management", :type => :feature do
     click_link 'Edit'
   #  fill_in_company_basic_form
   #  expect(page).to have_content('Company demographic info saved.')
-  #end
+  end
 end
