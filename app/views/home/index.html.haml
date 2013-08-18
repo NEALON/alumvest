@@ -18,6 +18,7 @@
           =c.headline
       .campaign-goal
         %p
-          Goal: $#{c.amount}
+          Goal:
+          =number_to_currency(c.amount)
         .progress
           .meter{:style => "width: #{Random.rand(100)}%"}
