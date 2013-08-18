@@ -10,6 +10,7 @@
         %p
         %p= @campaign.headline
         %p= @campaign.summary
+        %hr
         %p= raw @campaign.pitch
       .large-4.columns
         .panel
@@ -26,10 +27,20 @@
           %div
             %h3= @campaign.length_in_days
             days left
-      .row
-        .large-4.columns
-          .large.success.button
-            Invest Now
+
+      .large-4.columns
+        .large.success.button{:style => "width: 304px"}
+          Invest Now
+
+      .large-4.columns
+        .panel
+          - @cbf = @company_worksheet.company_basic_form
+          %p
+            %span{:style => "padding: 10px"}= image_tag @cbf.logo(w:64, h:64) unless @cbf.logo.blank?
+            = @cbf.name
+          %p= "A #{@cbf.ownership_structure}, founded #{time_ago_in_words @cbf.founded_on} ago"
+          = link_to @cbf.url, @cbf.url
+          %p= raw @cbf.summary
 
 -#= link_to 'Edit', edit_company_worksheet_campaign_path(@company_worksheet, @campaign)
 
