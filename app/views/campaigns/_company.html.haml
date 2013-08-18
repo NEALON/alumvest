@@ -1,0 +1,52 @@
+= javascript_include_tag 'http://cdn.embed.ly/jquery.embedly-3.0.5.min.js'
+
+.row
+  .large-12.small-12.columns
+    &nbsp;
+
+.row
+  .large-12.small-12.columns
+    %h3= @campaign.title
+    %p
+      = "by #{@user.full_name}"
+
+.row
+  .large-12.small-12.columns
+    .row.roomy
+      .large-8.columns
+        #embed
+          -#= link_to @campaign.video_url, @campaign.video_url, :style => 'display:none'
+        = render 'youtube', :video_url => @campaign.video_url
+        %p
+        %p= @campaign.headline
+        %p= @campaign.summary
+        %p= raw @campaign.pitch
+      .large-4.columns
+        .panel
+          %div
+            %h3 5
+            backers
+          %br
+          %div
+            %h3 $100
+            invested of
+            = "$#{@campaign.amount}"
+            goal
+          %br
+          %div
+            %h3= @campaign.length_in_days
+            days left
+      .row
+        .large-4.columns
+          .large.success.button
+            Invest Now
+
+-#= link_to 'Edit', edit_company_worksheet_campaign_path(@company_worksheet, @campaign)
+
+-#:javascript
+  $('document').ready(function(){
+    $('div#embed').embedly({
+      query: { maxwidth: 254, maxheight: 139, wmode: 'transparent' },
+      key: '6df201d3d6b8438983bfa7de1d9c8854'
+    })
+  });

@@ -47,4 +47,8 @@ class User < ActiveRecord::Base
   def is_owner?
     user_type == "owner"
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

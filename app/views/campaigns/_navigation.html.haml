@@ -1,0 +1,15 @@
+.row
+  .large-12
+    .top-bar
+      %section.top-bar-section
+        %ul.left.main
+          %li
+            = link_to 'Company', company_worksheet_campaign_path(@company_worksheet, @campaign)
+          %li
+            = link_to 'Team', company_worksheet_campaign_team_path(@company_worksheet, @campaign)
+          %li
+            = link_to 'Investment Term', company_worksheet_campaign_investment_term_path(@company_worksheet, @campaign)
+          %li
+            = link_to 'Updates', company_worksheet_campaign_updates_path(@company_worksheet, @campaign)
+          %li
+            = link_to 'Join Us', company_worksheet_campaign_join_us_path(@company_worksheet, @campaign)
