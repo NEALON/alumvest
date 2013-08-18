@@ -29,6 +29,7 @@
     %ul.large-12.small-12.side-nav
       - company_worksheet.campaigns.each do |campaign|
         %li= link_to campaign.title, edit_company_worksheet_campaign_path(company_worksheet, campaign)
-      %hr
+      - if company_worksheet.campaigns
+        %hr
       %li
         = link_to('New campaign', new_company_worksheet_campaign_path(company_worksheet))

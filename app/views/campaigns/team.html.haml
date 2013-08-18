@@ -1,3 +1,39 @@
-= render 'orbit'
+= render 'heading'
 = render 'navigation'
-Team
+
+- if cpf = @company_worksheet.company_personnel_form
+
+  .row{:style => "margin-bottom: 1em"}
+    .large-12.columns
+      - if founders = cpf.founders
+        %h3 Founders
+        - cpf.founders.each do |founder|
+          = founder.full_name
+
+  .row{:style => "margin-bottom: 1em"}
+    .large-12.columns
+      - if team_members = cpf.team_members
+        %h3 Team Members
+        - cpf.team_members.each do |m|
+          = m.full_name
+
+  .row{:style => "margin-bottom: 1em"}
+    .large-12.columns
+      - if board_members = cpf.board_members
+        %h3 Board Members
+        - cpf.board_members.each do |m|
+          = m.full_name
+
+  .row{:style => "margin-bottom: 1em"}
+    .large-12.columns
+      - if advisors = cpf.advisors
+        %h3 Advisors
+        - cpf.advisors.each do |m|
+          = m.full_name
+
+  .row{:style => "margin-bottom: 1em"}
+    .large-12.columns
+      - if legal_counsel = cpf.legal_counsel
+        %h3 Legal Counsel
+        = cpf.legal_counsel.first.full_name
+
