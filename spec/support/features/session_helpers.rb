@@ -25,6 +25,7 @@ module Features
       end
 
       click_button 'Register'
+      @user, @owner, @investor = User.last, User.last.owner, User.last.investor
     end
 
     def signout

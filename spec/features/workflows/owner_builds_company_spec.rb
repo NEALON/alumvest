@@ -1,13 +1,13 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "owner builds company", :type => :feature do
+describe "owner managing entire company worksheet", :type => :feature do
 
   before :each do
     @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
   end
 
-  it do
+  it "by creating and editing data" do
     sign_up :owner
     # create
     click_button 'Manage your company profile'

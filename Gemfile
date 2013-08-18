@@ -35,7 +35,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'rspec'
   gem 'rspec-rails'
 end
