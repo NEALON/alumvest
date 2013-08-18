@@ -7,7 +7,7 @@
 
 .row.roomy.homepage-featured-campaigns
   - @campaigns.each do |c|
-    .large-4.small-4.columns.panel
+    .large-4.columns.panel
       = link_to "#" do
         = image_tag c.photo(w:300, h:150, fit:'crop')
       .campaign-title
