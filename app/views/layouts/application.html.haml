@@ -17,6 +17,7 @@ railsthemes.com/terms. -->
   %link{:href => image_path('railsthemes_meta/favicon.ico'), :rel => "icon", :type => "image/x-icon"}/
   %title
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
+  = stylesheet_link_tag "application"
   = stylesheet_link_tag "railsthemes_meta"
   = javascript_include_tag "application"
   = javascript_include_tag "railsthemes_samples" unless Rails.env.production?
