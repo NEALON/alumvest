@@ -1,5 +1,5 @@
 = render 'navigation', :active => @active
-- if @active == 'settings' or @active == 'notifications' or @active == 'bank_account'
+- if @active == 'notifications' or @active == 'bank_account'
   = render 'partials/coming_soon'
 - else
   = render @active
