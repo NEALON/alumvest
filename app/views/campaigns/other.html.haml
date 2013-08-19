@@ -28,18 +28,6 @@
 = render 'shared/property_row', :header => '', :value => "#{@cbf.city} #{@cbf.state} #{@cbf.zip}"
 = render 'shared/property_row', :header => 'Phone', :value => @cbf.phone
 
-%h3 Company - Funding Docs
-- @cfdf = @company_worksheet.company_funding_doc_form
-%ul
-  %li= link_to_unless @cfdf.business_plan_url.blank?, 'Business plan', @cfdf.business_plan_url
-  %li= link_to_unless @cfdf.tbd_financial_document_url.blank?, 'TBD Financial document', @cfdf.tbd_financial_document_url
-  %li= link_to_unless @cfdf.tbd_funding_document_url.blank?, 'TBD Funding document', @cfdf.tbd_funding_document_url
-  %li= link_to_unless @cfdf.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @cfdf.tbd_detailed_metrics_document_url
-
-= render 'shared/property_row', :header => 'Recent investors', :value => @cfdf.recent_investors.html_safe
-= render 'shared/property_row', :header => 'Roadmap', :value => @cfdf.roadmap.html_safe
-= render 'shared/property_row', :header => 'Shareholder message', :value => @cfdf.shareholder_message.html_safe
-
 %h3 Company - Market
 - @cmf = @company_worksheet.company_market_form
 %p
