@@ -8,7 +8,7 @@ FactoryGirl.define do
     amount 100
     planned_fund_usage "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
     length_in_days 90
-    video_url 'http://www.youtube.com/watch?v=OQSNhk5ICTI'
+    video_url 'http://www.youtube.com/embed/OQSNhk5ICTI'
     photo_url 'http://placehold.it/100x100'
   end
 end

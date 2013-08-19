@@ -10,6 +10,8 @@ module Features
       @first_name, @last_name, @email, @password = first_name, last_name, email, password
 
       visit '/'
+      screenshot_and_save_page if $do_screenshots
+
       click_link "Register"
       fill_in 'first_name', :with => first_name
       fill_in 'last_name', :with => last_name
@@ -24,6 +26,7 @@ module Features
           select 'Investor', :from => :description
       end
 
+      screenshot_and_save_page if $do_screenshots
       click_button 'Register'
       @user, @owner, @investor = User.last, User.last.owner, User.last.investor
     end
@@ -37,6 +40,7 @@ module Features
       click_link 'Login'
       fill_in 'Email', :with => email
       fill_in 'password', :with => password
+      screenshot_and_save_page if $do_screenshots
       click_button 'Login'
     end
   end

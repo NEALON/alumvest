@@ -11,7 +11,7 @@ end
 
 FactoryGirl.define do
   factory :company_basic_form do
-    name                Faker::Lorem.sentence(3)
+    name                "#{Faker::Name.name} and Company"
     logo_url            Faker::Internet.url
     founded_on          5.years.ago
     url                 Faker::Internet.url

@@ -1,6 +1,7 @@
 module Features
   module FormHelpers
     def fill_in_ckeditor(item, value)
+      sleep 1
       page.driver.browser.execute_script("CKEDITOR.instances['#{item}'].setData('#{value}');")
     end
 
@@ -14,6 +15,7 @@ module Features
         fill_in "#{form}_middle_name", :with => middle_name
         fill_in "#{form}_last_name", :with => last_name
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
     end
 
@@ -38,6 +40,7 @@ module Features
         fill_in "#{form}_zipcode", :with => zip_code
         fill_in_ckeditor "#{form}_personal_statement", ps
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
     end
 
@@ -50,6 +53,7 @@ module Features
         fill_in_ckeditor "#{form}_owner_attributes_expertise", Faker::Lorem.sentence(10)
         fill_in_ckeditor "#{form}_owner_attributes_personal_message", Faker::Lorem.sentence(10)
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
     end
 
@@ -62,6 +66,7 @@ module Features
         fill_in "#{form}_investor_attributes_expertise", :with => Faker::Lorem.sentence(10)
         fill_in_ckeditor "#{form}_investor_attributes_personal_message", Faker::Lorem.sentence(10)
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
     end
 
@@ -78,6 +83,7 @@ module Features
         fill_in "#{form}_length_in_days", :with => c.length_in_days
         fill_in "#{form}_video_url", :with => c.video_url
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
 
@@ -116,6 +122,7 @@ module Features
         fill_in "#{form}_phone",
                 :with => cbf.phone
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
 
@@ -130,6 +137,7 @@ module Features
         fill_in_ckeditor "#{form}_roadmap", cfdf.roadmap
         fill_in_ckeditor "#{form}_shareholder_message", cfdf.shareholder_message
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
 
@@ -158,6 +166,7 @@ module Features
           fill_in "#{form}_#{group}_attributes_0_last_name", :with => cpf.advisors.first.last_name
         end
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
 
@@ -168,6 +177,7 @@ module Features
         fill_in_ckeditor "#{form}_market_info", cmf.market_info
         fill_in_ckeditor "#{form}_competitive_landscape", cmf.competitive_landscape
       end
+      screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
   end

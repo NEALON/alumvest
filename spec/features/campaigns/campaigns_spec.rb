@@ -10,14 +10,14 @@ describe "managing campaigns", :type => :feature do
 
   it "by creating a new one" do
     create_new_company_basic_form
-    click_link 'Create a campaign'
+    click_link 'New campaign'
     fill_in_campaign
     expect(page).to have_content('Campaign info saved.')
   end
 
   it "by editing one" do
     visit new_company_basic_form_path
-    click_link 'Create a campaign'
+    click_link 'New campaign'
     fill_in_campaign
     # click_link 'Edit'
     # fill_in_company_basic_form

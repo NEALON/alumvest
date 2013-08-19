@@ -1,8 +1,9 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "owner managing entire company worksheet", :type => :feature do
+describe "doing everything", :type => :feature do
 
   before :each do
+    $do_screenshots = true
     @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
   end
@@ -19,18 +20,8 @@ describe "owner managing entire company worksheet", :type => :feature do
     fill_in_company_funding_doc_form
     click_link 'Market'
     fill_in_company_market_form
-    # edit
-    click_link 'Demographic Info'
-    click_link 'Edit'
-    fill_in_company_basic_form
-    click_link 'People'
-    click_link 'Edit'
-    fill_in_company_personnel_form
-    click_link 'Funding Docs'
-    click_link 'Edit'
-    fill_in_company_funding_doc_form
-    click_link 'Market'
-    click_link 'Edit'
-    fill_in_company_market_form
+    click_link 'New campaign'
+    fill_in_campaign
+    screenshot_and_save_page if $do_screenshots
   end
 end

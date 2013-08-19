@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "owner builds company and campaign", :type => :feature do
 
   before :each do
+    $do_screenshots = true
     @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
     sign_up :owner
@@ -16,6 +17,5 @@ describe "owner builds company and campaign", :type => :feature do
     create_personnel_form_via_factories cw
     c = FactoryGirl.create(:campaign, :company_worksheet => cw)
     visit company_worksheet_campaign_path(cw, c)
-    screenshot_and_open_image
   end
 end
