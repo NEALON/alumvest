@@ -53,6 +53,10 @@ class CampaignsController < ApplicationController
     load_stuff_for_subsections
   end
 
+  def discussion
+    load_stuff_for_subsections
+  end
+
   def other
     load_stuff_for_subsections
   end
