@@ -1,0 +1,12 @@
+-if @user.nil?
+  %h2 User not found
+-else
+  %h2
+  - if @current_user != nil and @user.id == @current_user.id
+    = semantic_form_for [@user] do |f|
+      .fields
+        =f.inputs "Settings" do
+          =f.input :password
+          =f.input :password_confirmation
+        .rows
+          =f.submit "Save"
