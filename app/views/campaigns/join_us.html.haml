@@ -1,3 +1,35 @@
 = render 'heading'
 = render 'navigation'
-%h3 Join Us
+.row
+  .large-8.columns
+    %h3 Join Us
+    %p
+      We are a fun and creative company looking to build great stuff. We would love to hear from you, if you think that you would be a good fit!
+.row
+  .large-4.columns.right{:style => 'margin-top: -4em'}
+    .panel
+      - @cbf = @company_worksheet.company_basic_form
+      %p
+        %span{:style => "padding: 10px"}= image_tag @cbf.logo(w:64, h:64) unless @cbf.logo.blank?
+        = @cbf.name
+      %p= "A #{@cbf.ownership_structure}, founded #{time_ago_in_words @cbf.founded_on} ago"
+      = link_to @cbf.url, @cbf.url
+      %p= raw @cbf.summary
+
+  .large-8.columns
+    .panel
+      :erb
+        <!-- Place this exact code where you want the Jobscore job widget to appear on the page.  The widget will expand to the size of the containing div -->
+        <div class='jobscore-jobs' data-group-by='department' data-zebra-stripe='true' data-show-searchbar-count='0'>
+        <div class='js-fallback' style='color:#888'><a style='color:#888;text-decoration:underline;' href='http://www.jobscore.com/jobs/haydukelabsllc'>Hayduke Labs, LLC jobs</a> powered by <a style='color:#888' href='http://www.jobscore.com'><img style='padding:0;' align='bottom' src='//www.jobscore.com/images/new/jobscore_logo_embed.png' alt='Applicant Tracking, Social Recruiting and Software Hiring Solution - JobScore'></a></div>
+        </div><!-- /jobscore-jobs -->
+
+:erb
+  <script type='text/javascript'>
+  (function(d, s, c) {
+    if (window._jobscore_loader) { return; } else { window._jobscore_loader = true; }
+    var o = d.createElement(s); o.type = 'text/javascript'; o.async = true;
+    var sc = d.getElementsByTagName(s)[0]; sc.parentNode.insertBefore(o, sc);
+    o.src = ('https:' == d.location.protocol ? 'https:' : 'http:') + '//www.jobscore.com/jobs/' + c + '/widget.js';
+  })(document, 'script', 'haydukelabsllc');
+  </script>
