@@ -6,6 +6,20 @@ class CompanyMarketForm < ActiveRecord::Base
 
   belongs_to :company_worksheet
 
+  state_machine :status, :initial => :draft do
+    event :make_ready_for_review do
+      transition :draft => :ready_for_review
+    end
+
+    state :ready_for_review do
+      [:product_media_url,
+       :market_info,
+       :competitive_landscape].each do |attr|
+        validates attr, :presence => true
+      end
+    end
+  end
+
   def image_for_product_media_url
     if product_media_url
       @image_for_product_media ||= begin

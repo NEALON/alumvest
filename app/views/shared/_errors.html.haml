@@ -1,0 +1,6 @@
+- if entity && entity.errors.any?
+  .error_messages
+    %h2= "#{pluralize(entity.errors.count, 'error')} encountered."
+    %ul
+      - entity.errors.full_messages.each do |msg|
+        %li= msg

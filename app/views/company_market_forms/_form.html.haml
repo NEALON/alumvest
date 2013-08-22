@@ -1,4 +1,7 @@
 = semantic_form_for [@cmf] do |f|
+
+  = render 'shared/errors', :entity => @cmf
+
   = f.inputs do
     = f.input :company_worksheet_id, :as => :hidden
     = f.input :product_media_url

@@ -1,7 +1,15 @@
 = render 'company_worksheets/navigation', :active => :market, :company_worksheet => current_user.owner.company_worksheet
 
-%h4
-  = link_to 'Edit', edit_company_market_form_path(@cmf)
+%ul
+  %li
+    %h4
+      = link_to 'Edit', edit_company_market_form_path(@cmf)
+  - if @cmf.draft?
+    %li
+      %h4= link_to 'Submit for review', company_market_form_submit_for_review_path(@cmf)
+
+%h5 Status
+#status= @cmf.status.humanize
 
 %p
   = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@cmf.image_for_product_media_url}"

@@ -10,6 +10,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'state_machine'
+
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'omniauth-identity'
 

@@ -26,6 +26,16 @@ class CompanyFundingDocFormsController < ApplicationController
       render :edit
     end
   end
+  
+  def submit_for_review
+    @cfdf = CompanyFundingDocForm.find(params[:company_funding_doc_form_id])
+    @cfdf.update_attributes(params[:company_funding_doc_form])
+    if @cfdf.make_ready_for_review
+      redirect_to @cfdf, :notice => 'Company funding doc info is ready for review.'
+    else
+      render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
+    end
+  end
 
   def show
     @cfdf = CompanyFundingDocForm.find(params[:id])

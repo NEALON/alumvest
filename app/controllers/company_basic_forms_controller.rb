@@ -27,6 +27,16 @@ class CompanyBasicFormsController < ApplicationController
     end
   end
 
+  def submit_for_review
+    @cbf = CompanyBasicForm.find(params[:company_basic_form_id])
+    @cbf.update_attributes(params[:company_basic_form])
+    if @cbf.make_ready_for_review
+      redirect_to @cbf, :notice => 'Company demographic info is ready for review.'
+    else
+      render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
+    end
+  end
+
   def show
     @cbf = CompanyBasicForm.find(params[:id])
   end

@@ -11,10 +11,19 @@ Av::Application.routes.draw do
 
   resources :sessions
   resources :identities
-  resources :company_basic_forms
-  resources :company_funding_doc_forms
-  resources :company_market_forms
-  resources :company_personnel_forms
+  resources :company_basic_forms do
+    get :submit_for_review
+  end
+  resources :company_funding_doc_forms do
+    get :submit_for_review
+  end
+  resources :company_market_forms do
+    get :submit_for_review
+  end
+  resources :company_personnel_forms do
+    get :submit_for_review
+  end
+
   resources :users
   resources :company_worksheets do
     resources :campaigns do

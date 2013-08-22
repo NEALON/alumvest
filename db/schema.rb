@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130811122427) do
+ActiveRecord::Schema.define(:version => 20130821165509) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
     t.integer  "company_worksheet_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.string   "status"
   end
 
   create_table "company_funding_doc_forms", :force => true do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
     t.integer  "company_worksheet_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.string   "status"
   end
 
   create_table "company_market_forms", :force => true do |t|
@@ -75,12 +77,14 @@ ActiveRecord::Schema.define(:version => 20130811122427) do
     t.integer  "company_worksheet_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "status"
   end
 
   create_table "company_personnel_forms", :force => true do |t|
     t.integer  "company_worksheet_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.string   "status"
   end
 
   create_table "company_worksheets", :force => true do |t|

@@ -27,6 +27,16 @@ class CompanyMarketFormsController < ApplicationController
     end
   end
   
+  def submit_for_review
+    @cmf = CompanyMarketForm.find(params[:company_market_form_id])
+    @cmf.update_attributes(params[:company_market_form])
+    if @cmf.make_ready_for_review
+      redirect_to @cmf, :notice => 'Company market info is ready for review.'
+    else
+      render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
+    end
+  end
+  
   def show
     @cmf = CompanyMarketForm.find(params[:id])
   end

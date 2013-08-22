@@ -1,4 +1,7 @@
 = semantic_form_for [@cpf] do |f|
+
+  = render 'shared/errors', :entity => @cpf
+
   = f.inputs do
     = f.input :company_worksheet_id, :as => :hidden
 

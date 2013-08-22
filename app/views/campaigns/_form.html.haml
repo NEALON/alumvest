@@ -1,4 +1,7 @@
 = semantic_form_for [@company_worksheet, @campaign] do |f|
+
+  = render 'shared/errors', :entity => @company_worksheet
+
   = f.inputs do
     = f.input :company_worksheet_id, :as => :hidden
     = f.input :permalink

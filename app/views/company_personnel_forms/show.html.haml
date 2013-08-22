@@ -1,7 +1,15 @@
 = render 'company_worksheets/navigation', :active => :people, :company_worksheet => current_user.owner.company_worksheet
 
-%h4
-  = link_to 'Edit', edit_company_personnel_form_path(@cpf)
+%ul
+  %li
+    %h4
+      = link_to 'Edit', edit_company_personnel_form_path(@cpf)
+  - if @cpf.draft?
+    %li
+      %h4= link_to 'Submit for review', company_personnel_form_submit_for_review_path(@cpf)
+
+%h5 Status
+#status= @cpf.status.humanize
 
 %h5 Legal counsel
 %p= @cpf.legal_counsel.first.try(:full_name) || 'None specified'

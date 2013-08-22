@@ -1,7 +1,15 @@
 = render 'company_worksheets/navigation', :active => :funding, :company_worksheet => current_user.owner.company_worksheet
 
-%h4
-  = link_to 'Edit', edit_company_funding_doc_form_path(@cfdf)
+%ul
+  %li
+    %h4
+      = link_to 'Edit', edit_company_funding_doc_form_path(@cfdf)
+  - if @cfdf.draft?
+    %li
+      %h4= link_to 'Submit for review', company_funding_doc_form_submit_for_review_path(@cfdf)
+
+%h5 Status
+#status= @cfdf.status.humanize
 
 %ul
   %li= link_to_unless @cfdf.business_plan_url.blank?, 'Business plan', @cfdf.business_plan_url

@@ -1,7 +1,15 @@
 = render 'company_worksheets/navigation', :active => :demographic, :company_worksheet => current_user.owner.company_worksheet
 
-%h4
-  = link_to 'Edit', edit_company_basic_form_path(@cbf)
+%ul
+  %li
+    %h4
+      = link_to 'Edit', edit_company_basic_form_path(@cbf)
+  - if @cbf.draft?
+    %li
+      %h4= link_to 'Submit for review', company_basic_form_submit_for_review_path(@cbf)
+
+%h5 Status
+#status= @cbf.status.humanize
 
 = render 'shared/property_row', :header => 'Company name', :value => @cbf.name
 = render 'shared/property_row', :header => 'Logo', :value => (image_tag @cbf.logo(w:32, h:32) unless @cbf.logo.blank?)
