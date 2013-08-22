@@ -11,7 +11,6 @@ class CompanyPersonnelFormsController < ApplicationController
   end
 
   def create
-    # remove empties
     @cpf = CompanyPersonnelForm.create(params[:company_personnel_form])
     if @cpf.valid?
       redirect_to @cpf, :notice => 'Company people info saved.'

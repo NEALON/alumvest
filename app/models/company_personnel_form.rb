@@ -14,11 +14,11 @@ class CompanyPersonnelForm < ActiveRecord::Base
 
   belongs_to :company_worksheet
 
-  accepts_nested_attributes_for :legal_counsel
-  accepts_nested_attributes_for :founders, :allow_destroy => true
-  accepts_nested_attributes_for :team_members, :allow_destroy => true
-  accepts_nested_attributes_for :board_members, :allow_destroy => true
-  accepts_nested_attributes_for :advisors, :allow_destroy => true
+  accepts_nested_attributes_for :legal_counsel, :reject_if => :all_blank
+  accepts_nested_attributes_for :founders, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :team_members, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :board_members, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :advisors, :reject_if => :all_blank, :allow_destroy => true
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do

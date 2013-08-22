@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "doing everything", :type => :feature do
 
   before :each do
-    $do_screenshots = true
+    # $do_screenshots = true
     @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
   end

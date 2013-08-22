@@ -10,7 +10,7 @@ describe "owner builds company and campaign", :type => :feature do
   end
 
   it "by creating them" do
-    cw = FactoryGirl.create(:company_worksheet)
+    cw = FactoryGirl.create(:company_worksheet, :owner => @owner)
     FactoryGirl.create(:company_basic_form, :company_worksheet => cw)
     FactoryGirl.create(:company_funding_doc_form, :company_worksheet => cw)
     FactoryGirl.create(:company_market_form, :company_worksheet => cw)
