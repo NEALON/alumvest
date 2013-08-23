@@ -2,5 +2,9 @@
   = f.inputs do
     = f.input :first_name
     = f.input :last_name
-
+    = f.input :avatar_url, :as => :formtastic_filepicker_image
+    = f.input :facebook
+    = f.input :twitter
+    = f.input :linkedin
+      
     = link_to_remove_association "Remove", f

@@ -19,6 +19,7 @@ railsthemes.com/terms. -->
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
   = stylesheet_link_tag "application"
   = stylesheet_link_tag "railsthemes_meta"
+  = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
   = javascript_include_tag "application"
   = javascript_include_tag "railsthemes_samples" unless Rails.env.production?
   = csrf_meta_tags

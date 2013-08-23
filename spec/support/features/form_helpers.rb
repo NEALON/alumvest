@@ -6,10 +6,10 @@ module Features
     end
 
     def fill_in_user_basic_info(
-          first_name = Faker::Name.first_name,
-          middle_name = Faker::Name.first_name,
-          last_name = Faker::Name.last_name
-        )
+        first_name = Faker::Name.first_name,
+            middle_name = Faker::Name.first_name,
+            last_name = Faker::Name.last_name
+    )
       'user'.tap do |form|
         fill_in "#{form}_first_name", :with => first_name
         fill_in "#{form}_middle_name", :with => middle_name
@@ -20,14 +20,14 @@ module Features
     end
 
     def fill_in_user_advanced_info(
-          mobile_phone = Faker::PhoneNumber.cell_phone,
-          home_phone = Faker::PhoneNumber.phone_number,
-          address1 = Faker::Address.street_address,
-          city = Faker::Address.city,
-          state = Faker::Address.state,
-          zip_code = Faker::Address.zip_code,
-          ps = Faker::Lorem.sentence(10)
-        )
+        mobile_phone = Faker::PhoneNumber.cell_phone,
+            home_phone = Faker::PhoneNumber.phone_number,
+            address1 = Faker::Address.street_address,
+            city = Faker::Address.city,
+            state = Faker::Address.state,
+            zip_code = Faker::Address.zip_code,
+            ps = Faker::Lorem.sentence(10)
+    )
       'user'.tap do |form|
         select '1988', :from => "#{form}_date_of_birth_1i"
         select 'January', :from => "#{form}_date_of_birth_2i"
@@ -145,25 +145,10 @@ module Features
       cpf = create_personnel_form_via_factories
 
       'company_personnel_form'.tap do |form|
-        'legal_counsel'.tap do |entity|
-          fill_in "#{form}_#{entity}_attributes_0_first_name", :with => cpf.legal_counsel.first.first_name
-          fill_in "#{form}_#{entity}_attributes_0_last_name", :with => cpf.legal_counsel.first.last_name
-        end
-        'founders'.tap do |group|
-          fill_in "#{form}_#{group}_attributes_0_first_name", :with => cpf.founders.first.first_name
-          fill_in "#{form}_#{group}_attributes_0_last_name", :with => cpf.founders.first.last_name
-        end
-        'team_members'.tap do |group|
-          fill_in "#{form}_#{group}_attributes_0_first_name", :with => cpf.team_members.first.first_name
-          fill_in "#{form}_#{group}_attributes_0_last_name", :with => cpf.team_members.first.last_name
-        end
-        'board_members'.tap do |group|
-          fill_in "#{form}_#{group}_attributes_0_first_name", :with => cpf.board_members.first.first_name
-          fill_in "#{form}_#{group}_attributes_0_last_name", :with => cpf.board_members.first.last_name
-        end
-        'advisors'.tap do |group|
-          fill_in "#{form}_#{group}_attributes_0_first_name", :with => cpf.advisors.first.first_name
-          fill_in "#{form}_#{group}_attributes_0_last_name", :with => cpf.advisors.first.last_name
+        ['legal_counsel', 'founders', 'team_members', 'board_members', 'advisors'].each do |group|
+          ['first_name', 'last_name', 'facebook', 'twitter', 'linkedin'].each do |field|
+            fill_in "#{form}_#{group}_attributes_0_#{field}", :with => cpf.send(group).first.send(field)
+          end
         end
       end
       screenshot_and_save_page if $do_screenshots

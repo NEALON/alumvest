@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821165509) do
+ActiveRecord::Schema.define(:version => 20130823154830) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
@@ -155,6 +155,10 @@ ActiveRecord::Schema.define(:version => 20130821165509) do
     t.string   "populatable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "avatar_url"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
