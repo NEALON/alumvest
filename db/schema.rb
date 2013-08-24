@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(:version => 20130823174554) do
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
     t.text     "pitch"
-    t.integer  "amount"
     t.text     "planned_fund_usage"
     t.integer  "length_in_days"
     t.integer  "company_worksheet_id"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130823174554) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.string   "status"
+    t.integer  "fundraising_amount"
   end
 
   create_table "company_market_forms", :force => true do |t|

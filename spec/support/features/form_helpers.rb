@@ -75,7 +75,6 @@ module Features
       'campaign'.tap do |form|
         fill_in "#{form}_permalink", :with => c.permalink
         fill_in "#{form}_pitch", :with => c.pitch
-        fill_in "#{form}_amount", :with => c.amount
         fill_in "#{form}_planned_fund_usage", :with => c.planned_fund_usage
         fill_in "#{form}_length_in_days", :with => c.length_in_days
       end
@@ -114,6 +113,7 @@ module Features
     def fill_in_company_funding_doc_form
       cfdf = FactoryGirl.build(:company_funding_doc_form)
       'company_funding_doc_form'.tap do |form|
+        fill_in "#{form}_fundraising_amount", :with => cfdf.fundraising_amount
         # filepicker fill_in "#{form}_business_plan_url", cfdf.business_plan_url
         # filepicker fill_in "#{form}_tbd_financial_document_url", :with => cfdf.tbd_financial_document_url
         # filepicker fill_in "#{form}_tbd_funding_document_url", :with => cfdf.tbd_funding_document_url

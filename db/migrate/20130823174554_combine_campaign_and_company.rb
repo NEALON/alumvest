@@ -20,5 +20,7 @@ class CombineCampaignAndCompany < ActiveRecord::Migration
     remove_column :campaigns, :summary
     rename_column :company_basic_forms, :summary, :highlights
 
+    remove_column :campaigns, :amount
+    add_column :company_funding_doc_forms, :fundraising_amount, :integer
   end
 end

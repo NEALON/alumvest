@@ -1,14 +1,12 @@
 class Campaign < ActiveRecord::Base
   attr_accessible :permalink,
                   :pitch,
-                  :amount,
                   :planned_fund_usage,
                   :length_in_days,
                   :company_worksheet_id
 
   validates_presence_of [:permalink,
                     :pitch,
-                    :amount,
                     :planned_fund_usage,
                     :length_in_days]
 

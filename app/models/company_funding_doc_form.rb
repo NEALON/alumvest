@@ -1,13 +1,14 @@
 class CompanyFundingDocForm < ActiveRecord::Base
 
-  attr_accessible :business_plan_url,
-    :tbd_financial_document_url,
-    :tbd_funding_document_url,
-    :tbd_detailed_metrics_document_url,
-    :recent_investors,
-    :roadmap,
-    :shareholder_message,
-    :company_worksheet_id
+  attr_accessible :fundraising_amount,
+                  :business_plan_url,
+                  :tbd_financial_document_url,
+                  :tbd_funding_document_url,
+                  :tbd_detailed_metrics_document_url,
+                  :recent_investors,
+                  :roadmap,
+                  :shareholder_message,
+                  :company_worksheet_id
 
   belongs_to :company_worksheet
 
@@ -17,13 +18,14 @@ class CompanyFundingDocForm < ActiveRecord::Base
     end
 
     state :ready_for_review do
-      [:business_plan_url,
-          :tbd_financial_document_url,
-          :tbd_funding_document_url,
-          :tbd_detailed_metrics_document_url,
-          :recent_investors,
-          :roadmap,
-          :shareholder_message].each do |attr|
+      [:fundraising_amount,
+       :business_plan_url,
+       :tbd_financial_document_url,
+       :tbd_funding_document_url,
+       :tbd_detailed_metrics_document_url,
+       :recent_investors,
+       :roadmap,
+       :shareholder_message].each do |attr|
         validates attr, :presence => true
       end
     end
