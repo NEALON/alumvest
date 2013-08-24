@@ -5,6 +5,6 @@ class CompanyWorksheet < ActiveRecord::Base
   has_one :company_basic_form
   has_one :company_personnel_form
   has_one :company_market_form
-  has_one :company_funding_doc_form
+  has_one :investment_term
   has_many :campaigns
 end

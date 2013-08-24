@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823174554) do
+ActiveRecord::Schema.define(:version => 20130824185442) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
@@ -55,21 +55,6 @@ ActiveRecord::Schema.define(:version => 20130823174554) do
     t.string   "video_url"
   end
 
-  create_table "company_funding_doc_forms", :force => true do |t|
-    t.string   "business_plan_url"
-    t.string   "tbd_financial_document_url"
-    t.string   "tbd_funding_document_url"
-    t.string   "tbd_detailed_metrics_document_url"
-    t.text     "recent_investors"
-    t.text     "roadmap"
-    t.text     "shareholder_message"
-    t.integer  "company_worksheet_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.string   "status"
-    t.integer  "fundraising_amount"
-  end
-
   create_table "company_market_forms", :force => true do |t|
     t.string   "product_media_url"
     t.text     "market_info"
@@ -108,6 +93,21 @@ ActiveRecord::Schema.define(:version => 20130823174554) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "investment_terms", :force => true do |t|
+    t.string   "business_plan_url"
+    t.string   "tbd_financial_document_url"
+    t.string   "tbd_funding_document_url"
+    t.string   "tbd_detailed_metrics_document_url"
+    t.text     "recent_investors"
+    t.text     "roadmap"
+    t.text     "shareholder_message"
+    t.integer  "company_worksheet_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "status"
+    t.integer  "fundraising_amount"
   end
 
   create_table "investors", :force => true do |t|

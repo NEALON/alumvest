@@ -16,8 +16,8 @@ describe "doing everything", :type => :feature do
     #fill_in_company_basic_form
     #click_link 'People'
     #fill_in_company_personnel_form
-    #click_link 'Funding Docs'
-    #fill_in_company_funding_doc_form
+    #click_link 'Investment Terms'
+    #fill_in_investment_term
     #click_link 'Market'
     #fill_in_company_market_form
     #click_link 'New campaign'
@@ -49,8 +49,8 @@ describe "doing everything", :type => :feature do
     #visit '/'
     #screenshot_and_save_page if $do_screenshots
     #
-    visit "http://www.jobscore.com/jobs/haydukelabsllc/sushi-chef/d81icicuyr44z7iGakhP3Q?ref=rss&sid=68"
-    screenshot_and_save_page if $do_screenshots
+    # visit "http://www.jobscore.com/jobs/haydukelabsllc/sushi-chef/d81icicuyr44z7iGakhP3Q?ref=rss&sid=68"
+    # screenshot_and_save_page if $do_screenshots
 
   end
 end

@@ -10,13 +10,13 @@ module Features
       click_button 'Save changes'
     end
 
-    def create_new_company_funding_doc_form
-      visit new_company_funding_doc_form_path
-      fill_in_company_funding_doc_form
+    def create_new_investment_term
+      visit new_investment_term
+      fill_in_investment_term
     end
 
-    def create_blank_new_company_funding_doc_form
-      visit new_company_funding_doc_form_path
+    def create_blank_new_investment_term
+      visit new_investment_term_path
       click_button 'Save changes'
     end
 

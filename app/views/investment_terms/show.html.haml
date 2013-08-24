@@ -1,0 +1,24 @@
+= render 'company_worksheets/navigation', :active => :funding, :company_worksheet => current_user.owner.company_worksheet
+
+%ul
+  %li
+    %h4
+      = link_to 'Edit', edit_investment_term_path(@investment_term)
+  - if @investment_term.draft?
+    %li
+      %h4= link_to 'Submit for review', investment_term_submit_for_review_path(@investment_term)
+
+%h5 Status
+#status= @investment_term.status.humanize
+
+= render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
+
+%ul
+  %li= link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
+  %li= link_to_unless @investment_term.tbd_financial_document_url.blank?, 'TBD Financial document', @investment_term.tbd_financial_document_url
+  %li= link_to_unless @investment_term.tbd_funding_document_url.blank?, 'TBD Funding document', @investment_term.tbd_funding_document_url
+  %li= link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url
+
+= render 'shared/property_row', :header => 'Recent investors', :value => @investment_term.recent_investors.html_safe
+= render 'shared/property_row', :header => 'Roadmap', :value => @investment_term.roadmap.html_safe
+= render 'shared/property_row', :header => 'Shareholder message', :value => @investment_term.shareholder_message.html_safe

@@ -1,4 +1,4 @@
-class CompanyFundingDocForm < ActiveRecord::Base
+class InvestmentTerm < ActiveRecord::Base
 
   attr_accessible :fundraising_amount,
                   :business_plan_url,
@@ -27,6 +27,8 @@ class CompanyFundingDocForm < ActiveRecord::Base
        :roadmap,
        :shareholder_message].each do |attr|
         validates attr, :presence => true
+
+        validates_numericality_of [:fundraising_amount]
       end
     end
   end

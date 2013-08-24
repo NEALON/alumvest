@@ -4,11 +4,11 @@
 %p
   These documents will brief you on the company and its investment campaign opportunity.
 %p
-  - @cfdf = @company_worksheet.company_funding_doc_form
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @cfdf.business_plan_url.blank?, 'Business plan', @cfdf.business_plan_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @cfdf.tbd_financial_document_url.blank?, 'TBD Financial document', @cfdf.tbd_financial_document_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @cfdf.tbd_funding_document_url.blank?, 'TBD Funding document', @cfdf.tbd_funding_document_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @cfdf.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @cfdf.tbd_detailed_metrics_document_url)
-  = render 'shared/property_row', :header => '<h4>Recent investors</h4>'.html_safe, :value => (raw @cfdf.recent_investors)
-  = render 'shared/property_row', :header => '<h4>Corporate Roadmap</h4>'.html_safe, :value => (raw @cfdf.roadmap)
-  = render 'shared/property_row', :header => '<h4>Shareholder message</h4>'.html_safe, :value => (raw @cfdf.shareholder_message)
+  - @investment_term = @company_worksheet.investment_term
+  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url)
+  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_financial_document_url.blank?, 'TBD Financial document', @investment_term.tbd_financial_document_url)
+  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_funding_document_url.blank?, 'TBD Funding document', @investment_term.tbd_funding_document_url)
+  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url)
+  = render 'shared/property_row', :header => '<h4>Recent investors</h4>'.html_safe, :value => (raw @investment_term.recent_investors)
+  = render 'shared/property_row', :header => '<h4>Corporate Roadmap</h4>'.html_safe, :value => (raw @investment_term.roadmap)
+  = render 'shared/property_row', :header => '<h4>Shareholder message</h4>'.html_safe, :value => (raw @investment_term.shareholder_message)
