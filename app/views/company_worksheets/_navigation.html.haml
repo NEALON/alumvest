@@ -9,10 +9,10 @@
       - else
         = link_to('Demographic Info', company_basic_form_path(entity))
     %li{:class => "#{'active' if active == :people}"}
-      - unless entity = company_worksheet.company_personnel_form
-        = link_to('People', new_company_personnel_form_path)
+      - unless entity = company_worksheet.team
+        = link_to('People', new_team_path)
       - else
-        = link_to('People', company_personnel_form_path(entity))
+        = link_to('People', team_path(entity))
     %li{:class => "#{'active' if active == :funding}"}
       - unless entity = company_worksheet.investment_term
         = link_to('Investment Terms', new_investment_term_path)

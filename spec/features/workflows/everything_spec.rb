@@ -15,7 +15,7 @@ describe "doing everything", :type => :feature do
     #click_button 'Manage your company profile'
     #fill_in_company_basic_form
     #click_link 'People'
-    #fill_in_company_personnel_form
+    #fill_in_team
     #click_link 'Investment Terms'
     #fill_in_investment_term
     #click_link 'Market'

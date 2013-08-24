@@ -1,13 +1,13 @@
 %h3 Our Team
 
-- if cpf = @company_worksheet.company_personnel_form
+- if team = @company_worksheet.team
 
   - ['founders', 'team_members', 'board_members', 'advisors', 'legal_counsel'].each do |group|
     .row{:style => "margin-bottom: 1em"}
       .large-12.columns
-        - if members = cpf.send(group)
+        - if members = team.send(group)
           %h4= group.humanize.capitalize
-          - cpf.send(group).each do |member|
+          - team.send(group).each do |member|
             %span{:style => "padding: 10px"}= image_tag member.avatar(w:64, h:64) unless member.avatar.blank?
             = member.full_name
             &nbsp;

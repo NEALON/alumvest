@@ -14,5 +14,5 @@ FactoryGirl.define do
   factory :board_member do populate_person; end
   factory :advisor do populate_person; end
 
-  factory :company_personnel_form
+  factory :team
 end

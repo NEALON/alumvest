@@ -20,7 +20,7 @@ Av::Application.routes.draw do
   resources :company_market_forms do
     get :submit_for_review
   end
-  resources :company_personnel_forms do
+  resources :teams do
     get :submit_for_review
   end
 

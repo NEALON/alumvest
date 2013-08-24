@@ -126,13 +126,13 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_company_personnel_form
-      cpf = create_personnel_form_via_factories
+    def fill_in_team
+      team = create_personnel_form_via_factories
 
-      'company_personnel_form'.tap do |form|
+      'team'.tap do |form|
         ['legal_counsel', 'founders', 'team_members', 'board_members', 'advisors'].each do |group|
           ['first_name', 'last_name', 'facebook', 'twitter', 'linkedin'].each do |field|
-            fill_in "#{form}_#{group}_attributes_0_#{field}", :with => cpf.send(group).first.send(field)
+            fill_in "#{form}_#{group}_attributes_0_#{field}", :with => team.send(group).first.send(field)
           end
         end
       end

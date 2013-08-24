@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130824185442) do
+ActiveRecord::Schema.define(:version => 20130824193550) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
@@ -62,13 +62,6 @@ ActiveRecord::Schema.define(:version => 20130824185442) do
     t.integer  "company_worksheet_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
-    t.string   "status"
-  end
-
-  create_table "company_personnel_forms", :force => true do |t|
-    t.integer  "company_worksheet_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
     t.string   "status"
   end
 
@@ -173,6 +166,13 @@ ActiveRecord::Schema.define(:version => 20130824185442) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "teams", :force => true do |t|
+    t.integer  "company_worksheet_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "status"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "provider"

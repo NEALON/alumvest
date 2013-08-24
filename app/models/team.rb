@@ -1,4 +1,4 @@
-class CompanyPersonnelForm < ActiveRecord::Base
+class Team < ActiveRecord::Base
   attr_accessible :legal_counsel_attributes,
                   :founders_attributes,
                   :team_members_attributes,
