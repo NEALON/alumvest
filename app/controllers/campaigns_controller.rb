@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
 
   def create
     @company_worksheet = CompanyWorksheet.find(params[:company_worksheet_id])
-    @campaign = Campaign.create(add_images_if_test!(params[:campaign]))
+    @campaign = Campaign.create(params[:campaign])
     if @campaign.save
       redirect_to company_worksheet_campaign_path(@company_worksheet, @campaign), :notice => 'Campaign info saved.'
     else
@@ -67,14 +67,5 @@ class CampaignsController < ApplicationController
     @company_worksheet = CompanyWorksheet.find(params[:company_worksheet_id])
     @campaign = Campaign.find(params[:campaign_id])
     @user = @campaign.company_worksheet.owner.user
-  end
-
-  def add_images_if_test!(params)
-    if Rails.env.test?
-      params[:photo_url] = 'http://placehold.it/30x30'
-      params
-    else
-      params
-    end
   end
 end

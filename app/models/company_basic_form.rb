@@ -1,23 +1,29 @@
 class CompanyBasicForm < ActiveRecord::Base
 
   attr_accessible :name,
-                  :ownership_structure,
                   :logo_url,
                   :url,
+                  :title,
+                  :headline,
+                  :company_introductions,
+                  :founded_on_year,
+                  :ownership_structure,
+                  :category_id,
+                  :industry_id,
                   :address_1,
                   :address_2,
                   :city,
                   :state,
                   :zip,
                   :phone,
-                  :founded_on,
+                  :photo_url,
+                  :video_url,
                   :summary,
-                  :category_id,
-                  :industry_id,
                   :company_worksheet_id,
                   :status
 
   has_filepicker_image :logo, :styles => {:medium => [300, 300], :thumb => [100, 100]}
+  has_filepicker_image :photo
 
   belongs_to :company_worksheet
   belongs_to :category
@@ -30,18 +36,22 @@ class CompanyBasicForm < ActiveRecord::Base
 
     state :ready_for_review do
       [:name,
-       :ownership_structure,
        :logo_url,
        :url,
+       :title,
+       :headline,
+       :company_introductions,
+       :founded_on_year,
+       :ownership_structure,
+       :category_id,
+       :industry_id,
        :address_1,
        :city,
        :state,
        :zip,
        :phone,
-       :founded_on,
-       :summary,
-       :category_id,
-       :industry_id].each do |attr|
+       :video_url,
+       :summary].each do |attr|
         validates attr, :presence => true
       end
     end

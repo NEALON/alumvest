@@ -11,19 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823154830) do
+ActiveRecord::Schema.define(:version => 20130823174554) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
-    t.string   "title"
-    t.string   "headline"
     t.text     "summary"
     t.text     "pitch"
     t.integer  "amount"
     t.text     "planned_fund_usage"
     t.integer  "length_in_days"
-    t.string   "photo_url"
-    t.string   "video_url"
     t.integer  "company_worksheet_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
@@ -46,14 +42,19 @@ ActiveRecord::Schema.define(:version => 20130823154830) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
-    t.date     "founded_on"
     t.text     "summary"
     t.integer  "category_id"
     t.integer  "industry_id"
     t.integer  "company_worksheet_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "status"
+    t.string   "title"
+    t.string   "headline"
+    t.text     "company_introductions"
+    t.string   "founded_on_year"
+    t.string   "photo_url"
+    t.string   "video_url"
   end
 
   create_table "company_funding_doc_forms", :force => true do |t|

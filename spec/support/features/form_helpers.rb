@@ -74,14 +74,11 @@ module Features
       c = FactoryGirl.build(:campaign)
       'campaign'.tap do |form|
         fill_in "#{form}_permalink", :with => c.permalink
-        fill_in "#{form}_title", :with => c.title
-        fill_in "#{form}_headline", :with => c.headline
         fill_in "#{form}_summary", :with => c.summary
         fill_in "#{form}_pitch", :with => c.pitch
         fill_in "#{form}_amount", :with => c.amount
         fill_in "#{form}_planned_fund_usage", :with => c.planned_fund_usage
         fill_in "#{form}_length_in_days", :with => c.length_in_days
-        fill_in "#{form}_video_url", :with => c.video_url
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
@@ -90,37 +87,26 @@ module Features
     def fill_in_company_basic_form
       cbf = FactoryGirl.build(:company_basic_form)
       'company_basic_form'.tap do |form|
-        fill_in "#{form}_name",
-                :with => cbf.name
+        fill_in "#{form}_name", :with => cbf.name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
-        select cbf.founded_on.year,
-               :from => "#{form}_founded_on_1i"
-        select Date::MONTHNAMES[cbf.founded_on.month],
-               :from => "#{form}_founded_on_2i"
-        select cbf.founded_on.day,
-               :from => "#{form}_founded_on_3i"
-        fill_in "#{form}_url",
-                :with => cbf.url
-        select cbf.ownership_structure,
-               :from => "#{form}_ownership_structure"
-        select cbf.category.name,
-               :from => "#{form}_category_id"
-        select cbf.industry.name,
-               :from => "#{form}_industry_id"
-        fill_in_ckeditor "#{form}_summary",
-                         cbf.summary
-        fill_in "#{form}_address_1",
-                :with => cbf.address_1
-        fill_in "#{form}_address_2",
-                :with => cbf.address_2
-        fill_in "#{form}_city",
-                :with => cbf.city
-        fill_in "#{form}_state",
-                :with => cbf.state
-        fill_in "#{form}_zip",
-                :with => cbf.zip
-        fill_in "#{form}_phone",
-                :with => cbf.phone
+        fill_in "#{form}_url", :with => cbf.url
+        fill_in "#{form}_title", :with => cbf.title
+        fill_in "#{form}_headline", :with => cbf.headline
+        fill_in_ckeditor "#{form}_company_introductions", cbf.company_introductions
+        select cbf.founded_on_year, :from => "#{form}_founded_on_year"
+        select cbf.ownership_structure, :from => "#{form}_ownership_structure"
+        select cbf.category.name, :from => "#{form}_category_id"
+        select cbf.industry.name, :from => "#{form}_industry_id"
+        fill_in "#{form}_address_1", :with => cbf.address_1
+        fill_in "#{form}_address_2", :with => cbf.address_2
+        fill_in "#{form}_city", :with => cbf.city
+        fill_in "#{form}_state", :with => cbf.state
+        fill_in "#{form}_zip", :with => cbf.zip
+        fill_in "#{form}_phone", :with => cbf.phone
+        # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
+        fill_in "#{form}_video_url", :with =>  'http://www.youtube.com/embed/OQSNhk5ICTI'
+
+        fill_in_ckeditor "#{form}_summary", cbf.summary
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

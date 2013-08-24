@@ -6,9 +6,9 @@
       .large-8.columns
         #embed
           -#= link_to @campaign.video_url, @campaign.video_url, :style => 'display:none'
-        = render 'youtube', :video_url => @campaign.video_url
+        -#= render 'shared/youtube', :video_url => @campaign.video_url
         %p
-        %p= @campaign.headline
+        -#%p= @campaign.headline
         %p= @campaign.summary
         %hr
         %p= raw @campaign.pitch
