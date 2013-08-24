@@ -26,7 +26,7 @@
     = f.input :photo_url, :as => :formtastic_filepicker_image
     = f.input :video_url
 
-    = f.input :summary, :input_html => { :class => 'ckeditor' }
+    = f.input :highlights, :input_html => { :class => 'ckeditor' }
 
   = f.actions do
     = f.action :submit, :as => :input, :label => 'Save changes'

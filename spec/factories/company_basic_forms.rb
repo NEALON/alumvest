@@ -30,6 +30,6 @@ FactoryGirl.define do
     photo_url             'http://placehold.it/100x100'
     video_url             'http://www.youtube.com/embed/OQSNhk5ICTI'
 
-    summary               Faker::Lorem.sentence(20)
+    highlights            Faker::Lorem.sentence(20)
   end
 end

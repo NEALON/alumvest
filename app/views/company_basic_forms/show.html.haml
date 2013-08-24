@@ -29,6 +29,6 @@
 = render 'shared/property_row', :header => 'Photo', :value => (image_tag @cbf.photo(w:64, h:64) unless @cbf.photo.blank?)
 = render 'shared/youtube', :video_url => @cbf.video_url
 
-= render 'shared/property_row', :header => 'Summary', :value => (raw @cbf.summary)
+= render 'shared/property_row', :header => 'Highlights', :value => (raw @cbf.highlights)
 
 

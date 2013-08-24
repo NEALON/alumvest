@@ -16,7 +16,6 @@
 = render 'shared/property_row', :header => 'Structure', :value => @cbf.ownership_structure
 = render 'shared/property_row', :header => 'Category', :value => @cbf.category.name
 = render 'shared/property_row', :header => 'Industry', :value => @cbf.industry.name
-= render 'shared/property_row', :header => 'Summary', :value => @cbf.summary.html_safe
 = render 'shared/property_row', :header => 'Address', :value => @cbf.address_1
 = render 'shared/property_row', :header => '', :value => @cbf.address_2
 = render 'shared/property_row', :header => '', :value => "#{@cbf.city} #{@cbf.state} #{@cbf.zip}"

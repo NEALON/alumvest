@@ -16,5 +16,9 @@ class CombineCampaignAndCompany < ActiveRecord::Migration
 
     remove_column :campaigns, :video_url
     add_column :company_basic_forms, :video_url, :string
+
+    remove_column :campaigns, :summary
+    rename_column :company_basic_forms, :summary, :highlights
+
   end
 end

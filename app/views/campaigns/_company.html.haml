@@ -9,7 +9,7 @@
         -#= render 'shared/youtube', :video_url => @campaign.video_url
         %p
         -#%p= @campaign.headline
-        %p= @campaign.summary
+        -#%p= @campaign.highlights
         %hr
         %p= raw @campaign.pitch
       .large-4.columns
@@ -40,7 +40,7 @@
             = @cbf.name
           -#%p= "A #{@cbf.ownership_structure}, founded #{time_ago_in_words @cbf.founded_on} ago"
           = link_to @cbf.url, @cbf.url
-          %p= raw @cbf.summary
+          %p= raw @cbf.highlights
 
 -#= link_to 'Edit', edit_company_worksheet_campaign_path(@company_worksheet, @campaign)
 

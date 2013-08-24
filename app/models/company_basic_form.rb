@@ -18,7 +18,7 @@ class CompanyBasicForm < ActiveRecord::Base
                   :phone,
                   :photo_url,
                   :video_url,
-                  :summary,
+                  :highlights,
                   :company_worksheet_id,
                   :status
 
@@ -51,7 +51,7 @@ class CompanyBasicForm < ActiveRecord::Base
        :zip,
        :phone,
        :video_url,
-       :summary].each do |attr|
+       :highlights].each do |attr|
         validates attr, :presence => true
       end
     end

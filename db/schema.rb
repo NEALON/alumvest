@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20130823174554) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
-    t.text     "summary"
     t.text     "pitch"
     t.integer  "amount"
     t.text     "planned_fund_usage"
@@ -42,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20130823174554) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
-    t.text     "summary"
+    t.text     "highlights"
     t.integer  "category_id"
     t.integer  "industry_id"
     t.integer  "company_worksheet_id"

@@ -74,7 +74,6 @@ module Features
       c = FactoryGirl.build(:campaign)
       'campaign'.tap do |form|
         fill_in "#{form}_permalink", :with => c.permalink
-        fill_in "#{form}_summary", :with => c.summary
         fill_in "#{form}_pitch", :with => c.pitch
         fill_in "#{form}_amount", :with => c.amount
         fill_in "#{form}_planned_fund_usage", :with => c.planned_fund_usage
@@ -106,7 +105,7 @@ module Features
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         fill_in "#{form}_video_url", :with =>  'http://www.youtube.com/embed/OQSNhk5ICTI'
 
-        fill_in_ckeditor "#{form}_summary", cbf.summary
+        fill_in_ckeditor "#{form}_highlights", cbf.highlights
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

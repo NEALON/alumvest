@@ -33,8 +33,7 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content cbf.phone
     expect(page).to have_content cbf.photo_url
     # expect(page).to have_content cbf.video_url
-
-    expect(page).to have_content strip_tags cbf.summary
+    expect(page).to have_content strip_tags cbf.highlights
   end
 
   it "by editing one" do
