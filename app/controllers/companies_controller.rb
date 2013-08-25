@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.create(add_images_if_test!(params[:company]))
     if @company.valid?
-      redirect_to @company, :notice => 'Company demographic info saved.'
+      redirect_to @company, :notice => 'Company saved.'
     else
       render :action => :new
     end
@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.update_attributes(params[:company])
     if @company.valid?
-      redirect_to @company, :notice => 'Company demographic info saved.'
+      redirect_to @company, :notice => 'Company saved.'
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:company_id])
     @company.update_attributes(params[:company])
     if @company.make_ready_for_review
-      redirect_to @company, :notice => 'Company demographic info is ready for review.'
+      redirect_to @company, :notice => 'Company info is ready for review.'
     else
       render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
     end

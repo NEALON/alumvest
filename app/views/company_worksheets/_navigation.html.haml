@@ -5,14 +5,13 @@
   %ul.large-12.small-12.side-nav
     %li{:class => "#{'active' if active == :demographic}"}
       - unless entity = company_worksheet.company
-        = link_to('Demographic Info', new_company_path)
+        = link_to('Company', new_company_path)
       - else
-        = link_to('Demographic Info', company_path(entity))
-    %li{:class => "#{'active' if active == :people}"}
+        = link_to('Company', company_path(entity))
       - unless entity = company_worksheet.team
-        = link_to('People', new_team_path)
+        = link_to('Team', new_team_path)
       - else
-        = link_to('People', team_path(entity))
+        = link_to('Team', team_path(entity))
     %li{:class => "#{'active' if active == :funding}"}
       - unless entity = company_worksheet.investment_term
         = link_to('Investment Terms', new_investment_term_path)

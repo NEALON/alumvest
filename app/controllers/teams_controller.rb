@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.create(params[:team])
     if @team.valid?
-      redirect_to @team, :notice => 'Company people info saved.'
+      redirect_to @team, :notice => 'Company team info saved.'
     else
       render :action => :new
     end
@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.update_attributes(params[:team])
     if @team.valid?
-      redirect_to @team, :notice => 'Company people info saved.'
+      redirect_to @team, :notice => 'Company team info saved.'
     else
       render :edit
     end

@@ -14,7 +14,7 @@ describe "managing company basics", :type => :feature do
     create_new_company
 
     company = Company.last
-    expect(page).to have_content('Company demographic info saved.')
+    expect(page).to have_content('Company saved.')
 
     expect(page).to have_content company.name
     expect(page).to have_content company.url
@@ -39,7 +39,7 @@ describe "managing company basics", :type => :feature do
   it "by editing one" do
     visit edit_company_path FactoryGirl.create(:company)
     fill_in_company
-    expect(page).to have_content('Company demographic info saved.')
+    expect(page).to have_content('Company saved.')
   end
 
   it "by successfully submitting for review" do
