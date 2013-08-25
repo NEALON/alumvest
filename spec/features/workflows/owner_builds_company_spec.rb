@@ -12,7 +12,7 @@ describe "owner managing entire company worksheet", :type => :feature do
     # create
     screenshot_and_save_page if $do_screenshots
     click_button 'Manage your company profile'
-    fill_in_company_basic_form
+    fill_in_company
     click_link 'People'
     fill_in_team
     click_link 'Investment Terms'
@@ -22,7 +22,7 @@ describe "owner managing entire company worksheet", :type => :feature do
     # edit
     click_link 'Demographic Info'
     click_link 'Edit'
-    fill_in_company_basic_form
+    fill_in_company
     click_link 'People'
     click_link 'Edit'
     fill_in_team

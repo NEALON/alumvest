@@ -78,31 +78,31 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_company_basic_form
-      cbf = FactoryGirl.build(:company_basic_form)
-      'company_basic_form'.tap do |form|
-        fill_in "#{form}_name", :with => cbf.name
+    def fill_in_company
+      company = FactoryGirl.build(:company)
+      'company'.tap do |form|
+        fill_in "#{form}_name", :with => company.name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
-        fill_in "#{form}_permalink", :with => cbf.permalink
-        fill_in "#{form}_url", :with => cbf.url
-        fill_in "#{form}_title", :with => cbf.title
-        fill_in "#{form}_headline", :with => cbf.headline
-        fill_in_ckeditor "#{form}_company_introductions", cbf.company_introductions
-        fill_in_ckeditor "#{form}_pitch", cbf.pitch
-        select cbf.founded_on_year, :from => "#{form}_founded_on_year"
-        select cbf.ownership_structure, :from => "#{form}_ownership_structure"
-        select cbf.category.name, :from => "#{form}_category_id"
-        select cbf.industry.name, :from => "#{form}_industry_id"
-        fill_in "#{form}_address_1", :with => cbf.address_1
-        fill_in "#{form}_address_2", :with => cbf.address_2
-        fill_in "#{form}_city", :with => cbf.city
-        fill_in "#{form}_state", :with => cbf.state
-        fill_in "#{form}_zip", :with => cbf.zip
-        fill_in "#{form}_phone", :with => cbf.phone
+        fill_in "#{form}_permalink", :with => company.permalink
+        fill_in "#{form}_url", :with => company.url
+        fill_in "#{form}_title", :with => company.title
+        fill_in "#{form}_headline", :with => company.headline
+        fill_in_ckeditor "#{form}_company_introductions", company.company_introductions
+        fill_in_ckeditor "#{form}_pitch", company.pitch
+        select company.founded_on_year, :from => "#{form}_founded_on_year"
+        select company.ownership_structure, :from => "#{form}_ownership_structure"
+        select company.category.name, :from => "#{form}_category_id"
+        select company.industry.name, :from => "#{form}_industry_id"
+        fill_in "#{form}_address_1", :with => company.address_1
+        fill_in "#{form}_address_2", :with => company.address_2
+        fill_in "#{form}_city", :with => company.city
+        fill_in "#{form}_state", :with => company.state
+        fill_in "#{form}_zip", :with => company.zip
+        fill_in "#{form}_phone", :with => company.phone
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         fill_in "#{form}_video_url", :with =>  'http://www.youtube.com/embed/OQSNhk5ICTI'
 
-        fill_in_ckeditor "#{form}_highlights", cbf.highlights
+        fill_in_ckeditor "#{form}_highlights", company.highlights
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

@@ -1,13 +1,13 @@
 = content_for :sidebar_left do
   %h4
-    = company_worksheet.company_basic_form.try(:name) || 'New company'
+    = company_worksheet.company.try(:name) || 'New company'
 
   %ul.large-12.small-12.side-nav
     %li{:class => "#{'active' if active == :demographic}"}
-      - unless entity = company_worksheet.company_basic_form
-        = link_to('Demographic Info', new_company_basic_form_path)
+      - unless entity = company_worksheet.company
+        = link_to('Demographic Info', new_company_path)
       - else
-        = link_to('Demographic Info', company_basic_form_path(entity))
+        = link_to('Demographic Info', company_path(entity))
     %li{:class => "#{'active' if active == :people}"}
       - unless entity = company_worksheet.team
         = link_to('People', new_team_path)

@@ -1,0 +1,36 @@
+= render 'company_worksheets/navigation', :active => :demographic, :company_worksheet => current_user.owner.company_worksheet
+
+%ul
+  %li
+    %h4
+      = link_to 'Edit', edit_company_path(@company)
+  - if @company.draft?
+    %li
+      %h4= link_to 'Submit for review', company_submit_for_review_path(@company)
+
+%h5 Status
+#status= @company.status.humanize
+
+= render 'shared/property_row', :header => 'Company name', :value => @company.name
+= render 'shared/property_row', :header => 'Permalink', :value => @company.permalink
+= render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
+= render 'shared/property_row', :header => 'Website', :value => @company.url
+= render 'shared/property_row', :header => 'Title', :value => @company.title
+= render 'shared/property_row', :header => 'Headline', :value => @company.headline
+= render 'shared/property_row', :header => 'Company introductions', :value => (raw @company.company_introductions)
+= render 'shared/property_row', :header => 'Pitch', :value => (raw @company.pitch)
+
+= render 'shared/property_row', :header => 'Founded', :value => @company.founded_on_year
+= render 'shared/property_row', :header => 'Structure', :value => @company.ownership_structure
+= render 'shared/property_row', :header => 'Category', :value => @company.category.name
+= render 'shared/property_row', :header => 'Industry', :value => @company.industry.name
+= render 'shared/property_row', :header => 'Address', :value => @company.address_1
+= render 'shared/property_row', :header => '', :value => @company.address_2
+= render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
+= render 'shared/property_row', :header => 'Phone', :value => @company.phone
+= render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(w:64, h:64) unless @company.photo.blank?)
+= render 'shared/youtube', :video_url => @company.video_url
+
+= render 'shared/property_row', :header => 'Highlights', :value => (raw @company.highlights)
+
+

@@ -11,7 +11,7 @@ Av::Application.routes.draw do
 
   resources :sessions
   resources :identities
-  resources :company_basic_forms do
+  resources :companies do
     get :submit_for_review
   end
   resources :investment_terms do

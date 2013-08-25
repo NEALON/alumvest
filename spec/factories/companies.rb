@@ -11,13 +11,13 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  factory :company_basic_form do
-    name                  "#{Faker::Name.name} and Company"
+  factory :company do
+    name                  "#{Faker::Company.name} #{Faker::Company.suffix}"
     permalink             Faker::Lorem.word
     logo_url              Faker::Internet.url
     url                   Faker::Internet.url
     title                 Faker::Lorem.sentence
-    headline              Faker::Lorem.sentence
+    headline              Faker::Company.catch_phrase
     company_introductions Faker::Lorem.sentence
     pitch                 "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
     founded_on_year       5.years.ago.year

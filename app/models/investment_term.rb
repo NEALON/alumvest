@@ -35,9 +35,8 @@ class InvestmentTerm < ActiveRecord::Base
        :roadmap,
        :shareholder_message].each do |attr|
         validates attr, :presence => true
-
-        validates_numericality_of [:fundraising_amount, :campaign_length]
       end
+      validates_numericality_of [:fundraising_amount, :campaign_length]
     end
   end
 end

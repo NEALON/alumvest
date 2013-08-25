@@ -1,12 +1,12 @@
 module Features
   module WorkflowStepHelpers
-    def create_new_company_basic_form
-      visit new_company_basic_form_path
-      fill_in_company_basic_form
+    def create_new_company
+      visit new_company_path
+      fill_in_company
     end
 
-    def create_blank_new_company_basic_form
-      visit new_company_basic_form_path
+    def create_blank_new_company
+      visit new_company_path
       click_button 'Save changes'
     end
 

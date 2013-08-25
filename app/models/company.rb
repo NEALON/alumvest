@@ -1,4 +1,4 @@
-class CompanyBasicForm < ActiveRecord::Base
+class Company < ActiveRecord::Base
 
   attr_accessible :name,
                   :permalink,

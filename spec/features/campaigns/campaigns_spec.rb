@@ -9,23 +9,23 @@ describe "managing campaigns", :type => :feature do
   end
 
   it "by creating a new one" do
-    create_new_company_basic_form
+    create_new_company
     click_link 'New campaign'
     fill_in_campaign
     expect(page).to have_content('Campaign info saved.')
   end
 
   it "by editing one" do
-    # visit new_company_basic_form_path
+    # visit new_company_path
     # click_link 'New campaign'
     # fill_in_campaign
     # click_link 'Edit'
-    # fill_in_company_basic_form
+    # fill_in_company
     # expect(page).to have_content('Campaign info saved.')
   end
 
   it "by displaying one" do
-    # raise FactoryGirl.create(:company_basic_form).inspect
+    # raise FactoryGirl.create(:company).inspect
     # @company_worksheet = FactoryGirl.create(:company_worksheet, :owner => @owner)
     # raise @company_worksheet.inspect
   end
