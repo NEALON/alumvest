@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825161003) do
+ActiveRecord::Schema.define(:version => 20130825163718) do
 
   create_table "campaigns", :force => true do |t|
     t.integer  "company_worksheet_id"
@@ -51,16 +51,6 @@ ActiveRecord::Schema.define(:version => 20130825161003) do
     t.string   "video_url"
     t.string   "permalink"
     t.text     "pitch"
-  end
-
-  create_table "company_market_forms", :force => true do |t|
-    t.string   "product_media_url"
-    t.text     "market_info"
-    t.text     "competitive_landscape"
-    t.integer  "company_worksheet_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.string   "status"
   end
 
   create_table "company_worksheets", :force => true do |t|
@@ -127,6 +117,16 @@ ActiveRecord::Schema.define(:version => 20130825161003) do
   end
 
   add_index "investors", ["user_id"], :name => "index_investors_on_user_id"
+
+  create_table "markets", :force => true do |t|
+    t.string   "product_media_url"
+    t.text     "market_info"
+    t.text     "competitive_landscape"
+    t.integer  "company_worksheet_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "status"
+  end
 
   create_table "owners", :force => true do |t|
     t.string   "ssn"

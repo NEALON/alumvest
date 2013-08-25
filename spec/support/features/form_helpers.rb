@@ -143,9 +143,9 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_company_market_form
-      cmf = FactoryGirl.create(:company_market_form)
-      'company_market_form'.tap do |form|
+    def fill_in_market
+      cmf = FactoryGirl.create(:market)
+      'market'.tap do |form|
         fill_in "#{form}_product_media_url", :with => cmf.product_media_url
         fill_in_ckeditor "#{form}_market_info", cmf.market_info
         fill_in_ckeditor "#{form}_competitive_landscape", cmf.competitive_landscape

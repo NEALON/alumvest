@@ -22,7 +22,7 @@
 = render 'shared/property_row', :header => 'Phone', :value => @company.phone
 
 %h3 Company - Market
-- @cmf = @company_worksheet.company_market_form
+- @cmf = @company_worksheet.market
 %p
   = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@cmf.image_for_product_media_url}"
 = render 'shared/property_row', :header => 'Market info', :value => @cmf.market_info.html_safe

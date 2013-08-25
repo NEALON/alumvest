@@ -20,13 +20,13 @@ module Features
       click_button 'Save changes'
     end
 
-    def create_new_company_market_form
-      visit new_company_market_form_path
-      fill_in_company_market_form
+    def create_new_market
+      visit new_market_path
+      fill_in_market
     end
 
-    def create_blank_new_company_market_form
-      visit new_company_market_form_path
+    def create_blank_new_market
+      visit new_market_path
       click_button 'Save changes'
     end
 

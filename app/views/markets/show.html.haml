@@ -3,10 +3,10 @@
 %ul
   %li
     %h4
-      = link_to 'Edit', edit_company_market_form_path(@cmf)
+      = link_to 'Edit', edit_market_path(@cmf)
   - if @cmf.draft?
     %li
-      %h4= link_to 'Submit for review', company_market_form_submit_for_review_path(@cmf)
+      %h4= link_to 'Submit for review', market_submit_for_review_path(@cmf)
 
 %h5 Status
 #status= @cmf.status.humanize

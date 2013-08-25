@@ -1,4 +1,4 @@
-class CompanyMarketForm < ActiveRecord::Base
+class Market < ActiveRecord::Base
   attr_accessible :product_media_url,
                   :market_info,
                   :competitive_landscape,

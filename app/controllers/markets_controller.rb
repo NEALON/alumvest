@@ -1,10 +1,10 @@
-class CompanyMarketFormsController < ApplicationController
+class MarketsController < ApplicationController
   def new
-    @cmf = CompanyMarketForm.new(:company_worksheet_id => current_user.owner.company_worksheet.id)
+    @cmf = Market.new(:company_worksheet_id => current_user.owner.company_worksheet.id)
   end
 
   def create
-    @cmf = CompanyMarketForm.create(params[:company_market_form])
+    @cmf = Market.create(params[:market])
     if @cmf.valid?
       redirect_to @cmf, :notice => 'Company market info saved.'
     else
@@ -13,13 +13,13 @@ class CompanyMarketFormsController < ApplicationController
   end
 
   def edit
-    @cmf = CompanyMarketForm.find(params[:id])
+    @cmf = Market.find(params[:id])
     render :new
   end
 
   def update
-    @cmf = CompanyMarketForm.find(params[:id])
-    @cmf.update_attributes(params[:company_market_form])
+    @cmf = Market.find(params[:id])
+    @cmf.update_attributes(params[:market])
     if @cmf.valid?
       redirect_to @cmf, :notice => 'Company market info saved.'
     else
@@ -28,8 +28,8 @@ class CompanyMarketFormsController < ApplicationController
   end
   
   def submit_for_review
-    @cmf = CompanyMarketForm.find(params[:company_market_form_id])
-    @cmf.update_attributes(params[:company_market_form])
+    @cmf = Market.find(params[:market_id])
+    @cmf.update_attributes(params[:market])
     if @cmf.make_ready_for_review
       redirect_to @cmf, :notice => 'Company market info is ready for review.'
     else
@@ -38,6 +38,6 @@ class CompanyMarketFormsController < ApplicationController
   end
   
   def show
-    @cmf = CompanyMarketForm.find(params[:id])
+    @cmf = Market.find(params[:id])
   end
 end

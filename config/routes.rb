@@ -17,7 +17,7 @@ Av::Application.routes.draw do
   resources :investment_terms do
     get :submit_for_review
   end
-  resources :company_market_forms do
+  resources :markets do
     get :submit_for_review
   end
   resources :teams do
