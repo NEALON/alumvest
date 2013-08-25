@@ -5,6 +5,7 @@
   = f.inputs do
     = f.input :company_worksheet_id, :as => :hidden
     = f.input :fundraising_amount
+    = f.input :equity_type, :label => 'Convertible Note or Equity', :as => :select, :collection => ['Convertible Note', 'Equity']
     = f.input :campaign_length, :label => 'Campaign length (days)', :as => :select, :collection => ['30', '60,', '90', '120']
     = f.input :business_plan_url, :as => :formtastic_filepicker_image
     = f.input :tbd_financial_document_url, :as => :formtastic_filepicker_image

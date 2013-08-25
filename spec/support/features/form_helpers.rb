@@ -113,6 +113,7 @@ module Features
       investment_term = FactoryGirl.build(:investment_term)
       'investment_term'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
+        select 'Convertible Note', :from => "#{form}_equity_type"
         select '90', :from => "#{form}_campaign_length"
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url

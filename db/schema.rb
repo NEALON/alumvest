@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825135726) do
+ActiveRecord::Schema.define(:version => 20130825142416) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20130825135726) do
     t.string   "status"
     t.integer  "fundraising_amount"
     t.integer  "campaign_length"
+    t.string   "equity_type"
   end
 
   create_table "investors", :force => true do |t|
