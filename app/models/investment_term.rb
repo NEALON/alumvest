@@ -2,6 +2,7 @@ class InvestmentTerm < ActiveRecord::Base
 
   attr_accessible :fundraising_amount,
                   :equity_type,
+                  :funds_retained,
                   :campaign_length,
                   :business_plan_url,
                   :tbd_financial_document_url,
@@ -22,6 +23,7 @@ class InvestmentTerm < ActiveRecord::Base
     state :ready_for_review do
       [:fundraising_amount,
        :equity_type,
+       :funds_retained,
        :campaign_length,
        :business_plan_url,
        :tbd_financial_document_url,

@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :investment_term do
     fundraising_amount                1000
+    funds_retained                    'All-or-nothing'
     equity_type                       'Convertible Note'
     campaign_length                   90
     business_plan_url                 Faker::Internet.url
