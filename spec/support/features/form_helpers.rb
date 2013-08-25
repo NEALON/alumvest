@@ -73,9 +73,6 @@ module Features
     def fill_in_campaign
       c = FactoryGirl.build(:campaign)
       'campaign'.tap do |form|
-        fill_in "#{form}_permalink", :with => c.permalink
-        fill_in "#{form}_pitch", :with => c.pitch
-        fill_in "#{form}_planned_fund_usage", :with => c.planned_fund_usage
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
@@ -86,10 +83,12 @@ module Features
       'company_basic_form'.tap do |form|
         fill_in "#{form}_name", :with => cbf.name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
+        fill_in "#{form}_permalink", :with => cbf.permalink
         fill_in "#{form}_url", :with => cbf.url
         fill_in "#{form}_title", :with => cbf.title
         fill_in "#{form}_headline", :with => cbf.headline
         fill_in_ckeditor "#{form}_company_introductions", cbf.company_introductions
+        fill_in_ckeditor "#{form}_pitch", cbf.pitch
         select cbf.founded_on_year, :from => "#{form}_founded_on_year"
         select cbf.ownership_structure, :from => "#{form}_ownership_structure"
         select cbf.category.name, :from => "#{form}_category_id"
@@ -115,6 +114,7 @@ module Features
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
         select 'All-or-nothing', :from => "#{form}_funds_retained"
         select 'Convertible Note', :from => "#{form}_equity_type"
+        fill_in "#{form}_planned_fund_usage", :with => investment_term.planned_fund_usage
         select '90', :from => "#{form}_campaign_length"
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url

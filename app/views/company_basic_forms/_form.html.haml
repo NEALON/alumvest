@@ -5,11 +5,13 @@
   = f.inputs do
     = f.input :company_worksheet_id, :as => :hidden
     = f.input :name
+    = f.input :permalink
     = f.input :logo_url, :as => :formtastic_filepicker_image
     = f.input :url
     = f.input :title
     = f.input :headline
     = f.input :company_introductions, :input_html => { :class => 'ckeditor' }
+    = f.input :pitch, :input_html => { :class => 'ckeditor' }
 
     = f.input :founded_on_year, :as => :select, :collection => Array(1990..Date.today.year)
     = f.input :ownership_structure, :as => :select, :collection => ownership_structures, :include_blank => false

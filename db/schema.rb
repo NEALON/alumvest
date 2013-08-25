@@ -11,12 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825144906) do
+ActiveRecord::Schema.define(:version => 20130825151412) do
 
   create_table "campaigns", :force => true do |t|
-    t.string   "permalink"
-    t.text     "pitch"
-    t.text     "planned_fund_usage"
     t.integer  "company_worksheet_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
@@ -52,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20130825144906) do
     t.string   "founded_on_year"
     t.string   "photo_url"
     t.string   "video_url"
+    t.string   "permalink"
+    t.text     "pitch"
   end
 
   create_table "company_market_forms", :force => true do |t|
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130825144906) do
     t.integer  "campaign_length"
     t.string   "equity_type"
     t.string   "funds_retained"
+    t.text     "planned_fund_usage"
   end
 
   create_table "investors", :force => true do |t|

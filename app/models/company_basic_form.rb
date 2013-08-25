@@ -1,11 +1,13 @@
 class CompanyBasicForm < ActiveRecord::Base
 
   attr_accessible :name,
+                  :permalink,
                   :logo_url,
                   :url,
                   :title,
                   :headline,
                   :company_introductions,
+                  :pitch,
                   :founded_on_year,
                   :ownership_structure,
                   :category_id,
@@ -36,11 +38,13 @@ class CompanyBasicForm < ActiveRecord::Base
 
     state :ready_for_review do
       [:name,
+       :permalink,
        :logo_url,
        :url,
        :title,
        :headline,
        :company_introductions,
+       :pitch,
        :founded_on_year,
        :ownership_structure,
        :category_id,

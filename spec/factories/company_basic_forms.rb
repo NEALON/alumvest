@@ -3,6 +3,7 @@ FactoryGirl.define do
     name Faker::Lorem.word
   end
 end
+
 FactoryGirl.define do
   factory :industry do
     name Faker::Lorem.word
@@ -12,11 +13,13 @@ end
 FactoryGirl.define do
   factory :company_basic_form do
     name                  "#{Faker::Name.name} and Company"
+    permalink             Faker::Lorem.word
     logo_url              Faker::Internet.url
     url                   Faker::Internet.url
     title                 Faker::Lorem.sentence
     headline              Faker::Lorem.sentence
     company_introductions Faker::Lorem.sentence
+    pitch                 "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
     founded_on_year       5.years.ago.year
     ownership_structure   'Corporation'
     category_id           (Category.first.try(:id) || FactoryGirl.create(:category).id)
