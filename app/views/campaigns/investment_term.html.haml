@@ -5,6 +5,8 @@
   These documents will brief you on the company and its investment campaign opportunity.
 %p
   - @investment_term = @company_worksheet.investment_term
+  = render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
+  = render 'shared/property_row', :header => 'Campaign Length (days)', :value => @investment_term.campaign_length
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_financial_document_url.blank?, 'TBD Financial document', @investment_term.tbd_financial_document_url)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_funding_document_url.blank?, 'TBD Funding document', @investment_term.tbd_funding_document_url)

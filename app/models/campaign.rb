@@ -2,15 +2,11 @@ class Campaign < ActiveRecord::Base
   attr_accessible :permalink,
                   :pitch,
                   :planned_fund_usage,
-                  :length_in_days,
                   :company_worksheet_id
 
   validates_presence_of [:permalink,
                     :pitch,
-                    :planned_fund_usage,
-                    :length_in_days]
-
-  validates_numericality_of [:length_in_days]
+                    :planned_fund_usage]
 
   belongs_to :company_worksheet
 end

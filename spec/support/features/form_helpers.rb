@@ -76,7 +76,6 @@ module Features
         fill_in "#{form}_permalink", :with => c.permalink
         fill_in "#{form}_pitch", :with => c.pitch
         fill_in "#{form}_planned_fund_usage", :with => c.planned_fund_usage
-        fill_in "#{form}_length_in_days", :with => c.length_in_days
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
@@ -114,6 +113,8 @@ module Features
       investment_term = FactoryGirl.build(:investment_term)
       'investment_term'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
+        select '90', :from => "#{form}_campaign_length"
+
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
         # filepicker fill_in "#{form}_tbd_financial_document_url", :with => investment_term.tbd_financial_document_url
         # filepicker fill_in "#{form}_tbd_funding_document_url", :with => investment_term.tbd_funding_document_url

@@ -11,13 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130824193550) do
+ActiveRecord::Schema.define(:version => 20130825135726) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "permalink"
     t.text     "pitch"
     t.text     "planned_fund_usage"
-    t.integer  "length_in_days"
     t.integer  "company_worksheet_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130824193550) do
     t.datetime "updated_at",                        :null => false
     t.string   "status"
     t.integer  "fundraising_amount"
+    t.integer  "campaign_length"
   end
 
   create_table "investors", :force => true do |t|

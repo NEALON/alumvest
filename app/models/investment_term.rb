@@ -1,6 +1,7 @@
 class InvestmentTerm < ActiveRecord::Base
 
   attr_accessible :fundraising_amount,
+                  :campaign_length,
                   :business_plan_url,
                   :tbd_financial_document_url,
                   :tbd_funding_document_url,
@@ -19,6 +20,7 @@ class InvestmentTerm < ActiveRecord::Base
 
     state :ready_for_review do
       [:fundraising_amount,
+       :campaign_length,
        :business_plan_url,
        :tbd_financial_document_url,
        :tbd_funding_document_url,
@@ -28,7 +30,7 @@ class InvestmentTerm < ActiveRecord::Base
        :shareholder_message].each do |attr|
         validates attr, :presence => true
 
-        validates_numericality_of [:fundraising_amount]
+        validates_numericality_of [:fundraising_amount, :campaign_length]
       end
     end
   end
