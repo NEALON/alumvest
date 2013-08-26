@@ -22,13 +22,3 @@
         = link_to('Market', new_market_path)
       - else
         = link_to('Market', market_path(entity))
-
-  .panel
-    %h4 Campaigns
-    %ul.large-12.small-12.side-nav
-      - company_worksheet.campaigns.each do |campaign|
-        %li= link_to campaign.title, edit_company_worksheet_campaign_path(company_worksheet, campaign)
-      - if company_worksheet.campaigns
-        %hr
-      %li
-        = link_to('New campaign', new_company_worksheet_campaign_path(company_worksheet))

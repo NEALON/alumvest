@@ -40,7 +40,7 @@ module Features
       click_button 'Save changes'
     end
 
-    def create_personnel_form_via_factories(company_worksheet = nil)
+    def create_team_via_factories(company_worksheet = nil)
       team = FactoryGirl.create(:team, :company_worksheet => company_worksheet)
       team.legal_counsel << FactoryGirl.create(:legal_counsel)
       team.founders << FactoryGirl.create(:founder)

@@ -20,8 +20,6 @@ describe "doing everything", :type => :feature do
     #fill_in_investment_term
     #click_link 'Market'
     #fill_in_market
-    #click_link 'New campaign'
-    #fill_in_campaign
     #screenshot_and_save_page if $do_screenshots
     #click_link "Team"
     #sleep 1

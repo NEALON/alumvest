@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "owner builds company and campaign", :type => :feature do
+describe "owner builds company (with factories)", :type => :feature do
 
   before :each do
     $do_screenshots = false
@@ -14,8 +14,6 @@ describe "owner builds company and campaign", :type => :feature do
     FactoryGirl.create(:company, :company_worksheet => cw)
     FactoryGirl.create(:investment_term, :company_worksheet => cw)
     FactoryGirl.create(:market, :company_worksheet => cw)
-    create_personnel_form_via_factories cw
-    c = FactoryGirl.create(:campaign, :company_worksheet => cw)
-    visit company_worksheet_campaign_path(cw, c)
+    create_team_via_factories cw
   end
 end

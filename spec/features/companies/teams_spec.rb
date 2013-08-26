@@ -12,7 +12,7 @@ describe "managing team", :type => :feature do
   end
 
   it "by editing one" do
-    visit edit_team_path create_personnel_form_via_factories
+    visit edit_team_path create_team_via_factories
     fill_in_team
     expect(page).to have_content('Company team info saved.')
   end

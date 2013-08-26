@@ -7,18 +7,18 @@
     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842'></div>
   %hr
 
-.row.roomy.homepage-featured-campaigns
-  - @campaigns.each do |c|
+.row.roomy.homepage-featured-companies
+  - @companies.each do |c|
     .large-4.columns.panel
-      = link_to company_worksheet_campaign_path(c.company_worksheet, c) do
+      = link_to company_worksheet_path(c.company_worksheet, c) do
         = image_tag c.photo(w:300, h:150, fit:'crop')
-      .campaign-title
+      .company-title
         %h4
           =c.title
-      .campaign-headline
+      .company-headline
         %p
           =c.headline
-      .campaign-goal
+      .company-goal
         %p
           Goal:
           -#= number_to_currency(c.amount)

@@ -70,14 +70,6 @@ module Features
       click_button 'Save'
     end
 
-    def fill_in_campaign
-      c = FactoryGirl.build(:campaign)
-      'campaign'.tap do |form|
-      end
-      screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
-    end
-
     def fill_in_company
       company = FactoryGirl.build(:company)
       'company'.tap do |form|
@@ -130,7 +122,7 @@ module Features
     end
 
     def fill_in_team
-      team = create_personnel_form_via_factories
+      team = create_team_via_factories
 
       'team'.tap do |form|
         ['legal_counsel', 'founders', 'team_members', 'board_members', 'advisors'].each do |group|

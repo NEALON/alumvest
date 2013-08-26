@@ -6,5 +6,4 @@ class CompanyWorksheet < ActiveRecord::Base
   has_one :team
   has_one :market
   has_one :investment_term
-  has_many :campaigns
 end

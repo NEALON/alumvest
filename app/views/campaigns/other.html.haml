@@ -3,10 +3,6 @@
 
 %h3 Other stuff
 
-%h4 Campaign
-= render 'shared/property_row', :header => 'Permalink', :value => @campaign.permalink
-= render 'shared/property_row', :header => 'Planned fund usage', :value => @campaign.planned_fund_usage
-
 %h4 Company - Basics
 - @company = @company_worksheet.company
 = render 'shared/property_row', :header => 'Company name', :value => @company.name
