@@ -1,47 +1,52 @@
 class InvestmentTermsController < ApplicationController
+
+  before_filter :load_investment_term, :except => [:new, :create]
+
   def new
-    @investment_term = InvestmentTerm.new(:company_worksheet_id => current_user.owner.company_worksheet.id)
+    @company = Company.find(params[:company_id])
+    @investment_term = InvestmentTerm.new(:company => @company)
   end
 
   def create
     @investment_term = InvestmentTerm.create(add_images_if_test!(params[:investment_term]))
     if @investment_term.valid?
-      redirect_to @investment_term, :notice => 'Company investment terms saved.'
+      redirect_to company_investment_term_path(@investment_term.company), :notice => 'Company investment terms saved.'
     else
       render :action => :new
     end
   end
 
   def edit
-    @investment_term = InvestmentTerm.find(params[:id])
     render :new
   end
 
   def update
-    @investment_term = InvestmentTerm.find(params[:id])
     @investment_term.update_attributes(params[:investment_term])
     if @investment_term.valid?
-      redirect_to @investment_term, :notice => 'Company investment terms saved.'
+      redirect_to company_investment_term_path(@investment_term.company), :notice => 'Company investment terms saved.'
     else
       render :edit
     end
   end
   
   def submit_for_review
-    @investment_term = InvestmentTerm.find(params[:investment_term_id])
     @investment_term.update_attributes(params[:investment_term])
     if @investment_term.make_ready_for_review
-      redirect_to @investment_term, :notice => 'Company investment terms are ready for review.'
+      redirect_to company_investment_term_path(@investment_term.company), :notice => 'Company investment terms are ready for review.'
     else
       render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
     end
   end
 
   def show
-    @investment_term = InvestmentTerm.find(params[:id])
   end
 
   private
+
+  def load_investment_term
+    @company = Company.find(params[:company_id])
+    @investment_term = @company.investment_term
+  end
 
   def add_images_if_test!(params)
     if Rails.env.test?

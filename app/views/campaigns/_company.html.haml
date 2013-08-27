@@ -36,15 +36,12 @@
 
       .large-4.columns
         .panel
-          - @company = @company_worksheet.company
           %p
             %span{:style => "padding: 10px"}= image_tag @company.logo(w:64, h:64) unless @company.logo.blank?
             = @company.name
           -#%p= "A #{@company.ownership_structure}, founded #{time_ago_in_words @company.founded_on} ago"
           = link_to @company.url, @company.url
           %p= raw @company.highlights
-
--#= link_to 'Edit', edit_company_worksheet_path(@company_worksheet, @campaign)
 
 -#:javascript
   $('document').ready(function(){

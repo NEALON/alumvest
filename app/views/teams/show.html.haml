@@ -1,12 +1,12 @@
-= render 'company_worksheets/navigation', :active => :people, :company_worksheet => current_user.owner.company_worksheet
+= render 'companies/navigation', :active => :people, :company => current_user.owner.company
 
 %ul
   %li
     %h4
-      = link_to 'Edit', edit_team_path(@team)
+      = link_to 'Edit', edit_company_team_path(@company)
   - if @team.draft?
     %li
-      %h4= link_to 'Submit for review', team_submit_for_review_path(@team)
+      %h4= link_to 'Submit for review', submit_for_review_company_team_path(@company)
 
 %h5 Status
 #status= @team.status.humanize

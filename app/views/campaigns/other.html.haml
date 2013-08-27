@@ -4,24 +4,23 @@
 %h3 Other stuff
 
 %h4 Company - Basics
-- @company = @company_worksheet.company
 = render 'shared/property_row', :header => 'Company name', :value => @company.name
 = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
 = render 'shared/property_row', :header => 'Founded', :value => @company.founded_on
 = render 'shared/property_row', :header => 'Website', :value => @company.url
 = render 'shared/property_row', :header => 'Structure', :value => @company.ownership_structure
-= render 'shared/property_row', :header => 'Category', :value => @company.category.name
-= render 'shared/property_row', :header => 'Industry', :value => @company.industry.name
+= render 'shared/property_row', :header => 'Category', :value => @company.category.try(:name)
+= render 'shared/property_row', :header => 'Industry', :value => @company.industry.try(:name)
 = render 'shared/property_row', :header => 'Address', :value => @company.address_1
 = render 'shared/property_row', :header => '', :value => @company.address_2
 = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
 = render 'shared/property_row', :header => 'Phone', :value => @company.phone
 
 %h3 Company - Market
-- @cmf = @company_worksheet.market
+- @market = @company.market
 %p
-  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@cmf.image_for_product_media_url}"
-= render 'shared/property_row', :header => 'Market info', :value => @cmf.market_info.html_safe
-= render 'shared/property_row', :header => 'Recent investors', :value => @cmf.competitive_landscape.html_safe
+  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@market.image_for_product_media_url}"
+= render 'shared/property_row', :header => 'Market info', :value => @market.market_info.html_safe
+= render 'shared/property_row', :header => 'Recent investors', :value => @market.competitive_landscape.html_safe
 
 

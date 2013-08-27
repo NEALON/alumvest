@@ -100,8 +100,8 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_investment_term
-      investment_term = FactoryGirl.build(:investment_term)
+    def fill_in_investment_term(company)
+      investment_term = FactoryGirl.build(:investment_term, :company => company)
       'investment_term'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
         select 'Convertible Note', :from => "#{form}_equity_type"
@@ -121,8 +121,8 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_team
-      team = create_team_via_factories
+    def fill_in_team(company)
+      team = create_team_via_factories(company)
 
       'team'.tap do |form|
         ['legal_counsel', 'founders', 'team_members', 'board_members', 'advisors'].each do |group|
@@ -135,8 +135,8 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_market
-      cmf = FactoryGirl.create(:market)
+    def fill_in_market(company)
+      cmf = FactoryGirl.create(:market, :company => company)
       'market'.tap do |form|
         fill_in "#{form}_product_media_url", :with => cmf.product_media_url
         fill_in_ckeditor "#{form}_market_info", cmf.market_info

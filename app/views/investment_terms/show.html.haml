@@ -1,12 +1,12 @@
-= render 'company_worksheets/navigation', :active => :funding, :company_worksheet => current_user.owner.company_worksheet
+= render 'companies/navigation', :active => :funding, :company => current_user.owner.company
 
 %ul
   %li
     %h4
-      = link_to 'Edit', edit_investment_term_path(@investment_term)
+      = link_to 'Edit', edit_company_investment_term_path(@company)
   - if @investment_term.draft?
     %li
-      %h4= link_to 'Submit for review', investment_term_submit_for_review_path(@investment_term)
+      %h4= link_to 'Submit for review', submit_for_review_company_investment_term_path(@investment_term)
 
 %h5 Status
 #status= @investment_term.status.humanize

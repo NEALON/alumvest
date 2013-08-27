@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   def new
-    @company = Company.new(:company_worksheet_id => current_user.owner.company_worksheet.id)
+    @company = Company.new(:owner => current_user.owner)
   end
 
   def create

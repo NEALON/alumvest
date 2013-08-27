@@ -1,0 +1,25 @@
+= content_for :sidebar_left do
+  %h4
+    = company.name || 'New company'
+
+  %ul.large-12.small-12.side-nav
+    %li{:class => "#{'active' if active == :demographic}"}
+      = link_to('Company', company_path(company))
+
+    %li{:class => "#{'active' if active == :team}"}
+      - unless entity = company.team
+        = link_to('Team', new_company_team_path(company))
+      - else
+        = link_to('Team', company_team_path(company, entity))
+
+    %li{:class => "#{'active' if active == :funding}"}
+      - unless entity = company.investment_term
+        = link_to('Investment Terms', new_company_investment_term_path(company))
+      - else
+        = link_to('Investment Terms', company_investment_term_path(company, entity))
+
+    %li{:class => "#{'active' if active == :market}"}
+      - unless entity = company.market
+        = link_to('Market', new_company_market_path(company))
+      - else
+        = link_to('Market', company_market_path(company, entity))

@@ -12,9 +12,10 @@ class InvestmentTerm < ActiveRecord::Base
                   :recent_investors,
                   :roadmap,
                   :shareholder_message,
-                  :company_worksheet_id
+                  :company_id,
+                  :company
 
-  belongs_to :company_worksheet
+  belongs_to :company
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do

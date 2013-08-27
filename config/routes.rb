@@ -11,28 +11,29 @@ Av::Application.routes.draw do
 
   resources :sessions
   resources :identities
-  resources :companies do
-    get :submit_for_review
-  end
-  resources :investment_terms do
-    get :submit_for_review
-  end
-  resources :markets do
-    get :submit_for_review
-  end
-  resources :teams do
-    get :submit_for_review
-  end
 
-  resources :users
-  resources :company_worksheets do
-    get :team
-    get :investment_term
+  resources :companies do
     get :updates
     get :join_us
     get :discussion
     get :other
+
+    get :submit_for_review
+
+    resource :team do
+      get :submit_for_review
+    end
+
+    resource :investment_term do
+      get :submit_for_review
+    end
+
+    resource :market do
+      get :submit_for_review
+    end
   end
+
+  resources :users
 
   ### Begin RailsThemes basic generated routes ###
 

@@ -1,4 +1,6 @@
-<div style="text-align:center">
-  <iframe width="500" height="375" src="<%= video_url -%>?feature=oembed" frameborder="0" allowfullscreen>
-  </iframe>
-</div>
+<% if video_url %>
+    <div style="text-align:center">
+      <iframe width="500" height="375" src="<%= video_url -%>?feature=oembed" frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+<% end %>

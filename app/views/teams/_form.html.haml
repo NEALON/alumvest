@@ -1,9 +1,9 @@
-= semantic_form_for [@team] do |f|
+= semantic_form_for [@company, @team], :url => company_team_path(@company) do |f|
 
   = render 'shared/errors', :entity => @team
 
   = f.inputs do
-    = f.input :company_worksheet_id, :as => :hidden
+    = f.input :company_id, :as => :hidden
 
   = render 'person', :title => 'Legal Counsel', :entity => :legal_counsel, :f => f
   = render 'people', :title => 'Founders', :grouping => :founders, :add_title => 'Add Founder', :f => f

@@ -12,7 +12,7 @@ end
 
 FactoryGirl.define do
   factory :company do
-    name                  "#{Faker::Company.name} #{Faker::Company.suffix}"
+    name                  "#{Faker::Company.name}"
     permalink             Faker::Lorem.word
     logo_url              Faker::Internet.url
     url                   Faker::Internet.url

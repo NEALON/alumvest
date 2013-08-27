@@ -8,7 +8,6 @@
 .row
   .large-4.columns.right{:style => 'margin-top: -4em'}
     .panel
-      - @company = @company_worksheet.company
       %p
         %span{:style => "padding: 10px"}= image_tag @company.logo(w:64, h:64) unless @company.logo.blank?
         = @company.name

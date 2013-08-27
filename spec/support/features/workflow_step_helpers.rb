@@ -10,38 +10,38 @@ module Features
       click_button 'Save changes'
     end
 
-    def create_new_investment_term
-      visit new_investment_term_path
-      fill_in_investment_term
+    def create_new_investment_term(company)
+      visit new_company_investment_term_path company
+      fill_in_investment_term company
     end
 
-    def create_blank_new_investment_term
-      visit new_investment_term_path
+    def create_blank_new_investment_term(company)
+      visit new_company_investment_term_path company
       click_button 'Save changes'
     end
 
-    def create_new_market
-      visit new_market_path
-      fill_in_market
+    def create_new_market(company)
+      visit new_company_market_path company
+      fill_in_market company
     end
 
-    def create_blank_new_market
-      visit new_market_path
+    def create_blank_new_market(company)
+      visit new_company_market_path company
       click_button 'Save changes'
     end
 
-    def create_new_team
-      visit new_team_path
-      fill_in_team
+    def create_new_team(company)
+      visit new_company_team_path company
+      fill_in_team company
     end
 
-    def create_blank_new_team
-      visit new_team_path
+    def create_blank_new_team(company)
+      visit new_company_team_path(company)
       click_button 'Save changes'
     end
 
-    def create_team_via_factories(company_worksheet = nil)
-      team = FactoryGirl.create(:team, :company_worksheet => company_worksheet)
+    def create_team_via_factories(company)
+      team = FactoryGirl.create(:team, :company => company)
       team.legal_counsel << FactoryGirl.create(:legal_counsel)
       team.founders << FactoryGirl.create(:founder)
       team.team_members << FactoryGirl.create(:team_member)

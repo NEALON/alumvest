@@ -4,7 +4,7 @@
 %p
   These documents will brief you on the company and its investment opportunity.
 %p
-  - @investment_term = @company_worksheet.investment_term
+  - @investment_term = @company.investment_term
   = render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
   = render 'shared/property_row', :header => 'Convertible Note or Equity', :value => @investment_term.equity_type
   = render 'shared/property_row', :header => 'Funds Retained', :value => @investment_term.funds_retained

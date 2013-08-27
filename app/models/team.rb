@@ -4,7 +4,8 @@ class Team < ActiveRecord::Base
                   :team_members_attributes,
                   :board_members_attributes,
                   :advisors_attributes,
-                  :company_worksheet_id
+                  :company_id,
+                  :company
 
   has_many :legal_counsel, :as => :populatable # but is treated as though has_one in UI
   has_many :founders, :as => :populatable
@@ -12,7 +13,7 @@ class Team < ActiveRecord::Base
   has_many :board_members, :as => :populatable
   has_many :advisors, :as => :populatable
 
-  belongs_to :company_worksheet
+  belongs_to :company
 
   accepts_nested_attributes_for :legal_counsel, :reject_if => :all_blank
   accepts_nested_attributes_for :founders, :reject_if => :all_blank, :allow_destroy => true

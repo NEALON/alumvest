@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825171413) do
+ActiveRecord::Schema.define(:version => 20130827163108) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130825171413) do
     t.text     "highlights"
     t.integer  "category_id"
     t.integer  "industry_id"
-    t.integer  "company_worksheet_id"
+    t.integer  "owner_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "status"
@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(:version => 20130825171413) do
     t.string   "video_url"
     t.string   "permalink"
     t.text     "pitch"
-  end
-
-  create_table "company_worksheets", :force => true do |t|
-    t.integer  "owner_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "identities", :force => true do |t|
@@ -78,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20130825171413) do
     t.text     "recent_investors"
     t.text     "roadmap"
     t.text     "shareholder_message"
-    t.integer  "company_worksheet_id"
+    t.integer  "company_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.string   "status"
@@ -116,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20130825171413) do
     t.string   "product_media_url"
     t.text     "market_info"
     t.text     "competitive_landscape"
-    t.integer  "company_worksheet_id"
+    t.integer  "company_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "status"
@@ -164,9 +158,9 @@ ActiveRecord::Schema.define(:version => 20130825171413) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "teams", :force => true do |t|
-    t.integer  "company_worksheet_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "status"
   end
 

@@ -1,18 +1,18 @@
-= render 'company_worksheets/navigation', :active => :market, :company_worksheet => current_user.owner.company_worksheet
+= render 'companies/navigation', :active => :market, :company => current_user.owner.company
 
 %ul
   %li
     %h4
-      = link_to 'Edit', edit_market_path(@cmf)
-  - if @cmf.draft?
+      = link_to 'Edit', edit_company_market_path(@company)
+  - if @company.draft?
     %li
-      %h4= link_to 'Submit for review', market_submit_for_review_path(@cmf)
+      %h4= link_to 'Submit for review', submit_for_review_company_market_path(@company)
 
 %h5 Status
-#status= @cmf.status.humanize
+#status= @market.status.humanize
 
 %p
-  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@cmf.image_for_product_media_url}"
+  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@market.image_for_product_media_url}"
 
-= render 'shared/property_row', :header => 'Market info', :value => @cmf.market_info.html_safe
-= render 'shared/property_row', :header => 'Recent investors', :value => @cmf.competitive_landscape.html_safe
+= render 'shared/property_row', :header => 'Market info', :value => @market.market_info.html_safe
+= render 'shared/property_row', :header => 'Recent investors', :value => @market.competitive_landscape.html_safe

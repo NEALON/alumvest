@@ -21,15 +21,19 @@ class Company < ActiveRecord::Base
                   :photo_url,
                   :video_url,
                   :highlights,
-                  :company_worksheet_id,
-                  :status
+                  :status,
+                  :owner_id,
+                  :owner
 
   has_filepicker_image :logo, :styles => {:medium => [300, 300], :thumb => [100, 100]}
   has_filepicker_image :photo
 
-  belongs_to :company_worksheet
+  belongs_to :owner
   belongs_to :category
   belongs_to :industry
+  has_one :team
+  has_one :market
+  has_one :investment_term
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do
