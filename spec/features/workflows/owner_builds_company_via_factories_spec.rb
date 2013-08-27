@@ -4,7 +4,6 @@ describe "owner builds company (with factories)", :type => :feature do
 
   before :each do
     $do_screenshots = false
-    @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
     sign_up :owner
   end

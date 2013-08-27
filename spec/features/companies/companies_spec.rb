@@ -5,7 +5,6 @@ include ActionView::Helpers::SanitizeHelper
 describe "managing company basics", :type => :feature do
 
   before :each do
-    @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
     sign_up :owner
   end
@@ -24,7 +23,6 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content company.founded_on_year
     expect(page).to have_content company.ownership_structure
     expect(page).to have_content(company.category.name)
-    expect(page).to have_content(company.industry.name)
     expect(page).to have_content company.address_1
     expect(page).to have_content company.address_2
     expect(page).to have_content company.city

@@ -15,7 +15,6 @@
     = f.input :founded_on_year, :as => :select, :collection => Array(1990..Date.today.year)
     = f.input :ownership_structure, :as => :select, :collection => ownership_structures, :include_blank => false
     = f.input :category_id, :as => :select, :collection => Category.order(:name), :include_blank => false
-    = f.input :industry_id, :as => :select, :collection => Industry.order(:name), :include_blank => false
 
     = f.input :address_1
     = f.input :address_2

@@ -84,7 +84,6 @@ module Features
         select company.founded_on_year, :from => "#{form}_founded_on_year"
         select company.ownership_structure, :from => "#{form}_ownership_structure"
         select company.category.name, :from => "#{form}_category_id"
-        select company.industry.name, :from => "#{form}_industry_id"
         fill_in "#{form}_address_1", :with => company.address_1
         fill_in "#{form}_address_2", :with => company.address_2
         fill_in "#{form}_city", :with => company.city

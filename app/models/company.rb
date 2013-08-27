@@ -1,8 +1,8 @@
 class Company < ActiveRecord::Base
 
   attr_accessible :name,
-                  :permalink,
                   :logo_url,
+                  :permalink,
                   :url,
                   :title,
                   :headline,
@@ -11,7 +11,6 @@ class Company < ActiveRecord::Base
                   :founded_on_year,
                   :ownership_structure,
                   :category_id,
-                  :industry_id,
                   :address_1,
                   :address_2,
                   :city,
@@ -30,7 +29,6 @@ class Company < ActiveRecord::Base
 
   belongs_to :owner
   belongs_to :category
-  belongs_to :industry
   has_one :team
   has_one :market
   has_one :investment_term
@@ -42,8 +40,8 @@ class Company < ActiveRecord::Base
 
     state :ready_for_review do
       [:name,
-       :permalink,
        :logo_url,
+       :permalink,
        :url,
        :title,
        :headline,
@@ -52,7 +50,6 @@ class Company < ActiveRecord::Base
        :founded_on_year,
        :ownership_structure,
        :category_id,
-       :industry_id,
        :address_1,
        :city,
        :state,

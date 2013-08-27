@@ -23,7 +23,6 @@
 = render 'shared/property_row', :header => 'Founded', :value => @company.founded_on_year
 = render 'shared/property_row', :header => 'Structure', :value => @company.ownership_structure
 = render 'shared/property_row', :header => 'Category', :value => @company.category.try(:name)
-= render 'shared/property_row', :header => 'Industry', :value => @company.industry.try(:name)
 = render 'shared/property_row', :header => 'Address', :value => @company.address_1
 = render 'shared/property_row', :header => '', :value => @company.address_2
 = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"

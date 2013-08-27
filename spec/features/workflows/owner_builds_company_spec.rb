@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "owner managing entire company worksheet", :type => :feature do
 
   before :each do
-    @industry = FactoryGirl.create(:industry)
     @category = FactoryGirl.create(:category)
   end
 

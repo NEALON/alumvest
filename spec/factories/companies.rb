@@ -5,12 +5,6 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  factory :industry do
-    name Faker::Lorem.word
-  end
-end
-
-FactoryGirl.define do
   factory :company do
     name                  "#{Faker::Company.name}"
     permalink             Faker::Lorem.word
@@ -23,7 +17,6 @@ FactoryGirl.define do
     founded_on_year       5.years.ago.year
     ownership_structure   'Corporation'
     category_id           (Category.first.try(:id) || FactoryGirl.create(:category).id)
-    industry_id           (Industry.first.try(:id) || FactoryGirl.create(:industry).id)
     address_1             Faker::Address.street_address
     address_2             Faker::Address.secondary_address
     city                  Faker::Address.city
