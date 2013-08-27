@@ -12,6 +12,12 @@ end
 module Av
   class Application < Rails::Application
 
+    if Rails.env == 'test'
+      require File.expand_path("../diagnostic.rb", __FILE__)
+
+      config.middleware.use(Av::DiagnosticMiddleware)
+    end
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.test_framework :rspec, fixture: true
