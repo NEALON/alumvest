@@ -1,6 +1,6 @@
 = content_for :sidebar_left do
   %h4
-    = company.name || 'New company'
+    = company.company_name || 'New company'
 
   %ul.large-12.small-12.side-nav
     %li{:class => "#{'active' if active == :demographic}"}

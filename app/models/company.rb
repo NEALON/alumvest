@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
 
-  attr_accessible :name,
+  attr_accessible :company_name,
                   :logo_url,
                   :permalink,
                   :url,
@@ -39,7 +39,7 @@ class Company < ActiveRecord::Base
     end
 
     state :ready_for_review do
-      [:name,
+      [:company_name,
        :logo_url,
        :permalink,
        :url,

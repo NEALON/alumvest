@@ -73,7 +73,7 @@ module Features
     def fill_in_company
       company = FactoryGirl.build(:company)
       'company'.tap do |form|
-        fill_in "#{form}_name", :with => company.name
+        fill_in "#{form}_company_name", :with => company.company_name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
         fill_in "#{form}_permalink", :with => company.permalink
         fill_in "#{form}_url", :with => company.url

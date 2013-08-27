@@ -10,7 +10,7 @@
     .panel
       %p
         %span{:style => "padding: 10px"}= image_tag @company.logo(w:64, h:64) unless @company.logo.blank?
-        = @company.name
+        = @company.company_name
       %p= "A #{@company.ownership_structure}, founded #{time_ago_in_words @company.founded_on} ago"
       = link_to @company.url, @company.url
       %p= raw @company.highlights

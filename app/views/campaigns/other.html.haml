@@ -4,7 +4,7 @@
 %h3 Other stuff
 
 %h4 Company - Basics
-= render 'shared/property_row', :header => 'Company name', :value => @company.name
+= render 'shared/property_row', :header => 'Company name', :value => @company.company_name
 = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
 = render 'shared/property_row', :header => 'Founded', :value => @company.founded_on
 = render 'shared/property_row', :header => 'Website', :value => @company.url

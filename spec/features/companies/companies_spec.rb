@@ -15,7 +15,7 @@ describe "managing company basics", :type => :feature do
     company = Company.last
     expect(page).to have_content('Company saved.')
 
-    expect(page).to have_content company.name
+    expect(page).to have_content company.company_name
     expect(page).to have_content company.url
     expect(page).to have_content company.title
     expect(page).to have_content company.headline
