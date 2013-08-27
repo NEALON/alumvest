@@ -2,7 +2,7 @@ class Company < ActiveRecord::Base
 
   attr_accessible :company_name,
                   :logo_url,
-                  :permalink,
+                  :short_description,
                   :url,
                   :title,
                   :headline,
@@ -20,6 +20,7 @@ class Company < ActiveRecord::Base
                   :photo_url,
                   :video_url,
                   :highlights,
+                  :permalink,
                   :status,
                   :owner_id,
                   :owner
@@ -41,7 +42,7 @@ class Company < ActiveRecord::Base
     state :ready_for_review do
       [:company_name,
        :logo_url,
-       :permalink,
+       :short_description,
        :url,
        :title,
        :headline,
@@ -56,7 +57,8 @@ class Company < ActiveRecord::Base
        :zip,
        :phone,
        :video_url,
-       :highlights].each do |attr|
+       :highlights,
+       :permalink].each do |attr|
         validates attr, :presence => true
       end
     end

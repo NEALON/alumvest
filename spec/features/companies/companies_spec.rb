@@ -16,6 +16,7 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content('Company saved.')
 
     expect(page).to have_content company.company_name
+    expect(page).to have_content company.short_description
     expect(page).to have_content company.url
     expect(page).to have_content company.title
     expect(page).to have_content company.headline
@@ -32,6 +33,7 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content company.photo_url
     # expect(page).to have_content company.video_url
     expect(page).to have_content strip_tags company.highlights
+    expect(page).to have_content strip_tags company.permalink
   end
 
   it "by editing one" do

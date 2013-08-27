@@ -12,8 +12,9 @@
 #status= @company.status.humanize
 
 = render 'shared/property_row', :header => 'Company name', :value => @company.company_name
-= render 'shared/property_row', :header => 'Permalink', :value => @company.permalink
 = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
+= render 'shared/property_row', :header => 'Short Description', :value => @company.short_description
+
 = render 'shared/property_row', :header => 'Website', :value => @company.url
 = render 'shared/property_row', :header => 'Title', :value => @company.title
 = render 'shared/property_row', :header => 'Headline', :value => @company.headline
@@ -31,3 +32,4 @@
 = render 'shared/youtube', :video_url => @company.video_url
 
 = render 'shared/property_row', :header => 'Highlights', :value => (raw @company.highlights)
+= render 'shared/property_row', :header => 'Permalink', :value => @company.permalink

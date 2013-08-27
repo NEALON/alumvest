@@ -75,7 +75,7 @@ module Features
       'company'.tap do |form|
         fill_in "#{form}_company_name", :with => company.company_name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
-        fill_in "#{form}_permalink", :with => company.permalink
+        fill_in "#{form}_short_description", :with => company.short_description
         fill_in "#{form}_url", :with => company.url
         fill_in "#{form}_title", :with => company.title
         fill_in "#{form}_headline", :with => company.headline
@@ -92,8 +92,8 @@ module Features
         fill_in "#{form}_phone", :with => company.phone
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         fill_in "#{form}_video_url", :with =>  'http://www.youtube.com/embed/OQSNhk5ICTI'
-
         fill_in_ckeditor "#{form}_highlights", company.highlights
+        fill_in "#{form}_permalink", :with => company.permalink
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

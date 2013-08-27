@@ -4,8 +4,8 @@
 
   = f.inputs do
     = f.input :company_name
-    = f.input :permalink
     = f.input :logo_url, :as => :formtastic_filepicker_image
+    = f.input :short_description
     = f.input :url
     = f.input :title
     = f.input :headline
@@ -27,6 +27,7 @@
     = f.input :video_url
 
     = f.input :highlights, :input_html => { :class => 'ckeditor' }
+    = f.input :permalink
 
   = f.actions do
     = f.action :submit, :as => :input, :label => 'Save changes'

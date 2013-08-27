@@ -6,9 +6,9 @@ end
 
 FactoryGirl.define do
   factory :company do
-    company_name                  "#{Faker::Company.name}"
-    permalink             Faker::Lorem.word
+    company_name          "#{Faker::Company.name}"
     logo_url              Faker::Internet.url
+    short_description     Faker::Lorem.word
     url                   Faker::Internet.url
     title                 Faker::Lorem.sentence
     headline              Faker::Company.catch_phrase
@@ -25,7 +25,7 @@ FactoryGirl.define do
     phone                 Faker::PhoneNumber.phone_number
     photo_url             'http://placehold.it/100x100'
     video_url             'http://www.youtube.com/embed/OQSNhk5ICTI'
-
     highlights            Faker::Lorem.sentence(20)
+    permalink             Faker::Lorem.word
   end
 end

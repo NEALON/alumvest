@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827212504) do
+ActiveRecord::Schema.define(:version => 20130827221004) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130827212504) do
     t.string   "video_url"
     t.string   "permalink"
     t.text     "pitch"
+    t.string   "short_description"
   end
 
   create_table "identities", :force => true do |t|
