@@ -104,10 +104,10 @@ module Features
       investment_term = FactoryGirl.build(:investment_term, :company => company)
       'investment_term'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
+        select '90', :from => "#{form}_campaign_length"
         select 'Convertible Note', :from => "#{form}_equity_type"
         select 'All-or-nothing', :from => "#{form}_funds_retained"
         fill_in_ckeditor "#{form}_planned_fund_usage", investment_term.planned_fund_usage
-        select '90', :from => "#{form}_campaign_length"
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
         # filepicker fill_in "#{form}_tbd_financial_document_url", :with => investment_term.tbd_financial_document_url
