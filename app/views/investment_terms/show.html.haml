@@ -23,7 +23,7 @@
 %ul
   %li= link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
   %li= link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url
-  %li= link_to_unless @investment_term.tbd_funding_document_url.blank?, 'TBD Funding document', @investment_term.tbd_funding_document_url
+  %li= link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url
   %li= link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url
 
 = render 'shared/property_row', :header => 'Recent investors', :value => @investment_term.recent_investors.html_safe

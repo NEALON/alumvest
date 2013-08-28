@@ -114,7 +114,7 @@ module Features
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
         # filepicker fill_in "#{form}_financial_statement_url", :with => investment_term.financial_statement_url
-        # filepicker fill_in "#{form}_tbd_funding_document_url", :with => investment_term.tbd_funding_document_url
+        # filepicker fill_in "#{form}_term_sheet_url", :with => investment_term.term_sheet_url
         # filepicker fill_in "#{form}_tbd_detailed_metrics_document_url", :with => investment_term.tbd_detailed_metrics_document_url
         fill_in_ckeditor "#{form}_recent_investors", investment_term.recent_investors
         fill_in_ckeditor "#{form}_roadmap", investment_term.roadmap
