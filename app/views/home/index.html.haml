@@ -21,6 +21,6 @@
       .company-goal
         %p
           Goal:
-          -#= number_to_currency(c.amount)
+          -#= number_to_currency(c.investment_term.fundraising_amount)
         .progress
           .meter{:style => "width: #{Random.rand(100)}%"}
