@@ -139,11 +139,11 @@ module Features
     end
 
     def fill_in_market(company)
-      cmf = FactoryGirl.create(:market, :company => company)
+      market = FactoryGirl.build(:market, :company => company)
       'market'.tap do |form|
-        fill_in "#{form}_product_media_url", :with => cmf.product_media_url
-        fill_in_ckeditor "#{form}_market_info", cmf.market_info
-        fill_in_ckeditor "#{form}_competitive_landscape", cmf.competitive_landscape
+        fill_in "#{form}_product_media_url", :with => market.product_media_url
+        fill_in_ckeditor "#{form}_market_info", market.market_info
+        fill_in_ckeditor "#{form}_competitive_landscape", market.competitive_landscape
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

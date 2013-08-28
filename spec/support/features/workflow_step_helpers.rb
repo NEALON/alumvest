@@ -41,7 +41,7 @@ module Features
     end
 
     def create_team_via_factories(company)
-      team = FactoryGirl.create(:team, :company => company)
+      team = FactoryGirl.build(:team, :company => company)
       team.legal_counsel << FactoryGirl.create(:legal_counsel)
       team.founders << FactoryGirl.create(:founder)
       team.team_members << FactoryGirl.create(:team_member)
