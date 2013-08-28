@@ -10,6 +10,7 @@
   = render 'shared/property_row', :header => 'Convertible Note or Equity', :value => @investment_term.equity_type
   = render 'shared/property_row', :header => 'Funds Retained', :value => @investment_term.funds_retained
   = render 'shared/property_row', :header => 'Fees Paid By', :value => @investment_term.fees_paid_by
+  = render 'shared/property_row', :header => 'Elevator Pitch', :value => (raw @investment_term.elevator_pitch)
 
   = render 'shared/property_row', :header => 'Planned use for funds', :value => (raw @investment_term.planned_fund_usage)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url)

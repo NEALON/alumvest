@@ -108,6 +108,7 @@ module Features
         select 'Convertible Note', :from => "#{form}_equity_type"
         select 'All-or-nothing', :from => "#{form}_funds_retained"
         select 'Owner', :from => "#{form}_fees_paid_by"
+        fill_in_ckeditor "#{form}_elevator_pitch", investment_term.elevator_pitch
         fill_in_ckeditor "#{form}_planned_fund_usage", investment_term.planned_fund_usage
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
