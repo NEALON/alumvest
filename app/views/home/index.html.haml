@@ -8,7 +8,7 @@
   %hr
 
 .row.roomy.homepage-featured-companies
-  - @companies.each do |c|
+  -#- @companies.each do |c|
     .large-4.columns.panel
       = link_to company_path(c) do
         = image_tag c.photo(w:300, h:150, fit:'crop')

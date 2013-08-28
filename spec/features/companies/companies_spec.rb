@@ -32,8 +32,8 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content company.phone
     expect(page).to have_content strip_tags company.faq
     # expect(page).to have_content company.video_url
-    expect(page).to have_content company.photo_url
-    expect(page).to have_content company.banner_photo_url
+    # expect(page).to have_content company.photo_url
+    # expect(page).to have_content company.banner_photo_url
     expect(page).to have_content strip_tags company.permalink
     expect(page).to have_content company.headline
   end
