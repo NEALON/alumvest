@@ -15,6 +15,7 @@
 = render 'shared/property_row', :header => 'Campaign length (days)', :value => @investment_term.campaign_length
 = render 'shared/property_row', :header => 'Convertible Note or Equity', :value => @investment_term.equity_type
 = render 'shared/property_row', :header => 'Funds Retained', :value => @investment_term.funds_retained
+= render 'shared/property_row', :header => 'Fees Paid By', :value => @investment_term.fees_paid_by
 = render 'shared/property_row', :header => 'Planned use for funds', :value => (raw @investment_term.planned_fund_usage)
 
 %ul
