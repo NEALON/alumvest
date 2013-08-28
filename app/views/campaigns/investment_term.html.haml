@@ -14,7 +14,7 @@
 
   = render 'shared/property_row', :header => 'Planned use for funds', :value => (raw @investment_term.planned_fund_usage)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_financial_document_url.blank?, 'TBD Financial document', @investment_term.tbd_financial_document_url)
+  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_funding_document_url.blank?, 'TBD Funding document', @investment_term.tbd_funding_document_url)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url)
   = render 'shared/property_row', :header => '<h4>Recent investors</h4>'.html_safe, :value => (raw @investment_term.recent_investors)

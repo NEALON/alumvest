@@ -51,7 +51,7 @@ class InvestmentTermsController < ApplicationController
   def add_images_if_test!(params)
     if Rails.env.test?
       params[:business_plan_url] = 'http://placehold.it/30x30'
-      params[:tbd_financial_document_url] = 'http://placehold.it/30x30'
+      params[:financial_statement_url] = 'http://placehold.it/30x30'
       params[:tbd_funding_document_url] = 'http://placehold.it/30x30'
       params[:tbd_detailed_metrics_document_url] = 'http://placehold.it/30x30'
       params

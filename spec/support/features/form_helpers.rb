@@ -109,10 +109,11 @@ module Features
         select 'All-or-nothing', :from => "#{form}_funds_retained"
         select 'Owner', :from => "#{form}_fees_paid_by"
         fill_in_ckeditor "#{form}_elevator_pitch", investment_term.elevator_pitch
+        fill_in_ckeditor "#{form}_investment_details", investment_term.investment_details
         fill_in_ckeditor "#{form}_planned_fund_usage", investment_term.planned_fund_usage
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
-        # filepicker fill_in "#{form}_tbd_financial_document_url", :with => investment_term.tbd_financial_document_url
+        # filepicker fill_in "#{form}_financial_statement_url", :with => investment_term.financial_statement_url
         # filepicker fill_in "#{form}_tbd_funding_document_url", :with => investment_term.tbd_funding_document_url
         # filepicker fill_in "#{form}_tbd_detailed_metrics_document_url", :with => investment_term.tbd_detailed_metrics_document_url
         fill_in_ckeditor "#{form}_recent_investors", investment_term.recent_investors

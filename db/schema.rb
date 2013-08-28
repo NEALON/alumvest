@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828155213) do
+ActiveRecord::Schema.define(:version => 20130828165502) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20130828155213) do
 
   create_table "investment_terms", :force => true do |t|
     t.string   "business_plan_url"
-    t.string   "tbd_financial_document_url"
+    t.string   "financial_statement_url"
     t.string   "tbd_funding_document_url"
     t.string   "tbd_detailed_metrics_document_url"
     t.text     "recent_investors"
@@ -77,6 +77,9 @@ ActiveRecord::Schema.define(:version => 20130828155213) do
     t.string   "equity_type"
     t.string   "funds_retained"
     t.text     "planned_fund_usage"
+    t.string   "fees_paid_by"
+    t.text     "elevator_pitch"
+    t.text     "investment_details"
   end
 
   create_table "investors", :force => true do |t|

@@ -17,11 +17,12 @@
 = render 'shared/property_row', :header => 'Funds Retained', :value => @investment_term.funds_retained
 = render 'shared/property_row', :header => 'Fees Paid By', :value => @investment_term.fees_paid_by
 = render 'shared/property_row', :header => 'Elevator Pitch', :value => (raw @investment_term.elevator_pitch)
+= render 'shared/property_row', :header => 'Investment Details', :value => (raw @investment_term.investment_details)
 = render 'shared/property_row', :header => 'Planned use for funds', :value => (raw @investment_term.planned_fund_usage)
 
 %ul
   %li= link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
-  %li= link_to_unless @investment_term.tbd_financial_document_url.blank?, 'TBD Financial document', @investment_term.tbd_financial_document_url
+  %li= link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url
   %li= link_to_unless @investment_term.tbd_funding_document_url.blank?, 'TBD Funding document', @investment_term.tbd_funding_document_url
   %li= link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url
 
