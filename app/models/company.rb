@@ -3,11 +3,10 @@ class Company < ActiveRecord::Base
   attr_accessible :company_name,
                   :logo_url,
                   :short_description,
-                  :url,
-                  :title,
-                  :headline,
-                  :company_introductions,
-                  :pitch,
+                  :company_url,
+                  :campaign_title,
+                  :company_highlights,
+                  :company_details,
                   :founded_on_year,
                   :ownership_structure,
                   :category_id,
@@ -17,16 +16,19 @@ class Company < ActiveRecord::Base
                   :state,
                   :zip,
                   :phone,
-                  :photo_url,
+                  :faq,
                   :video_url,
-                  :highlights,
+                  :photo_url,
+                  :banner_photo_url,
                   :permalink,
+                  :headline,
                   :status,
                   :owner_id,
                   :owner
 
   has_filepicker_image :logo, :styles => {:medium => [300, 300], :thumb => [100, 100]}
   has_filepicker_image :photo
+  has_filepicker_image :banner_photo
 
   belongs_to :owner
   belongs_to :category
@@ -43,11 +45,10 @@ class Company < ActiveRecord::Base
       [:company_name,
        :logo_url,
        :short_description,
-       :url,
-       :title,
-       :headline,
-       :company_introductions,
-       :pitch,
+       :company_url,
+       :campaign_title,
+       :company_highlights,
+       :company_details,
        :founded_on_year,
        :ownership_structure,
        :category_id,
@@ -56,9 +57,11 @@ class Company < ActiveRecord::Base
        :state,
        :zip,
        :phone,
+       :faq,
        :video_url,
-       :highlights,
-       :permalink].each do |attr|
+       :banner_photo_url,
+       :permalink,
+       :headline].each do |attr|
         validates attr, :presence => true
       end
     end

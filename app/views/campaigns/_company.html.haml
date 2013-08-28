@@ -9,11 +9,11 @@
         -#= render 'shared/youtube', :video_url => @campaign.video_url
         %p
         -#%p= @campaign.headline
-        -#%p= @campaign.highlights
-        -# TODO: pitch
+        -#%p= @campaign.company_highlights
+        -# TODO: faq
         -# TODO: permalink
         %hr
-        -#%p= raw @campaign.pitch
+        -#%p= raw @campaign.faq
       .large-4.columns
         .panel
           %div
@@ -41,7 +41,7 @@
             = @company.company_name
           -#%p= "A #{@company.ownership_structure}, founded #{time_ago_in_words @company.founded_on} ago"
           = link_to @company.url, @company.url
-          %p= raw @company.highlights
+          %p= raw @company.company_highlights
 
 -#:javascript
   $('document').ready(function(){

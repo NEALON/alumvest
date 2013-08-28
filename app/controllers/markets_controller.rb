@@ -39,7 +39,6 @@ class MarketsController < ApplicationController
   end
   
   def show
-    true
   end
 
   private

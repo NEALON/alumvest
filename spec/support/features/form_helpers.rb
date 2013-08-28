@@ -76,11 +76,10 @@ module Features
         fill_in "#{form}_company_name", :with => company.company_name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
         fill_in "#{form}_short_description", :with => company.short_description
-        fill_in "#{form}_url", :with => company.url
-        fill_in "#{form}_title", :with => company.title
-        fill_in "#{form}_headline", :with => company.headline
-        fill_in_ckeditor "#{form}_company_introductions", company.company_introductions
-        fill_in_ckeditor "#{form}_pitch", company.pitch
+        fill_in "#{form}_company_url", :with => company.company_url
+        fill_in "#{form}_campaign_title", :with => company.campaign_title
+        fill_in_ckeditor "#{form}_company_highlights", company.company_highlights
+        fill_in_ckeditor "#{form}_company_details", company.company_details
         select company.founded_on_year, :from => "#{form}_founded_on_year"
         select company.ownership_structure, :from => "#{form}_ownership_structure"
         select company.category.name, :from => "#{form}_category_id"
@@ -90,10 +89,12 @@ module Features
         fill_in "#{form}_state", :with => company.state
         fill_in "#{form}_zip", :with => company.zip
         fill_in "#{form}_phone", :with => company.phone
-        # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
+        fill_in_ckeditor "#{form}_faq", company.faq
         fill_in "#{form}_video_url", :with =>  'http://www.youtube.com/embed/OQSNhk5ICTI'
-        fill_in_ckeditor "#{form}_highlights", company.highlights
+        # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
+        # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
         fill_in "#{form}_permalink", :with => company.permalink
+        fill_in "#{form}_headline", :with => company.headline
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

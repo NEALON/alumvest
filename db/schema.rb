@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827221004) do
+ActiveRecord::Schema.define(:version => 20130828155213) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -23,29 +23,30 @@ ActiveRecord::Schema.define(:version => 20130827221004) do
     t.string   "company_name"
     t.string   "ownership_structure"
     t.string   "logo_url"
-    t.string   "url"
+    t.string   "company_url"
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
-    t.text     "highlights"
+    t.text     "company_highlights"
     t.integer  "category_id"
     t.integer  "industry_id"
     t.integer  "owner_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "status"
-    t.string   "title"
+    t.string   "campaign_title"
     t.string   "headline"
-    t.text     "company_introductions"
+    t.text     "company_details"
     t.string   "founded_on_year"
     t.string   "photo_url"
     t.string   "video_url"
     t.string   "permalink"
-    t.text     "pitch"
+    t.text     "faq"
     t.string   "short_description"
+    t.string   "banner_photo_url"
   end
 
   create_table "identities", :force => true do |t|
