@@ -5,6 +5,8 @@ class InvestmentTermsController < ApplicationController
   def new
     @company = Company.find(params[:company_id])
     @investment_term = InvestmentTerm.new(:company => @company)
+    @investment_term.subscription_docs.build
+    @investment_term.other_docs.build
   end
 
   def create

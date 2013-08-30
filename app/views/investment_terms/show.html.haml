@@ -26,6 +26,17 @@
   %li= link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url
   %li= link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url
 
+%ul
+  - @investment_term.subscription_docs.each do |doc|
+    %li= link_to doc.name, doc.file_url
+
+%ul
+  - @investment_term.other_docs.each do |doc|
+    %li= link_to doc.name, doc.file_url
+
+
+
+
 = render 'shared/property_row', :header => 'Recent investors', :value => @investment_term.recent_investors.html_safe
 = render 'shared/property_row', :header => 'Roadmap', :value => @investment_term.roadmap.html_safe
 = render 'shared/property_row', :header => 'Shareholder message', :value => @investment_term.shareholder_message.html_safe

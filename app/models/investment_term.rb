@@ -11,6 +11,8 @@ class InvestmentTerm < ActiveRecord::Base
                   :business_plan_url,
                   :financial_statement_url,
                   :term_sheet_url,
+                  :subscription_docs_attributes,
+                  :other_docs_attributes,
                   :tbd_detailed_metrics_document_url,
                   :recent_investors,
                   :roadmap,
@@ -19,6 +21,12 @@ class InvestmentTerm < ActiveRecord::Base
                   :company
 
   belongs_to :company
+
+  has_many :subscription_docs, :as => :documentable
+  accepts_nested_attributes_for :subscription_docs, :reject_if => :all_blank, :allow_destroy => true
+
+  has_many :other_docs, :as => :documentable
+  accepts_nested_attributes_for :other_docs, :reject_if => :all_blank, :allow_destroy => true
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do

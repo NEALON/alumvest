@@ -1,0 +1,1 @@
+class OtherDoc < Document; end

@@ -1,0 +1,6 @@
+.nested-fields
+  = f.inputs do
+    = f.input :name
+    = f.input :file_url, :as => :formtastic_filepicker_image
+
+    = link_to_remove_association "Remove", f
