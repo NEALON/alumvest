@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830182603) do
+ActiveRecord::Schema.define(:version => 20130830184824) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -110,16 +110,6 @@ ActiveRecord::Schema.define(:version => 20130830182603) do
   end
 
   add_index "investors", ["user_id"], :name => "index_investors_on_user_id"
-
-  create_table "markets", :force => true do |t|
-    t.string   "product_media_url"
-    t.text     "market_info"
-    t.text     "competitive_landscape"
-    t.integer  "company_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.string   "status"
-  end
 
   create_table "owners", :force => true do |t|
     t.string   "ssn"

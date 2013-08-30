@@ -135,16 +135,5 @@ module Features
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
-
-    def fill_in_market(company)
-      market = FactoryGirl.build(:market, :company => company)
-      'market'.tap do |form|
-        fill_in "#{form}_product_media_url", :with => market.product_media_url
-        fill_in_ckeditor "#{form}_market_info", market.market_info
-        fill_in_ckeditor "#{form}_competitive_landscape", market.competitive_landscape
-      end
-      screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
-    end
   end
 end

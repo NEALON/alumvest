@@ -17,9 +17,6 @@ describe "doing everything", :type => :feature do
     #fill_in_team
     #click_link 'Investment Terms'
     #fill_in_investment_term
-    #click_link 'Market'
-    #fill_in_market
-    #screenshot_and_save_page if $do_screenshots
     #click_link "Team"
     #sleep 1
     #screenshot_and_save_page if $do_screenshots

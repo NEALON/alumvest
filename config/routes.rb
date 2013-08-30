@@ -27,10 +27,6 @@ Av::Application.routes.draw do
     resource :investment_term do
       get :submit_for_review
     end
-
-    resource :market do
-      get :submit_for_review
-    end
   end
 
   resources :users

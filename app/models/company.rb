@@ -33,7 +33,6 @@ class Company < ActiveRecord::Base
   belongs_to :owner
   belongs_to :category
   has_one :team
-  has_one :market
   has_one :investment_term
 
   state_machine :status, :initial => :draft do

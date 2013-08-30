@@ -12,12 +12,3 @@
 = render 'shared/property_row', :header => '', :value => @company.address_2
 = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
 = render 'shared/property_row', :header => 'Phone', :value => @company.phone
-
-%h3 Company - Market
-- @market = @company.market
-%p
-  = image_tag "http://i.embed.ly/1/display/resize?&key=6df201d3d6b8438983bfa7de1d9c8854&height=142&width=254&url=#{@market.image_for_product_media_url}"
-= render 'shared/property_row', :header => 'Market info', :value => @market.market_info.html_safe
-= render 'shared/property_row', :header => 'Recent investors', :value => @market.competitive_landscape.html_safe
-
-

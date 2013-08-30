@@ -20,16 +20,6 @@ module Features
       click_button 'Save changes'
     end
 
-    def create_new_market(company)
-      visit new_company_market_path company
-      fill_in_market company
-    end
-
-    def create_blank_new_market(company)
-      visit new_company_market_path company
-      click_button 'Save changes'
-    end
-
     def create_new_team(company)
       visit new_company_team_path company
       fill_in_team company
