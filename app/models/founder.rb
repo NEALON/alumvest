@@ -1,1 +1,0 @@
-class Founder < Person; end

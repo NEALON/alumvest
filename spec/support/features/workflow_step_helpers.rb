@@ -42,11 +42,7 @@ module Features
 
     def create_team_via_factories(company, build_or_create = :build)
       team = FactoryGirl.send(build_or_create, :team, :company => company)
-      team.legal_counsel << FactoryGirl.create(:legal_counsel)
-      team.founders << FactoryGirl.create(:founder)
       team.team_members << FactoryGirl.create(:team_member)
-      team.board_members << FactoryGirl.create(:board_member)
-      team.advisors << FactoryGirl.create(:advisor)
       team
     end
   end

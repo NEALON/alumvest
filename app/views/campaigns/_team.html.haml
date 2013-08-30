@@ -2,7 +2,7 @@
 
 - if team = @company.team
 
-  - ['founders', 'team_members', 'board_members', 'advisors', 'legal_counsel'].each do |group|
+  - ['team_members'].tap do |group|
     .row{:style => "margin-bottom: 1em"}
       .large-12.columns
         - if members = team.send(group)

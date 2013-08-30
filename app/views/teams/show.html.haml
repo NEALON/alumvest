@@ -13,39 +13,9 @@
 
 = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
 
-%h5 Legal counsel
-%p
-  = @team.legal_counsel.first.try(:full_name) || 'No name specified'
-  = @team.legal_counsel.first.try(:title) || 'No title specified'
-  = render 'shared/youtube', :video_url => @team.legal_counsel.first.try(:video_url)
-
-%h5 Founders
-%p
-  - @team.founders.each do |p|
-    = p.full_name
-    = p.title
-    = render 'shared/youtube', :video_url => p.video_url
-    %br
-
 %h5 Team members
 %p
   - @team.team_members.each do |p|
-    = p.full_name
-    = p.title
-    = render 'shared/youtube', :video_url => p.video_url
-    %br
-
-%h5 Board members
-%p
-  - @team.board_members.each do |p|
-    = p.full_name
-    = p.title
-    = render 'shared/youtube', :video_url => p.video_url
-    %br
-
-%h5 Advisors
-%p
-  - @team.advisors.each do |p|
     = p.full_name
     = p.title
     = render 'shared/youtube', :video_url => p.video_url

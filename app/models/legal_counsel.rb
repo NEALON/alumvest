@@ -1,1 +1,0 @@
-class LegalCounsel < Person; end

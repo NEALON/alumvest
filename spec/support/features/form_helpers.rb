@@ -90,7 +90,7 @@ module Features
         fill_in "#{form}_zip", :with => company.zip
         fill_in "#{form}_phone", :with => company.phone
         fill_in_ckeditor "#{form}_faq", company.faq
-        fill_in "#{form}_video_url", :with =>  'http://www.youtube.com/embed/OQSNhk5ICTI'
+        fill_in "#{form}_video_url", :with => 'http://www.youtube.com/embed/OQSNhk5ICTI'
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
         fill_in "#{form}_permalink", :with => company.permalink
@@ -127,15 +127,12 @@ module Features
     def fill_in_team(company)
       team = create_team_via_factories(company)
 
-      'team'.tap do |form|
-        fill_in_ckeditor "#{form}_team_highlights", team.team_highlights
+      fill_in_ckeditor "team_team_highlights", team.team_highlights
 
-        ['legal_counsel', 'founders', 'team_members', 'board_members', 'advisors'].each do |group|
-          ['first_name', 'last_name', 'title','facebook', 'twitter', 'linkedin', 'video_url'].each do |field|
-            fill_in "#{form}_#{group}_attributes_0_#{field}", :with => team.send(group).first.send(field)
-          end
-        end
+      ['first_name', 'last_name', 'title', 'facebook', 'twitter', 'linkedin', 'video_url'].each do |field|
+        fill_in "team_team_members_attributes_0_#{field}", :with => team.team_members.first.send(field)
       end
+
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end

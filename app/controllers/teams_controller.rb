@@ -5,12 +5,7 @@ class TeamsController < ApplicationController
   def new
     @company = Company.find(params[:company_id])
     @team = Team.new(:company => @company)
-
-    @team.legal_counsel.build
-    @team.founders.build
     @team.team_members.build
-    @team.board_members.build
-    @team.advisors.build
   end
 
   def create
