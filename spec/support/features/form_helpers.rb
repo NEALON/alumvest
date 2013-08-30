@@ -131,7 +131,7 @@ module Features
         fill_in_ckeditor "#{form}_team_highlights", team.team_highlights
 
         ['legal_counsel', 'founders', 'team_members', 'board_members', 'advisors'].each do |group|
-          ['first_name', 'last_name', 'facebook', 'twitter', 'linkedin'].each do |field|
+          ['first_name', 'last_name', 'title','facebook', 'twitter', 'linkedin', 'video_url'].each do |field|
             fill_in "#{form}_#{group}_attributes_0_#{field}", :with => team.send(group).first.send(field)
           end
         end

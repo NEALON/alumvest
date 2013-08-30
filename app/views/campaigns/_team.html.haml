@@ -9,7 +9,8 @@
           %h4= group.humanize.capitalize
           - team.send(group).each do |member|
             %span{:style => "padding: 10px"}= image_tag member.avatar(w:64, h:64) unless member.avatar.blank?
-            = member.full_name
+            %p= member.full_name
+            %p= member.title
             &nbsp;
             - if member.facebook
               = link_to "http://www.facebook.com/#{member.facebook}" do
