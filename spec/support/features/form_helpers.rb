@@ -118,11 +118,6 @@ module Features
 
         # fill_in "#{form}_subscription_docs_attributes_0_name", :with => investment_term.subscription_docs.first.name
         # fill_in "#{form}_other_docs_attributes_0_name", :with => investment_term.subscription_docs.first.name
-
-        # filepicker fill_in "#{form}_tbd_detailed_metrics_document_url", :with => investment_term.tbd_detailed_metrics_document_url
-        fill_in_ckeditor "#{form}_recent_investors", investment_term.recent_investors
-        fill_in_ckeditor "#{form}_roadmap", investment_term.roadmap
-        fill_in_ckeditor "#{form}_shareholder_message", investment_term.shareholder_message
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

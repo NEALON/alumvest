@@ -20,10 +20,5 @@
     = render 'documents', :title => 'Subscription documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
     = render 'documents', :title => 'Others documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f
 
-    = f.input :tbd_detailed_metrics_document_url, :as => :formtastic_filepicker_image
-    = f.input :recent_investors, :input_html => { :class => 'ckeditor' }
-    = f.input :roadmap, :input_html => { :class => 'ckeditor' }
-    = f.input :shareholder_message, :input_html => { :class => 'ckeditor' }
-
   = f.actions do
     = f.action :submit, :as => :input, :label => 'Save changes'

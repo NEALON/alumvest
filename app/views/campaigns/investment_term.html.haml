@@ -16,7 +16,3 @@
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url)
   = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.tbd_detailed_metrics_document_url.blank?, 'TBD Detailed metrics document', @investment_term.tbd_detailed_metrics_document_url)
-  = render 'shared/property_row', :header => '<h4>Recent investors</h4>'.html_safe, :value => (raw @investment_term.recent_investors)
-  = render 'shared/property_row', :header => '<h4>Corporate Roadmap</h4>'.html_safe, :value => (raw @investment_term.roadmap)
-  = render 'shared/property_row', :header => '<h4>Shareholder message</h4>'.html_safe, :value => (raw @investment_term.shareholder_message)

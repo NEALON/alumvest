@@ -13,10 +13,6 @@ class InvestmentTerm < ActiveRecord::Base
                   :term_sheet_url,
                   :subscription_docs_attributes,
                   :other_docs_attributes,
-                  :tbd_detailed_metrics_document_url,
-                  :recent_investors,
-                  :roadmap,
-                  :shareholder_message,
                   :company_id,
                   :company
 
@@ -44,11 +40,7 @@ class InvestmentTerm < ActiveRecord::Base
        :planned_fund_usage,
        :business_plan_url,
        :financial_statement_url,
-       :term_sheet_url,
-       :tbd_detailed_metrics_document_url,
-       :recent_investors,
-       :roadmap,
-       :shareholder_message].each do |attr|
+       :term_sheet_url].each do |attr|
         validates attr, :presence => true
       end
       validates_numericality_of [:fundraising_amount, :campaign_length]

@@ -55,7 +55,6 @@ class InvestmentTermsController < ApplicationController
       params[:business_plan_url] = 'http://placehold.it/30x30'
       params[:financial_statement_url] = 'http://placehold.it/30x30'
       params[:term_sheet_url] = 'http://placehold.it/30x30'
-      params[:tbd_detailed_metrics_document_url] = 'http://placehold.it/30x30'
       params
     else
       params

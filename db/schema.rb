@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830171854) do
+ActiveRecord::Schema.define(:version => 20130830182603) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -74,13 +74,9 @@ ActiveRecord::Schema.define(:version => 20130830171854) do
     t.string   "business_plan_url"
     t.string   "financial_statement_url"
     t.string   "term_sheet_url"
-    t.string   "tbd_detailed_metrics_document_url"
-    t.text     "recent_investors"
-    t.text     "roadmap"
-    t.text     "shareholder_message"
     t.integer  "company_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "status"
     t.integer  "fundraising_amount"
     t.integer  "campaign_length"
