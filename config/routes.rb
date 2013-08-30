@@ -13,7 +13,7 @@ Av::Application.routes.draw do
   resources :identities
 
   resources :companies do
-    get :updates
+    resources :updates
     get :join_us
     get :discussion
     get :other

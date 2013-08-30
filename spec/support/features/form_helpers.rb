@@ -135,5 +135,17 @@ module Features
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
     end
+    
+    def fill_in_update(company)
+      update = FactoryGirl.build(:update, :company => company)
+
+      fill_in "update_subject", :with => update.subject
+      fill_in_ckeditor "update_details", update.details
+      choose update.visibility
+      fill_in "update_video_url", :with => update.video_url
+
+      screenshot_and_save_page if $do_screenshots
+      click_button 'Save changes'
+    end
   end
 end

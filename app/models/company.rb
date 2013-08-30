@@ -34,6 +34,7 @@ class Company < ActiveRecord::Base
   belongs_to :category
   has_one :team
   has_one :investment_term
+  has_many :updates
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do

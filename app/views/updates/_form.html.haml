@@ -1,0 +1,10 @@
+= semantic_form_for [@company, @update] do |f|
+  = render 'shared/errors', :entity => @update
+  = f.inputs do
+    = f.input :company_id, :as => :hidden
+    = f.input :subject
+    = f.input :details, :input_html => { :class => 'ckeditor' }
+    = f.input :visibility, :as => :radio, :collection => ["Everyone", "Accredited Investors", "My Investors", "Just Me"]
+    = f.input :video_url
+  = f.actions do
+    = f.action :submit, :as => :input, :label => 'Save changes'
