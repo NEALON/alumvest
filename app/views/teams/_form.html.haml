@@ -4,6 +4,7 @@
 
   = f.inputs do
     = f.input :company_id, :as => :hidden
+    = f.input :team_highlights, :input_html => { :class => 'ckeditor' }
 
   = render 'person', :title => 'Legal Counsel', :entity => :legal_counsel, :f => f
   = render 'people', :title => 'Founders', :grouping => :founders, :add_title => 'Add Founder', :f => f

@@ -4,6 +4,7 @@ class Team < ActiveRecord::Base
                   :team_members_attributes,
                   :board_members_attributes,
                   :advisors_attributes,
+                  :team_highlights,
                   :company_id,
                   :company
 
@@ -27,6 +28,7 @@ class Team < ActiveRecord::Base
     end
 
     state :ready_for_review do
+      validates :team_highlights, :presence => true
       validates :team_members, :presence => true
     end
   end

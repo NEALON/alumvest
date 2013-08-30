@@ -20,3 +20,4 @@
             - if member.linkedin
               = link_to "http://www.linkedin.com/#{member.linkedin}" do
                 %i.icon-linkedin-sign
+          %p= render 'shared/youtube', :video_url => member.video_url
