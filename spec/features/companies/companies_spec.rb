@@ -62,6 +62,8 @@ describe "managing company basics", :type => :feature do
   it "by showing a company as a campaign" do
     company = FactoryGirl.create(:company, :owner => @owner)
     investment_term = FactoryGirl.create(:investment_term, :company => company)
+    team = FactoryGirl.create(:team, :company => company)
+
     visit campaign_path(company)
     expect(page).to have_css("img[src$='#{company.banner_photo_url}']")
     expect(page).to have_content company.company_name
@@ -76,5 +78,8 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content investment_term.campaign_length
     expect(page).to have_content company.company_url
     expect(page).to have_content strip_tags company.company_highlights
+
+    click_link 'Team'
+    screenshot_and_open_image
   end
 end

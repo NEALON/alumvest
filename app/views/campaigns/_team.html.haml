@@ -1,24 +1,17 @@
-%h3 Our Team
-
-- if team = @company.team
-
-  - ['team_members'].tap do |group|
-    .row{:style => "margin-bottom: 1em"}
-      .large-12.columns
-        - if members = team.send(group)
-          %h4= group.humanize.capitalize
-          - team.send(group).each do |member|
-            %span{:style => "padding: 10px"}= image_tag member.avatar(w:64, h:64) unless member.avatar.blank?
-            %p= member.full_name
-            %p= member.title
-            &nbsp;
-            - if member.facebook
-              = link_to "http://www.facebook.com/#{member.facebook}" do
-                %i.icon-facebook-sign
-            - if member.twitter
-              = link_to "http://www.twitter.com/#{member.twitter}" do
-                %i.icon-twitter-sign
-            - if member.linkedin
-              = link_to "http://www.linkedin.com/#{member.linkedin}" do
-                %i.icon-linkedin-sign
-          %p= render 'shared/youtube', :video_url => member.video_url
+- @company.team.team_members.each do |member|
+  .row{:style => "margin-bottom: 1em"}
+    .large-12.columns
+      %span{:style => "padding: 10px"}= image_tag member.avatar(w:64, h:64) unless member.avatar.blank?
+      %p= member.full_name
+      %p= member.title
+      &nbsp;
+      - if member.facebook
+        = link_to "http://www.facebook.com/#{member.facebook}" do
+          %i.icon-facebook-sign
+      - if member.twitter
+        = link_to "http://www.twitter.com/#{member.twitter}" do
+          %i.icon-twitter-sign
+      - if member.linkedin
+        = link_to "http://www.linkedin.com/#{member.linkedin}" do
+          %i.icon-linkedin-sign
+      %p= render 'shared/youtube', :video_url => member.video_url

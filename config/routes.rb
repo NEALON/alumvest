@@ -27,7 +27,12 @@ Av::Application.routes.draw do
     end
   end
 
-  resources :campaigns, :only => :show
+  resources :campaigns, :only => :show do
+    get :team
+    get :investment_term
+    get :updates
+    get :join_us
+  end
   resources :users
 
   ### Begin RailsThemes basic generated routes ###
