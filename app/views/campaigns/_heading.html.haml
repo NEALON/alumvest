@@ -1,8 +1,6 @@
+= image_tag(@company.banner_photo_url, :height => 400, :width => 1500)
+
 .row
   .large-12.small-12.columns
-    -#%h3= @campaign.title
-  .large-6.small-6.columns
-    %h4= "by #{@user.full_name}"
-  .large-6.small-6.columns
     :erb
       <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202784'></div>

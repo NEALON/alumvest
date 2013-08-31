@@ -15,8 +15,6 @@ Av::Application.routes.draw do
   resources :companies do
     resources :updates
     get :join_us
-    get :discussion
-    get :other
 
     get :submit_for_review
 
@@ -29,6 +27,7 @@ Av::Application.routes.draw do
     end
   end
 
+  resources :campaigns, :only => :show
   resources :users
 
   ### Begin RailsThemes basic generated routes ###
