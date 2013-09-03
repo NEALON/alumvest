@@ -11,7 +11,7 @@
   - @companies.each do |c|
     .large-4.columns.panel
       = link_to campaign_path(c) do
-        -#= image_tag c.photo(w:300, h:150, fit:'crop')
+        = image_tag c.photo(w:300, h:150, fit:'crop')
 
       .company-title
         %h4
@@ -22,7 +22,6 @@
       .company-goal
         %p
           Goal:
-          -#= number_to_currency(c.investment_term.fundraising_amount)
-          = number_to_currency(999)
+          = number_to_currency(c.investment_term.fundraising_amount)
         .progress
           .meter{:style => "width: #{Random.rand(100)}%"}
