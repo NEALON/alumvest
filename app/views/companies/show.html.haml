@@ -30,7 +30,3 @@
 = render 'shared/youtube', :video_url => @company.video_url
 = render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(w:64, h:64) unless @company.photo.blank?)
 = render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(w:64, h:64) unless @company.photo.blank?)
-
-= render 'shared/property_row', :header => 'Permalink', :value => @company.permalink
-= render 'shared/property_row', :header => 'Headline', :value => @company.headline
-

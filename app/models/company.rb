@@ -20,8 +20,6 @@ class Company < ActiveRecord::Base
                   :video_url,
                   :photo_url,
                   :banner_photo_url,
-                  :permalink,
-                  :headline,
                   :status,
                   :owner_id,
                   :owner
@@ -59,9 +57,7 @@ class Company < ActiveRecord::Base
        :phone,
        :faq,
        :video_url,
-       :banner_photo_url,
-       :permalink,
-       :headline].each do |attr|
+       :banner_photo_url].each do |attr|
         validates attr, :presence => true
       end
     end

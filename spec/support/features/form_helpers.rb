@@ -93,8 +93,6 @@ module Features
         fill_in "#{form}_video_url", :with => 'http://www.youtube.com/embed/OQSNhk5ICTI'
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
-        fill_in "#{form}_permalink", :with => company.permalink
-        fill_in "#{form}_headline", :with => company.headline
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

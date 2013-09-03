@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830192356) do
+ActiveRecord::Schema.define(:version => 20130903155956) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -38,12 +38,10 @@ ActiveRecord::Schema.define(:version => 20130830192356) do
     t.datetime "updated_at",          :null => false
     t.string   "status"
     t.string   "campaign_title"
-    t.string   "headline"
     t.text     "company_details"
     t.string   "founded_on_year"
     t.string   "photo_url"
     t.string   "video_url"
-    t.string   "permalink"
     t.text     "faq"
     t.string   "short_description"
     t.string   "banner_photo_url"
