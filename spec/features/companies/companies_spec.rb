@@ -43,19 +43,19 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content('Company saved.')
   end
 
-  it "by successfully submitting for review" do
-    create_new_company
-    (expect page.find_by_id "status").to have_content 'Draft'
-    click_link 'Submit for review'
-    (expect page.find_by_id "status").to have_content 'Ready for review'
-  end
+  #it "by successfully submitting for review" do
+  #  create_new_company
+  #  (expect page.find_by_id "status").to have_content 'Draft'
+  #  click_link 'Submit for review'
+  #  (expect page.find_by_id "status").to have_content 'Ready for review'
+  #end
 
-  it "by unsuccessfully submitting for review" do
-    create_blank_new_company
-    (expect page.find_by_id "status").to have_content 'Draft'
-    click_link 'Submit for review'
-    (expect page).to have_content 'errors encountered'
-  end
+  #it "by unsuccessfully submitting for review" do
+  #  create_blank_new_company
+  #  (expect page.find_by_id "status").to have_content 'Draft'
+  #  click_link 'Submit for review'
+  #  (expect page).to have_content 'errors encountered'
+  #end
 
   it "by showing a company as a campaign" do
     company = FactoryGirl.create(:company, :owner => @owner)

@@ -2,9 +2,10 @@
   .row
     %p
       .small-3.columns
-        - if header.blank?
-          &nbsp;
-        - else
-          = header
+        %b
+          - if header.blank?
+            &nbsp;
+          - else
+            = header
       .small-9.columns
         = value

@@ -1,32 +1,26 @@
 = render 'companies/navigation', :active => :demographic, :company => current_user.owner.company
 
-%ul
-  %li
-    %h4
-      = link_to 'Edit', edit_company_path(@company)
+.panel
+  = link_to 'Edit Company', edit_company_path(@company), :class => 'button small'
   - if @company.draft?
-    %li
-      %h4= link_to 'Submit for review', company_submit_for_review_path(@company)
+    = link_to 'Submit for review', company_submit_for_review_path(@company), :class => 'button small'
 
-%h5 Status
-#status= @company.status.humanize
+  = render 'shared/property_row', :header => 'Company name', :value => @company.company_name
+  = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
+  = render 'shared/property_row', :header => 'Short Description', :value => @company.short_description
 
-= render 'shared/property_row', :header => 'Company name', :value => @company.company_name
-= render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
-= render 'shared/property_row', :header => 'Short Description', :value => @company.short_description
-
-= render 'shared/property_row', :header => 'Website', :value => @company.company_url
-= render 'shared/property_row', :header => 'Campaign Title', :value => @company.campaign_title
-= render 'shared/property_row', :header => 'Company Highlights', :value => (raw @company.company_highlights)
-= render 'shared/property_row', :header => 'Company Details', :value => (raw @company.company_details)
-= render 'shared/property_row', :header => 'Founded', :value => @company.founded_on_year
-= render 'shared/property_row', :header => 'Structure', :value => @company.ownership_structure
-= render 'shared/property_row', :header => 'Category', :value => @company.category.try(:name)
-= render 'shared/property_row', :header => 'Address', :value => @company.address_1
-= render 'shared/property_row', :header => '', :value => @company.address_2
-= render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
-= render 'shared/property_row', :header => 'Phone', :value => @company.phone
-= render 'shared/property_row', :header => 'faq', :value => (raw @company.faq)
-= render 'shared/youtube', :video_url => @company.video_url
-= render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(w:64, h:64) unless @company.photo.blank?)
-= render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(w:64, h:64) unless @company.photo.blank?)
+  = render 'shared/property_row', :header => 'Website', :value => @company.company_url
+  = render 'shared/property_row', :header => 'Campaign Title', :value => @company.campaign_title
+  = render 'shared/property_row', :header => 'Company Highlights', :value => (raw @company.company_highlights)
+  = render 'shared/property_row', :header => 'Company Details', :value => (raw @company.company_details)
+  = render 'shared/property_row', :header => 'Founded', :value => @company.founded_on_year
+  = render 'shared/property_row', :header => 'Structure', :value => @company.ownership_structure
+  = render 'shared/property_row', :header => 'Category', :value => @company.category.try(:name)
+  = render 'shared/property_row', :header => 'Address', :value => @company.address_1
+  = render 'shared/property_row', :header => '', :value => @company.address_2
+  = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
+  = render 'shared/property_row', :header => 'Phone', :value => @company.phone
+  = render 'shared/property_row', :header => 'faq', :value => (raw @company.faq)
+  = render 'shared/youtube', :video_url => @company.video_url
+  = render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(w:64, h:64) unless @company.photo.blank?)
+  = render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(w:64, h:64) unless @company.photo.blank?)

@@ -82,3 +82,17 @@ ul.nav li {
 .redacted-bold {
   font-family: 'Redacted script bold'
 }
+
+.formtastic ol li {
+  list-style: none;
+  padding-bottom: 1em;
+}
+
+.side-nav li.active a {
+  font-weight: bold;
+  color: black;
+}
+
+fieldset.actions {
+  border: none;
+}

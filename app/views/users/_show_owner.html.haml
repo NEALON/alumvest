@@ -1,7 +1,7 @@
 - if @user.is_owner?
 
   = link_to company_path(@user.owner.company || Company.create(:owner_id => @user.owner.id)) do
-    %button#button Manage your company profile
+    %button#button.small Manage your company profile
 
   = render "shared/property_row", :header => "SSN", :value => @user.owner.ssn
   = render "shared/property_row", :header => "Marital Status", :value => @user.owner.marital_status
