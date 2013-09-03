@@ -54,7 +54,7 @@ railsthemes.com/terms. -->
                     %li
                       = link_to('Login', new_session_path, :class => "button small")
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-          .top-bar
+          -#.top-bar
             %ul.title-area
               %li.name &nbsp;
               %li.toggle-topbar.menu-icon
@@ -62,7 +62,7 @@ railsthemes.com/terms. -->
                   %span Menu
             %section.top-bar-section
               %ul.right.main
-                = render partial: 'layouts/header_navigation', locals: { theme: "meta" }
+                = render partial: 'layouts/header_navigation'
     #content
       .row
         - if content_for? :sidebar_left
@@ -85,18 +85,18 @@ railsthemes.com/terms. -->
   #footer
     .row
       .large-4.small-12.columns
-        %h4 AlumVest
+        -#%h4 AlumVest
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-          %p
+          -#%p
             Learn about super cool stuff.
             %br
             %strong
               Sign up for our newsletter!
-          %form
+          -#%form
             %input{ :type => "text", :placeholder => "Your Email" }
             %input{ :type => "submit", :class => "button secondary small" }
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-        .large-8.small-12.columns
+        -#.large-8.small-12.columns
           %ul.inline-list.main
             = render 'layouts/footer_navigation'
           %hr
