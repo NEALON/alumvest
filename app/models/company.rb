@@ -66,4 +66,8 @@ class Company < ActiveRecord::Base
   def photo_for_card_display
     photo(:w => 300, :h => 150, :fit => "crop").sub(/https:/, "http:")
   end
+
+  def banner_for_campaign_home_display
+    banner_photo(:h => 400, :w => 1500, :fit => "crop").sub(/https:/, "http:")
+  end
 end
