@@ -1,199 +1,32 @@
 -if @user.nil?
   %h2 User not found
 -else
-  %h2
+  - content_for :breadcrumbs do
+    %ul.breadcrumbs
+      %li= link_to('Home', '/')
+      %li.unavailable= 'Users'
+      %li.current= link_to(@user.full_name, user_path(@user))
+
+  %h3
     = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
-    = @user.first_name
-    = @user.last_name
+    = @user.full_name
 
   - if current_user && current_user == @user
-    = link_to "[edit]", edit_user_path(current_user)
+    %p= link_to "[edit]", edit_user_path(current_user)
 
-  %h3 Profile Information
-  .row
-    .small-3.columns
-      First Name
-    .small-9.columns
-      =@user.first_name
-  .row
-    .small-3.columns
-      Middle Name
-    .small-9.columns
-      =@user.middle_name
-  .row
-    .small-3.columns
-      Last Name
-    .small-9.columns
-      =@user.last_name
-  .row
-    .small-3.columns
-      Gender
-    .small-9.columns
-      =@user.gender
-  .row
-    .small-3.columns
-      Date of Birth
-    .small-9.columns
-      =@user.date_of_birth
-  .row
-    .small-3.columns
-      Email
-    .small-9.columns
-      =@user.email
-  .row
-    .small-3.columns
-      Facebook
-    .small-9.columns
-      =@user.facebook
-  .row
-    .small-3.columns
-      LinkedIn
-    .small-9.columns
-      =@user.linkedin
-  .row
-    .small-3.columns
-      Mobile Phone
-    .small-9.columns
-      =@user.mobile_phone
-  .row
-    .small-3.columns
-      Home Phone
-    .small-9.columns
-      =@user.home_phone
-  .row
-    .small-3.columns
-      Adress 1
-    .small-9.columns
-      =@user.address_1
-  .row
-    .small-3.columns
-      Address 2
-    .small-9.columns
-      =@user.address_2
-  .row
-    .small-3.columns
-      City
-    .small-9.columns
-      =@user.city
-  .row
-    .small-3.columns
-      State
-    .small-9.columns
-      =@user.state
-  .row
-    .small-3.columns
-      ZipCode
-    .small-9.columns
-      =@user.zipcode
-  .row
-    .small-3.columns
-      Personal Statement
-    .small-9.columns
-      =raw @user.personal_statement
+  #tabs
+    %ul
+      %li= link_to "User", "#tab-user"
+      - if @user.is_investor?
+        %li= link_to "Investor", "#tab-investor"
+      - if @user.is_owner?
+        %li= link_to "Owner", "#tab-owner"
+    #tab-user
+      = render "show_user"
+    #tab-investor
+      = render "show_investor"
+    #tab-owner
+      = render "show_owner"
 
-  - if @user.is_investor?
-    %h3 Investor Information
-    .row
-      .small-3.columns
-        SSN
-      .small-9.columns
-        =@user.investor.ssn
-    .row
-      .small-3.columns
-        Marital Status
-      .small-9.columns
-        =@user.investor.marital_status
-    .row
-      .small-3.columns
-        Financial Info
-      .small-9.columns
-        =raw @user.investor.financial_info
-    .row
-      .small-3.columns
-        Spending Habits
-      .small-9.columns
-        =@user.investor.spending_habits
-    .row
-      .small-3.columns
-        Income
-      .small-9.columns
-        =@user.investor.income
-    .row
-      .small-3.columns
-        Income Type
-      .small-9.columns
-        =@user.investor.income_type
-    .row
-      .small-3.columns
-        Net Worth
-      .small-9.columns
-        =@user.investor.net_worth
-    .row
-      .small-3.columns
-        Investor Representations
-      .small-9.columns
-        =@user.investor.investor_representations
-    .row
-      .small-3.columns
-        Company
-      .small-9.columns
-        =@user.investor.company
-    .row
-      .small-3.columns
-        Job Title
-      .small-9.columns
-        =@user.investor.job_title
-    .row
-      .small-3.columns
-        Experience
-      .small-9.columns
-        =raw @user.investor.experience
-    .row
-      .small-3.columns
-        Expertise
-      .small-9.columns
-        =raw @user.investor.expertise
-    .row
-      .small-3.columns
-        Personal Message
-      .small-9.columns
-        =raw @user.investor.personal_message
-
-  - if @user.is_owner?
-
-    %h3 Owner Information
-
-    = link_to company_path(@user.owner.company || Company.create(:owner_id => @user.owner.id)) do
-      %button#button Manage your company profile
-
-    .row
-      .small-3.columns
-        SSN
-      .small-9.columns
-        =@user.owner.ssn
-    .row
-      .small-3.columns
-        Marital Status
-      .small-9.columns
-        =@user.owner.marital_status
-    .row
-      .small-3.columns
-        Financial Info
-      .small-9.columns
-        =raw @user.owner.financial_info
-    .row
-      .small-3.columns
-        Experience
-      .small-9.columns
-        =raw @user.owner.experience
-    .row
-      .small-3.columns
-        Expertise
-      .small-9.columns
-        =raw @user.owner.expertise
-    .row
-      .small-3.columns
-        Personal Message
-      .small-9.columns
-        =raw @user.owner.personal_message # XXX this might be vularable to XSS attack
-
+:javascript
+  $( "#tabs" ).tabs();
