@@ -62,4 +62,8 @@ class Company < ActiveRecord::Base
       end
     end
   end
+
+  def photo_for_card_display
+    photo(:w => 300, :h => 150, :fit => "crop").sub(/https:/, "http:")
+  end
 end
