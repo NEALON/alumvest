@@ -7,7 +7,6 @@ describe "user sessions", :type => :feature do
     expect(page).to have_content('Please complete your profile.')
     expect(page).to have_link('edit')
     expect(page).to have_link('Sign out')
-    expect(page).to have_content('Owner Information')
   end
 
   it "registers investor" do
@@ -15,7 +14,6 @@ describe "user sessions", :type => :feature do
     expect(page).to have_content('Please complete your profile.')
     expect(page).to have_link('edit')
     expect(page).to have_link('Sign out')
-    expect(page).to have_content('Investor Information')
   end
 
   it "signs out" do

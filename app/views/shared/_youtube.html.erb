@@ -1,4 +1,4 @@
-<% if video_url %>
+<% unless video_url.blank? %>
     <div style="text-align:center">
       <iframe width="500" height="375" src="<%= video_url -%>?feature=oembed" frameborder="0" allowfullscreen>
       </iframe>

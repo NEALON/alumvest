@@ -11,6 +11,7 @@ describe "owner managing entire company worksheet", :type => :feature do
     @company = Company.last
     # create
     screenshot_and_save_page if $do_screenshots
+    click_link 'Owner'
     click_button 'Manage your company profile'
     click_link 'Edit'
     fill_in_company

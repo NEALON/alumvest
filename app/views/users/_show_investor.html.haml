@@ -1,8 +1,8 @@
 - if @user.is_investor?
   = render "shared/property_row", :header => "SSN", :value => @user.investor.ssn
   = render "shared/property_row", :header => "Marital Status", :value => @user.investor.marital_status
-  = render "shared/property_row", :header => "Financial Info", :value => @user.investor.marital_info
-  = render "shared/property_row", :header => "Spending Habits", :value => @user.investor.marital_habits
+  = render "shared/property_row", :header => "Financial Info", :value => @user.investor.financial_info
+  = render "shared/property_row", :header => "Spending Habits", :value => @user.investor.spending_habits
   = render "shared/property_row", :header => "Income", :value => @user.investor.income
   = render "shared/property_row", :header => "Income Type", :value => @user.investor.income_type
   = render "shared/property_row", :header => "Net Worth", :value => @user.investor.net_worth
