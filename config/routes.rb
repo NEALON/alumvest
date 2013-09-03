@@ -16,14 +16,14 @@ Av::Application.routes.draw do
     resources :updates
     get :join_us
 
-    get :submit_for_review
+    get :check_for_completeness
 
     resource :team do
-      get :submit_for_review
+      get :check_for_completeness
     end
 
     resource :investment_term do
-      get :submit_for_review
+      get :check_for_completeness
     end
   end
 

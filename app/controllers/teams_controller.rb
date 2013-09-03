@@ -30,12 +30,12 @@ class TeamsController < ApplicationController
     end
   end  
 
-  def submit_for_review
+  def check_for_completeness
     @team.update_attributes(params[:team])
     if @team.make_ready_for_review
-      redirect_to company_team_path(@team.company), :notice => 'Team info is ready for review.'
+      redirect_to company_team_path(@team.company), :notice => 'Team info is complete.'
     else
-      render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
+      render :new, :error => 'Correct the data to make this complete.' # because we use it for both new and edit
     end
   end
   

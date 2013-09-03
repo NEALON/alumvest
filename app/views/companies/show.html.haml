@@ -2,8 +2,7 @@
 
 .panel
   = link_to 'Edit Company', edit_company_path(@company), :class => 'button small'
-  - if @company.draft?
-    = link_to 'Submit for review', company_submit_for_review_path(@company), :class => 'button small'
+  = link_to 'Check for completeness', company_check_for_completeness_path(@company), :class => 'button small'
 
   = render 'shared/property_row', :header => 'Company name', :value => @company.company_name
   = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)

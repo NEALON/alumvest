@@ -19,17 +19,16 @@ describe "managing company investment terms", :type => :feature do
     expect(page).to have_content('Company investment terms saved.')
   end
   
-  #it "by successfully submitting for review" do
-  #  create_new_investment_term(@company)
-  #  (expect page.find_by_id "status").to have_content 'Draft'
-  #  click_link 'Submit for review'
-  #  (expect page.find_by_id "status").to have_content 'Ready for review'
-  #end
+  it "by successfully submitting for review" do
+    create_new_investment_term @company
+    click_link 'Check for completeness'
+    sleep 10
+    (expect page).to have_content 'is complete'
+  end
 
-  #it "by unsuccessfully submitting for review" do
-  #  create_blank_new_investment_term(@company)
-  #  (expect page.find_by_id "status").to have_content 'Draft'
-  #  click_link 'Submit for review'
-  #  (expect page).to have_content 'errors encountered'
-  #end
+  it "by unsuccessfully submitting for review" do
+    create_blank_new_investment_term @company
+    click_link 'Check for completeness'
+    (expect page).to have_content 'errors'
+  end
 end

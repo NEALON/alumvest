@@ -2,8 +2,7 @@
 
 .panel
   = link_to 'Edit Team', edit_company_team_path(@company), :class => 'button small'
-  - if @team.draft?
-    = link_to 'Submit for review', submit_for_review_company_team_path(@company), :class => 'button small'
+  = link_to 'Check for completeness', check_for_completeness_company_team_path(@company), :class => 'button small'
 
   = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
 

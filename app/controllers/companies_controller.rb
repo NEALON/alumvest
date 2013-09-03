@@ -27,13 +27,13 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def submit_for_review
+  def check_for_completeness
     @company = Company.find(params[:company_id])
     @company.update_attributes(params[:company])
     if @company.make_ready_for_review
-      redirect_to @company, :notice => 'Company info is ready for review.'
+      redirect_to @company, :notice => 'Company info is complete.'
     else
-      render :new, :error => 'Correct the data to make this ready for review.' # because we use it for both new and edit
+      render :new, :error => 'Correct the data to make this complete.' # because we use it for both new and edit
     end
   end
 
