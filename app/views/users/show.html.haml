@@ -4,7 +4,10 @@
   - content_for :breadcrumbs do
     %ul.breadcrumbs
       %li= link_to('Home', '/')
-      %li.unavailable= 'Users'
+      - if current_user.is_owner?
+        %li.unavailable= 'Business owner'
+      - else
+        %li.unavailable= 'Investor'
       %li.current= link_to(@user.full_name, user_path(@user))
 
   %h3

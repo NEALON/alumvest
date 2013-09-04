@@ -45,7 +45,7 @@ railsthemes.com/terms. -->
                 %ul.button-group.right.top
                   - if current_user
                     %li
-                      = link_to current_user.name, user_path(current_user.id), :class => "button small"
+                      = link_to "#{current_user.name}'s Dashboard", user_path(current_user.id), :class => "button small"
                     %li
                       = link_to('Sign out', logout_path, :class => "button small", :method => :delete)
                   - else

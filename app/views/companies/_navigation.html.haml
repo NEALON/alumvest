@@ -1,7 +1,7 @@
 = content_for :breadcrumbs do
   %ul.breadcrumbs
     %li= link_to('Home', '/')
-    %li.unavailable= 'Users'
+    %li.unavailable= 'Business owner'
     %li= link_to(company.owner.user.full_name, user_path(company.owner.user))
     %li.current= link_to((company.company_name || 'New company'), company_path(company))
 
