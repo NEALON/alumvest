@@ -3,12 +3,16 @@ module Features
     def create_new_company
       visit new_company_path
       fill_in_company
-      Company.last
     end
 
     def create_blank_new_company
       visit new_company_path
       click_button 'Save changes'
+    end
+
+    def edit_company(company)
+      visit edit_company_path(company)
+      fill_in_company
     end
 
     def create_new_investment_term(company)

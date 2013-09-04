@@ -8,22 +8,29 @@ describe "submitting a company in aggregate for review", :type => :feature do
   before :each do
     @category = FactoryGirl.create(:category)
     sign_up :owner
+    @company = @owner.company
   end
 
   it "by successfully submitting it" do
-    company = create_new_company
-    screenshot_and_open_image
-    create_new_team company
-    raise company.inspect
-    screenshot_and_open_image
+    edit_company @company
+    click_link "Check for completeness"
+    (expect page).to have_content 'is complete'
 
-    # create_new_investment_term company
-    # click_button 'Submit for review'
-    sleep 10
-    # (expect page).to have_content 'is complete'
+    create_new_team @company
+    click_link "Check for completeness"
+    (expect page).to have_content 'is complete'
+
+    create_new_investment_term @company
+    click_link "Check for completeness"
+    (expect page).to have_content 'are complete'
+
+    click_link 'Submit for review'
+    (expect page).to have_content 'Your company is now submitted for review'
   end
 
   it "by unsuccessfully submitting it" do
-    pending
+    #visit company_path(@company)
+    #click_link 'Submit for review'
+    #screenshot_and_open_image
   end
 end

@@ -4,7 +4,7 @@ describe "managing company investment terms", :type => :feature do
 
   before :each do
     sign_up :owner
-    @company = Company.last
+    @company = @owner.company
   end
 
   it "by creating one" do
@@ -23,7 +23,7 @@ describe "managing company investment terms", :type => :feature do
     create_new_investment_term @company
     click_link 'Check for completeness'
     sleep 10
-    (expect page).to have_content 'is complete'
+    (expect page).to have_content 'are complete'
   end
 
   it "by unsuccessfully submitting for review" do

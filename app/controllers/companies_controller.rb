@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    @company.update_attributes(params[:company])
+    @company.update_attributes(add_images_if_test!(params[:company]))
     if @company.valid?
       redirect_to @company, :notice => 'Company saved.'
     else
@@ -33,16 +33,16 @@ class CompaniesController < ApplicationController
     if @company.make_ready_for_review
       redirect_to @company, :notice => 'Company info is complete.'
     else
-      render :new, :error => 'Correct the data to make this complete.' # because we use it for both new and edit
+      render :new, :error => 'Correct the data to make this complete.'
     end
   end
 
   def submit_for_review
     company = Company.find(params[:company_id])
-    if company.make_ready_for_review
-      redirect_to @company, :notice => 'Congratulations! Your company is now submitted for review.'
+    if company.submit_for_review
+      redirect_to company, :notice => 'Congratulations! Your company is now submitted for review.'
     else
-      redirect_to @company, :error => 'Fix some stuff...'
+      redirect_to company, :error => company.invalid_items.join(', ')
     end
   end
 

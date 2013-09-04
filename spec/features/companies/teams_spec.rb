@@ -6,7 +6,7 @@ describe "managing team", :type => :feature do
 
   before :each do
     sign_up :owner
-    @company = Company.last
+    @company = @owner.company
   end
 
   it "by creating one" do

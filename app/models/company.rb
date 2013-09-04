@@ -24,6 +24,8 @@ class Company < ActiveRecord::Base
                   :owner_id,
                   :owner
 
+  attr_reader :invalid_items
+
   has_filepicker_image :logo, :styles => {:medium => [300, 300], :thumb => [100, 100]}
   has_filepicker_image :photo
   has_filepicker_image :banner_photo
@@ -64,22 +66,25 @@ class Company < ActiveRecord::Base
   end
 
   state_machine :aggregate_status, :initial => :new do # status for all company sections; maybe should be its own 'thing'
-    event :submitted_for_review do
-      transition :new => :ready_for_admin_review, :guard => :all_valid?
+    event :submit_for_review do
+      transition :new => :submitted_for_admin_review, :if => :all_valid?
     end
 
-    state :ready_for_admin_review
+    state :submitted_for_admin_review
+  end
 
-    def all_valid?
-      valid? && team.valid? && investment_term.valid?
-    end
+  def all_valid?
+    @invalid_items = []
+    @invalid_items << 'Company' unless self.valid?
+    @invalid_items << 'Team' unless team.valid?
+    @invalid_items << 'Investment Terms' unless investment_term.valid?
+    @invalid_items.blank?
   end
 
   # scopes
 
   def self.active
-    # where(:status => "active")
-    all
+    where(:status => "active")
   end
 
   # image display helpers
