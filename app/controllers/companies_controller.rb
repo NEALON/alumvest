@@ -37,6 +37,15 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def submit_for_review
+    company = Company.find(params[:company_id])
+    if company.make_ready_for_review
+      redirect_to @company, :notice => 'Congratulations! Your company is now submitted for review.'
+    else
+      redirect_to @company, :error => 'Fix some stuff...'
+    end
+  end
+
   def show
     @company = Company.find(params[:id])
   end

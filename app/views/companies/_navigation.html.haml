@@ -9,6 +9,13 @@
   %h4
     = company.company_name || 'New company'
 
+  %p
+    You can fill in whatever information you have for each section, not including Updates, and save your work. When you are ready, push the "Check for completeness" button for each section, to see what mandatory information you may be missing.
+  %p
+    When you have completed the Company, Team, and Investment Terms sections, and you are ready to submit your company for review by our site administators, click the button below. Your company information will not be editable while it is under review.
+  %p
+    = link_to 'Submit for review', company_submit_for_review_path(company), :method => :post, :class => 'button small'
+  %hr
 
 = content_for :sidebar_left do
   %ul.large-12.small-12.side-nav

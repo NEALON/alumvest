@@ -3,6 +3,7 @@ module Features
     def create_new_company
       visit new_company_path
       fill_in_company
+      Company.last
     end
 
     def create_blank_new_company
@@ -13,6 +14,7 @@ module Features
     def create_new_investment_term(company)
       visit new_company_investment_term_path company
       fill_in_investment_term company
+      InvestmentTerm.last
     end
 
     def create_blank_new_investment_term(company)
@@ -23,6 +25,7 @@ module Features
     def create_new_team(company)
       visit new_company_team_path company
       fill_in_team company
+      Team.last
     end
 
     def create_blank_new_team(company)
@@ -33,6 +36,7 @@ module Features
     def create_new_update(company)
       visit new_company_update_path company
       fill_in_update company
+      Update.last
     end
 
     def create_blank_new_update(company)

@@ -46,7 +46,6 @@ describe "managing company basics", :type => :feature do
   it "by successfully submitting for review" do
     create_new_company
     click_link 'Check for completeness'
-    sleep 10
     (expect page).to have_content 'is complete'
   end
 
@@ -77,6 +76,5 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content strip_tags company.company_highlights
 
     click_link 'Team'
-    screenshot_and_open_image
   end
 end

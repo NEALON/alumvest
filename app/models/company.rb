@@ -63,10 +63,23 @@ class Company < ActiveRecord::Base
     end
   end
 
+  state_machine :aggregate_status, :initial => :new do # status for all company sections; maybe should be its own 'thing'
+    event :submitted_for_review do
+      transition :new => :ready_for_admin_review, :guard => :all_valid?
+    end
+
+    state :ready_for_admin_review
+
+    def all_valid?
+      valid? && team.valid? && investment_term.valid?
+    end
+  end
+
   # scopes
 
   def self.active
-    where(:status => "active")
+    # where(:status => "active")
+    all
   end
 
   # image display helpers

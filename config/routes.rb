@@ -14,6 +14,8 @@ Av::Application.routes.draw do
 
   resources :companies do
     resources :updates
+    post :submit_for_review
+
     get :join_us
 
     get :check_for_completeness
