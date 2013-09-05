@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    #@companies = Company.active.sample(3)
+    @reviewable_campaigns = Campaign.reviewable.sample(3)
   end
 end

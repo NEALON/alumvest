@@ -6,12 +6,13 @@ include ActionView::Helpers::DateHelper
 describe "submitting a campaign for review", :type => :feature do
 
   before :each do
+    $do_screenshots = true
     @category = FactoryGirl.create(:category)
     sign_up :owner
     @campaign = @owner.campaign
   end
 
-  it "by successfully submitting it" do
+  it "successfully" do
     create_new_company @campaign
     click_link "Check for completeness"
     (expect page).to have_content 'is complete'
@@ -26,6 +27,29 @@ describe "submitting a campaign for review", :type => :feature do
 
     click_link 'Submit for review'
     (expect page).to have_content 'Your campaign is now submitted for review'
+
+    # now, see it on the home page
+    visit "/"
+    screenshot_and_save_page if $do_screenshots
+    click_link @campaign.company.campaign_title
+    sleep 2
+    screenshot_and_save_page if $do_screenshots
+
+    click_link 'Team'
+    sleep 2
+    screenshot_and_save_page if $do_screenshots
+
+    click_link 'Investment Terms'
+    sleep 2
+    screenshot_and_save_page if $do_screenshots
+
+    #click_link 'Updates'
+    #sleep 2
+    #screenshot_and_save_page if $do_screenshots
+    #
+    click_link 'Join Us'
+    sleep 3
+    screenshot_and_save_page if $do_screenshots
   end
 
   it "by unsuccessfully submitting it" do

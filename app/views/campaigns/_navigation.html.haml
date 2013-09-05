@@ -3,8 +3,8 @@
     .top-bar
       %section.top-bar-section
         %ul.left.main
-          %li= link_to 'Company', campaign_path(@company)
-          %li= link_to 'Team', campaign_team_path(@company, @team)
-          %li= link_to 'Investment Terms', campaign_investment_term_path(@company, @investment_term)
-          %li= link_to 'Updates', campaign_company_updates_path(@company)
+          %li= link_to 'Company', display_campaign_company_path(@campaign)
+          %li= link_to 'Team', display_campaign_team_path(@campaign)
+          %li= link_to 'Investment Terms', display_campaign_investment_term_path(@campaign)
+          %li= link_to 'Updates', campaign_company_updates_path(@campaign)
           %li= link_to 'Join Us', campaign_join_us_path(@company)

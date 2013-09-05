@@ -56,9 +56,9 @@ class CompaniesController < ApplicationController
 
   def add_images_if_test!(params)
     if Rails.env.test?
-      params[:logo_url] = 'http://placehold.it/30x30'
-      params[:photo_url] = 'http://placehold.it/30x30'
-      params[:banner_photo_url] = 'http://placehold.it/30x30'
+      params[:logo_url] = 'http://placehold.it/100x100'
+      params[:photo_url] = 'http://placehold.it/300x150'
+      params[:banner_photo_url] = 'http://placehold.it/1500x400'
 
       params
     else

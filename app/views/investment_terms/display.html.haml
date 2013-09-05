@@ -1,10 +1,9 @@
-= render 'heading'
-= render 'navigation'
+= render 'campaigns/heading'
+= render 'campaigns/navigation'
 %h3 Investment Terms
 %p
   These documents will brief you on the company and its investment opportunity.
 %p
-  - @investment_term = @company.investment_term
   = render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
   = render 'shared/property_row', :header => 'Campaign Length (days)', :value => @investment_term.campaign_length
   = render 'shared/property_row', :header => 'Convertible Note or Equity', :value => @investment_term.equity_type

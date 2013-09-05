@@ -40,13 +40,15 @@ class InvestmentTermsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
+
+  def display; end
 
   private
 
   def load_investment_term
     @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
     @investment_term = @campaign.investment_term
   end
 

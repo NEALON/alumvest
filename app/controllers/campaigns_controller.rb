@@ -1,9 +1,6 @@
 class CampaignsController < ApplicationController
-  def show
-    @campaign = Campaign.find(params[:id])
-    @company = @campaign.company
-    @user = @campaign.owner.user
-  end
+
+  before_filter :load_campaign, :except => :submit_for_review
 
   def submit_for_review
     @campaign = Campaign.find(params[:campaign_id])
@@ -14,23 +11,15 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def team
-    @campaign = Campaign.find(params[:campaign_id])
-    @user = @campaign.owner.user
-  end
-
-  def investment_term
-    @campaign = Campaign.find(params[:campaign_id])
-    @user = @campaign.owner.user
-  end
-
-  def updates
-    @campaign = Campaign.find(params[:campaign_id])
-    @user = @campaign.owner.user
-  end
-
   def join_us
+    load_campaign
+  end
+
+  private
+
+  def load_campaign
     @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
     @user = @campaign.owner.user
   end
 end

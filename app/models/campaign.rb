@@ -28,4 +28,8 @@ class Campaign < ActiveRecord::Base
   def self.active
     where(:status => "active")
   end
+
+  def self.reviewable
+    where(:status => "submitted_for_review")
+  end
 end

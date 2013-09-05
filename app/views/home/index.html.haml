@@ -7,18 +7,18 @@
     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842'></div>
   %hr
 
--#.row.roomy.homepage-featured-companies
-  - @companies.each do |c|
+.row.roomy.homepage-featured-campaigns
+  - @reviewable_campaigns.each do |c|
     .large-4.columns.panel
-      = link_to campaign_path(c) do
-        = image_tag c.photo_for_card_display
+      = link_to display_campaign_company_path(c) do
+        = image_tag c.company.photo_for_card_display
 
       .company-title
         %h4
-          = c.campaign_title
+          = link_to c.company.campaign_title, display_campaign_company_path(c)
       .company-short-description
         %p
-          = c.short_description
+          = c.company.short_description
       .company-goal
         %p
           Goal:

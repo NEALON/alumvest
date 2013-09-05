@@ -17,6 +17,7 @@ module Features
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_user_advanced_info(
@@ -42,6 +43,7 @@ module Features
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_user_owner_profile
@@ -55,6 +57,7 @@ module Features
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_user_investor_profile
@@ -68,6 +71,7 @@ module Features
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_company(campaign)
@@ -96,6 +100,7 @@ module Features
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
+      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_investment_term(campaign)
@@ -119,6 +124,7 @@ module Features
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
+      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_team(campaign)
@@ -132,6 +138,7 @@ module Features
 
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
+      screenshot_and_save_page if $do_screenshots
     end
     
     def fill_in_update(company)
@@ -144,6 +151,7 @@ module Features
 
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'
+      screenshot_and_save_page if $do_screenshots
     end
   end
 end

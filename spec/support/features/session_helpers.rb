@@ -28,6 +28,7 @@ module Features
 
       screenshot_and_save_page if $do_screenshots
       click_button 'Register'
+      screenshot_and_save_page if $do_screenshots
       @user, @owner, @investor = User.last, User.last.owner, User.last.investor
     end
 

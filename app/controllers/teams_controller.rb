@@ -39,13 +39,15 @@ class TeamsController < ApplicationController
     end
   end
   
-  def show
-  end
+  def show; end
+
+  def display; end
 
   private
 
   def load_team
     @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
     @team = @campaign.team
   end
 end
