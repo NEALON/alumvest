@@ -1,0 +1,38 @@
+= content_for :breadcrumbs do
+  %ul.breadcrumbs
+    %li= link_to('Home', '/')
+    %li.unavailable= 'Business owner'
+    %li= link_to(campaign.owner.user.full_name, user_path(campaign.owner.user))
+    %li.current= link_to((campaign.company.try(:company_name) || 'New company'), campaign_path(campaign))
+
+= content_for :header_1 do
+  %h4
+    = campaign.company.try(:company_name) || 'New company'
+
+  %p
+    You can fill in whatever information you have for each section, not including Updates, and save your work. When you are ready, push the "Check for completeness" button for each section, to see what mandatory information you may be missing.
+  %p
+    When you have completed the Company, Team, and Investment Terms sections, and you are ready to submit your company for review by our site administrators, click the button below. Your company information will not be editable while it is under review.
+  %p
+    = link_to 'Submit for review', campaign_submit_for_review_path(campaign), :method => :post, :class => 'button small'
+  %hr
+
+= content_for :sidebar_left do
+  %ul.large-12.small-12.side-nav
+    %li{:class => "#{'active' if active == :demographic}"}
+      - unless entity = campaign.company
+        %h4= link_to('Company', new_campaign_company_path(campaign))
+      - else
+        %h4= link_to('Company', campaign_company_path(campaign))
+    %li{:class => "#{'active' if active == :people}"}
+      - unless entity = campaign.team
+        %h4= link_to('Team', new_campaign_team_path(campaign))
+      - else
+        %h4= link_to('Team', campaign_team_path(campaign))
+    %li{:class => "#{'active' if active == :funding}"}
+      - unless entity = campaign.investment_term
+        %h4= link_to('Investment Terms', new_campaign_investment_term_path(campaign))
+      - else
+        %h4= link_to('Investment Terms', campaign_investment_term_path(campaign))
+    %li{:class => "#{'active' if active == :updates}"}
+      %h4= link_to('Updates', campaign_company_updates_path(campaign))

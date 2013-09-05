@@ -1,7 +1,7 @@
 module Features
   module FormHelpers
     def fill_in_ckeditor(item, value)
-      sleep 1
+      sleep 2
       page.driver.browser.execute_script("CKEDITOR.instances['#{item}'].setData('#{value}');")
     end
 
@@ -70,8 +70,8 @@ module Features
       click_button 'Save'
     end
 
-    def fill_in_company
-      company = FactoryGirl.build(:company)
+    def fill_in_company(campaign)
+      company = FactoryGirl.build(:company, :campaign => campaign)
       'company'.tap do |form|
         fill_in "#{form}_company_name", :with => company.company_name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
@@ -98,8 +98,8 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_investment_term(company)
-      investment_term = FactoryGirl.build(:investment_term, :company => company)
+    def fill_in_investment_term(campaign)
+      investment_term = FactoryGirl.build(:investment_term, :campaign => campaign)
       'investment_term'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
         select '90', :from => "#{form}_campaign_length"
@@ -121,8 +121,8 @@ module Features
       click_button 'Save changes'
     end
 
-    def fill_in_team(company)
-      team = create_team_via_factories(company)
+    def fill_in_team(campaign)
+      team = create_team_via_factories(campaign)
 
       fill_in_ckeditor "team_team_highlights", team.team_highlights
 

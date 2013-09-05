@@ -1,53 +1,55 @@
 class CompaniesController < ApplicationController
   def new
-    @company = Company.new(:owner => current_user.owner)
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = Company.new(:campaign => @campaign)
   end
 
   def create
+    @campaign = Campaign.find(params[:campaign_id])
     @company = Company.create(add_images_if_test!(params[:company]))
     if @company.valid?
-      redirect_to @company, :notice => 'Company saved.'
+      redirect_to campaign_company_path(@campaign), :notice => 'Company saved.'
     else
       render :action => :new
     end
   end
 
   def edit
-    @company = Company.find(params[:id])
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
     render :new
   end
 
   def update
-    @company = Company.find(params[:id])
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
     @company.update_attributes(add_images_if_test!(params[:company]))
     if @company.valid?
-      redirect_to @company, :notice => 'Company saved.'
+      redirect_to campaign_company_path(@campaign), :notice => 'Company saved.'
     else
       render :edit
     end
   end
 
   def check_for_completeness
-    @company = Company.find(params[:company_id])
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
     @company.update_attributes(params[:company])
     if @company.make_ready_for_review
-      redirect_to @company, :notice => 'Company info is complete.'
+      redirect_to campaign_company_path(@campaign), :notice => 'Company info is complete.'
     else
       render :new, :error => 'Correct the data to make this complete.'
     end
   end
 
-  def submit_for_review
-    company = Company.find(params[:company_id])
-    if company.submit_for_review
-      redirect_to company, :notice => 'Congratulations! Your company is now submitted for review.'
-    else
-      redirect_to company, :error => company.invalid_items.join(', ')
-    end
+  def show
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
   end
 
-  def show
-    @company = Company.find(params[:id])
+  def display
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
   end
 
   private

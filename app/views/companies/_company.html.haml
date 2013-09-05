@@ -28,11 +28,11 @@
           %div
             %h3 $0
             invested of
-            = "$#{@company.investment_term.fundraising_amount}"
+            = "$#{@company.campaign.investment_term.fundraising_amount}"
             goal
           %br
           %div
-            %h3= @company.investment_term.campaign_length
+            %h3= @company.campaign.investment_term.campaign_length
             days left
           %div
             %br

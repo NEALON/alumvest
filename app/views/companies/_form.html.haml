@@ -1,8 +1,9 @@
-= semantic_form_for([@company], :html => {:class => 'gem'}) do |f|
+= semantic_form_for [@campaign, @company], :url => campaign_company_path(@campaign) do |f|
 
   = render 'shared/errors', :entity => @company
 
   = f.inputs do
+    = f.input :campaign_id, :as => :hidden
     = f.input :company_name
     = f.input :logo_url, :as => :formtastic_filepicker_image
     = f.input :short_description

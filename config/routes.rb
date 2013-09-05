@@ -12,29 +12,24 @@ Av::Application.routes.draw do
   resources :sessions
   resources :identities
 
-  resources :companies do
-    resources :updates
-    post :submit_for_review
-
-    get :join_us
-
-    get :check_for_completeness
-
+  resources :campaigns do
+    resource :company do
+      get :check_for_completeness
+      get :display
+      resources :updates
+    end
     resource :team do
       get :check_for_completeness
+      get :display
     end
-
     resource :investment_term do
       get :check_for_completeness
+      get :display
     end
-  end
-
-  resources :campaigns, :only => :show do
-    get :team
-    get :investment_term
-    get :updates
+    post :submit_for_review
     get :join_us
   end
+
   resources :users
 
   ### Begin RailsThemes basic generated routes ###

@@ -1,9 +1,9 @@
-= semantic_form_for [@company, @team], :url => company_team_path(@company) do |f|
+= semantic_form_for [@company, @team], :url => campaign_team_path(@campaign) do |f|
 
   = render 'shared/errors', :entity => @team
 
   = f.inputs do
-    = f.input :company_id, :as => :hidden
+    = f.input :campaign_id, :as => :hidden
     = f.input :team_highlights, :input_html => { :class => 'ckeditor' }
 
   = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f

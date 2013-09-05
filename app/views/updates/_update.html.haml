@@ -5,5 +5,5 @@
 = render 'shared/youtube', :video_url => update.video_url unless update.video_url.blank?
 
 %span= "Last updated #{time_ago_in_words(update.updated_at)} ago."
-= link_to 'Edit', edit_company_update_path(update.company, update)
-= button_to "Delete", [update.company, update], :method => :delete, :class => :destroy
+= link_to 'Edit', edit_campaign_company_update_path(update.company.campaign, update)
+= button_to "Delete", campaign_company_update_path(@campaign, update), :method => :delete, :class => :destroy

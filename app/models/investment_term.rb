@@ -13,10 +13,10 @@ class InvestmentTerm < ActiveRecord::Base
                   :term_sheet_url,
                   :subscription_docs_attributes,
                   :other_docs_attributes,
-                  :company_id,
-                  :company
+                  :campaign_id,
+                  :campaign
 
-  belongs_to :company
+  belongs_to :campaign
 
   has_many :subscription_docs, :as => :documentable
   accepts_nested_attributes_for :subscription_docs, :reject_if => :all_blank, :allow_destroy => true

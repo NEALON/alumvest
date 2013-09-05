@@ -1,9 +1,9 @@
-= semantic_form_for [@company, @investment_term], :url => company_investment_term_path(@company) do |f|
+= semantic_form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign) do |f|
 
   = render 'shared/errors', :entity => @investment_term
 
   = f.inputs do
-    = f.input :company_id, :as => :hidden
+    = f.input :campaign_id, :as => :hidden
     = f.input :fundraising_amount
     = f.input :campaign_length, :label => 'Campaign length (days)', :as => :select, :collection => ['30', '60,', '90', '120']
     = f.input :equity_type, :label => 'Convertible Note or Equity', :as => :select, :collection => ['Convertible Note', 'Equity']

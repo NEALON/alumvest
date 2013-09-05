@@ -3,8 +3,8 @@ class InvestmentTermsController < ApplicationController
   before_filter :load_investment_term, :except => [:new, :create]
 
   def new
-    @company = Company.find(params[:company_id])
-    @investment_term = InvestmentTerm.new(:company => @company)
+    @campaign = Campaign.find(params[:campaign_id])
+    @investment_term = InvestmentTerm.new(:campaign => @campaign)
     @investment_term.subscription_docs.build
     @investment_term.other_docs.build
   end
@@ -12,7 +12,7 @@ class InvestmentTermsController < ApplicationController
   def create
     @investment_term = InvestmentTerm.create(add_images_if_test!(params[:investment_term]))
     if @investment_term.valid?
-      redirect_to company_investment_term_path(@investment_term.company), :notice => 'Company investment terms saved.'
+      redirect_to campaign_investment_term_path(@investment_term.campaign), :notice => 'Campaign investment terms saved.'
     else
       render :action => :new
     end
@@ -25,7 +25,7 @@ class InvestmentTermsController < ApplicationController
   def update
     @investment_term.update_attributes(params[:investment_term])
     if @investment_term.valid?
-      redirect_to company_investment_term_path(@investment_term.company), :notice => 'Company investment terms saved.'
+      redirect_to campaign_investment_term_path(@investment_term.campaign), :notice => 'Campaign investment terms saved.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class InvestmentTermsController < ApplicationController
   def check_for_completeness
     @investment_term.update_attributes(params[:investment_term])
     if @investment_term.make_ready_for_review
-      redirect_to company_investment_term_path(@investment_term.company), :notice => 'Company investment terms are complete.'
+      redirect_to campaign_investment_term_path(@investment_term.campaign), :notice => 'Campaign investment terms are complete.'
     else
       render :new, :error => 'Correct the data to make this complete.' # because we use it for both new and edit
     end
@@ -46,8 +46,8 @@ class InvestmentTermsController < ApplicationController
   private
 
   def load_investment_term
-    @company = Company.find(params[:company_id])
-    @investment_term = @company.investment_term
+    @campaign = Campaign.find(params[:campaign_id])
+    @investment_term = @campaign.investment_term
   end
 
   def add_images_if_test!(params)

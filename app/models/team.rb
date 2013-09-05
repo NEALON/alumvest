@@ -1,12 +1,12 @@
 class Team < ActiveRecord::Base
   attr_accessible :team_members_attributes,
                   :team_highlights,
-                  :company_id,
-                  :company
+                  :campaign_id,
+                  :campaign
 
   has_many :team_members, :as => :populatable
 
-  belongs_to :company
+  belongs_to :campaign
 
   accepts_nested_attributes_for :team_members, :reject_if => :all_blank, :allow_destroy => true
 

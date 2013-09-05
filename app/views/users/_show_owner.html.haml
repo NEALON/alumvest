@@ -1,7 +1,9 @@
 - if @user.is_owner?
 
-  = link_to company_path(@user.owner.company || Company.create(:owner_id => @user.owner.id)) do
-    %button#button.small Manage your company profile
+  - campaign = @user.owner.campaign || Campaign.create(:owner => @user.owner)
+  - link = campaign.company ? campaign_company_path(campaign) : new_campaign_company_path(campaign)
+  = link_to link do
+    %button#button.small Manage your campaign
 
   = render "shared/property_row", :header => "SSN", :value => @user.owner.ssn
   = render "shared/property_row", :header => "Marital Status", :value => @user.owner.marital_status

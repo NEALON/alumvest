@@ -1,4 +1,4 @@
-= semantic_form_for [@company, @update] do |f|
+= semantic_form_for [@campaign, @update], :url => campaign_company_updates_path(@campaign, @update) do |f|
   = render 'shared/errors', :entity => @update
   = f.inputs do
     = f.input :company_id, :as => :hidden

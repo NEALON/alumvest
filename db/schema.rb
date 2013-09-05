@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903233240) do
+ActiveRecord::Schema.define(:version => 20130904191428) do
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "status"
+    t.integer  "owner_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -33,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130903233240) do
     t.text     "company_highlights"
     t.integer  "category_id"
     t.integer  "industry_id"
-    t.integer  "owner_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "status"
@@ -46,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130903233240) do
     t.string   "short_description"
     t.string   "banner_photo_url"
     t.string   "aggregate_status"
+    t.integer  "campaign_id"
   end
 
   create_table "documents", :force => true do |t|
@@ -73,7 +80,6 @@ ActiveRecord::Schema.define(:version => 20130903233240) do
     t.string   "business_plan_url"
     t.string   "financial_statement_url"
     t.string   "term_sheet_url"
-    t.integer  "company_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
     t.string   "status"
@@ -85,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20130903233240) do
     t.string   "fees_paid_by"
     t.text     "elevator_pitch"
     t.text     "investment_details"
+    t.integer  "campaign_id"
   end
 
   create_table "investors", :force => true do |t|
@@ -154,11 +161,11 @@ ActiveRecord::Schema.define(:version => 20130903233240) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "teams", :force => true do |t|
-    t.integer  "company_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "status"
     t.text     "team_highlights"
+    t.integer  "campaign_id"
   end
 
   create_table "updates", :force => true do |t|

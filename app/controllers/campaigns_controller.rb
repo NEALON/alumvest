@@ -1,26 +1,36 @@
 class CampaignsController < ApplicationController
   def show
-    @company = Company.find(params[:id])
-    @user = @company.owner.user
+    @campaign = Campaign.find(params[:id])
+    @company = @campaign.company
+    @user = @campaign.owner.user
+  end
+
+  def submit_for_review
+    @campaign = Campaign.find(params[:campaign_id])
+    if @campaign.submit_for_review
+      redirect_to campaign_company_path(@campaign), :notice => 'Congratulations! Your campaign is now submitted for review.'
+    else
+      redirect_to campaign_company_path(@campaign), :error => company.invalid_items.join(', ')
+    end
   end
 
   def team
-    @company = Company.find(params[:campaign_id])
-    @user = @company.owner.user
+    @campaign = Campaign.find(params[:campaign_id])
+    @user = @campaign.owner.user
   end
 
   def investment_term
-    @company = Company.find(params[:campaign_id])
-    @user = @company.owner.user
+    @campaign = Campaign.find(params[:campaign_id])
+    @user = @campaign.owner.user
   end
 
   def updates
-    @company = Company.find(params[:campaign_id])
-    @user = @company.owner.user
+    @campaign = Campaign.find(params[:campaign_id])
+    @user = @campaign.owner.user
   end
 
   def join_us
-    @company = Company.find(params[:campaign_id])
-    @user = @company.owner.user
+    @campaign = Campaign.find(params[:campaign_id])
+    @user = @campaign.owner.user
   end
 end

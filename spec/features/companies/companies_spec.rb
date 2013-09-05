@@ -8,11 +8,13 @@ describe "managing company basics", :type => :feature do
   before :each do
     @category = FactoryGirl.create(:category)
     sign_up :owner
-    @company = @owner.company
+    @campaign = @owner.campaign
   end
 
   it "by editing one" do
-    edit_company @company
+    create_new_company @campaign
+    edit_company @campaign
+    @company = @campaign.company
     
     expect(page).to have_content('Company saved.')
     expect(page).to have_content @company.company_name
@@ -23,7 +25,7 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content strip_tags @company.company_details
     expect(page).to have_content @company.founded_on_year
     expect(page).to have_content @company.ownership_structure
-    expect(page).to have_content(@company.category.name)
+    # expect(page).to have_content(@company.category.name)
     expect(page).to have_content @company.address_1
     expect(page).to have_content @company.address_2
     expect(page).to have_content @company.city
@@ -38,23 +40,25 @@ describe "managing company basics", :type => :feature do
   end
 
   it "by successfully submitting for review" do
-    create_new_company
+    create_new_company @campaign
     click_link 'Check for completeness'
     (expect page).to have_content 'is complete'
   end
 
   it "by unsuccessfully submitting for review" do
-    create_blank_new_company
+    create_blank_new_company @campaign
     click_link 'Check for completeness'
     (expect page).to have_content 'errors'
   end
 
   it "by showing a company as a campaign" do
-    edit_company @company
-    investment_term = FactoryGirl.create(:investment_term, :company => @company)
-    team = FactoryGirl.create(:team, :company => @company)
+    create_new_company @campaign
+    @company = @campaign.company
+    investment_term = FactoryGirl.create(:investment_term, :campaign => @campaign)
+    team = FactoryGirl.create(:team, :campaign => @campaign)
 
-    visit campaign_path(@company)
+    visit display_campaign_company_path(@campaign)
+
     # expect(page).to have_css("img[src$='#{@company.banner_photo_url}']")
     expect(page).to have_content @company.company_name
     expect(page).to have_content @company.short_description
