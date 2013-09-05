@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904191428) do
+ActiveRecord::Schema.define(:version => 20130905015659) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "status"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20130904191428) do
     t.string   "avatar_url"
     t.string   "video_url"
     t.string   "title"
+    t.text     "introduction"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

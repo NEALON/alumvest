@@ -6,6 +6,7 @@ def populate_person
   facebook "#{f}_#{l}"
   twitter "@#{f}_#{l}"
   linkedin "#{f}_#{l}"
+  introduction "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
   video_url 'http://www.youtube.com/embed/OQSNhk5ICTI'
 end
 

@@ -135,6 +135,7 @@ module Features
       ['first_name', 'last_name', 'title', 'facebook', 'twitter', 'linkedin', 'video_url'].each do |field|
         fill_in "team_team_members_attributes_0_#{field}", :with => team.team_members.first.send(field)
       end
+      fill_in_ckeditor "team_team_members_attributes_0_introduction", team.team_members.first.introduction
 
       screenshot_and_save_page if $do_screenshots
       click_button 'Save changes'

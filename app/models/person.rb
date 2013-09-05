@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :title, :facebook, :twitter, :linkedin, :avatar_url, :video_url
+  attr_accessible :first_name, :last_name, :title, :facebook, :twitter, :linkedin, :avatar_url, :video_url, :introduction
 
   validates_presence_of [:first_name, :last_name]
 
