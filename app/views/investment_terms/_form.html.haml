@@ -13,9 +13,9 @@
     = f.input :investment_details, :input_html => { :class => 'ckeditor' }
 
     = f.input :planned_fund_usage, :label => 'Planned use for funds', :input_html => { :class => 'ckeditor' }
-    = f.input :business_plan_url, :as => :formtastic_filepicker_image
-    = f.input :financial_statement_url, :as => :formtastic_filepicker_image
-    = f.input :term_sheet_url, :as => :formtastic_filepicker_image
+    = f.input :business_plan_url, :label => 'Business plan', :as => :formtastic_filepicker_image
+    = f.input :financial_statement_url, :label => 'Financial statement', :as => :formtastic_filepicker_image
+    = f.input :term_sheet_url, :label => 'Term sheet', :as => :formtastic_filepicker_image
 
     = render 'documents', :title => 'Subscription documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
     = render 'documents', :title => 'Others documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f

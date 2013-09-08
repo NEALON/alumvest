@@ -6,7 +6,6 @@ include ActionView::Helpers::DateHelper
 describe "submitting a campaign for review", :type => :feature do
 
   before :each do
-    $do_screenshots = true
     @category = FactoryGirl.create(:category)
     sign_up :owner
     @campaign = @owner.campaign
