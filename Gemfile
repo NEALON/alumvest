@@ -62,3 +62,4 @@ gem 'zurb-foundation', '~> 4.0', :group => 'assets' # RailsThemes
 gem 'rails_admin', :git => 'git://github.com/mikepence/rails_admin.git', :ref => 'baa51e36dd97c9cde0fddf350b22e4feff3a4e6d'
 gem 'paper_trail'
 gem 'faker'
+gem 'exception_notification', :group => :production

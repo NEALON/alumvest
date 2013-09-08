@@ -68,3 +68,8 @@ Av::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'alumvest-e.herokuapp.com' }
 end
+
+Av::Application.config.middleware.use ExceptionNotifier,
+  :email_prefix => "[alumvest exception] ",
+  :sender_address => %{"notifier" <notifier@alumvest.com>},
+  :exception_recipients => %w{mike.pence@gmail.com}
