@@ -1,17 +1,3 @@
 = render 'campaigns/heading'
 = render 'campaigns/navigation'
-%h3 Investment Terms
-%p
-  These documents will brief you on the company and its investment opportunity.
-%p
-  = render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
-  = render 'shared/property_row', :header => 'Campaign Length (days)', :value => @investment_term.campaign_length
-  = render 'shared/property_row', :header => 'Convertible Note or Equity', :value => @investment_term.equity_type
-  = render 'shared/property_row', :header => 'Funds Retained', :value => @investment_term.funds_retained
-  = render 'shared/property_row', :header => 'Fees Paid By', :value => @investment_term.fees_paid_by
-  = render 'shared/property_row', :header => 'Elevator Pitch', :value => (raw @investment_term.elevator_pitch)
-
-  = render 'shared/property_row', :header => 'Planned use for funds', :value => (raw @investment_term.planned_fund_usage)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url)
-  = render 'shared/property_row', :header => '', :value => (link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url)
+= render "investment_terms"

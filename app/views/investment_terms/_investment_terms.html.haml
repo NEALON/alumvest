@@ -1,0 +1,76 @@
+.row
+  .large-12.small-12.columns
+    .row.roomy
+      .large-8.columns
+        %table{:width => "100%"}
+          %tr
+            %td
+              Fundraising Amount
+            %td
+              = number_to_currency @investment_term.fundraising_amount
+          %tr
+            %td
+              Campaign Length (days)
+            %td
+              = @investment_term.campaign_length
+          %tr
+            %td
+              Convertible Note or Equity
+            %td
+              = @investment_term.equity_type
+          %tr
+            %td
+              Funds Retained
+            %td
+              = @investment_term.funds_retained
+          %tr
+            %td
+              Fees Paid By
+            %td
+              = @investment_term.fees_paid_by
+
+        %p= raw @investment_term.elevator_pitch
+        %p= raw @investment_term.investment_details
+
+        %h4
+          Business documents
+        %table{:width => "100%"}
+          %tr
+            %td
+              Business plan
+            %td
+              = link_to 'Download', @investment_term.business_plan_url
+          %tr
+            %td
+              Financial statement
+            %td
+              = link_to 'Download', @investment_term.financial_statement_url
+          %tr
+            %td
+              Term sheet
+            %td
+              = link_to 'Download', @investment_term.term_sheet_url
+
+        - unless @investment_term.subscription_docs.blank?
+          %h4
+            Subscription documents
+          %table{:width => "100%"}
+            - @investment_term.subscription_docs.each do |d|
+              %tr
+                %td= d.name
+                %td= link_to 'Download', d.file_url
+
+        - unless @investment_term.other_docs.blank?
+          %h4
+            Other documents
+          %table{:width => "100%"}
+            - @investment_term.subscription_docs.each do |d|
+              %tr
+                %td= d.name
+                %td= link_to 'Download', d.file_url
+
+      .large-4.columns
+        .panel
+          %div
+            %h3 Planned fund usage
+            = raw @investment_term.planned_fund_usage
