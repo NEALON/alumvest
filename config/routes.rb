@@ -17,6 +17,7 @@ Av::Application.routes.draw do
       get :check_for_completeness
       get :display
       resources :updates
+      resources :display_updates
     end
     resource :team do
       get :check_for_completeness

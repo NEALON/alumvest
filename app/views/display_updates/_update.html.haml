@@ -1,0 +1,11 @@
+.row
+  .large-12.small-12.columns
+    - collection.each do |update|
+      %h4= update.subject
+      %p= "Last updated #{time_ago_in_words(update.updated_at)} ago"
+      %p= raw update.details
+      %p= "Visible to: #{update.visibility}"
+      .row
+        .large-9.columns
+          - if update.video_url
+            %p= render 'shared/youtube', :video_url => update.video_url
