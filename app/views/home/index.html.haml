@@ -20,8 +20,23 @@
         %p
           = c.company.short_description
       .company-goal
-        %p
-          Goal:
-          = number_to_currency(c.investment_term.fundraising_amount)
+
+        %table{:width => "100%", :style => "background-color: #f2f2f2"}
+          %tr
+            %td
+              Raised
+            %td
+              Goal
+            %td
+              Investors
+          %tr
+            %td
+              $0
+            %td
+              = number_to_currency(c.investment_term.fundraising_amount)
+            %td
+              0
+
+
         .progress
           .meter{:style => "width: #{Random.rand(100)}%"}
