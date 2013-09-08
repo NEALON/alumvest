@@ -1,20 +1,41 @@
-- @campaign.team.team_members.each do |member|
-  .row{:style => "margin-bottom: 1em"}
-    .large-12.columns
-      %span{:style => "padding: 10px"}= image_tag member.avatar(w:64, h:64) unless member.avatar.blank?
-      %p= member.full_name
-      %p= member.title
-      &nbsp;
-      - if member.facebook
-        = link_to "http://www.facebook.com/#{member.facebook}" do
-          %i.icon-facebook-sign
-      - if member.twitter
-        = link_to "http://www.twitter.com/#{member.twitter}" do
-          %i.icon-twitter-sign
-      - if member.linkedin
-        = link_to "http://www.linkedin.com/#{member.linkedin}" do
-          %i.icon-linkedin-sign
-      - if member.introduction
-        %p= raw member.introduction
-      - if member.video_url
-        %p= render 'shared/youtube', :video_url => member.video_url
+.row
+  .large-12.small-12.columns
+    .row.roomy
+      .large-8.columns
+
+        %table{:width => '100%'}
+          - @campaign.team.team_members.each do |member|
+            %tr
+              %td
+                = image_tag member.avatar(w:100, h:100) unless member.avatar.blank?
+              %td
+                %table{:width => '100%'}
+                  %tr
+                    %td
+                      %h4= "#{member.full_name} / #{member.title}"
+                    %td
+                      - if member.facebook
+                        = link_to "http://www.facebook.com/#{member.facebook}" do
+                          %i.icon-facebook-sign
+                      - if member.twitter
+                        = link_to "http://www.twitter.com/#{member.twitter}" do
+                          %i.icon-twitter-sign
+                      - if member.linkedin
+                        = link_to "http://www.linkedin.com/#{member.linkedin}" do
+                          %i.icon-linkedin-sign
+
+                  %tr
+                    %td{:colspan => 2}
+                      - if member.introduction
+                        %p= raw member.introduction
+
+            - if member.video_url
+              %tr
+                %td
+                %td= render 'shared/youtube', :video_url => member.video_url
+
+      .large-4.columns
+        .panel
+          %div
+            %h3 Team Highlights
+            = raw @campaign.team.team_highlights
