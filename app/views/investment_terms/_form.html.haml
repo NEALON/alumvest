@@ -5,7 +5,7 @@
   = f.inputs do
     = f.input :campaign_id, :as => :hidden
     = f.input :fundraising_amount
-    = f.input :campaign_length, :label => 'Campaign length (days)', :as => :select, :collection => ['30', '60,', '90', '120']
+    = f.input :campaign_length, :label => 'Campaign length (days)', :as => :select, :collection => ['30', '60', '90', '120']
     = f.input :equity_type, :label => 'Convertible Note or Equity', :as => :select, :collection => ['Convertible Note', 'Equity']
     = f.input :funds_retained, :as => :select, :collection => ['All-or-nothing', 'Any']
     = f.input :fees_paid_by, :as => :select, :collection => ['Investor', 'Owner']

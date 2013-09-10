@@ -9,18 +9,10 @@ class Campaign < ActiveRecord::Base
 
   state_machine :status, :initial => :draft do 
     event :submit_for_review do
-      transition :draft => :submitted_for_review, :if => :all_valid?
+      transition :draft => :submitted_for_review
     end
 
     state :submitted_for_review
-  end
-
-  def all_valid?
-    @invalid_items = []
-    @invalid_items << "Company" unless company.valid?
-    @invalid_items << "Team" unless team.valid?
-    @invalid_items << "Investment Terms" unless investment_term.valid?
-    @invalid_items.blank?
   end
 
   # scopes
@@ -31,5 +23,11 @@ class Campaign < ActiveRecord::Base
 
   def self.reviewable
     where(:status => "submitted_for_review")
+  end
+
+  def can_submit_for_review?
+    (company && company.ready_for_review?) &&
+      (team && team.ready_for_review?) &&
+        (investment_term && investment_term.ready_for_review?)
   end
 end

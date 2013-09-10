@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
   end
   
   def edit
+    @team.team_members.build if @team.team_members.blank?
     render :new
   end
 

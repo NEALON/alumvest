@@ -19,6 +19,9 @@ class InvestmentTermsController < ApplicationController
   end
 
   def edit
+    @investment_term.subscription_docs.build if @investment_term.subscription_docs.blank?
+    @investment_term.other_docs.build if @investment_term.other_docs.blank?
+
     render :new
   end
 
