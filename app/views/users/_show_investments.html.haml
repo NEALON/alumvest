@@ -1,0 +1,19 @@
+- if @user.is_investor? && !@user.investor.investments.blank?
+  %table{:width => "100%"}
+    %thead
+      %tr
+        %th
+          Campaign
+        %th
+          Date
+        %th
+          Amount invested
+
+    - @user.investor.investments.each do |investment|
+      %tr
+        %td
+          = link_to investment.campaign.company.campaign_title, display_campaign_company_path(investment.campaign)
+        %td
+          = "#{time_ago_in_words(investment.created_at)} ago"
+        %td
+          = number_to_currency(investment.amount)

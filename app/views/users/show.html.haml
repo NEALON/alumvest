@@ -24,12 +24,16 @@
       %li= link_to "User", "#tab-user"
       - if @user.is_investor?
         %li= link_to "Investor", "#tab-investor"
+        - unless @user.investor.investments.blank?
+          %li= link_to "Investments", "#tab-investments"
       - if @user.is_owner?
         %li= link_to "Owner", "#tab-owner"
     #tab-user
       = render "show_user"
     #tab-investor
       = render "show_investor"
+    #tab-investments
+      = render "show_investments"
     #tab-owner
       = render "show_owner"
 

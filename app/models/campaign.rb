@@ -6,6 +6,8 @@ class Campaign < ActiveRecord::Base
   has_one :company
   has_one :team
   has_one :investment_term
+  has_many :investments
+  has_many :investors, :through => :investments
 
   state_machine :status, :initial => :draft do 
     event :submit_for_review do
@@ -13,16 +15,17 @@ class Campaign < ActiveRecord::Base
     end
 
     state :submitted_for_review
+    state :live
   end
 
   # scopes
 
-  def self.active
-    where(:status => "active")
-  end
-
   def self.reviewable
     where(:status => "submitted_for_review")
+  end
+
+  def self.live
+    where(:status => "live")
   end
 
   def can_submit_for_review?

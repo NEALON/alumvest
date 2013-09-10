@@ -1,0 +1,8 @@
+%table
+  %tr
+    %td
+      = image_tag @company.logo(w:100, h:100) unless @company.logo.blank?
+    %td
+      %h3= @company.company_name
+      %p= @company.short_description
+      %p= "Founded #{(@company.founded_on_year)}"

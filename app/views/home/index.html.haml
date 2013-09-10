@@ -8,35 +8,9 @@
   %hr
 
 .row.roomy.homepage-featured-campaigns
-  - @reviewable_campaigns.each do |c|
-    .large-4.columns.panel
-      = link_to display_campaign_company_path(c) do
-        = image_tag c.company.photo_for_card_display
+  - @reviewable_campaigns.each do |campaign|
+    = render "campaigns/placard", :campaign => campaign
 
-      .company-title
-        %h4
-          = link_to c.company.campaign_title, display_campaign_company_path(c)
-      .company-short-description
-        %p
-          = c.company.short_description
-      .company-goal
-
-        %table{:width => "100%", :style => "background-color: #f2f2f2"}
-          %tr
-            %td
-              Raised
-            %td
-              Goal
-            %td
-              Investors
-          %tr
-            %td
-              $0
-            %td
-              = number_to_currency(c.investment_term.fundraising_amount)
-            %td
-              0
-
-
-        .progress
-          .meter{:style => "width: #{Random.rand(100)}%"}
+.row.roomy.homepage-featured-campaigns
+  - @live_campaigns.each do |campaign|
+    = render "campaigns/placard", :campaign => campaign

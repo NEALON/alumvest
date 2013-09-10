@@ -1,0 +1,8 @@
+= semantic_form_for [@campaign, @investment] do |f|
+  = render 'shared/errors', :entity => @investment
+  = f.inputs do
+    = f.input :campaign_id, :as => :hidden
+    = f.input :investor_id, :as => :hidden
+    = f.input :amount
+  = f.actions do
+    = f.action :submit, :as => :input, :label => 'Save changes'

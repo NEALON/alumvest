@@ -42,6 +42,7 @@ RSpec.configure do |config|
   config.include Features::SessionHelpers, :type => :feature
   config.include Features::FormHelpers, :type => :feature
   config.include Features::WorkflowStepHelpers, :type => :feature
+  config.include Features::FactoryHelpers, :type => :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

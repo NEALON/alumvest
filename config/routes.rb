@@ -27,6 +27,7 @@ Av::Application.routes.draw do
       get :check_for_completeness
       get :display
     end
+    resources :investments
     post :submit_for_review
     get :join_us
   end
