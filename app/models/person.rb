@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :title, :facebook, :twitter, :linkedin, :avatar_url, :video_url, :introduction
 
-  validates_presence_of [:first_name, :last_name]
+  validates_presence_of [:first_name, :last_name, :title]
 
   belongs_to :populatable, :polymorphic => true
 
