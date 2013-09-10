@@ -67,9 +67,11 @@ Av::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => 'alumvest-e.herokuapp.com' }
-end
 
-Av::Application.config.middleware.use ExceptionNotifier,
-  :email_prefix => "[alumvest exception] ",
-  :sender_address => %{"notifier" <notifier@alumvest.com>},
-  :exception_recipients => %w{mike.pence@gmail.com}
+  config.middleware.use ExceptionNotification::Rack,
+                        :email => {
+                            :email_prefix => "[alumvest exception] ",
+                            :sender_address => %{"notifier" <notifier@alumvest.com>},
+                            :exception_recipients => %w{mike.pence@gmail.com kyle@alumvest.com}}
+
+end
