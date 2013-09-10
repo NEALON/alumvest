@@ -71,7 +71,7 @@ Av::Application.configure do
   config.middleware.use ExceptionNotification::Rack,
                         :email => {
                             :email_prefix => "[alumvest exception] ",
-                            :sender_address => %{"notifier" <notifier@alumvest.com>},
+                            :sender_address => %{"notifier" <notifier@haydukelabs.com>},
                             :exception_recipients => %w{mike.pence@gmail.com kyle@alumvest.com}}
 
 end
