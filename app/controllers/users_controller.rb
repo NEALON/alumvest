@@ -33,7 +33,9 @@ class UsersController < ApplicationController
         end
       else
         @user.update_attributes(params[:user])
-        @user.complete!
+        unless params[:user].has_key? "user_type"
+          @user.complete!
+        end
         notice = 'User info saved.'
       end
     end

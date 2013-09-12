@@ -14,6 +14,7 @@ gem 'state_machine'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'omniauth-identity'
+gem 'omniauth-facebook'
 
 gem 'haml-rails'
 gem 'jquery-rails'

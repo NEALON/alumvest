@@ -50,9 +50,9 @@ railsthemes.com/terms. -->
                       = link_to('Sign out', logout_path, :class => "button small", :method => :delete)
                   - else
                     %li
-                      = link_to('Register', new_identity_path, :class => "button small")
+                      = link_to('Register', '#', :class => "button small", :id => 'signup-link', 'data-reveal-id' => 'signup-modal')
                     %li
-                      = link_to('Login', new_session_path, :class => "button small")
+                      = link_to('Login', '#', :class => "button small", :id=>'login-link', 'data-reveal-id' => 'login-modal')
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
           -#.top-bar
             %ul.title-area
@@ -113,6 +113,16 @@ railsthemes.com/terms. -->
             &nbsp;&#149;&nbsp; 999.9999
             %br
             Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved.
+  #signup-modal.reveal-modal.small
+    %a{:href => "/auth/facebook", :class =>"button expand"} Sign up via Facebook
+    %a{:href => '#', :class =>"button expand"} Sign up via Linkedin
+    %a{:href => new_identity_path, :class =>"button expand"} Sign up via Email
+    .a.close-reveal-modal &#215;
+  #login-modal.reveal-modal.small
+    %a{:href => "/auth/facebook", :class =>"button expand"} Login via Facebook
+    %a{:href => '#', :class =>"button expand"} Login via Linkedin
+    %a{:href => new_session_path, :class =>"button expand"} Login via Email
+    .a.close-reveal-modal &#215;
   = javascript_include_tag "railsthemes_meta"
   = yield :scripts
   = yield :reveal_modals

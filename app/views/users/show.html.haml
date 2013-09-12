@@ -37,5 +37,17 @@
     #tab-owner
       = render "show_owner"
 
+  - if current_user && current_user == @user && current_user.user_type_undefined?
+    #user-type-modal.reveal-modal.medium
+      Are you an investor or an owner?
+      = semantic_form_for [@user] do |f|
+        =f.input :user_type, :as => :hidden, :value => "investor"
+        =f.submit "I am an Investor", :class => "expand button"
+      = semantic_form_for [@user] do |f|
+        =f.input :user_type, :as => :hidden, :value => "owner"
+        =f.submit "I am an Owner", :class => "expand button"
+      .a.close-reveal-modal &#215;
+    :javascript
+      $("#user-type-modal").foundation('reveal', 'open')
 :javascript
   $( "#tabs" ).tabs();
