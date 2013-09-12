@@ -13,6 +13,7 @@ module Features
       screenshot_and_save_page if $do_screenshots
 
       click_link "Register"
+      click_link "Sign up via Email"
       fill_in 'first_name', :with => first_name
       fill_in 'last_name', :with => last_name
       fill_in 'email', :with => email
@@ -39,6 +40,7 @@ module Features
     def sign_in(email = @email, password = @password)
       visit '/'
       click_link 'Login'
+      click_link "Login via Email"
       fill_in 'Email', :with => email
       fill_in 'password', :with => password
       screenshot_and_save_page if $do_screenshots

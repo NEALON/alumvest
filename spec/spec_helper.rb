@@ -40,6 +40,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Features::SessionHelpers, :type => :feature
+  config.include Features::OmniAuthHelpers, :type => :feature
   config.include Features::FormHelpers, :type => :feature
   config.include Features::WorkflowStepHelpers, :type => :feature
   config.include Features::FactoryHelpers, :type => :feature

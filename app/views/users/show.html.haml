@@ -41,10 +41,10 @@
     #user-type-modal.reveal-modal.medium
       Are you an investor or an owner?
       = semantic_form_for [@user] do |f|
-        =f.input :user_type, :as => :hidden, :value => "investor"
+        =f.input :user_type, :as => :hidden, :input_html => {:value => "investor"}
         =f.submit "I am an Investor", :class => "expand button"
       = semantic_form_for [@user] do |f|
-        =f.input :user_type, :as => :hidden, :value => "owner"
+        =f.input :user_type, :as => :hidden, :input_html => {:value => "owner"}
         =f.submit "I am an Owner", :class => "expand button"
       .a.close-reveal-modal &#215;
     :javascript
