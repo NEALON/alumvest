@@ -39,4 +39,7 @@ Av::Application.configure do
 
   ENV['FACEBOOK_ID'] = '595676113816940'
   ENV['FACEBOOK_SECRET'] = 'd384cebd861dd46b7b05f9c466bb57ed'
+
+  ENV['LINKEDIN_KEY'] = 'qd5q9f8vpt8c'
+  ENV['LINKEDIN_SECRET'] = 'HvAjeZ2YCkr80QVM'
 end
