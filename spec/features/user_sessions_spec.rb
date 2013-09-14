@@ -29,8 +29,9 @@ describe "user sessions", :type => :feature do
     expect(page).to have_link('Sign out')
   end
 
-  it "register fb owner" do
-    set_omniauth()
+  it "registers fb owner" do
+    set_omniauth
+
     visit '/'
     click_link 'Register'
     click_link 'Sign up via Facebook'
@@ -47,5 +48,7 @@ describe "user sessions", :type => :feature do
     click_link 'Login via Facebook'
     expect(page).to have_link "Investor"
     expect(page).to have_link "Sign out"
+
+    unset_omniauth
   end
 end

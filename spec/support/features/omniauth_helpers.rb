@@ -39,5 +39,9 @@ module Features
       OmniAuth.config.mock_auth[credentials[:provider]] = credentials[:invalid]
 
     end
+
+    def unset_omniauth
+      OmniAuth.config.test_mode = false
+    end
   end
 end
