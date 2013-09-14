@@ -51,4 +51,16 @@ describe "user sessions", :type => :feature do
 
     unset_omniauth
   end
+
+  it "sends out welcome email after sign up" do
+    sign_up :owner
+    mail = ActionMailer::Base.deliveries.last
+    mail.subject.should == 'Welcome to AlumVest'
+    mail.to.should == [@email]
+    mail.from.should == ['info@alumvest.com']
+    mail.body.encoded.should match(@first_name)
+    mail.body.encoded.should match(@last_name)
+    mail.body.encoded.should match("http://www.alumvest.com")
+  end
+
 end

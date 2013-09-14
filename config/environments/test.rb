@@ -36,9 +36,7 @@ Av::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
-  # turn this on if you want to test mail on test env
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.delivery_method = :test
 
   ENV['FACEBOOK_ID'] = '595676113816940'
   ENV['FACEBOOK_SECRET'] = 'd384cebd861dd46b7b05f9c466bb57ed'
