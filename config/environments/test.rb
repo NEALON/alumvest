@@ -37,6 +37,9 @@ Av::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # turn this on if you want to test mail on test env
+  config.action_mailer.perform_deliveries = false
+
   ENV['FACEBOOK_ID'] = '595676113816940'
   ENV['FACEBOOK_SECRET'] = 'd384cebd861dd46b7b05f9c466bb57ed'
 end

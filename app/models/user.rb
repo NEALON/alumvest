@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_paper_trail
   before_save :update_user_type
+  after_create :send_welcome_email
 
   attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth, :email, :facebook, :linkedin, :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement, :profile_complete, :user_type
   attr_accessible :avatar_url
@@ -62,5 +63,9 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 end
