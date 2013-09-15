@@ -1,0 +1,73 @@
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Welcome to AlumVest!</title>
+</head>
+<body style="margin: 0;padding:0;">
+  <table width="100%" border="0" style="background: #fbfbfb; height:100%">
+  <tr>
+    <td valign="top"><table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="600" border="0" align="center" cellpadding="0" cellspacing="0" style="padding-top:72px; padding-bottom:42px; text-align:center;">
+  <tr>
+    <td>
+      <!-- <a href="http://www.alumvest.com" target="_blank"> -->
+        <!-- <img src="public/images/email/logo.png" width="193" height="118" border="0" /> -->
+      <%= link_to (image_tag attachments['logo.png'].url, :size => "193x118", :style => "border:0px;"), "http://www.alumvest.com", :target => "_blank" %>
+      <!-- </a> -->
+    </td>
+  </tr>
+</table>
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" style="border:5px solid #ececec; background:#fff;">
+  <tr>
+    <td><table width="503" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style=" font:bold 32px Arial, Helvetica, sans-serif; color:#3b90d2; padding-top:32px; text-align:center; border-bottom:1px  solid #e5e5e5; padding-bottom:30px;">Welcome to AlumVest!</td>
+  </tr>
+</table><table width="503" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <p style=" font:bold 18px Arial, Helvetica, sans-serif; color:#454545; padding-top: 30px">Hi <%= @user.full_name %>,</p>
+      <p style=" font:normal 13px Arial, Helvetica, sans-serif; color:#454545; padding-top:10px;">Welcome to AlumVest! We are very excited to  have you join our website. AlumVest is a social investment platform where you  can discover and follow the most innovative ventures from your fellow alumni. Get  to know your peers, support them, or invest in them.</p>
+      <p style=" font:normal 13px Arial, Helvetica, sans-serif; color:#454545; padding-top:0px;">Our goal is to fund smart ventures from the best and brightest. We are creating a seamless platform for you to invest in someone you feel connected with. We can only accomplish our mission with your participation and support, so thank you for becoming part of our story!</p>
+      <p style=" font:bold 13px Arial, Helvetica, sans-serif; color:#454545; padding-top:10px;">Please feel free to send us any questions to <a href="mailto:info@alumvest.com" style="color:#2078bd; text-decoration:none;" target="_blank">info@alumvest.com</a></p>
+
+<p style=" font:normal 13px Arial, Helvetica, sans-serif; color:#454545; padding:0px; margin:0px;">In the meantime, please like us on Facebook (<a target="_blank"  href="http://facebook.com/AlumVest" style="color:#2078bd; text-decoration:none;">http://facebook.com/AlumVest</a>) </p>
+      
+      <p style=" font:normal 13px Arial, Helvetica, sans-serif; color:#454545; padding:0px; margin:0px;">check our blog (<a target="_blank"  href="http://blog.alumvest.com" style="color:#2078bd; text-decoration:none;">http://blog.alumvest.com</a>), and Twitter (<a href="http://twitter.com/AlumVest" target="_blank" style="color:#2078bd; text-decoration:none;">http://twitter.com/AlumVest</a>)</p>
+      <p style=" font:normal 13px Arial, Helvetica, sans-serif; color:#454545; padding-top:20px; margin:0px;">Thank you for funding the future with us!</p>
+     <p style=" font:normal 13px Arial, Helvetica, sans-serif; color:#454545; padding-top:20px; margin:0px;">Sincerely,</p>
+     <p style=" font:bold 13px Arial, Helvetica, sans-serif; color:#454545; padding-top:20px; padding-bottom:40px; margin:0px;">The AlumVest Team</p>
+      </td>
+  </tr>         
+</table>
+<table width="578" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:4px;">
+  <tr>
+    <td width="578" height="50" align="center" valign="middle" bgcolor="#f7f7f7" style="padding-top:15px;">
+      <%= link_to (image_tag attachments['facebook.png'].url, :size => "24x24", :style => "border:0px;padding-right:14px;"), "http://facebook.com/AlumVest", :target => "_blank"  %>
+      <%= link_to (image_tag attachments['twitter.png'].url, :size => "24x24", :style => "border:0;"), "http://twitter.com/AlumVest", :target => "_blank" %>
+    </td>
+  </tr>
+</table>
+
+</td>
+  </tr>
+</table>
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="75" align="center" style=" font:bold 11px Arial, Helvetica, sans-serif; color:#454545;">Sent to 
+      <%= link_to @user.email, "mailto:#{@user.email}", :target => "_blank", :style => "color:#2078bd; text-decoration:none;" %>
+      <!-- — why did I get this?<br /> -->
+      <!-- <a href="#" style="color:#2078bd; text-decoration:underline;">unsubscribe</a> from this list | update subscription preferences</td> -->
+  </tr>
+</table>
+
+
+</td>
+      </tr>
+    </table></td> 
+  </tr>
+</table>
+
+
+
+</body>

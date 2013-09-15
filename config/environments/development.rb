@@ -35,5 +35,19 @@ Av::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # turn this on if you want to test mail on localhost
+  config.action_mailer.perform_deliveries = false
+
+  ENV['FACEBOOK_ID'] = '595676113816940'
+  ENV['FACEBOOK_SECRET'] = 'd384cebd861dd46b7b05f9c466bb57ed'
+
+  ENV['LINKEDIN_KEY'] = 'qd5q9f8vpt8c'
+  ENV['LINKEDIN_SECRET'] = 'HvAjeZ2YCkr80QVM'
+
+  ENV['SENDGRID_USERNAME'] = 'alumvest'
+  ENV['SENDGRID_PASSWORD'] = '055Hn6l60M6Kj4X'
+
+
 end

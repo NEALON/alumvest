@@ -17,103 +17,102 @@ railsthemes.com/terms. -->
   %link{:href => image_path('railsthemes_meta/favicon.ico'), :rel => "icon", :type => "image/x-icon"}/
   %title
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   = stylesheet_link_tag "application"
-  = stylesheet_link_tag "railsthemes_meta"
-  = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+  //= stylesheet_link_tag "railsthemes_meta"
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   = javascript_include_tag "application"
-  = javascript_include_tag "railsthemes_samples" unless Rails.env.production?
-  = csrf_meta_tags
+  //= javascript_include_tag "railsthemes_samples" unless Rails.env.production?
+  //= csrf_meta_tags
   = yield :head
   :plain
     <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Varela+Round' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu' rel='stylesheet' type='text/css'>
   = render 'layouts/shareaholic_header'
 %body
-  .wrapper
-    #header
-      .contain-to-grid
-        .row
-          .large-4.small-4.columns
-            = link_to :root do
-              .hide-for-small
-                %h2.logo AlumVest
-              .show-for-small
-                %h2.logo Meta
-          .large-8.small-8.columns
-            - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-              .row
-                %ul.button-group.right.top
-                  - if current_user
-                    %li
-                      = link_to "#{current_user.name}'s Dashboard", user_path(current_user.id), :class => "button small"
-                    %li
-                      = link_to('Sign out', logout_path, :class => "button small", :method => :delete)
-                  - else
-                    %li
-                      = link_to('Register', new_identity_path, :class => "button small")
-                    %li
-                      = link_to('Login', new_session_path, :class => "button small")
-        - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-          -#.top-bar
-            %ul.title-area
-              %li.name &nbsp;
-              %li.toggle-topbar.menu-icon
-                = link_to "#" do
-                  %span Menu
-            %section.top-bar-section
-              %ul.right.main
-                = render partial: 'layouts/header_navigation'
-    #content
-      - if content_for? :breadcrumbs
-        .row
-          .large-12.columns
-            = yield :breadcrumbs
-      - if content_for? :header_1
-        .row
-          .large-12.columns
-            = yield :header_1
-      .row
-        - if content_for? :sidebar_left
-          #sidebar.large-3.small-12.columns
-            = yield :sidebar_left
-          .large-9.small-12.columns
-            = render 'layouts/flash', :flash => flash
-            = yield
-        - elsif content_for? :sidebar_right
-          .large-8.small-12.columns
-            = render 'layouts/flash', :flash => flash
-            = yield
-          #sidebar.large-4.small-12.columns
-            = yield :sidebar_right
-        - else
-          .large-12.small-12.columns
-            = render 'layouts/flash', :flash => flash
-            = yield
-    .push
-  #footer
-    .row
-      .large-4.small-12.columns
-        -#%h4 AlumVest
-        - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-          -#%p
-            Learn about super cool stuff.
-            %br
-            %strong
-              Sign up for our newsletter!
-          -#%form
-            %input{ :type => "text", :placeholder => "Your Email" }
-            %input{ :type => "submit", :class => "button secondary small" }
+
+  %nav#header.navbar.navbar-default.navbar-fixed-top{ 'role' => 'navigation'}
+    .container
+      .navbar-header
+        <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+        %button.navbar-toggle{ :type => 'button', "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
+          %span.sr-only
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a{:href => '/', :class => 'navbar-brand'} AlumVest
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-        -#.large-8.small-12.columns
-          %ul.inline-list.main
-            = render 'layouts/footer_navigation'
+        %div.collapse.navbar-collapse.navbar-ex1-collapse
+          %ul.nav.navbar-nav
+            = render partial: 'layouts/header_navigation'
+          %form.navbar-form.navbar-left{ :role => 'search'}
+            %div.form-group
+              %input.form-control{ :type => 'text', :placeholder => 'Search'}
+          %ul.nav.navbar-nav.navbar-right
+            - if current_user
+              %li
+                = link_to current_user.name, user_path(current_user.id), :class => "btn small"
+              %li
+                = link_to('Sign out', logout_path, :class => "btn small", :method => :delete)
+            - else
+              %li
+                = link_to('Register', new_identity_path, :class => "")
+              %li
+                = link_to('Login', new_session_path, :class => "")     
+  #content
+    - if content_for? :breadcrumbs
+      .row
+        .large-12.columns
+          = yield :breadcrumbs
+    - if content_for? :header_1
+      .row
+        .large-12.columns
+          = yield :header_1
+    .row
+      - if content_for? :sidebar_left
+        #sidebar.large-3.small-12.columns
+          = yield :sidebar_left
+        .large-9.small-12.columns
+          = render 'layouts/flash', :flash => flash
+          = yield
+      - elsif content_for? :sidebar_right
+        .large-8.small-12.columns
+          = render 'layouts/flash', :flash => flash
+          = yield
+        #sidebar.large-4.small-12.columns
+          = yield :sidebar_right
+      - else
+        .large-12.small-12.columns
+          = render 'layouts/flash', :flash => flash
+          = yield
+  .push
+  #footer
+    .container
+      .row
+        - unless content_for?(:without_navigation) || (yield :without_navigation) == true
+          .col-md-12.col-xs-12
+            %ul.nav.nav-pills
+              = render 'layouts/footer_navigation'
           %hr
-          %p
-            = mail_to "info@alumvest.com"
-            &nbsp;&#149;&nbsp; 999.9999
-            %br
-            Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved.
-  = javascript_include_tag "railsthemes_meta"
+          %div
+            %p
+              = mail_to "info@alumvest.com"
+              &nbsp;&#149;&nbsp; 999.9999 | Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved. 
+  // #signup-modal.reveal-modal.small
+  //   %a{:href => "/auth/facebook", :class =>"button expand"} Sign up via Facebook
+  //   %a{:href => "/auth/linkedin", :class =>"button expand"} Sign up via Linkedin
+  //   %a{:href => new_identity_path, :class =>"button expand"} Sign up via Email
+  //   .a.close-reveal-modal &#215;
+  // #login-modal.reveal-modal.small
+  //   %a{:href => "/auth/facebook", :class =>"button expand"} Login via Facebook
+  //   %a{:href => "/auth/linkedin", :class =>"button expand"} Login via Linkedin
+  //   %a{:href => new_session_path, :class =>"button expand"} Login via Email
+  //   .a.close-reveal-modal &#215;
+  
+  //= javascript_include_tag "railsthemes_meta"
+
   = yield :scripts
   = yield :reveal_modals
 </html>
