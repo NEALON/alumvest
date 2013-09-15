@@ -80,28 +80,17 @@ railsthemes.com/terms. -->
           = yield
   .push
 #footer
-  .row
-    .large-4.small-12.columns
-      %h4 AlumVest
+  .container
+    .row
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-        %p
-          Learn about super cool stuff.
-          %br
-          %strong
-            Sign up for our newsletter!
-        %form
-          %input{ :type => "text", :placeholder => "Your Email" }
-          %input{ :type => "submit", :class => "button secondary small" }
-    - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-      .large-8.small-12.columns
-        %ul.inline-list.main
-          = render 'layouts/footer_navigation'
+        .col-md-12.col-xs-12
+          %ul.nav.nav-pills
+            = render 'layouts/footer_navigation'
         %hr
-        %p
-          = mail_to "info@alumvest.com"
-          &nbsp;&#149;&nbsp; 999.9999
-          %br
-          Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved.
+        %div
+          %p
+            = mail_to "info@alumvest.com"
+            &nbsp;&#149;&nbsp; 999.9999 | Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved. 
   //= javascript_include_tag "railsthemes_meta"
   = yield :scripts
   = yield :reveal_modals
