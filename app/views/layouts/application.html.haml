@@ -43,9 +43,12 @@ railsthemes.com/terms. -->
           %span.icon-bar
         %a{:href => '/', :class => 'navbar-brand'} AlumVest
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-        %div.collapse.navbar-collapse
+        %div.collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             = render partial: 'layouts/header_navigation'
+          %form.navbar-form.navbar-left{ :role => 'search'}
+            %div.form-group
+              %input.form-control{ :type => 'text', :placeholder => 'Search'}
           %ul.nav.navbar-nav.navbar-right
             - if current_user
               %li
@@ -54,9 +57,9 @@ railsthemes.com/terms. -->
                 = link_to('Sign out', logout_path, :class => "btn small", :method => :delete)
             - else
               %li
-                = link_to('Register', new_identity_path, :class => "btn navbar-btn")
+                = link_to('Register', new_identity_path, :class => "")
               %li
-                = link_to('Login', new_session_path, :class => "btn navbar-btn")     
+                = link_to('Login', new_session_path, :class => "")     
   #content
     .row
       - if content_for? :sidebar_left
