@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 include ActionView::Helpers::SanitizeHelper
 include ActionView::Helpers::DateHelper
+include ActionView::Helpers::NumberHelper
 
 describe "managing company basics", :type => :feature do
 
@@ -68,7 +69,7 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content strip_tags @company.company_details
     # TODO: video_url
     expect(page).to have_content strip_tags @company.faq
-    expect(page).to have_content investment_term.fundraising_amount
+    expect(page).to have_content number_to_currency investment_term.fundraising_amount
     expect(page).to have_content investment_term.campaign_length
     expect(page).to have_content @company.company_url
     expect(page).to have_content strip_tags @company.company_highlights
