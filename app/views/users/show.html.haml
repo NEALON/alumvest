@@ -1,53 +1,54 @@
--if @user.nil?
-  %h2 User not found
--else
-  - content_for :breadcrumbs do
-    %ul.breadcrumbs
-      %li= link_to('Home', '/')
+.container
+  -if @user.nil?
+    %h2 User not found
+  -else
+    - content_for :breadcrumbs do
+      %ol.breadcrumb
+        %li= link_to('Home', '/')
+        - if current_user.is_owner?
+          %li.unavailable= 'Business owner'
+        - else
+          %li.unavailable= 'Investor'
+        %li.active= link_to(@user.full_name, user_path(@user))
+
+    %h3
+      = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
+      = @user.full_name
+
+    - if current_user && current_user == @user
       - if current_user.is_owner?
-        %li.unavailable= 'Business owner'
-      - else
-        %li.unavailable= 'Investor'
-      %li.current= link_to(@user.full_name, user_path(@user))
+        %p= "Click on the Owner tab to manage your campaign."
+      %p= link_to "[edit]", edit_user_path(current_user)
 
-  %h3
-    = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
-    = @user.full_name
+    #tabs
+      %ul
+        %li= link_to "User", "#tab-user"
+        - if @user.is_investor?
+          %li= link_to "Investor", "#tab-investor"
+          - unless @user.investor.investments.blank?
+            %li= link_to "Investments", "#tab-investments"
+        - if @user.is_owner?
+          %li= link_to "Owner", "#tab-owner"
+      #tab-user
+        = render "show_user"
+      #tab-investor
+        = render "show_investor"
+      #tab-investments
+        = render "show_investments"
+      #tab-owner
+        = render "show_owner"
 
-  - if current_user && current_user == @user
-    - if current_user.is_owner?
-      %p= "Click on the Owner tab to manage your campaign."
-    %p= link_to "[edit]", edit_user_path(current_user)
-
-  #tabs
-    %ul
-      %li= link_to "User", "#tab-user"
-      - if @user.is_investor?
-        %li= link_to "Investor", "#tab-investor"
-        - unless @user.investor.investments.blank?
-          %li= link_to "Investments", "#tab-investments"
-      - if @user.is_owner?
-        %li= link_to "Owner", "#tab-owner"
-    #tab-user
-      = render "show_user"
-    #tab-investor
-      = render "show_investor"
-    #tab-investments
-      = render "show_investments"
-    #tab-owner
-      = render "show_owner"
-
-  - if current_user && current_user == @user && current_user.user_type_undefined?
-    #user-type-modal.reveal-modal.medium
-      Are you an investor or an owner?
-      = semantic_form_for [@user] do |f|
-        =f.input :user_type, :as => :hidden, :input_html => {:value => "investor"}
-        =f.submit "I am an Investor", :class => "expand button"
-      = semantic_form_for [@user] do |f|
-        =f.input :user_type, :as => :hidden, :input_html => {:value => "owner"}
-        =f.submit "I am an Owner", :class => "expand button"
-      .a.close-reveal-modal &#215;
-    :javascript
-      $("#user-type-modal").foundation('reveal', 'open')
-:javascript
-  $( "#tabs" ).tabs();
+    - if current_user && current_user == @user && current_user.user_type_undefined?
+      #user-type-modal.reveal-modal.medium
+        Are you an investor or an owner?
+        = semantic_form_for [@user] do |f|
+          =f.input :user_type, :as => :hidden, :input_html => {:value => "investor"}
+          =f.submit "I am an Investor", :class => "expand button"
+        = semantic_form_for [@user] do |f|
+          =f.input :user_type, :as => :hidden, :input_html => {:value => "owner"}
+          =f.submit "I am an Owner", :class => "expand button"
+        .a.close-reveal-modal &#215;
+      :javascript
+        $("#user-type-modal").foundation('reveal', 'open')
+  :javascript
+    $( "#tabs" ).tabs();

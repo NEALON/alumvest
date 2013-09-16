@@ -1,11 +1,11 @@
 - unless value.blank?
   .row
     %p
-      .small-3.columns
+      .col-xs-3
         %b
           - if header.blank?
             &nbsp;
           - else
             = header
-      .small-9.columns
+      .col-xs-9
         = value

@@ -11,13 +11,15 @@
       <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842'></div>
     %hr
 
-.row.roomy.homepage-featured-campaigns
-  - @reviewable_campaigns.each do |campaign|
-    = render "campaigns/placard", :campaign => campaign
+.container
+  .row.homepage-featured-campaigns
+    - @reviewable_campaigns.each do |campaign|
+      = render "campaigns/placard", :campaign => campaign
 
-.row.roomy.homepage-featured-campaigns
-  - @live_campaigns.each do |campaign|
-    = render "campaigns/placard", :campaign => campaign
+.container
+  .row.homepage-featured-campaigns
+    - @live_campaigns.each do |campaign|
+      = render "campaigns/placard", :campaign => campaign
 
 .row
   .col-md-12

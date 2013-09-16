@@ -63,28 +63,29 @@ railsthemes.com/terms. -->
                 = link_to('Login', new_session_path, :class => "")     
   #content
     - if content_for? :breadcrumbs
-      .row
-        .large-12.columns
-          = yield :breadcrumbs
+      .container
+        .row
+          .col-md-12
+            = yield :breadcrumbs
     - if content_for? :header_1
       .row
-        .large-12.columns
+        .col-md-12
           = yield :header_1
     .row
       - if content_for? :sidebar_left
-        #sidebar.large-3.small-12.columns
+        #sidebar.col-xs-12.col-md-3
           = yield :sidebar_left
-        .large-9.small-12.columns
+        .col-md-9.col-xs-12
           = render 'layouts/flash', :flash => flash
           = yield
       - elsif content_for? :sidebar_right
-        .large-8.small-12.columns
+        .col-md-8.col-xs-12
           = render 'layouts/flash', :flash => flash
           = yield
-        #sidebar.large-4.small-12.columns
+        #sidebar.col-md-4.col-xs-12
           = yield :sidebar_right
       - else
-        .large-12.small-12.columns
+        .col-md-12.col-xs-12
           = render 'layouts/flash', :flash => flash
           = yield
   .push
