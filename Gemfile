@@ -26,6 +26,8 @@ gem "cocoon"
 
 gem 'httparty'
 
+gem 'gibbon' # mailchimp
+
 gem 'thin'
 gem 'pg'
 

@@ -31,6 +31,12 @@ class User < ActiveRecord::Base
       else
         user.user_type = "not_defined"
       end
+
+      if Rails.env.production?
+        Gibbon::API.new.lists.subscribe(:id => ENV['MAILCHIMP_LIST_ID'], :email => {:email => user.email},
+            :merge_vars => {:FNAME => user.first_name, :LNAME => user.last_name},
+            :double_optin => false, :update_existing => true, :send_welcome => false)
+      end
     end
   end
 

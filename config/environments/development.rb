@@ -49,5 +49,7 @@ Av::Application.configure do
   ENV['SENDGRID_USERNAME'] = 'alumvest'
   ENV['SENDGRID_PASSWORD'] = '055Hn6l60M6Kj4X'
 
+  ENV['MAILCHIMP_API_KEY'] = '8c194cd48f5416725f97c6a9010e46dd-us7'
+  ENV['MAILCHIMP_LIST_ID'] = '318a0cb2de'
 
 end
