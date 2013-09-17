@@ -26,7 +26,7 @@ gem "cocoon"
 
 gem 'httparty'
 
-gem 'gibbon' # mailchimp
+gem 'gibbon', :git => "git://github.com/amro/gibbon.git" # mailchimp
 
 gem 'thin'
 gem 'pg'
