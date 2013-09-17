@@ -58,9 +58,9 @@ railsthemes.com/terms. -->
                 = link_to('Sign out', logout_path, :class => "btn small", :method => :delete)
             - else
               %li
-                = link_to('Register', new_identity_path, :class => "")
+                = link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')
               %li
-                = link_to('Login', new_session_path, :class => "")     
+                = link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
   #content
     - if content_for? :breadcrumbs
       .container
@@ -101,19 +101,32 @@ railsthemes.com/terms. -->
             %p
               = mail_to "info@alumvest.com"
               &nbsp;&#149;&nbsp; 999.9999 | Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved. 
-  // #signup-modal.reveal-modal.small
-  //   %a{:href => "/auth/facebook", :class =>"button expand"} Sign up via Facebook
-  //   %a{:href => "/auth/linkedin", :class =>"button expand"} Sign up via Linkedin
-  //   %a{:href => new_identity_path, :class =>"button expand"} Sign up via Email
-  //   .a.close-reveal-modal &#215;
-  // #login-modal.reveal-modal.small
-  //   %a{:href => "/auth/facebook", :class =>"button expand"} Login via Facebook
-  //   %a{:href => "/auth/linkedin", :class =>"button expand"} Login via Linkedin
-  //   %a{:href => new_session_path, :class =>"button expand"} Login via Email
-  //   .a.close-reveal-modal &#215;
+    #signup-modal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+              &times;
+            .h4
+              Sign Up
+          .modal-body
+            %a{:href => "/auth/facebook", :class =>"btn btn-primary btn-block"} Sign up via Facebook
+            %a{:href => "/auth/linkedin", :class =>"btn btn-info btn-block"} Sign up via Linkedin
+            %a{:href => new_identity_path, :class =>"btn btn-success btn-block"} Sign up via Email
+    #login-modal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+              &times;
+            .h4
+              Login
+          .modal-body
+            %a{:href => "/auth/facebook", :class =>"btn btn-primary btn-block"} Login via Facebook
+            %a{:href => "/auth/linkedin", :class =>"btn btn-info btn-block"} Login via Linkedin
+            %a{:href => new_session_path, :class =>"btn btn-success btn-block"} Login via Email
   
   //= javascript_include_tag "railsthemes_meta"
 
   = yield :scripts
-  = yield :reveal_modals
 </html>
