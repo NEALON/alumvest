@@ -6,18 +6,18 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
     if @user.profile_complete
-      redirect_to root_url, notice: "Signed in!"
+      redirect_to root_url, flash: {:success => "Signed in!" }
     else
-      redirect_to user_path(@user.id), notice: "Please complete your profile. Click 'edit' to start."
+      redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'edit' to start."}
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Signed out!"
+    redirect_to root_url, flash: {:success => "Signed out!"}
   end
 
   def failure
-    redirect_to root_url, alert: "Authentication failed, please try again."
+    redirect_to root_url, flash: {:danger => "Authentication failed, please try again."}
   end
 end

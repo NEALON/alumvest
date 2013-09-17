@@ -29,7 +29,7 @@ class UsersController < ApplicationController
           notice = 'Password info saved.'
         else
           notice = 'Password info failed to update.'
-          return redirect_to edit_user_path(:tab => 'settings'), :notice => notice
+          return redirect_to edit_user_path(:tab => 'settings'), :flash => {:success => notice}
         end
       else
         @user.update_attributes(params[:user])
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
         notice = 'User info saved.'
       end
     end
-    redirect_to user_path, :notice => notice
+    redirect_to user_path, :flash => {:success => notice}
+
   end
 end

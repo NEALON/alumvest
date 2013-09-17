@@ -12,7 +12,7 @@ class InvestmentTermsController < ApplicationController
   def create
     @investment_term = InvestmentTerm.create(add_images_if_test!(params[:investment_term]))
     if @investment_term.valid?
-      redirect_to campaign_investment_term_path(@investment_term.campaign), :notice => 'Campaign investment terms saved.'
+      redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms saved.' }
     else
       render :action => :new
     end
@@ -28,7 +28,7 @@ class InvestmentTermsController < ApplicationController
   def update
     @investment_term.update_attributes(params[:investment_term])
     if @investment_term.valid?
-      redirect_to campaign_investment_term_path(@investment_term.campaign), :notice => 'Campaign investment terms saved.'
+      redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms saved.' }
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class InvestmentTermsController < ApplicationController
   def check_for_completeness
     @investment_term.update_attributes(params[:investment_term])
     if @investment_term.make_ready_for_review
-      redirect_to campaign_investment_term_path(@investment_term.campaign), :notice => 'Campaign investment terms are complete.'
+      redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms are complete.' }
     else
       render :new, :error => 'Correct the data to make this complete.' # because we use it for both new and edit
     end

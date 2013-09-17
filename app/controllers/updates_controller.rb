@@ -18,7 +18,7 @@ class UpdatesController < ApplicationController
     @company = @campaign.company
     @update = Update.create(params[:update])
     if @update.valid?
-      redirect_to campaign_company_updates_path(@campaign), :notice => 'Company update saved.'
+      redirect_to campaign_company_updates_path(@campaign), :flash => {:success => 'Company update saved.' }
     else
       render :action => :new
     end
@@ -38,7 +38,7 @@ class UpdatesController < ApplicationController
     @update = Update.find(params[:id])
     @update.update_attributes(params[:update])
     if @update.valid?
-      redirect_to campaign_company_updates_path(@campaign), :notice => 'Company update saved.'
+      redirect_to campaign_company_updates_path(@campaign), :flash => {:success => 'Company update saved.' }
     else
       render :edit
     end
@@ -49,6 +49,6 @@ class UpdatesController < ApplicationController
     @company = @campaign.company
     update = Update.find(params[:id])
     update.destroy
-    redirect_to campaign_company_updates_path(@campaign), :notice => 'Your update was deleted.'
+    redirect_to campaign_company_updates_path(@campaign), :flash => {:success => 'Your update was deleted.' }
   end
 end

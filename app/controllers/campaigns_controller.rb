@@ -5,9 +5,9 @@ class CampaignsController < ApplicationController
   def submit_for_review
     @campaign = Campaign.find(params[:campaign_id])
     if @campaign.submit_for_review
-      redirect_to campaign_company_path(@campaign), :notice => 'Congratulations! Your campaign is now submitted for review.'
+      redirect_to campaign_company_path(@campaign), :flash => {:success => 'Congratulations! Your campaign is now submitted for review.'}
     else
-      redirect_to campaign_company_path(@campaign), :error => company.invalid_items.join(', ')
+      redirect_to campaign_company_path(@campaign), :flash => {:danger => company.invalid_items.join(', ')}
     end
   end
 

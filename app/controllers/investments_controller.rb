@@ -10,7 +10,7 @@ class InvestmentsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @investment = Investment.create(params[:investment])
     if @investment.valid?
-      redirect_to display_campaign_company_path(@campaign), :notice => 'Campaign investment saved. Thank you!'
+      redirect_to display_campaign_company_path(@campaign), :flash => {:success => 'Campaign investment saved. Thank you!' }
     else
       render :action => :new
     end
@@ -28,6 +28,6 @@ class InvestmentsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     investment = Investment.find(params[:id])
     investment.destroy
-    redirect_to campaign_company_investments_path(@campaign), :notice => 'Your investment was deleted.'
+    redirect_to campaign_company_investments_path(@campaign), :flash => {:success => 'Your investment was deleted.' }
   end
 end
