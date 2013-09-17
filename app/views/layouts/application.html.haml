@@ -5,27 +5,18 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if IE 9]>    <html class="gt-ie9" lang="en"> <![endif]-->
 <!--[if gte IE 9]><!--> <html lang="en"> <!--<![endif]-->
-<!--
-This file is included as part of the Meta theme from
-RailsThemes.com, which is licensed for use in a single website. The
-license can be found in the doc folder of this application or at
-railsthemes.com/terms. -->
 %head
   %meta{:charset => "utf-8"}/
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-  %meta{:content => "Luke Flener, RailsThemes.com", :name => "designer"}/
-  %link{:href => image_path('railsthemes_meta/favicon.ico'), :rel => "icon", :type => "image/x-icon"}/
   %title
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   = stylesheet_link_tag "application"
-  //= stylesheet_link_tag "railsthemes_meta"
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   = javascript_include_tag "application"
-  //= javascript_include_tag "railsthemes_samples" unless Rails.env.production?
-  //= csrf_meta_tags
+  = csrf_meta_tags
   = yield :head
   :plain
     <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Varela+Round' rel='stylesheet' type='text/css'>
@@ -126,7 +117,5 @@ railsthemes.com/terms. -->
             %a{:href => "/auth/linkedin", :class =>"btn btn-info btn-block"} Login via Linkedin
             %a{:href => new_session_path, :class =>"btn btn-success btn-block"} Login via Email
   
-  //= javascript_include_tag "railsthemes_meta"
-
   = yield :scripts
 </html>

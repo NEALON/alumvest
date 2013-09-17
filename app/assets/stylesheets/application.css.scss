@@ -58,29 +58,27 @@ body{
 //     font-style: normal;
 // }
 
-// @font-face {
-//     font-family: 'Redacted script bold';
-//     src: font-url('redacted-script-bold.eot');
-//     src: font-url('redacted-script-bold.eot?#iefix') format('embedded-opentype'),
-//          font-url('redacted-script-bold.woff') format('woff'),
-//          font-url('redacted-script-bold.ttf') format('truetype'),
-//          font-url('redacted-script-bold.svg#redacted_scriptbold') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
+@font-face {
+     font-family: 'Redacted script bold';
+     src: font-url('redacted-script-bold.eot');
+     src: font-url('redacted-script-bold.eot?#iefix') format('embedded-opentype'),
+          font-url('redacted-script-bold.woff') format('woff'),
+          font-url('redacted-script-bold.ttf') format('truetype'),
+          font-url('redacted-script-bold.svg#redacted_scriptbold') format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
 
-// }
-
-// @font-face {
-//     font-family: 'Redacted script light';
-//     src: font-url('redacted-script-light.eot');
-//     src: font-url('redacted-script-light.eot?#iefix') format('embedded-opentype'),
-//          font-url('redacted-script-light.woff') format('woff'),
-//          font-url('redacted-script-light.ttf') format('truetype'),
-//          font-url('redacted-script-light.svg#redacted_scriptlight') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-
-// }
+@font-face {
+     font-family: 'Redacted script light';
+     src: font-url('redacted-script-light.eot');
+     src: font-url('redacted-script-light.eot?#iefix') format('embedded-opentype'),
+          font-url('redacted-script-light.woff') format('woff'),
+          font-url('redacted-script-light.ttf') format('truetype'),
+          font-url('redacted-script-light.svg#redacted_scriptlight') format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
 
 // @font-face {
 //     font-family: 'Redacted script regular';
@@ -93,8 +91,12 @@ body{
 //     font-style: normal;
 // }
 
-.redacted-bold {
+.redacted-script-bold {
   font-family: 'Redacted script bold'
+}
+
+.redacted-script-light {
+  font-family: 'Redacted script light'
 }
 
 .formtastic ol li {

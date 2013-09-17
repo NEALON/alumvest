@@ -57,9 +57,8 @@ group :test do
   gem 'zeus'
 end
 
-gem 'jquery-ui-rails', '~> 3.0' # RailsThemes
-gem 'compass-rails' #, :group => 'assets' # RailsThemes
-gem 'zurb-foundation', '~> 4.0', :group => 'assets' # RailsThemes
+gem 'jquery-ui-rails' # may not be needed - MP
+gem 'compass-rails' # may not be needed - MP
 
 #gem 'mocha', :group => :test
 
