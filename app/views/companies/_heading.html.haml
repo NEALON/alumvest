@@ -1,6 +1,6 @@
-%table
+%table.table
   %tr
-    %td
+    %td{:align => "center", :style => "vertical-align: middle"}
       = image_tag @company.logo(w:100, h:100) unless @company.logo.blank?
     %td
       %h3= @company.company_name

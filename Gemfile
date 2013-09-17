@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 group :assets do
   gem 'turbo-sprockets-rails3', '~>0.3.0'
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -60,9 +61,10 @@ end
 gem 'jquery-ui-rails' # may not be needed - MP
 gem 'compass-rails' # may not be needed - MP
 
-#gem 'mocha', :group => :test
+# gem 'mocha', :group => :test
 
-gem 'rails_admin', :git => 'git://github.com/mikepence/rails_admin.git', :ref => 'baa51e36dd97c9cde0fddf350b22e4feff3a4e6d'
+# gem "rails_admin", git: "git@github.com:bulleric/rails_admin.git", branch: "bootstrap2-dependency-patch"
+
 gem 'paper_trail'
 gem 'faker'
 

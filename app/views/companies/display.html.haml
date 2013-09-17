@@ -1,7 +1,10 @@
-= render 'campaigns/heading'
-= render 'campaigns/navigation'
-= render 'company'
-= render 'disqus'
+.container
+  = render 'campaigns/heading'
+  = render 'campaigns/navigation', :active => :company
+  = render 'company'
+  .row
+    .col-md-12
+      = render 'disqus'
 
-:erb
-  <div class='shareaholic-canvas' data-app='recommendations' data-app-id='202898'></div>
+      -#:erb
+        <div class='shareaholic-canvas' data-app='recommendations' data-app-id='202898'></div>

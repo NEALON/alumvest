@@ -1,8 +1,7 @@
 Av::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
+  # mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
 
-  # omniauth identity stuff
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'
   match '/logout', :to => 'sessions#destroy', :as => 'logout'

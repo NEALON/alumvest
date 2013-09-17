@@ -1,45 +1,39 @@
 -#= javascript_include_tag 'http://cdn.embed.ly/jquery.embedly-3.0.5.min.js'
 
-.row
-  .large-12.small-12.columns
-    .row.roomy
-      .large-8.columns
-        = render 'heading'
+-# main (left)
+.col-md-8
+  = render 'heading'
+  = render 'shared/youtube', :video_url => @company.video_url
 
-        %p= @company.category.name
-        %h4= @company.campaign_title
-        %p= raw @company.company_details
-        = render 'shared/youtube', :video_url => @company.video_url
-        %p= raw @company.faq
+  %p= @company.campaign_title
+  %p= @company.category.name
+  %p= raw @company.company_details
+  %p= raw @company.faq
 
-      .large-4.columns
-        .panel
-          %div#backer_count
-            %h3= @campaign.investors.count
-            backers
-          %br
-          %div#amount_invested
-            %h3= number_to_currency (investment_sum = @campaign.investments.sum(:amount))
-            invested of
-            = number_to_currency (fundraising_amount = @company.campaign.investment_term.fundraising_amount)
-            goal
-          %br
-          %div
-            %h3= @company.campaign.investment_term.campaign_length
-            days left
-          %div
-            %br
-            .progress
-              .meter{:style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
+-# right sidebar
+.col-md-4
+  .panel.outline{:style => "padding: 30px"}
+    %div#backer_count
+      %h3= @campaign.investors.count
+      backers
+    %div#amount_invested
+      %h3= number_to_currency (investment_sum = @campaign.investments.sum(:amount))
+      invested of
+      = number_to_currency (fundraising_amount = @company.campaign.investment_term.fundraising_amount)
+      goal
+    %div
+      %h3= @company.campaign.investment_term.campaign_length
+      days left
+    %div
+      .progress
+        .bar{:style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
 
-      - if current_user && current_user.investor
-        .large-4.columns
-          = link_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "large button", :style => "width: 304px; color: white"
+    - if true # current_user && current_user.investor
+      = button_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn btn-large btn-primary"
 
-      .large-4.columns
-        .panel
-          %p= link_to @company.company_url, @company.company_url
-          %p= raw @company.company_highlights
+  .panel.outline{:style => "padding: 30px"}
+    %p= link_to @company.company_url, @company.company_url
+    %p= raw @company.company_highlights
 
 -#:javascript
   $('document').ready(function(){

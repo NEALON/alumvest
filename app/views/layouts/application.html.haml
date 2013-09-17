@@ -10,11 +10,7 @@
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %title
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   = stylesheet_link_tag "application"
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   = javascript_include_tag "application"
   = csrf_meta_tags
   = yield :head
@@ -38,7 +34,7 @@
         %div.collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             = render partial: 'layouts/header_navigation'
-          %form.navbar-form.navbar-left{ :role => 'search'}
+          %form.navbar-form.navbar-left.form-search{ :role => 'search'}
             %div.form-group
               %input.form-control{ :type => 'text', :placeholder => 'Search'}
           %ul.nav.navbar-nav.navbar-right
@@ -59,9 +55,12 @@
           .col-md-12
             = yield :breadcrumbs
     - if content_for? :header_1
-      .row
-        .col-md-12
-          = yield :header_1
+      .container
+        .row
+          .col-md-12
+            = yield :header_1
+    - if content_for? :sub_navigation
+      = yield :sub_navigation
     .row
       - if content_for? :sidebar_left
         #sidebar.col-xs-12.col-md-3

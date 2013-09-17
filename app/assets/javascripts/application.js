@@ -15,4 +15,5 @@
 //= require filepicker_async
 //= require ckeditor-jquery
 //= require cocoon
+//= require bootstrap
 //= require_tree .
