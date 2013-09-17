@@ -13,6 +13,15 @@ RailsAdmin.config do |config|
 
   # RailsAdmin may need a way to know who the current user is]
   config.current_user_method { current_user } # auto-generated
+  config.authenticate_with {}
+  config.authorize_with do
+    if Rails.env.production?
+      is_admin = ADMIN_EMAILS.include?(current_user.email) if current_user
+      redirect_to main_app.root_url unless is_admin
+    end
+  end
+
+  ADMIN_EMAILS = ['interskh@gmail.com', 'mikepence@gmail.com', 'kyle@alumvest.com', 'lynn@alumvest.com', 'lynnduke@gmail.com', 'chinesecode@gmail.com', 'daniel.yang625@gmail.com']
 
   # If you want to track changes on your models:
   config.audit_with :history
