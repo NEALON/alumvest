@@ -21,7 +21,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  ADMIN_EMAILS = ['interskh@gmail.com', 'mikepence@gmail.com', 'kyle@alumvest.com', 'lynn@alumvest.com', 'lynnduke@gmail.com', 'chinesecode@gmail.com', 'daniel.yang625@gmail.com']
+  ADMIN_EMAILS = ['interskh@gmail.com', 'mikepence@gmail.com', 'kyle@alumvest.com', 'lynn@alumvest.com', 'lynnduke@gmail.com', 'chinesecode@gmail.com', 'daniel.yang625@gmail.com', 'sasha.ablovatskiy@gmail.com']
 
   # If you want to track changes on your models:
   config.audit_with :history
