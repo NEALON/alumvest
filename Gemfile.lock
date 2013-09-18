@@ -115,6 +115,8 @@ GEM
     ffi (1.9.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    formtastic-bootstrap (2.1.3)
+      formtastic (~> 2.2)
     fssm (0.2.10)
     haml (4.0.3)
       tilt
@@ -294,6 +296,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   formtastic
+  formtastic-bootstrap
   gibbon!
   haml-rails
   has_filepicker_image!

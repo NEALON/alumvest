@@ -20,23 +20,25 @@
         %p= "Click on the Owner tab to manage your campaign."
       %p= link_to "[edit]", edit_user_path(current_user)
 
-    #tabs
-      %ul
-        %li= link_to "User", "#tab-user"
-        - if @user.is_investor?
-          %li= link_to "Investor", "#tab-investor"
-          - unless @user.investor.investments.blank?
-            %li= link_to "Investments", "#tab-investments"
-        - if @user.is_owner?
-          %li= link_to "Owner", "#tab-owner"
-      #tab-user
+    %ul.nav.nav-tabs#tabs
+      %li= link_to "User", "#tab-user", "data-toggle" => "tab"
+      - if @user.is_investor?
+        %li= link_to "Investor", "#tab-investor", "data-toggle" => "tab"
+        - unless @user.investor.investments.blank?
+          %li= link_to "Investments", "#tab-investments", "data-toggle" => "tab"
+      - if @user.is_owner?
+        %li= link_to "Owner", "#tab-owner", "data-toggle" => "tab"
+
+    .tab-content#tabsContent
+      #tab-user.tab-pane
         = render "show_user"
-      #tab-investor
+      #tab-investor.tab-pane
         = render "show_investor"
-      #tab-investments
+      #tab-investments.tab-pane
         = render "show_investments"
-      #tab-owner
-        = render "show_owner"
+      #tab-owner.tab-pane
+        %br
+        %p= render "show_owner"
 
     - if current_user && current_user == @user && current_user.user_type_undefined?
       #user-type-modal.reveal-modal.medium
@@ -51,4 +53,9 @@
       :javascript
         $("#user-type-modal").foundation('reveal', 'open')
   :javascript
-    $( "#tabs" ).tabs();
+    $('#tabs a').click(function (e) {
+      //e.preventDefault()
+      $(this).tab('show')
+    });
+
+    $('#tabs a:first').tab('show');

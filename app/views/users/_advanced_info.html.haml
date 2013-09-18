@@ -4,7 +4,7 @@
   - if @current_user != nil and @user.id == @current_user.id
     = semantic_form_for [@user] do |f|
       .fields
-        =f.inputs "Advanced Information" do
+        =f.inputs do
           =f.input :gender,     :as => :select, :collection => ["Male", "Female"]
           =f.input :date_of_birth, :as => :date_select, :start_year => 1900
           =f.input :mobile_phone

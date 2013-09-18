@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require formtastic-bootstrap
 */
 
 @import "bootstrap";
@@ -96,16 +97,16 @@ body{
      font-style: normal;
 }
 
-// @font-face {
-//     font-family: 'Redacted script regular';
-//     src: font-url('redacted-script-regular.eot');
-//     src: font-url('redacted-script-regular.eot?#iefix') format('embedded-opentype'),
-//          font-url('redacted-script-regular.woff') format('woff'),
-//          font-url('redacted-script-regular.ttf') format('truetype'),
-//          font-url('redacted-script-regular.svg#redacted_scriptregular') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
+@font-face {
+     font-family: 'Redacted script regular';
+     src: font-url('redacted-script-regular.eot');
+     src: font-url('redacted-script-regular.eot?#iefix') format('embedded-opentype'),
+          font-url('redacted-script-regular.woff') format('woff'),
+          font-url('redacted-script-regular.ttf') format('truetype'),
+          font-url('redacted-script-regular.svg#redacted_scriptregular') format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
 
 .redacted-script-bold {
   font-family: 'Redacted script bold'
@@ -113,6 +114,10 @@ body{
 
 .redacted-script-light {
   font-family: 'Redacted script light'
+}
+
+.redacted-script-regular {
+  font-family: 'Redacted script regular'
 }
 
 .formtastic ol li {
