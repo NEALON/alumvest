@@ -30,6 +30,27 @@
 	}
 }
 
+.homepage-featured-campaigns{
+	.col-md-3.outline{
+		box-shadow: 0 0 2px gray;
+	}
+	.col-md-3.outline:hover{
+		box-shadow: 0 0 2px blue;
+		border: 1px solid blue;
+	}
+
+	.company-goal{
+		td{
+			font-size: 12px;
+		}
+
+		tbody{
+			font-weight: bold;
+		}
+		
+	}
+}
+
 #how-it-works{
 	.col-md-12{
 		background: image_url('home/cover.jpg') repeat;
