@@ -1,32 +1,33 @@
--# main (left)
-.col-md-8
-  - @campaign.team.team_members.each do |member|
-    .row
-      .col-md-3
-        = image_tag member.avatar(w:100, h:100) unless member.avatar.blank?
+.row
+  -# main (left)
+  .col-md-8
+    - @campaign.team.team_members.each do |member|
+      .row
+        .col-md-3
+          = image_tag member.avatar(w:100, h:100) unless member.avatar.blank?
 
-      .col-md-5
-        %h4= "#{member.full_name} / #{member.title}"
+        .col-md-5
+          %h4= "#{member.full_name} / #{member.title}"
 
-        - if member.facebook
-          = link_to "http://www.facebook.com/#{member.facebook}" do
-            %i.icon-facebook-sign
-        - if member.twitter
-          = link_to "http://www.twitter.com/#{member.twitter}" do
-            %i.icon-twitter-sign
-        - if member.linkedin
-          = link_to "http://www.linkedin.com/#{member.linkedin}" do
-            %i.icon-linkedin-sign
+          - if member.facebook
+            = link_to "http://www.facebook.com/#{member.facebook}" do
+              %i.icon-facebook-sign
+          - if member.twitter
+            = link_to "http://www.twitter.com/#{member.twitter}" do
+              %i.icon-twitter-sign
+          - if member.linkedin
+            = link_to "http://www.linkedin.com/#{member.linkedin}" do
+              %i.icon-linkedin-sign
 
-        - if member.introduction
-          %p= raw member.introduction
+          - if member.introduction
+            %p= raw member.introduction
 
-        - if member.video_url
-          %p= render 'shared/youtube', :video_url => member.video_url, :width => 450, :height => 300
+          - if member.video_url
+            %p= render 'shared/youtube', :video_url => member.video_url, :width => 450, :height => 300
 
--# right sidebar
-.col-md-4
-  .panel.outline{:style => "padding: 30px"}
-    %div
-      %h3 Team Highlights
-      = raw @campaign.team.team_highlights
+  -# right sidebar
+  .col-md-4
+    .panel.outline{:style => "padding: 10px 30px 10px 30px"}
+      %div
+        %h3 Team Highlights
+        = raw @campaign.team.team_highlights

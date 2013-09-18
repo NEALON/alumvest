@@ -82,7 +82,7 @@
   .push
   #footer
     .container
-      .row
+      .row{:style => "padding-top: 100px"}
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
           .col-md-12.col-xs-12
             %ul.nav.nav-pills

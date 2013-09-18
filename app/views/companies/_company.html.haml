@@ -1,44 +1,45 @@
 -#= javascript_include_tag 'http://cdn.embed.ly/jquery.embedly-3.0.5.min.js'
 
--# main (left)
-.col-md-8
-  = render 'heading'
-  = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
+.row
+  -# main (left)
+  .col-md-8
+    = render 'heading'
+    = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
 
-  %p= @company.campaign_title
-  %p= @company.category.name
-  %p= raw @company.company_details
-  %p= raw @company.faq
+    %p= @company.campaign_title
+    %p= @company.category.name
+    %p= raw @company.company_details
+    %p= raw @company.faq
 
--# right sidebar
-.col-md-4
-  .panel.outline{:style => "padding: 30px"}
-    %div#backer_count
-      %h3= @campaign.investors.count
-      backers
-    %div#amount_invested
-      %h3= number_to_currency (investment_sum = @campaign.investments.sum(:amount))
-      invested of
-      = number_to_currency (fundraising_amount = @company.campaign.investment_term.fundraising_amount)
-      goal
-    %div
-      %h3= @company.campaign.investment_term.campaign_length
-      days left
-    %div
-      .progress
-        .bar{:style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
+  -# right sidebar
+  .col-md-4
+    .panel.outline{:style => "padding: 10px 30px 10px 30px"}
+      %div#backer_count
+        %h3= @campaign.investors.count
+        backers
+      %div#amount_invested
+        %h3= number_to_currency (investment_sum = @campaign.investments.sum(:amount))
+        invested of
+        = number_to_currency (fundraising_amount = @company.campaign.investment_term.fundraising_amount)
+        goal
+      %div
+        %h3= @company.campaign.investment_term.campaign_length
+        days left
+      %div
+        .progress.progress-striped.active
+          .progress-bar{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
 
-    - if true # current_user && current_user.investor
-      = button_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn btn-large btn-primary"
+      - if true # current_user && current_user.investor
+        = button_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn btn-large btn-primary"
 
-  .panel.outline{:style => "padding: 30px"}
-    %p= link_to @company.company_url, @company.company_url
-    %p= raw @company.company_highlights
+    .panel.outline{:style => "padding: 10px 30px 10px 30px"}
+      %p= link_to @company.company_url, @company.company_url
+      %p= raw @company.company_highlights
 
--#:javascript
-  $('document').ready(function(){
-    $('div#embed').embedly({
-      query: { maxwidth: 254, maxheight: 139, wmode: 'transparent' },
-      key: '6df201d3d6b8438983bfa7de1d9c8854'
-    })
-  });
+  -#:javascript
+    $('document').ready(function(){
+      $('div#embed').embedly({
+        query: { maxwidth: 254, maxheight: 139, wmode: 'transparent' },
+        key: '6df201d3d6b8438983bfa7de1d9c8854'
+      })
+    });

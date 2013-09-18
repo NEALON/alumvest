@@ -2,7 +2,7 @@
 = render 'shared/property_row', :header => 'Subject', :value => update.subject
 = render 'shared/property_row', :header => 'Details', :value => (raw update.details)
 = render 'shared/property_row', :header => 'Visible to', :value => update.visibility
-= render 'shared/youtube', :video_url => update.video_url unless update.video_url.blank?
+= render 'shared/youtube', :video_url => update.video_url, :width => 590, :height => 400 unless update.video_url.blank?
 
 %span= "Last updated #{time_ago_in_words(update.updated_at)} ago."
 = link_to 'Edit', edit_campaign_company_update_path(update.company.campaign, update)

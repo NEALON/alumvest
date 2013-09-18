@@ -25,5 +25,5 @@
         %td
           = campaign.investors.count
 
-    .progress
-      .bar{:style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
+    .progress.progress-striped.active
+      .progress-bar{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
