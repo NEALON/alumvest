@@ -8,7 +8,12 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require formtastic-bootstrap
 */
+
+@import "bootstrap";
+@import "bootstrap/bootstrap-theme";
+
 html, body{
   width: 100%;
   height: 100%;
@@ -35,7 +40,6 @@ body{
   background-color: #f67564;
 }
 
-
 /* Original css code */
 
 .homepage-featured-campaigns .campaign-title{
@@ -45,6 +49,19 @@ body{
 
 .homepage-featured-campaigns .company-short-description{
   min-height: 60px;
+}
+
+.outline {
+  border: 1px solid gray;
+}
+
+.progress {
+  margin-top: 20px;
+}
+
+.campaign-placard-image {
+  margin-top: 10px;
+  margin-left: -4px;
 }
 
 // @font-face {
@@ -58,43 +75,49 @@ body{
 //     font-style: normal;
 // }
 
-// @font-face {
-//     font-family: 'Redacted script bold';
-//     src: font-url('redacted-script-bold.eot');
-//     src: font-url('redacted-script-bold.eot?#iefix') format('embedded-opentype'),
-//          font-url('redacted-script-bold.woff') format('woff'),
-//          font-url('redacted-script-bold.ttf') format('truetype'),
-//          font-url('redacted-script-bold.svg#redacted_scriptbold') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
+@font-face {
+     font-family: 'Redacted script bold';
+     src: font-url('redacted-script-bold.eot');
+     src: font-url('redacted-script-bold.eot?#iefix') format('embedded-opentype'),
+          font-url('redacted-script-bold.woff') format('woff'),
+          font-url('redacted-script-bold.ttf') format('truetype'),
+          font-url('redacted-script-bold.svg#redacted_scriptbold') format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
 
-// }
+@font-face {
+     font-family: 'Redacted script light';
+     src: font-url('redacted-script-light.eot');
+     src: font-url('redacted-script-light.eot?#iefix') format('embedded-opentype'),
+          font-url('redacted-script-light.woff') format('woff'),
+          font-url('redacted-script-light.ttf') format('truetype'),
+          font-url('redacted-script-light.svg#redacted_scriptlight') format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
 
-// @font-face {
-//     font-family: 'Redacted script light';
-//     src: font-url('redacted-script-light.eot');
-//     src: font-url('redacted-script-light.eot?#iefix') format('embedded-opentype'),
-//          font-url('redacted-script-light.woff') format('woff'),
-//          font-url('redacted-script-light.ttf') format('truetype'),
-//          font-url('redacted-script-light.svg#redacted_scriptlight') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
+@font-face {
+     font-family: 'Redacted script regular';
+     src: font-url('redacted-script-regular.eot');
+     src: font-url('redacted-script-regular.eot?#iefix') format('embedded-opentype'),
+          font-url('redacted-script-regular.woff') format('woff'),
+          font-url('redacted-script-regular.ttf') format('truetype'),
+          font-url('redacted-script-regular.svg#redacted_scriptregular') format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
 
-// }
-
-// @font-face {
-//     font-family: 'Redacted script regular';
-//     src: font-url('redacted-script-regular.eot');
-//     src: font-url('redacted-script-regular.eot?#iefix') format('embedded-opentype'),
-//          font-url('redacted-script-regular.woff') format('woff'),
-//          font-url('redacted-script-regular.ttf') format('truetype'),
-//          font-url('redacted-script-regular.svg#redacted_scriptregular') format('svg');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-
-.redacted-bold {
+.redacted-script-bold {
   font-family: 'Redacted script bold'
+}
+
+.redacted-script-light {
+  font-family: 'Redacted script light'
+}
+
+.redacted-script-regular {
+  font-family: 'Redacted script regular'
 }
 
 .formtastic ol li {
@@ -109,8 +132,4 @@ body{
 
 fieldset.actions {
   border: none;
-}
-
-table tr th {
-
 }

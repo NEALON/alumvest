@@ -8,7 +8,8 @@ module Features
           :owner => FactoryGirl.create(
               :owner,
               :user => FactoryGirl.create(:user)),
-          :company => FactoryGirl.create(:company),
+          :company => FactoryGirl.create(:company,
+                                         :category => FactoryGirl.create(:category)),
           :investment_term => FactoryGirl.create(:investment_term),
           :team => FactoryGirl.create(:team)
       )

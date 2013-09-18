@@ -5,7 +5,7 @@
     = semantic_form_for [@user] do |f|
       .fields
         - if @user.is_owner?
-          =f.inputs :name => "Owner Profile", :for => :owner do |owf|
+          =f.inputs :for => :owner do |owf|
             =owf.input :ssn
             =owf.input :marital_status, :as => :select, :collection => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
             =owf.input :financial_info, :input_html => { :class => 'ckeditor' }

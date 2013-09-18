@@ -1,6 +1,5 @@
-= image_tag(@company.banner_for_campaign_home_display)
+- content_for :header_1 do
+  = image_tag(@company.banner_for_campaign_home_display)
 
-.row
-  .large-12.small-12.columns
-    :erb
-      <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202784'></div>
+  :erb
+    <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202784' style="min-height: 65px"></div>

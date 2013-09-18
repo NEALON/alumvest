@@ -1,8 +1,5 @@
 = content_for :sidebar_left do
-  %h4
-    = image_tag @user.avatar(w:32, h:32) unless @user.avatar.blank?
-    = @user.name
-  %ul.large-12.small-12.side-nav
+  %ul.nav.nav-pills.nav-stacked
     %li{:class => "#{'active' if active == 'basic_info'}"}
       = link_to('Basic Information', edit_user_path)
     %li{:class => "#{'active' if active == 'advanced_info'}"}

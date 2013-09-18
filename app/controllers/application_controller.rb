@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # layout 'railsthemes_meta'
   layout 'application'
   protect_from_forgery
   helper_method :current_user, :logged_in?

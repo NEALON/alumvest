@@ -21,6 +21,6 @@
   = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
   = render 'shared/property_row', :header => 'Phone', :value => @company.phone
   = render 'shared/property_row', :header => 'faq', :value => (raw @company.faq)
-  = render 'shared/youtube', :video_url => @company.video_url
+  = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
   = render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(w:64, h:64) unless @company.photo.blank?)
   = render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(w:64, h:64) unless @company.photo.blank?)
