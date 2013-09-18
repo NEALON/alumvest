@@ -1,3 +1,5 @@
+= stylesheet_link_tag "home"
+
 .row
   .col-md-12
     .jumbotron
@@ -32,3 +34,17 @@
         %p.text-center
           = link_to('See How It Works', '#', :class => "btn btn-info btn-large")
           = link_to('Get Registered Now', '#', :class => "btn btn-primary btn-large")
+
+#feature.row
+  .col-md-12
+    .container
+      %h4 Featured in
+      .row
+        .col-md-3
+          %img{ :src => image_path('feature_logo/mashable.png')}
+        .col-md-3
+          %img{ :src => image_path('https://d1dve5icbq0xf0.cloudfront.net/assets/home_forbes1@2x-524f588e9b812e0bbd0b31efcf836038.png')}
+        .col-md-3
+          %img{ :src => image_path('feature_logo/bloomberg.png')}
+        .col-md-3
+          %img{ :src => image_path('feature_logo/betabeat.png')}
