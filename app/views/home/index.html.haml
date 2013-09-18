@@ -1,12 +1,18 @@
+= stylesheet_link_tag "home"
+
 .row
   .col-md-12
-    .jumbotron
+    #cover.jumbotron
       .container
-        %h2 Welcome to Alumvest!
-        %p.redacted-script-regular
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        %p
-          = link_to('Learn more', '#', :class => "btn btn-primary btn-large")
+        #goal
+          %h2 Welcome to Alumvest!
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          %p
+            = link_to('Learn more', '#', :class => "btn btn-primary btn-large")
+      .bottom
+        .container
+          Connecting capital and intelligence, Alumvest engages alumni and peers to seed and mentor entrepreneurs.
     :erb
       <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
     %hr
@@ -21,7 +27,7 @@
     - @live_campaigns.each do |campaign|
       = render "campaigns/placard", :campaign => campaign
 
-.row
+#how-it-works.row
   .col-md-12
     .jumbotron
       .container
@@ -32,3 +38,17 @@
         %p.text-center
           = link_to('See How It Works', '#', :class => "btn btn-info btn-large")
           = link_to('Get Registered Now', '#', :class => "btn btn-primary btn-large")
+
+#feature.row
+  .col-md-12
+    .container
+      %h4 Featured in
+      .row
+        .col-md-3
+          %img{ :src => image_path('feature_logo/mashable.png')}
+        .col-md-3
+          %img{ :src => image_path('https://d1dve5icbq0xf0.cloudfront.net/assets/home_forbes1@2x-524f588e9b812e0bbd0b31efcf836038.png')}
+        .col-md-3
+          %img{ :src => image_path('feature_logo/bloomberg.png')}
+        .col-md-3
+          %img{ :src => image_path('feature_logo/betabeat.png')}
