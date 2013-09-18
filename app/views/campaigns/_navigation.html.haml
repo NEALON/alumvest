@@ -1,6 +1,6 @@
 - content_for :sub_navigation do
   .container
-    .row
+    .row{:style => "padding-bottom: 20px"}
       .col-md-12
         %ul.nav.nav-pills
           %li{:class => "#{'active' if active == :company}"}= link_to 'Company', display_campaign_company_path(@campaign)
