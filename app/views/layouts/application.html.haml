@@ -90,30 +90,9 @@
             %p
               = mail_to "info@alumvest.com"
               &nbsp;&#149;&nbsp; 999.9999 | Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved. 
-    #signup-modal.modal.fade
-      .modal-dialog
-        .modal-content
-          .modal-header
-            %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
-              &times;
-            .h4
-              Sign Up
-          .modal-body
-            %a{:href => "/auth/facebook", :class =>"btn btn-primary btn-block"} Sign up via Facebook
-            %a{:href => "/auth/linkedin", :class =>"btn btn-info btn-block"} Sign up via Linkedin
-            %a{:href => new_identity_path, :class =>"btn btn-success btn-block"} Sign up via Email
-    #login-modal.modal.fade
-      .modal-dialog
-        .modal-content
-          .modal-header
-            %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
-              &times;
-            .h4
-              Login
-          .modal-body
-            %a{:href => "/auth/facebook", :class =>"btn btn-primary btn-block"} Login via Facebook
-            %a{:href => "/auth/linkedin", :class =>"btn btn-info btn-block"} Login via Linkedin
-            %a{:href => new_session_path, :class =>"btn btn-success btn-block"} Login via Email
+
+    = render :partial => 'layouts/signup_modal'
+    = render :partial => 'layouts/login_modal'
   
   = yield :scripts
 </html>

@@ -1,44 +1,85 @@
 <div class='container'>
-  <h1>New Account</h1>
 
-  <%= form_tag "/auth/identity/register" do %>
-    <% if @identity && @identity.errors.any? %>
-      <div class="error_messages">
-        <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
-        <ul>
-        <% @identity.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <p class="vertical-spacer-1-em">
+
+      <h3>Create an Account</h3>
+      <%= link_to "Login", "/sessions/new" %> or create an account below.
+      </p>
+    </div>
+  </div>
+
+
+  <form class="form-horizontal" action="/auth/identity/register" method="post">
+    <fieldset>
+
+      <% if @identity && @identity.errors.any? %>
+          <div class="error_messages">
+            <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+            <ul>
+              <% @identity.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= label_tag :first_name, nil, :class => "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= text_field_tag :first_name, @identity.try(:first_name), :class => "form-control input-md" %>
+        </div>
       </div>
-    <% end %>
-    <div class="field">
-      <%= label_tag :first_name %><br>
-      <%= text_field_tag :first_name, @identity.try(:first_name) %>
-    </div>
-    <div class="field">
-      <%= label_tag :last_name %><br>
-      <%= text_field_tag :last_name, @identity.try(:last_name) %>
-    </div>
-    <div class="field">
-      <%= label_tag :email %><br>
-      <%= text_field_tag :email, @identity.try(:email) %>
-    </div>
-    <div class="field">
-      <%= label_tag :password %><br>
-      <%= password_field_tag :password %>
-    </div>
-    <div class="field">
-      <%= label_tag :password_confirmation %><br>
-      <%= password_field_tag :password_confirmation %>
-    </div>
-    <div class="field">
-      <%= label_tag :i_am %><br>
-      <select name="description">
-        <option value="investor">Investor</option>
-        <option value="owner">Owner</option>
-      </select>
-    </div>
-    <div class="actions"><%= submit_tag "Register" %></div>
-  <% end %>
+
+      <div class="form-group">
+        <%= label_tag :last_name, nil, :class => "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= text_field_tag :last_name, @identity.try(:last_name), :class => "form-control input-md" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :email, nil, :class => "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= text_field_tag :email, @identity.try(:email), :class => "form-control input-md" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :password, nil, :class => "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= password_field_tag :password, @identity.try(:password), :class => "form-control input-md" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :password_confirmation, nil, :class => "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= password_field_tag :password_confirmation, @identity.try(:password_confirmation), :class => "form-control input-md" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="radios">I am</label>
+
+        <div class="col-md-4">
+          <label class="radio-inline" for="description">
+            <input type="radio" name="description" id="radios-0" value="Investor" checked="checked">
+            an investor
+          </label>
+          <label class="radio-inline" for="description">
+            <input type="radio" name="description" id="radios-1" value="Owner">
+            a business owner
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-4">
+          <button id="singlebutton" name="commit" type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
 </div>

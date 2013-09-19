@@ -21,6 +21,7 @@ gem 'omniauth-linkedin'
 
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'simple_form'
 gem 'formtastic'
 gem 'has_filepicker_image', :git => 'git://github.com/polmiro/has_filepicker_image.git'
 gem 'ckeditor_rails', '~> 4.1.2'
