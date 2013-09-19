@@ -1,6 +1,11 @@
-.nested-fields
-  = f.inputs do
-    = f.input :name
-    = f.input :file_url, :as => :formtastic_filepicker_image
+%fieldset
+  = render_cell :tb_text_field,       :show, :form => f, :field => :name
+  = render_cell :tb_filepicker_field, :show, :form => f, :field => :file_url, :label => "File"
 
-    = link_to_remove_association "Remove", f
+:erb
+  <div class="form-group">
+    <div class="col-md-4 control-label">&nbsp;</div>
+    <div class="col-md-6">
+      <%= link_to_remove_association "Remove this file", f, :class => 'btn btn-default btn-xs' %>
+    </div>
+  </div>

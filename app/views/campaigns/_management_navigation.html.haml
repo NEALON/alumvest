@@ -19,7 +19,7 @@
   %hr
 
 = content_for :sidebar_left do
-  %ul.large-12.small-12.side-nav
+  %ul.nav.nav-pills.nav-stacked
     %li{:class => "#{'active' if active == :demographic}"}
       - unless entity = campaign.company
         %h4= link_to('Company', new_campaign_company_path(campaign))

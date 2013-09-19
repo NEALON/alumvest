@@ -1,5 +1,11 @@
-%h4= title
-= f.semantic_fields_for grouping do |member|
+%legend= title
+= f.fields_for grouping do |member|
   = render 'documents_fields', {:f => member}
-  .links
-    = link_to_add_association 'Add another', f, grouping, :partial => 'documents_fields', :force_non_association_create => true
+
+  :erb
+    <div class="form-group">
+      <div class="col-md-4 control-label">&nbsp;</div>
+      <div class="col-md-6">
+        <%= link_to_add_association 'Add another file', f, grouping, :partial => 'documents_fields', :force_non_association_create => true, :class => 'btn btn-default btn-xs' %>
+      </div>
+    </div>

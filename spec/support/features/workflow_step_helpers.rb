@@ -7,7 +7,7 @@ module Features
 
     def create_blank_new_company(campaign)
       visit new_campaign_company_path(campaign)
-      click_button 'Save changes'
+      click_button 'Save'
     end
 
     def edit_company(campaign)
@@ -23,7 +23,7 @@ module Features
 
     def create_blank_new_investment_term(campaign)
       visit new_campaign_investment_term_path campaign
-      click_button 'Save changes'
+      click_button 'Save'
     end
 
     def create_new_team(campaign)
@@ -34,7 +34,7 @@ module Features
 
     def create_blank_new_team(campaign)
       visit new_campaign_team_path(campaign)
-      click_button 'Save changes'
+      click_button 'Save'
     end
 
     def create_new_update(company)
@@ -45,7 +45,7 @@ module Features
 
     def create_blank_new_update(campaign)
       visit new_campaign_company_update_path campaign
-      click_button 'Save changes'
+      click_button 'Save'
     end
     
     def create_team_via_factories(campaign, build_or_create = :build)

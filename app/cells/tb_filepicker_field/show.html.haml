@@ -1,6 +1,6 @@
 :erb
   <div class="form-group">
-    <%= label_tag @field, nil, :class => "col-md-4 control-label" %>
+    <%= label_tag @field, @label, :class => "col-md-4 control-label" %>
     <div class="col-md-6">
       <%= @form.filepicker_image_field @field, :delete_button_html => 'Remove', :class => "form-control input-md" %>
     </div>

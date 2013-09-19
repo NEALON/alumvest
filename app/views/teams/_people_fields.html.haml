@@ -1,13 +1,18 @@
-.nested-fields
-  = f.inputs do
-    = f.input :first_name
-    = f.input :last_name
-    = f.input :title
-    = f.input :avatar_url, :as => :formtastic_filepicker_image
-    = f.input :facebook
-    = f.input :twitter
-    = f.input :linkedin
-    = f.input :introduction, :input_html => { :class => 'ckeditor' }
-    = f.input :video_url
-      
-    = link_to_remove_association "Remove", f
+%fieldset
+  = render_cell :tb_text_field,       :show, :form => f, :field => :first_name
+  = render_cell :tb_text_field,       :show, :form => f, :field => :last_name
+  = render_cell :tb_text_field,       :show, :form => f, :field => :title
+  = render_cell :tb_filepicker_field, :show, :form => f, :field => :avatar_url, :label => "Avatar"
+  = render_cell :tb_text_field,       :show, :form => f, :field => :facebook
+  = render_cell :tb_text_field,       :show, :form => f, :field => :twitter
+  = render_cell :tb_text_field,       :show, :form => f, :field => :linkedin
+  = render_cell :tb_richtext_field,   :show, :form => f, :field => :introduction
+  = render_cell :tb_text_field,       :show, :form => f, :field => :video_url
+
+  :erb
+    <div class="form-group">
+      <div class="col-md-4 control-label">&nbsp;</div>
+      <div class="col-md-6">
+        <%= link_to_remove_association "Remove this person", f, :class => 'btn btn-default btn-xs' %>
+      </div>
+    </div>

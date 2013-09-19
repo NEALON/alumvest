@@ -1,24 +1,23 @@
-= semantic_form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign) do |f|
+%legend Investment Terms
 
-  = render 'shared/errors', :entity => @investment_term
+= form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign), :html => {:class => "form-horizontal"} do |f|
 
-  = f.inputs do
-    = f.input :campaign_id, :as => :hidden
-    = f.input :fundraising_amount
-    = f.input :campaign_length, :label => 'Campaign length (days)', :as => :select, :collection => ['30', '60', '90', '120']
-    = f.input :equity_type, :label => 'Convertible Note or Equity', :as => :select, :collection => ['Convertible Note', 'Equity']
-    = f.input :funds_retained, :as => :select, :collection => ['All-or-nothing', 'Any']
-    = f.input :fees_paid_by, :as => :select, :collection => ['Investor', 'Owner']
-    = f.input :elevator_pitch, :input_html => { :class => 'ckeditor' }
-    = f.input :investment_details, :input_html => { :class => 'ckeditor' }
+  -#= render 'shared/errors', :entity => @investment_term
 
-    = f.input :planned_fund_usage, :label => 'Planned use for funds', :input_html => { :class => 'ckeditor' }
-    = f.input :business_plan_url, :label => 'Business plan', :as => :formtastic_filepicker_image
-    = f.input :financial_statement_url, :label => 'Financial statement', :as => :formtastic_filepicker_image
-    = f.input :term_sheet_url, :label => 'Term sheet', :as => :formtastic_filepicker_image
+  = f.hidden_field :campaign_id
+  = render_cell :tb_text_field,        :show, :form => f, :field => :fundraising_amount
+  = render_cell :tb_select_field,      :show, :form => f, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
+  = render_cell :tb_radiobutton_field, :show, :form => f, :field =>   :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity']
+  = render_cell :tb_radiobutton_field, :show, :form => f, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
+  = render_cell :tb_radiobutton_field, :show, :form => f, :field => :fees_paid_by, :values => ['Investor', 'Owner']
+  = render_cell :tb_richtext_field,    :show, :form => f, :field =>  :elevator_pitch
+  = render_cell :tb_richtext_field,    :show, :form => f, :field =>  :investment_details
+  = render_cell :tb_richtext_field,    :show, :form => f, :field =>  :planned_fund_usage, :label => 'Planned use for funds'
+  = render_cell :tb_filepicker_field,  :show, :form => f, :field => :business_plan_url, :label => "Business plan"
+  = render_cell :tb_filepicker_field,  :show, :form => f, :field => :financial_statement_url, :label => "Financial statement"
+  = render_cell :tb_filepicker_field,  :show, :form => f, :field => :term_sheet_url, :label => "Term sheet"
 
-    = render 'documents', :title => 'Subscription documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
-    = render 'documents', :title => 'Others documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f
+  = render 'documents', :title => 'Subscription documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
+  = render 'documents', :title => 'Others documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f
 
-  = f.actions do
-    = f.action :submit, :as => :input, :label => 'Save changes'
+  = render_cell :tb_submit_button,    :show

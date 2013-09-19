@@ -99,7 +99,7 @@ module Features
         # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
       end
       screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
+      click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
 
@@ -123,7 +123,7 @@ module Features
         # fill_in "#{form}_other_docs_attributes_0_name", :with => investment_term.subscription_docs.first.name
       end
       screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
+      click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
 
@@ -138,7 +138,7 @@ module Features
       fill_in_ckeditor "team_team_members_attributes_0_introduction", team.team_members.first.introduction
 
       screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
+      click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
 
@@ -151,7 +151,7 @@ module Features
       fill_in "update_video_url", :with => update.video_url
 
       screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
+      click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
 
@@ -161,7 +161,7 @@ module Features
       fill_in "investment_amount", :with => investment.amount
 
       screenshot_and_save_page if $do_screenshots
-      click_button 'Save changes'
+      click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
   end
