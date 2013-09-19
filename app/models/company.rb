@@ -66,7 +66,7 @@ class Company < ActiveRecord::Base
   # image display helpers
 
   def photo_for_card_display
-    photo(:w => 300, :h => 150, :fit => "crop").try(:sub, /https:/, "http:")
+    photo(:w => 218, :h => 110, :fit => "crop").try(:sub, /https:/, "http:")
   end
 
   def banner_for_campaign_home_display
