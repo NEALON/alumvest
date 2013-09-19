@@ -1,0 +1,7 @@
+:erb
+  <div class="form-group">
+    <%= label_tag @field, nil, :class => "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= @form.select @field, @values %>
+    </div>
+  </div>

@@ -45,15 +45,15 @@ class User < ActiveRecord::Base
   end
 
   def is_investor?
-    user_type == "investor"
+    user_type == "Investor"
   end
 
   def is_owner?
-    user_type == "owner"
+    user_type == "Owner"
   end
 
   def user_type_undefined?
-    user_type != "investor" && user_type != "owner"
+    user_type != "Investor" && user_type != "Owner"
   end
 
   def update_user_type

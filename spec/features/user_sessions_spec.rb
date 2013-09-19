@@ -4,6 +4,7 @@ describe "user sessions", :type => :feature do
 
   it "registers email owner" do
     sign_up :owner
+
     expect(page).to have_content('Please complete your profile.')
     expect(page).to have_link('edit')
     expect(page).to have_link('Sign out')
@@ -34,7 +35,7 @@ describe "user sessions", :type => :feature do
 
     visit '/'
     click_link 'Register'
-    click_link 'Sign up via Facebook'
+    click_link 'Facebook'
 
     expect(page).to have_link "edit"
     expect(page).to have_link "Sign out"
@@ -45,7 +46,7 @@ describe "user sessions", :type => :feature do
     signout
 
     click_link 'Login'
-    click_link 'Login via Facebook'
+    click_link 'Facebook'
     expect(page).to have_link "Investor"
     expect(page).to have_link "Sign out"
 

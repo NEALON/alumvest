@@ -1,0 +1,13 @@
+:erb
+  <div class="form-group">
+    <%= label_tag @field, nil, :class => "col-md-4 control-label" %>
+
+    <div class="col-md-6">
+      <%- @values.each do |value| %>
+        <label class="radio-inline" for="<%= @field %>">
+          <input type="radio" name="<%= @field %>" id="<%= value %>" value="<%= value %>">
+          <%= value %>
+        </label>
+      <%- end %>
+    </div>
+  </div>
