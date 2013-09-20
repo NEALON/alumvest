@@ -7,13 +7,13 @@
 
         = fields_for :owner do |owf|
           %fieldset
-            = render_cell :tb_text_field,         :show, :form => owf, :field => :ssn
-            = render_cell :tb_select_field, :show, :form => owf, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            = render_cell :tb_richtext_field,         :show, :form => owf, :field => :financial_info
-            = render_cell :tb_richtext_field,         :show, :form => owf, :field => :experience
-            = render_cell :tb_richtext_field,         :show, :form => owf, :field => :expertise
-            = render_cell :tb_richtext_field,         :show, :form => owf, :field => :personal_message
-            = render_cell :tb_submit_button,      :show
+            = render_cell :tb_text_field,     :show, :form => owf, :field => :ssn
+            = render_cell :tb_select_field,   :show, :form => owf, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            = render_cell :tb_richtext_field, :show, :form => owf, :field => :financial_info
+            = render_cell :tb_richtext_field, :show, :form => owf, :field => :experience
+            = render_cell :tb_richtext_field, :show, :form => owf, :field => :expertise
+            = render_cell :tb_richtext_field, :show, :form => owf, :field => :personal_message
+            = render_cell :tb_submit_button,  :show
 
     - else
       You are not a founder.

@@ -1,25 +1,26 @@
 -if @user.nil?
   %h2 User not found
--else
+- else
   - if @current_user != nil and @user.id == @current_user.id
-    = semantic_form_for [@user] do |f|
-      .fields
-        - if @user.is_investor?
-          =f.inputs :name => "Investor Profile", :for => :investor do |inf|
-            =inf.input :ssn
-            =inf.input :marital_status, :as => :select, :collection => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            =inf.input :financial_info, :input_html => { :class => 'ckeditor' }
-            =inf.input :spending_habits
-            =inf.input :income
-            =inf.input :income_type
-            =inf.input :net_worth
-            =inf.input :investor_representations
-            =inf.input :company
-            =inf.input :job_title
-            =inf.input :experience, :input_html => { :class => 'ckeditor' }
-            =inf.input :expertise, :input_html => { :class => 'ckeditor' }
-            =inf.input :personal_message, :input_html => { :class => 'ckeditor' }
-          .rows
-            =f.submit "Save"
-        - else
-          You are not an investor.
+
+    = form_for @user, :html => {:class => "form-horizontal"} do |f|
+      - if @user.is_investor?
+        = fields_for :investor do |i|
+          %fieldset
+            = render_cell :tb_text_field,       :show, :form => i, :field => :ssn
+            = render_cell :tb_select_field, :show, :form => i, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            = render_cell :tb_richtext_field, :show, :form => i, :field => :financial_io
+            = render_cell :tb_text_field,     :show, :form => i, :field => :spending_habits
+            = render_cell :tb_text_field,     :show, :form => i, :field => :income
+            = render_cell :tb_text_field,     :show, :form => i, :field => :income_type
+            = render_cell :tb_text_field,     :show, :form => i, :field => :net_worth
+            = render_cell :tb_text_field,     :show, :form => i, :field => :investor_representations
+            = render_cell :tb_text_field,     :show, :form => i, :field => :company
+            = render_cell :tb_text_field,     :show, :form => i, :field => :job_title
+            = render_cell :tb_richtext_field, :show, :form => i, :field => :experience
+            = render_cell :tb_richtext_field, :show, :form => i, :field => :expertise
+            = render_cell :tb_richtext_field, :show, :form => i, :field => :personal_message
+            = render_cell :tb_submit_button,  :show
+
+      - else
+        You are not an investor.
