@@ -116,8 +116,6 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     ffi (1.9.0)
-    formtastic (2.2.1)
-      actionpack (>= 3.0)
     fssm (0.2.10)
     haml (4.0.3)
       tilt
@@ -248,9 +246,6 @@ GEM
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     sexp_processor (4.3.0)
-    simple_form (2.1.0)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -300,7 +295,6 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails
   faker
-  formtastic
   gibbon!
   haml-rails
   has_filepicker_image!
@@ -322,7 +316,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   selenium-webdriver
-  simple_form
   sqlite3
   state_machine
   thin
