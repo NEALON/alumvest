@@ -1,6 +1,6 @@
 class TbMiniLinkButtonCell < Cell::Rails
 
-  def show(opts)
+  def show(opts = {})
     @label = opts[:label]
     @link = opts[:link]
     render

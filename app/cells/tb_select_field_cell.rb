@@ -1,6 +1,6 @@
 class TbSelectFieldCell < Cell::Rails
 
-  def show(opts)
+  def show(opts = {})
     @form = opts[:form]
     @field = opts[:field]
     @values = opts[:values]

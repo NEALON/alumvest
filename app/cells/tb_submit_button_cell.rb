@@ -1,6 +1,7 @@
 class TbSubmitButtonCell < Cell::Rails
 
-  def show
+  def show(opts = {})
+    @label = opts[:label] || "Save"
     render
   end
 end
