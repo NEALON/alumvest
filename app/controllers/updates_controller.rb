@@ -4,7 +4,7 @@ class UpdatesController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
     @update = Update.new(:company => @company)
-    @updates = @company.updates
+    @updates = @company.try(:updates)
   end
 
   def new

@@ -3,7 +3,8 @@
 
   -#= render 'shared/errors', :entity => @investment_term
 
-  = f.hidden_field :campaign_id
-  = render_cell :tb_richtext_field, :show, :form => f, :field => :team_highlights
-  = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f
-  = render_cell :tb_submit_button,    :show
+  %fieldset
+    = f.hidden_field :campaign_id
+    = render_cell :tb_richtext_field, :show, :form => f, :field => :team_highlights
+    = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f
+    = render_cell :tb_submit_button,    :show

@@ -1,9 +1,9 @@
 = render 'campaigns/management_navigation', :active => :funding, :campaign => @campaign
 
 .panel
-  = link_to 'Edit Investment Terms', edit_campaign_investment_term_path(@campaign), :class => 'button small'
+  = render_cell :tb_mini_link_button, :show, :label => 'Edit Investment Terms', :link => edit_campaign_investment_term_path(@campaign)
   - if @investment_term.draft?
-    = link_to 'Check for completeness', check_for_completeness_campaign_investment_term_path(@campaign), :class => 'button small'
+    = render_cell :tb_mini_link_button, :show, :label => 'Check for completeness', :link => check_for_completeness_campaign_investment_term_path(@campaign)
 
   = render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
   = render 'shared/property_row', :header => 'Campaign length (days)', :value => @investment_term.campaign_length

@@ -1,9 +1,9 @@
 = render 'campaigns/management_navigation', :active => :demographic, :campaign => @campaign
 
 .panel
-  = link_to 'Edit Company', edit_campaign_company_path(@campaign), :class => 'button small'
+  = render_cell :tb_mini_link_button, :show,  :label => 'Edit Company', :link => edit_campaign_company_path(@campaign)
   - if @company.draft?
-    = link_to 'Check for completeness', check_for_completeness_campaign_company_path(@campaign), :class => 'button small'
+    = render_cell :tb_mini_link_button, :show, :label => 'Check for completeness', :link => check_for_completeness_campaign_company_path(@campaign)
 
   = render 'shared/property_row', :header => 'Company name', :value => @company.company_name
   = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(w:32, h:32) unless @company.logo.blank?)
