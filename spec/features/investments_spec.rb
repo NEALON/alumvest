@@ -29,8 +29,6 @@ describe "managing investments", :type => :feature do
     screenshot_and_save_page if $do_screenshots
   end
 
-  it "by modifying an investment" do
-  end
-
-  it "by deleting an investment"
+  # it "by modifying an investment"
+  # it "by deleting an investment"
 end

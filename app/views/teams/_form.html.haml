@@ -1,7 +1,7 @@
 %legend Team
 = form_for [@company, @team], :url => campaign_team_path(@campaign), :html => {:class => "form-horizontal"}  do |f|
 
-  = render 'shared/errors', :entity => @investment_term
+  = render 'shared/errors', :entity => @team
 
   %fieldset
     = f.hidden_field :campaign_id

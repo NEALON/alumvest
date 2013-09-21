@@ -3,13 +3,14 @@
 - else
   - if @current_user != nil and @user.id == @current_user.id
 
-    = form_for @user, :html => {:class => "form-horizontal"} do |f|
+    = form_for @user.investor, :url => user_investor_path(@user), :html => {:class => "form-horizontal"} do |f|
       - if @user.is_investor?
         = fields_for :investor do |i|
           %fieldset
+            = f.hidden_field :user_id
             = render_cell :tb_text_field,       :show, :form => i, :field => :ssn
             = render_cell :tb_select_field, :show, :form => i, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            = render_cell :tb_richtext_field, :show, :form => i, :field => :financial_io
+            = render_cell :tb_richtext_field, :show, :form => i, :field => :financial_info
             = render_cell :tb_text_field,     :show, :form => i, :field => :spending_habits
             = render_cell :tb_text_field,     :show, :form => i, :field => :income
             = render_cell :tb_text_field,     :show, :form => i, :field => :income_type

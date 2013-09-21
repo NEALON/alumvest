@@ -7,7 +7,7 @@
     - if @user.is_investor?
       %li{:class => "#{'active' if active == 'investor_profile'}"}
         = link_to('Investor Profile', edit_user_path(:tab => 'investor_profile'))
-    - if @user.is_owner?
+    -#- if @user.is_owner?
       %li{:class => "#{'active' if active == 'founder_profile'}"}
         = link_to('Founder Profile', edit_user_path(:tab => 'founder_profile'))
     %li{:class => "#{'active' if active == 'settings'}"}
