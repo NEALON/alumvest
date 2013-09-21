@@ -51,35 +51,35 @@
                 = link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
   #content
     - if content_for? :breadcrumbs
-      .container
-        .row
-          .col-md-12
-            = yield :breadcrumbs
+      //.container
+      .row
+        .col-md-12
+          = yield :breadcrumbs
     - if content_for? :header_1
-      .container
-        .row
-          .col-md-12
-            = yield :header_1
+      //.container
+      .row
+        .col-md-12
+          = yield :header_1
     - if content_for? :sub_navigation
       = yield :sub_navigation
-    .container
-      .row
-        - if content_for? :sidebar_left
-          #sidebar.col-xs-12.col-md-3
-            = yield :sidebar_left
-          .col-md-9.col-xs-12
-            = render 'layouts/flash', :flash => flash
-            = yield
-        - elsif content_for? :sidebar_right
-          .col-md-8.col-xs-12
-            = render 'layouts/flash', :flash => flash
-            = yield
-          #sidebar.col-md-4.col-xs-12
-            = yield :sidebar_right
-        - else
-          .col-md-12.col-xs-12
-            = render 'layouts/flash', :flash => flash
-            = yield
+    //.container
+    .row
+      - if content_for? :sidebar_left
+        #sidebar.col-xs-12.col-md-3
+          = yield :sidebar_left
+        .col-md-9.col-xs-12
+          = render 'layouts/flash', :flash => flash
+          = yield
+      - elsif content_for? :sidebar_right
+        .col-md-8.col-xs-12
+          = render 'layouts/flash', :flash => flash
+          = yield
+        #sidebar.col-md-4.col-xs-12
+          = yield :sidebar_right
+      - else
+        .col-md-12.col-xs-12
+          = render 'layouts/flash', :flash => flash
+          = yield
   .push
   #footer
     .container
