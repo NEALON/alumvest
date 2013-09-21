@@ -5,7 +5,7 @@
     <div class="col-md-7">
       <%- @values.each do |value| %>
         <label class="radio-inline" for="<%= @field %>">
-          <input type="radio" name="<%= @field %>" id="<%= value %>" value="<%= value %>">
+          <%= @form.radio_button @field, @field == @value, :value => value %>
           <%= value %>
         </label>
       <%- end %>
