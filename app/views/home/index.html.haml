@@ -27,6 +27,19 @@
     - @live_campaigns.each do |campaign|
       = render "campaigns/placard", :campaign => campaign
 
+#video-trailer.row
+  .col-md-12
+    .jumbotron
+      .container-bg.container-bg-video
+        %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%; height: 100%'}
+          %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
+          %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
+          %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
+
+      //.container-bg.container-bg-text
+      //.video-wrapper
+
+
 #how-it-works.row
   .col-md-12
     .jumbotron

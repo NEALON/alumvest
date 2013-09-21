@@ -51,6 +51,14 @@
 	}
 }
 
+#video-trailer{
+	.jumbotron{
+		display: block;
+		padding: 0;
+		max-height: 751px;
+	}
+}
+
 #how-it-works{
 	.col-md-12{
 		background: image-url('home/cover.jpg') repeat;
