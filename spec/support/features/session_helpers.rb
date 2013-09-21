@@ -40,7 +40,9 @@ module Features
     def sign_in(email = @email, password = @password)
       visit '/'
       click_link 'Login'
-      click_link "Email"
+      within '#login-modal' do
+        click_link "Email"
+      end
       fill_in 'Email', :with => email
       fill_in 'password', :with => password
       screenshot_and_save_page if $do_screenshots
