@@ -21,7 +21,7 @@ gem 'omniauth-linkedin'
 
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'has_filepicker_image', :git => 'git://github.com/polmiro/has_filepicker_image.git'
+gem 'has_filepicker_image', :git => 'git://github.com/interskh/has_filepicker_image.git'
 gem 'cells'
 gem 'ckeditor_rails', '~> 4.1.2'
 gem "cocoon"

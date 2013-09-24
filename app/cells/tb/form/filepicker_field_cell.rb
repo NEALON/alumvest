@@ -4,6 +4,7 @@ class Tb::Form::FilepickerFieldCell < Cell::Rails
     @form = opts[:form]
     @field = opts[:field]
     @label = opts[:label]
+    @type = opts[:type] || "default"
     render
   end
 end

@@ -7,8 +7,8 @@ GIT
       multi_json (>= 1.3.4)
 
 GIT
-  remote: git://github.com/polmiro/has_filepicker_image.git
-  revision: 613eb6ba3335b1a8d4c0c56842f6b16ae70cf565
+  remote: git://github.com/interskh/has_filepicker_image.git
+  revision: be8a6b12d803eb4676e196e6d9c30d4578e4fb36
   specs:
     has_filepicker_image (0.0.15)
       rails (>= 3.2.0)
