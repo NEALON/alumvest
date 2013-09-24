@@ -5,6 +5,6 @@
 
   %fieldset
     = f.hidden_field :campaign_id
-    = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field => :team_highlights
+    = render_cell 'tb/form/richtext_field', :display, :form => f, :field => :team_highlights
     = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f
-    = render_cell 'tb/form/tb_submit_button', :display
+    = render_cell 'tb/form/submit_button', :display

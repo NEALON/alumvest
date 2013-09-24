@@ -1,9 +1,9 @@
 = render 'campaigns/management_navigation', :active => :people, :campaign => @campaign
 
 .panel
-  = render_cell 'tb/form/tb_mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign)
+  = render_cell 'tb/form/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign)
   - if @team.draft?
-    = render_cell 'tb/form/tb_mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
+    = render_cell 'tb/form/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
 
   = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
 
