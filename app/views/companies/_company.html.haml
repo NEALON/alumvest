@@ -30,7 +30,7 @@
           .progress-bar{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
 
       - if true # current_user && current_user.investor
-        = button_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn btn-large btn-primary"
+        = button_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn btn-large btn-primary", :method => :get
 
     .panel.outline{:style => "padding: 10px 30px 10px 30px"}
       %p= link_to @company.company_url, @company.company_url

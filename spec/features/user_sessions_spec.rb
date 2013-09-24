@@ -46,7 +46,9 @@ describe "user sessions", :type => :feature do
     signout
 
     click_link 'Login'
-    click_link 'Facebook'
+    within '#login-modal' do
+      click_link 'Facebook'
+    end
     expect(page).to have_link "Investor"
     expect(page).to have_link "Sign out"
 
@@ -63,5 +65,4 @@ describe "user sessions", :type => :feature do
     mail.body.encoded.should match(@last_name)
     mail.body.encoded.should match("http://www.alumvest.com")
   end
-
 end

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "user profiles", :type => :feature do
 
-  it " - owner user profile" do
+  it "owner user profile" do
     sign_up :owner
     click_link '[edit]'
 
@@ -42,16 +42,16 @@ describe "user profiles", :type => :feature do
     expect(page).to have_content(ps)
 
     # Founder Profile
-    click_link '[edit]'
-    click_link 'Founder Profile'
-    fill_in_user_owner_profile
+    # click_link '[edit]'
+    # click_link 'Founder Profile'
+    # fill_in_user_owner_profile
 
-    expect(page).to have_content('User info saved.')
-    expect(page).to have_content('Married')
-    expect(page).to have_content('000-00-0000')
+    # expect(page).to have_content('User info saved.')
+    # expect(page).to have_content('Married')
+    # expect(page).to have_content('000-00-0000')
   end
 
-  it " - investor user profile" do
+  it "investor user profile" do
     sign_up :investor
     click_link '[edit]'
 
@@ -61,9 +61,8 @@ describe "user profiles", :type => :feature do
     click_link 'Investor Profile'
     fill_in_user_investor_profile
 
-    expect(page).to have_content('User info saved.')
+    expect(page).to have_content('Investor info saved.')
     expect(page).to have_content('Married')
-    expect(page).to have_content('000-00-0000')
   end
 
   it "changes password" do

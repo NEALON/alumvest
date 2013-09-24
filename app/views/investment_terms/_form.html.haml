@@ -2,15 +2,15 @@
 
 = form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign), :html => {:class => "form-horizontal"} do |f|
 
-  -#= render 'shared/errors', :entity => @investment_term
+  = render 'shared/errors', :entity => @investment_term
 
   %fieldset
     = f.hidden_field :campaign_id
     = render_cell :tb_text_field,        :show, :form => f, :field => :fundraising_amount
     = render_cell :tb_select_field,      :show, :form => f, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
-    = render_cell :tb_radiobutton_field, :show, :form => f, :field =>   :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity']
-    = render_cell :tb_radiobutton_field, :show, :form => f, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
-    = render_cell :tb_radiobutton_field, :show, :form => f, :field => :fees_paid_by, :values => ['Investor', 'Owner']
+    = render_cell :tb_select_field,      :show, :form => f, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity']
+    = render_cell :tb_select_field, :show, :form => f, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
+    = render_cell :tb_select_field, :show, :form => f, :field => :fees_paid_by, :values => ['Investor', 'Owner']
     = render_cell :tb_richtext_field,    :show, :form => f, :field =>  :elevator_pitch
     = render_cell :tb_richtext_field,    :show, :form => f, :field =>  :investment_details
     = render_cell :tb_richtext_field,    :show, :form => f, :field =>  :planned_fund_usage, :label => 'Planned use for funds'

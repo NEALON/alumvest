@@ -31,7 +31,10 @@ Av::Application.routes.draw do
     get :join_us
   end
 
-  resources :users
+  resources :users do
+    resource :borrower
+    resource :investor
+  end
 
   root :to => "home#index"
 end

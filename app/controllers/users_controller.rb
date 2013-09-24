@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
-    if @current_user != nil and @user.id == @current_user.id
+    if @current_user != nil && @user.id == @current_user.id
       if params[:user].has_key? "password"
         @identity = Identity.find(@user.uid)
         @identity.password = params[:user]["password"]

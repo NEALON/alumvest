@@ -56,7 +56,6 @@ group :test do
   gem 'sqlite3'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem 'zeus'
 end
 
 gem 'jquery-ui-rails' # may not be needed - MP

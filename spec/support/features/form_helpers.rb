@@ -61,13 +61,13 @@ module Features
     end
 
     def fill_in_user_investor_profile
-      'user'.tap do |form|
-        fill_in "#{form}_investor_attributes_ssn", :with => '000-00-0000'
-        select 'Married', :from => "#{form}_investor_attributes_marital_status"
-        fill_in_ckeditor "#{form}_investor_attributes_financial_info", Faker::Lorem.sentence(10)
-        fill_in "#{form}_investor_attributes_experience", :with => Faker::Lorem.sentence(10)
-        fill_in "#{form}_investor_attributes_expertise", :with => Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_investor_attributes_personal_message", Faker::Lorem.sentence(10)
+      'investor'.tap do |form|
+        fill_in "#{form}_ssn", :with => '000-00-0000'
+        select 'Married', :from => "#{form}_marital_status"
+        fill_in_ckeditor "#{form}_financial_info", Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_experience", :with => Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_expertise", :with => Faker::Lorem.sentence(10)
+        fill_in_ckeditor "#{form}_personal_message", Faker::Lorem.sentence(10)
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
