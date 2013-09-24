@@ -8,20 +8,20 @@
         = fields_for :investor do |i|
           %fieldset
             = f.hidden_field :user_id
-            = render_cell :tb_text_field,       :show, :form => i, :field => :ssn
-            = render_cell :tb_select_field, :show, :form => i, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            = render_cell :tb_richtext_field, :show, :form => i, :field => :financial_info
-            = render_cell :tb_text_field,     :show, :form => i, :field => :spending_habits
-            = render_cell :tb_text_field,     :show, :form => i, :field => :income
-            = render_cell :tb_text_field,     :show, :form => i, :field => :income_type
-            = render_cell :tb_text_field,     :show, :form => i, :field => :net_worth
-            = render_cell :tb_text_field,     :show, :form => i, :field => :investor_representations
-            = render_cell :tb_text_field,     :show, :form => i, :field => :company
-            = render_cell :tb_text_field,     :show, :form => i, :field => :job_title
-            = render_cell :tb_richtext_field, :show, :form => i, :field => :experience
-            = render_cell :tb_richtext_field, :show, :form => i, :field => :expertise
-            = render_cell :tb_richtext_field, :show, :form => i, :field => :personal_message
-            = render_cell :tb_submit_button,  :show
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :ssn
+            = render_cell 'tb/form/tb_select_field', :display, :form => i, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => i, :field => :financial_info
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :spending_habits
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :income
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :income_type
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :net_worth
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :investor_representations
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :company
+            = render_cell 'tb/form/tb_text_field', :display, :form => i, :field => :job_title
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => i, :field => :experience
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => i, :field => :expertise
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => i, :field => :personal_message
+            = render_cell 'tb/form/tb_submit_button', :display
 
       - else
         You are not an investor.

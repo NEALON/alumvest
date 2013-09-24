@@ -5,8 +5,8 @@
   %fieldset
     = f.hidden_field :company_id
 
-    = render_cell :tb_text_field,        :show, :form => f, :field => :subject
-    = render_cell :tb_richtext_field,    :show, :form => f, :field => :details
-    = render_cell :tb_radiobutton_field, :show, :form => f, :field => :visibility, :values => ["Everyone", "Accredited Investors", "My Investors", "Just Me"]
-    = render_cell :tb_text_field,       :show, :form => f, :field => :video_url
-    = render_cell :tb_submit_button,    :show
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :subject
+    = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field => :details
+    = render_cell 'tb/form/tb_radiobutton_field', :display, :form => f, :field => :visibility, :values => ["Everyone", "Accredited Investors", "My Investors", "Just Me"]
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :video_url
+    = render_cell 'tb/form/tb_submit_button', :display

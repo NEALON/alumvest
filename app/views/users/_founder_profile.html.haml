@@ -8,13 +8,13 @@
         = fields_for :owner do |owf|
           %fieldset
             = f.hidden_field :user_id
-            = render_cell :tb_text_field,     :show, :form => owf, :field => :ssn
-            = render_cell :tb_select_field,   :show, :form => owf, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            = render_cell :tb_richtext_field, :show, :form => owf, :field => :financial_info
-            = render_cell :tb_richtext_field, :show, :form => owf, :field => :experience
-            = render_cell :tb_richtext_field, :show, :form => owf, :field => :expertise
-            = render_cell :tb_richtext_field, :show, :form => owf, :field => :personal_message
-            = render_cell :tb_submit_button,  :show
+            = render_cell 'tb/form/tb_text_field', :display, :form => owf, :field => :ssn
+            = render_cell 'tb/form/tb_select_field', :display, :form => owf, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => owf, :field => :financial_info
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => owf, :field => :experience
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => owf, :field => :expertise
+            = render_cell 'tb/form/tb_richtext_field', :display, :form => owf, :field => :personal_message
+            = render_cell 'tb/form/tb_submit_button', :display
 
     - else
       You are not a founder.

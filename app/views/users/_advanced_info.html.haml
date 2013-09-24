@@ -4,14 +4,14 @@
   - if @current_user != nil and @user.id == @current_user.id
     = form_for @user, :html => {:class => "form-horizontal"} do |f|
       %fieldset
-        = render_cell :tb_radiobutton_field, :show, :form => f, :field => :gender, :values => ["Male", "Female"]
-        = render_cell :tb_dateselect_field,   :show, :form => f, :field => :date_of_birth
-        = render_cell :tb_text_field,         :show, :form => f, :field => :mobile_phone
-        = render_cell :tb_text_field,         :show, :form => f, :field => :home_phone
-        = render_cell :tb_text_field,         :show, :form => f, :field => :address_1
-        = render_cell :tb_text_field,         :show, :form => f, :field => :address_2
-        = render_cell :tb_text_field,         :show, :form => f, :field => :city
-        = render_cell :tb_text_field,         :show, :form => f, :field => :state
-        = render_cell :tb_text_field,         :show, :form => f, :field => :zipcode
-        = render_cell :tb_richtext_field,         :show, :form => f, :field => :personal_statement
-        = render_cell :tb_submit_button,      :show
+        = render_cell 'tb/form/tb_radiobutton_field', :display, :form => f, :field => :gender, :values => ["Male", "Female"]
+        = render_cell 'tb/form/tb_dateselect_field', :display, :form => f, :field => :date_of_birth
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :mobile_phone
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :home_phone
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :address_1
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :address_2
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :city
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :state
+        = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :zipcode
+        = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field => :personal_statement
+        = render_cell 'tb/form/tb_submit_button', :display

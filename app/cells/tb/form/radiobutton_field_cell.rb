@@ -1,6 +1,6 @@
-class TbRadiobuttonFieldCell < Cell::Rails
+class Tb::Form::RadiobuttonFieldCell < Cell::Rails
 
-  def show(opts = {})
+  def display(opts = {})
     @form = opts[:form]
     @field = opts[:field]
     @values = opts[:values]

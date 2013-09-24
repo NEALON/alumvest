@@ -5,24 +5,24 @@
 
   %fieldset
     = f.hidden_field :campaign_id
-    = render_cell :tb_filepicker_field, :show, :form => f, :field => :logo_url, :label => "Logo"
-    = render_cell :tb_text_field,       :show, :form => f, :field => :company_name
-    = render_cell :tb_text_field,       :show, :form => f, :field => :short_description
-    = render_cell :tb_text_field,       :show, :form => f, :field => :company_url
-    = render_cell :tb_text_field,       :show, :form => f, :field => :campaign_title
-    = render_cell :tb_richtext_field,   :show, :form => f, :field => :company_highlights
-    = render_cell :tb_richtext_field,   :show, :form => f, :field => :company_details
-    = render_cell :tb_select_field,     :show, :form => f, :field =>  :founded_on_year, :values => Array(1990..Date.today.year)
-    = render_cell :tb_select_field,     :show, :form => f, :field =>  :ownership_structure, :values => ownership_structures
-    = render_cell :tb_select_field,     :show, :form => f, :field =>  :category_id, :values => Category.for_select
-    = render_cell :tb_text_field,       :show, :form => f, :field => :address_1
-    = render_cell :tb_text_field,       :show, :form => f, :field => :address_2
-    = render_cell :tb_text_field,       :show, :form => f, :field => :city
-    = render_cell :tb_text_field,       :show, :form => f, :field => :state
-    = render_cell :tb_text_field,       :show, :form => f, :field => :zip
-    = render_cell :tb_text_field,       :show, :form => f, :field => :phone
-    = render_cell :tb_richtext_field,   :show, :form => f, :field =>  :faq
-    = render_cell :tb_text_field,       :show, :form => f, :field => :video_url
-    = render_cell :tb_filepicker_field, :show, :form => f, :field => :photo_url, :label => "Campaign Placard Image"
-    = render_cell :tb_filepicker_field, :show, :form => f, :field => :banner_photo_url, :label => "Campaign Banner Image"
-    = render_cell :tb_submit_button,    :show
+    = render_cell 'tb/form/tb_filepicker_field', :display, :form => f, :field => :logo_url, :label => "Logo"
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :company_name
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :short_description
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :company_url
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :campaign_title
+    = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field => :company_highlights
+    = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field => :company_details
+    = render_cell 'tb/form/tb_select_field', :display, :form => f, :field =>  :founded_on_year, :values => Array(1990..Date.today.year)
+    = render_cell 'tb/form/tb_select_field', :display, :form => f, :field =>  :ownership_structure, :values => ownership_structures
+    = render_cell 'tb/form/tb_select_field', :display, :form => f, :field =>  :category_id, :values => Category.for_select
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :address_1
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :address_2
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :city
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :state
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :zip
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :phone
+    = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field =>  :faq
+    = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :video_url
+    = render_cell 'tb/form/tb_filepicker_field', :display, :form => f, :field => :photo_url, :label => "Campaign Placard Image"
+    = render_cell 'tb/form/tb_filepicker_field', :display, :form => f, :field => :banner_photo_url, :label => "Campaign Banner Image"
+    = render_cell 'tb/form/tb_submit_button', :display

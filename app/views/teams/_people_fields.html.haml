@@ -1,13 +1,13 @@
 %fieldset
-  = render_cell :tb_text_field,       :show, :form => f, :field => :first_name
-  = render_cell :tb_text_field,       :show, :form => f, :field => :last_name
-  = render_cell :tb_text_field,       :show, :form => f, :field => :title
-  = render_cell :tb_filepicker_field, :show, :form => f, :field => :avatar_url, :label => "Avatar"
-  = render_cell :tb_text_field,       :show, :form => f, :field => :facebook
-  = render_cell :tb_text_field,       :show, :form => f, :field => :twitter
-  = render_cell :tb_text_field,       :show, :form => f, :field => :linkedin
-  = render_cell :tb_richtext_field,   :show, :form => f, :field => :introduction
-  = render_cell :tb_text_field,       :show, :form => f, :field => :video_url
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :first_name
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :last_name
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :title
+  = render_cell 'tb/form/tb_filepicker_field', :display, :form => f, :field => :avatar_url, :label => "Avatar"
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :facebook
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :twitter
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :linkedin
+  = render_cell 'tb/form/tb_richtext_field', :display, :form => f, :field => :introduction
+  = render_cell 'tb/form/tb_text_field', :display, :form => f, :field => :video_url
 
   :erb
     <div class="form-group">

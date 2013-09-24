@@ -45,7 +45,7 @@
         Are you an investor or an owner?
         = form_for [@user], :html => {:class => "form-horizontal"} do |f|
           = f.hidden_field :user_type, :value => "Investor"
-          = render_cell :tb_submit_button, :show
+          = render_cell 'tb/form/tb_submit_button', :display
 
           = f.submit "I am an Investor", :class => "expand button"
         = form_for [@user], :html => {:class => "form-horizontal"} do |f|

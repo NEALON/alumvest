@@ -1,6 +1,6 @@
-class TbFilepickerFieldCell < Cell::Rails
+class Tb::Form::FilepickerFieldCell < Cell::Rails
 
-  def show(opts = {})
+  def display(opts = {})
     @form = opts[:form]
     @field = opts[:field]
     @label = opts[:label]

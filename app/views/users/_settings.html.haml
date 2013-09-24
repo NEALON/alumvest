@@ -5,6 +5,6 @@
   - if @current_user != nil and @user.id == @current_user.id
     = form_for @user, :html => {:class => "form-horizontal"} do |f|
       %fieldset
-        = render_cell :tb_password_field, :show, :form => f, :field => :password
-        = render_cell :tb_password_field, :show, :form => f, :field => :password_confirmation
-        = render_cell :tb_submit_button,  :show
+        = render_cell 'tb/form/tb_password_field', :display, :form => f, :field => :password
+        = render_cell 'tb/form/tb_password_field', :display, :form => f, :field => :password_confirmation
+        = render_cell 'tb/form/tb_submit_button', :display

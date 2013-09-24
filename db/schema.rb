@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(:version => 20130910193130) do
     t.string   "status"
     t.integer  "campaign_id"
     t.integer  "investor_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "investors", :force => true do |t|
@@ -216,7 +216,7 @@ ActiveRecord::Schema.define(:version => 20130910193130) do
   end
 
   create_table "versions", :force => true do |t|
-    t.string   "item_type",  :null => false
+    t.string   "item_type", :null => false
     t.integer  "item_id",    :null => false
     t.string   "event",      :null => false
     t.string   "whodunnit"

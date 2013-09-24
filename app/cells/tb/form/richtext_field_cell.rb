@@ -1,6 +1,6 @@
-class TbRichtextFieldCell < Cell::Rails
+class Tb::Form::RichtextFieldCell < Cell::Rails
 
-  def show(opts = {})
+  def display(opts = {})
     @form = opts[:form]
     @field = opts[:field]
     @label = opts[:label] || @field.to_s.humanize.capitalize
