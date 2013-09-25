@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910193130) do
+ActiveRecord::Schema.define(:version => 20130925051921) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "status"
@@ -125,6 +125,17 @@ ActiveRecord::Schema.define(:version => 20130910193130) do
   end
 
   add_index "investors", ["user_id"], :name => "index_investors_on_user_id"
+
+  create_table "jobs", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "contact"
+    t.integer  "company_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "jobs", ["company_id"], :name => "index_jobs_on_company_id"
 
   create_table "owners", :force => true do |t|
     t.string   "ssn"
