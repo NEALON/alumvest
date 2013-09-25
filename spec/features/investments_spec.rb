@@ -10,7 +10,7 @@ describe "managing investments", :type => :feature do
 
   it "by creating an investment" do
     visit display_campaign_company_path(@campaign)
-    click_button "Invest Now"
+    click_button "Begin investment process"
     fill_in_investment
     expect(page).to have_content("Campaign investment saved. Thank you!")
     within("#backer_count") do

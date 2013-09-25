@@ -33,4 +33,8 @@ class Campaign < ActiveRecord::Base
       (team && team.ready_for_review?) &&
         (investment_term && investment_term.ready_for_review?)
   end
+
+  def humanize_time_left
+    "#{investment_term.campaign_length} days from campaign start"
+  end
 end
