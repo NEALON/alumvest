@@ -7,4 +7,4 @@
           %li{:class => "#{'active' if active == :team}"}= link_to 'Team', display_campaign_team_path(@campaign)
           %li{:class => "#{'active' if active == :investment_terms}"}= link_to 'Investment Terms', display_campaign_investment_term_path(@campaign)
           %li{:class => "#{'active' if active == :updates}"}= link_to 'Updates', campaign_company_display_updates_path(@campaign)
-          %li{:class => "#{'active' if active == :job}"}= link_to 'Join Us', campaign_company_display_jobs_path(@campaign)
+          %li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', campaign_company_display_jobs_path(@campaign)
