@@ -16,7 +16,9 @@ Av::Application.routes.draw do
       get :check_for_completeness
       get :display
       resources :updates
+      resources :jobs
       resources :display_updates
+      resources :display_jobs
     end
     resource :team do
       get :check_for_completeness
@@ -28,7 +30,6 @@ Av::Application.routes.draw do
     end
     resources :investments
     post :submit_for_review
-    get :join_us
   end
 
   resources :users do

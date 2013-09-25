@@ -33,6 +33,7 @@ class Company < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :category
   has_many :updates
+  has_many :jobs
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do

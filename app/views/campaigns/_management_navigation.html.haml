@@ -28,6 +28,8 @@
         = link_to('Investment Terms', campaign_investment_term_path(campaign))
     %li{:class => "#{'active' if active == :updates}"}
       = link_to('Updates', campaign_company_updates_path(campaign))
+    %li{:class => "#{'active' if active == :jobs}"}
+      = link_to('Jobs', campaign_company_jobs_path(campaign))
 
 = content_for :header_1 do
   %h4

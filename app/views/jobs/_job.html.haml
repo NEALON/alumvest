@@ -1,0 +1,9 @@
+%hr/
+= render 'shared/property_row', :header => 'Title', :value => job.title
+= render 'shared/property_row', :header => 'Description', :value => (raw job.description)
+= render 'shared/property_row', :header => 'Contact', :value => job.contact
+
+.row.pull-right
+  = "Last updated #{time_ago_in_words(job.updated_at)} ago."
+  = link_to '[Edit]', edit_campaign_company_job_path(job.company.campaign, job)
+  = link_to '[Delete]', campaign_company_job_path(@campaign, job), :method => :delete

@@ -11,10 +11,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def join_us
-    load_campaign
-  end
-
   private
 
   def load_campaign
