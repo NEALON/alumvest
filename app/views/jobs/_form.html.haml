@@ -11,7 +11,7 @@
   %fieldset
     = f.hidden_field :company_id
 
-    = render_cell :tb_text_field,        :show, :form => f, :field => :title
-    = render_cell :tb_richtext_field,    :show, :form => f, :field => :description
-    = render_cell :tb_text_field,       :show, :form => f, :field => :contact
-    = render_cell :tb_submit_button,    :show
+    = render_cell 'tb/form/text_field', :display, :form => f, :field => :title
+    = render_cell 'tb/form/richtext_field', :display, :form => f, :field => :description
+    = render_cell 'tb/form/text_field', :display, :form => f, :field => :contact
+    = render_cell 'tb/form/submit_button', :display
