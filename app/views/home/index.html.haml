@@ -15,17 +15,19 @@
       <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
     %hr
 
-#active.container
-  %h3 Active Campaigns
-  .row.homepage-featured-campaigns
-    - @reviewable_campaigns.each do |campaign|
-      = render "campaigns/placard", :campaign => campaign
+- unless @reviewable_campaigns.blank?
+  #active.container
+    %h3 Active Campaigns
+    .row.homepage-featured-campaigns
+      - @reviewable_campaigns.each do |campaign|
+        = render "campaigns/placard", :campaign => campaign
 
-#successful.container
-  %h3 Successful Campaigns
-  .row.homepage-featured-campaigns
-    - @live_campaigns.each do |campaign|
-      = render "campaigns/placard", :campaign => campaign
+- unless @live_campaigns.blank?
+  #successful.container
+    %h3 Successful Campaigns
+    .row.homepage-featured-campaigns
+      - @live_campaigns.each do |campaign|
+        = render "campaigns/placard", :campaign => campaign
 
 #video-trailer.row
   .col-md-12
@@ -45,8 +47,6 @@
       .video-wrapper
         .container
           #video-player.embed-video
-
-
 
 #how-it-works.row
   .col-md-12

@@ -1,4 +1,5 @@
-%legend= title
+= render_cell "tb/form/subhead", :display, :label => title
+
 = f.fields_for grouping do |member|
   = render 'documents_fields', {:f => member}
 
