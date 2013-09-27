@@ -90,9 +90,13 @@
     .container
       .row{:style => "padding-top: 100px"}
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-          .col-md-12.col-xs-12
+          .col-md-10.col-xs-12
             %ul.nav.nav-pills
               = render 'layouts/footer_navigation'
+          .col-md-2.col-xs-12
+            %img{ :src => image_path('home/facebook.png')}
+            %img{ :src => image_path('home/twitter.png')}
+            %img{ :src => image_path('home/google_plus.png')}
           %hr
           %div
             %p

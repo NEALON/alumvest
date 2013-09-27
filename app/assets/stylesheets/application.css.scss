@@ -41,6 +41,19 @@ body{
   background-color: #f67564;
 }
 
+#content{
+  min-height: 400px;
+}
+
+#footer{
+  img{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    float: right;
+  }
+}
+
 /* Original css code */
 
 .homepage-featured-campaigns .campaign-title{
