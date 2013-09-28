@@ -155,6 +155,18 @@ module Features
       screenshot_and_save_page if $do_screenshots
     end
 
+    def fill_in_job(company)
+      job = FactoryGirl.build(:job, :company => company)
+
+      fill_in "job_title", :with => job.title
+      fill_in_ckeditor "job_description", job.description
+      fill_in "job_contact", :with => job.contact
+
+      screenshot_and_save_page if $do_screenshots
+      click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
+    end
+
     def fill_in_investment
       investment = FactoryGirl.build(:investment)
 

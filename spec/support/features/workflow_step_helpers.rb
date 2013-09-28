@@ -37,6 +37,12 @@ module Features
       click_button 'Save'
     end
 
+    def create_new_job(company)
+      visit new_campaign_company_job_path company.campaign
+      fill_in_job company
+      Job.last
+    end
+
     def create_new_update(company)
       visit new_campaign_company_update_path company.campaign
       fill_in_update company
