@@ -184,9 +184,6 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    paper_trail (2.7.2)
-      activerecord (~> 3.0)
-      railties (~> 3.0)
     pg (0.17.0)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
@@ -305,7 +302,6 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-identity
   omniauth-linkedin
-  paper_trail
   pg
   quiet_assets
   rails (= 3.2.13)

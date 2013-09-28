@@ -1,9 +1,13 @@
 .container
   = render 'campaigns/heading'
-  = render 'campaigns/navigation', :active => :none
+  -#= render 'campaigns/navigation', :active => :none
 
-.col-md-12
-  = render 'companies/heading'
-  %h3
-    Begin investment process
-  = render 'form'
+  .row
+    .col-md-8
+      = render 'companies/heading'
+      %h3
+        Begin investment process
+      = render 'form'
+
+    .col-md-4
+      = render :partial => 'companies/raise_summary'

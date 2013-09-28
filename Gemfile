@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-#source 'http://ruby.taobao.org/'  ## replaceable gem source when stay in China
+# source 'http://ruby.taobao.org/'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
@@ -65,7 +65,6 @@ gem 'compass-rails' # may not be needed - MP
 
 # gem "rails_admin", git: "git@github.com:bulleric/rails_admin.git", branch: "bootstrap2-dependency-patch"
 
-gem 'paper_trail'
 gem 'faker'
 
 gem 'exception_notification', :group => :production

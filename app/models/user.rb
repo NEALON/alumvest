@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_paper_trail
   before_save :update_user_type
   after_create :send_welcome_email
 

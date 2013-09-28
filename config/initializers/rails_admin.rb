@@ -25,10 +25,7 @@ if false
     ADMIN_EMAILS = ['interskh@gmail.com', 'mikepence@gmail.com', 'kyle@alumvest.com', 'lynn@alumvest.com', 'lynnduke@gmail.com', 'chinesecode@gmail.com', 'daniel.yang625@gmail.com', 'sasha.ablovatskiy@gmail.com']
 
     # If you want to track changes on your models:
-    config.audit_with :history
-
-    # Or with a PaperTrail: (you need to install it first)
-    config.audit_with :paper_trail
+    # config.audit_with :history
 
     # Display empty fields in show views:
     # config.compact_show_view = false
