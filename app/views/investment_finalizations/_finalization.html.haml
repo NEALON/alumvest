@@ -4,9 +4,9 @@
     = render 'companies/heading'
 
     - if @investment_finalization.can_finalize?
-      - true
-
-    %h5 To finalize your investment, take the following steps:
+      %p= link_to "Submit this investment for review", campaign_investment_finalization_submit_for_review_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-success btn-large'
+    - else
+      %h5 To finalize your investment, take the following steps:
 
     #payment= render_cell 'workflow_step', :display, :label => "Finalize your payment information", :description => "Please verify your payment information.", :link => link_to("Start", new_campaign_investment_finalization_payment_information_path(@campaign, @investment_finalization), :class => "btn btn-primary"), :status => @investment_finalization.payment_information.try(:status)
     #questionnaire= render_cell 'workflow_step', :display, :label => "Complete our accredited investor questionnaire", :description => "Certify your accredited investor status.", :link => link_to("Start", new_campaign_investment_finalization_questionnaire_path(@campaign, @investment_finalization), :class => "btn btn-primary"), :status => @investment_finalization.questionnaire.try(:status)

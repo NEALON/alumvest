@@ -16,28 +16,11 @@ class InvestmentFinalizationsController < ApplicationController
     @investment_finalization = InvestmentFinalization.find(params[:id])
   end
 
-  # def create
-  #   @campaign = Campaign.find(params[:campaign_id])
-  #   @investment_finalization = InvestmentFinalization.create(params[:investment_finalization])
-  #   redirect_to campaign_investment_finalization_path(@campaign)
-  # end
-
-
-  # def edit
-  #   @campaign = Campaign.find(params[:campaign_id])
-  #   @investment_finalization = @campaign.investment_finalization
-  #   render :new
-  # end
-
-  # def update
-  #   @campaign = Campaign.find(params[:campaign_id])
-  #   @investment_finalization = @campaign.investment_finalization
-  #   @investment_finalization.update_attributes(add_images_if_test!(params[:investment_finalization]))
-  #   if @investment_finalization.valid?
-  #     redirect_to campaign_investment_finalization_path(@campaign), :flash => {:success => 'Investment finalization saved.' }
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def submit_for_review
+    @campaign = Campaign.find(params[:campaign_id])
+    @investment_finalization = InvestmentFinalization.find(params[:investment_finalization_id])
+    @investment_finalization.finalize
+    redirect_to display_campaign_company_path(@campaign), :flash => {:success => "Thank you for your investment!"}
+  end
 end
 

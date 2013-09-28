@@ -41,6 +41,9 @@ describe "managing investment finalizations", :type => :feature do
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
     within("#irs") {expect(page).to have_content("Completed")}
+
+    click_link "Submit this investment for review"
+    screenshot_and_open_image
   end
 
   # it "by modifying an investment finalization"
