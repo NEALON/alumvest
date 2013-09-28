@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20130928164658) do
 
   create_table "payment_informations", :force => true do |t|
     t.string   "status"
+    t.integer  "amount"
     t.integer  "investment_finalization_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
