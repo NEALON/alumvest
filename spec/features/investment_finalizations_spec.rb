@@ -15,41 +15,32 @@ describe "managing investment finalizations", :type => :feature do
     within("#payment") {click_link 'Start'}
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
+    within("#payment") {expect(page).to have_content("Completed")}
 
     within("#questionnaire") {click_link 'Start'}
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
+    within("#questionnaire") {expect(page).to have_content("Completed")}
 
     within("#identity") {click_link 'Start'}
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
+    within("#identity") {expect(page).to have_content("Completed")}
 
     within("#contracts") {click_link 'Start'}
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
+    within("#contracts") {expect(page).to have_content("Completed")}
 
     within("#subscription") {click_link 'Start'}
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
+    within("#subscription") {expect(page).to have_content("Completed")}
 
     within("#irs") {click_link 'Start'}
     click_link "Complete this item"
     expect(page).to have_content "Item completed."
-
-
-    #fill_in_investment
-    #expect(page).to have_content("Campaign investment saved. Thank you!")
-    #within("#investor_count") {expect(page).to have_content("1")}
-    #within("#amount_invested") {expect(page).to have_content("$100")}
-    #screenshot_and_open_image
-    #
-    #visit "/"
-    #expect(page).to have_content(@campaign.company.campaign_title)
-    #screenshot_and_save_page if $do_screenshots
-    #
-    #visit user_path(@user)
-    #click_link "Investments"
-    #screenshot_and_save_page if $do_screenshots
+    within("#irs") {expect(page).to have_content("Completed")}
   end
 
   # it "by modifying an investment finalization"

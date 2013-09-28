@@ -9,11 +9,11 @@ module FinalizationStep
     belongs_to :investment_finalization
 
     state_machine :status, :initial => :pending do
-      event :completed do
+      event :complete do
         transition :pending => :completed
       end
 
-      state :complete
+      state :completed
     end
   end
 end

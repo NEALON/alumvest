@@ -11,5 +11,19 @@ class InvestmentFinalization < ActiveRecord::Base
   has_one :subscription_agreement
   has_one :irs_doc_group
 
-  state_machine :status, :initial => :draft
+  state_machine :status, :initial => :pending do
+    event :finalize do
+      transition :pending => :finalized
+    end
+    state :finalized
+  end
+
+  def can_finalize?
+    payment_information.try(:completed?) &&
+        questionnaire.try(:completed?) &&
+        identity_verification.try(:completed?) &&
+        contract_doc_group.try(:completed?) &&
+        subscription_agreement.try(:completed?) &&
+        irs_doc_group.try(:completed?)
+  end
 end

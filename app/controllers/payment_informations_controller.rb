@@ -12,7 +12,7 @@ class PaymentInformationsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:campaign_id])
     @investment_finalization = InvestmentFinalization.find(params[:investment_finalization_id])
-    @investment_finalization.payment_information.completed
+    @investment_finalization.payment_information.complete
     redirect_to campaign_investment_finalization_path(@campaign, @investment_finalization), :flash => {:success => 'Item completed.'}
   end
 

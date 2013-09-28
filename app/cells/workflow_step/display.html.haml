@@ -1,10 +1,11 @@
 %table{:width => "100%"}
   %tr
     %td= @label
-    %td.pull-right= @link
+    %td.pull-right
+      = @link unless @status == 'completed'
   %tr
     %td= @description
     %td.pull-right
-      %em= @status
+      %em= @status.capitalize
 
 %hr

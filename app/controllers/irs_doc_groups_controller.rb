@@ -12,7 +12,7 @@ class IrsDocGroupsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:campaign_id])
     @investment_finalization = InvestmentFinalization.find(params[:investment_finalization_id])
-    @investment_finalization.irs_doc_group.completed
+    @investment_finalization.irs_doc_group.complete
     redirect_to campaign_investment_finalization_path(@campaign, @investment_finalization), :flash => {:success => 'Item completed.'}
   end
 
