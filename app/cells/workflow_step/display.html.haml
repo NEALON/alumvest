@@ -6,6 +6,6 @@
   %tr
     %td= @description
     %td.pull-right
-      %em= @status.capitalize
+      %em{:class => "#{@status == 'completed' ? 'text-success' : 'text-warning'}"}= @status.capitalize
 
 %hr

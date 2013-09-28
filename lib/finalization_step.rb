@@ -4,7 +4,7 @@ module FinalizationStep
   extend ActiveSupport::Concern
 
   included do
-    attr_accessible :status, :investment_finalization
+    attr_accessible :status, :investment_finalization, :investment_finalization_id
 
     belongs_to :investment_finalization
 

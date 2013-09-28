@@ -178,6 +178,13 @@ module Features
       click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
+
+    def fill_in_questionnaire
+      screenshot_and_save_page if $do_screenshots
+      click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
+    end
+
   end
 end
 
