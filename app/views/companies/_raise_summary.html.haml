@@ -2,13 +2,13 @@
 
 .panel.well{:style => "padding: 0px 20px 10px 20px"}
   %div#amount_invested
-    %h3= number_to_currency (investment_sum = @campaign.investments.sum(:amount))
+    %h3= number_to_currency (@campaign.investments.sum(:amount))
     raised of
-    = number_to_currency (fundraising_amount = @company.campaign.investment_term.fundraising_amount)
+    = number_to_currency (@company.campaign.investment_term.fundraising_amount)
     goal
   %div
     .progress.progress-striped.active
-      .progress-bar{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum /fundraising_amount * 100)}%"}
+      .progress-bar{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
 
 .panel.well{:style => "padding: 10px 20px 0px 20px"}
   %p Time until launch:
@@ -38,4 +38,4 @@
 .panel.well{:style => "padding: 10px 20px 0px 20px"}
   %p Commitments:
   %p
-    %b= @campaign.investors.count
+    %b#investor_count= @campaign.investors.count

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925051921) do
+ActiveRecord::Schema.define(:version => 20130928164658) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "status"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20130925051921) do
     t.integer  "campaign_id"
   end
 
+  create_table "contract_doc_groups", :force => true do |t|
+    t.string   "status"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "documents", :force => true do |t|
     t.string   "name"
     t.string   "type"
@@ -74,6 +81,21 @@ ActiveRecord::Schema.define(:version => 20130925051921) do
     t.datetime "updated_at",                           :null => false
     t.string   "last_name"
     t.string   "description",     :default => "guest"
+  end
+
+  create_table "identity_verifications", :force => true do |t|
+    t.string   "status"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "investment_finalizations", :force => true do |t|
+    t.string   "status"
+    t.integer  "campaign_id"
+    t.integer  "investor_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "investment_terms", :force => true do |t|
@@ -126,6 +148,13 @@ ActiveRecord::Schema.define(:version => 20130925051921) do
 
   add_index "investors", ["user_id"], :name => "index_investors_on_user_id"
 
+  create_table "irs_doc_groups", :force => true do |t|
+    t.string   "status"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "jobs", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -151,6 +180,13 @@ ActiveRecord::Schema.define(:version => 20130925051921) do
 
   add_index "owners", ["user_id"], :name => "index_owners_on_user_id"
 
+  create_table "payment_informations", :force => true do |t|
+    t.string   "status"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "people", :force => true do |t|
     t.string   "type"
     t.string   "first_name"
@@ -168,6 +204,13 @@ ActiveRecord::Schema.define(:version => 20130925051921) do
     t.text     "introduction"
   end
 
+  create_table "questionnaires", :force => true do |t|
+    t.string   "status"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -180,6 +223,13 @@ ActiveRecord::Schema.define(:version => 20130925051921) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "subscription_agreements", :force => true do |t|
+    t.string   "status"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "teams", :force => true do |t|
     t.datetime "created_at",      :null => false

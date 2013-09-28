@@ -1,0 +1,4 @@
+.container
+  = render 'campaigns/heading'
+  = render 'campaigns/navigation', :active => :invest
+  = link_to "Complete this item", campaign_investment_finalization_questionnaire_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-default'

@@ -168,6 +168,8 @@ module Features
     end
 
     def fill_in_investment
+      # TODO: probably obsolete, given investment_finalizations
+
       investment = FactoryGirl.build(:investment)
 
       fill_in "investment_amount", :with => investment.amount

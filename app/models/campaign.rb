@@ -6,7 +6,8 @@ class Campaign < ActiveRecord::Base
   has_one :company
   has_one :team
   has_one :investment_term
-  has_many :investments
+  has_many :investment_finalizations
+  has_many :investments # TODO: probably obsolete, given investment_finalizations
   has_many :investors, :through => :investments
 
   state_machine :status, :initial => :draft do 
@@ -36,5 +37,14 @@ class Campaign < ActiveRecord::Base
 
   def humanize_time_left
     "#{investment_term.campaign_length} days from campaign start"
+  end
+
+  def percent_complete_for_display
+    investment_sum = investments.sum(:amount)
+    if investment_sum == 0
+      2 # so something shows in the progress bar
+    else
+      investment_sum / investment_term.fundraising_amount  * 100
+    end
   end
 end

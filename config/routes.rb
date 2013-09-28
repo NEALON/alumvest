@@ -28,7 +28,15 @@ Av::Application.routes.draw do
       get :check_for_completeness
       get :display
     end
-    resources :investments
+    resources :investment_finalizations do
+      resource :payment_information
+      resource :questionnaire
+      resource :identity_verification
+      resource :contract_doc_group
+      resource :subscription_agreement
+      resource :irs_doc_group
+    end
+    resources :investments # TODO: probably obsolete, given investment_finalizations
     post :submit_for_review
   end
 
