@@ -191,6 +191,14 @@ ActiveRecord::Schema.define(:version => 20130929033150) do
 
   add_index "owners", ["user_id"], :name => "index_owners_on_user_id"
 
+  create_table "payment_informations", :force => true do |t|
+    t.string   "status"
+    t.integer  "amount"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "people", :force => true do |t|
     t.string   "type"
     t.string   "first_name"
@@ -206,6 +214,17 @@ ActiveRecord::Schema.define(:version => 20130929033150) do
     t.string   "video_url"
     t.string   "title"
     t.text     "introduction"
+  end
+
+  create_table "questionnaires", :force => true do |t|
+    t.string   "status"
+    t.string   "annual_income"
+    t.string   "year_of_income"
+    t.string   "income_type"
+    t.string   "net_worth"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -272,5 +291,16 @@ ActiveRecord::Schema.define(:version => 20130929033150) do
     t.string   "user_type",          :default => "guest"
     t.string   "avatar_url"
   end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
 end

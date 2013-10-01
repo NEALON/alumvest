@@ -39,3 +39,22 @@
   %p Commitments:
   %p
     %b#investor_count= @campaign.investors.count
+.panel.well{:style => "padding: 10px 20px 0px 20px"}
+  %p Followers:
+  %p
+    %b= @campaign.follows.count
+- if current_user
+  - if current_user.following?(@campaign)
+    - follow = Follow.new(:campaign => @campaign, :user => current_user)
+    = form_for follow, :url => campaign_unfollow_path do |f|
+      %fieldset
+        = f.hidden_field :campaign_id
+        = f.hidden_field :user_id
+        = f.submit "Unfollow this Campaign", :class => "btn btn-default"
+  - else
+    - follow = Follow.new(:campaign => @campaign, :user => current_user)
+    = form_for follow, :url => campaign_follow_path do |f|
+      %fieldset
+        = f.hidden_field :campaign_id
+        = f.hidden_field :user_id
+        = f.submit "Follow this Campaign", :class => "btn btn-success"
