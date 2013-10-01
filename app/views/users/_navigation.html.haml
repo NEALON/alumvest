@@ -1,5 +1,5 @@
 = content_for :sidebar_left do
-  %ul.nav.nav-pills.nav-stacked
+  %ul.nav.nav-stacked
     %li{:class => "#{'active' if active == 'basic_info'}"}
       = link_to('Basic Information', edit_user_path)
     %li{:class => "#{'active' if active == 'advanced_info'}"}

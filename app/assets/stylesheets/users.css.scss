@@ -39,7 +39,6 @@
 		position: relative;
 		top: 15px;
 		color: #777;
-		vertical-align: text-bottom;
 	}
 
 	b{
@@ -56,4 +55,40 @@
 		text-align: right;
 		color: #888888;
 	}
+}
+
+#sidebar{
+	padding-top: 25px;
+	padding-left: 0;
+	padding-right: 0;
+
+	.nav-stacked li{
+		height: 49px;
+		text-transform: uppercase;
+	}
+
+	.nav-stacked li a{
+		color: #555555;
+		padding: 15px 15px;
+		text-align: right;
+	}
+
+	.nav-stacked li a:hover{
+		background-color: #95A5A6;
+		color: #ffffff;
+	}
+
+	.nav-stacked li.active{
+		background-color: #7F8C8D;
+		
+	}
+
+	.nav-stacked li.active a{
+		color: #ffffff;
+	}
+}
+
+#sidebar-content{
+	padding-top: 25px;
+	padding-right: 0;
 }
