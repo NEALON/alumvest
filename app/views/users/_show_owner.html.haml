@@ -3,7 +3,7 @@
   - campaign = @user.owner.campaign || Campaign.create(:owner => @user.owner)
   - link = campaign.company ? campaign_company_path(campaign) : new_campaign_company_path(campaign)
   = link_to link do
-    %button#button.small Manage your campaign
+    %button.btn.btn-primary.btn-lg Manage your campaign
 
   = render "shared/property_row", :header => "SSN", :value => @user.owner.ssn
   = render "shared/property_row", :header => "Marital Status", :value => @user.owner.marital_status
