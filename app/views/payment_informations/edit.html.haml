@@ -1,0 +1,14 @@
+.container
+  = render 'campaigns/heading'
+  = render 'campaigns/navigation', :active => :invest
+
+  = form_for [@campaign, @investment_finalization, @payment_information], :url => campaign_investment_finalization_payment_information_path(@campaign, @investment_finalization), :html => {:class => "form-horizontal"} do |f|
+
+    = render 'shared/errors', :entity => @company
+    = render_cell "tb/form/subhead", :display, :label => "Payment Information"
+
+    %fieldset
+      = f.hidden_field :investment_finalization_id
+      = render_cell 'tb/form/text_field', :display, :form => f, :field => :amount
+
+      = render_cell 'tb/form/submit_button', :display

@@ -1,0 +1,17 @@
+.container
+  = render 'campaigns/heading'
+  = render 'campaigns/navigation', :active => :invest
+
+  = form_for [@campaign, @investment_finalization, @questionnaire], :url => campaign_investment_finalization_questionnaire_path(@campaign, @investment_finalization), :html => {:class => "form-horizontal"} do |f|
+
+    = render 'shared/errors', :entity => @company
+    = render_cell "tb/form/subhead", :display, :label => "Accredited Investor Questionnaire"
+
+    %fieldset
+      = f.hidden_field :investment_finalization_id
+      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :annual_income, :values => Questionnaire::ANNUAL_INCOMES
+      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :year_of_income, :values => Questionnaire::INCOME_YEARS
+      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :income_type, :values => Questionnaire::INCOME_TYPES
+      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :net_worth, :values => Questionnaire::NET_WORTHS
+
+      = render_cell 'tb/form/submit_button', :display

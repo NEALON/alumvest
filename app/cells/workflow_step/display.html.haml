@@ -1,0 +1,12 @@
+%table{:width => "100%"}
+  %tr
+    %td
+      %b= @label
+    %td.pull-right
+      = @link unless @status == 'completed'
+  %tr
+    %td= @description
+    %td.pull-right
+      %em{:class => "#{@status == 'completed' ? 'text-success' : 'text-warning'}"}= @status.capitalize
+
+%hr

@@ -168,6 +168,8 @@ module Features
     end
 
     def fill_in_investment
+      # TODO: probably obsolete, given investment_finalizations
+
       investment = FactoryGirl.build(:investment)
 
       fill_in "investment_amount", :with => investment.amount
@@ -176,6 +178,20 @@ module Features
       click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
+
+    def fill_in_questionnaire
+      screenshot_and_save_page if $do_screenshots
+      click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
+    end
+
+    def fill_in_payment_information
+      screenshot_and_save_page if $do_screenshots
+      fill_in "payment_information_amount", :with => 1000
+      click_button 'Save'
+      screenshot_and_save_page if $do_screenshots
+    end
+
   end
 end
 

@@ -25,6 +25,7 @@ FactoryGirl.define do
     faq                   "FAQ #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
     video_url             'http://www.youtube.com/embed/OQSNhk5ICTI'
     photo_url             'http://placehold.it/100x100'
-    banner_photo_url      "http://placehold.it/1500x400.gif&text=Company%20Banner"
+    #banner_photo_url      "http://placehold.it/1500x400.gif&text=Company%20Banner"
+    banner_photo_url      "http://placehold.it/930x400.gif&text=Company%20Banner"
   end
 end
