@@ -39,6 +39,8 @@ Av::Application.routes.draw do
     end
     resources :investments # TODO: probably obsolete, given investment_finalizations
     post :submit_for_review
+    post :follow
+    post :unfollow
   end
 
   resources :users do

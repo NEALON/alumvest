@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_one :investor
   has_one :owner
   accepts_nested_attributes_for :investor, :owner
+  has_many :follows, dependent: :destroy
 
   def self.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
@@ -72,5 +73,18 @@ class User < ActiveRecord::Base
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver
+  end
+
+  def following?(campaign)
+    follows.exists?(campaign_id: campaign.id)
+  end
+
+  def follow!(campaign)
+    follows.create!(campaign_id: campaign.id)
+  end
+
+  def unfollow!(campaign)
+    f = campaign.follows.find_by_user_id(id)
+    f.destroy unless f.nil?
   end
 end

@@ -9,6 +9,7 @@ class Campaign < ActiveRecord::Base
   has_many :investment_finalizations
   has_many :investments # TODO: probably obsolete, given investment_finalizations
   has_many :investors, :through => :investments
+  has_many :follows, dependent: :destroy
 
   state_machine :status, :initial => :draft do 
     event :submit_for_review do
