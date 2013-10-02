@@ -1,7 +1,7 @@
 -if @user.nil?
   %h2 User not found
 -else
-  - if @current_user != nil and @user.id == @current_user.id
+  - if current_user != nil and @user.id == current_user.id
     = form_for @user, :html => {:class => "form-horizontal"} do |f|
       %fieldset
         = render_cell 'tb/form/filepicker_field', :display, :form => f, :field => :avatar_url, :label => "Avatar"

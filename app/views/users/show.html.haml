@@ -16,10 +16,6 @@
         = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
         = @user.full_name
 
-      / - if current_user && current_user == @user
-      /   - if current_user.is_owner?
-      /     %p= "Click on the Owner tab to manage your campaign."
-      /   %p= link_to "[edit]", edit_user_path(current_user)
   #information
     #tabs
       .container
@@ -43,6 +39,8 @@
         #tab-owner.tab-pane
           %br
           %p= render "show_owner"
+        - if current_user && current_user == @user
+          %p.pull-right= link_to "Edit Profile", edit_user_path(current_user), :class => 'btn btn-primary'
 
       - if current_user && current_user == @user && current_user.user_type_undefined?
         #user-type-modal.modal.fade
