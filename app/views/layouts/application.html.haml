@@ -74,7 +74,7 @@
         .row
           #sidebar.col-xs-12.col-md-3
             = yield :sidebar_left
-          .col-md-9.col-xs-12
+          #sidebar-content.col-md-9.col-xs-12
             = render 'layouts/flash', :flash => flash
             = yield
     - elsif content_for? :sidebar_right

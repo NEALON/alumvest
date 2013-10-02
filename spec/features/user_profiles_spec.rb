@@ -4,7 +4,7 @@ describe "user profiles", :type => :feature do
 
   it "owner user profile" do
     sign_up :owner
-    click_link '[edit]'
+    click_link 'Edit Profile'
 
     page.should_not have_content 'Investor Profile'
 
@@ -20,7 +20,7 @@ describe "user profiles", :type => :feature do
     expect(page).to have_content(last_name)
 
     # Advanced Info
-    click_link '[edit]'
+    click_link 'Edit Profile'
     click_link 'Advanced Info'
 
     mobile_phone = Faker::PhoneNumber.cell_phone
@@ -42,7 +42,7 @@ describe "user profiles", :type => :feature do
     expect(page).to have_content(ps)
 
     # Founder Profile
-    # click_link '[edit]'
+    # click_link 'Edit Profile'
     # click_link 'Founder Profile'
     # fill_in_user_owner_profile
 
@@ -53,7 +53,7 @@ describe "user profiles", :type => :feature do
 
   it "investor user profile" do
     sign_up :investor
-    click_link '[edit]'
+    click_link 'Edit Profile'
 
     page.should_not have_content 'Founder Profile'
 
@@ -67,7 +67,7 @@ describe "user profiles", :type => :feature do
 
   it "changes password" do
     sign_up :owner
-    click_link '[edit]'
+    click_link 'Edit Profile'
     click_link 'Settings'
 
     fill_in 'user_password', :with => '123456'

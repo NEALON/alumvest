@@ -1,7 +1,7 @@
 -if @user.nil?
   %h2 User not found
 - else
-  - if @current_user != nil and @user.id == @current_user.id
+  - if current_user != nil and @user.id == current_user.id
 
     = form_for @user.investor, :url => user_investor_path(@user), :html => {:class => "form-horizontal"} do |f|
       - if @user.is_investor?

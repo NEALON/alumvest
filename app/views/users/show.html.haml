@@ -1,63 +1,73 @@
-.container
-  -if @user.nil?
-    %h2 User not found
-  -else
-    - content_for :breadcrumbs do
-      %ol.breadcrumb
-        %li= link_to('Home', '/')
-        - if current_user.is_owner?
-          %li.unavailable= 'Business owner'
-        - else
-          %li.unavailable= 'Investor'
-        %li.active= link_to(@user.full_name, user_path(@user))
+-if @user.nil?
+  %h2 User not found
+-else
+  / - content_for :breadcrumbs do
+  /   %ol.breadcrumb
+  /     %li= link_to('Home', '/')
+  /     - if current_user.is_owner?
+  /       %li.unavailable= 'Business owner'
+  /     - else
+  /       %li.unavailable= 'Investor'
+  /     %li.active= link_to(@user.full_name, user_path(@user))
+  
+  #title
+    .container
+      %h1.text-center
+        = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
+        = @user.full_name
 
-    %h3
-      = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
-      = @user.full_name
+  #information
+    #tabs
+      .container
+        %ul.nav.navbar-nav
+          %li= link_to "User", "#tab-user", "data-toggle" => "tab"
+          - if @user.is_investor?
+            %li= link_to "Investor", "#tab-investor", "data-toggle" => "tab"
+            - unless @user.investor.investments.blank?
+              %li= link_to "Investments", "#tab-investments", "data-toggle" => "tab"
+          - if @user.is_owner?
+            %li= link_to "Owner", "#tab-owner", "data-toggle" => "tab"
+          %li= link_to "Following Companies", "#tab-follows", "data-toggle" => "tab"
 
-    - if current_user && current_user == @user
-      - if current_user.is_owner?
-        %p= "Click on the Owner tab to manage your campaign."
-      %p= link_to "[edit]", edit_user_path(current_user)
+    .container
+      .tab-content#tabsContent
+        #tab-user.tab-pane
+          = render "show_user"
+          - if current_user && current_user == @user
+            %p.pull-right= link_to "Edit Profile", edit_user_path(current_user), :class => 'btn btn-primary'
+        #tab-investor.tab-pane
+          = render "show_investor"
+        #tab-investments.tab-pane
+          = render "show_investments"
+        #tab-owner.tab-pane
+          %br
+          %p= render "show_owner"
+        #tab-follows.tab-pane
+          = render "show_follows"
 
-    %ul.nav.nav-tabs#tabs
-      %li= link_to "User", "#tab-user", "data-toggle" => "tab"
-      - if @user.is_investor?
-        %li= link_to "Investor", "#tab-investor", "data-toggle" => "tab"
-        - unless @user.investor.investments.blank?
-          %li= link_to "Investments", "#tab-investments", "data-toggle" => "tab"
-      - if @user.is_owner?
-        %li= link_to "Owner", "#tab-owner", "data-toggle" => "tab"
+      - if current_user && current_user == @user && current_user.user_type_undefined?
+        #user-type-modal.modal.fade
+          .modal-dialog
+            .modal-content
+              .modal-header
+                %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+                  &times;
+                .h4
+                  Are you an investor or an owner?
+              .modal-body
+                = form_for [@user], :html => {:class => "form-horizontal"} do |f|
+                  = f.hidden_field :user_type, :value => "Investor"
+                  = f.submit "I am an Investor", :class => "btn btn-primary btn-lg btn-block"
+                %br
+                = form_for [@user], :html => {:class => "form-horizontal"} do |f|
+                  = f.hidden_field :user_type, :value => "Owner"
+                  = f.submit "I am an Owner", :class => "btn btn-success btn-lg btn-block"
+        :javascript
+          $("#user-type-modal").modal()
+    :javascript
+      $('#tabs a').click(function (e) {
+        //e.preventDefault()
+        $(this).tab('show')
+      });
 
-    .tab-content#tabsContent
-      #tab-user.tab-pane
-        = render "show_user"
-      #tab-investor.tab-pane
-        = render "show_investor"
-      #tab-investments.tab-pane
-        = render "show_investments"
-      #tab-owner.tab-pane
-        %br
-        %p= render "show_owner"
-
-    - if current_user && current_user == @user && current_user.user_type_undefined?
-      #user-type-modal.reveal-modal.medium
-        Are you an investor or an owner?
-        = form_for [@user], :html => {:class => "form-horizontal"} do |f|
-          = f.hidden_field :user_type, :value => "Investor"
-          = render_cell 'tb/form/submit_button', :display
-
-          = f.submit "I am an Investor", :class => "expand button"
-        = form_for [@user], :html => {:class => "form-horizontal"} do |f|
-          = f.hidden_field :user_type, :value => "Owner"
-          = f.submit "I am an Owner", :class => "expand button"
-        .a.close-reveal-modal &#215;
-      :javascript
-        $("#user-type-modal").foundation('reveal', 'open')
-  :javascript
-    $('#tabs a').click(function (e) {
-      //e.preventDefault()
-      $(this).tab('show')
-    });
-
-    $('#tabs a:first').tab('show');
+      $('#tabs a:first').tab('show');
