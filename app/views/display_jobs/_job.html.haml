@@ -4,10 +4,11 @@
       %div{:style => "padding-top: 40px"}
         There are no jobs for this campaign.
     - else
-
       - collection.each do |job|
-        %h4= job.title
+        %hr
+        %h3= job.title
         %p= "Last updated #{time_ago_in_words(job.updated_at)} ago"
-        %b Description
+        %h4 Description
         %p= raw job.description
-        %p= "Contact: #{job.contact}"
+        %h4 Contact
+        %p= "#{job.contact}"

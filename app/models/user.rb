@@ -45,15 +45,15 @@ class User < ActiveRecord::Base
   end
 
   def is_investor?
-    user_type == "Investor"
+    user_type.downcase == "investor"
   end
 
   def is_owner?
-    user_type == "Owner"
+    user_type.downcase == "owner"
   end
 
   def user_type_undefined?
-    user_type != "Investor" && user_type != "Owner"
+    !is_owner? && !is_investor?
   end
 
   def update_user_type

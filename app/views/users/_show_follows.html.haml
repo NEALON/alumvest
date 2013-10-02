@@ -1,0 +1,6 @@
+%ul
+  - @user.follows.each do |follow|
+    - campaign = follow.campaign
+    %li
+      %h4= link_to campaign.company.company_name, display_campaign_company_path(campaign)
+      %p= raw campaign.company.company_highlights
