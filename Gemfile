@@ -1,68 +1,55 @@
-source 'https://rubygems.org'
-# source 'http://ruby.taobao.org/'
-
-ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.4'
-gem 'rails', '3.2.13'
+source "https://rubygems.org"
+ruby "1.9.3", {:engine=>"jruby", :engine_version=>"1.7.4"}
 
 group :assets do
-  gem 'turbo-sprockets-rails3', '~>0.3.0'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem "turbo-sprockets-rails3", "~> 0.3"
+  gem "sass-rails", "~> 3.2"
+  gem "bootstrap-sass", "~> 3.0", {:git=>"git://github.com/thomas-mcdonald/bootstrap-sass.git", :branch=>"3"}
+  gem "coffee-rails", "~> 3.2"
+  gem "uglifier", "~> 2.2"
 end
-
-gem 'state_machine'
-
-gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'omniauth-identity'
-gem 'omniauth-facebook'
-gem 'omniauth-linkedin'
-
-gem 'haml-rails'
-gem 'jquery-rails'
-gem 'has_filepicker_image', :git => 'git://github.com/interskh/has_filepicker_image.git'
-gem 'cells'
-gem 'ckeditor_rails', '~> 4.1.2'
-gem "cocoon"
-
-gem 'httparty'
-
-gem 'gibbon', :git => "git://github.com/amro/gibbon.git" # mailchimp
-
-gem 'puma'
-gem 'activerecord-jdbcpostgresql-adapter'
 
 group :development do
-  gem 'better_errors'
-  gem 'html2haml', '2.0.0.beta.1'
-  gem 'hub', :require=>nil
-  gem 'quiet_assets'
-  gem 'nifty-generators'
-end
-
-group :development, :test do
-  gem 'factory_girl_rails', :require => false
-  gem 'rspec'
-  gem 'rspec-rails'
+  gem "better_errors", "~> 1.0"
+  gem "html2haml"
+  gem "hub", "~> 1.10", {:require=>nil}
+  gem "quiet_assets", "~> 1.0"
+  gem "nifty-generators", "~> 0.4"
+  gem "factory_girl_rails", "~> 4.2", {:require=>false}
+  gem "rspec", "~> 2.14"
+  gem "rspec-rails", "~> 2.14"
 end
 
 group :test do
-  gem 'capybara'
-  gem 'capybara-screenshot'
-  gem 'database_cleaner'
-  gem 'email_spec'
-  gem 'launchy'
-  gem 'selenium-webdriver'
+  gem "factory_girl_rails", "~> 4.2", {:require=>false}
+  gem "rspec", "~> 2.14"
+  gem "rspec-rails", "~> 2.14"
+  gem "capybara", "~> 2.1"
+  gem "capybara-screenshot", "~> 0.3"
+  gem "database_cleaner", "~> 1.1"
+  gem "email_spec", "~> 1.5"
+  gem "launchy", "~> 2.3"
+  gem "selenium-webdriver", "~> 2.35"
 end
 
-gem 'jquery-ui-rails' # may not be needed - MP
-gem 'compass-rails' # may not be needed - MP
-gem 'rails_12factor'
-# gem 'mocha', :group => :test
-
-# gem "rails_admin", git: "git@github.com:bulleric/rails_admin.git", branch: "bootstrap2-dependency-patch"
-
-gem 'faker'
-
-gem 'exception_notification', :group => :production
+gem "rails", "~> 3.2"
+gem "state_machine", "~> 1.2"
+gem "bcrypt-ruby", "~> 3.0"
+gem "omniauth-identity", "~> 1.1"
+gem "omniauth-facebook", "~> 1.4"
+gem "omniauth-linkedin", "~> 0.1"
+gem "haml-rails", "~> 0.4"
+gem "jquery-rails", "~> 3.0"
+gem "has_filepicker_image", "~> 0.0", {:git=>"git://github.com/interskh/has_filepicker_image.git"}
+gem "cells", "~> 3.8"
+gem "ckeditor_rails", "~> 4.1"
+gem "cocoon", "~> 1.2"
+gem "httparty", "~> 0.11"
+gem "gibbon", "~> 1.0", {:git=>"git://github.com/amro/gibbon.git"}
+gem "puma", "~> 2.6"
+gem "activerecord-jdbcpostgresql-adapter", "~> 1.3"
+gem "jquery-ui-rails", "~> 4.0"
+gem "compass-rails", "~> 1.0"
+gem "rails_12factor", "~> 0.0"
+gem "faker", "~> 1.2"
+gem "exception_notification", "~> 4.0", {:group=>:production}
