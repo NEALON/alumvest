@@ -27,11 +27,14 @@
               %li= link_to "Investments", "#tab-investments", "data-toggle" => "tab"
           - if @user.is_owner?
             %li= link_to "Owner", "#tab-owner", "data-toggle" => "tab"
+          %li= link_to "Following Companies", "#tab-follows", "data-toggle" => "tab"
 
     .container
       .tab-content#tabsContent
         #tab-user.tab-pane
           = render "show_user"
+          - if current_user && current_user == @user
+            %p.pull-right= link_to "Edit Profile", edit_user_path(current_user), :class => 'btn btn-primary'
         #tab-investor.tab-pane
           = render "show_investor"
         #tab-investments.tab-pane
@@ -39,8 +42,8 @@
         #tab-owner.tab-pane
           %br
           %p= render "show_owner"
-        - if current_user && current_user == @user
-          %p.pull-right= link_to "Edit Profile", edit_user_path(current_user), :class => 'btn btn-primary'
+        #tab-follows.tab-pane
+          = render "show_follows"
 
       - if current_user && current_user == @user && current_user.user_type_undefined?
         #user-type-modal.modal.fade
