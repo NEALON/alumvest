@@ -14,4 +14,4 @@ if ENV['DEBUG_REQUIRE']
     end
     rc
   end
-endboot
+end
