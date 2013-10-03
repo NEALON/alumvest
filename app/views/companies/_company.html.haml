@@ -13,8 +13,9 @@
 
   -# right sidebar
   .col-md-4
-    %div{:style => "padding-bottom: 2em;"}
-      = button_to 'Begin investment process', new_campaign_investment_finalization_path(@company.campaign), :class => "btn btn-large btn-primary", :method => :get
+    - if current_user && current_user.is_investor?
+      %div{:style => "padding-bottom: 2em;"}
+        = button_to 'Begin investment process', new_campaign_investment_finalization_path(@company.campaign), :class => "btn btn-large btn-primary", :method => :get
 
     = render :partial => 'raise_summary'
 

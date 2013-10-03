@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 # source 'http://ruby.taobao.org/'
 
-ruby '2.0.0'
+ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.4'
 gem 'rails', '3.2.13'
 
 group :assets do
@@ -30,13 +30,12 @@ gem 'httparty'
 
 gem 'gibbon', :git => "git://github.com/amro/gibbon.git" # mailchimp
 
-gem 'thin'
-gem 'pg'
+gem 'puma'
+gem 'activerecord-jdbcpostgresql-adapter'
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
-  gem 'html2haml'
+  gem 'html2haml', '2.0.0.beta.1'
   gem 'hub', :require=>nil
   gem 'quiet_assets'
   gem 'nifty-generators'
@@ -53,14 +52,13 @@ group :test do
   gem 'capybara-screenshot'
   gem 'database_cleaner'
   gem 'email_spec'
-  gem 'sqlite3'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
 
 gem 'jquery-ui-rails' # may not be needed - MP
 gem 'compass-rails' # may not be needed - MP
-
+gem 'rails_12factor'
 # gem 'mocha', :group => :test
 
 # gem "rails_admin", git: "git@github.com:bulleric/rails_admin.git", branch: "bootstrap2-dependency-patch"
