@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "1.9.3", {:engine=>"jruby", :engine_version=>"1.7.4"}
+ruby "1.9.3", {:engine=>"jruby", :engine_version=>"1.7.5.dev"}
 
 group :assets do
   gem "turbo-sprockets-rails3", "~> 0.3"
