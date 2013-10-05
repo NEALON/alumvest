@@ -68,7 +68,7 @@ describe "user profiles", :type => :feature do
   it "changes password" do
     sign_up :owner
     click_link 'Edit Profile'
-    click_link 'Settings'
+    within("#sidebar"){click_link 'Settings'}
 
     fill_in 'user_password', :with => '123456'
     fill_in 'user_password_confirmation', :with => '123'
@@ -85,5 +85,4 @@ describe "user profiles", :type => :feature do
     sign_in @email, '123456'
     expect(page).to have_link('Sign out')
   end
-
 end

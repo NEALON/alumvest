@@ -28,8 +28,13 @@ group :test do
   gem "capybara-screenshot", "~> 0.3"
   gem "database_cleaner", "~> 1.1"
   gem "email_spec", "~> 1.5"
+  gem "spoon"
   gem "launchy", "~> 2.3"
   gem "selenium-webdriver", "~> 2.35"
+end
+
+group :production do
+  gem "rails_12factor", "~> 0.0"
 end
 
 gem "rails", "~> 3.2"
@@ -50,6 +55,5 @@ gem "puma", "~> 2.6"
 gem "activerecord-jdbcpostgresql-adapter", "~> 1.3"
 gem "jquery-ui-rails", "~> 4.0"
 gem "compass-rails", "~> 1.0"
-gem "rails_12factor", "~> 0.0"
 gem "faker", "~> 1.2"
 gem "exception_notification", "~> 4.0", {:group=>:production}

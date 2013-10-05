@@ -255,6 +255,8 @@ GEM
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     sexp_processor (4.3.0)
+    spoon (0.0.4)
+      ffi
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -319,6 +321,7 @@ DEPENDENCIES
   rspec-rails (~> 2.14)
   sass-rails (~> 3.2)
   selenium-webdriver (~> 2.35)
+  spoon
   state_machine (~> 1.2)
   turbo-sprockets-rails3 (~> 0.3)
   uglifier (~> 2.2)

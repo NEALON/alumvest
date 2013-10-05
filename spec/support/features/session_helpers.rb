@@ -34,6 +34,7 @@ module Features
     end
 
     def signout
+      click_link "user-name"
       click_link "Sign out"
     end
 

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user.profile_complete
       redirect_to root_url, flash: {:success => "Signed in!" }
     else
-      redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'edit' to start."}
+      redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'Edit Profile' to start."}
     end
   end
 
