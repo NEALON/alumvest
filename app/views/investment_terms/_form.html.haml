@@ -6,7 +6,7 @@
     = f.hidden_field :campaign_id
     = render_cell 'tb/form/text_field', :display, :form => f, :field => :fundraising_amount
     = render_cell 'tb/form/select_field', :display, :form => f, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
-    = render_cell 'tb/form/select_field', :display, :form => f, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity']
+    = render_cell 'tb/form/select_field', :display, :form => f, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity', 'Convertible Equity']
     = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
     = render_cell 'tb/form/select_field', :display, :form => f, :field => :fees_paid_by, :values => ['Investor', 'Owner']
     = render_cell 'tb/form/richtext_field', :display, :form => f, :field =>  :elevator_pitch
