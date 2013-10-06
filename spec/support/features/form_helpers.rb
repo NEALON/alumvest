@@ -113,7 +113,6 @@ module Features
         select 'Owner', :from => "#{form}_fees_paid_by"
         fill_in_ckeditor "#{form}_elevator_pitch", investment_term.elevator_pitch
         fill_in_ckeditor "#{form}_investment_details", investment_term.investment_details
-        fill_in_ckeditor "#{form}_planned_fund_usage", investment_term.planned_fund_usage
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
         # filepicker fill_in "#{form}_financial_statement_url", :with => investment_term.financial_statement_url

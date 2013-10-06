@@ -13,7 +13,6 @@
   = render 'shared/property_row', :header => 'Fees Paid By', :value => @investment_term.fees_paid_by
   = render 'shared/property_row', :header => 'Elevator Pitch', :value => (raw @investment_term.elevator_pitch)
   = render 'shared/property_row', :header => 'Investment Details', :value => (raw @investment_term.investment_details)
-  = render 'shared/property_row', :header => 'Planned use for funds', :value => (raw @investment_term.planned_fund_usage)
 
   %ul
     %li= link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
