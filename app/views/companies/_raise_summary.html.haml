@@ -35,11 +35,11 @@
 
 %h5 Engagement
 
-.panel.well{:style => "padding: 10px 20px 0px 20px"}
+#commitments-panel.panel.well{:style => "padding: 10px 20px 0px 20px"}
   %p Commitments:
   %p
     %b#investor_count= @campaign.investors.count
-.panel.well{:style => "padding: 10px 20px 0px 20px"}
+#followers-panel.panel.well{:style => "padding: 10px 20px 0px 20px"}
   %p Followers:
   %p
     - if @campaign.follows.count == 0
