@@ -10,6 +10,7 @@
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %title
     \#{title = (yield :title); title.blank? ? "AlumVest" : title}
+  = favicon_link_tag '/favicon.png'
   = stylesheet_link_tag "application"
   = javascript_include_tag "application"
   = csrf_meta_tags
