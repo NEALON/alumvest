@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   layout 'application'
   protect_from_forgery
   helper_method :current_user, :logged_in?
+  before_filter :authenticate
+
+  def authenticate
+    Rails.env == 'production' && !ENV['public'] && authenticate_or_request_with_http_basic do |username, password|
+      username == "chen" && password == "ling"
+    end
+  end
 
   private
   def current_user

@@ -1,7 +1,5 @@
 = form_for [@campaign, @update], :url => campaign_company_updates_path(@campaign, @update), :html => {:class => "form-horizontal"} do |f|
 
-  = render_cell "tb/form/subhead", :display, :label => "Updates"
-
   %fieldset
     = f.hidden_field :company_id
 

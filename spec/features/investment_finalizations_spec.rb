@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe "managing investment finalizations", :type => :feature do
 
   before :each do
-    $do_screenshots = true
     @campaign = create_live_campaign
     sign_up :investor
   end
