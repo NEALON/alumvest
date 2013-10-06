@@ -87,4 +87,8 @@ class User < ActiveRecord::Base
     f = campaign.follows.find_by_user_id(id)
     f.destroy unless f.nil?
   end
+
+  def avatar_small
+    avatar_url.blank? ? '/images/user_24.png' : avatar(w:24, h:24)
+  end
 end
