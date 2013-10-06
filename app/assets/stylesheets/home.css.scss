@@ -35,10 +35,11 @@
 }
 
 .homepage-featured-campaigns{
-	.col-md-3.outline{
+	.col-md-4.outline{
 		box-shadow: 0 0 2px gray;
+		margin-right: 10px;
 	}
-	.col-md-3.outline:hover{
+	.col-md-4.outline:hover{
 		box-shadow: 0 0 2px #00B1AC;
 		border: 1px solid #00B1AC;
 	}

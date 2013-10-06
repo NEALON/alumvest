@@ -85,6 +85,16 @@ body{
     background-color: #e6e6e6;
     color: #555555;
   }
+
+  a img{
+    width: 19px;
+    height: 19px;
+  }
+
+  a#user-name{
+    display: block;
+    height: 50px;
+  }
 }
 
 #content{
