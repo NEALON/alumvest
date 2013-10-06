@@ -13,6 +13,11 @@ describe "following company", :type => :feature do
     page.find("#followers-panel").should have_button('Follow this Campaign')
     click_button 'Follow this Campaign'
 
+    visit user_path(@user)
+    click_link "Following Companies"
+    expect(page).to have_content(@campaign.company.company_name)
+
+    visit display_campaign_company_path(@campaign)
     page.find("#followers-panel").should have_button('Unfollow this Campaign')
     click_button 'Unfollow this Campaign'
 
