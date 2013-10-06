@@ -1,11 +1,10 @@
 - unless value.blank?
   .row.form-row
     .col-xs-4.col-md-4.form-label
-      %b
+      %b.pull-right
         - if header.blank?
           &nbsp;
         - else
           = header
     .col-xs-8.col-md-8
-      %b
-        = value
+      = value
