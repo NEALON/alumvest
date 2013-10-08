@@ -1,12 +1,17 @@
 - content_for :sub_navigation do
-  .container
-    .row{:style => "padding-bottom: 20px"}
-      .col-md-12
-        %ul.nav.nav-pills
-          %li{:class => "#{'active' if active == :company}"}= link_to 'Company', display_campaign_company_path(@campaign)
-          %li{:class => "#{'active' if active == :team}"}= link_to 'Team', display_campaign_team_path(@campaign)
-          %li{:class => "#{'active' if active == :investment_terms}"}= link_to 'Investment Terms', display_campaign_investment_term_path(@campaign)
-          - if current_user && current_user.is_investor?
-            %li{:class => "#{'active' if active == :invest}"}= link_to 'Invest', new_campaign_investment_finalization_path(@campaign)
-          %li{:class => "#{'active' if active == :updates}"}= link_to 'Updates', campaign_company_display_updates_path(@campaign)
-          %li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', campaign_company_display_jobs_path(@campaign)
+  #company-nav-container.container
+    %ul.nav.nav-pills#company-nav
+      %li{:class => "#{'active' if active == :company}"}= link_to 'Company', '#company-tab'
+      %li{:class => "#{'active' if active == :team}"}= link_to 'Team', '#team-tab'
+      %li{:class => "#{'active' if active == :investment_terms}"}= link_to 'Investment Terms', '#investment-term-tab'
+      %li{:class => "#{'active' if active == :updates}"}= link_to 'Updates', '#update-tab'
+      %li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', '#join-us-tab'
+      %li{:class => "#{'active' if active == :discussion}"}= link_to 'Discussion', '#discussion-tab'
+    -#%ul.nav.nav-pills
+      -#%li{:class => "#{'active' if active == :company}"}= link_to 'Company', display_campaign_company_path(@campaign)
+      -#%li{:class => "#{'active' if active == :team}"}= link_to 'Team', display_campaign_team_path(@campaign)
+      -#%li{:class => "#{'active' if active == :investment_terms}"}= link_to 'Investment Terms', display_campaign_investment_term_path(@campaign)
+      -#- if current_user && current_user.is_investor?
+        -#%li{:class => "#{'active' if active == :invest}"}= link_to 'Invest', new_campaign_investment_finalization_path(@campaign)
+      -#%li{:class => "#{'active' if active == :updates}"}= link_to 'Updates', campaign_company_display_updates_path(@campaign)
+      -#%li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', campaign_company_display_jobs_path(@campaign)

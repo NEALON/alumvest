@@ -1,0 +1,18 @@
+// all about company
+
+.nav-fixed {
+  width: 100%;
+  position: fixed;
+  top:0px;
+  background-color: white !important;
+  border-style: solid;
+  border-width: 2px 0 0 0;
+  border-top-color: #00B1AC;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  z-index: 10050;
+}
+
+.nav.container {
+  padding-left: 15px;
+}

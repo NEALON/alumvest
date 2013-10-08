@@ -50,6 +50,9 @@ class CompaniesController < ApplicationController
   def display
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
+    @investment_term = @campaign.investment_term
+    @updates = @company.updates
+    @jobs = @company.jobs
   end
 
   private
