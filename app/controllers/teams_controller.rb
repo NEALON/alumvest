@@ -39,7 +39,12 @@ class TeamsController < ApplicationController
       render :new, :error => 'Correct the data to make this complete.' # because we use it for both new and edit
     end
   end
-  
+
+  def preview
+    @disable_nav = true
+    render 'display'
+  end
+
   def show; end
 
   def display; end

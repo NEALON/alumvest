@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @company = Company.new(:campaign => @campaign)
@@ -40,6 +41,13 @@ class CompaniesController < ApplicationController
     else
       render :new, :error => 'Correct the data to make this complete.'
     end
+  end
+
+  def preview
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
+    @disable_nav = true
+    render 'display'
   end
 
   def show

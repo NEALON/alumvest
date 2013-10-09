@@ -1,8 +1,7 @@
-.container
-  - flash.each do |type, message|
-    .row
-      .col-md-12.col-xs-12
-        %div{:id => "alert-#{type}", :class => "alert alert-#{type} alert-dismissable"}
-          %button{:type => "button", :class => "close", "data-dismiss" => "alert", "aria-hidden" => "true"}
-            &times;
-          = message
+- flash.each do |type, message|
+  .row
+    .col-md-12.col-xs-12
+      %div{:id => "alert-#{type}", :class => "alert alert-#{type} alert-dismissable"}
+        %button{:type => "button", :class => "close", "data-dismiss" => "alert", "aria-hidden" => "true"}
+          &times;
+        = message

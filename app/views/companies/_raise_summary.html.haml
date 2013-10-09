@@ -4,7 +4,7 @@
   %div#amount_invested
     %h3= number_to_currency (@campaign.investments.sum(:amount))
     raised of
-    = number_to_currency (@company.campaign.investment_term.fundraising_amount)
+    = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
     goal
   %div
     .progress.progress-striped.active
@@ -31,7 +31,7 @@
 .panel.well{:style => "padding: 10px 20px 0px 20px"}
   %p Security Type:
   %p
-    %b= @company.campaign.investment_term.equity_type
+    %b= @company.campaign.investment_term.try(:equity_type)
 
 %h5 Engagement
 
