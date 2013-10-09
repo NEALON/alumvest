@@ -161,6 +161,7 @@ GEM
     multi_json (1.8.0)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.7.159)
     nifty-generators (0.4.6)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -309,6 +310,7 @@ DEPENDENCIES
   jquery-rails (~> 3.0)
   jquery-ui-rails (~> 4.0)
   launchy (~> 2.3)
+  newrelic_rpm
   nifty-generators (~> 0.4)
   omniauth-facebook (~> 1.4)
   omniauth-identity (~> 1.1)

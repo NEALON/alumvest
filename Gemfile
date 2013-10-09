@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "1.9.3", {:engine=>"jruby", :engine_version=>"1.7.3"}
+ruby "1.9.3", {:engine=>"jruby", :engine_version=>"1.7.5"}
 
 group :assets do
   gem "turbo-sprockets-rails3", "~> 0.3"
@@ -33,10 +33,12 @@ group :test do
   gem "selenium-webdriver", "~> 2.35"
 end
 
+
 group :production do
   gem "rails_12factor", "~> 0.0"
 end
 
+gem 'newrelic_rpm'
 gem "rails", "~> 3.2"
 gem "state_machine", "~> 1.2"
 gem "bcrypt-ruby", "~> 3.0"

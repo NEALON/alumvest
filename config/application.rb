@@ -99,7 +99,7 @@ module Av
             :pick_button_html   => 'Select a file...',
             :html_options => {
               :'data-location'      => 'S3',
-              :'data-extensions'    => '.pdf,.xls,.doc',
+              :'data-extensions'    => '.pdf,.xls,.doc,.docx,.ppt',
               #:'data-services'      => 'COMPUTER',
               :'data-delete_button' => true,
               :'onchange'           => "HasFilepickerImage.previewPickedFile(event);"

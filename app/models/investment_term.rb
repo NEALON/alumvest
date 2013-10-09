@@ -7,7 +7,6 @@ class InvestmentTerm < ActiveRecord::Base
                   :fees_paid_by,
                   :elevator_pitch,
                   :investment_details,
-                  :planned_fund_usage,
                   :business_plan_url,
                   :financial_statement_url,
                   :term_sheet_url,
@@ -37,7 +36,6 @@ class InvestmentTerm < ActiveRecord::Base
        :fees_paid_by,
        :elevator_pitch,
        :investment_details,
-       :planned_fund_usage,
        :business_plan_url,
        :financial_statement_url,
        :term_sheet_url].each do |attr|
