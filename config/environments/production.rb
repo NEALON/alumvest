@@ -72,5 +72,4 @@ Av::Application.configure do
                             :email_prefix => "[alumvest exception] ",
                             :sender_address => %{"notifier" <notifier@haydukelabs.com>},
                             :exception_recipients => %w{mike.pence@gmail.com kyle@alumvest.com}}
-
 end

@@ -37,7 +37,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def humanize_time_left
-    "#{investment_term.campaign_length} days from campaign start"
+    "#{investment_term.try(:campaign_length) || 'TBD'} days from campaign start"
   end
 
   def percent_complete_for_display

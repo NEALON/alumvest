@@ -43,6 +43,11 @@ class InvestmentTermsController < ApplicationController
     end
   end
 
+  def preview
+    @disable_nav = true
+    render 'display'
+  end
+
   def show; end
 
   def display; end

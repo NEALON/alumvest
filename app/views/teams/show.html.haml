@@ -1,10 +1,13 @@
 = render 'campaigns/management_navigation', :active => :people, :campaign => @campaign
 
+%p
+  = render_cell 'tb/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign)
+  - if @team.draft?
+    = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
+  = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_team_path(@campaign), :new_page => true
+
 .panel
   %p
-    = render_cell 'tb/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign)
-    - if @team.draft?
-      = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
 
   = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
 
@@ -15,3 +18,4 @@
       = p.title
       = render 'shared/youtube', :video_url => p.video_url, :width => 590, :height => 400
       %br
+  %br
