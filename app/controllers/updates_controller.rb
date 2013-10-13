@@ -29,7 +29,7 @@ class UpdatesController < ApplicationController
     @company = @campaign.company
     @update = Update.find(params[:id])
 
-    render :new
+    render :edit
   end
 
   def update
