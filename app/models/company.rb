@@ -71,6 +71,6 @@ class Company < ActiveRecord::Base
   end
 
   def banner_for_campaign_home_display
-    banner_photo(:w => 930, :h => 400, :fit => "crop").try(:sub, /https:/, "http:")
+    banner_photo(:w => 960, :h => 400, :fit => "crop").try(:sub, /https:/, "http:")
   end
 end

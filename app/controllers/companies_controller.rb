@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @company = Company.new(:campaign => @campaign)
@@ -42,6 +43,13 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def preview
+    @campaign = Campaign.find(params[:campaign_id])
+    @company = @campaign.company
+    @disable_nav = true
+    render 'display'
+  end
+
   def show
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
@@ -50,6 +58,9 @@ class CompaniesController < ApplicationController
   def display
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
+    @investment_term = @campaign.investment_term
+    @updates = @company.updates
+    @jobs = @company.jobs
   end
 
   private

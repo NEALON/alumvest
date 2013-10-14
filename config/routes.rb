@@ -14,6 +14,7 @@ Av::Application.routes.draw do
   resources :campaigns do
     resource :company do
       get :check_for_completeness
+      get :preview
       get :display
       resources :updates
       resources :jobs
@@ -22,10 +23,12 @@ Av::Application.routes.draw do
     end
     resource :team do
       get :check_for_completeness
+      get :preview
       get :display
     end
     resource :investment_term do
       get :check_for_completeness
+      get :preview
       get :display
     end
     resources :investment_finalizations do

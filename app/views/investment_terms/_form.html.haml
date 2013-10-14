@@ -6,12 +6,11 @@
     = f.hidden_field :campaign_id
     = render_cell 'tb/form/text_field', :display, :form => f, :field => :fundraising_amount
     = render_cell 'tb/form/select_field', :display, :form => f, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
-    = render_cell 'tb/form/select_field', :display, :form => f, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity']
+    = render_cell 'tb/form/select_field', :display, :form => f, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity', 'Convertible Equity']
     = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
     = render_cell 'tb/form/select_field', :display, :form => f, :field => :fees_paid_by, :values => ['Investor', 'Owner']
     = render_cell 'tb/form/richtext_field', :display, :form => f, :field =>  :elevator_pitch
     = render_cell 'tb/form/richtext_field', :display, :form => f, :field =>  :investment_details
-    = render_cell 'tb/form/richtext_field', :display, :form => f, :field =>  :planned_fund_usage, :label => 'Planned use for funds'
     = render_cell 'tb/form/filepicker_field', :display, :form => f, :field => :business_plan_url, :label => "Business plan", :type => "doc"
     = render_cell 'tb/form/filepicker_field', :display, :form => f, :field => :financial_statement_url, :label => "Financial statement", :type => "doc"
     = render_cell 'tb/form/filepicker_field', :display, :form => f, :field => :term_sheet_url, :label => "Term sheet", :type => "doc"
