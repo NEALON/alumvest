@@ -1,4 +1,12 @@
-= form_for [@campaign, @update], :url => campaign_company_updates_path(@campaign, @update), :html => {:class => "form-horizontal"} do |f|
+%legend Updates
+= render 'shared/errors', :entity => @update
+
+- if active == :new
+  - url = campaign_company_updates_path(@campaign, @update)
+- else
+  - url = campaign_company_update_path(@campaign, @update)
+
+= form_for [@campaign, @update], :url => url, :html => {:class => "form-horizontal"} do |f|
 
   %fieldset
     = f.hidden_field :company_id

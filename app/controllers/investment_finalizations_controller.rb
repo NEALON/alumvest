@@ -2,11 +2,15 @@ class InvestmentFinalizationsController < ApplicationController
 
   def new
     @campaign = Campaign.find(params[:campaign_id])
-    investor = current_user.investor
-    unless (f = investor.investment_finalizations.find_by_campaign_id(@campaign.id))
-      f = InvestmentFinalization.create(:campaign => @campaign, :investor => investor)
+    if current_user and current_user.is_investor?
+      investor = current_user.investor
+      unless (f = investor.investment_finalizations.find_by_campaign_id(@campaign.id))
+        f = InvestmentFinalization.create(:campaign => @campaign, :investor => investor)
+      end
+      redirect_to [@campaign, f]
+    else
+      redirect_to display_campaign_company_path(@campaign), :flash => {:danger => "Please sign in as an investor to invest!"}
     end
-    redirect_to [@campaign, f]
   end
 
 

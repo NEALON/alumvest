@@ -1,6 +1,6 @@
 = render 'campaigns/management_navigation', :active => :updates, :campaign => @campaign
 - if @company
-  = render "form"
+  = render "form", :active => :new
   = render @updates
 - else
   %p You have to fill in the company data before posting updates.
