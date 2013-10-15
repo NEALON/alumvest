@@ -59,3 +59,4 @@ gem "jquery-ui-rails", "~> 4.0"
 gem "compass-rails", "~> 1.0"
 gem "faker", "~> 1.2"
 gem "exception_notification", "~> 4.0", {:group=>:production}
+gem "rest-client", "~> 1.6"
