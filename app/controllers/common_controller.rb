@@ -1,4 +1,5 @@
 class CommonController < ApplicationController
+  require 'filepicker_api'
   skip_before_filter :authenticate
 
   def filepicker
