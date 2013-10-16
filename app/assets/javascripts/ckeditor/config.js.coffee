@@ -3,7 +3,9 @@ CKEDITOR.editorConfig = (config) ->
   	{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] },
   	{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
   	{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Scayt' ] },
-    { name: 'styles', items: [ 'Styles', 'Format' ] },
+    { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+    { name: 'color', items: [ 'TextColor', 'BGColor' ] },
+    { name: 'justify', items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
    	{ name: 'tools', items: [ 'Maximize' ] },
    	{ name: 'others', items: [ '-' ] },
    	{ name: 'about', items: [ 'About' ] }
