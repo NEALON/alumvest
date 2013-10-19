@@ -31,14 +31,18 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a{:href => '/', :class => 'navbar-brand'} AlumVest
+        %a{:href => '/', :class => 'navbar-brand'} 
+          %img{:src => image_path('home/logo.png'), :alt => 'Alumvest'}
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
         %div.collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             = render partial: 'layouts/header_navigation'
-          %form.navbar-form.navbar-left.form-search{ :role => 'search'}
-            %div.form-group
+          %div.navbar-form#search-header
+            %div.input-group
               %input.form-control{ :type => 'text', :placeholder => 'Search'}
+              %span.input-group-btn
+                %button.btn.btn-default{:type => 'button'} 
+                  %span.glyphicon.glyphicon-search
           %ul.nav.navbar-nav.navbar-right
             - if current_user
               %li#user-dropdown
