@@ -33,7 +33,6 @@ group :test do
   gem "selenium-webdriver", "~> 2.35"
 end
 
-
 group :production do
   gem "rails_12factor", "~> 0.0"
 end
@@ -59,3 +58,5 @@ gem "jquery-ui-rails", "~> 4.0"
 gem "compass-rails", "~> 1.0"
 gem "faker", "~> 1.2"
 gem "exception_notification", "~> 4.0", {:group=>:production}
+gem 'docusign_rest'
+
