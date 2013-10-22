@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 ruby "2.0.0"
 
+
 group :assets do
   gem "turbo-sprockets-rails3", "~> 0.3"
   gem "sass-rails", "~> 3.2"
@@ -59,4 +60,4 @@ gem "compass-rails", "~> 1.0"
 gem "faker", "~> 1.2"
 gem "exception_notification", "~> 4.0", {:group=>:production}
 gem 'docusign_rest'
-
+gem "rest-client", "~> 1.6"

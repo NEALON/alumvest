@@ -14,6 +14,7 @@
 @import "bootstrap/bootstrap-theme";
 @import "home";
 @import "users";
+@import "company";
 
 html, body{
   width: 100%;
@@ -33,17 +34,37 @@ body{
 
 #header{
   background-color: white !important;
+  background-image: none;
   border-style: solid;
   border-width: 2px 0 0 0;
   border-top-color: #00B1AC;
+  text-transform: uppercase;
+
+  .navbar-brand{
+    padding: 5px 5px;
+  }
+
+  .navbar-collapse{
+    height: 50px !important;
+  }
+
+  .navbar-brand img{
+    height: 40px;
+    overflow: hidden;
+  }
 
   ul.navbar-nav a:hover{
     background-color: #e6e6e6;
   }
-}
 
-#header #signup{
-  background-color: #f67564;
+  #signup{
+    background-color: #f67564;
+  }
+
+  #search-header{
+    width: 25%;
+    display: inline-block;
+  }
 }
 
 #user-dropdown{
@@ -84,6 +105,16 @@ body{
     background-image: none;
     background-color: #e6e6e6;
     color: #555555;
+  }
+
+  a img{
+    width: 19px;
+    height: 19px;
+  }
+
+  a#user-name{
+    display: block;
+    height: 50px;
   }
 }
 

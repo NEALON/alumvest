@@ -31,19 +31,23 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a{:href => '/', :class => 'navbar-brand'} AlumVest
+        %a{:href => '/', :class => 'navbar-brand'} 
+          %img{:src => image_path('home/logo.png'), :alt => 'Alumvest'}
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
         %div.collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             = render partial: 'layouts/header_navigation'
-          %form.navbar-form.navbar-left.form-search{ :role => 'search'}
-            %div.form-group
+          %div.navbar-form#search-header
+            %div.input-group
               %input.form-control{ :type => 'text', :placeholder => 'Search'}
+              %span.input-group-btn
+                %button.btn.btn-default{:type => 'button'} 
+                  %span.glyphicon.glyphicon-search
           %ul.nav.navbar-nav.navbar-right
             - if current_user
               %li#user-dropdown
                 = link_to '#', :id => "user-name", :class => "dropdown-toggle", 'data-toggle' => 'dropdown' do
-                  = current_user.name
+                  = current_user.first_name
                   = image_tag(current_user.avatar_small)
                 %ul.dropdown-menu
                   %li
@@ -89,10 +93,11 @@
           #sidebar.col-md-4.col-xs-12
             = yield :sidebar_right
     - else
-      .row
-        .col-md-12.col-xs-12
-          = render 'layouts/flash', :flash => flash
-          = yield
+      .container
+        .row
+          .col-md-12.col-xs-12
+            = render 'layouts/flash', :flash => flash
+      = yield
   .push
   #footer
     .container

@@ -1,0 +1,42 @@
+// all about company
+
+.nav-fixed {
+  width: 100%;
+  position: fixed;
+  top:0px;
+  background-color: white !important;
+  border-style: solid;
+  border-width: 2px 0 0 0;
+  border-top-color: #00B1AC;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  z-index: 100050;
+  min-height: 50px;
+  padding-top: 5px;
+}
+
+.nav.container {
+  padding-left: 15px;
+}
+
+#company-nav-container {
+  margin-bottom: 10px;
+}
+
+.row-bg1 {
+  background-color: #f8f8f8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.row-bg2 {
+  background-color: #e8e8e8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -moz-box-shadow:    inset 0  8px 8px -8px #888888,
+                      inset 0 -8px 8px -8px #888888;
+  -webkit-box-shadow: inset 0  8px 8px -8px #888888,
+                      inset 0 -8px 8px -8px #888888;
+  box-shadow:         inset 0  8px 8px -8px #888888,
+                      inset 0 -8px 8px -8px #888888;
+}

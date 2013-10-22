@@ -6,6 +6,7 @@ Av::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   match '/logout', :to => 'sessions#destroy', :as => 'logout'
 
+
   get "home/index"
 
   resources :sessions
@@ -50,6 +51,8 @@ Av::Application.routes.draw do
     resource :borrower
     resource :investor
   end
+
+  post "common/filepicker"
 
   root :to => "home#index"
 end

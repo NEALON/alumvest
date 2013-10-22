@@ -1,14 +1,14 @@
 GIT
   remote: git://github.com/amro/gibbon.git
-  revision: 5a59f3d2f11170a6b49c39e063d1c5a2667d3700
+  revision: 8904ba6ec8f288ce203fbac31b4b1604030b3ecc
   specs:
-    gibbon (1.0.2)
+    gibbon (1.0.4)
       httparty
       multi_json (>= 1.3.4)
 
 GIT
   remote: git://github.com/interskh/has_filepicker_image.git
-  revision: be8a6b12d803eb4676e196e6d9c30d4578e4fb36
+  revision: a851960a6ddfda154409f018d14a06a4b0706298
   specs:
     has_filepicker_image (0.0.15)
       rails (>= 3.2.0)
@@ -77,7 +77,7 @@ GEM
     chunky_png (1.2.8)
     ckeditor_rails (4.1.3)
       railties (>= 3.0)
-    cocoon (1.2.0)
+    cocoon (1.2.1)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -104,7 +104,7 @@ GEM
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
-    execjs (2.0.1)
+    execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -141,8 +141,7 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.0.4)
-      jquery-rails
+    jquery-ui-rails (4.0.5)
       railties (>= 3.1.0)
     json (1.8.0)
     json (1.8.0-java)
@@ -225,12 +224,14 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     rspec-core (2.14.5)
-    rspec-expectations (2.14.2)
+    rspec-expectations (2.14.3)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.3)
     rspec-rails (2.14.0)
@@ -243,7 +244,7 @@ GEM
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
     rubyzip (0.9.9)
-    sass (3.2.10)
+    sass (3.2.11)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -318,6 +319,7 @@ DEPENDENCIES
   quiet_assets (~> 1.0)
   rails (~> 3.2)
   rails_12factor (~> 0.0)
+  rest-client (~> 1.6)
   rspec (~> 2.14)
   rspec-rails (~> 2.14)
   sass-rails (~> 3.2)
