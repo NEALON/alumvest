@@ -23,7 +23,6 @@ describe "managing company updates", :type => :feature do
   it "by deleting one" do
     update = FactoryGirl.create(:update, :company => @company)
     visit campaign_company_updates_path(@campaign)
-    screenshot_and_open_image
     click_link '[Delete]'
     expect(page).to have_content("Your update was deleted.")
   end

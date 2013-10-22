@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "1.9.3", {:engine=>"jruby", :engine_version=>"1.7.5"}
+ruby "2.0.0"
 
 group :assets do
   gem "turbo-sprockets-rails3", "~> 0.3"
@@ -53,7 +53,7 @@ gem "cocoon", "~> 1.2"
 gem "httparty", "~> 0.11"
 gem "gibbon", "~> 1.0", {:git=>"git://github.com/amro/gibbon.git"}
 gem "puma", "~> 2.6"
-gem "activerecord-jdbcpostgresql-adapter", "~> 1.3"
+gem "pg"
 gem "jquery-ui-rails", "~> 4.0"
 gem "compass-rails", "~> 1.0"
 gem "faker", "~> 1.2"

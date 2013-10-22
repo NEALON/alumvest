@@ -1,3 +1,1 @@
-rvm use jruby-1.7.5@global --create
-
-export SSL_CERT_FILE=/Users/mikepence/cacert.pem
+rvm use 2.0.0@av
