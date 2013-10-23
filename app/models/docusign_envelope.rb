@@ -1,5 +1,6 @@
 class DocusignEnvelope < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  delegate :default_url_options, to: ActionMailer::Base
 
   attr_accessible :envelope_id, :email_body, :email_subject, :uri, :template_id
 
