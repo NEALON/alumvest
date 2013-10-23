@@ -1,4 +1,6 @@
 class DocusignEnvelope < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   attr_accessible :envelope_id, :email_body, :email_subject, :uri, :template_id
 
   belongs_to :docusign_template
@@ -11,7 +13,7 @@ class DocusignEnvelope < ActiveRecord::Base
             :envelope_id => envelope_id,
             :name =>  'Mike Pence',
             :email => 'mike.pence@gmail.com',
-            :return_url => 'http://localhost:300/'
+            :return_url => root_url
         }
     )
   end
