@@ -2,34 +2,17 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "docusign", :type => :feature do
 
+  before :each do
+    @template = FactoryGirl.create(:docusign_template, :template_id => '04A23610-C1A5-4DDA-8339-7690DFDF92F0')
+    @envelope = @template.create_envelope({:name => 'Mike Pence', :email => 'mike.pence@gmail.com'})
+  end
 
-  #it "works" do
-  #  @client = DocusignRest::Client.new
-  #  login_info = @client.get_login_information
-  #
-  #  @template_response = @client.create_template(
-  #    description: 'Template Description',
-  #    name: "Template Name 1",
-  #    signers: [
-  #      {
-  #        embedded: true,
-  #        name: 'Mike',
-  #        email: 'mike@medstartr.com',
-  #        role_name: 'Issuer',
-  #        sign_here_tabs: [
-  #          {
-  #            anchor_string: 'issuer_sig',
-  #            anchor_x_offset: '140',
-  #            anchor_y_offset: '8'
-  #          }
-  #        ]
-  #      },
-  #    ],
-  #    files: [
-  #      {path: Rails.root + '/public/sample.pdf', name: 'sample.pdf'}
-  #    ]
-  #  )
-  #
-  #  true
-  #end
+  it "should create create an envelope from a template" do
+    @envelope.uri.should_not be_nil
+  end
+
+  it "should create an embed url from an envelope" do
+    result = @envelope.get_recipient_view
+    result.should_not be_nil
+  end
 end

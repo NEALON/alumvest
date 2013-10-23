@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131006144610) do
+ActiveRecord::Schema.define(:version => 20131022200139) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "status"
@@ -70,6 +70,30 @@ ActiveRecord::Schema.define(:version => 20131006144610) do
     t.string   "documentable_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "docusign_envelope_events", :force => true do |t|
+    t.integer  "docusign_envelope_id"
+    t.string   "status"
+    t.datetime "status_date_time"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "docusign_envelopes", :force => true do |t|
+    t.integer  "template_id"
+    t.string   "envelope_id"
+    t.string   "email_subject"
+    t.string   "uri"
+    t.text     "email_body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "docusign_templates", :force => true do |t|
+    t.string   "template_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "follows", :force => true do |t|
