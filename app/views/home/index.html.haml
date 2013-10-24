@@ -19,22 +19,34 @@
   #active
     .campaign-group-title
       .container
-        %h3 Active Campaigns
-        
-    .container
-      .row.homepage-featured-campaigns
-        - @reviewable_campaigns.each do |campaign|
-          = render "campaigns/placard", :campaign => campaign
+        .row
+          .col-md-4
+            %h3 Active Campaigns
+          .col-md-4.col-md-offset-4
+            %a
+              View All
+    .campaign-row-section
+      .container
+        .row.homepage-featured-campaigns
+          - @reviewable_campaigns.each do |campaign|
+            = render "campaigns/placard", :campaign => campaign
 
 - unless @live_campaigns.blank?
   #successful
     .campaign-group-title
       .container
-        %h3 Successful Campaigns
-    .container
-      .row.homepage-featured-campaigns
-        - @live_campaigns.each do |campaign|
-          = render "campaigns/placard", :campaign => campaign
+        .row
+          .col-md-4
+            %h3 Successful Campaigns
+          .col-md-4.col-md-offset-4
+            %a
+              View All
+    
+    .campaign-row-section
+      .container
+        .row.homepage-featured-campaigns
+          - @live_campaigns.each do |campaign|
+            = render "campaigns/placard", :campaign => campaign
 
 #videoModal.modal.fade{ :tabindex => '-1', :role => 'dialog', 'aria-labelledby' => 'myModalLabel', 'aria-hidden' => 'true'}
   .modal-dialog
@@ -81,6 +93,7 @@
             Interested to learn more about Alumvest?
         %p.text-center
           = link_to('See How It Works', '#', :class => "btn btn-info btn-large")
+          = link_to('Watch Intro', '#videoModal', :class => "btn btn-primary btn-large", 'data-toggle' => 'modal')
           = link_to('Get Registered Now', '#', :class => "btn btn-primary btn-large")
 
 #feature.row
