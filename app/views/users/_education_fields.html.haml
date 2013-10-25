@@ -1,0 +1,6 @@
+%fieldset.nested-fields
+  = render_cell 'tb/form/text_field', :display, :form => f, :field => :school
+  = render_cell 'tb/form/select_field', :display, :form => f, :field => :degree, :values => ["", "Undergraduate", "Masters", "PhD", "MBA or other Graduate Business Degree", "JD or other Graduate Law Degree", "MD or other Graduate Medical Degree", "Other Professional Degree", "Other Degrees", "Non-Degree Work"]
+  = link_to_remove_association 'Remove', f
+
+

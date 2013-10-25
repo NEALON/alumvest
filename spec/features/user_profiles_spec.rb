@@ -12,12 +12,16 @@ describe "user profiles", :type => :feature do
     first_name = Faker::Name.first_name
     middle_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    fill_in_user_basic_info(first_name, middle_name, last_name)
+    degree = "Undergraduate"
+    school = "Carnegie Mellon University"
+    fill_in_user_basic_info(first_name, middle_name, last_name, degree, school)
 
     expect(page).to have_content('User info saved.')
     expect(page).to have_content(first_name)
     expect(page).to have_content(middle_name)
     expect(page).to have_content(last_name)
+    expect(page).to have_content(school)
+    expect(page).to have_content(degree)
 
     # Advanced Info
     click_link 'Edit Profile'
