@@ -8,12 +8,15 @@
         = fields_for :owner do |owf|
           %fieldset
             = f.hidden_field :user_id
-            = render_cell 'tb/form/text_field', :display, :form => owf, :field => :ssn
-            = render_cell 'tb/form/select_field', :display, :form => owf, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            = render_cell 'tb/form/richtext_field', :display, :form => owf, :field => :financial_info
-            = render_cell 'tb/form/richtext_field', :display, :form => owf, :field => :experience
-            = render_cell 'tb/form/richtext_field', :display, :form => owf, :field => :expertise
-            = render_cell 'tb/form/richtext_field', :display, :form => owf, :field => :personal_message
+          
+            - with_options :form => owf do |op|
+              = op.render_cell 'tb/form/text', :display, :field => :ssn
+              = op.render_cell 'tb/form/select', :display, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+              = op.render_cell 'tb/form/richtext', :display, :field => :financial_info
+              = op.render_cell 'tb/form/richtext', :display, :field => :experience
+              = op.render_cell 'tb/form/richtext', :display, :field => :expertise
+              = op.render_cell 'tb/form/richtext', :display, :field => :personal_message
+
             = render_cell 'tb/form/submit_button', :display
 
     - else

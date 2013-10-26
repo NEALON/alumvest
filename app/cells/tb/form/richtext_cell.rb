@@ -1,4 +1,4 @@
-class Tb::Form::RichtextFieldCell < Cell::Rails
+class Tb::Form::RichtextCell < Cell::Rails
 
   def display(opts = {})
     @form = opts[:form]

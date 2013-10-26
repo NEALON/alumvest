@@ -10,8 +10,10 @@
 
   %fieldset
     = f.hidden_field :company_id
+                               
+    - with_options :form => f do |op|
+      = op.render_cell 'tb/form/text', :display, :field => :title
+      = op.render_cell 'tb/form/richtext', :display, :field => :description
+      = op.render_cell 'tb/form/text', :display, :field => :contact
 
-    = render_cell 'tb/form/text_field', :display, :form => f, :field => :title
-    = render_cell 'tb/form/richtext_field', :display, :form => f, :field => :description
-    = render_cell 'tb/form/text_field', :display, :form => f, :field => :contact
     = render_cell 'tb/form/submit_button', :display

@@ -9,6 +9,5 @@
 
     %fieldset
       = f.hidden_field :investment_finalization_id
-      = render_cell 'tb/form/text_field', :display, :form => f, :field => :amount
-
+      = render_cell 'tb/form/text', :display, :form => f, :field => :amount
       = render_cell 'tb/form/submit_button', :display

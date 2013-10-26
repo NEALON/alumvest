@@ -1,8 +1,9 @@
-class Tb::Form::DateselectFieldCell < Cell::Rails
+class Tb::Form::PasswordCell  < Cell::Rails
 
   def display(opts = {})
     @form = opts[:form]
     @field = opts[:field]
+
     render
   end
 end

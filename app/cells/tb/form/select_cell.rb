@@ -1,4 +1,4 @@
-class Tb::Form::SelectFieldCell < Cell::Rails
+class Tb::Form::SelectCell < Cell::Rails
 
   def display(opts = {})
     @form = opts[:form]
