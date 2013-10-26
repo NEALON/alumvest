@@ -123,13 +123,41 @@ body{
 }
 
 #footer{
-  background-color: #ECF0F1;
+  background-color: #ffffff;
+  display: block;
+  max-height: 150px;
+  min-height: 150px;
+  padding: 20px 0 20px;
 
   img{
     display: inline-block;
     width: 30px;
     height: 30px;
     float: right;
+  }
+
+  .footer-navigation{
+    li{
+      a{
+        text-transform: uppercase;
+        font-size: 12px;
+        text-decoration: none;
+        color: #000000;
+        padding-left: 0;
+      }
+      
+
+      a:hover{
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  .copyright{
+    p{
+      font-size: 10px;
+      color: #BDC3C7;
+    }
   }
 }
 

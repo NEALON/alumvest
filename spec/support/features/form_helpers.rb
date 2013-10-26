@@ -8,12 +8,18 @@ module Features
     def fill_in_user_basic_info(
         first_name = Faker::Name.first_name,
             middle_name = Faker::Name.first_name,
-            last_name = Faker::Name.last_name
+            last_name = Faker::Name.last_name,
+            degree = "Undergraduate",
+            school = Faker::Name.first_name
     )
       'user'.tap do |form|
         fill_in "#{form}_first_name", :with => first_name
         fill_in "#{form}_middle_name", :with => middle_name
         fill_in "#{form}_last_name", :with => last_name
+        click_link "Add Education"
+        all(:css, "#educations input[id^='user_educations'][id$='_school']").last.set(school)
+        degree_select = all(:css, "#educations select[id^='user_educations'][id$='_degree']").last
+        degree_select.select degree
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'

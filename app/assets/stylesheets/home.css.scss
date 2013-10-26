@@ -6,9 +6,9 @@
 	margin: 0;
 }
 
-#cover.col-md-12{
-	padding: 0;
-}
+// #cover.col-md-12{
+// 	padding: 0;
+// }
 
 #cover.jumbotron{
 	margin: 0;
@@ -35,31 +35,120 @@
 	}
 }
 
+#active{
+	.campaign-group-title{
+		background-color: #5dade2;
+	}
+}
+
+#successful{
+	.campaign-group-title{
+		background-color: #2ECC71;
+	}
+}
+
 .campaign-group-title{
-	height: 60px;
+	color: white;
+	height: 50px;
+
+	.row div{
+		height: 100%;
+	}
+
+	h3{
+		margin-top: 14px;
+		font-size: 20px;
+		font-weight: normal;
+	}
+
+	a{
+		margin-top: 15px;
+		color: white;
+		text-decoration: none;
+		display: block;
+		width: 100%;
+		height: 100%;
+		text-align: right;
+		font-size: 14px;
+		vertical-align: center;
+	}
+
+	a:hover{
+		color: white;
+		text-decoration: none;
+	}
 }
 
-.homepage-featured-campaigns{
-	.col-md-4.outline{
-		box-shadow: 0 0 2px gray;
-		margin-right: 10px;
-	}
-	.col-md-4.outline:hover{
-		box-shadow: 0 0 2px #00B1AC;
-		border: 1px solid #00B1AC;
-	}
+.campaign-row-section{
+	background-color: #EEF2EA;
 
-	.company-goal{
-		td{
-			font-size: 12px;
-		}
+	.homepage-featured-campaigns{
+		.col-md-4.outline{
+			margin: 10px 15px 10px;
+			border-radius: 0;
+			border: none;
+			display: block;
+			width: 300px;
+			min-height: 405px;
+			max-height: 405px;
+			overflow: none;
+			//box-shadow: 0px 0px 2px #BDC3C7;
+			padding: 5px;
 
-		tbody{
-			font-weight: bold;
+			.company-title{
+				h4{
+					display: block;
+					height: 38px;
+					margin: 5px 0 5px;
+					text-transform: uppercase;
+					font-weight: 200;
+					overflow: hidden;
+
+					a:hover{
+						text-decoration: none;
+					}
+				}
+			}
+
+			.company-short-description{
+				display: block;
+				height: 110px;
+				max-height: 110px;
+				overflow: hidden;
+				font-size: 12px;
+			}
+
+			.img-campaign{
+				width: 290px;
+				height: 180px;
+			}
+
+			.company-goal{
+				thead td{
+					font-weight: bold;
+					font-size: 12px;
+				}
+
+				tbody{
+					font-weight: 100;
+					td{
+						color: #75796F
+					}
+				}
+
+				.progress{
+					margin: 5px 0 5px;
+				}
+
+			}
+
+			.progress.active{
+				height: 8px;
+			}
 		}
-		
 	}
 }
+
 
 #videoModal{
 	.modal-dialog{
@@ -76,6 +165,12 @@
 #video-trailer{
 	width: 100%;
 	max-height: 718px;
+	margin-left: 0;
+	margin-right: 0;
+
+	.col-md-12{
+		padding: 0;
+	}
 
 	.jumbotron{
 		display: block;
@@ -119,10 +214,12 @@
 }
 
 #how-it-works{
+	height: 241px;
+
 	.col-md-12{
 		background: image-url('home/cover.jpg') repeat;
 	}
-	
+
 
 	.jumbotron{
 		background-color: rgba(2, 2, 28, 0.7);
@@ -132,12 +229,12 @@
 			opacity: 1.3;
 		}
 	}
-	
+
 	color: white;
 }
 
 #feature{
-	background-color: #939393;
+	background-color: #1ABC9C;
 	opacity: 0.8;
 	display: block;
 	min-height: 120px;

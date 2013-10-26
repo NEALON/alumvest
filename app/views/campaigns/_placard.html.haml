@@ -1,6 +1,6 @@
 .col-md-4.columns.panel.outline
   = link_to display_campaign_company_path(campaign) do
-    = image_tag campaign.company.photo_for_card_display, :class => "img-polaroid campaign-placard-image"
+    = image_tag campaign.company.photo_for_card_display, :class => "img-campaign"
 
   .company-title
     %h4
@@ -13,19 +13,20 @@
       %thead
         %tr
           %td
-            Raised
-          %td
-            Goal
-          %td
-            Investors
-      %tbody
-        %tr
-          %td
             = number_to_currency (investment_sum = campaign.investments.sum(:amount))
           %td
             = number_to_currency (fundraising_amount = campaign.investment_term.fundraising_amount)
           %td
             = campaign.investors.count
+      %tbody
+        %tr
+          %td
+            Raised
+          %td
+            Goal
+          %td
+            Investors
 
-    .progress.progress-striped.active
-      .progress-bar{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
+
+    .progress.active
+      .progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}

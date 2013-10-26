@@ -101,20 +101,19 @@
   .push
   #footer
     .container
-      .row{:style => "padding-top: 100px"}
+      .row
         - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-          .col-md-10.col-xs-12
+          .col-md-10.col-xs-12.footer-navigation
             %ul.nav.nav-pills
               = render 'layouts/footer_navigation'
           .col-md-2.col-xs-12
             %img{ :src => image_path('home/facebook.png')}
             %img{ :src => image_path('home/twitter.png')}
             %img{ :src => image_path('home/google_plus.png')}
-          %hr
-          %div
-            %p
-              = mail_to "info@alumvest.com"
-              &nbsp;&#149;&nbsp; 999.9999 | Copyright (c) 2013 AlumVest, Inc.  All Rights Reserved. 
+      %hr
+      %div.copyright
+        %p
+          Copyright &copy; 2013 AlumVest, Inc.  All Rights Reserved. 
 
     = render :partial => 'layouts/signup_modal'
     = render :partial => 'layouts/login_modal'
