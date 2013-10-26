@@ -6,5 +6,5 @@ DocusignRest.configure do |config|
   config.integrator_key = 'HAYD-73356cb6-88b5-466c-b517-0ed4468c015f'
   config.account_id     = '00fea6af-872f-440a-af14-e91ec2c30427'
   config.endpoint       = 'https://demo.docusign.net/restapi' # 'https://www.docusign.net/restapi'
-  #config.api_version    = 'v1'
+  config.api_version    = 'v2'
 end

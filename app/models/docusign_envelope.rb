@@ -14,7 +14,7 @@ class DocusignEnvelope < ActiveRecord::Base
             :envelope_id => envelope_id,
             :name =>  'Mike Pence',
             :email => 'mike.pence@gmail.com',
-            :return_url => root_url
+            :return_url => root_url + "/docusign_envelopes/#{envelope_id}/record_event"
         }
     )
   end

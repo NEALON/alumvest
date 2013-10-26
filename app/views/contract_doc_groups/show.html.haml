@@ -5,6 +5,7 @@
 
   %row
     %p
-      %iframe.col-md-12{:src => @signing_url, :style => 'min-height: 500px'}
+      = link_to "Sign a document", @signing_url
+      -#%iframe.col-md-12{:src => @signing_url, :style => 'min-height: 500px'}
 
   -#= link_to "Complete this item", campaign_investment_finalization_contract_doc_group_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-default'

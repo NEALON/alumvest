@@ -1,5 +1,9 @@
 Av::Application.routes.draw do
 
+  resources :docusign_envelopes do
+    get :record_event
+  end
+
   # mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
 
   match '/auth/:provider/callback', :to => 'sessions#create'
