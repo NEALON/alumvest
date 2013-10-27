@@ -112,7 +112,15 @@
   }
 }
 
+#comany-tab{
+  .table.company-summary{
+    background-color: #ffffff;
 
+    tbody{
+      border: none;
+    }
+  }
+}
 
 // v1 code
 .nav-fixed { //navbar fixed for parallex scrolling

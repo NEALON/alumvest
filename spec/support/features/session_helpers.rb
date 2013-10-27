@@ -13,7 +13,6 @@ module Features
       screenshot_and_save_page if $do_screenshots
 
       click_link "Register"
-      click_link "Email"
       fill_in 'first_name', :with => first_name
       fill_in 'last_name', :with => last_name
       fill_in 'email', :with => email
@@ -42,12 +41,11 @@ module Features
       visit '/'
       click_link 'Login'
       within '#login-modal' do
-        click_link "Email"
+        fill_in 'Email', :with => email
+        fill_in 'password', :with => password
+        screenshot_and_save_page if $do_screenshots
+        click_button 'Login'
       end
-      fill_in 'Email', :with => email
-      fill_in 'password', :with => password
-      screenshot_and_save_page if $do_screenshots
-      click_button 'Login'
     end
   end
 end
