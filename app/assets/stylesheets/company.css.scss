@@ -1,18 +1,127 @@
 // all about company
 
-.nav-fixed {
+// v2 code
+.company_banner{
+  img{
+    width: 100%;
+    height: 350px;
+  }
+
+  .company_banner_info{
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    margin: 0 auto;
+    z-index: 2;
+    background: none;
+
+    .container{
+      color: #ffffff;
+
+      a.btn{
+        margin-top: 20px;
+        width: 200px;
+        font-size: 20px;
+      }
+    }
+
+  }
+}
+
+.vertical-spacer-1-em{
+  height: 52px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #428bca;
+
+  .container{
+    padding: 0;
+    height: 100%;
+  }
+
+  #company-nav{
+    height: 52px;
+
+    .col-md-9{
+      height: 100%;
+
+      .nav.nav-pills{
+        height: 100%;
+
+        li{
+          height: 100%;
+          margin: 0;
+
+          a{
+            position: relative;
+            top: 7px;
+            text-transform: uppercase;
+            display: block;
+            vertical-align: middle;
+            color: #ffffff;
+          }
+
+          a:hover{
+            text-decoration: none;
+            background-color: #428bca;
+          }
+        }
+
+        li.active{
+          background-color: #f8f8f8;
+
+          a{
+            background-color: #f8f8f8;
+            color: #428bca;
+          }
+
+          a:hover{
+            background-color: #f8f8f8;
+          }
+        }
+      }
+    }
+
+    .col-md-3{
+      height: 100%;
+
+      form.button_to{
+        display: block;
+        height: 52px;
+
+        div{
+          height: 100%;
+
+          input.btn.btn-large.btn-primary{
+            background: none;
+
+            border: none;
+            text-shadow: none;
+            box-shadow: none;
+
+            display: block;
+            position: relative;
+            top: 11px;
+            left: 37px;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// v1 code
+.nav-fixed { //navbar fixed for parallex scrolling
   width: 100%;
   position: fixed;
   top:0px;
-  background-color: white !important;
-  border-style: solid;
-  border-width: 2px 0 0 0;
-  border-top-color: #00B1AC;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  background-color: #428bca;
   z-index: 100050;
-  min-height: 50px;
-  padding-top: 5px;
+  height: 52px;
 }
 
 .nav.container {
