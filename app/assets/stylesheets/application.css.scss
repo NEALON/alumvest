@@ -263,3 +263,22 @@ fieldset.actions {
 .right-padded {
   padding-right: 1em;
 }
+
+.modal-dialog.modal-large {
+  width: 80%;
+  max-width: 990px;
+}
+
+.modal-row {
+  display: table;
+}
+
+.modal-row-middle {
+  float: none;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-row-middle.modal-left-border {
+  border-left: 1px solid #ccc;
+}

@@ -15,7 +15,9 @@
 = render "shared/property_row", :header => "Zip", :value => @user.zipcode
 = render "shared/property_row", :header => "Personal Statement", :value => (raw @user.personal_statement)
 - unless @user.educations.empty?
-  %hr
-  %h4 Education
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        %h4 Educations
   - @user.educations.each do |e|
     = render "shared/property_row", :header => e.degree, :value => e.school
