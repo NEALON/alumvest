@@ -9,9 +9,11 @@
 
     %fieldset
       = f.hidden_field :investment_finalization_id
-      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :annual_income, :values => Questionnaire::ANNUAL_INCOMES
-      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :year_of_income, :values => Questionnaire::INCOME_YEARS
-      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :income_type, :values => Questionnaire::INCOME_TYPES
-      = render_cell 'tb/form/select_field', :display, :form => f, :field =>  :net_worth, :values => Questionnaire::NET_WORTHS
+
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/select', :display, :field =>  :annual_income, :values => Questionnaire::ANNUAL_INCOMES
+        = op.render_cell 'tb/form/select', :display, :field =>  :year_of_income, :values => Questionnaire::INCOME_YEARS
+        = op.render_cell 'tb/form/select', :display, :field =>  :income_type, :values => Questionnaire::INCOME_TYPES
+        = op.render_cell 'tb/form/select', :display, :field =>  :net_worth, :values => Questionnaire::NET_WORTHS
 
       = render_cell 'tb/form/submit_button', :display

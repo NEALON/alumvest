@@ -1,13 +1,14 @@
-%fieldset
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :first_name
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :last_name
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :title
-  = render_cell 'tb/form/filepicker_field', :display, :form => f, :field => :avatar_url, :label => "Avatar"
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :facebook
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :twitter
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :linkedin
-  = render_cell 'tb/form/richtext_field', :display, :form => f, :field => :introduction
-  = render_cell 'tb/form/text_field', :display, :form => f, :field => :video_url
+%fieldset                    
+  - with_options :form => f do |op|
+    = op.render_cell 'tb/form/text', :display, :field => :first_name
+    = op.render_cell 'tb/form/text', :display, :field => :last_name
+    = op.render_cell 'tb/form/text', :display, :field => :title
+    = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
+    = op.render_cell 'tb/form/text', :display, :field => :facebook
+    = op.render_cell 'tb/form/text', :display, :field => :twitter
+    = op.render_cell 'tb/form/text', :display, :field => :linkedin
+    = op.render_cell 'tb/form/richtext', :display, :field => :introduction
+    = op.render_cell 'tb/form/text', :display, :field => :video_url
   %hr
   %h4 Education
   #educations

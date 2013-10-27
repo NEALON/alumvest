@@ -4,14 +4,16 @@
   - if current_user != nil and @user.id == current_user.id
     = form_for @user, :html => {:class => "form-horizontal"} do |f|
       %fieldset
-        = render_cell 'tb/form/radiobutton_field', :display, :form => f, :field => :gender, :values => ["Male", "Female"]
-        = render_cell 'tb/form/dateselect_field', :display, :form => f, :field => :date_of_birth
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :mobile_phone
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :home_phone
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :address_1
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :address_2
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :city
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :state
-        = render_cell 'tb/form/text_field', :display, :form => f, :field => :zipcode
-        = render_cell 'tb/form/richtext_field', :display, :form => f, :field => :personal_statement
+        - with_options :form => f do |op|
+          = op.render_cell 'tb/form/radiobutton', :display, :field => :gender, :values => ["Male", "Female"]
+          = op.render_cell 'tb/form/dateselect', :display, :field => :date_of_birth
+          = op.render_cell 'tb/form/text', :display, :field => :mobile_phone
+          = op.render_cell 'tb/form/text', :display, :field => :home_phone
+          = op.render_cell 'tb/form/text', :display, :field => :address_1
+          = op.render_cell 'tb/form/text', :display, :field => :address_2
+          = op.render_cell 'tb/form/text', :display, :field => :city
+          = op.render_cell 'tb/form/text', :display, :field => :state
+          = op.render_cell 'tb/form/text', :display, :field => :zipcode
+          = op.render_cell 'tb/form/richtext', :display, :field => :personal_statement
+
         = render_cell 'tb/form/submit_button', :display
