@@ -1,6 +1,7 @@
 - content_for :header_1 do
   - unless @company.banner_photo_url.blank?
-    = image_tag(@company.banner_for_campaign_home_display)
+    .container
+      = image_tag(@company.banner_for_campaign_home_display)
 
-  :erb
-    <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202784' style="min-height: 65px"></div>
+//  :erb
+//    <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202784' style="min-height: 65px"></div>
