@@ -2,6 +2,7 @@
   - with_options :form => f do |op|
     = op.render_cell 'tb/form/text', :display, :field => :name
     = op.render_cell 'tb/form/filepicker', :display, :field => :file_url, :label => "File", :type => "doc"
+    = op.render_cell 'tb/form/checkbox', :display, :field => :signature_required, :label => "File", :type => "doc"
 
 :erb
   <div class="form-group">

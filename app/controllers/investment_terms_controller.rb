@@ -10,6 +10,7 @@ class InvestmentTermsController < ApplicationController
   end
 
   def create
+    @campaign = Campaign.find(params[:investment_term][:campaign_id])
     @investment_term = InvestmentTerm.create(add_images_if_test!(params[:investment_term]))
     if @investment_term.valid?
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms saved.' }
