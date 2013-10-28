@@ -4,6 +4,7 @@ class DocusignTemplate < ActiveRecord::Base
   has_many :docusign_envelopes
   belongs_to :document
 
+  # TODO: move this to the DocusignEnvelope class
   def create_envelope(signing, investor)
     client = DocusignRest::Client.new
 
@@ -17,8 +18,8 @@ class DocusignTemplate < ActiveRecord::Base
             :signers => [
                 {
                     :embedded => true,
-                    :name => investor[:name],
-                    :email => investor[:email],
+                    :name => 'Mike Pence',            # investor[:name],
+                    :email => 'mike.pence@gmail.com', # investor[:email],
                     :role_name => 'investor'
                 }
             ]
