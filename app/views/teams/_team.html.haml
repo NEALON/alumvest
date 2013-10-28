@@ -1,33 +1,30 @@
-.row
-  -# main (left)
-  .col-md-8
+.team-highlights
+  %h3.text-center Our Team
+  = raw @campaign.team.team_highlights
+
+.team-members
+  .row
     - @campaign.team.team_members.each do |member|
-      .row
-        .col-md-3
-          = image_tag member.avatar(w:100, h:100) unless member.avatar.blank?
-
-        .col-md-5
-          %h4= "#{member.full_name} / #{member.title}"
-
-          - if member.facebook
-            = link_to "http://www.facebook.com/#{member.facebook}" do
-              %i.icon-facebook-sign
-          - if member.twitter
-            = link_to "http://www.twitter.com/#{member.twitter}" do
-              %i.icon-twitter-sign
-          - if member.linkedin
-            = link_to "http://www.linkedin.com/#{member.linkedin}" do
-              %i.icon-linkedin-sign
+      .col-md-4
+        - if not member.avatar.blank?
+          %img.img-circle{:src => member.avatar}
+        .team-member-info
+          %h4.text-center= "#{member.full_name}"
+          %h5.text-center= "#{member.title}"
 
           - if member.introduction
-            %p= raw member.introduction
+            .introduction= raw member.introduction
 
           - if member.video_url
             %p= render 'shared/youtube', :video_url => member.video_url, :width => 450, :height => 300
 
-  -# right sidebar
-  .col-md-4
-    .panel.outline{:style => "padding: 10px 30px 10px 30px"}
-      %div
-        %h3 Team Highlights
-        = raw @campaign.team.team_highlights
+          .share-buttons.text-center
+            - if member.facebook
+              = link_to "http://www.facebook.com/#{member.facebook}" do
+                %span.glyphicon.glyphicon-share-alt
+            - if member.twitter
+              = link_to "http://www.twitter.com/#{member.twitter}" do
+                %span.glyphicon.glyphicon-share-alt
+            - if member.linkedin
+              = link_to "http://www.linkedin.com/#{member.linkedin}" do
+                %span.glyphicon.glyphicon-share-alt
