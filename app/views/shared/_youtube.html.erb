@@ -1,6 +1,8 @@
-<% unless video_url.blank? %>
-    <div style="text-align:center">
-      <iframe width="<%= width %>" height="<%= height %>" src="<%= video_url -%>?feature=oembed" frameborder="0" allowfullscreen>
-      </iframe>
-    </div>
-<% end %>
+<div class="company-video">
+	<% unless video_url.blank? %>
+	    <div>
+		    <iframe width="620px" height="395px" src="<%= video_url -%>?feature=oembed" frameborder="0" allowfullscreen>
+		    </iframe>
+	    </div>
+	<% end %>
+</div>

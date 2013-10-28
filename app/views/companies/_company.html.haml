@@ -4,22 +4,13 @@
   -# main (left)
   .col-md-8
     = render 'heading'
-    = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
-
-    %p= @company.campaign_title
-    %p= @company.category.name
-    %p= raw @company.company_details
-    %p= raw @company.faq
+    = render 'shared/youtube', :video_url => @company.video_url
+    = render 'company_details'
+    = render 'company_highlights'
 
   -# right sidebar
   .col-md-4
     = render :partial => 'raise_summary'
-
-    %h5 Company Highlights
-
-    .panel.outline{:style => "padding: 10px 30px 10px 30px"}
-      %p= link_to @company.company_url, @company.company_url
-      %p= raw @company.company_highlights
 
   -#:javascript
     $('document').ready(function(){
