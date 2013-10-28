@@ -415,12 +415,96 @@ $color-white: #ffffff;
           color: #000000;
         }
       }
+
+      .company-video{
+        display: none;
+      }
     }
   }
 }
 
+#investment-term-tab{
+  padding-top: 40px;
+  padding-bottom: 40px;
 
+  .term-content{
+    h3{
+      font-size: 20px;
+      font-weight: $header-font-weight;
+      color: $color-green;
+    }
 
+    table{
+      td{
+        height: 40px;
+      }
+    }
+
+    .investment-label{
+      font-size: 16px;
+      font-weight: 100;
+      width: 640px;
+    }
+
+    .investment-value{
+      font-size: 16px;
+      font-weight: 600;
+      color: $color-blue;
+      width: 320px;
+
+      a:hover{
+        text-decoration: none;
+      }
+    }
+
+    p{
+      font-size: 14px;
+      font-weight: 200;
+      line-height: 150%;
+    }
+  }
+}
+
+#faq-tab{
+  background-color: $color-white;
+  box-shadow: 0 0 5px #7F8C8D;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  h3{
+    font-size: 20px;
+    font-weight: $header-font-weight;
+    color: $color-green;
+  }
+}
+
+#update-tab{
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  h3{
+    font-size: 20px;
+    font-weight: $header-font-weight;
+    color: $color-green;
+  }
+}
+
+#join-us-tab{
+  background-color: $color-white;
+  box-shadow: 0 0 5px #7F8C8D;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  h3{
+    font-size: 20px;
+    font-weight: $header-font-weight;
+    color: $color-green;
+  }
+}
+
+#discussion-tab{
+  padding-top: 15px;
+}
 
 // v1 code
 .nav-fixed { //navbar fixed for parallex scrolling

@@ -1,75 +1,80 @@
-.row
-  .col-md-8
+.term-content
+  %h3 Campaign Details
+  %table{:width => "100%"}
+    %tr
+      %td.investment-label
+        Fundraising Amount
+      %td.investment-value
+        = number_to_currency @investment_term.fundraising_amount
+    %tr
+      %td.investment-label
+        Campaign Length (days)
+      %td.investment-value
+        = @investment_term.campaign_length
+    %tr
+      %td.investment-label
+        Convertible Note or Equity
+      %td.investment-value
+        = @investment_term.equity_type
+    %tr
+      %td.investment-label
+        Funds Retained
+      %td.investment-value
+        = @investment_term.funds_retained
+    %tr
+      %td.investment-label
+        Fees Paid By
+      %td.investment-value
+        = @investment_term.fees_paid_by
+
+  %h3
+    Elevator Pitch
+  %p.investment-term-paragraph= raw @investment_term.elevator_pitch
+
+  %h3
+    Investment Details
+  %p.investment-term-paragraph= raw @investment_term.investment_details
+
+  %h3
+    Business documents
+  %table{:width => "100%"}
+    %tr
+      %td.investment-label
+        Business plan
+      %td.investment-value
+        = link_to 'Download', @investment_term.business_plan_url
+    %tr
+      %td.investment-label
+        Financial statement
+      %td.investment-value
+        = link_to 'Download', @investment_term.financial_statement_url
+    %tr
+      %td.investment-label
+        Term sheet
+      %td.investment-value
+        = link_to 'Download', @investment_term.term_sheet_url
+
+  - unless @investment_term.subscription_docs.blank?
+    %h3
+      Subscription documents
     %table{:width => "100%"}
-      %tr
-        %td
-          Fundraising Amount
-        %td
-          = number_to_currency @investment_term.fundraising_amount
-      %tr
-        %td
-          Campaign Length (days)
-        %td
-          = @investment_term.campaign_length
-      %tr
-        %td
-          Convertible Note or Equity
-        %td
-          = @investment_term.equity_type
-      %tr
-        %td
-          Funds Retained
-        %td
-          = @investment_term.funds_retained
-      %tr
-        %td
-          Fees Paid By
-        %td
-          = @investment_term.fees_paid_by
+      - @investment_term.subscription_docs.each do |d|
+        %tr
+          %td.investment-label= d.name
+          %td.investment-value= link_to 'Download', d.file_url
 
-    %p= raw @investment_term.elevator_pitch
-    %p= raw @investment_term.investment_details
-
-    %h4
-      Business documents
+  - unless @investment_term.other_docs.blank?
+    %h3
+      Other documents
     %table{:width => "100%"}
-      %tr
-        %td
-          Business plan
-        %td
-          = link_to 'Download', @investment_term.business_plan_url
-      %tr
-        %td
-          Financial statement
-        %td
-          = link_to 'Download', @investment_term.financial_statement_url
-      %tr
-        %td
-          Term sheet
-        %td
-          = link_to 'Download', @investment_term.term_sheet_url
+      - @investment_term.subscription_docs.each do |d|
+        %tr
+          %td.investment-label= d.name
+          %td.investment-value= link_to 'Download', d.file_url
 
-    - unless @investment_term.subscription_docs.blank?
-      %h4
-        Subscription documents
-      %table{:width => "100%"}
-        - @investment_term.subscription_docs.each do |d|
-          %tr
-            %td= d.name
-            %td= link_to 'Download', d.file_url
-
-    - unless @investment_term.other_docs.blank?
-      %h4
-        Other documents
-      %table{:width => "100%"}
-        - @investment_term.subscription_docs.each do |d|
-          %tr
-            %td= d.name
-            %td= link_to 'Download', d.file_url
-
-  .col-md-4
-    .panel.outline{:style => "padding: 10px 30px 10px 30px"}
-      %div
-        %h3 Placeholder
-        %p
-          (Former home of planned fund usage)
+  / .col-md-4
+  /   .panel.outline{:style => "padding: 10px 30px 10px 30px"}
+  /     %div
+  /       %h3 Placeholder
+  /       %p
+  /         (Former home of planned fund usage)
