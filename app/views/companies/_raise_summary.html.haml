@@ -2,8 +2,12 @@
 
 .panel.well{:style => "padding: 0px 20px 10px 20px"}
   %div#amount_invested
-    %h3= number_to_currency (@campaign.investments.sum(:amount))
-    raised of
+    - if can? :view_exact_funding_amount, @campaign
+      %h3= number_to_currency (@campaign.investments.sum(:amount))
+      raised of
+    - else
+      %h3 ***
+      raised of
     = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
     goal
   %div
