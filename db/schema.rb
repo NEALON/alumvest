@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023071319) do
+ActiveRecord::Schema.define(:version => 20131027153335) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "status"
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(:version => 20131023071319) do
     t.string   "file_url"
     t.integer  "documentable_id"
     t.string   "documentable_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.boolean  "signature_required", :default => false
   end
 
   create_table "docusign_envelope_events", :force => true do |t|
@@ -88,12 +89,14 @@ ActiveRecord::Schema.define(:version => 20131023071319) do
     t.text     "email_body"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "signing_id"
   end
 
   create_table "docusign_templates", :force => true do |t|
     t.string   "template_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "document_id"
   end
 
   create_table "educations", :force => true do |t|
@@ -271,6 +274,14 @@ ActiveRecord::Schema.define(:version => 20131023071319) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "signings", :force => true do |t|
+    t.string   "status",                     :default => "unsigned"
+    t.integer  "investment_finalization_id"
+    t.integer  "document_id"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+  end
 
   create_table "subscription_agreements", :force => true do |t|
     t.string   "status"

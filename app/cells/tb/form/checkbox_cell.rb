@@ -1,4 +1,4 @@
-class Tb::Form::TextFieldCell < Cell::Rails
+class Tb::Form::CheckboxCell  < Cell::Rails
 
   def display(opts = {})
     @form = opts[:form]

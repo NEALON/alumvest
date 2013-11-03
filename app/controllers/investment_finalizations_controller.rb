@@ -13,7 +13,6 @@ class InvestmentFinalizationsController < ApplicationController
     end
   end
 
-
   def show
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
@@ -27,4 +26,3 @@ class InvestmentFinalizationsController < ApplicationController
     redirect_to display_campaign_company_path(@campaign), :flash => {:success => "Thank you for your investment!"}
   end
 end
-

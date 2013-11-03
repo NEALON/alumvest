@@ -8,19 +8,22 @@
         = fields_for :investor do |i|
           %fieldset
             = f.hidden_field :user_id
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :ssn
-            = render_cell 'tb/form/select_field', :display, :form => i, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-            = render_cell 'tb/form/richtext_field', :display, :form => i, :field => :financial_info
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :spending_habits
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :income
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :income_type
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :net_worth
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :investor_representations
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :company
-            = render_cell 'tb/form/text_field', :display, :form => i, :field => :job_title
-            = render_cell 'tb/form/richtext_field', :display, :form => i, :field => :experience
-            = render_cell 'tb/form/richtext_field', :display, :form => i, :field => :expertise
-            = render_cell 'tb/form/richtext_field', :display, :form => i, :field => :personal_message
+
+            - with_options :form => i do |op|
+              = op.render_cell 'tb/form/text', :display, :field => :ssn
+              = op.render_cell 'tb/form/select', :display, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
+              = op.render_cell 'tb/form/richtext', :display, :field => :financial_info
+              = op.render_cell 'tb/form/text', :display, :field => :spending_habits
+              = op.render_cell 'tb/form/text', :display, :field => :income
+              = op.render_cell 'tb/form/text', :display, :field => :income_type
+              = op.render_cell 'tb/form/text', :display, :field => :net_worth
+              = op.render_cell 'tb/form/text', :display, :field => :investor_representations
+              = op.render_cell 'tb/form/text', :display, :field => :company
+              = op.render_cell 'tb/form/text', :display, :field => :job_title
+              = op.render_cell 'tb/form/richtext', :display, :field => :experience
+              = op.render_cell 'tb/form/richtext', :display, :field => :expertise
+              = op.render_cell 'tb/form/richtext', :display, :field => :personal_message
+
             = render_cell 'tb/form/submit_button', :display
 
       - else
