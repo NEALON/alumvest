@@ -10,11 +10,11 @@
  *
 */
 
-@import "bootstrap";
-@import "bootstrap/bootstrap-theme";
-@import "home";
-@import "users";
-@import "company";
+@import "bootstrap.css";
+@import "bootstrap/bootstrap-theme.css";
+@import "home.css";
+@import "users.css";
+@import "company.css";
 
 html, body{
   width: 100%;
@@ -269,6 +269,14 @@ fieldset.actions {
 
 .right-padded {
   padding-right: 1em;
+}
+
+#signup-modal {
+  z-index: 100051;
+}
+
+#login-modal {
+  z-index: 100051;
 }
 
 .modal-dialog.modal-large {

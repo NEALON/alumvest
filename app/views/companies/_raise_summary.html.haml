@@ -1,7 +1,11 @@
 %div.company-raise-summary
   %div.double-level
-    = number_to_currency (@campaign.investments.sum(:amount))
-    %p.raise-label Raised
+    - if can? :view_exact_funding_amount, @campaign
+      = number_to_currency (@campaign.investments.sum(:amount))
+      %p.raise-label Raised
+    - else
+      = render 'partials/signup_to_see_small'
+
   %div.double-level
     = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
     %p.raise-label Goal
@@ -31,7 +35,7 @@
   %p.progress
     %p.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
   %p
-    %a.btn.btn-primary
+    %a.btn.btn-primary.invest-now
       Invest Now
 
 %div.company-follow

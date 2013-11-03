@@ -12,7 +12,7 @@
             %li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', '#join-us-tab'
             %li{:class => "#{'active' if active == :discussion}"}= link_to 'Discussion', '#discussion-tab'
         .col-md-3
-          = button_to 'Begin Investment Process', new_campaign_investment_finalization_path(@company.campaign), :class => "btn btn-large btn-primary", :method => :get
+          = button_to 'Begin Investment Process', new_campaign_investment_finalization_path(@company.campaign), :class => "btn btn-large btn-primary invest-now", :id => 'invest-now-btn', :method => :get
         -#%ul.nav.nav-pills
           -#%li{:class => "#{'active' if active == :company}"}= link_to 'Company', display_campaign_company_path(@campaign)
           -#%li{:class => "#{'active' if active == :team}"}= link_to 'Team', display_campaign_team_path(@campaign)

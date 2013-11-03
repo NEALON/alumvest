@@ -50,8 +50,22 @@ class User < ActiveRecord::Base
     user_type.downcase == "investor"
   end
 
+  def is_self_accredited_investor?
+    not (self.is_investor? and self.investor.accredited_investor_status.nil?)
+  end
+
+  def is_accredited_investor?
+    return false unless self.is_investor?
+    self.investor.accredited_investor_status == 'approved'
+  end
+
   def is_owner?
     user_type.downcase == "owner"
+  end
+
+  # no admin for now
+  def is_admin?
+    return false
   end
 
   def user_type_undefined?
