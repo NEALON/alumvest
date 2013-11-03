@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131027153335) do
+ActiveRecord::Schema.define(:version => 20131103010439) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "status"
@@ -73,15 +73,24 @@ ActiveRecord::Schema.define(:version => 20131027153335) do
     t.boolean  "signature_required", :default => false
   end
 
-  create_table "docusign_envelope_events", :force => true do |t|
-    t.integer  "docusign_envelope_id"
-    t.string   "status"
-    t.datetime "status_date_time"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+  create_table "educations", :force => true do |t|
+    t.string   "school"
+    t.string   "degree"
+    t.integer  "user_id"
+    t.integer  "person_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "docusign_envelopes", :force => true do |t|
+  create_table "envelope_events", :force => true do |t|
+    t.integer  "envelope_id"
+    t.string   "status"
+    t.datetime "status_date_time"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "envelopes", :force => true do |t|
     t.integer  "template_id"
     t.string   "envelope_id"
     t.string   "email_subject"
@@ -90,22 +99,6 @@ ActiveRecord::Schema.define(:version => 20131027153335) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "signing_id"
-  end
-
-  create_table "docusign_templates", :force => true do |t|
-    t.string   "template_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "document_id"
-  end
-
-  create_table "educations", :force => true do |t|
-    t.string   "school"
-    t.string   "degree"
-    t.integer  "user_id"
-    t.integer  "person_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "follows", :force => true do |t|
@@ -296,6 +289,13 @@ ActiveRecord::Schema.define(:version => 20131027153335) do
     t.string   "status"
     t.text     "team_highlights"
     t.integer  "campaign_id"
+  end
+
+  create_table "templates", :force => true do |t|
+    t.string   "template_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "document_id"
   end
 
   create_table "updates", :force => true do |t|

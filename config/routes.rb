@@ -1,7 +1,8 @@
 Av::Application.routes.draw do
 
-  resources :docusign_envelopes do
+  resources :envelopes do
     get :record_event
+    get :signed_document
   end
 
   # mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
@@ -10,6 +11,7 @@ Av::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   match '/logout', :to => 'sessions#destroy', :as => 'logout'
 
+  match '/admin_dashboard', :to => "admin_dashboard#index"
 
   get "home/index"
 
