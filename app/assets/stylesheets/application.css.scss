@@ -39,6 +39,8 @@ body{
   border-width: 2px 0 0 0;
   border-top-color: #00B1AC;
   text-transform: uppercase;
+  width: 100%;
+  overflow: hidden;
 
   .navbar-brand{
     padding: 5px 5px;
@@ -120,6 +122,8 @@ body{
 
 #content{
   min-height: 600px;
+  width: 100%;
+  overflow: hidden;
 }
 
 #footer{
@@ -129,6 +133,7 @@ body{
   padding: 20px 0 20px;
   margin-bottom: 0;
   box-shadow: 0 0 5px #7F8C8D;
+  overflow: hidden;
 
 
   img{
