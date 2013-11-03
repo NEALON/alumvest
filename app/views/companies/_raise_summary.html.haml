@@ -1,8 +1,11 @@
 %div.company-raise-summary
-  - if can? :view_exact_funding_amount, @campaign
-    %div.double-level
+  %div.double-level
+    - if can? :view_exact_funding_amount, @campaign
       = number_to_currency (@campaign.investments.sum(:amount))
       %p.raise-label Raised
+    - else
+      = render 'partials/signup_to_see_small'
+
   %div.double-level
     = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
     %p.raise-label Goal
