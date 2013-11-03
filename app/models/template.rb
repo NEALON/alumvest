@@ -1,10 +1,9 @@
-class DocusignTemplate < ActiveRecord::Base
+class Template < ActiveRecord::Base
   attr_accessible :template_id
 
-  has_many :docusign_envelopes
+  has_many :envelopes
   belongs_to :document
 
-  # TODO: move this to the DocusignEnvelope class
   def create_envelope(signing, investor)
     client = DocusignRest::Client.new
 
@@ -26,17 +25,17 @@ class DocusignTemplate < ActiveRecord::Base
         })
 
     if envelope['status'] && envelope['status'] == 'sent'
-      docusign_envelopes << dse = DocusignEnvelope.new(
+      envelopes << dse = Envelope.new(
           :signing => signing,
           :envelope_id => envelope['envelopeId'],
           :uri => envelope['uri'])
-      dse.events << dse_event = DocusignEnvelopeEvent.create(
+      dse.events << dse_event = EnvelopeEvent.create(
           :status => envelope['status'],
           :status_date_time => envelope['statusDateTime'])
       dse
     else
       # TODO: some logging of the error
-      nil
+      raise envelope.inspect
     end
   end
 end

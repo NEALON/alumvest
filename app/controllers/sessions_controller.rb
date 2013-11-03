@@ -5,10 +5,15 @@ class SessionsController < ApplicationController
   def create
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
-    if @user.profile_complete
-      redirect_to root_url, flash: {:success => "Signed in!" }
+
+    if @user.is_admin?
+      redirect_to "/admin_dashboard"
     else
-      redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'Edit Profile' to start."}
+      if @user.profile_complete
+        redirect_to root_url, flash: {:success => "Signed in!" }
+      else
+        redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'Edit Profile' to start."}
+      end
     end
   end
 

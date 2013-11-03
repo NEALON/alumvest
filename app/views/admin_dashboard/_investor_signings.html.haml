@@ -1,0 +1,28 @@
+- if @investor_signings
+
+  %table.table
+    %thead
+      %tr
+        %td
+          Camapaign
+        %td
+          Investor
+        %td
+          Document
+        %td
+    %tbody
+      - @investor_signings.each do |s|
+        - campaign = s.investment_finalization.campaign
+        %tr
+          %td
+            = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
+          %td
+            = link_to s.investment_finalization.investor.user.name, '#'
+          %td
+            = link_to s.document.name, envelope_signed_document_path(s.envelope), :target => "_blank"
+          %td
+            = render_cell 'tb/mini_link_button', :display, :label => 'Approve', :link => '#'
+            = render_cell 'tb/mini_link_button', :display, :label => 'Reject', :link => '#'
+
+- else
+  %p None right now

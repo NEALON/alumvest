@@ -10,11 +10,11 @@
  *
 */
 
-@import "bootstrap.css";
-@import "bootstrap/bootstrap-theme.css";
-@import "home.css";
-@import "users.css";
-@import "company.css";
+@import "bootstrap";
+@import "bootstrap/bootstrap-theme";
+@import "home";
+@import "users";
+@import "company";
 
 html, body{
   width: 100%;
@@ -75,14 +75,14 @@ body{
   ul.dropdown-menu{
     background-color: #f8f8f8;
     border-width: 0;
-    width: 100px;
+    width: 120px;
     margin: 0;
     padding: 0;
     min-width: 100px;
   }
 
   li{
-    width: 100px;
+    width: 120px;
     height: 50px;
     vertical-align: middle;
   }

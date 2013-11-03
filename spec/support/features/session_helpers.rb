@@ -20,7 +20,7 @@ module Features
       fill_in 'password_confirmation', :with => password
 
       case role
-        when :owner
+        when :owner, :admin
           choose 'owner'
         when :investor
           choose 'investor'
@@ -30,6 +30,8 @@ module Features
       click_button 'Register'
       screenshot_and_save_page if $do_screenshots
       @user, @owner, @investor = User.last, User.last.owner, User.last.investor
+
+      @user.update_attribute(:user_type, "admin") if role == :admin
     end
 
     def signout

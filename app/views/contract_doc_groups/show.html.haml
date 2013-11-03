@@ -4,7 +4,7 @@
   %h3 Contract documents
 
   %p
-    %table{:width => '100%'}
+    %table.table
       %thead
         %tr
           %td
@@ -15,9 +15,9 @@
         %tbody
           %tr
             %td
-              = link_to_unless signing.status == 'completed', signing.document.name, signing.docusign_envelope.get_recipient_view
+              = link_to_unless signing.status == 'completed', signing.document.name, signing.envelope.get_recipient_view
             %td
-              = signing.status
+              = signing.status_for_end_user
 
 -# %iframe.col-md-12{:src => @signing_url, :style => 'min-height: 500px'}
 -#= link_to "Complete this item", campaign_investment_finalization_contract_doc_group_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-default'

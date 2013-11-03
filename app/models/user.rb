@@ -63,9 +63,8 @@ class User < ActiveRecord::Base
     user_type.downcase == "owner"
   end
 
-  # no admin for now
   def is_admin?
-    return false
+    user_type.downcase == "admin"
   end
 
   def user_type_undefined?

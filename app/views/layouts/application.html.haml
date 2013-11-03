@@ -30,7 +30,7 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a{:href => '/', :class => 'navbar-brand'} 
+        %a{:href => '/', :class => 'navbar-brand'}
           %img{:src => image_path('home/logo.png'), :alt => 'Alumvest'}
       - unless content_for?(:without_navigation) || (yield :without_navigation) == true
         %div.collapse.navbar-collapse.navbar-ex1-collapse
@@ -40,7 +40,7 @@
             %div.input-group
               %input.form-control{ :type => 'text', :placeholder => 'Search'}
               %span.input-group-btn
-                %button.btn.btn-default{:type => 'button'} 
+                %button.btn.btn-default{:type => 'button'}
                   %span.glyphicon.glyphicon-search
           %ul.nav.navbar-nav.navbar-right
             - if current_user
@@ -49,17 +49,14 @@
                   = current_user.first_name
                   = image_tag(current_user.avatar_small)
                 %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "user-name"}
-                  %li
-                    = link_to 'Profile', user_path(current_user.id), :class => "btn"
-                  %li
-                    = link_to 'Settings', edit_user_path(current_user), :class => "btn"
-                  %li
-                    = link_to 'Sign out', logout_path, :class => "btn", :method => :delete
+                  - if current_user.is_admin?
+                    %li= link_to 'Dashboard', admin_dashboard_path, :class => "btn"
+                  %li= link_to 'Profile', user_path(current_user.id), :class => "btn"
+                  %li= link_to 'Settings', edit_user_path(current_user), :class => "btn"
+                  %li= link_to 'Sign out', logout_path, :class => "btn", :method => :delete
             - else
-              %li
-                = link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')
-              %li
-                = link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
+              %li= link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')
+              %li= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
   #content
     - if content_for? :breadcrumbs
       .row
@@ -110,10 +107,10 @@
       %hr
       %div.copyright
         %p
-          Copyright &copy; 2013 AlumVest, Inc.  All Rights Reserved. 
+          Copyright &copy; 2013 AlumVest, Inc.  All Rights Reserved.
 
     = render :partial => 'layouts/signup_modal'
     = render :partial => 'layouts/login_modal'
-  
+
   = yield :scripts
 </html>
