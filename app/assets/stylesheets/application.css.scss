@@ -125,14 +125,11 @@ body{
 #footer{
   background-color: #ffffff;
   display: block;
-  max-height: 150px;
   min-height: 150px;
   padding: 20px 0 20px;
+  margin-bottom: 0;
   box-shadow: 0 0 5px #7F8C8D;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+
 
   img{
     display: inline-block;
