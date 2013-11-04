@@ -173,7 +173,8 @@
 
 #video-trailer{
 	width: 100%;
-	max-height: 718px;
+	min-height: 500px;
+	max-height: 500px;
 	margin-left: 0;
 	margin-right: 0;
 
@@ -189,6 +190,7 @@
 
 	.container-bg{
 		overflow: hidden;
+		height: 500px;
 	}
 
 	.container-bg-overlay{
@@ -206,7 +208,7 @@
 		width: 100%;
 		z-index: 2;
 		position: absolute;
-		top: 300px;
+		top: 150px;
 		color: white;
 
 		img{
@@ -215,10 +217,14 @@
 		}
 	}
 
-	.video-wrap{
-		z-index: 3;
+	.video-wrapper{
+		display: none;
+		width: 100%;
 		position: absolute;
-		top: 0;
+		top: -30px;
+		overflow: hidden;
+		height: 500px;
+
 	}
 }
 
