@@ -20,6 +20,14 @@
 	background: image-url('home/cover2.jpg') repeat;
 	overflow: hidden;
 
+	.container{
+		margin: auto auto;
+		background-color: rgba(0, 0, 0, 0.4);
+		color: #ffffff;
+		position: relative;
+		top: 70px;
+	}
+
 	.bottom{
 		width: 100%;
 		background-color: rgba(0, 0, 0, 0.4);
