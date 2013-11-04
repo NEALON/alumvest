@@ -8,9 +8,9 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           %p
             = link_to('Learn more', '#', :class => "btn btn-primary btn-large")
-      .bottom
-        .container
-          Connecting capital and intelligence, Alumvest engages alumni and peers to seed and mentor entrepreneurs.
+      / .bottom
+      /   .container
+      /     Connecting capital and intelligence, Alumvest engages alumni and peers to seed and mentor entrepreneurs.
     / :erb
     /   <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
     / %hr
@@ -67,21 +67,25 @@
   .col-md-12
     .jumbotron
       .container-bg.container-bg-video
-        %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%; height: 100%'}
+        %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%'}
           %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
           %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.ogv", :type => "video/ogg"}
           %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.webm", :type => "video/webm"}
         .container-bg.container-bg-overlay
       .container-bg.container-bg-text.text-center
-        %a#playVideo{:href => '#videoModal', 'data-toggle' => 'modal'}
+        %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
           %img{:src => image_path('home/video_play.png')}
         %h3 Connecting capital and intelligence
         %p.text-center
-          = link_to('Watch Intro', '#videoModal', :class => "btn btn-primary btn-lg", 'data-toggle' => 'modal')
+          = link_to('Watch Intro', '#', :class => "btn btn-primary btn-lg video-play", 'data-toggle' => 'modal')
           // Modal
       .video-wrapper
         .container
+          <!-- Plugin for Vimeo -->
+          <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+
           #video-player.embed-video
+            %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
 
 #how-it-works.row
   .col-md-12
@@ -93,7 +97,7 @@
             Interested to learn more about Alumvest?
         %p.text-center
           = link_to('See How It Works', '#', :class => "btn btn-info btn-large")
-          = link_to('Watch Intro', '#videoModal', :class => "btn btn-primary btn-large", 'data-toggle' => 'modal')
+          = link_to('Watch Intro', '#', :class => "btn btn-primary btn-large video-play", 'data-toggle' => 'modal')
           = link_to('Get Registered Now', '#', :class => "btn btn-primary btn-large")
 
 #feature.row
