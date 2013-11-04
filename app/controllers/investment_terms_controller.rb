@@ -31,7 +31,7 @@ class InvestmentTermsController < ApplicationController
     if @investment_term.valid?
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms saved.' }
     else
-      render :edit
+      render :show
     end
   end
   
