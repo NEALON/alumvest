@@ -19,7 +19,7 @@ class InvestmentFinalization < ActiveRecord::Base
   def make_signings
     [campaign.investment_term.subscription_docs, campaign.investment_term.other_docs].each do |collection|
       collection.where(:signature_required => true).each do |doc|
-        doc.docusign_template.create_envelope(
+        doc.template.create_envelope(
             Signing.create(
                 :investment_finalization => self,
                 :document => doc),

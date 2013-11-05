@@ -17,9 +17,15 @@ class Template < ActiveRecord::Base
             :signers => [
                 {
                     :embedded => true,
-                    :name => 'Mike Pence',            # investor[:name],
-                    :email => 'mike.pence@gmail.com', # investor[:email],
+                    :name => 'Mike Pence', # investor[:name],
+                    :email => 'mike.pence+investor@gmail.com', # investor[:email],
                     :role_name => 'investor'
+                },
+                {
+                    :embedded => true,
+                    :name => 'Mike Pence', # investor[:name],
+                    :email => 'mike.pence+owner@gmail.com', # investor[:email],
+                    :role_name => 'owner'
                 }
             ]
         })
@@ -30,6 +36,7 @@ class Template < ActiveRecord::Base
           :envelope_id => envelope['envelopeId'],
           :uri => envelope['uri'])
       dse.events << dse_event = EnvelopeEvent.create(
+          :envelope => dse,
           :status => envelope['status'],
           :status_date_time => envelope['statusDateTime'])
       dse
