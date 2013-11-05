@@ -7,11 +7,11 @@ Av::Application.routes.draw do
 
   # mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
 
-  match '/auth/:provider/callback', :to => 'sessions#create'
-  match '/auth/failure', :to => 'sessions#failure'
-  match '/logout', :to => 'sessions#destroy', :as => 'logout'
+  match '/auth/:provider/callback', :to => 'sessions#create', :via => [:get, :post]
+  get '/auth/failure', :to => 'sessions#failure'
+  match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :delete
 
-  match '/admin_dashboard', :to => "admin_dashboard#index"
+  get '/admin_dashboard', :to => "admin_dashboard#index"
 
   get "home/index"
 
