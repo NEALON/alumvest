@@ -17,7 +17,7 @@ if false
     config.authenticate_with {}
     config.authorize_with do
       if Rails.env.production?
-        is_admin = ADMIN_EMAILS.include?(current_user.email) if current_user
+        is_admin = ADMIN_EMAILS.include?(current_user.email) or current_user.is_admin? if current_user
         redirect_to main_app.root_url unless is_admin
       end
     end
