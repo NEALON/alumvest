@@ -58,4 +58,4 @@ gem "docusign_rest", "~> 0.0"
 gem "rest-client", "~> 1.6"
 gem "cancan", "~> 1.6"
 gem "rails_admin", :git => "git://github.com/jcoleman/rails_admin", :branch => 'vendorize-bootstrap-2'
-gem 'protected_attributes' # rails 4 removed attr_accessible
+gem "protected_attributes" # rails 4 removed attr_accessible
