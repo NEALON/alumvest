@@ -5,7 +5,7 @@ Av::Application.routes.draw do
     get :signed_document
   end
 
-  # mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
 
   match '/auth/:provider/callback', :to => 'sessions#create', :via => [:get, :post]
   get '/auth/failure', :to => 'sessions#failure'
