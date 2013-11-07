@@ -36,19 +36,20 @@ GIT
       sass-rails (~> 4.0)
 
 GIT
+  remote: git://github.com/mikepence/docusign_rest.git
+  revision: 93bced249e22dfda0395496d4cfad1ee6b9ce42a
+  specs:
+    docusign_rest (0.0.9)
+      json
+      multipart-post (>= 1.1.5)
+
+GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
   revision: 9c6c07f74ff515cf38380b014cfede14a4f0eae4
   branch: 3
   specs:
     bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
-
-PATH
-  remote: ~/proj/docusign_rest
-  specs:
-    docusign_rest (0.0.9)
-      json
-      multipart-post (>= 1.1.5)
 
 GEM
   remote: https://rubygems.org/

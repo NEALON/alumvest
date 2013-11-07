@@ -54,7 +54,7 @@ gem "pg", "~> 0.17"
 gem "jquery-ui-rails", "~> 4.0"
 gem "compass"
 gem "faker", "~> 1.2"
-gem "docusign_rest", :path => "~/proj/docusign_rest"
+gem "docusign_rest", :git => "git://github.com/mikepence/docusign_rest.git"
 gem "rest-client", "~> 1.6"
 gem "cancan", "~> 1.6"
 gem "rails_admin", :git => "git://github.com/jcoleman/rails_admin", :branch => 'vendorize-bootstrap-2'
