@@ -9,13 +9,13 @@ class Envelope < ActiveRecord::Base
 
   has_many :events, :class_name => EnvelopeEvent
 
-  def get_recipient_view
+  def get_recipient_view(for_role)
     client = DocusignRest::Client.new
     view = client.get_recipient_view(
         {
             :envelope_id => envelope_id,
             :name =>  'Mike Pence',
-            :email => 'mike.pence@gmail.com',
+            :email => "mike.pence+#{for_role}@gmail.com",
             :return_url => root_url + "envelopes/#{envelope_id}/record_event"
         }
     )

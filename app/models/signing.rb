@@ -5,6 +5,7 @@ class Signing < ActiveRecord::Base
   belongs_to :document
 
   has_one :envelope
+  has_many :signing_reviews
 
   after_create :make_envelope
 
@@ -12,6 +13,16 @@ class Signing < ActiveRecord::Base
     event :sign_by_investor! do
       transition :unsigned => :signed_by_investor
     end
+
+    event :approve_investor_signature! do
+      transition :signed_by_investor => :investor_signature_approved, :if => :remove_investor_reviewer
+    end
+
+    event :reject_investor_signature! do
+      # TO DO: void the envelope
+      transition :signed_by_investor => :investor_signature_rejected
+    end
+
     event :cancel! do
       transition :unsigned => :canceled
     end
@@ -20,8 +31,26 @@ class Signing < ActiveRecord::Base
     end
 
     state :signed_by_investor
+    state :investor_signature_approved
+    state :investor_signature_rejected
+
     state :canceled
     state :declined
+  end
+
+  def remove_investor_reviewer
+    # TODO: let envelope do this
+    client = DocusignRest::Client.new
+    envelope_id = envelope.envelope_id
+    recipients = client.get_envelope_recipients(:envelope_id => envelope_id)
+    recipient_id = recipients['signers'].select{|s| s["roleName"] == "investor-reviewer"}.first["recipientId"]
+    result = client.delete_envelope_recipient({:envelope_id => envelope_id, :recipient_id => recipient_id})
+    begin
+      result['signers'].first['status'] == 'deleted'
+    rescue
+      # TODO: log some stuff, eh?
+      false
+    end
   end
 
   def status_for_end_user
@@ -45,5 +74,9 @@ class Signing < ActiveRecord::Base
 
   def self.signed_by_investor
     where(:status => 'signed_by_investor').order('created_at DESC')
+  end
+
+  def self.investor_signature_approved
+    where(:status => 'investor_signature_approved').order('created_at DESC')
   end
 end

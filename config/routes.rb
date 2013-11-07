@@ -12,6 +12,10 @@ Av::Application.routes.draw do
   match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :delete
 
   get '/admin_dashboard', :to => "admin_dashboard#index"
+  match '/admin_dashboard/approve_investor_signing', :to => 'admin_dashboard#approve_investor_signing', :via => :post
+  match '/admin_dashboard/reject_investor_signing', :to => 'admin_dashboard#reject_investor_signing', :via => :post
+
+  get '/owner_dashboard', :to => "owner_dashboard#index"
 
   get "home/index"
 

@@ -52,7 +52,7 @@ gem "gibbon", "~> 1.0", {:git=>"git://github.com/amro/gibbon.git"}
 gem "puma", "~> 2.6"
 gem "pg", "~> 0.17"
 gem "jquery-ui-rails", "~> 4.0"
-gem "compass-rails", "~> 1.0"
+gem "compass"
 gem "faker", "~> 1.2"
 gem "docusign_rest", :path => "~/proj/docusign_rest"
 gem "rest-client", "~> 1.6"

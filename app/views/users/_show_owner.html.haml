@@ -1,6 +1,7 @@
 - if @user.is_owner?
 
   - campaign = @user.owner.campaign || Campaign.create(:owner => @user.owner)
+
   - link = campaign.company ? campaign_company_path(campaign) : new_campaign_company_path(campaign)
   = link_to link do
     %button.btn.btn-primary.btn-lg Manage your campaign
