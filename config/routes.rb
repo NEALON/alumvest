@@ -5,13 +5,17 @@ Av::Application.routes.draw do
     get :signed_document
   end
 
-  # mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/data', :as => 'rails_admin'
 
-  match '/auth/:provider/callback', :to => 'sessions#create'
-  match '/auth/failure', :to => 'sessions#failure'
-  match '/logout', :to => 'sessions#destroy', :as => 'logout'
+  match '/auth/:provider/callback', :to => 'sessions#create', :via => [:get, :post]
+  get '/auth/failure', :to => 'sessions#failure'
+  match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :delete
 
-  match '/admin_dashboard', :to => "admin_dashboard#index"
+  get '/admin_dashboard', :to => "admin_dashboard#index"
+  match '/admin_dashboard/approve_investor_signing', :to => 'admin_dashboard#approve_investor_signing', :via => :post
+  match '/admin_dashboard/reject_investor_signing', :to => 'admin_dashboard#reject_investor_signing', :via => :post
+
+  get '/owner_dashboard', :to => "owner_dashboard#index"
 
   get "home/index"
 

@@ -12,14 +12,14 @@ class InvestmentFinalization < ActiveRecord::Base
   has_one :irs_doc_group
 
   # TODO: may need to be associated with some of the above entities
-  has_many :signings
+  has_many :signings, :dependent => :delete_all
 
   after_create :make_signings
 
   def make_signings
     [campaign.investment_term.subscription_docs, campaign.investment_term.other_docs].each do |collection|
       collection.where(:signature_required => true).each do |doc|
-        doc.docusign_template.create_envelope(
+        doc.template.create_envelope(
             Signing.create(
                 :investment_finalization => self,
                 :document => doc),

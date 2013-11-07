@@ -12,14 +12,20 @@ class Template < ActiveRecord::Base
             :template_id => template_id,
             :status => 'sent',
             :email => {
-                :subject => 'subject',
-                :body => 'body'},
+                :subject => document.name,
+                :body => 'Please sign this document.'},
             :signers => [
                 {
                     :embedded => true,
-                    :name => 'Mike Pence',            # investor[:name],
-                    :email => 'mike.pence@gmail.com', # investor[:email],
+                    :name => 'Mike Pence',
+                    :email => 'mike.pence+investor@gmail.com',
                     :role_name => 'investor'
+                },
+                {
+                    :embedded => true,
+                    :name => 'Mike Pence',
+                    :email => 'mike.pence+owner@gmail.com',
+                    :role_name => 'owner'
                 }
             ]
         })
@@ -30,6 +36,7 @@ class Template < ActiveRecord::Base
           :envelope_id => envelope['envelopeId'],
           :uri => envelope['uri'])
       dse.events << dse_event = EnvelopeEvent.create(
+          :envelope => dse,
           :status => envelope['status'],
           :status_date_time => envelope['statusDateTime'])
       dse

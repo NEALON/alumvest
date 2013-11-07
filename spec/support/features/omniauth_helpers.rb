@@ -15,7 +15,7 @@ module Features
       provider = credentials[:provider]
       user_hash = credentials[provider]
 
-      OmniAuth.config.test_mode = true
+      #OmniAuth.config.test_mode = true
 
       OmniAuth.config.mock_auth[provider] = {
         "provider" => "facebook",
@@ -35,13 +35,13 @@ module Features
                       :invalid  => :invalid_crendentials
                      }.merge(opts)
 
-      OmniAuth.config.test_mode = true
+      #OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[credentials[:provider]] = credentials[:invalid]
 
     end
 
     def unset_omniauth
-      OmniAuth.config.test_mode = false
+      #OmniAuth.config.test_mode = false
     end
   end
 end

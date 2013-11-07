@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def new
   end
 
@@ -9,10 +11,14 @@ class SessionsController < ApplicationController
     if @user.is_admin?
       redirect_to "/admin_dashboard"
     else
-      if @user.profile_complete
-        redirect_to root_url, flash: {:success => "Signed in!" }
+      if @user.is_owner?
+        redirect_to "/owner_dashboard"
       else
-        redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'Edit Profile' to start."}
+        if @user.profile_complete
+          redirect_to root_url, flash: {:success => "Signed in!" }
+        else
+          redirect_to user_path(@user.id), flash: {:warning => "Please complete your profile. Click 'Edit Profile' to start."}
+        end
       end
     end
   end

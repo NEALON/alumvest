@@ -15,7 +15,7 @@
         %tbody
           %tr
             %td
-              = link_to_unless signing.status == 'completed', signing.document.name, signing.envelope.get_recipient_view
+              = link_to_unless signing.status == 'completed', signing.document.name, signing.envelope.get_recipient_view('investor')
             %td
               = signing.status_for_end_user
 
