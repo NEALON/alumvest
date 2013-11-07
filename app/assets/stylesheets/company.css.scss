@@ -48,6 +48,14 @@ $color-white: #ffffff;
       }
     }
 
+    #investment-header{
+      background: none;
+
+      a.btn{
+        width: 300px;
+      }
+    }
+
   }
 }
 
@@ -135,6 +143,15 @@ $color-white: #ffffff;
   }
 }
 
+#investment-finalization-header{
+  a.btn{
+    display: block;
+    margin: 20px auto 0;
+  }
+
+
+}
+
 .blur{
   position: relative;
   .bg{
@@ -148,68 +165,6 @@ $color-white: #ffffff;
 }
 
 #company-tab{
-  .company-summary{ // company summary
-    background-color: $company-block-background-color;
-    margin-bottom: 20px;
-    height: 110px;
-    width: 100%;
-
-    .table{
-      border: none;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-
-      tbody{
-        border: none;
-
-        .company-logo-side{
-          width: 100px;
-        }
-
-        td{
-          border: none;
-          padding: 5px;
-          height: 100%;
-
-          h3{
-            color: $color-green;
-            font-weight: $header-font-weight;
-            display: block;
-            width: 100%;
-            height: $header-height;
-            margin: 0;
-            padding: 0;
-            overflow: none;
-            font-size: $header-font-size;
-          }
-
-          p{
-            margin: 5px 0 0;
-            font-weight: 100;
-            width: 100%;
-          }
-
-          .short-description{
-            font-size: 14px;
-            height: 58px;
-            font-weight: 200;
-          }
-
-          .company-short-info{
-            height: 12px;
-            font-size: 12px;
-          }
-
-          img{
-            width: 100px;
-            height: 100px;
-          }
-        }
-      }
-    }
-  }
-
   .company-video{// company video on compaign page
     padding: 5px;
     width: $company-left-block-width;
@@ -262,106 +217,167 @@ $color-white: #ffffff;
       background: transparent;
     }
   }
+}
 
+.company-summary{ // company summary
+  background-color: $company-block-background-color;
+  margin-bottom: 20px;
+  height: 110px;
+  width: 100%;
 
-  .company-highlights{
-    p{
-      text-align: justify;
-    }
-  }
+  .table{
+    border: none;
+    margin: 0;
+    height: 100%;
+    width: 100%;
 
-  .company-raise-summary{
-    padding: 5px;
-    width: $company-right-block-width;
-    min-height: 110px;
-    background-color: $company-block-background-color;
-    margin-bottom: 20px;
-  }
-
-  .company-raise-summary{
-    padding: 5px;
-    width: $company-right-block-width;
-    background-color: $company-block-background-color;
-
-    p{
-      margin: 0;
-    }
-
-    div{
-      background-color: $page-background-color;
-      margin-top: 0;
-      margin-bottom: 5px;
-      height: 40px;
-      font-size: 16px;
-      padding: 10px 15px;
-      text-align: baseline;
-      color: $color-blue;
-    }
-
-    .double-level{
-      height: 60px;
-    }
-
-    .raise-label{
-      color: #000000;
-      font-weight: 100;
-    }
-
-    .progress{
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 15px;
-      height: 8px;
-    }
-
-    .table-term{
-      height: auto;
-    }
-
-    a.btn{
-      width: 100%;
-      height: 40px;
-      font-size: 20px;
+    tbody{
       border: none;
-      border-radius: 0;
-    }
 
-    a.btn:hover{
-      color: #ECF0F1;
+      .company-logo-side{
+        width: 100px;
+      }
+
+      td{
+        border: none;
+        padding: 5px;
+        height: 100%;
+
+        h3{
+          color: $color-green;
+          font-weight: $header-font-weight;
+          display: block;
+          width: 100%;
+          height: $header-height;
+          margin: 0;
+          padding: 0;
+          overflow: none;
+          font-size: $header-font-size;
+        }
+
+        p{
+          margin: 5px 0 0;
+          font-weight: 100;
+          width: 100%;
+        }
+
+        .short-description{
+          font-size: 14px;
+          height: 58px;
+          font-weight: 200;
+        }
+
+        .company-short-info{
+          height: 12px;
+          font-size: 12px;
+        }
+
+        img{
+          width: 100px;
+          height: 100px;
+        }
+      }
     }
   }
+}
 
-  .company-follow{
-    padding: 5px;
-    height: 95px;
-    width: $company-right-block-width;
-    background-color: $company-block-background-color;
+.company-raise-summary{
+  padding: 5px;
+  width: $company-right-block-width;
+  min-height: 110px;
+  background-color: $company-block-background-color;
+  margin-bottom: 20px;
+}
 
-    p{
-      margin: 0;
-    }
+.company-raise-summary{
+  padding: 5px;
+  width: $company-right-block-width;
+  background-color: $company-block-background-color;
 
-    .followers{
-      height: 40px;
-      margin-bottom: 5px;
-      background-color: $page-background-color;
-      font-size: 16px;
-      color: $color-blue;
-      padding: 10px 15px;
-      text-align: baseline;
-    }
+  p{
+    margin: 0;
+  }
 
-    .btn{
-      width: 100%;
-      height: 40px;
-      border: none;
-      font-size: 20px;
-      border-radius: 0;
-    }
+  div{
+    background-color: $page-background-color;
+    margin-top: 0;
+    margin-bottom: 5px;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-align: baseline;
+    color: $color-blue;
+  }
 
-    .btn:hover{
-      color: #ECF0F1;
-    }
+  .double-level{
+    height: 60px;
+  }
+
+  .raise-label{
+    color: #000000;
+    font-weight: 100;
+  }
+
+  .progress{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 8px;
+  }
+
+  .table-term{
+    height: auto;
+  }
+
+  a.btn{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 0;
+  }
+
+  a.btn:hover{
+    color: #ECF0F1;
+  }
+}
+
+.company-highlights{
+  p{
+    text-align: justify;
+  }
+}
+
+.company-follow{
+  padding: 5px;
+  height: 95px;
+  width: $company-right-block-width;
+  background-color: $company-block-background-color;
+
+  p{
+    margin: 0;
+  }
+
+  .followers{
+    height: 40px;
+    margin-bottom: 5px;
+    background-color: $page-background-color;
+    font-size: 16px;
+    color: $color-blue;
+    padding: 10px 15px;
+    text-align: baseline;
+  }
+
+  .btn{
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    border-radius: 0;
+  }
+
+  .btn:hover{
+    color: #ECF0F1;
   }
 }
 
@@ -551,6 +567,46 @@ $color-white: #ffffff;
 
 #discussion-tab{
   padding-top: 15px;
+}
+
+// v2 for investment-finalization
+.thank-you{
+  display: block;
+  color: $color-blue;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+#investment-finalization-body{
+  padding: 20px 0 20px;
+  table{
+    background-color: $company-block-background-color;
+
+    td{
+      border: none;
+      font-weight: 200;
+      font-size: 12px;
+
+      b{
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+    td.pull-right{
+
+      a.btn{
+        border-radius: 0;
+      }
+
+      em{
+        font-size: 12px;
+        font-weight: 200;
+        text-align: left;
+      }
+    }
+  }
 }
 
 // v1 code
