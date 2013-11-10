@@ -1,6 +1,7 @@
 class AdminDashboardController < ApplicationController
   def index
     @investor_signings = Signing.signed_by_investor
+    @recents = Bus::Event.all.order('id desc').limit(50)
   end
 
   def approve_investor_signing

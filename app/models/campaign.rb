@@ -12,12 +12,16 @@ class Campaign < ActiveRecord::Base
   has_many :follows, dependent: :destroy
 
   state_machine :status, :initial => :draft do 
-    event :submit_for_review do
-      transition :draft => :submitted_for_review
+    event :submit_for_review do |a, b, c|
+      transition :draft => :submitted_for_review, :if => :generate_event
     end
 
     state :submitted_for_review
     state :live
+  end
+
+  def generate_event
+    Bus::Event::CampaignSubmittedForReview.create(:campaign => self)
   end
 
   # scopes

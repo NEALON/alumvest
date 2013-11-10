@@ -1,10 +1,15 @@
 .container
   .row
-    .col-md-12
+    .col-md-8
       %h2 Admin Dashboard
   .row
-    .col-md-12
+    .col-md-8
       %h4
         Investor signatures for review
       = render "investor_signings"
       %hr
+    .col-md-4
+      %h4 Recent site activity
+      - @recents.each do |event|
+        = "#{event.type} #{time_ago_in_words(event.created_at)} ago"
+        %hr
