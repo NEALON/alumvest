@@ -54,7 +54,6 @@
                   - if current_user.is_owner?
                     %li= link_to 'Dashboard', owner_dashboard_path, :class => "btn"
                   %li= link_to 'Profile', user_path(current_user.id), :class => "btn"
-                  %li= link_to 'Settings', edit_user_path(current_user), :class => "btn"
                   %li= link_to 'Sign out', logout_path, :class => "btn", :method => :delete
             - else
               %li= link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')

@@ -60,6 +60,8 @@ Av::Application.routes.draw do
     resource :demographic
     resource :borrower
     resource :investor
+    get :settings
+    get :edit_settings
   end
 
   post "common/filepicker"

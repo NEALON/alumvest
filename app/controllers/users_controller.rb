@@ -1,12 +1,22 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
-    set_active
+    @active = 'basic_info'
+  end
+
+  def settings
+    @user = User.find_by_id(params[:user_id])
+    @active = 'settings'
+  end
+
+  def edit_settings
+    @user = User.find_by_id(params[:user_id])
+    @active = 'settings'
   end
 
   def edit
     @user = User.find_by_id(params[:id])
-    set_active
+    @active = 'basic_info'
   end
 
   def update
@@ -20,7 +30,7 @@ class UsersController < ApplicationController
           notice = 'Password info saved.'
         else
           notice = 'Password info failed to update.'
-          return redirect_to edit_user_path(:tab => 'settings'), :flash => {:success => notice}
+          return redirect_to user_edit_settings_path(@user), :flash => {:warning => notice}
         end
       else
         @user.update_attributes(params[:user])
@@ -31,21 +41,5 @@ class UsersController < ApplicationController
       end
     end
     redirect_to user_path, :flash => {:success => notice}
-
-  end
-
-  protected
-
-  def set_active
-    if params[:tab] == 'basice_info' or
-        params[:tab] == 'demographic_info' or
-        params[:tab] == 'investor_profile' or
-        params[:tab] == 'founder_profile' or
-        params[:tab] == 'settings' or
-        params[:tab] == 'notifications'
-      @active = params[:tab]
-    else
-      @active = 'basic_info'
-    end
   end
 end

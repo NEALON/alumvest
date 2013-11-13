@@ -8,6 +8,6 @@
       %li{:class => "#{'active' if active == 'investor_profile'}"}
         = link_to('Investor Profile', user_investor_path(@user))
     %li{:class => "#{'active' if active == 'settings'}"}
-      = link_to('Settings', user_path(@user))
-    %li{:class => "#{'active' if active == 'notifications'}"}
+      = link_to('Settings', user_settings_path(@user))
+    -#%li{:class => "#{'active' if active == 'notifications'}"}
       = link_to('Notifications', user_path(@user))
