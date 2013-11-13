@@ -1,0 +1,13 @@
+= render "users/navigation", :active => @active
+= render "users/header"
+
+#information
+  .container
+    = render "shared/property_row", :header => "Mobile Phone", :value => @demographic.mobile_phone
+    = render "shared/property_row", :header => "Home Phone", :value => @demographic.home_phone
+    = render "shared/property_row", :header => "Address 1", :value => @demographic.address_1
+    = render "shared/property_row", :header => "Address 2", :value => @demographic.address_2
+    = render "shared/property_row", :header => "City", :value => @demographic.city
+    = render "shared/property_row", :header => "State", :value => @demographic.state
+    = render "shared/property_row", :header => "Zip", :value => @demographic.zipcode
+    = render "shared/property_row", :header => "Personal Statement", :value => (raw @demographic.personal_statement)

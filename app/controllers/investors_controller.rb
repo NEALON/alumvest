@@ -43,10 +43,10 @@ class InvestorsController < ApplicationController
   #  end
   #end
 
-  #def show
-  #  @user = User.find(params[:user_id])
-  #  @investor = @user.investor
-  #end
+  def show
+    @user = User.find(params[:user_id])
+    @investor = @user.investor
+  end
 
   #def display
   #  @user = User.find(params[:user_id])

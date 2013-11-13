@@ -1,18 +1,13 @@
 = content_for :sidebar_left do
   %ul.nav.nav-stacked
     %li{:class => "#{'active' if active == 'basic_info'}"}
-      = link_to('Basic Information', edit_user_path)
+      = link_to('Basic Information', user_path(@user))
     %li{:class => "#{'active' if active == 'advanced_info'}"}
-      = link_to('Advanced Info', edit_user_path(:tab => 'advanced_info'))
+      = link_to('Demographic Info', user_demographic_path(@user))
     - if @user.is_investor?
       %li{:class => "#{'active' if active == 'investor_profile'}"}
-        = link_to('Investor Profile', edit_user_path(:tab => 'investor_profile'))
-    -#- if @user.is_owner?
-      %li{:class => "#{'active' if active == 'founder_profile'}"}
-        = link_to('Founder Profile', edit_user_path(:tab => 'founder_profile'))
+        = link_to('Investor Profile', user_investor_path(@user))
     %li{:class => "#{'active' if active == 'settings'}"}
-      = link_to('Settings', edit_user_path(:tab => 'settings'))
+      = link_to('Settings', user_path(@user))
     %li{:class => "#{'active' if active == 'notifications'}"}
-      = link_to('Notifications', edit_user_path(:tab => 'notifications'))
-    %li{:class => "#{'active' if active == 'bank_account'}"}
-      = link_to('Bank Account', edit_user_path(:tab => 'bank_account'))
+      = link_to('Notifications', user_path(@user))

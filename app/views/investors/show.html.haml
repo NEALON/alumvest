@@ -1,0 +1,18 @@
+= render "users/navigation", :active => @active
+= render "users/header"
+
+#information
+  .container
+    = render "shared/property_row", :header => "SSN", :value => @investor.ssn
+    = render "shared/property_row", :header => "Marital Status", :value => @investor.marital_status
+    = render "shared/property_row", :header => "Financial Info", :value => @investor.financial_info
+    = render "shared/property_row", :header => "Spending Habits", :value => @investor.spending_habits
+    = render "shared/property_row", :header => "Income", :value => @investor.income
+    = render "shared/property_row", :header => "Income Type", :value => @investor.income_type
+    = render "shared/property_row", :header => "Net Worth", :value => @investor.net_worth
+    = render "shared/property_row", :header => "Investor Representations", :value => @investor.investor_representations
+    = render "shared/property_row", :header => "Company", :value => @investor.company
+    = render "shared/property_row", :header => "Job Title", :value => @investor.job_title
+    = render "shared/property_row", :header => "Experience", :value => @investor.experience
+    = render "shared/property_row", :header => "Expertise", :value => @investor.expertise
+    = render "shared/property_row", :header => "Personal Message", :value => (raw @investor.personal_message)

@@ -1,0 +1,6 @@
+= content_for :header_1 do
+  #title
+    .container
+      %h1.text-center
+        = image_tag @user.avatar(:thumb) unless @user.avatar.blank?
+        = @user.full_name

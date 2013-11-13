@@ -57,6 +57,7 @@ Av::Application.routes.draw do
   end
 
   resources :users do
+    resource :demographic
     resource :borrower
     resource :investor
   end

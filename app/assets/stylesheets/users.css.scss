@@ -2,11 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.nav-stacked {
+  padding-right: 1em;
+  border-right: 1px solid #f67564;
+}
+
 #title{
 	background-color: #415b76;
 	border-bottom: 1px solid #415b76;
 	box-shadow: 0 0 2px #415b76;
-	min-height: 200px;
+	min-height: 100px;
 
 	h1{
 		color: white;

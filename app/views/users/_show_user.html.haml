@@ -1,23 +1,7 @@
-= render "shared/property_row", :header => "First Name", :value => @user.first_name
-= render "shared/property_row", :header => "Middle Name", :value => @user.middle_name
-= render "shared/property_row", :header => "Last Name", :value => @user.last_name
-= render "shared/property_row", :header => "Gender", :value => @user.gender
-= render "shared/property_row", :header => "Date of Birth", :value => @user.date_of_birth
-= render "shared/property_row", :header => "Email", :value => @user.email
-= render "shared/property_row", :header => "Facebook", :value => @user.facebook
-= render "shared/property_row", :header => "LinkedIn", :value => @user.linkedin
-= render "shared/property_row", :header => "Mobile Phone", :value => @user.mobile_phone
-= render "shared/property_row", :header => "Home Phone", :value => @user.home_phone
-= render "shared/property_row", :header => "Address 1", :value => @user.address_1
-= render "shared/property_row", :header => "Address 2", :value => @user.address_2
-= render "shared/property_row", :header => "City", :value => @user.city
-= render "shared/property_row", :header => "State", :value => @user.state
-= render "shared/property_row", :header => "Zip", :value => @user.zipcode
-= render "shared/property_row", :header => "Personal Statement", :value => (raw @user.personal_statement)
 - unless @user.educations.empty?
   .row.form-row
     .col-xs-4.col-md-4.form-label
       %b.pull-right
-        %h4 Educations
+        %h4 Degrees
   - @user.educations.each do |e|
     = render "shared/property_row", :header => e.degree, :value => e.school

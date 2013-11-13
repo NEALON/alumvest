@@ -38,6 +38,9 @@ class Ability
     cannot :invest, Campaign
 
     unless user.nil?
+      can :manage, User
+      can :manage, Demographic
+
       # owner
       if user.is_owner?
         can :view_risk_n_challenge, Campaign, :owner_id => user.owner.id
@@ -48,6 +51,8 @@ class Ability
       end
 
       if user.is_investor?
+        can :manage, Investor
+
         if user.is_self_accredited_investor?
           can :view_risk_n_challenge, Campaign
           can :view_exact_funding_amount, Campaign
