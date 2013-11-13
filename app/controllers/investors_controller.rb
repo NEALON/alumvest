@@ -1,24 +1,8 @@
 class InvestorsController < ApplicationController
 
-  #def new
-  #  @user = User.find(params[:user_id])
-  #  @investor = Investor.new(:user => @user)
-  #end
-
-  #def create
-  #  @user = User.find(params[:user_id])
-  #  @investor = Investor.create(add_images_if_test!(params[:investor]))
-  #  if @investor.valid?
-  #    redirect_to user_investor_path(@user), :flash => {:success => 'Investor saved.' }
-  #  else
-  #    render :action => :new
-  #  end
-  #end
-
   def edit
     @user = User.find(params[:user_id])
     @investor = @user.investor
-    render :new
   end
 
   def update
@@ -26,7 +10,7 @@ class InvestorsController < ApplicationController
     @investor = @user.investor
     @investor.update_attributes(add_images_if_test!(params[:investor]))
     if @investor.valid?
-      redirect_to edit_user_path(@user) + "?tab=investor_profile", :flash => {:success => 'Investor info saved.' }
+      redirect_to user_investor_path(@user), :flash => {:success => 'Investor info saved.' }
     else
       render :edit
     end
@@ -45,7 +29,7 @@ class InvestorsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @investor = @user.investor
+    @investor = @user.investor || Investor.new(:user => @user)
   end
 
   #def display

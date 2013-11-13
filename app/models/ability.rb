@@ -43,6 +43,8 @@ class Ability
 
       # owner
       if user.is_owner?
+        can :manage, Owner
+
         can :view_risk_n_challenge, Campaign, :owner_id => user.owner.id
         can :view_financial, Campaign, :owner_id => user.owner.id
         can :view_exact_funding_amount, Campaign, :owner_id => user.owner.id

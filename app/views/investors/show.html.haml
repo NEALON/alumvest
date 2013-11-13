@@ -1,8 +1,9 @@
-= render "users/navigation", :active => @active
+= render "users/navigation", :active => 'investor_profile'
 = render "users/header"
 
 #information
   .container
+    = button_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-primary', :method => :get
     = render "shared/property_row", :header => "SSN", :value => @investor.ssn
     = render "shared/property_row", :header => "Marital Status", :value => @investor.marital_status
     = render "shared/property_row", :header => "Financial Info", :value => @investor.financial_info

@@ -1,8 +1,9 @@
-= render "users/navigation", :active => @active
+= render "users/navigation", :active => 'demographic_info'
 = render "users/header"
 
 #information
   .container
+    = button_to 'Edit', edit_user_demographic_path(@user), :class => 'btn btn-primary', :method => :get
     = render "shared/property_row", :header => "Mobile Phone", :value => @demographic.mobile_phone
     = render "shared/property_row", :header => "Home Phone", :value => @demographic.home_phone
     = render "shared/property_row", :header => "Address 1", :value => @demographic.address_1

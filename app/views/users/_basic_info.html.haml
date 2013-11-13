@@ -1,22 +1,21 @@
--if @user.nil?
-  %h2 User not found
--else
-  - if current_user != nil and @user.id == current_user.id
-    = form_for @user, :html => {:class => "form-horizontal"} do |f|
-      %fieldset                    
-        - with_options :form => f do |op|
-          = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
-          = op.render_cell 'tb/form/text', :display, :field => :first_name
-          = op.render_cell 'tb/form/text', :display, :field => :middle_name
-          = op.render_cell 'tb/form/text', :display, :field => :last_name
-          = op.render_cell 'tb/form/text', :display, :field => :email
-          = op.render_cell 'tb/form/text', :display, :field => :facebook
-          = op.render_cell 'tb/form/text', :display, :field => :linkedin
-        %hr
-        %h4 Education
-        #educations
-          = f.fields_for :educations do |e|
-            = render 'education_fields', :f => e
-          .links
-            = link_to_add_association 'Add Education', f, :educations
-        = render_cell 'tb/form/submit_button', :display
+= form_for @user, :html => {:class => "form-horizontal"} do |f|
+  %fieldset
+    - with_options :form => f do |op|
+      = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
+      = op.render_cell 'tb/form/text', :display, :field => :first_name
+      = op.render_cell 'tb/form/text', :display, :field => :middle_name
+      = op.render_cell 'tb/form/text', :display, :field => :last_name
+      = op.render_cell 'tb/form/radiobutton', :display, :field => :gender, :values => ["Male", "Female"]
+      = op.render_cell 'tb/form/dateselect', :display, :field => :date_of_birth
+      = op.render_cell 'tb/form/text', :display, :field => :email
+      = op.render_cell 'tb/form/text', :display, :field => :facebook
+      = op.render_cell 'tb/form/text', :display, :field => :linkedin
+
+    %hr
+    %h4 Education
+    #educations
+      = f.fields_for :educations do |e|
+        = render 'education_fields', :f => e
+      .links
+        = link_to_add_association 'Add Education', f, :educations
+    = render_cell 'tb/form/submit_button', :display

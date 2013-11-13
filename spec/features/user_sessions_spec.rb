@@ -5,14 +5,12 @@ describe "user sessions", :type => :feature do
   it "registers email owner" do
     sign_up :owner
     visit user_path(@owner.user)
-    expect(page).to have_link('Edit Profile')
     expect(page).to have_link('Sign out')
   end
 
   it "registers email investor" do
     sign_up :investor
     visit user_path(@investor.user)
-    expect(page).to have_link('Edit Profile')
     expect(page).to have_link('Sign out')
   end
 
