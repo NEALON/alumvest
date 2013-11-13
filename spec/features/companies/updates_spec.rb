@@ -4,7 +4,8 @@ describe "managing company updates", :type => :feature do
 
   before :each do
     sign_up :owner
-    @campaign = @owner.campaign
+    @category = FactoryGirl.create(:category)
+    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
     @company = FactoryGirl.create(:company, :campaign => @campaign)
   end
 

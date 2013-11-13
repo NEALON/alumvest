@@ -18,10 +18,14 @@ class InvestmentTerm < ActiveRecord::Base
   belongs_to :campaign
 
   has_many :subscription_docs, :as => :documentable
-  accepts_nested_attributes_for :subscription_docs, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :subscription_docs,
+                                :reject_if => proc { |attributes| attributes['name'].blank? && attributes['file_url'].blank? },
+                                :allow_destroy => true
 
   has_many :other_docs, :as => :documentable
-  accepts_nested_attributes_for :other_docs, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :other_docs,
+                                :reject_if => proc { |attributes| attributes['name'].blank? && attributes['file_url'].blank? },
+                                :allow_destroy => true
 
   state_machine :status, :initial => :draft do
     event :make_ready_for_review do

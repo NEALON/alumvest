@@ -1,4 +1,6 @@
 .company-summary
+  %h2= @company.campaign_title
+
   %table.table
     %tr
       %td.company-logo-side
@@ -7,3 +9,4 @@
         %h3= @company.company_name
         %p.short-description= @company.short_description
         %p.company-short-info= "Founded #{(@company.founded_on_year)}"
+

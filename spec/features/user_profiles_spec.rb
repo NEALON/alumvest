@@ -4,6 +4,7 @@ describe "user profiles", :type => :feature do
 
   it "owner user profile" do
     sign_up :owner
+    visit user_path(@owner.user)
     click_link 'Edit Profile'
 
     page.should_not have_content 'Investor Profile'
@@ -57,6 +58,7 @@ describe "user profiles", :type => :feature do
 
   it "investor user profile" do
     sign_up :investor
+    visit user_path(@investor.user)
     click_link 'Edit Profile'
 
     page.should_not have_content 'Founder Profile'
@@ -71,6 +73,7 @@ describe "user profiles", :type => :feature do
 
   it "changes password" do
     sign_up :owner
+    visit user_path(@owner.user)
     click_link 'Edit Profile'
     within("#sidebar"){click_link 'Settings'}
 

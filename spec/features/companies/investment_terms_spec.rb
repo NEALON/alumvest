@@ -4,7 +4,8 @@ describe "managing company investment terms", :type => :feature do
 
   before :each do
     sign_up :owner
-    @campaign = @owner.campaign
+    @category = FactoryGirl.create(:category)
+    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
   end
 
   it "by creating one" do

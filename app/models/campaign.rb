@@ -7,8 +7,7 @@ class Campaign < ActiveRecord::Base
   has_one :team
   has_one :investment_term
   has_many :investment_finalizations
-  has_many :investments # TODO: probably obsolete, given investment_finalizations
-  has_many :investors, :through => :investments
+  has_many :investors, :through => :investment_finalizations
   has_many :follows, dependent: :destroy
 
   state_machine :status, :initial => :draft do 
@@ -45,7 +44,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def percent_complete_for_display
-    investment_sum = investments.sum(:amount)
+    investment_sum = 0 # investments.sum(:amount)
     if investment_sum == 0
       2 # so something shows in the progress bar
     else

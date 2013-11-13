@@ -13,11 +13,11 @@
       %thead
         %tr
           %td
-            = number_to_currency (investment_sum = campaign.investments.sum(:amount))
+            = number_to_currency (investment_sum = 0)
           %td
             = number_to_currency (fundraising_amount = campaign.investment_term.fundraising_amount)
           %td
-            = campaign.investors.count
+            = campaign.investment_finalizations.finalized.count
       %tbody
         %tr
           %td

@@ -221,9 +221,21 @@ $color-white: #ffffff;
 
 .company-summary{ // company summary
   background-color: $company-block-background-color;
+  padding: 1em;
   margin-bottom: 20px;
-  height: 110px;
   width: 100%;
+
+  h2{
+     color: $color-green;
+     font-weight: $header-font-weight;
+     display: block;
+     width: 100%;
+     height: $header-height;
+     margin-top: 00px;
+     padding: 0;
+     overflow: none;
+     font-size: $header-font-size;
+   }
 
   .table{
     border: none;

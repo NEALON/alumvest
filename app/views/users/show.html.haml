@@ -23,7 +23,7 @@
           %li= link_to "User", "#tab-user", "data-toggle" => "tab"
           - if @user.is_investor?
             %li= link_to "Investor", "#tab-investor", "data-toggle" => "tab"
-            - unless @user.investor.investments.blank?
+            - unless @user.investor.investment_finalizations.blank?
               %li= link_to "Investments", "#tab-investments", "data-toggle" => "tab"
           - if @user.is_owner?
             %li= link_to "Owner", "#tab-owner", "data-toggle" => "tab"

@@ -7,9 +7,9 @@ include ActionView::Helpers::NumberHelper
 describe "managing company basics", :type => :feature do
 
   before :each do
-    @category = FactoryGirl.create(:category)
     sign_up :owner
-    @campaign = @owner.campaign
+    @category = FactoryGirl.create(:category)
+    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
   end
 
   it "by editing one" do
@@ -60,18 +60,14 @@ describe "managing company basics", :type => :feature do
 
     visit display_campaign_company_path(@campaign)
 
-    # expect(page).to have_css("img[src$='#{@company.banner_photo_url}']")
     expect(page).to have_content @company.company_name
     expect(page).to have_content @company.short_description
     expect(page).to have_content @company.founded_on_year
-    # expect(page).to have_content @company.category.name
     expect(page).to have_content @company.campaign_title
     expect(page).to have_content strip_tags @company.company_details
-    # TODO: video_url
     expect(page).to have_content strip_tags @company.faq
     expect(page).to have_content number_to_currency investment_term.fundraising_amount
     expect(page).to have_content investment_term.campaign_length
-    expect(page).to have_content @company.company_url
     expect(page).to have_content strip_tags @company.company_highlights
   end
 end

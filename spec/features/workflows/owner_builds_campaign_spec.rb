@@ -3,13 +3,14 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "owner builds campaign", :type => :feature do
 
   before :each do
-    @category = FactoryGirl.create(:category)
     sign_up :owner
-    @campaign = @owner.campaign
+    @category = FactoryGirl.create(:category)
+    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
   end
 
   it "by creating and editing data" do
     # create
+    visit user_path(@owner.user)
     screenshot_and_save_page if $do_screenshots
     click_link 'Owner'
     click_button 'Manage your campaign'

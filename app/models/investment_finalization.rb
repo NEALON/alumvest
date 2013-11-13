@@ -44,4 +44,12 @@ class InvestmentFinalization < ActiveRecord::Base
         subscription_agreement.try(:completed?) &&
         irs_doc_group.try(:completed?)
   end
+
+  def self.finalized
+    all # TODO, for now
+  end
+
+  def amount
+    payment_information.try(:amount)
+  end
 end

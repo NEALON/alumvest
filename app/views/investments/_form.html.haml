@@ -1,7 +1,0 @@
-= form_for [@campaign, @investment], :html => {:class => "form-horizontal"} do |f|
-  = render 'shared/errors', :entity => @investment
-  %fieldset
-    = f.hidden_field :campaign_id
-    = f.hidden_field :investor_id
-    = render_cell 'tb/form/text', :display, :form => f, :field => :amount
-    = render_cell 'tb/form/submit_button', :display

@@ -6,9 +6,9 @@ include ActionView::Helpers::DateHelper
 describe "submitting a campaign for review", :type => :feature do
 
   before :each do
-    @category = FactoryGirl.create(:category)
     sign_up :owner
-    @campaign = @owner.campaign
+    @category = FactoryGirl.create(:category)
+    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
   end
 
   it "successfully" do

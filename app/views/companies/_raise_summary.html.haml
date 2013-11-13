@@ -1,7 +1,7 @@
 %div.company-raise-summary
   %div.double-level
     - if can? :view_exact_funding_amount, @campaign
-      = number_to_currency (@campaign.investments.sum(:amount))
+      = number_to_currency (0)
       %p.raise-label Raised
     - else
       = render 'partials/signup_to_see_small'
@@ -66,6 +66,6 @@
           %fieldset
             = f.hidden_field :campaign_id
             = f.hidden_field :user_id
-            %a.btn.btn-success{:name => 'commit', :type => 'submit'}
+            %a#follow-link.btn.btn-success{:name => 'commit', :type => 'submit'}
               %span.glyphicon.glyphicon-plus
               Follow this Campaign
