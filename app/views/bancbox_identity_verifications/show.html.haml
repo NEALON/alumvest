@@ -1,0 +1,7 @@
+= render "users/navigation", :active => 'bancbox_identity_verification'
+= render "users/header"
+
+#information
+  .container
+    = button_to 'Edit', edit_user_bancbox_identity_verification_path(@user), :class => 'btn btn-primary', :method => :get
+    = render "shared/property_row", :header => "Verified?", :value => @bancbox_identity_verification.is_verified

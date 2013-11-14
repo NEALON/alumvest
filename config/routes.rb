@@ -62,6 +62,7 @@ Av::Application.routes.draw do
     resource :investor
     resource :bancbox_investor
     resource :bancbox_agreement
+    resource :bancbox_identity_verification
     get :settings
     get :edit_settings
   end

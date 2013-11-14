@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114020349) do
+ActiveRecord::Schema.define(version: 20131114022503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bancbox_agreements", force: true do |t|
     t.boolean  "is_agreed",  default: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bancbox_identity_verifications", force: true do |t|
+    t.string   "bancbox_status"
+    t.boolean  "is_verified",    default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
