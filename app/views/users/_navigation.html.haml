@@ -16,3 +16,7 @@
         = link_to('Investor Profile', user_investor_path(@user))
       %li{:class => "#{'active' if active == 'bancbox_investor_profile'}"}
         = link_to('Bancbox Investor Profile', user_bancbox_investor_path(@user))
+      %li{:class => "#{'active' if active == 'bancbox_agreement'}"}
+        = link_to('Bancbox Agreement', user_bancbox_agreement_path(@user))
+      %li{:class => "#{'active' if active == 'bancbox_identity_verification'}"}
+        = link_to('Bancbox Identity Verification', user_bancbox_identity_verification_path(@user))

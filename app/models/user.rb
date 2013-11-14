@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   has_many :identities
   has_one :demographic
   has_one :investor
+
   has_one :bancbox_investor
+  has_one :bancbox_agreement
+  has_one :bancbox_identity_verification
+
   has_one :owner
   accepts_nested_attributes_for :investor, :owner
   has_many :follows, dependent: :destroy
