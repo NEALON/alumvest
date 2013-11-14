@@ -621,6 +621,51 @@ $color-white: #ffffff;
   }
 }
 
+// for dashboard
+#dashboard.container{
+  display: block;
+  min-height: 600px;
+
+  .row{
+    min-height: 600px;
+  }
+
+  .dashboard-content{
+    h2{
+      color: rgb(128, 128, 128);
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    table{
+      display: block;
+      background-color: #ffffff;
+      border-color: rgb(238, 238, 238);
+      margin: 20px 10% 10px 0;
+      width: 90%;
+      box-shadow: rgba(0,0,0,0.08) 0px 0px 3px 0px;
+
+      thead td{
+        color: rgb(128, 128, 128);
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      tbody td{
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .dashboard-right{
+    height: 100%;
+    min-height: 600px;
+    border-left: 1px solid #b2b9c9;
+    box-shadow: 0 0 0 -2px #b2b9c9;
+  }
+}
+
 // v1 code
 .nav-fixed { //navbar fixed for parallex scrolling
   width: 100%;
