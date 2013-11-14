@@ -1,0 +1,15 @@
+= render "users/navigation", :active => 'bancbox_investor_profile'
+= render "users/header"
+
+#information
+  .container
+    = button_to 'Edit', edit_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
+    = render "shared/property_row", :header => "Name", :value => @bancbox_investor.name
+    = render "shared/property_row", :header => "SSN", :value => @bancbox_investor.ssn
+    = render "shared/property_row", :header => "Investor_Type", :value => @bancbox_investor.investor_type
+    = render "shared/property_row", :header => "Email", :value => @bancbox_investor.email
+    = render "shared/property_row", :header => "Phone", :value => @bancbox_investor.phone
+    = render "shared/property_row", :header => "Date of Birth", :value => @bancbox_investor.date_of_birth
+    = render "shared/property_row", :header => "Address line 1", :value => @bancbox_investor.address_1
+    = render "shared/property_row", :header => "Address line 2", :value => @bancbox_investor.address_2
+    = render "shared/property_row", :header => "City, State and Zip", :value => @bancbox_investor.city_state_zip

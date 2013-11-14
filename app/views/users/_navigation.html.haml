@@ -4,10 +4,15 @@
       = link_to('Basic Information', user_path(@user))
     %li{:class => "#{'active' if active == 'demographic_info'}"}
       = link_to('Demographic Info', user_demographic_path(@user))
-    - if @user.is_investor?
-      %li{:class => "#{'active' if active == 'investor_profile'}"}
-        = link_to('Investor Profile', user_investor_path(@user))
     %li{:class => "#{'active' if active == 'settings'}"}
       = link_to('Settings', user_settings_path(@user))
     -#%li{:class => "#{'active' if active == 'notifications'}"}
       = link_to('Notifications', user_path(@user))
+
+  - if @user.is_investor?
+    %hr
+    %ul.nav.nav-stacked
+      %li{:class => "#{'active' if active == 'investor_profile'}"}
+        = link_to('Investor Profile', user_investor_path(@user))
+      %li{:class => "#{'active' if active == 'bancbox_investor_profile'}"}
+        = link_to('Bancbox Investor Profile', user_bancbox_investor_path(@user))

@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113190416) do
+ActiveRecord::Schema.define(version: 20131114005323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bancbox_investors", force: true do |t|
+    t.string   "name"
+    t.string   "ssn"
+    t.string   "investor_type"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "date_of_birth"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city_state_zip"
+    t.string   "bancbox_status"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bus_events", force: true do |t|
     t.string   "type"

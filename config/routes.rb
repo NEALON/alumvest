@@ -60,6 +60,7 @@ Av::Application.routes.draw do
     resource :demographic
     resource :borrower
     resource :investor
+    resource :bancbox_investor
     get :settings
     get :edit_settings
   end
