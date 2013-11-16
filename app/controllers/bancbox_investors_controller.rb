@@ -13,10 +13,10 @@ class BancboxInvestorsController < ApplicationController
     @user = User.find(params[:user_id])
     @bancbox_investor = @user.bancbox_investor
     @bancbox_investor.update_attributes(params[:bancbox_investor])
-    unless @bancbox_investor.created?
-      @bancbox_investor.create!
-    end
     if @bancbox_investor.valid?
+      unless @bancbox_investor.created?
+        @bancbox_investor.create!
+      end
       redirect_to user_bancbox_investor_path(@user), :flash => {:success => 'Bancbox investor info saved.' }
     else
       render :edit

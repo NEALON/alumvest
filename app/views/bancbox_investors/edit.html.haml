@@ -20,5 +20,8 @@
           = op.render_cell 'tb/form/text', :display, :field => :city
           = op.render_cell 'tb/form/text', :display, :field => :state
           = op.render_cell 'tb/form/text', :display, :field => :zip
+          = f.check_box :agreement
+          = f.label :agreement,
+            "I agree to Privacy Policy, Platform Agreement, Technology Agreement @ bancboxinvest.com"
         = render_cell 'tb/form/submit_button', :display
 

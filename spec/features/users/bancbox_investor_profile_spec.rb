@@ -40,6 +40,7 @@ describe "users bancbox investor profile", :type => :feature do
     fill_in 'bancbox_investor_city', :with => 'Miami'
     fill_in 'bancbox_investor_state', :with => 'FL'
     fill_in 'bancbox_investor_zip', :with => '12345'
+    check "bancbox_investor_agreement"
     click_on 'Save'
     page.should have_content 'info saved'
     within '#bank-name' do
