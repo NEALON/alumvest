@@ -6,13 +6,16 @@ class BancboxInvestor < ActiveRecord::Base
   attr_accessible :agreement
 
   # TODO: in a subsequent state
-  validates_presence_of [:first_name, :last_name, :ssn, :investor_type, :email, :phone, :date_of_birth, :address_1], :on => :update
+  validates_presence_of [:first_name, :last_name, :ssn, :investor_type, :email, :phone, :date_of_birth, :address_1, :city, :state, :zip], :on => :update
   validates_inclusion_of :agreement, :in => [true], :on => :update
 
   belongs_to :user
 
   state_machine :bancbox_status, :initial => :unsubmitted do
     state :submitted
+    event :submit do
+      transition :unsubmitted => :submitted
+    end
   end
 
   def name
@@ -45,7 +48,10 @@ class BancboxInvestor < ActiveRecord::Base
       self.account_routing_number = ret['account_routing_number']
       self.account_type = ret['account_type']
 
-      self.save if self.agree!
+      if self.agree!
+        self.fire_bancbox_status_event(:submit)
+        self.save
+      end
     end
   end
 
@@ -66,10 +72,6 @@ class BancboxInvestor < ActiveRecord::Base
     }
     ret = BancBoxCrowd.submit_agreement options
     return ret['error'].nil?
-  end
-
-  def created?
-    not self.bancbox_id.nil?
   end
 
 end
