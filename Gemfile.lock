@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/interskh/banc_box_crowd
-  revision: bc2e717a316283d419443711684caf15411d4ddc
+  revision: ae468e747e8aa0fcc02b42475beff8dee0dfa8ad
   specs:
     banc_box_crowd (0.0.1)
       faraday

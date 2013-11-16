@@ -4,7 +4,8 @@
 #information
   .container
     = button_to 'Edit', edit_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
-    = render "shared/property_row", :header => "Name", :value => @bancbox_investor.name
+    = render "shared/property_row", :header => "First Name", :value => @bancbox_investor.first_name
+    = render "shared/property_row", :header => "Last Name", :value => @bancbox_investor.last_name
     = render "shared/property_row", :header => "SSN", :value => @bancbox_investor.ssn
     = render "shared/property_row", :header => "Investor_Type", :value => @bancbox_investor.investor_type
     = render "shared/property_row", :header => "Email", :value => @bancbox_investor.email
@@ -12,4 +13,12 @@
     = render "shared/property_row", :header => "Date of Birth", :value => @bancbox_investor.date_of_birth
     = render "shared/property_row", :header => "Address line 1", :value => @bancbox_investor.address_1
     = render "shared/property_row", :header => "Address line 2", :value => @bancbox_investor.address_2
-    = render "shared/property_row", :header => "City, State and Zip", :value => @bancbox_investor.city_state_zip
+    = render "shared/property_row", :header => "City", :value => @bancbox_investor.city
+    = render "shared/property_row", :header => "State", :value => @bancbox_investor.state
+    = render "shared/property_row", :header => "Zip", :value => @bancbox_investor.zip
+    = render "shared/property_row", :header => "Reference Id", :value => @bancbox_investor.reference_id
+    = render "shared/property_row", :header => "Bancbox Id", :value => @bancbox_investor.bancbox_id
+    = render "shared/property_row", :header => "Bank Name", :value => @bancbox_investor.bank_name
+    = render "shared/property_row", :header => "Account Number", :value => @bancbox_investor.account_number
+    = render "shared/property_row", :header => "Account Routing Number", :value => @bancbox_investor.account_routing_number
+    = render "shared/property_row", :header => "Account Type", :value => @bancbox_investor.account_type
