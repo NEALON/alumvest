@@ -9,4 +9,22 @@ class BancboxInvestor < ActiveRecord::Base
 
   state_machine :bancbox_status, :initial => :unsubmitted
 
+  def create
+    options = {
+      :first_name => "Kyle",
+      :last_name => "Sun",
+      :email => "kyle.i1@yopmail.com",
+      :phone => "6505555555",
+      :address_1 => "444 Rose Street",
+      :city => "Miami",
+      :state => "FL",
+      :zip => 30318,
+      :ssn => "112-22-3333",
+      :dob => "1975-02-01",
+      :created_by => "Admin",
+      :reference_id => "kyle_test_i1",
+    }
+    BancBoxCrowd.create_investor options
+  end
+
 end
