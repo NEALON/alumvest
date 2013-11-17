@@ -4,6 +4,8 @@
       = link_to('Basic Information', user_path(@user))
     %li{:class => "#{'active' if active == 'demographic_info'}"}
       = link_to('Demographic Info', user_demographic_path(@user))
+    %li{:class => "#{'active' if active == 'bancbox_issuer_profile'}"}
+      = link_to('Bancbox', user_bancbox_issuer_path(@user))
     %li{:class => "#{'active' if active == 'settings'}"}
       = link_to('Settings', user_settings_path(@user))
     -#%li{:class => "#{'active' if active == 'notifications'}"}

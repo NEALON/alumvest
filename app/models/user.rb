@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_one :investor
 
   has_one :bancbox_investor
+  has_one :bancbox_issuer
   has_one :bancbox_identity_verification
 
   has_one :owner

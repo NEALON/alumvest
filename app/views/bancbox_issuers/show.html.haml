@@ -1,0 +1,28 @@
+= render "users/navigation", :active => 'bancbox_issuer_profile'
+= render "users/header"
+
+#information
+  .container
+    = button_to 'Edit', edit_user_bancbox_issuer_path(@user), :class => 'btn btn-primary', :method => :get
+    = render "shared/property_row", :header => "First Name", :value => @bancbox_issuer.first_name
+    = render "shared/property_row", :header => "Middle Initial", :value => @bancbox_issuer.middle_initial
+    = render "shared/property_row", :header => "Last Name", :value => @bancbox_issuer.last_name
+    = render "shared/property_row", :header => "SSN", :value => @bancbox_issuer.ssn
+    = render "shared/property_row", :header => "Email", :value => @bancbox_issuer.email
+    = render "shared/property_row", :header => "Phone", :value => @bancbox_issuer.phone
+    = render "shared/property_row", :header => "Date of Birth", :value => @bancbox_issuer.date_of_birth
+    = render "shared/property_row", :header => "Address line 1", :value => @bancbox_issuer.address_1
+    = render "shared/property_row", :header => "Address line 2", :value => @bancbox_issuer.address_2
+    = render "shared/property_row", :header => "City", :value => @bancbox_issuer.city
+    = render "shared/property_row", :header => "State", :value => @bancbox_issuer.state
+    = render "shared/property_row", :header => "Zip", :value => @bancbox_issuer.zip
+    = render "shared/property_row", :header => "Company Name", :value => @bancbox_issuer.company_name
+    = render "shared/property_row", :header => "Company Type", :value => @bancbox_issuer.company_type
+    = render "shared/property_row", :header => "Company Registration State", :value => @bancbox_issuer.company_registration_state
+    = render "shared/property_row", :header => "Company Tax ID", :value => @bancbox_issuer.company_tax_id
+    = render "shared/property_row", :header => "Reference Id", :value => @bancbox_issuer.reference_id
+    = render "shared/property_row", :header => "Bancbox Id", :value => @bancbox_issuer.bancbox_id
+    = render "shared/property_row", :header => "Bank Name", :value => @bancbox_issuer.bank_name
+    = render "shared/property_row", :header => "Account Number", :value => @bancbox_issuer.account_number
+    = render "shared/property_row", :header => "Account Routing Number", :value => @bancbox_issuer.account_routing_number
+    = render "shared/property_row", :header => "Account Type", :value => @bancbox_issuer.account_type
