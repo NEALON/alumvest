@@ -12,9 +12,9 @@
 
 @import "bootstrap";
 @import "bootstrap/bootstrap-theme";
-@import "home";
-@import "users";
-@import "company";
+@import "home/home";
+@import "users/users";
+@import "company/company";
 
 html, body{
   width: 100%;
