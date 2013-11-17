@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116215259) do
+ActiveRecord::Schema.define(version: 20131117011815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20131116215259) do
     t.string   "account_routing_number"
     t.string   "account_type"
     t.boolean  "agreement"
+    t.string   "middle_initial"
   end
 
   create_table "bus_events", force: true do |t|

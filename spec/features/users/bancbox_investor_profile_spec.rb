@@ -9,6 +9,7 @@ describe "users bancbox investor profile", :type => :feature do
 
   it "shows" do
     page.should have_content "First Name"
+    page.should have_content "Middle Initial"
     page.should have_content "Last Name"
     page.should have_content "SSN"
     page.should have_content "Investor_Type"

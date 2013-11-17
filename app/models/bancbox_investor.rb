@@ -1,6 +1,6 @@
 class BancboxInvestor < ActiveRecord::Base
 
-  attr_accessible :first_name, :last_name, :ssn, :investor_type, :email, :phone, :date_of_birth, :address_1, :address_2, :city, :state, :zip
+  attr_accessible :first_name, :middle_initial, :last_name, :ssn, :investor_type, :email, :phone, :date_of_birth, :address_1, :address_2, :city, :state, :zip
   attr_accessible :user, :user_id
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type
   attr_accessible :agreement
@@ -37,6 +37,7 @@ class BancboxInvestor < ActiveRecord::Base
     end
     options = {
       :first_name => self.first_name,
+      :middle_initial => self.middle_initial,
       :last_name => self.last_name,
       :email => self.email,
       :phone => self.phone,
