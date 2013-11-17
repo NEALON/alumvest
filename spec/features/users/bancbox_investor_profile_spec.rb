@@ -4,7 +4,7 @@ describe "users bancbox investor profile", :type => :feature do
 
   before :each do
     sign_up :investor
-    click_on 'Bancbox Investor Profile'
+    click_on 'Bancbox'
   end
 
   it "shows" do

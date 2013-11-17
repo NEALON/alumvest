@@ -15,7 +15,7 @@ class BancboxInvestorsController < ApplicationController
     @bancbox_investor.update_attributes(params[:bancbox_investor])
     if @bancbox_investor.valid?
       unless @bancbox_investor.submitted?
-        @bancbox_investor.create!
+        @bancbox_investor.submit!
       end
       redirect_to user_bancbox_investor_path(@user), :flash => {:success => 'Bancbox investor info saved.' }
     else

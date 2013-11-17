@@ -18,11 +18,20 @@ class BancboxInvestor < ActiveRecord::Base
     end
   end
 
+  after_create do
+    unless self.user.blank?
+      u = self.user
+      self.first_name = u.first_name
+      self.last_name = u.last_name
+      self.email = u.email
+    end
+  end
+
   def name
     "#{self.first_name} #{self.last_name}"
   end
 
-  def create!
+  def submit!
     if self.reference_id.blank?
       self.reference_id = SecureRandom.uuid
     end
