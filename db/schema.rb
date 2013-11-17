@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114022503) do
+ActiveRecord::Schema.define(version: 20131117012515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bancbox_agreements", force: true do |t|
-    t.boolean  "is_agreed",  default: false
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "bancbox_identity_verifications", force: true do |t|
     t.string   "bancbox_status"
@@ -32,6 +25,36 @@ ActiveRecord::Schema.define(version: 20131114022503) do
   end
 
   create_table "bancbox_investors", force: true do |t|
+    t.string   "ssn"
+    t.string   "investor_type"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "date_of_birth"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "bancbox_status"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "reference_id"
+    t.string   "bancbox_id"
+    t.string   "bank_name"
+    t.string   "account_number"
+    t.string   "account_routing_number"
+    t.string   "account_type"
+    t.boolean  "agreement"
+    t.string   "middle_initial"
+  end
+
+  create_table "bancbox_issuers", force: true do |t|
+    t.string   "first_name"
+    t.string   "middle_initial"
+    t.string   "last_name"
     t.string   "name"
     t.string   "ssn"
     t.string   "investor_type"
@@ -40,8 +63,21 @@ ActiveRecord::Schema.define(version: 20131114022503) do
     t.string   "date_of_birth"
     t.string   "address_1"
     t.string   "address_2"
-    t.string   "city_state_zip"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "company_name"
+    t.string   "company_type"
+    t.string   "company_registration_state"
+    t.string   "company_tax_id"
     t.string   "bancbox_status"
+    t.string   "reference_id"
+    t.string   "bancbox_id"
+    t.string   "bank_name"
+    t.string   "account_number"
+    t.string   "account_routing_number"
+    t.string   "account_type"
+    t.boolean  "agreement"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

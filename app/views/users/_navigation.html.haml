@@ -4,6 +4,9 @@
       = link_to('Basic Information', user_path(@user))
     %li{:class => "#{'active' if active == 'demographic_info'}"}
       = link_to('Demographic Info', user_demographic_path(@user))
+    - if @user.is_owner?
+      %li{:class => "#{'active' if active == 'bancbox_issuer_profile'}"}
+        = link_to('Bancbox', user_bancbox_issuer_path(@user))
     %li{:class => "#{'active' if active == 'settings'}"}
       = link_to('Settings', user_settings_path(@user))
     -#%li{:class => "#{'active' if active == 'notifications'}"}
@@ -15,8 +18,6 @@
       %li{:class => "#{'active' if active == 'investor_profile'}"}
         = link_to('Investor Profile', user_investor_path(@user))
       %li{:class => "#{'active' if active == 'bancbox_investor_profile'}"}
-        = link_to('Bancbox Investor Profile', user_bancbox_investor_path(@user))
-      %li{:class => "#{'active' if active == 'bancbox_agreement'}"}
-        = link_to('Bancbox Agreement', user_bancbox_agreement_path(@user))
-      %li{:class => "#{'active' if active == 'bancbox_identity_verification'}"}
-        = link_to('Bancbox Identity Verification', user_bancbox_identity_verification_path(@user))
+        = link_to('Bancbox', user_bancbox_investor_path(@user))
+      -#%li{:class => "#{'active' if active == 'bancbox_identity_verification'}"}
+        -#= link_to('Bancbox Identity Verification', user_bancbox_identity_verification_path(@user))

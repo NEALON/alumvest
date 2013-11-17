@@ -59,3 +59,5 @@ gem "rest-client", "~> 1.6"
 gem "cancan", "~> 1.6"
 gem "rails_admin", :git => "git://github.com/jcoleman/rails_admin", :branch => 'vendorize-bootstrap-2'
 gem "protected_attributes" # rails 4 removed attr_accessible
+#gem "banc_box_crowd", :path => "~/git/banc_box_crowd"
+gem "banc_box_crowd", :git => "git://github.com/interskh/banc_box_crowd"

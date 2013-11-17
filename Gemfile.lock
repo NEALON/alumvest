@@ -7,6 +7,14 @@ GIT
       multi_json (>= 1.3.4)
 
 GIT
+  remote: git://github.com/interskh/banc_box_crowd
+  revision: ae468e747e8aa0fcc02b42475beff8dee0dfa8ad
+  specs:
+    banc_box_crowd (0.0.1)
+      faraday
+      faraday_middleware
+
+GIT
   remote: git://github.com/interskh/has_filepicker_image.git
   revision: 5c401acb70a8741f3ebf2bd351e61af96b38dd79
   branch: rails4
@@ -139,6 +147,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     ffi (1.9.3)
     font-awesome-rails (3.2.1.3)
       railties (>= 3.2, < 5.0)
@@ -309,6 +319,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  banc_box_crowd!
   bcrypt-ruby (~> 3.0)
   better_errors (~> 1.0)
   binding_of_caller (~> 0.7)
