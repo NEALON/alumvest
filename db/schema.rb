@@ -11,10 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117012515) do
+ActiveRecord::Schema.define(version: 20131118072725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bancbox_bank_accounts", force: true do |t|
+    t.string   "bank_account_number"
+    t.string   "bank_account_type"
+    t.string   "bank_account_holder"
+    t.string   "bank_account_routing"
+    t.integer  "bancbox_investor_id"
+    t.integer  "bancbox_issuer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bancbox_bank_accounts", ["bancbox_investor_id"], name: "index_bancbox_bank_accounts_on_bancbox_investor_id", using: :btree
+  add_index "bancbox_bank_accounts", ["bancbox_issuer_id"], name: "index_bancbox_bank_accounts_on_bancbox_issuer_id", using: :btree
+
+  create_table "bancbox_fund_transactions", force: true do |t|
+    t.integer  "trans_id"
+    t.string   "status"
+    t.boolean  "trans_status"
+    t.integer  "amount"
+    t.string   "memo"
+    t.text     "text"
+    t.integer  "bancbox_bank_account_id"
+    t.integer  "bancbox_investor_id"
+    t.integer  "bancbox_issuer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
+  add_index "bancbox_fund_transactions", ["bancbox_investor_id"], name: "index_bancbox_fund_transactions_on_bancbox_investor_id", using: :btree
+  add_index "bancbox_fund_transactions", ["bancbox_issuer_id"], name: "index_bancbox_fund_transactions_on_bancbox_issuer_id", using: :btree
 
   create_table "bancbox_identity_verifications", force: true do |t|
     t.string   "bancbox_status"
@@ -49,6 +81,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "account_type"
     t.boolean  "agreement"
     t.string   "middle_initial"
+    t.integer  "funds"
+    t.integer  "pendingbalance"
   end
 
   create_table "bancbox_issuers", force: true do |t|
@@ -81,6 +115,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "funds"
+    t.integer  "pendingbalance"
   end
 
   create_table "bus_events", force: true do |t|

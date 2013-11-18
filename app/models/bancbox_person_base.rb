@@ -4,8 +4,12 @@ class BancboxPersonBase < ActiveRecord::Base
 
   attr_accessible :first_name, :middle_initial, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :address_2, :city, :state, :zip
   attr_accessible :user, :user_id
-  attr_accessible :bank_name, :account_number, :account_routing_number, :account_type
+  attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
+
+  has_many :bancbox_bank_accounts, dependent: :destroy
+  has_many :bancbox_fund_transactions, dependent: :destroy
+  accepts_nested_attributes_for :bancbox_bank_accounts, :bancbox_fund_transactions
 
   validates_presence_of [:first_name, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :city, :state, :zip], :on => :update
   validates_inclusion_of :agreement, :in => [true], :on => :update
