@@ -12,4 +12,10 @@ class BancboxInvestor < BancboxPersonBase
     end
   end
 
+  def get_details
+    super do |options|
+      return BancBoxCrowd.get_investor_details options
+    end
+  end
+
 end

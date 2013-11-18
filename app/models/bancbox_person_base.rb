@@ -67,38 +67,11 @@ class BancboxPersonBase < ActiveRecord::Base
     end
   end
 
-  def submit!
-    if self.reference_id.blank?
-      self.reference_id = SecureRandom.uuid
-    end
+  def get_details
     options = {
-      :first_name => self.first_name,
-      :middle_initial => self.middle_initial,
-      :last_name => self.last_name,
-      :email => self.email,
-      :phone => self.phone,
-      :address_1 => self.address_1,
-      :city => self.city,
-      :state => self.state,
-      :zip => self.zip,
-      :ssn => self.ssn,
-      :dob => self.date_of_birth,
-      :created_by => self.name,
-      :reference_id => self.reference_id
+      :investor_id => self.bancbox_id
     }
-    ret = BancBoxCrowd.create_issuer options
-    if ret['error'].nil?
-      self.bancbox_id = ret['id']
-      self.bank_name = ret['bank_name']
-      self.account_number = ret['account_number']
-      self.account_routing_number = ret['account_routing_number']
-      self.account_type = ret['account_type']
-
-      if self.agree!
-        self.fire_bancbox_status_event(:submit)
-        self.save
-      end
-    end
+    yield options
   end
 
   def agree!

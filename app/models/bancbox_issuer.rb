@@ -32,4 +32,10 @@ class BancboxIssuer < BancboxPersonBase
     end
   end
 
+  def get_details
+    super do |options|
+      return BancBoxCrowd.get_issuer_details options
+    end
+  end
+
 end
