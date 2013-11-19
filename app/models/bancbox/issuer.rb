@@ -1,4 +1,4 @@
-class BancboxIssuer < BancboxPersonBase
+class Bancbox::Issuer < Bancbox::PersonBase
 
   attr_accessible :company_name, :company_type, :company_registration_state, :company_tax_id
 
@@ -37,5 +37,4 @@ class BancboxIssuer < BancboxPersonBase
       next BancBoxCrowd.get_issuer_details options
     end
   end
-
 end

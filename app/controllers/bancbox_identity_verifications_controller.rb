@@ -1,7 +1,7 @@
 class BancboxIdentityVerificationsController < ApplicationController
   def show
     @user = User.find_by_id(params[:user_id])
-    @bancbox_identity_verification = @user.bancbox_identity_verification || BancboxIdentityVerification.create(:user => @user)
+    @bancbox_identity_verification = @user.bancbox_identity_verification || Bancbox::IdentityVerification.create(:user => @user)
   end
 
   def edit

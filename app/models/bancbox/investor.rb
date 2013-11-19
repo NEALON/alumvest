@@ -1,4 +1,4 @@
-class BancboxInvestor < BancboxPersonBase
+class Bancbox::Investor < Bancbox::PersonBase
 
   attr_accessible :investor_type
 
@@ -17,5 +17,4 @@ class BancboxInvestor < BancboxPersonBase
       next BancBoxCrowd.get_investor_details options
     end
   end
-
 end

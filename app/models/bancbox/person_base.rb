@@ -1,4 +1,4 @@
-class BancboxPersonBase < ActiveRecord::Base
+class Bancbox::PersonBase < ActiveRecord::Base
 
   self.abstract_class = true
 
@@ -7,10 +7,23 @@ class BancboxPersonBase < ActiveRecord::Base
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
 
-  has_many :investor_bank_accounts, dependent: :destroy, class_name: "BancboxBankAccount", foreign_key: :bancbox_investor_id
-  has_many :investor_fund_transactions, dependent: :destroy, class_name: "BancboxFundTransaction", foreign_key: :bancbox_investor_id
-  has_many :issuer_bank_accounts, dependent: :destroy, class_name: "BancboxBankAccount", foreign_key: :bancbox_issuer_id
-  has_many :issuer_fund_transactions, dependent: :destroy, class_name: "BancboxFundTransaction", foreign_key: :bancbox_issuer_id
+  has_many :investor_bank_accounts,
+           dependent: :destroy,
+           class_name: "Bancbox::BankAccount",
+           foreign_key: :bancbox_investor_id
+  has_many :investor_fund_transactions,
+           dependent: :destroy,
+           class_name: "Bancbox::FundTransaction",
+           foreign_key: :bancbox_investor_id
+  has_many :issuer_bank_accounts,
+           dependent: :destroy,
+           class_name: "Bancbox::BankAccount",
+           foreign_key: :bancbox_issuer_id
+  has_many :issuer_fund_transactions,
+           dependent: :destroy,
+           class_name: "Bancbox::FundTransaction",
+           foreign_key: :bancbox_issuer_id
+
   accepts_nested_attributes_for :investor_bank_accounts, :investor_fund_transactions
   accepts_nested_attributes_for :issuer_bank_accounts, :issuer_fund_transactions
 
@@ -179,7 +192,7 @@ class BancboxPersonBase < ActiveRecord::Base
       else
         fund_transaction_hash[:bancbox_issuer_id] = id
       end
-      BancboxFundTransaction.create(fund_transaction_hash)
+      FundTransaction.create(fund_transaction_hash)
 
       self.pendingbalance += amount
       save
