@@ -185,5 +185,4 @@ class BancboxPersonBase < ActiveRecord::Base
       save
     end
   end
-
 end

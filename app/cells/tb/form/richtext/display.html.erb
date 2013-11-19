@@ -1,6 +1,10 @@
 <div class="form-group">
   <%= label_tag @field, @label, :class => "col-md-3 control-label" %>
   <div class="col-md-9">
-    <%= @form.text_area @field, :class => "form-control input-md ckeditor" %>
+    <% if Rails.env.test? %>
+        <%= @form.text_area @field, :class => "form-control input-md" %>
+    <% else %>
+        <%= @form.text_area @field, :class => "form-control input-md ckeditor" %>
+    <% end %>
   </div>
 </div>
