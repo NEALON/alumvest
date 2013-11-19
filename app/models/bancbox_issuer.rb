@@ -28,13 +28,13 @@ class BancboxIssuer < BancboxPersonBase
         :company_tax_id => self.company_tax_id,
       }
       options.merge!(common_options)
-      return BancBoxCrowd.create_issuer options
+      next BancBoxCrowd.create_issuer options
     end
   end
 
   def get_details
     super do |options|
-      return BancBoxCrowd.get_issuer_details options
+      next BancBoxCrowd.get_issuer_details options
     end
   end
 

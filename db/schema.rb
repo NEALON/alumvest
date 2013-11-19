@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118072725) do
+ActiveRecord::Schema.define(version: 20131119064854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20131118072725) do
     t.string   "account_type"
     t.boolean  "agreement"
     t.string   "middle_initial"
-    t.integer  "funds"
-    t.integer  "pendingbalance"
+    t.integer  "funds",                  default: 0
+    t.integer  "pendingbalance",         default: 0
   end
 
   create_table "bancbox_issuers", force: true do |t|
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20131118072725) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "funds"
-    t.integer  "pendingbalance"
+    t.integer  "funds",                      default: 0
+    t.integer  "pendingbalance",             default: 0
   end
 
   create_table "bus_events", force: true do |t|

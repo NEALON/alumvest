@@ -8,13 +8,13 @@ class BancboxInvestor < BancboxPersonBase
 
   def submit!
     super do |options|
-      return BancBoxCrowd.create_investor options
+      next BancBoxCrowd.create_investor options
     end
   end
 
   def get_details
     super do |options|
-      return BancBoxCrowd.get_investor_details options
+      next BancBoxCrowd.get_investor_details options
     end
   end
 

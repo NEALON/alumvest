@@ -8,29 +8,12 @@ describe "users bancbox investor profile", :type => :feature do
   end
 
   it "shows" do
-    page.should have_content "First Name"
-    page.should have_content "Middle Initial"
-    page.should have_content "Last Name"
-    page.should have_content "SSN"
-    page.should have_content "Investor_Type"
-    page.should have_content "Email"
-    page.should have_content "Phone"
-    page.should have_content "Date of Birth"
-    page.should have_content "Address line 1"
-    page.should have_content "Address line 2"
-    page.should have_content "City"
-    page.should have_content "State"
-    page.should have_content "Zip"
-    page.should have_content "Reference Id"
-    page.should have_content "Bank Name"
-    page.should have_content "Account Number"
-    page.should have_content "Account Routing Number"
-    page.should have_content "Account Type"
+    page.should have_button 'Create One'
   end
 
   it "updates" do
-    page.should have_button 'Edit'
-    click_on 'Edit'
+    page.should have_button 'Create One'
+    click_on 'Create One'
     fill_in 'bancbox_investor_first_name', :with => @first_name
     fill_in 'bancbox_investor_last_name', :with => @last_name
     fill_in 'bancbox_investor_ssn', :with => '123-45-6789'
@@ -43,7 +26,14 @@ describe "users bancbox investor profile", :type => :feature do
     fill_in 'bancbox_investor_zip', :with => '12345'
     check "bancbox_investor_agreement"
     click_on 'Save'
+
+    page.should_not have_button 'Create One'
     page.should have_content 'info saved'
+    page.should have_content "Reference Id"
+    page.should have_content "Bank Name"
+    page.should have_content "Account Number"
+    page.should have_content "Account Routing Number"
+    page.should have_content "Account Type"
     within '#bank-name' do
       expect(page).not_to have_content("Blank")
     end

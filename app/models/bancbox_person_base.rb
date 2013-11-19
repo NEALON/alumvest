@@ -7,10 +7,6 @@ class BancboxPersonBase < ActiveRecord::Base
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
 
-  has_many :bancbox_bank_accounts, dependent: :destroy
-  has_many :bancbox_fund_transactions, dependent: :destroy
-  accepts_nested_attributes_for :bancbox_bank_accounts, :bancbox_fund_transactions
-
   validates_presence_of [:first_name, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :city, :state, :zip], :on => :update
   validates_inclusion_of :agreement, :in => [true], :on => :update
 
@@ -41,6 +37,7 @@ class BancboxPersonBase < ActiveRecord::Base
   end
 
   def submit!
+    self.create_reference_id!
     options = {
       :first_name => self.first_name,
       :middle_initial => self.middle_initial,
@@ -94,7 +91,7 @@ class BancboxPersonBase < ActiveRecord::Base
       :submit_time_stamp => DateTime.now.strftime('%Y-%m-%d %H:%M:%S')
     }
     ret = BancBoxCrowd.submit_agreement options
-    return ret['error'].nil?
+    return ret['status']
   end
 
 end
