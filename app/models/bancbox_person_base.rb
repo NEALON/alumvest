@@ -7,6 +7,13 @@ class BancboxPersonBase < ActiveRecord::Base
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
 
+  has_many :investor_bank_accounts, dependent: :destroy, class_name: "BancboxBankAccount", foreign_key: :bancbox_investor_id
+  has_many :investor_fund_transactions, dependent: :destroy, class_name: "BancboxFundTransaction", foreign_key: :bancbox_investor_id
+  has_many :issuer_bank_accounts, dependent: :destroy, class_name: "BancboxBankAccount", foreign_key: :bancbox_issuer_id
+  has_many :issuer_fund_transactions, dependent: :destroy, class_name: "BancboxFundTransaction", foreign_key: :bancbox_issuer_id
+  accepts_nested_attributes_for :investor_bank_accounts, :investor_fund_transactions
+  accepts_nested_attributes_for :issuer_bank_accounts, :issuer_fund_transactions
+
   validates_presence_of [:first_name, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :city, :state, :zip], :on => :update
   validates_inclusion_of :agreement, :in => [true], :on => :update
 
@@ -18,8 +25,8 @@ class BancboxPersonBase < ActiveRecord::Base
   end
 
   after_create do
-    unless self.user.blank?
-      u = self.user
+    unless user.blank?
+      u = user
       self.first_name = u.first_name
       self.last_name = u.last_name
       self.email = u.email
@@ -27,31 +34,31 @@ class BancboxPersonBase < ActiveRecord::Base
   end
 
   def name
-    "#{self.first_name} #{self.last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def create_reference_id!
-    if self.reference_id.blank?
+    if reference_id.blank?
       self.reference_id = SecureRandom.uuid
     end
   end
 
   def submit!
-    self.create_reference_id!
+    create_reference_id!
     options = {
-      :first_name => self.first_name,
-      :middle_initial => self.middle_initial,
-      :last_name => self.last_name,
-      :email => self.email,
-      :phone => self.phone,
-      :address_1 => self.address_1,
-      :city => self.city,
-      :state => self.state,
-      :zip => self.zip,
-      :ssn => self.ssn,
-      :dob => self.date_of_birth,
-      :created_by => self.name,
-      :reference_id => self.reference_id
+      :first_name => first_name,
+      :middle_initial => middle_initial,
+      :last_name => last_name,
+      :email => email,
+      :phone => phone,
+      :address_1 => address_1,
+      :city => city,
+      :state => state,
+      :zip => zip,
+      :ssn => ssn,
+      :dob => date_of_birth,
+      :created_by => name,
+      :reference_id => reference_id
     }
     ret = yield options
     if ret['error'].nil?
@@ -61,37 +68,122 @@ class BancboxPersonBase < ActiveRecord::Base
       self.account_routing_number = ret['account_routing_number']
       self.account_type = ret['account_type']
 
-      if self.agree!
-        self.fire_bancbox_status_event(:submit)
-        self.save
+      if agree!
+        fire_bancbox_status_event(:submit)
+        save
       end
     end
   end
 
   def get_details
     options = {
-      :investor_id => self.bancbox_id
+      :investor_id => bancbox_id
     }
     yield options
   end
 
-  def agree!
-    # get my own ip
+  def server_ip
     require 'socket'
     ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
     myip = ip ? ip.ip_address : "127.0.0.1"
+    return myip
+  end
+
+  def current_timestamp
+    DateTime.now.strftime('%Y-%m-%d %H:%M:%S')
+  end
+
+  def agree!
     options = {
-      :id => self.bancbox_id,
-      :represented_signature => self.name,
+      :id => bancbox_id,
+      :represented_signature => name,
       :agreement_type => 'CLICKTHROUGH',
       :document_text => "I agree to Privacy Policy, Platform Agreement, Technology Agreement @ bancboxinvest.com",
       :document_name => "T&C",
       :document_version => "1.0",
-      :client_ip_address => myip,
-      :submit_time_stamp => DateTime.now.strftime('%Y-%m-%d %H:%M:%S')
+      :client_ip_address => server_ip,
+      :submit_time_stamp => current_timestamp
     }
     ret = BancBoxCrowd.submit_agreement options
     return ret['status']
+  end
+
+  def fund_account_common_options(amount, memo)
+    {
+      :represented_signature => name,
+      :reference_id => reference_id,
+      :amount => amount,
+      :memo => memo,
+      :text => "I authorize BancBox to make this transaction",
+      :agreement_type => 'CLICKTHROUGH',
+      :document_name => 'doc',
+      :document_version => 1.0,
+      :client_ip_address => server_ip,
+      :submit_timestamp => DateTime.now
+    }
+  end
+
+  # TODO
+  def fund_account!
+      #(amount, memo, text, bancbox_bank_account)
+  end
+
+  def fund_account_and_link_bank!(type, amount, memo,
+                                  bank_account_number,
+                                  bank_account_type,
+                                  bank_account_holder,
+                                  bank_account_routing)
+    options = fund_account_common_options(amount, memo)
+    options.merge!({
+      :bank_account_number => bank_account_number,
+      :bank_account_type => bank_account_type,
+      :bank_account_holder => bank_account_holder,
+      :bank_account_routing => bank_account_routing,
+      :link_bank_account => true,
+    })
+    if type == :investor
+      options[:investor_id] = bancbox_id
+    else
+      options[:issuer_id] = bancbox_id
+    end
+    logger.info options
+    ret = BancBoxCrowd.fund_account options
+    logger.info ret
+    # XXX should catch the error
+    if ret['status']
+      bank_account_hash = {
+        :bank_account_number => bank_account_number,
+        :bank_account_type => bank_account_type,
+        :bank_account_holder => bank_account_holder,
+        :bank_account_routing => bank_account_routing,
+        :bancbox_id => ret['linked_external_account']['id'],
+        :reference_id => ret['linked_external_account']['reference_id']
+      }
+      if type == :investor
+        bank_account_hash[:bancbox_investor_id] = id
+      else
+        bank_account_hash[:bancbox_issuer_id] = id
+      end
+      bank_account = BancboxBankAccount.create(bank_account_hash)
+      fund_transaction_hash = {
+        :bancbox_investor_id => bancbox_id,
+        :trans_id => ret['transaction_details']['id'],
+        :status => ret['transaction_details']['status'],
+        :trans_status => ret['transaction_details']['trans_status'],
+        :amount => amount,
+        :memo => memo,
+        :bancbox_bank_account => bank_account
+      }
+      if type == :investor
+        fund_transaction_hash[:bancbox_investor_id] = id
+      else
+        fund_transaction_hash[:bancbox_issuer_id] = id
+      end
+      BancboxFundTransaction.create(fund_transaction_hash)
+
+      self.pendingbalance += amount
+      save
+    end
   end
 
 end

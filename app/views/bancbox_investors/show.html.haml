@@ -22,3 +22,47 @@
       %h3 Funds
       = render "shared/property_row", :header => "Current Balance", :value => @bancbox_investor.funds
       = render "shared/property_row", :header => "Pending Balance", :value => @bancbox_investor.pendingbalance
+
+  - unless @bancbox_investor.investor_bank_accounts.empty?
+    #funds
+      .container
+        %h3 Linked Bank Account
+        %table.table
+          %tr
+            %td Id
+            %td Bancbox Id
+            %td Reference Id
+            %td Account Holder
+            %td Type
+            %td Routing Number
+            %td Account Number
+          - @bancbox_investor.investor_bank_accounts.each do |b|
+            %tr
+              %td= b.id
+              %td= b.bancbox_id
+              %td= b.reference_id
+              %td= b.bank_account_holder
+              %td= b.bank_account_type
+              %td= b.bank_account_routing
+              %td= b.bank_account_number
+
+  - unless @bancbox_investor.investor_fund_transactions.empty?
+    #funds
+      .container
+        %h3 Fund Transactions
+        %table.table
+          %tr
+            %td Transaction Id
+            %td Status
+            %td Transaction Status
+            %td Amount
+            %td Memo
+            %td Bank Account
+          - @bancbox_investor.investor_fund_transactions.each do |f|
+            %tr
+              %td= f.trans_id
+              %td= f.status
+              %td= f.trans_status
+              %td= f.amount
+              %td= f.memo
+              %td= f.bancbox_bank_account.id
