@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
   has_one :demographic
   has_one :investor
 
-  has_one :bancbox_investor
-  has_one :bancbox_issuer
-  has_one :bancbox_identity_verification
+  has_one :bancbox_investor, :class_name => "Bancbox::Investor"
+  has_one :bancbox_issuer, :class_name => "Bancbox::Issuer"
+  has_one :bancbox_identity_verification, :class_name => "Bancbox::IdentityVerification"
 
   has_one :owner
   accepts_nested_attributes_for :investor, :owner

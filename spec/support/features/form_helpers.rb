@@ -45,7 +45,7 @@ module Features
         fill_in "#{form}_city", :with => city
         fill_in "#{form}_state", :with => state
         fill_in "#{form}_zipcode", :with => zip_code
-        fill_in_ckeditor "#{form}_personal_statement", ps
+        fill_in "#{form}_personal_statement", :with => ps
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
@@ -56,10 +56,10 @@ module Features
       'user'.tap do |form|
         fill_in "#{form}_owner_attributes_ssn", :with => '000-00-0000'
         select 'Married', :from => "#{form}_owner_attributes_marital_status"
-        fill_in_ckeditor "#{form}_owner_attributes_financial_info", Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_owner_attributes_experience", Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_owner_attributes_expertise", Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_owner_attributes_personal_message", Faker::Lorem.sentence(10)
+        fill_in "#{form}_owner_attributes_financial_info", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_owner_attributes_experience", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_owner_attributes_expertise", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_owner_attributes_personal_message", :with => Faker::Lorem.sentence(10)
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
@@ -70,10 +70,10 @@ module Features
       'investor'.tap do |form|
         fill_in "#{form}_ssn", :with => '000-00-0000'
         select 'Married', :from => "#{form}_marital_status"
-        fill_in_ckeditor "#{form}_financial_info", Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_experience", :with => Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_expertise", :with => Faker::Lorem.sentence(10)
-        fill_in_ckeditor "#{form}_personal_message", Faker::Lorem.sentence(10)
+        fill_in "#{form}_financial_info", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_experience", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_expertise", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_personal_message", :with => Faker::Lorem.sentence(10)
       end
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
@@ -88,8 +88,8 @@ module Features
         fill_in "#{form}_short_description", :with => company.short_description
         fill_in "#{form}_company_url", :with => company.company_url
         fill_in "#{form}_campaign_title", :with => company.campaign_title
-        fill_in_ckeditor "#{form}_company_highlights", company.company_highlights
-        fill_in_ckeditor "#{form}_company_details", company.company_details
+        fill_in "#{form}_company_highlights", :with => company.company_highlights
+        fill_in "#{form}_company_details", :with => company.company_details
         select company.founded_on_year, :from => "#{form}_founded_on_year"
         select company.ownership_structure, :from => "#{form}_ownership_structure"
         select company.category.name, :from => "#{form}_category_id"
@@ -99,7 +99,7 @@ module Features
         fill_in "#{form}_state", :with => company.state
         fill_in "#{form}_zip", :with => company.zip
         fill_in "#{form}_phone", :with => company.phone
-        fill_in_ckeditor "#{form}_faq", company.faq
+        fill_in "#{form}_faq", :with => company.faq
         fill_in "#{form}_video_url", :with => 'http://www.youtube.com/embed/OQSNhk5ICTI'
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
@@ -117,8 +117,8 @@ module Features
         select 'Convertible Note', :from => "#{form}_equity_type"
         select 'All-or-nothing', :from => "#{form}_funds_retained"
         select 'Owner', :from => "#{form}_fees_paid_by"
-        fill_in_ckeditor "#{form}_elevator_pitch", investment_term.elevator_pitch
-        fill_in_ckeditor "#{form}_investment_details", investment_term.investment_details
+        fill_in "#{form}_elevator_pitch", :with => investment_term.elevator_pitch
+        fill_in "#{form}_investment_details", :with => investment_term.investment_details
 
         # filepicker fill_in "#{form}_business_plan_url", investment_term.business_plan_url
         # filepicker fill_in "#{form}_financial_statement_url", :with => investment_term.financial_statement_url
@@ -135,12 +135,12 @@ module Features
     def fill_in_team(campaign)
       team = create_team_via_factories(campaign)
 
-      fill_in_ckeditor "team_team_highlights", team.team_highlights
+      fill_in "team_team_highlights", :with => team.team_highlights
 
       ['first_name', 'last_name', 'title', 'facebook', 'twitter', 'linkedin', 'video_url'].each do |field|
         fill_in "team_team_members_attributes_0_#{field}", :with => team.team_members.first.send(field)
       end
-      fill_in_ckeditor "team_team_members_attributes_0_introduction", team.team_members.first.introduction
+      fill_in "team_team_members_attributes_0_introduction", :with => team.team_members.first.introduction
 
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'
@@ -151,7 +151,7 @@ module Features
       update = FactoryGirl.build(:update, :company => company)
 
       fill_in "update_subject", :with => update.subject
-      fill_in_ckeditor "update_details", update.details
+      fill_in "update_details", :with => update.details
       choose update.visibility
       fill_in "update_video_url", :with => update.video_url
 
@@ -164,7 +164,7 @@ module Features
       job = FactoryGirl.build(:job, :company => company)
 
       fill_in "job_title", :with => job.title
-      fill_in_ckeditor "job_description", job.description
+      fill_in "job_description", :with => job.description
       fill_in "job_contact", :with => job.contact
 
       screenshot_and_save_page if $do_screenshots

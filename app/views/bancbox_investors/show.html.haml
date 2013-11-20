@@ -1,25 +1,68 @@
 = render "users/navigation", :active => 'bancbox_investor_profile'
 = render "users/header"
 
-#information
-  .container
-    = button_to 'Edit', edit_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
-    = render "shared/property_row", :header => "First Name", :value => @bancbox_investor.first_name
-    = render "shared/property_row", :header => "Middle Initial", :value => @bancbox_investor.middle_initial
-    = render "shared/property_row", :header => "Last Name", :value => @bancbox_investor.last_name
-    = render "shared/property_row", :header => "SSN", :value => @bancbox_investor.ssn
-    = render "shared/property_row", :header => "Investor_Type", :value => @bancbox_investor.investor_type
-    = render "shared/property_row", :header => "Email", :value => @bancbox_investor.email
-    = render "shared/property_row", :header => "Phone", :value => @bancbox_investor.phone
-    = render "shared/property_row", :header => "Date of Birth", :value => @bancbox_investor.date_of_birth
-    = render "shared/property_row", :header => "Address line 1", :value => @bancbox_investor.address_1
-    = render "shared/property_row", :header => "Address line 2", :value => @bancbox_investor.address_2
-    = render "shared/property_row", :header => "City", :value => @bancbox_investor.city
-    = render "shared/property_row", :header => "State", :value => @bancbox_investor.state
-    = render "shared/property_row", :header => "Zip", :value => @bancbox_investor.zip
-    = render "shared/property_row", :header => "Reference Id", :value => @bancbox_investor.reference_id
-    = render "shared/property_row", :header => "Bancbox Id", :value => @bancbox_investor.bancbox_id
-    = render "shared/property_row", :header => "Bank Name", :value => @bancbox_investor.bank_name
-    = render "shared/property_row", :header => "Account Number", :value => @bancbox_investor.account_number
-    = render "shared/property_row", :header => "Account Routing Number", :value => @bancbox_investor.account_routing_number
-    = render "shared/property_row", :header => "Account Type", :value => @bancbox_investor.account_type
+- unless @bancbox_investor.submitted?
+  #information
+    .container
+      You haven't created bancbox investor account yet.
+      = button_to 'Create One', edit_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
+- else
+  #information
+    .container
+      %h3 Information
+      = render "shared/property_row", :header => "Reference Id", :value => @bancbox_investor.reference_id
+      = render "shared/property_row", :header => "Bancbox Id", :value => @bancbox_investor.bancbox_id
+      = render "shared/property_row", :header => "Bank Name", :value => @bancbox_investor.bank_name
+      = render "shared/property_row", :header => "Account Number", :value => @bancbox_investor.account_number
+      = render "shared/property_row", :header => "Account Routing Number", :value => @bancbox_investor.account_routing_number
+      = render "shared/property_row", :header => "Account Type", :value => @bancbox_investor.account_type
+
+  #funds
+    .container
+      %h3 Funds
+      = render "shared/property_row", :header => "Current Balance", :value => @bancbox_investor.funds
+      = render "shared/property_row", :header => "Pending Balance", :value => @bancbox_investor.pendingbalance
+
+  - unless @bancbox_investor.investor_bank_accounts.empty?
+    #funds
+      .container
+        %h3 Linked Bank Account
+        %table.table
+          %tr
+            %td Id
+            %td Bancbox Id
+            %td Reference Id
+            %td Account Holder
+            %td Type
+            %td Routing Number
+            %td Account Number
+          - @bancbox_investor.investor_bank_accounts.each do |b|
+            %tr
+              %td= b.id
+              %td= b.bancbox_id
+              %td= b.reference_id
+              %td= b.bank_account_holder
+              %td= b.bank_account_type
+              %td= b.bank_account_routing
+              %td= b.bank_account_number
+
+  - unless @bancbox_investor.investor_fund_transactions.empty?
+    #funds
+      .container
+        %h3 Fund Transactions
+        %table.table
+          %tr
+            %td Transaction Id
+            %td Status
+            %td Transaction Status
+            %td Amount
+            %td Memo
+            %td Bank Account
+          - @bancbox_investor.investor_fund_transactions.each do |f|
+            %tr
+              %td= f.trans_id
+              %td= f.status
+              %td= f.trans_status
+              %td= f.amount
+              %td= f.memo
+              %td= f.bancbox_bank_account.id

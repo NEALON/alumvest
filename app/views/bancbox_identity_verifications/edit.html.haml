@@ -3,6 +3,10 @@
 
 #information
   .container
+    = render "shared/property_row", :header => "Question", :value => nil
+    = render "shared/property_row", :header => "Question", :value => nil
+    = render "shared/property_row", :header => "Question", :value => nil
+
     = form_for @bancbox_identity_verification, :url => user_bancbox_identity_verification_path(@user), :html => {:class => "form-horizontal"} do |f|
       %fieldset
         = f.hidden_field :user_id

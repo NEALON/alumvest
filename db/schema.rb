@@ -11,10 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117012515) do
+ActiveRecord::Schema.define(version: 20131119072303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bancbox_bank_accounts", force: true do |t|
+    t.string   "bank_account_number"
+    t.string   "bank_account_type"
+    t.string   "bank_account_holder"
+    t.string   "bank_account_routing"
+    t.integer  "bancbox_investor_id"
+    t.integer  "bancbox_issuer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "bancbox_id"
+    t.string   "reference_id"
+  end
+
+  add_index "bancbox_bank_accounts", ["bancbox_investor_id"], name: "index_bancbox_bank_accounts_on_bancbox_investor_id", using: :btree
+  add_index "bancbox_bank_accounts", ["bancbox_issuer_id"], name: "index_bancbox_bank_accounts_on_bancbox_issuer_id", using: :btree
+
+  create_table "bancbox_fund_transactions", force: true do |t|
+    t.integer  "trans_id"
+    t.string   "status"
+    t.boolean  "trans_status"
+    t.integer  "amount"
+    t.string   "memo"
+    t.text     "text"
+    t.integer  "bancbox_bank_account_id"
+    t.integer  "bancbox_investor_id"
+    t.integer  "bancbox_issuer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
+  add_index "bancbox_fund_transactions", ["bancbox_investor_id"], name: "index_bancbox_fund_transactions_on_bancbox_investor_id", using: :btree
+  add_index "bancbox_fund_transactions", ["bancbox_issuer_id"], name: "index_bancbox_fund_transactions_on_bancbox_issuer_id", using: :btree
 
   create_table "bancbox_identity_verifications", force: true do |t|
     t.string   "bancbox_status"
@@ -49,6 +83,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "account_type"
     t.boolean  "agreement"
     t.string   "middle_initial"
+    t.integer  "funds",                  default: 0
+    t.integer  "pendingbalance",         default: 0
   end
 
   create_table "bancbox_issuers", force: true do |t|
@@ -81,6 +117,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "funds",                      default: 0
+    t.integer  "pendingbalance",             default: 0
   end
 
   create_table "bus_events", force: true do |t|
@@ -95,14 +133,14 @@ ActiveRecord::Schema.define(version: 20131117012515) do
   create_table "campaigns", force: true do |t|
     t.string   "status"
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "companies", force: true do |t|
@@ -119,8 +157,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.text     "company_highlights"
     t.integer  "category_id"
     t.integer  "industry_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "status"
     t.string   "campaign_title"
     t.text     "company_details"
@@ -137,8 +175,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
   create_table "contract_doc_groups", force: true do |t|
     t.string   "status"
     t.integer  "investment_finalization_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "demographics", force: true do |t|
@@ -159,8 +197,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "file_url"
     t.integer  "documentable_id"
     t.string   "documentable_type"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "signature_required", default: false
   end
 
@@ -169,16 +207,16 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "degree"
     t.integer  "user_id"
     t.integer  "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "envelope_events", force: true do |t|
     t.integer  "envelope_id"
     t.string   "status"
     t.datetime "status_date_time"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "envelopes", force: true do |t|
@@ -187,16 +225,16 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "email_subject"
     t.string   "uri"
     t.text     "email_body"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "signing_id"
   end
 
   create_table "follows", force: true do |t|
     t.integer  "user_id"
     t.integer  "campaign_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "follows", ["campaign_id"], name: "index_follows_on_campaign_id", using: :btree
@@ -208,8 +246,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "last_name"
     t.string   "description",     default: "guest"
   end
@@ -217,24 +255,24 @@ ActiveRecord::Schema.define(version: 20131117012515) do
   create_table "identity_verifications", force: true do |t|
     t.string   "status"
     t.integer  "investment_finalization_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "investment_finalizations", force: true do |t|
     t.string   "status"
     t.integer  "campaign_id"
     t.integer  "investor_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "investment_terms", force: true do |t|
     t.string   "business_plan_url"
     t.string   "financial_statement_url"
     t.string   "term_sheet_url"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "status"
     t.integer  "fundraising_amount"
     t.integer  "campaign_length"
@@ -263,8 +301,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "accredited_investor_status"
     t.text     "personal_message"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "investors", ["user_id"], name: "index_investors_on_user_id", using: :btree
@@ -272,8 +310,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
   create_table "irs_doc_groups", force: true do |t|
     t.string   "status"
     t.integer  "investment_finalization_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "jobs", force: true do |t|
@@ -281,8 +319,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.text     "description"
     t.string   "contact"
     t.integer  "company_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
@@ -295,8 +333,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "marital_status"
     t.text     "personal_message"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "owners", ["user_id"], name: "index_owners_on_user_id", using: :btree
@@ -305,8 +343,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "status"
     t.integer  "amount"
     t.integer  "investment_finalization_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", force: true do |t|
@@ -315,8 +353,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "last_name"
     t.integer  "populatable_id"
     t.string   "populatable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "linkedin"
@@ -333,8 +371,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "income_type"
     t.string   "net_worth"
     t.integer  "investment_finalization_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rails_admin_histories", force: true do |t|
@@ -344,8 +382,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "table"
     t.integer  "month",      limit: 2
     t.integer  "year",       limit: 8
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
@@ -354,20 +392,20 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "status",                     default: "unsigned"
     t.integer  "investment_finalization_id"
     t.integer  "document_id"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscription_agreements", force: true do |t|
     t.string   "status"
     t.integer  "investment_finalization_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", force: true do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "status"
     t.text     "team_highlights"
     t.integer  "campaign_id"
@@ -375,8 +413,8 @@ ActiveRecord::Schema.define(version: 20131117012515) do
 
   create_table "templates", force: true do |t|
     t.string   "template_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "document_id"
   end
 
@@ -386,16 +424,16 @@ ActiveRecord::Schema.define(version: 20131117012515) do
     t.string   "visibility"
     t.string   "video_url"
     t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"

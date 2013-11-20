@@ -1,7 +1,7 @@
 class BancboxIssuersController < ApplicationController
   def show
     @user = User.find_by_id(params[:user_id])
-    @bancbox_issuer = @user.bancbox_issuer || BancboxIssuer.create(:user => @user)
+    @bancbox_issuer = @user.bancbox_issuer || Bancbox::Issuer.create(:user => @user)
   end
 
   def edit

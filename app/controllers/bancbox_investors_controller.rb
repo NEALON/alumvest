@@ -1,7 +1,7 @@
 class BancboxInvestorsController < ApplicationController
   def show
     @user = User.find_by_id(params[:user_id])
-    @bancbox_investor = @user.bancbox_investor || BancboxInvestor.create(:user => @user)
+    @bancbox_investor = @user.bancbox_investor || Bancbox::Investor.create(:user => @user)
   end
 
   def edit
