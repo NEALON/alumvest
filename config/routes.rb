@@ -1,5 +1,6 @@
 Av::Application.routes.draw do
 
+  get "investor_dashboard/index"
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -16,6 +17,8 @@ Av::Application.routes.draw do
   match '/admin_dashboard/reject_investor_signing', :to => 'admin_dashboard#reject_investor_signing', :via => :post
 
   get '/owner_dashboard', :to => "owner_dashboard#index"
+
+  get '/investor_dashboard', :to => "investor_dashboard#index"
 
   get "home/index"
 

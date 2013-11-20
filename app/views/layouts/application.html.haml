@@ -53,6 +53,8 @@
                     %li= link_to 'Dashboard', admin_dashboard_path, :class => "btn"
                   - if current_user.is_owner?
                     %li= link_to 'Dashboard', owner_dashboard_path, :class => "btn"
+                  - if current_user.is_investor?
+                    %li= link_to 'Dashboard', investor_dashboard_path, :class => "btn"
                   %li= link_to 'Profile', user_path(current_user.id), :class => "btn"
                   %li= link_to 'Sign out', logout_path, :class => "btn", :method => :delete
             - else
