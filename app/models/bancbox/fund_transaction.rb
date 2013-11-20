@@ -6,4 +6,6 @@ class Bancbox::FundTransaction < ActiveRecord::Base
   attr_accessible :trans_id, :status, :trans_status, :amount, :memo, :text
   attr_accessible :bancbox_bank_account, :bancbox_bank_account_id
   attr_accessible :bancbox_investor, :bancbox_issuer, :bancbox_investor_id, :bancbox_issuer_id
+
+  validates :amount, numericality: true
 end

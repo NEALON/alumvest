@@ -137,22 +137,17 @@ class Bancbox::PersonBase < ActiveRecord::Base
   end
 
   # TODO
-  def fund_account!
-      #(amount, memo, text, bancbox_bank_account)
+  def fund_account!(type, transaction)
   end
 
-  def fund_account_and_link_bank!(type, amount, memo,
-                                  bank_account_number,
-                                  bank_account_type,
-                                  bank_account_holder,
-                                  bank_account_routing)
-    options = fund_account_common_options(amount, memo)
+  def fund_account_and_link_bank!(type, transaction, bank_account)
+    options = fund_account_common_options(transaction.amount, transaction.memo)
     options.merge!({
-      :bank_account_number => bank_account_number,
-      :bank_account_type => bank_account_type,
-      :bank_account_holder => bank_account_holder,
-      :bank_account_routing => bank_account_routing,
-      :link_bank_account => true,
+      :bank_account_number => bank_account.bank_account_number,
+      :bank_account_type => bank_account.bank_account_type,
+      :bank_account_holder => bank_account.bank_account_holder,
+      :bank_account_routing => bank_account.bank_account_routing,
+      :link_bank_account => true
     })
     if type == :investor
       options[:investor_id] = bancbox_id
@@ -164,37 +159,17 @@ class Bancbox::PersonBase < ActiveRecord::Base
     logger.info ret
     # XXX should catch the error
     if ret['status']
-      bank_account_hash = {
-        :bank_account_number => bank_account_number,
-        :bank_account_type => bank_account_type,
-        :bank_account_holder => bank_account_holder,
-        :bank_account_routing => bank_account_routing,
-        :bancbox_id => ret['linked_external_account']['id'],
-        :reference_id => ret['linked_external_account']['reference_id']
-      }
-      if type == :investor
-        bank_account_hash[:bancbox_investor_id] = id
-      else
-        bank_account_hash[:bancbox_issuer_id] = id
-      end
-      bank_account = BancboxBankAccount.create(bank_account_hash)
-      fund_transaction_hash = {
-        :bancbox_investor_id => bancbox_id,
-        :trans_id => ret['transaction_details']['id'],
-        :status => ret['transaction_details']['status'],
-        :trans_status => ret['transaction_details']['trans_status'],
-        :amount => amount,
-        :memo => memo,
-        :bancbox_bank_account => bank_account
-      }
-      if type == :investor
-        fund_transaction_hash[:bancbox_investor_id] = id
-      else
-        fund_transaction_hash[:bancbox_issuer_id] = id
-      end
-      FundTransaction.create(fund_transaction_hash)
+      bank_account.bancbox_id = ret['linked_external_account']['id']
+      bank_account.reference_id = ret['linked_external_account']['reference_id']
+      bank_account.save
 
-      self.pendingbalance += amount
+      transaction.trans_id = ret['transaction_details']['id']
+      transaction.status = ret['transaction_details']['status']
+      transaction.trans_status = ret['transaction_details']['trans_status']
+      transaction.bank_account = bank_account
+      transaction.save
+
+      self.pendingbalance += transaction.amount
       save
     end
   end
