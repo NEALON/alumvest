@@ -1,7 +1,7 @@
 class Bancbox::FundTransaction < ActiveRecord::Base
-  belongs_to :bancbox_bank_account
-  belongs_to :investor, :class_name => 'Bancbox::Investor'
-  belongs_to :issuer, :class_name => 'Bancbox::Issuer'
+  belongs_to :bank_account, :class_name => 'Bancbox::BankAccount', :foreign_key => :bancbox_bank_account_id
+  belongs_to :investor, :class_name => 'Bancbox::Investor', :foreign_key => :bancbox_investor_id
+  belongs_to :issuer, :class_name => 'Bancbox::Issuer', :foreign_key => :bancbox_issuer_id
 
   attr_accessible :trans_id, :status, :trans_status, :amount, :memo, :text
   attr_accessible :bancbox_bank_account, :bancbox_bank_account_id
