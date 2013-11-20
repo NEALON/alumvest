@@ -37,5 +37,21 @@ describe "users bancbox investor profile", :type => :feature do
     within '#bank-name' do
       expect(page).not_to have_content("Blank")
     end
+
+    page.should have_button 'Add More Fund'
+    click_on 'Add More Fund'
+    amount = Faker::Number.number(4)
+    fill_in 'bancbox_fund_transaction_amount', :with => amount
+    fill_in 'bancbox_fund_transaction_memo', :with => Faker::Lorem.characters(16)
+    fill_in 'bancbox_bank_account_bank_account_holder', :with => @first_name
+    fill_in 'bancbox_bank_account_bank_account_routing', :with => "011000028"
+    fill_in 'bancbox_bank_account_bank_account_number', :with => Faker::Number.number(7)
+    click_on 'Fund'
+
+    page.should have_content 'successfully'
+    page.should have_content 'Account Number'
+    page.should have_content 'Transaction Id'
+    page.should have_content amount
+
   end
 end

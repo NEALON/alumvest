@@ -22,6 +22,7 @@
       %h3 Funds
       = render "shared/property_row", :header => "Current Balance", :value => @bancbox_investor.funds
       = render "shared/property_row", :header => "Pending Balance", :value => @bancbox_investor.pendingbalance
+      = button_to "Add More Fund", new_fund_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
 
   - unless @bancbox_investor.investor_bank_accounts.empty?
     #funds
@@ -65,4 +66,4 @@
               %td= f.trans_status
               %td= f.amount
               %td= f.memo
-              %td= f.bancbox_bank_account.id
+              %td= f.bank_account.id
