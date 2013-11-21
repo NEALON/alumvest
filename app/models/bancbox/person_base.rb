@@ -173,4 +173,25 @@ class Bancbox::PersonBase < ActiveRecord::Base
       save
     end
   end
+
+  def link_bank_account(type, bank_account)
+    options = {
+      :bank_account_number => bank_account.bank_account_number,
+      :bank_account_type => bank_account.bank_account_type,
+      :bank_account_holder => bank_account.bank_account_holder,
+      :bank_account_routing => bank_account.bank_account_routing
+    }
+    if type == :investor
+      options[:investor_id] = bancbox_id
+    else
+      options[:issuer_id] = bancbox_id
+    end
+
+    ret = BancBoxCrowd.link_external_account options
+    if ret['status']
+      bank_account.bancbox_id = ret['linked_external_account']['id']
+      bank_account.reference_id = ret['linked_external_account']['reference_id']
+      bank_account.save
+    end
+  end
 end
