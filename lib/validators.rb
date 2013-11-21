@@ -10,6 +10,4 @@ module Validators
             (send(attr).scan(/(\w|-)+/).size > max or
                 send(attr).scan(/(\w|-)+/).size < min)
   end
-
-
 end

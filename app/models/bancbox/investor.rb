@@ -4,7 +4,7 @@ class Bancbox::Investor < Bancbox::PersonBase
 
   validates_presence_of [:investor_type], :on => :update
 
-  belongs_to :user
+  belongs_to :user # or maybe :investor
 
   def submit!
     super do |options|

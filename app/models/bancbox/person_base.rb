@@ -7,6 +7,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
 
+  # simplify this
+
   has_many :investor_bank_accounts,
            dependent: :destroy,
            class_name: "Bancbox::BankAccount",
@@ -82,7 +84,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
       self.account_type = ret['account_type']
 
       if agree!
-        fire_bancbox_status_event(:submit)
+        fire_bancbox_status_event(:submit) # aka submit event in state machine
         save
       end
     end

@@ -4,7 +4,7 @@ class Bancbox::Issuer < Bancbox::PersonBase
 
   validate :validates_company_fields
 
-  belongs_to :user
+  belongs_to :user # or :owner
 
   def validates_company_fields
     # all or nothing for company infos
