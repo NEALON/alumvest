@@ -2,17 +2,16 @@ require File.dirname(__FILE__) + '/../../../spec_helper'
 
 describe "users bancbox identity verification", :type => :feature do
 
-  pending
-
-  #before :each do
-  #  sign_up :investor
+  before :each do
+    sign_up :investor
   #  click_on 'Bancbox Identity Verification'
-  #end
+  end
   #
-  #it "shows" do
-  #  pending
+  it "shows" do
+    screenshot_and_open_image
+    pending
   #  page.should have_content "something"
-  #end
+  end
   #
   #it "updates" do
   #  page.should have_button 'Edit'

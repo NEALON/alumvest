@@ -3,6 +3,7 @@ class InvestorsController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @investor = @user.investor
+    render :layout => "investors"
   end
 
   def update
@@ -30,6 +31,7 @@ class InvestorsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @investor = @user.investor || Investor.new(:user => @user)
+    render :layout => "investors"
   end
 
   #def display

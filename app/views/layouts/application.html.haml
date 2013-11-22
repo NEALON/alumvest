@@ -13,11 +13,10 @@
   = favicon_link_tag '/favicon.png'
   = stylesheet_link_tag "application"
   = javascript_include_tag "application"
+  = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"
   = csrf_meta_tags
   = yield :head
   :plain
-    <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Varela+Round' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   = render 'layouts/shareaholic_header'
 %body
@@ -61,16 +60,14 @@
               %li= link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')
               %li= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
   #content
-    - if content_for? :breadcrumbs
+    = yield :header_1 if content_for? :header_1
+
+    .container
       .row
-        .col-md-12
-          = yield :breadcrumbs
-    - if content_for? :header_1
-      .row
-        .col-md-12
-          = yield :header_1
-    - if content_for? :sub_navigation
-      = yield :sub_navigation
+        .col-md-12{:style => 'padding-top: 1em;'}
+          = yield :breadcrumbs if content_for? :breadcrumbs
+          = yield :sub_navigation if content_for? :sub_navigation
+
     - if content_for? :sidebar_left
       .container
         .row

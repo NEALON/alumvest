@@ -63,14 +63,13 @@ Av::Application.routes.draw do
     resource :demographic
     resource :borrower
     resource :investor
+    resource :settings
     resource :bancbox_investor do
       get :new_fund
       post :fund
     end
     resource :bancbox_issuer
     resource :bancbox_identity_verification
-    get :settings
-    get :edit_settings
   end
 
   post "common/filepicker"

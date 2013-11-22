@@ -2,11 +2,15 @@ class DemographicsController < ApplicationController
   def show
     @user = User.find_by_id(params[:user_id])
     @demographic = @user.demographic || Demographic.create(:user => @user)
+    @active = 'demographic_info'
+    render :layout => "users"
   end
 
   def edit
     @user = User.find_by_id(params[:user_id])
     @demographic = @user.demographic
+    @active = 'demographic_info'
+    render :layout => "users"
   end
   
   def update
