@@ -24,28 +24,28 @@
       = render "shared/property_row", :header => "Pending Balance", :value => @bancbox_investor.pendingbalance
       = button_to "Add More Fund", new_fund_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
 
-  - unless @bancbox_investor.investor_bank_accounts.empty?
-    #funds
-      .container
-        %h3 Linked Bank Account
-        %table.table
+  #funds
+    .container
+      %h3 Linked Bank Account
+      %table.table
+        %tr
+          %td Id
+          %td Bancbox Id
+          %td Reference Id
+          %td Account Holder
+          %td Type
+          %td Routing Number
+          %td Account Number
+        - @bancbox_investor.investor_bank_accounts.each do |b|
           %tr
-            %td Id
-            %td Bancbox Id
-            %td Reference Id
-            %td Account Holder
-            %td Type
-            %td Routing Number
-            %td Account Number
-          - @bancbox_investor.investor_bank_accounts.each do |b|
-            %tr
-              %td= b.id
-              %td= b.bancbox_id
-              %td= b.reference_id
-              %td= b.bank_account_holder
-              %td= b.bank_account_type
-              %td= b.bank_account_routing
-              %td= b.bank_account_number
+            %td= b.id
+            %td= b.bancbox_id
+            %td= b.reference_id
+            %td= b.bank_account_holder
+            %td= b.bank_account_type
+            %td= b.bank_account_routing
+            %td= b.bank_account_number
+      = button_to "Link Bank Account", new_bank_account_user_bancbox_investor_path(@user), :class => 'btn btn-primary', :method => :get
 
   - unless @bancbox_investor.investor_fund_transactions.empty?
     #funds

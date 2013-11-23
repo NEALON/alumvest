@@ -4,6 +4,11 @@ describe "users bancbox investor profile", :type => :feature do
 
   before :each do
     sign_up :investor
+    click_on @first_name
+    within '.dropdown-menu' do
+      click_on 'Profile'
+    end
+    click_on 'Investor Dashboard'
     click_on 'Bancbox'
   end
 
@@ -27,6 +32,7 @@ describe "users bancbox investor profile", :type => :feature do
     check "bancbox_investor_agreement"
     click_on 'Save'
 
+    # Create Bancbox profile
     page.should_not have_button 'Create One'
     page.should have_content 'info saved'
     page.should have_content "Reference Id"
@@ -38,6 +44,7 @@ describe "users bancbox investor profile", :type => :feature do
       expect(page).not_to have_content("Blank")
     end
 
+    # Add More Fund
     page.should have_button 'Add More Fund'
     click_on 'Add More Fund'
     amount = Faker::Number.number(4)
@@ -52,6 +59,20 @@ describe "users bancbox investor profile", :type => :feature do
     page.should have_content 'Account Number'
     page.should have_content 'Transaction Id'
     page.should have_content amount
+
+    # Link Bank Account
+    page.should have_button 'Link Bank Account'
+    click_on 'Link Bank Account'
+    account_num = Faker::Number.number(7)
+    fill_in 'bancbox_bank_account_bank_account_holder', :with => @first_name
+    fill_in 'bancbox_bank_account_bank_account_routing', :with => "011000028"
+    fill_in 'bancbox_bank_account_bank_account_number', :with => account_num
+    click_on 'Save'
+
+    page.should have_content 'successfully'
+    page.should have_content 'Account Number'
+    page.should have_content 'Transaction Id'
+    page.should have_content account_num
 
   end
 end
