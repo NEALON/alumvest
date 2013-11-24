@@ -4,6 +4,7 @@ describe "users investor profile", :type => :feature do
 
   before :each do
     sign_up :investor
+    click_on 'Investor Dashboard'
     click_on 'Investor Profile'
   end
 
