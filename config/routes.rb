@@ -69,7 +69,11 @@ Av::Application.routes.draw do
     resource :settings
     namespace :banking do
       resource :identity
-      resource :account
+      resource :account do
+        namespace :bancbox do
+          resource :account
+        end
+      end
     end
     resource :bancbox_investor do
       get :new_fund
