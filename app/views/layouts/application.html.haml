@@ -62,11 +62,11 @@
   #content
     = yield :header_1 if content_for? :header_1
 
-    .container
-      .row
-        .col-md-12{:style => 'padding-top: 1em;'}
-          = yield :breadcrumbs if content_for? :breadcrumbs
-          = yield :sub_navigation if content_for? :sub_navigation
+    / .container
+    /   .row
+    /     .col-md-12{:style => 'padding-top: 1em;'}
+    /       = yield :breadcrumbs if content_for? :breadcrumbs
+    /       = yield :sub_navigation if content_for? :sub_navigation
 
     - if content_for? :sidebar_left
       .container
@@ -90,7 +90,7 @@
           .col-md-12.col-xs-12
             = render 'layouts/flash', :flash => flash
       = yield
-  .push
+    .push
   #footer
     .container
       .row
