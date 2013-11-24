@@ -77,7 +77,9 @@ Av::Application.routes.draw do
     end
     resource :bancbox_investor do
       get :new_fund
+      get :new_bank_account
       post :fund
+      post :bank_account
     end
     resource :bancbox_issuer
     resource :bancbox_identity_verification

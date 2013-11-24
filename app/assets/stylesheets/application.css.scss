@@ -121,20 +121,31 @@ body{
 }
 
 #content{
-  min-height: 600px;
   width: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  //overflow: hidden;
+  margin: 0 0 -150px 0;
+}
+
+.push{
+  height: 150px;
+  min-height: 150px;
+  clear: both;
 }
 
 #footer{
   background-color: #ffffff;
   display: block;
+  width: 100%;
+  height: 150px;
   min-height: 150px;
   padding: 20px 0 20px;
   margin-bottom: 0;
   box-shadow: 0 0 5px #7F8C8D;
+  clear: both;
   overflow: hidden;
-
 
   img{
     display: inline-block;
