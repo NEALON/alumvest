@@ -63,9 +63,10 @@
     = yield :header_1 if content_for? :header_1
 
     = yield :breadcrumbs if content_for? :breadcrumbs
-    .row
-      .col-md-12
-        = yield :sub_navigation if content_for? :sub_navigation
+    .container
+      .row.sub-navigation
+        .col-md-12
+          = yield :sub_navigation if content_for? :sub_navigation
 
     - if content_for? :sidebar_left
       .container
