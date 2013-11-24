@@ -6,7 +6,6 @@ class InvestmentFinalization < ActiveRecord::Base
 
   has_one :payment_information
   has_one :questionnaire
-  has_one :identity_verification
   has_one :contract_doc_group
   has_one :subscription_agreement
   has_one :irs_doc_group

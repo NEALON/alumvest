@@ -35,16 +35,19 @@ Av::Application.routes.draw do
       resources :display_updates
       resources :display_jobs
     end
+
     resource :team do
       get :check_for_completeness
       get :preview
       get :display
     end
+
     resource :investment_term do
       get :check_for_completeness
       get :preview
       get :display
     end
+
     resources :investment_finalizations do
       resource :payment_information
       resource :questionnaire
@@ -64,6 +67,10 @@ Av::Application.routes.draw do
     resource :borrower
     resource :investor
     resource :settings
+    namespace :banking do
+      resource :identity
+      resource :account
+    end
     resource :bancbox_investor do
       get :new_fund
       post :fund
