@@ -1,4 +1,4 @@
-%div.company-raise-summary
+%div.company-raise-summary.company-block
   %div.double-level
     - if can? :view_exact_funding_amount, @campaign
       = number_to_currency (0)
@@ -38,7 +38,7 @@
     %a.btn.btn-primary.invest-now
       Invest Now
 
-%div.company-follow
+%div.company-follow.company-block
   %p
     .followers
       Followers:
