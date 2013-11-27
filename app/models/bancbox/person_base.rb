@@ -138,8 +138,28 @@ class Bancbox::PersonBase < ActiveRecord::Base
     }
   end
 
-  # TODO
-  def fund_account!(type, transaction)
+  def fund_account!(type, transaction, bank_account)
+    options = fund_account_common_options(transaction.amount, transaction.memo)
+    options[:linked_bank_account_id] = bank_account.bancbox_id
+    if type == :investor
+      options[:investor_id] = bancbox_id
+    else
+      options[:issuer_id] = bancbox_id
+    end
+    logger.info options
+    ret = BancBoxCrowd.fund_account options
+    logger.info ret
+    # XXX should catch the error
+    if ret['status']
+      transaction.trans_id = ret['transaction_details']['id']
+      transaction.status = ret['transaction_details']['status']
+      transaction.trans_status = ret['transaction_details']['trans_status']
+      transaction.bank_account = bank_account
+      transaction.save
+
+      self.pendingbalance += transaction.amount
+      save
+    end
   end
 
   def fund_account_and_link_bank!(type, transaction, bank_account)
