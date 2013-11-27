@@ -13,7 +13,6 @@ module Features
           :investment_term => FactoryGirl.create(:investment_term),
           :team => FactoryGirl.create(:team)
       )
-
     end
   end
 end

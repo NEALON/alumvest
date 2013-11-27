@@ -2,6 +2,9 @@ class Bancbox::Account < ActiveRecord::Base
   attr_accessible :banking_account, :banking_account_id
 
   belongs_to :banking_account, :class_name => 'Banking::Account'
+  has_many :deposits, :class_name => 'Bancbox::Deposit', :foreign_key => :bancbox_account_id
+  has_many :withdrawals, :class_name => 'Bancbox::Withdrawal', :foreign_key => :bancbox_account_id
+  has_many :transactions, :class_name => 'Bancbox::Transaction', :foreign_key => :bancbox_account_id
 
   state_machine :status, :initial => :initialized do
     event :create! do
@@ -14,5 +17,9 @@ class Bancbox::Account < ActiveRecord::Base
     state :initialized
     state :created
     state :failed
+  end
+
+  def balance
+    deposits.sum(:value) - withdrawals.sum(:value)
   end
 end

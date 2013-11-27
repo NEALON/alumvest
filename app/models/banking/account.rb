@@ -5,7 +5,16 @@ class Banking::Account < ActiveRecord::Base
   has_one :bancbox_identity_verification, :class_name => 'Bancbox::IdentityVerification', :foreign_key => :banking_account_id
   has_one :bancbox_account, :class_name => 'Bancbox::Account', :foreign_key => :banking_account_id
 
-  # TODO: should be a state machine so that we can see if they have verified their identity and all of that
-  # TODO: association to identity
-  # TODO: has_one identity, etc.
+  state_machine :status, :initial => :new do
+    event :activate! do
+      transition :new => :activated
+    end
+
+    state :new
+    state :activated
+  end
+
+  def balance
+    bancbox_account.balance
+  end
 end

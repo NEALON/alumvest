@@ -18,6 +18,7 @@ describe 'users banking account', :type => :feature do
   it 'updates via creating a new Bancbox account (in the Bancbox system)' do
     click_on 'Create your Bancbox account'
     expect(page).to have_content('Your Bancbox account was created.')
+    expect(page).to have_content('Your account balance: $0.00')
   end
 
   it 'updates via failing to create a new Bancbox account' do

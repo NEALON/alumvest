@@ -72,6 +72,9 @@ Av::Application.routes.draw do
       resource :account do
         namespace :bancbox do
           resource :account
+          resources :transactions
+          resources :deposits
+          resources :withdrawals
         end
       end
     end
