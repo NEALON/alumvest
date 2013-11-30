@@ -141,12 +141,22 @@ class Bancbox::PersonBase < ActiveRecord::Base
   def fund_account!(type, transaction, bank_account)
     options = fund_account_common_options(transaction.amount, transaction.memo)
     options[:linked_bank_account_id] = bank_account.bancbox_id
+    # XXX because the linked_bank_account_id does not work, so we append the bank account number
+    # in the payload for now
+    options.merge!({
+      :bank_account_number => bank_account.bank_account_number,
+      :bank_account_type => bank_account.bank_account_type,
+      :bank_account_holder => bank_account.bank_account_holder,
+      :bank_account_routing => bank_account.bank_account_routing,
+      :link_bank_account => false
+    })
     if type == :investor
       options[:investor_id] = bancbox_id
     else
       options[:issuer_id] = bancbox_id
     end
     logger.info options
+    puts options
     ret = BancBoxCrowd.fund_account options
     logger.info ret
     # XXX should catch the error
