@@ -9,10 +9,10 @@ describe "following company", :type => :feature do
 
   it "by following one and then unfollow" do
     visit display_campaign_company_path(@campaign)
-    page.find(".company-follow").should have_content('0')
+    expect(page.find(".company-follow")).to have_content('0')
 
     page.find("#follow-link").tap do |link|
-      link.should_not be_nil
+      expect(link).not_to be_nil
       link.click
     end
 

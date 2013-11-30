@@ -55,11 +55,11 @@ describe "user sessions", :type => :feature do
   it "sends out welcome email after sign up" do
     sign_up :owner
     mail = ActionMailer::Base.deliveries.last
-    mail.subject.should == 'Welcome to AlumVest'
-    mail.to.should == [@email]
-    mail.from.should == ['info@alumvest.com']
-    mail.body.encoded.should match(@first_name)
-    mail.body.encoded.should match(@last_name)
-    mail.body.encoded.should match("http://www.alumvest.com")
+    expect(mail.subject).to eq('Welcome to AlumVest')
+    expect(mail.to).to eq([@email])
+    expect(mail.from).to eq(['info@alumvest.com'])
+    expect(mail.body.encoded).to match(@first_name)
+    expect(mail.body.encoded).to match(@last_name)
+    expect(mail.body.encoded).to match("http://www.alumvest.com")
   end
 end

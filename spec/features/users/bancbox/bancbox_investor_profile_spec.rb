@@ -9,7 +9,7 @@ describe "users bancbox investor profile", :type => :feature do
       click_on 'Profile'
     end
     click_on 'Investor Dashboard'
-    click_on 'Bancbox'
+    #click_on 'Bancbox'
   end
 
   it "shows" do

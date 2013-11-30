@@ -8,12 +8,12 @@ describe "users settings", :type => :feature do
   end
 
   it "shows" do
-    page.should have_content 'Password'
-    page.should have_content 'Password Confirmation'
+    expect(page).to have_content 'Password'
+    expect(page).to have_content 'Password Confirmation'
   end
 
   it "fails to update" do
-    page.should have_button 'Edit'
+    expect(page).to have_button 'Edit'
     click_on 'Edit'
 
     fill_in 'user_password', :with => '123456'

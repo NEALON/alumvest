@@ -12,26 +12,26 @@ describe "users bancbox issuer profile", :type => :feature do
   end
 
   it "shows" do
-    page.should have_content "First Name"
-    page.should have_content "Last Name"
-    page.should have_content "SSN"
-    page.should have_content "Email"
-    page.should have_content "Phone"
-    page.should have_content "Date of Birth"
-    page.should have_content "Address line 1"
-    page.should have_content "Address line 2"
-    page.should have_content "City"
-    page.should have_content "State"
-    page.should have_content "Zip"
-    page.should have_content "Reference Id"
-    page.should have_content "Bank Name"
-    page.should have_content "Account Number"
-    page.should have_content "Account Routing Number"
-    page.should have_content "Account Type"
+    expect(page).to have_content "First Name"
+    expect(page).to have_content "Last Name"
+    expect(page).to have_content "SSN"
+    expect(page).to have_content "Email"
+    expect(page).to have_content "Phone"
+    expect(page).to have_content "Date of Birth"
+    expect(page).to have_content "Address line 1"
+    expect(page).to have_content "Address line 2"
+    expect(page).to have_content "City"
+    expect(page).to have_content "State"
+    expect(page).to have_content "Zip"
+    expect(page).to have_content "Reference Id"
+    expect(page).to have_content "Bank Name"
+    expect(page).to have_content "Account Number"
+    expect(page).to have_content "Account Routing Number"
+    expect(page).to have_content "Account Type"
   end
 
   it "updates" do
-    page.should have_button 'Edit'
+    expect(page).to have_button 'Edit'
     click_on 'Edit'
     fill_in 'bancbox_issuer_first_name', :with => @first_name
     fill_in 'bancbox_issuer_last_name', :with => @last_name
@@ -45,7 +45,7 @@ describe "users bancbox issuer profile", :type => :feature do
     fill_in 'bancbox_issuer_zip', :with => '12345'
     check "bancbox_issuer_agreement"
     click_on 'Save'
-    page.should have_content 'info saved'
+    expect(page).to have_content 'info saved'
     within '#bank-name' do
       expect(page).not_to have_content("Blank")
     end

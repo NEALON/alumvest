@@ -26,7 +26,6 @@ describe 'users banking transactions', :type => :feature do
     click_on 'Deposit'
     expect(page).to have_content('You have successfully deposited $100.00')
     expect(page).to have_content('Your account balance: $100.00')
-    screenshot_and_open_image
     # shows a deposit xtn
   end
 
