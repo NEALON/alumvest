@@ -25,13 +25,6 @@ describe "managing investment finalizations", :type => :feature do
     expect(page).to have_content "Item completed."
     within("#questionnaire") {expect(page).to have_content("Completed")}
 
-    within("#identity") {click_link 'Start'}
-    screenshot_and_save_page if $do_screenshots
-    click_link "Complete this item"
-    expect(page).to have_content "Item completed."
-    within("#identity") {expect(page).to have_content("Completed")}
-    screenshot_and_save_page if $do_screenshots
-
     # within("#contracts") {click_link 'Start'}
     # screenshot_and_save_page if $do_screenshots
     # click_link "Complete this item"
