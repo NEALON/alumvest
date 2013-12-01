@@ -6,6 +6,7 @@ class Campaign < ActiveRecord::Base
   has_one :company
   has_one :team
   has_one :investment_term
+  has_one :bancbox_escrow, :class_name => 'Bancbox::Escrow'
   has_many :investment_finalizations
   has_many :investors, :through => :investment_finalizations
   has_many :follows, dependent: :destroy

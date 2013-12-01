@@ -6,6 +6,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
   attr_accessible :user, :user_id
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
+  attr_accessible :bancbox_id
 
   # simplify this
 
