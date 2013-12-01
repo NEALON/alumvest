@@ -5,6 +5,7 @@ class Bancbox::Issuer < Bancbox::PersonBase
   validate :validates_company_fields
 
   belongs_to :user # or :owner
+  has_one :escrow, :class_name => 'Bancbox::Escrow', :foreign_key => 'bancbox_issuer_id'
 
   def validates_company_fields
     # all or nothing for company infos
