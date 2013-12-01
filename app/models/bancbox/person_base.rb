@@ -157,7 +157,6 @@ class Bancbox::PersonBase < ActiveRecord::Base
       options[:issuer_id] = bancbox_id
     end
     logger.info options
-    puts options
     ret = BancBoxCrowd.fund_account options
     logger.info ret
     # XXX should catch the error

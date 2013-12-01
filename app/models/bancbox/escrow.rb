@@ -39,7 +39,6 @@ class Bancbox::Escrow < ActiveRecord::Base
       :platform_signatory_title => "CEO"
     }
     options[:over_funding_amount] = over_funding_amount unless over_funding_amount.blank?
-    puts options
     begin
       ret = BancBoxCrowd.create_escrow options
       self.bancbox_id = ret['id']
