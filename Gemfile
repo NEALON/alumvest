@@ -11,6 +11,7 @@ group :development do
   gem "factory_girl_rails", "~> 4.2", {:require=>false}
   gem "rspec", "~> 2.14"
   gem "rspec-rails", "~> 2.14"
+  gem "byebug", "~> 2.3"
 end
 
 group :test do
@@ -23,6 +24,7 @@ group :test do
   gem "email_spec", "~> 1.5"
   gem "launchy", "~> 2.3"
   gem "selenium-webdriver", "~> 2.37"
+  gem "byebug", "~> 2.3"
 end
 
 group :production do
@@ -54,6 +56,7 @@ gem "pg", "~> 0.17"
 gem "jquery-ui-rails", "~> 4.0"
 gem "compass"
 gem "faker", "~> 1.2"
+gem "faker-medical", "~> 0.5.0"
 gem "docusign_rest", :git => "git://github.com/mikepence/docusign_rest.git"
 gem "rest-client", "~> 1.6"
 gem "cancan", "~> 1.6"

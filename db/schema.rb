@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127154123) do
+ActiveRecord::Schema.define(version: 20131201031100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,32 @@ ActiveRecord::Schema.define(version: 20131127154123) do
 
   add_index "bancbox_bank_accounts", ["bancbox_investor_id"], name: "index_bancbox_bank_accounts_on_bancbox_investor_id", using: :btree
   add_index "bancbox_bank_accounts", ["bancbox_issuer_id"], name: "index_bancbox_bank_accounts_on_bancbox_issuer_id", using: :btree
+
+  create_table "bancbox_escrows", force: true do |t|
+    t.string   "name"
+    t.string   "reference_id"
+    t.string   "bancbox_id"
+    t.date     "start_date"
+    t.date     "close_date"
+    t.float    "funding_goal"
+    t.float    "minimum_funding_amount"
+    t.string   "securities_offered"
+    t.string   "securities_offered_other"
+    t.float    "over_funding_amount"
+    t.float    "maximum_funding_amount"
+    t.float    "current_balance"
+    t.float    "total_funding"
+    t.string   "status"
+    t.string   "issuer_signatory_email"
+    t.string   "issuer_signatory_name"
+    t.string   "issuer_signatory_title"
+    t.string   "disbursement_status"
+    t.string   "disbursal_started"
+    t.integer  "bancbox_issuer_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bancbox_fund_transactions", force: true do |t|
     t.integer  "trans_id"
