@@ -16,6 +16,7 @@
 @import "users/users";
 @import "company/company";
 @import "investor_dashboard";
+@import "layout/modal";
 
 html, body{
   width: 100%;
@@ -25,6 +26,7 @@ html, body{
 body{
   padding-top: 52px;
   background-color: #f8f8f8;
+  font-size: 12px;
 }
 
 .container{
@@ -181,10 +183,6 @@ body{
 .blank {
   font-style: italic;
   color: #BDC3C7;
-}
-
-body {
-  font-size: 16px;
 }
 
 .sub-navigation {
