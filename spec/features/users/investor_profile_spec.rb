@@ -9,27 +9,27 @@ describe "users investor profile", :type => :feature do
   end
 
   it "shows" do
-    page.should have_content 'SSN'
-    page.should have_content 'Marital Status'
-    page.should have_content 'Financial Info'
-    page.should have_content 'Spending Habits'
-    page.should have_content 'Income'
-    page.should have_content 'Income Type'
-    page.should have_content 'Net Worth'
-    page.should have_content 'Investor Representations'
-    page.should have_content 'Company'
-    page.should have_content 'Job Title'
-    page.should have_content 'Experience'
-    page.should have_content 'Expertise'
-    page.should have_content 'Personal Message'
+    expect(page).to have_content 'SSN'
+    expect(page).to have_content 'Marital Status'
+    expect(page).to have_content 'Financial Info'
+    expect(page).to have_content 'Spending Habits'
+    expect(page).to have_content 'Income'
+    expect(page).to have_content 'Income Type'
+    expect(page).to have_content 'Net Worth'
+    expect(page).to have_content 'Investor Representations'
+    expect(page).to have_content 'Company'
+    expect(page).to have_content 'Job Title'
+    expect(page).to have_content 'Experience'
+    expect(page).to have_content 'Expertise'
+    expect(page).to have_content 'Personal Message'
   end
 
   it "updates" do
-    page.should have_button 'Edit'
+    expect(page).to have_button 'Edit'
     click_on 'Edit'
     fill_in 'investor_ssn', :with => '12345'
     click_on 'Save'
-    page.should have_content 'info saved'
-    page.should have_content '12345'
+    expect(page).to have_content 'info saved'
+    expect(page).to have_content '12345'
   end
 end

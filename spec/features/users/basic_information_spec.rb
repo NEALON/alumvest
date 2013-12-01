@@ -7,22 +7,22 @@ describe "users basic information", :type => :feature do
   end
 
   it "shows" do
-    page.should have_content 'First Name'
-    page.should have_content 'Middle Name'
-    page.should have_content 'Last Name'
-    page.should have_content 'Gender'
-    page.should have_content 'Date of Birth'
-    page.should have_content 'Email'
-    page.should have_content 'Facebook'
-    page.should have_content 'LinkedIn'
+    expect(page).to have_content 'First Name'
+    expect(page).to have_content 'Middle Name'
+    expect(page).to have_content 'Last Name'
+    expect(page).to have_content 'Gender'
+    expect(page).to have_content 'Date of Birth'
+    expect(page).to have_content 'Email'
+    expect(page).to have_content 'Facebook'
+    expect(page).to have_content 'LinkedIn'
   end
 
   it "updates" do
-    page.should have_button 'Edit'
+    expect(page).to have_button 'Edit'
     click_on 'Edit'
     fill_in 'user_first_name', :with => 'New_name'
     click_on 'Save'
-    page.should have_content 'info saved'
-    page.should have_content 'New_name'
+    expect(page).to have_content 'info saved'
+    expect(page).to have_content 'New_name'
   end
 end

@@ -10,9 +10,9 @@ FactoryGirl.define do
     logo_url              "http://placehold.it/100x100&text=Logo"
     short_description     Faker::Company.catch_phrase
     company_url           Faker::Internet.url
-    campaign_title        "Campaign title #{Faker::Lorem.sentence}"
-    company_highlights    "Company highlights #{Faker::Lorem.sentence(20)}"
-    company_details       "Company details #{Faker::Lorem.sentence}"
+    campaign_title        Faker::Lorem.sentence
+    company_highlights    Faker::Lorem.sentence(20)
+    company_details       Faker::Lorem.sentence
     founded_on_year       5.years.ago.year
     ownership_structure   'Corporation'
     category_id           (Category.first.try(:id) || FactoryGirl.create(:category).id)

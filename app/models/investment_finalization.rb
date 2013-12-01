@@ -38,7 +38,6 @@ class InvestmentFinalization < ActiveRecord::Base
   def can_finalize?
     payment_information.try(:completed?) &&
         questionnaire.try(:completed?) &&
-        identity_verification.try(:completed?) &&
         contract_doc_group.try(:completed?) &&
         subscription_agreement.try(:completed?) &&
         irs_doc_group.try(:completed?)
