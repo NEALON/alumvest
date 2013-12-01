@@ -1,3 +1,5 @@
+%h3 Investor Signings
+
 - unless @investor_signings.blank?
 
   %table.table
@@ -24,4 +26,4 @@
             = link_to "Sign", s.envelope.get_recipient_view('owner'), :class => 'btn btn-default btn-xs'
 
 - else
-  %p You don't have any yet.
+  %p None.

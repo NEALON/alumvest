@@ -1,6 +1,6 @@
 Av::Application.routes.draw do
 
-  get "investor_dashboard/index"
+  get 'investor_dashboard/index'
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -12,15 +12,17 @@ Av::Application.routes.draw do
   get '/auth/failure', :to => 'sessions#failure'
   match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :delete
 
-  get '/admin_dashboard', :to => "admin_dashboard#index"
+  get '/admin_dashboard', :to => 'admin_dashboard#index'
   match '/admin_dashboard/approve_investor_signing', :to => 'admin_dashboard#approve_investor_signing', :via => :post
   match '/admin_dashboard/reject_investor_signing', :to => 'admin_dashboard#reject_investor_signing', :via => :post
 
-  get '/owner_dashboard', :to => "owner_dashboard#index"
+  get '/owner_dashboard', :to => 'owner_dashboard#index'
+  get '/investor_dashboard', :to => 'investor_dashboard#index'
 
-  get '/investor_dashboard', :to => "investor_dashboard#index"
+  get '/tester_dashboard', :to => 'tester_dashboard#index'
+  get '/tester_dashboard/reset_database', :to => 'tester_dashboard#reset_database', :via => :get
 
-  get "home/index"
+  get 'home/index'
 
   resources :sessions
   resources :identities
@@ -78,6 +80,7 @@ Av::Application.routes.draw do
         end
       end
     end
+
     resource :bancbox_investor do
       get :new_fund
       get :new_bank_account
@@ -88,7 +91,7 @@ Av::Application.routes.draw do
     resource :bancbox_identity_verification
   end
 
-  post "common/filepicker"
+  post 'common/filepicker'
 
-  root :to => "home#index"
+  root :to => 'home#index'
 end

@@ -1,0 +1,12 @@
+%h3 Campaigns
+
+- unless @campaigns.blank?
+  %ul
+    - @campaigns.each do |c|
+      %li
+        = "#{c.company.campaign_title} (#{c.status})"
+        = link_to "[edit]", campaign_company_path(c)
+        = link_to "[display]", display_campaign_company_path(c)
+
+- else
+  %p None.
