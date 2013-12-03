@@ -2,37 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$nav-tab-height: 37px;
+
 .nav-stacked {
   padding-right: 1em;
   border-right: 1px solid #f67564;
 }
 
 #title{
-	background-color: #415b76;
-	border-bottom: 1px solid #415b76;
-	box-shadow: 0 0 2px #415b76;
 	min-height: 100px;
 
 	h1{
-		color: white;
 		font-weight: bolder;
 	}
 }
 
 #information{
 	padding-top: 0;
-}
-
-#tabs{
-	border-bottom: 1px solid #dddddd;
-
-	li.active{
-		background-color: #e6e6e6;
-	}
-
-	a{
-		color: #555555;
-	}
 }
 
 #tabsContent .tab-pane .form-row{
@@ -62,38 +48,92 @@
 	}
 }
 
+#user-profile-nav{
+	border: none;
+
+	li{
+		width: 33%;
+		text-align: center;
+	}
+
+	li a{
+		background-color: #3887be;
+		border-radius: 0;
+		color: #ffffff;
+		height: $nav-tab-height;
+	}
+
+	li a:hover{
+		border: none;
+		background-color: #3bb2d0;
+		height: $nav-tab-height;
+	}
+
+	li.active a{
+		height: $nav-tab-height;
+		border: none;
+		background-color: #3bb2d0;
+	}
+}
+
+
+
 #sidebar{
 	padding-top: 25px;
 	padding-left: 0;
 	padding-right: 0;
 
+	ul{
+		border: none;
+	}
+
 	.nav-stacked li{
-		height: 49px;
+		height: $nav-tab-height;
 		text-transform: uppercase;
 	}
 
 	.nav-stacked li a{
-		color: #555555;
-		padding: 15px 15px;
+		display: block;
+		height: 100%;
+		width: 100%;
+		color: #ffffff;
 		text-align: right;
+		background-color: #3887be;
 	}
 
 	.nav-stacked li a:hover{
-		background-color: #95A5A6;
+		background-color: #3bb2d0;
 		color: #ffffff;
 	}
 
 	.nav-stacked li.active{
-		background-color: #7F8C8D;
-
-	}
-
-	.nav-stacked li.active a{
-		color: #ffffff;
+		a{
+			color: #ffffff;
+			background-color: #3bb2d0;
+		}
 	}
 }
 
 #sidebar-content{
 	padding-top: 25px;
 	padding-right: 0;
+
+	form{
+		input.btn{
+			display: block;
+			width: 195px;
+			height: 37px;
+		}
+	}
+
+	.form-row{
+		height: 37px;
+		width: 100%;
+		vertical-align: middle;
+		padding-top: 10px;
+
+		.form-label{
+			vertical-align: middle;
+		}
+	}
 }

@@ -68,11 +68,12 @@
     - if content_for? :sidebar_left
       .container
         .row
-          #sidebar.col-xs-12.col-md-3
-            = yield :sidebar_left
-          #sidebar-content.col-md-9.col-xs-12
-            = render 'layouts/flash', :flash => flash
-            = yield
+          .container
+            #sidebar.col-xs-12.col-md-3
+              = yield :sidebar_left
+            #sidebar-content.col-md-9.col-xs-12
+              = render 'layouts/flash', :flash => flash
+              = yield
     - elsif content_for? :sidebar_right
       .container
         .row
