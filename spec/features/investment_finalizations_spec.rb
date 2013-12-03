@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe "managing investment finalizations", :type => :feature do
 
   before :each do
-    @campaign = create_live_campaign
+    create_owner
+    @campaign = create_live_campaign(@user.owner)
     sign_up :investor
     @investor.update_attribute :accredited_investor_status, 'approved'
   end

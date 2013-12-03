@@ -30,6 +30,7 @@ end
 group :production do
   gem "rails_12factor", "~> 0.0"
   gem "exception_notification", "~> 4.0"
+  gem 'heroku-deflater'
 end
 
 gem "sass-rails", "~> 4.0"

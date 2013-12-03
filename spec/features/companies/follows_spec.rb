@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "following company", :type => :feature do
 
   before :each do
-    @campaign = create_live_campaign
+    create_owner
+    @campaign = create_live_campaign(@user.owner)
     sign_up :investor
   end
 

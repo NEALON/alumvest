@@ -11,19 +11,7 @@ include Features::FactoryHelpers
 
 Category.create(:name => 'A category')
 
-@identity = FactoryGirl.create(:identity,
-                               :last_name => 'Owner',
-                               :email => 'owner@alumvest.com')
-@user = FactoryGirl.create(:user,
-                           :first_name => 'Alumvest',
-                           :middle_name => 'Test',
-                           :last_name => 'Owner',
-                           :provider => 'identity',
-                           :email => 'owner@alumvest.com',
-                           :user_type => 'owner',
-                           :identities => [@identity],
-                           :uid => @identity.id)
-
+create_owner
 create_live_campaign(@user.owner)
 
 # sign_up :investor

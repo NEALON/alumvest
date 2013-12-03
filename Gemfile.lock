@@ -171,6 +171,8 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     hashie (2.0.5)
+    heroku-deflater (0.5.2)
+      rack (>= 1.4.5)
     hike (1.2.3)
     hpricot (0.8.6)
     html2haml (1.0.1)
@@ -360,6 +362,7 @@ DEPENDENCIES
   gibbon (~> 1.0)!
   haml-rails (~> 0.4)
   has_filepicker_image (~> 0.0)!
+  heroku-deflater
   html2haml (~> 1.0)
   httparty (~> 0.12)
   hub (~> 1.10)
