@@ -1,0 +1,1 @@
+#payment= render_cell 'workflow_step', :display, :label => "Finalize your payment information", :description => "Please verify your payment information.", :link => link_to("Start", edit_campaign_investment_finalization_payment_information_path(@campaign, @investment_finalization), :class => "btn btn-primary"), :status => @investment_finalization.payment_information.try(:status)

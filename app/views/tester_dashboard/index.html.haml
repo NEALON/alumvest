@@ -10,9 +10,13 @@
         - unless @test_users.blank?
           %p= "There are #{@test_users.count} test users in the system."
           - @test_users.each do |tu|
-            %p.col-md-offset-1= "User #{tu.email} is an #{tu.user_type}."
-            - if tu.is_owner? && tu.owner.campaign
-              Has a campaign
+            %p.col-md-offset-1= raw "User #{tu.email} is an <strong>#{tu.user_type}</strong>."
+            - if tu.is_owner? && (c = tu.owner.campaign)
+              %p.col-md-offset-2
+                Campaign:
+                = "#{c.company.campaign_title} (#{c.status})"
+                = link_to "[edit]", campaign_company_path(c)
+                = link_to "[display]", display_campaign_company_path(c)
         - else
           There are no test users in the database.
 

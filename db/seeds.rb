@@ -14,5 +14,4 @@ Category.create(:name => 'A category')
 create_owner
 create_live_campaign(@user.owner)
 
-# sign_up :investor
-# @investor.update_attribute :accredited_investor_status, 'approved'
+create_accredited_investor

@@ -16,6 +16,23 @@ module Features
                                  :uid => @identity.id)
     end
 
+    def create_accredited_investor
+      @identity = FactoryGirl.create(:identity,
+                                     :last_name => 'Investor',
+                                     :email => 'investor@alumvest.com')
+      @user = FactoryGirl.create(:user,
+                                 :first_name => 'Alumvest',
+                                 :middle_name => 'Test',
+                                 :last_name => 'Investor',
+                                 :provider => 'identity',
+                                 :email => 'investor@alumvest.com',
+                                 :user_type => 'investor',
+                                 :identities => [@identity],
+                                 :uid => @identity.id)
+      @user.investor.update_attribute :accredited_investor_status, 'approved'
+    end
+
+
     def create_live_campaign(owner)
       FactoryGirl.create(
           :campaign,
