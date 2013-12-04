@@ -1,19 +1,18 @@
 .container
-  = render 'campaigns/heading'
-  = render 'campaigns/navigation', :active => :invest
+  .row
+    .col-md-12
+      = form_for [@campaign, @investment_finalization, @questionnaire], :url => campaign_investment_finalization_questionnaire_path(@campaign, @investment_finalization), :html => {:class => "form-horizontal"} do |f|
 
-  = form_for [@campaign, @investment_finalization, @questionnaire], :url => campaign_investment_finalization_questionnaire_path(@campaign, @investment_finalization), :html => {:class => "form-horizontal"} do |f|
+        = render 'shared/errors', :entity => @company
+        = render_cell "tb/form/subhead", :display, :label => "Accredited Investor Questionnaire"
 
-    = render 'shared/errors', :entity => @company
-    = render_cell "tb/form/subhead", :display, :label => "Accredited Investor Questionnaire"
+        %fieldset
+          = f.hidden_field :investment_finalization_id
 
-    %fieldset
-      = f.hidden_field :investment_finalization_id
+          - with_options :form => f do |op|
+            = op.render_cell 'tb/form/select', :display, :field =>  :annual_income, :values => Questionnaire::ANNUAL_INCOMES
+            = op.render_cell 'tb/form/select', :display, :field =>  :year_of_income, :values => Questionnaire::INCOME_YEARS
+            = op.render_cell 'tb/form/select', :display, :field =>  :income_type, :values => Questionnaire::INCOME_TYPES
+            = op.render_cell 'tb/form/select', :display, :field =>  :net_worth, :values => Questionnaire::NET_WORTHS
 
-      - with_options :form => f do |op|
-        = op.render_cell 'tb/form/select', :display, :field =>  :annual_income, :values => Questionnaire::ANNUAL_INCOMES
-        = op.render_cell 'tb/form/select', :display, :field =>  :year_of_income, :values => Questionnaire::INCOME_YEARS
-        = op.render_cell 'tb/form/select', :display, :field =>  :income_type, :values => Questionnaire::INCOME_TYPES
-        = op.render_cell 'tb/form/select', :display, :field =>  :net_worth, :values => Questionnaire::NET_WORTHS
-
-      = render_cell 'tb/form/submit_button', :display
+          = render_cell 'tb/form/submit_button', :display

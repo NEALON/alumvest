@@ -46,7 +46,7 @@ gem "omniauth-facebook", "~> 1.4"
 gem "omniauth-linkedin", "~> 0.1"
 gem "haml-rails", "~> 0.4"
 gem "jquery-rails", "~> 3.0"
-gem "has_filepicker_image", "~> 0.0", {:git=>"git://github.com/interskh/has_filepicker_image.git", :branch=>'rails4'}
+gem "has_filepicker_image" #, "~> 0.0", {:git=>"git://github.com/interskh/has_filepicker_image.git", :branch=>'rails4'}
 gem "cells", "~> 3.9"
 gem "ckeditor_rails", "~> 4.2"
 gem "cocoon", "~> 1.2"

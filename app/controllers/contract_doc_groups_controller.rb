@@ -23,6 +23,7 @@ class ContractDocGroupsController < ApplicationController
     @contract_doc_group = @investment_finalization.contract_doc_group
     @investment_finalization.make_signings && @investment_finalization.reload if @investment_finalization.signings.blank?
     @signings = @investment_finalization.signings
+    render :layout => 'investment_finalizers'
   end
 end
 

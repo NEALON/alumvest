@@ -8,6 +8,7 @@ class QuestionnairesController < ApplicationController
       @investment_finalization.questionnaire = Questionnaire.create(:investment_finalization => @investment_finalization)
     end
     @questionnaire = @investment_finalization.questionnaire
+    render :layout => 'investment_finalizers'
   end
 
   def update

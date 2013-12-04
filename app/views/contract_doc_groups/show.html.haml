@@ -1,23 +1,22 @@
 .container
-  = render 'campaigns/heading'
-  = render 'campaigns/navigation', :active => :invest
-  %h3 Contract documents
+  .row
+    .col-md-12
 
-  %p
-    %table.table
-      %thead
-        %tr
-          %td
-            Document name
-          %td
-            Document status
-      - @signings.each do |signing|
-        %tbody
-          %tr
-            %td
-              = link_to_unless signing.status == 'completed', signing.document.name, signing.envelope.get_recipient_view('investor')
-            %td
-              = signing.status_for_end_user
+      %p
+        %table.table
+          %thead
+            %tr
+              %td
+                Document name
+              %td
+                Document status
+          - @signings.each do |signing|
+            %tbody
+              %tr
+                %td
+                  = link_to_unless signing.status == 'completed', signing.document.name, signing.envelope.get_recipient_view('investor')
+                %td
+                  = signing.status_for_end_user
 
--# %iframe.col-md-12{:src => @signing_url, :style => 'min-height: 500px'}
--#= link_to "Complete this item", campaign_investment_finalization_contract_doc_group_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-default'
+    -# %iframe.col-md-12{:src => @signing_url, :style => 'min-height: 500px'}
+    -#= link_to "Complete this item", campaign_investment_finalization_contract_doc_group_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-default'

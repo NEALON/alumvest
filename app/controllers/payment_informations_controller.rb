@@ -8,6 +8,7 @@ class PaymentInformationsController < ApplicationController
       @investment_finalization.payment_information = PaymentInformation.create(:investment_finalization => @investment_finalization)
     end
     @payment_information = @investment_finalization.payment_information
+    render :layout => 'investment_finalizers'
   end
 
   def update

@@ -21,6 +21,7 @@ class SubscriptionAgreementsController < ApplicationController
     @company = @campaign.company
     @investment_finalization = InvestmentFinalization.find(params[:investment_finalization_id])
     @subscription_agreement = @investment_finalization.subscription_agreement
+    render :layout => 'investment_finalizers'
   end
 end
 
