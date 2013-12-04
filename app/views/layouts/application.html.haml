@@ -61,7 +61,6 @@
               %li= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
   #content
     = yield :header_1 if content_for? :header_1
-
     = yield :breadcrumbs if content_for? :breadcrumbs
     = yield :sub_navigation if content_for? :sub_navigation
 
