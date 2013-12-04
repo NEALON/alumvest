@@ -1,6 +1,8 @@
 class InvestmentTerm < ActiveRecord::Base
 
   attr_accessible :fundraising_amount,
+                  :min_investment,
+                  :max_investment,
                   :campaign_length,
                   :equity_type,
                   :funds_retained,
@@ -34,6 +36,8 @@ class InvestmentTerm < ActiveRecord::Base
 
     state :ready_for_review do
       [:fundraising_amount,
+       :min_investment,
+       :max_investment,
        :campaign_length,
        :equity_type,
        :funds_retained,
@@ -45,7 +49,7 @@ class InvestmentTerm < ActiveRecord::Base
        :term_sheet_url].each do |attr|
         validates attr, :presence => true
       end
-      validates_numericality_of [:fundraising_amount, :campaign_length]
+      validates_numericality_of [:fundraising_amount, :min_investment, :max_investment, :campaign_length]
     end
   end
 end

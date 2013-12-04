@@ -113,6 +113,8 @@ module Features
       investment_term = FactoryGirl.build(:investment_term, :campaign => campaign)
       'investment_term'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
+        fill_in "#{form}_min_investment", :with => 100
+        fill_in "#{form}_max_investment", :with => 10000
         select '90', :from => "#{form}_campaign_length"
         select 'Convertible Note', :from => "#{form}_equity_type"
         select 'All-or-nothing', :from => "#{form}_funds_retained"

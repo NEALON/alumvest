@@ -9,9 +9,6 @@ end
 
 include Features::FactoryHelpers
 
-Category.create(:name => 'A category')
-
 create_owner
 create_live_campaign(@user.owner)
-
 create_accredited_investor

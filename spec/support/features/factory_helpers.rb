@@ -31,6 +31,7 @@ module Features
                                  :uid => @identity.id,
                                  :profile_complete => true)
       @user.investor.update_attribute :accredited_investor_status, 'approved'
+      @user
     end
 
 

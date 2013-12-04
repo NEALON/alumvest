@@ -6,6 +6,8 @@
     = f.hidden_field :campaign_id
     - with_options :form => f do |op|
       = op.render_cell 'tb/form/text', :display, :field => :fundraising_amount
+      = op.render_cell 'tb/form/text', :display, :field => :min_investment
+      = op.render_cell 'tb/form/text', :display, :field => :max_investment
       = op.render_cell 'tb/form/select', :display, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
       = op.render_cell 'tb/form/select', :display, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity', 'Convertible Equity']
       = op.render_cell 'tb/form/select', :display, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
