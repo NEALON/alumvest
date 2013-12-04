@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-12
+    .col-md-8
 
       = form_for [@campaign, @investment_finalization, @payment_information], :url => campaign_investment_finalization_payment_information_path(@campaign, @investment_finalization), :html => {:class => "form-horizontal"} do |f|
 
@@ -11,3 +11,6 @@
           = f.hidden_field :investment_finalization_id
           = render_cell 'tb/form/text', :display, :form => f, :field => :amount
           = render_cell 'tb/form/submit_button', :display
+
+    .col-md-4
+      = render :partial => 'companies/raise_summary', :locals => {:just_data => true}

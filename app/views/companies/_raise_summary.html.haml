@@ -34,38 +34,41 @@
     = @campaign.investors.count
   %p.progress
     %p.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
-  %p
-    %a.btn.btn-primary.invest-now
-      Invest Now
+  - unless just_data
+    %p
+      %a.btn.btn-primary.invest-now
+        Invest Now
 
-%div.company-follow.company-block
-  %p
-    .followers
-      Followers:
-      - if @campaign.follows.count == 0
-        0
-      - else
-      - @campaign.follows.first(10).each do |f|
-        = link_to user_path f.user do
-          = image_tag f.user.avatar_small
-      - if @campaign.follows.count > 10
-        and #{@campaign.follows.count - 10} more
-    - if current_user
-      - if current_user.following?(@campaign)
-        - follow = Follow.new(:campaign => @campaign, :user => current_user)
-        = form_for follow, :url => campaign_unfollow_path do |f|
-          %fieldset
-            = f.hidden_field :campaign_id
-            = f.hidden_field :user_id
-            %a.btn.btn-danger{:name => 'commit', :type => 'submit'}
-              %span.glyphicon.glyphicon-minus
-              Unfollow this Campaign
-      - else
-        - follow = Follow.new(:campaign => @campaign, :user => current_user)
-        = form_for follow, :url => campaign_follow_path do |f|
-          %fieldset
-            = f.hidden_field :campaign_id
-            = f.hidden_field :user_id
-            %a#follow-link.btn.btn-success{:name => 'commit', :type => 'submit'}
-              %span.glyphicon.glyphicon-plus
-              Follow this Campaign
+- unless just_data
+
+  %div.company-follow.company-block
+    %p
+      .followers
+        Followers:
+        - if @campaign.follows.count == 0
+          0
+        - else
+        - @campaign.follows.first(10).each do |f|
+          = link_to user_path f.user do
+            = image_tag f.user.avatar_small
+        - if @campaign.follows.count > 10
+          and #{@campaign.follows.count - 10} more
+      - if current_user
+        - if current_user.following?(@campaign)
+          - follow = Follow.new(:campaign => @campaign, :user => current_user)
+          = form_for follow, :url => campaign_unfollow_path do |f|
+            %fieldset
+              = f.hidden_field :campaign_id
+              = f.hidden_field :user_id
+              %a.btn.btn-danger{:name => 'commit', :type => 'submit'}
+                %span.glyphicon.glyphicon-minus
+                Unfollow this Campaign
+        - else
+          - follow = Follow.new(:campaign => @campaign, :user => current_user)
+          = form_for follow, :url => campaign_follow_path do |f|
+            %fieldset
+              = f.hidden_field :campaign_id
+              = f.hidden_field :user_id
+              %a#follow-link.btn.btn-success{:name => 'commit', :type => 'submit'}
+                %span.glyphicon.glyphicon-plus
+                Follow this Campaign

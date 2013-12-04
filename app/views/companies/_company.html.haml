@@ -21,7 +21,7 @@
 
   -# right sidebar
   .col-md-4
-    = render :partial => 'raise_summary'
+    = render :partial => 'raise_summary', :locals => {:just_data => false}
 
   -#:javascript
     $('document').ready(function(){
