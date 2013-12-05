@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
   has_one :bancbox_issuer, :class_name => 'Bancbox::Issuer'
   has_one :bancbox_identity_verification, :class_name => 'Bancbox::IdentityVerification'
 
+  def available_funds
+    unless banking_account
+      0
+    else
+      banking_account.balance # TODO: but this fails to take into account other pending transfers for other pending investments?
+    end
+  end
+
   has_one :owner
   accepts_nested_attributes_for :investor, :owner
   has_many :follows, dependent: :destroy
