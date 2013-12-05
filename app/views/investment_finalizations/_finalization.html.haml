@@ -6,7 +6,7 @@
     - if @investment_finalization.can_finalize?
       %p= link_to "Submit this investment for review", campaign_investment_finalization_submit_for_review_path(@campaign, @investment_finalization), :method => :put, :class => 'btn btn-success btn-large'
 
-    = render :partial => 'payment'
+    = render :partial => 'funding'
     = render :partial => 'questionnaire'
     = render :partial => 'contracts'
     = render :partial => 'subscription'

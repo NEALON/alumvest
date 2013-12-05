@@ -4,7 +4,7 @@ class InvestmentFinalization < ActiveRecord::Base
   belongs_to :campaign
   belongs_to :investor
 
-  has_one :payment_information
+  has_one :funding_level
   has_one :questionnaire
   has_one :contract_doc_group
   has_one :subscription_agreement
@@ -36,7 +36,7 @@ class InvestmentFinalization < ActiveRecord::Base
   end
 
   def can_finalize?
-    payment_information.try(:completed?) &&
+    funding_level.try(:completed?) &&
         questionnaire.try(:completed?) &&
         contract_doc_group.try(:completed?) &&
         subscription_agreement.try(:completed?) &&
@@ -48,6 +48,6 @@ class InvestmentFinalization < ActiveRecord::Base
   end
 
   def amount
-    payment_information.try(:amount)
+    funding_level.try(:amount)
   end
 end

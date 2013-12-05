@@ -51,7 +51,7 @@ Av::Application.routes.draw do
     end
 
     resources :investment_finalizations do
-      resource :payment_information
+      resource :funding_level
       resource :questionnaire
       resource :identity_verification
       resource :contract_doc_group

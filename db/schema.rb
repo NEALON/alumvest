@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204161016) do
+ActiveRecord::Schema.define(version: 20131205193202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -290,6 +290,14 @@ ActiveRecord::Schema.define(version: 20131204161016) do
   add_index "follows", ["user_id", "campaign_id"], name: "index_follows_on_user_id_and_campaign_id", unique: true, using: :btree
   add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
+  create_table "funding_levels", force: true do |t|
+    t.string   "status"
+    t.integer  "amount"
+    t.integer  "investment_finalization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "identities", force: true do |t|
     t.string   "first_name"
     t.string   "email"
@@ -382,14 +390,6 @@ ActiveRecord::Schema.define(version: 20131204161016) do
   end
 
   add_index "owners", ["user_id"], name: "index_owners_on_user_id", using: :btree
-
-  create_table "payment_informations", force: true do |t|
-    t.string   "status"
-    t.integer  "amount"
-    t.integer  "investment_finalization_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "people", force: true do |t|
     t.string   "type"

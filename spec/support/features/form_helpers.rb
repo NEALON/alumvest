@@ -192,13 +192,12 @@ module Features
       screenshot_and_save_page if $do_screenshots
     end
 
-    def fill_in_payment_information
+    def fill_in_funding_level
       screenshot_and_save_page if $do_screenshots
-      fill_in "payment_information_amount", :with => 1000
+      fill_in "funding_level_amount", :with => 1000
       click_button 'Save'
       screenshot_and_save_page if $do_screenshots
     end
-
   end
 end
 

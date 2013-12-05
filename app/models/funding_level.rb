@@ -1,4 +1,4 @@
-class PaymentInformation < ActiveRecord::Base
+class FundingLevel < ActiveRecord::Base
   include FinalizationStep
   attr_accessible :amount
 end
