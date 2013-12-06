@@ -3,7 +3,7 @@ class CreateIdentityVerifications < ActiveRecord::Migration
     create_table :identity_verifications do |t|
       t.string :status
 
-      t.references :investment_finalization
+      t.references :investment
       t.timestamps
     end
   end

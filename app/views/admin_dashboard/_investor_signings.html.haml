@@ -12,12 +12,12 @@
         %td
     %tbody
       - @investor_signings.each do |s|
-        - campaign = s.investment_finalization.campaign
+        - campaign = s.investment.campaign
         %tr
           %td
             = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
           %td
-            = link_to s.investment_finalization.investor.user.name, '#'
+            = link_to s.investment.investor.user.name, '#'
           %td
             = link_to s.document.name, envelope_signed_document_path(s.envelope), :target => "_blank"
           %td

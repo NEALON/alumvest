@@ -1,0 +1,1 @@
+#contracts= render_cell 'workflow_step', :display, :label => "Sign contracts", :description => "Sign all of the required contracts.", :link => link_to("Start", new_campaign_investment_contract_doc_group_path(@campaign, @investment), :class => "btn btn-primary"), :status => @investment.contract_doc_group.try(:status)

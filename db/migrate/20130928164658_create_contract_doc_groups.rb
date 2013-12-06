@@ -3,7 +3,7 @@ class CreateContractDocGroups < ActiveRecord::Migration
     create_table :contract_doc_groups do |t|
       t.string :status
 
-      t.references :investment_finalization
+      t.references :investment
       t.timestamps
     end
   end

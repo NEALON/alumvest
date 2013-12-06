@@ -3,7 +3,7 @@ class CreateIrsDocGroups < ActiveRecord::Migration
     create_table :irs_doc_groups do |t|
       t.string :status
 
-      t.references :investment_finalization
+      t.references :investment
       t.timestamps
     end
   end

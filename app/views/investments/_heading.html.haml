@@ -12,4 +12,4 @@
       .col-md-12
         %ol.breadcrumb
           %li= link_to(@campaign.company.campaign_title, display_campaign_company_path(@campaign))
-          %li= link_to('Investment Finalization', campaign_investment_finalization_path(@campaign, @investment_finalization))
+          %li= link_to('Investment Finalization', campaign_investment_path(@campaign, @investment))

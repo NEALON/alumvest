@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :investment_finalization do
+  factory :investment do
     status "MyString"
   end
 end

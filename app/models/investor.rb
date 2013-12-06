@@ -18,5 +18,5 @@ class Investor < ActiveRecord::Base
                   :user_id,
                   :user
 
-  has_many :investment_finalizations
+  has_many :investments
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205193202) do
+ActiveRecord::Schema.define(version: 20131205213356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,7 +223,7 @@ ActiveRecord::Schema.define(version: 20131205193202) do
 
   create_table "contract_doc_groups", force: true do |t|
     t.string   "status"
-    t.integer  "investment_finalization_id"
+    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -293,7 +293,7 @@ ActiveRecord::Schema.define(version: 20131205193202) do
   create_table "funding_levels", force: true do |t|
     t.string   "status"
     t.integer  "amount"
-    t.integer  "investment_finalization_id"
+    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -307,14 +307,6 @@ ActiveRecord::Schema.define(version: 20131205193202) do
     t.datetime "updated_at"
     t.string   "last_name"
     t.string   "description",     default: "guest"
-  end
-
-  create_table "investment_finalizations", force: true do |t|
-    t.string   "status"
-    t.integer  "campaign_id"
-    t.integer  "investor_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "investment_terms", force: true do |t|
@@ -334,6 +326,14 @@ ActiveRecord::Schema.define(version: 20131205193202) do
     t.integer  "campaign_id"
     t.decimal  "min_investment"
     t.decimal  "max_investment"
+  end
+
+  create_table "investments", force: true do |t|
+    t.string   "status"
+    t.integer  "campaign_id"
+    t.integer  "investor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "investors", force: true do |t|
@@ -361,7 +361,7 @@ ActiveRecord::Schema.define(version: 20131205193202) do
 
   create_table "irs_doc_groups", force: true do |t|
     t.string   "status"
-    t.integer  "investment_finalization_id"
+    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -414,7 +414,7 @@ ActiveRecord::Schema.define(version: 20131205193202) do
     t.string   "year_of_income"
     t.string   "income_type"
     t.string   "net_worth"
-    t.integer  "investment_finalization_id"
+    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -442,7 +442,7 @@ ActiveRecord::Schema.define(version: 20131205193202) do
 
   create_table "subscription_agreements", force: true do |t|
     t.string   "status"
-    t.integer  "investment_finalization_id"
+    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

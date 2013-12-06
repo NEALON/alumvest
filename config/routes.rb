@@ -50,7 +50,7 @@ Av::Application.routes.draw do
       get :display
     end
 
-    resources :investment_finalizations do
+    resources :investments do
       resource :funding_level
       resource :questionnaire
       resource :identity_verification

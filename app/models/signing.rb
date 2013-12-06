@@ -1,7 +1,7 @@
 class Signing < ActiveRecord::Base
-  attr_accessible :status, :investment_finalization, :document
+  attr_accessible :status, :investment, :document
 
-  belongs_to :investment_finalization
+  belongs_to :investment
   belongs_to :document
 
   has_one :envelope
@@ -58,7 +58,7 @@ class Signing < ActiveRecord::Base
   end
 
   def make_envelope
-    document.template.create_envelope(self, investment_finalization.investor)
+    document.template.create_envelope(self, investment.investor)
   end
 
   def post_new_status(status)

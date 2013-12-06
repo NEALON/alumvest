@@ -174,18 +174,6 @@ module Features
       screenshot_and_save_page if $do_screenshots
     end
 
-    def fill_in_investment
-      # TODO: probably obsolete, given investment_finalizations
-
-      investment = FactoryGirl.build(:investment)
-
-      fill_in "investment_amount", :with => investment.amount
-
-      screenshot_and_save_page if $do_screenshots
-      click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
-    end
-
     def fill_in_questionnaire
       screenshot_and_save_page if $do_screenshots
       click_button 'Save'

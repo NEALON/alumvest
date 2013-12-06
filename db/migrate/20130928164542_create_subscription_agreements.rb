@@ -3,7 +3,7 @@ class CreateSubscriptionAgreements < ActiveRecord::Migration
     create_table :subscription_agreements do |t|
       t.string :status
 
-      t.references :investment_finalization
+      t.references :investment
       t.timestamps
     end
   end

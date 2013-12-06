@@ -9,11 +9,11 @@ describe 'managing investment finalizations', :type => :feature do
     @investor.update_attribute :accredited_investor_status, 'approved'
   end
 
-  it 'by creating an investment finalization' do
+  it 'by creating an investment' do
     visit display_campaign_company_path(@campaign)
     click_button 'Begin Investment Process'
 
-    within('funding') {click_link 'Start'}
+    within('#funding') {click_link 'Start'}
     fill_in_funding_level
     expect(page).to have_content 'Item completed.'
     within('#funding') {expect(page).to have_content('Completed')}

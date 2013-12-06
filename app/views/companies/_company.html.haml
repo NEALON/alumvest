@@ -10,7 +10,7 @@
         = link_to('Yes, I want to sign up!', '#signup-modal', :class => '', 'data-toggle' => 'modal')
       - else
         = link_to('Yes, I want to become an accredited investor!', user_path(current_user.id))
-  = hidden_field_tag :invest_url, new_campaign_investment_finalization_path(@company.campaign),
+  = hidden_field_tag :invest_url, new_campaign_investment_path(@company.campaign),
     id: "invest-url"
   -# main (left)
   .col-md-8

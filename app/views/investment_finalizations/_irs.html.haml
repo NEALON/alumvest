@@ -1,1 +1,0 @@
-#irs= render_cell 'workflow_step', :display, :label => "Submit IRS forms", :description => "Send required tax documents.", :link => link_to("Start", new_campaign_investment_finalization_irs_doc_group_path(@campaign, @investment_finalization), :class => "btn btn-primary"), :status => @investment_finalization.irs_doc_group.try(:status)

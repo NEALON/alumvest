@@ -4,7 +4,7 @@ class CreatePaymentInformations < ActiveRecord::Migration
       t.string :status
       t.integer :amount
 
-      t.references :investment_finalization
+      t.references :investment
       t.timestamps
     end
   end

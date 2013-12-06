@@ -1,4 +1,4 @@
-class InvestmentFinalization < ActiveRecord::Base
+class Investment < ActiveRecord::Base
   attr_accessible :status, :campaign, :investor
 
   belongs_to :campaign
@@ -20,7 +20,7 @@ class InvestmentFinalization < ActiveRecord::Base
       collection.where(:signature_required => true).each do |doc|
         doc.template.create_envelope(
             Signing.create(
-                :investment_finalization => self,
+                :investment => self,
                 :document => doc),
             {:name => investor.user.name,
             :email => investor.user.email})

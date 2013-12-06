@@ -1,13 +1,13 @@
 .container
   .row
     .col-md-8
-      = form_for [@campaign, @investment_finalization, @funding_level], :url => campaign_investment_finalization_funding_level_path(@campaign, @investment_finalization), :html => {:class => "form-horizontal"} do |f|
+      = form_for [@campaign, @investment, @funding_level], :url => campaign_investment_funding_level_path(@campaign, @investment), :html => {:class => "form-horizontal"} do |f|
 
         = render 'shared/errors', :entity => @company
         = render_cell "tb/form/subhead", :display, :label => "Funding Level"
 
         %fieldset
-          = f.hidden_field :investment_finalization_id
+          = f.hidden_field :investment_id
           = render_cell 'tb/form/text', :display, :form => f, :field => :amount
           = render_cell 'tb/form/submit_button', :display
 

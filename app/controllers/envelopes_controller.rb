@@ -9,11 +9,11 @@ class EnvelopesController < ApplicationController
               :status => params[:event],
               :status_date_time => Time.now)
 
-      finalization = envelope.signing.investment_finalization
+      investment = envelope.signing.investment
 
-      redirect_to new_campaign_investment_finalization_contract_doc_group_path(
-                      finalization.campaign,
-                      finalization),
+      redirect_to new_campaign_investment_contract_doc_group_path(
+                      investment.campaign,
+                      investment),
                   :flash => {
                       :success => "Document signing status has been updated."}
     else

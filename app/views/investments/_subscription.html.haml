@@ -1,0 +1,1 @@
+#subscription= render_cell 'workflow_step', :display, :label => "Confirm your subscription agreement", :description => "Sign up for your subscription agreement.", :link => link_to("Start", new_campaign_investment_subscription_agreement_path(@campaign, @investment), :class => "btn btn-primary"), :status => @investment.subscription_agreement.try(:status)

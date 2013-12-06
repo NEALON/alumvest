@@ -149,7 +149,7 @@ $color-white: #ffffff;
   background-color: $company-block-background-color;
 }
 
-#investment-finalization-header{
+#investment-header{
   a.btn{
     display: block;
     margin: 20px auto 0;
@@ -580,7 +580,7 @@ $color-white: #ffffff;
   padding-top: 15px;
 }
 
-// v2 for investment-finalization
+// v2 for investment
 .thank-you{
   display: block;
   color: $color-blue;
@@ -589,7 +589,7 @@ $color-white: #ffffff;
   margin: 0 0 10px;
 }
 
-#investment-finalization-body{
+#investment-body{
   padding: 20px 0 20px;
   table{
     background-color: $company-block-background-color;
