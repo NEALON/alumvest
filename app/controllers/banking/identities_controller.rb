@@ -13,10 +13,10 @@ class Banking::IdentitiesController < ApplicationController
     @identity = @banking_account.bancbox_identity_verification
     if params[:verified] == 'true'
       @identity.verify!
-      redirect_to user_banking_account_path(@user), :flash => {:success => 'You identity was verified.'}
+      redirect_to new_user_banking_account_bancbox_account_path(@user), :flash => {:success => 'Your identity was verified.'}
     else
       @identity.reject!
-      redirect_to user_banking_account_path(@user), :flash => {:danger => 'You identity could not be verified.'}
+      redirect_to user_banking_identity_path(@user), :flash => {:danger => 'Your identity could not be verified.'}
     end
   end
 end

@@ -5,7 +5,6 @@ describe Bancbox::Investor do
     @user = FactoryGirl.create(:user)
     @investor = FactoryGirl.create(:bancbox_investor)
     @investor.user = @user
-    #puts @investor.to_json
     @investor.should be_valid
     @investor.submit!
   end

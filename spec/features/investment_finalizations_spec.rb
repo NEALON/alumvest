@@ -13,35 +13,32 @@ describe 'managing investment finalizations', :type => :feature do
     visit display_campaign_company_path(@campaign)
     click_button 'Begin Investment Process'
 
-    within('#funding') {click_link 'Start'}
+    within('#funding') { click_link 'Start' }
     fill_in_funding_level
     expect(page).to have_content 'Item completed.'
-    within('#funding') {expect(page).to have_content('Completed')}
+    within('#funding') { expect(page).to have_content('Completed') }
 
-    within('#questionnaire') {click_link 'Start'}
+    within('#questionnaire') { click_link 'Start' }
     fill_in_questionnaire
     expect(page).to have_content 'Item completed.'
-    within('#questionnaire') {expect(page).to have_content('Completed')}
+    within('#questionnaire') { expect(page).to have_content('Completed') }
 
     # within('#contracts') {click_link 'Start'}
-    # screenshot_and_save_page if $do_screenshots
-    # click_link 'Complete this item'
+    #    # click_link 'Complete this item'
     # expect(page).to have_content 'Item completed.'
     # within('#contracts') {expect(page).to have_content('Completed')}
-    # screenshot_and_save_page if $do_screenshots
-
-    within('#subscription') {click_link 'Start'}
+    #
+    within('#subscription') { click_link 'Start' }
     click_link 'Complete this item'
     expect(page).to have_content 'Item completed.'
-    within('#subscription') {expect(page).to have_content('Completed')}
+    within('#subscription') { expect(page).to have_content('Completed') }
 
-    within('#irs') {click_link 'Start'}
+    within('#irs') { click_link 'Start' }
     click_link 'Complete this item'
     expect(page).to have_content 'Item completed.'
-    within('#irs') {expect(page).to have_content('Completed')}
+    within('#irs') { expect(page).to have_content('Completed') }
 
     # click_link 'Submit this investment for review'
     # expect(page).to have_content 'Thank you for your investment!'
-    # screenshot_and_save_page if $do_screenshots
   end
 end

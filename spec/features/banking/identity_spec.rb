@@ -14,17 +14,17 @@ describe 'users banking identity', :type => :feature do
 
   it 'verifies' do
     click_on 'Verify your identity'
-    expect(page).to have_content('You identity was verified.')
+    expect(page).to have_content('Your identity was verified.')
   end
 
   it 'fails' do
     click_on 'Fail identity verification'
-    expect(page).to have_content('You identity could not be verified.')
+    expect(page).to have_content('Your identity could not be verified.')
   end
 
   it 'verifies after failure' do
     click_on 'Fail identity verification'
     click_on 'Verify your identity'
-    expect(page).to have_content('You identity was verified.')
+    expect(page).to have_content('Your identity was verified.')
   end
 end

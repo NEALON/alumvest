@@ -1,5 +1,11 @@
 class Banking::Bancbox::AccountsController < ApplicationController
 
+  def new
+    @user = User.find_by_id(params[:user_id])
+    @banking_account = @user.banking_account
+    @bancbox_account = Bancbox::Account.create(:banking_account => @banking_account)
+  end
+
   def update
     @user = User.find_by_id(params[:user_id])
     @banking_account = @user.banking_account

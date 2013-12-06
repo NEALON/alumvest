@@ -5,25 +5,35 @@ module Features
       page.driver.browser.execute_script("CKEDITOR.instances['#{item}'].setData('#{value}');")
     end
 
-    def fill_in_user_basic_info(
-        first_name = Faker::Name.first_name,
-            middle_name = Faker::Name.first_name,
-            last_name = Faker::Name.last_name,
-            degree = "Undergraduate",
-            school = Faker::Name.first_name
-    )
+    def fill_in_user_basic_info
       'user'.tap do |form|
-        fill_in "#{form}_first_name", :with => first_name
-        fill_in "#{form}_middle_name", :with => middle_name
-        fill_in "#{form}_last_name", :with => last_name
+        fill_in "#{form}_first_name", :with => Faker::Name.first_name
+        fill_in "#{form}_middle_name", :with => Faker::Name.first_name
+        fill_in "#{form}_last_name", :with => Faker::Name.last_name
+        choose 'Male'#, :from => "#{form}_gender"
+        select '1967', :from => "#{form}_date_of_birth_1i"
+        select 'January', :from => "#{form}_date_of_birth_2i"
+        select '1', :from => "#{form}_date_of_birth_3i"
+
+        fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+        fill_in "#{form}_mobile_phone", :with => Faker::Number.number(10)
+        fill_in "#{form}_home_phone", :with => Faker::Number.number(10)
+        fill_in "#{form}_address_1", :with => Faker::Address.street_address
+        fill_in "#{form}_address_2", :with => Faker::Address.secondary_address
+        fill_in "#{form}_city", :with => Faker::Address.city
+        fill_in "#{form}_state", :with => Faker::Address.state_abbr
+        fill_in "#{form}_zipcode", :with => Faker::Address.zip_code
+        fill_in "#{form}_email", :with => Faker::Internet.email
+        fill_in "#{form}_facebook", :with => Faker::Internet.user_name
+        fill_in "#{form}_linkedin", :with => Faker::Internet.user_name
+        fill_in "#{form}_personal_statement", :with => Faker::Lorem.sentence(15)
+
         click_link "Add Education"
-        all(:css, "#educations input[id^='user_educations'][id$='_school']").last.set(school)
+        all(:css, "#educations input[id^='user_educations'][id$='_school']").last.set(Faker::Name.first_name)
         degree_select = all(:css, "#educations select[id^='user_educations'][id$='_degree']").last
-        degree_select.select degree
+        degree_select.select "Undergraduate"
       end
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_user_advanced_info(
@@ -47,9 +57,7 @@ module Features
         fill_in "#{form}_zipcode", :with => zip_code
         fill_in "#{form}_personal_statement", :with => ps
       end
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_user_owner_profile
@@ -61,9 +69,7 @@ module Features
         fill_in "#{form}_owner_attributes_expertise", :with => Faker::Lorem.sentence(10)
         fill_in "#{form}_owner_attributes_personal_message", :with => Faker::Lorem.sentence(10)
       end
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_user_investor_profile
@@ -75,9 +81,7 @@ module Features
         fill_in "#{form}_expertise", :with => Faker::Lorem.sentence(10)
         fill_in "#{form}_personal_message", :with => Faker::Lorem.sentence(10)
       end
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_company(campaign)
@@ -104,9 +108,7 @@ module Features
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
       end
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_investment_term(campaign)
@@ -129,9 +131,7 @@ module Features
         # fill_in "#{form}_subscription_docs_attributes_0_name", :with => investment_term.subscription_docs.first.name
         # fill_in "#{form}_other_docs_attributes_0_name", :with => investment_term.subscription_docs.first.name
       end
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_team(campaign)
@@ -144,9 +144,7 @@ module Features
       end
       fill_in "team_team_members_attributes_0_introduction", :with => team.team_members.first.introduction
 
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_update(company)
@@ -157,9 +155,7 @@ module Features
       choose update.visibility
       fill_in "update_video_url", :with => update.video_url
 
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_job(company)
@@ -169,22 +165,16 @@ module Features
       fill_in "job_description", :with => job.description
       fill_in "job_contact", :with => job.contact
 
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_questionnaire
-      screenshot_and_save_page if $do_screenshots
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
 
     def fill_in_funding_level
-      screenshot_and_save_page if $do_screenshots
       fill_in "funding_level_amount", :with => 1000
       click_button 'Save'
-      screenshot_and_save_page if $do_screenshots
     end
   end
 end

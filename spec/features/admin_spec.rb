@@ -10,7 +10,5 @@ describe "admin", :type => :feature do
 
   it "should be an admin" do
     expect(User.last.is_admin?).to be_true
-
-    # screenshot_and_save_page if $do_screenshots
   end
 end

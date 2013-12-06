@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth,
                   :email, :facebook, :linkedin, :profile_complete, :user_type, :avatar_url
   attr_accessible :investor_attributes, :owner_attributes, :educations_attributes
+  attr_accessible :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement, :ssn
 
   has_filepicker_image :avatar, styles: {medium: [300, 300], thumb: [128, 128]}
 
   has_many :identities
-  has_one :demographic
   has_one :investor
 
   has_one :banking_account, :class_name => 'Banking::Account'

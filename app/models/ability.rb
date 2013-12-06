@@ -39,7 +39,6 @@ class Ability
 
     unless user.nil?
       can :manage, User
-      can :manage, Demographic
 
       # owner
       if user.is_owner?

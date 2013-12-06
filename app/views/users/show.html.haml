@@ -9,9 +9,18 @@
     = render "shared/property_row", :header => "Last Name", :value => @user.last_name
     = render "shared/property_row", :header => "Gender", :value => @user.gender
     = render "shared/property_row", :header => "Date of Birth", :value => @user.date_of_birth
+    = render "shared/property_row", :header => "SSN", :value => @user.ssn
+    = render "shared/property_row", :header => "Mobile Phone", :value => @user.mobile_phone
+    = render "shared/property_row", :header => "Home Phone", :value => @user.home_phone
+    = render "shared/property_row", :header => "Address 1", :value => @user.address_1
+    = render "shared/property_row", :header => "Address 2", :value => @user.address_2
+    = render "shared/property_row", :header => "City", :value => @user.city
+    = render "shared/property_row", :header => "State", :value => @user.state
+    = render "shared/property_row", :header => "Zip", :value => @user.zipcode
     = render "shared/property_row", :header => "Email", :value => @user.email
     = render "shared/property_row", :header => "Facebook", :value => @user.facebook
     = render "shared/property_row", :header => "LinkedIn", :value => @user.linkedin
+    = render "shared/property_row", :header => "Personal Statement", :value => (raw @user.personal_statement)
 
 - if current_user && current_user == @user && current_user.user_type_undefined?
   #user-type-modal.modal.fade

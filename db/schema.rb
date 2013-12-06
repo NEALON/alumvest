@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205213356) do
+ActiveRecord::Schema.define(version: 20131206190956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -226,18 +226,6 @@ ActiveRecord::Schema.define(version: 20131205213356) do
     t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "demographics", force: true do |t|
-    t.string  "mobile_phone"
-    t.string  "home_phone"
-    t.string  "address_1"
-    t.string  "address_2"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zipcode"
-    t.text    "personal_statement"
-    t.integer "user_id"
   end
 
   create_table "documents", force: true do |t|
@@ -486,9 +474,18 @@ ActiveRecord::Schema.define(version: 20131205213356) do
     t.string   "email"
     t.string   "facebook"
     t.string   "linkedin"
-    t.boolean  "profile_complete", default: false
-    t.string   "user_type",        default: "guest"
+    t.boolean  "profile_complete",   default: false
+    t.string   "user_type",          default: "guest"
     t.string   "avatar_url"
+    t.string   "ssn"
+    t.string   "mobile_phone"
+    t.string   "home_phone"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.text     "personal_statement"
   end
 
   create_table "versions", force: true do |t|
