@@ -20,7 +20,7 @@ class Bancbox::Issuer < Bancbox::PersonBase
     end
   end
 
-  def submit!
+  def submit!(bank_account)
     super do |common_options|
       options = {
         :company_name => self.company_name,

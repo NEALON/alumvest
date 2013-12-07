@@ -6,7 +6,7 @@ class Bancbox::Investor < Bancbox::PersonBase
 
   belongs_to :user # or maybe :investor
 
-  def submit!
+  def submit!(bank_account)
     super do |options|
       next BancBoxCrowd.create_investor options
     end
