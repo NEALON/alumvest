@@ -4,6 +4,8 @@
 #information
   .container
     = form_for @bancbox_issuer, :url => user_bancbox_issuer_path(@user), :html => {:class => "form-horizontal"} do |f|
+      = render 'shared/errors', :entity => @bancbox_issuer
+
       %fieldset
         = f.hidden_field :user_id
 

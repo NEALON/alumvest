@@ -27,7 +27,6 @@ describe "managing campaign teams", :type => :feature do
   it "submits for review" do
     create_new_team @campaign
     click_link 'Check for completeness'
-    sleep 10
     (expect page).to have_content 'is complete'
   end
 

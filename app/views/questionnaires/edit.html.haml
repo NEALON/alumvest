@@ -3,7 +3,7 @@
     .col-md-12
       = form_for [@campaign, @investment, @questionnaire], :url => campaign_investment_questionnaire_path(@campaign, @investment), :html => {:class => "form-horizontal"} do |f|
 
-        = render 'shared/errors', :entity => @company
+        = render 'shared/errors', :entity => @questionnaire
         = render_cell "tb/form/subhead", :display, :label => "Accredited Investor Questionnaire"
 
         %fieldset
