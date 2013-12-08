@@ -25,6 +25,8 @@ group :test do
   gem "launchy", "~> 2.3"
   gem "selenium-webdriver", "~> 2.37"
   gem "byebug", "~> 2.3"
+  gem "vcr", "~> 2.8"
+  gem "webmock", "~> 1.15"
 end
 
 group :production do

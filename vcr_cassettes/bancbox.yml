@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/createInvestor
+    body:
+      encoding: US-ASCII
+      string: first_name=Baron&middle_initial&last_name=Berge&email=vanea.lynch%40berge.name&phone=5921178712&address_1=133+Yundt+Crossroad&city=East+Sheaton&state=GU&zip=19983&bank_account_number=86592162&bank_account_type=CHECKING&bank_account_holder=Casper&bank_account_routing=011000028&created_by=Baron+Berge&internal=1&verification_required=0&reference_id=f665d44b-217e-412d-84e5-fd4700c1e094&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 08 Dec 2013 18:02:35 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":646583133437,"id":26371646098,"bank_name":"Four Oaks
+        Bank & Trust Company","account_number":"542745105143","account_routing_number":"053112505","account_type":"CHECKING"}'
+    http_version: 
+  recorded_at: Sun, 08 Dec 2013 18:02:35 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/submitAgreement
+    body:
+      encoding: US-ASCII
+      string: id=26371646098&represented_signature=Baron+Berge&agreement_type=CLICKTHROUGH&document_text=I+agree+to+Privacy+Policy%2C+Platform+Agreement%2C+Technology+Agreement+%40+bancboxinvest.com&document_name=T%26C&document_version=1.0&client_ip_address=192.168.2.10&submit_time_stamp=2013-12-08+10%3A02%3A35&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 08 Dec 2013 18:02:36 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":377692734852,"status":1,"id":852288146587}'
+    http_version: 
+  recorded_at: Sun, 08 Dec 2013 18:02:36 GMT
+recorded_with: VCR 2.8.0
