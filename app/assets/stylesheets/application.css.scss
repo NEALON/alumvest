@@ -16,7 +16,9 @@
 @import "users/users";
 @import "company/company";
 @import "investor_dashboard";
+@import "layout/header";
 @import "layout/modal";
+@import "layout/footer";
 
 html, body{
   width: 100%;
@@ -35,93 +37,6 @@ body{
   max-width: 990px;
 }
 
-#header{
-  background-color: white !important;
-  background-image: none;
-  border-style: solid;
-  border-width: 2px 0 0 0;
-  border-top-color: #00B1AC;
-  text-transform: uppercase;
-  width: 100%;
-
-  .navbar-brand{
-    padding: 5px 5px;
-  }
-
-  .navbar-collapse{
-    height: 50px !important;
-  }
-
-  .navbar-brand img{
-    height: 40px;
-    overflow: hidden;
-  }
-
-  ul.navbar-nav a:hover{
-    background-color: #e6e6e6;
-  }
-
-  #signup{
-    background-color: #f67564;
-  }
-
-  #search-header{
-    width: 25%;
-    display: inline-block;
-  }
-}
-
-#user-dropdown{
-  width: 150px;
-  text-align: center;
-
-  ul.dropdown-menu{
-    background-color: #f8f8f8;
-    border-width: 0;
-    width: 120px;
-    margin: 0;
-    padding: 0;
-    min-width: 100px;
-  }
-
-  li{
-    width: 120px;
-    height: 50px;
-    vertical-align: middle;
-  }
-
-  a.btn{
-    display: block;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    position: relative;
-    top: 25%;
-
-  }
-
-  li:hover{
-    background-color: #e6e6e6;
-  }
-
-  a:hover{
-    background-image: none;
-    background-color: #e6e6e6;
-    color: #555555;
-  }
-
-  a img{
-    width: 19px;
-    height: 19px;
-  }
-
-  a#user-name{
-    display: block;
-    height: 50px;
-  }
-}
-
 #content{
   width: 100%;
   min-height: 100%;
@@ -134,50 +49,6 @@ body{
   height: 150px;
   min-height: 150px;
   clear: both;
-}
-
-#footer{
-  background-color: #ffffff;
-  display: block;
-  width: 100%;
-  height: 150px;
-  min-height: 150px;
-  padding: 20px 0 20px;
-  margin-bottom: 0;
-  box-shadow: 0 0 5px #7F8C8D;
-  clear: both;
-  overflow: hidden;
-
-  img{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    float: right;
-  }
-
-  .footer-navigation{
-    li{
-      a{
-        text-transform: uppercase;
-        font-size: 12px;
-        text-decoration: none;
-        color: #000000;
-        padding-left: 0;
-      }
-
-
-      a:hover{
-        background-color: #ffffff;
-      }
-    }
-  }
-
-  .copyright{
-    p{
-      font-size: 10px;
-      color: #BDC3C7;
-    }
-  }
 }
 
 .blank {

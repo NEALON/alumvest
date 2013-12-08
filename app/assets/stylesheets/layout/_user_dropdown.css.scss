@@ -1,0 +1,50 @@
+#user-dropdown{
+  width: 150px;
+  text-align: center;
+
+  ul.dropdown-menu{
+    background-color: #f8f8f8;
+    border-width: 0;
+    width: 120px;
+    margin: 0;
+    padding: 0;
+    min-width: 100px;
+  }
+
+  li{
+    width: 120px;
+    height: 50px;
+    vertical-align: middle;
+  }
+
+  a.btn{
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    position: relative;
+    top: 25%;
+
+  }
+
+  li:hover{
+    background-color: #e6e6e6;
+  }
+
+  a:hover{
+    background-image: none;
+    background-color: #e6e6e6;
+    color: #555555;
+  }
+
+  a img{
+    width: 19px;
+    height: 19px;
+  }
+
+  a#user-name{
+    display: block;
+    height: 50px;
+  }
+}
