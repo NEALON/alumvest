@@ -17,25 +17,17 @@
 	overflow: hidden;
 
 	.container{
+		width: 960px;
 		margin: auto auto;
 		background-color: rgba(0, 0, 0, 0.4);
 		color: #ffffff;
 		position: relative;
 		top: 70px;
-	}
+		line-height: 1.3em;
 
-	.bottom{
-		width: 100%;
-		background-color: rgba(0, 0, 0, 0.4);
-		position: absolute;
-		top: calc(100% - 71px);
-		color: white;
-		padding-top: 20px;
-		padding-bottom: 20px;
-
-		.container{
-			line-height: 150%;
-			padding: 0;
+		h2{
+			font-family: 'Tinos', Georgia, serif;
+			font-weight: 700;
 		}
 	}
 }
