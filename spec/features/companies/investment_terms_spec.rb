@@ -23,7 +23,6 @@ describe "managing company investment terms", :type => :feature do
   it "by successfully submitting for review" do
     create_new_investment_term @campaign
     click_link 'Check for completeness'
-    sleep 10
     (expect page).to have_content 'are complete'
   end
 

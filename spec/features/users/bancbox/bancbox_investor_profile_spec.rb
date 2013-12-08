@@ -9,7 +9,6 @@ describe 'users bancbox investor profile', :type => :feature do
   end
 
   it 'shows' do
-    sleep 10
     #page.should have_button 'Create One'
   end
 

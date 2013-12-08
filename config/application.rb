@@ -11,10 +11,10 @@ end
 
 module Av
   class Application < Rails::Application
+    I18n.enforce_available_locales = false
 
     if Rails.env == 'test'
       require File.expand_path("../diagnostic.rb", __FILE__)
-
       config.middleware.use(Av::DiagnosticMiddleware)
     end
 

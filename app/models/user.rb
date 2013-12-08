@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth,
-                  :email, :facebook, :linkedin, :profile_complete, :user_type, :avatar_url
+                  :email, :facebook, :linkedin, :user_type, :avatar_url
   attr_accessible :investor_attributes, :owner_attributes, :educations_attributes
   attr_accessible :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement, :ssn
 
@@ -11,18 +11,37 @@ class User < ActiveRecord::Base
 
   has_many :identities
   has_one :investor
-
   has_one :banking_account, :class_name => 'Banking::Account'
-
   has_one :bancbox_investor, :class_name => 'Bancbox::Investor'
   has_one :bancbox_issuer, :class_name => 'Bancbox::Issuer'
   has_one :bancbox_identity_verification, :class_name => 'Bancbox::IdentityVerification'
+
+  RequiredProfileFields = [
+      :first_name,
+      :middle_name,
+      :last_name,
+      :gender,
+      :date_of_birth,
+      :ssn,
+      :mobile_phone,
+      :home_phone,
+      :address_1,
+      :city,
+      :state,
+      :zipcode,
+      :email]
+
+  validates_presence_of RequiredProfileFields, :on => :update
+
+  def profile_complete?
+    RequiredProfileFields.select{|rpf| send(rpf).blank?}.empty?
+  end
 
   def available_funds
     unless banking_account
       0
     else
-      banking_account.balance # TODO: but this fails to take into account other pending transfers for other pending investments?
+      banking_account.balance
     end
   end
 
@@ -52,14 +71,10 @@ class User < ActiveRecord::Base
 
       if Rails.env.production?
         Gibbon::API.new.lists.subscribe(:id => ENV['MAILCHIMP_LIST_ID'], :email => {:email => user.email},
-            :merge_vars => {:FNAME => user.first_name, :LNAME => user.last_name},
-            :double_optin => false, :update_existing => true, :send_welcome => false)
+                                        :merge_vars => {:FNAME => user.first_name, :LNAME => user.last_name},
+                                        :double_optin => false, :update_existing => true, :send_welcome => false)
       end
     end
-  end
-
-  def complete!
-    update_attribute(:profile_complete, true)
   end
 
   def is_investor?
@@ -103,7 +118,7 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    UserMailer.welcome_email(self).deliver
+    UserMailer.welcome_email(self).deliver unless Rails.env.test?
   end
 
   def following?(campaign)
@@ -120,6 +135,6 @@ class User < ActiveRecord::Base
   end
 
   def avatar_small
-    avatar_url.blank? ? '/images/user_24.png' : avatar(w:24, h:24)
+    avatar_url.blank? ? '/images/user_24.png' : avatar(w: 24, h: 24)
   end
 end

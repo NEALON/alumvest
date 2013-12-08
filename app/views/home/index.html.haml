@@ -11,9 +11,9 @@
       / .bottom
       /   .container
       /     Connecting capital and intelligence, Alumvest engages alumni and peers to seed and mentor entrepreneurs.
-    / :erb
-    /   <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
-    / %hr
+      / :erb
+      /   <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
+      / %hr
 
 - unless @reviewable_campaigns.blank?
   #active
@@ -56,21 +56,23 @@
           &times;
         %h4.modal-title#myModalLabel
           Alumvest Intro
-      .modal-body
-        %iframe{:src => '//player.vimeo.com/video/75979909?portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true' }
-      / .modal-footer
-      /   %button.btn.btn-default{ :type => 'button', 'data-dismiss' => 'modal'}
-      /     Close
-      /   %button.btn.btn-primary{:type => 'button'}
-      /     Save Changes
+      - unless Rails.env.test?
+        .modal-body
+          %iframe{:src => '//player.vimeo.com/video/75979909?portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true' }
+        / .modal-footer
+        /   %button.btn.btn-default{ :type => 'button', 'data-dismiss' => 'modal'}
+        /     Close
+        /   %button.btn.btn-primary{:type => 'button'}
+        /     Save Changes
 #video-trailer.row
   .col-md-12
     .jumbotron
       .container-bg.container-bg-video
-        %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%'}
-          %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
-          %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.ogv", :type => "video/ogg"}
-          %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.webm", :type => "video/webm"}
+        - unless Rails.env.test?
+          %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%'}
+            %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
+            %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.ogv", :type => "video/ogg"}
+            %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.webm", :type => "video/webm"}
         .container-bg.container-bg-overlay
       .container-bg.container-bg-text.text-center
         %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
@@ -79,14 +81,15 @@
         %p.text-center
           = link_to('Watch Intro', '#', :class => "btn btn-primary btn-lg video-play", 'data-toggle' => 'modal')
           // Modal
-      .video-wrapper
-        .container
-          <!-- Plugin for Vimeo -->
-          <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+      - unless Rails.env.test?
+        .video-wrapper
+          .container
+            <!-- Plugin for Vimeo -->
+            <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 
-          #video-player.embed-video
-            - unless Rails.env.test?
-              %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
+            #video-player.embed-video
+              - unless Rails.env.test?
+                %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
 
 #how-it-works.row
   .col-md-12
@@ -109,7 +112,8 @@
         .col-md-3
           %img{ :src => image_path('feature_logo/mashable.png')}
         .col-md-3
-          %img{ :src => image_path('https://d1dve5icbq0xf0.cloudfront.net/assets/home_forbes1@2x-524f588e9b812e0bbd0b31efcf836038.png')}
+          - unless Rails.env.test?
+            %img{ :src => image_path('https://d1dve5icbq0xf0.cloudfront.net/assets/home_forbes1@2x-524f588e9b812e0bbd0b31efcf836038.png')}
         .col-md-3
           %img{ :src => image_path('feature_logo/bloomberg.png')}
         .col-md-3

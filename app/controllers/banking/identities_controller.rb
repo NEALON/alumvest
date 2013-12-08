@@ -4,7 +4,11 @@ class Banking::IdentitiesController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     @banking_account = @user.banking_account
     @identity = @banking_account.bancbox_identity_verification || Bancbox::IdentityVerification.create(:banking_account => @banking_account)
-    render :layout => 'bankers'
+    if @user.profile_complete?
+      render :layout => 'bankers'
+    else
+      render 'show_profile_incomplete', :layout => 'bankers'
+    end
   end
 
   def update

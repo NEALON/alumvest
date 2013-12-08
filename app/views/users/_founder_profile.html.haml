@@ -5,6 +5,8 @@
     - if @user.is_owner?
       = form_for @user.owner, :url => users_owner_path(@user), :html => {:class => "form-horizontal"} do |f|
 
+        = render 'shared/errors', :entity => @user.owner
+
         = fields_for :owner do |owf|
           %fieldset
             = f.hidden_field :user_id

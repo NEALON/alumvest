@@ -1,7 +1,10 @@
-= render 'banking/side_navigation', :active => 'banking_identities'
-= render 'users/header'
+= render :partial => 'heading'
 
 #information
   .container
-    %p= button_to 'Verify your identity', user_banking_identity_path(@user, @identity, :verified => true), :method => :put, :class => 'btn btn-success btn-large'
-    %p= button_to 'Fail identity verification', user_banking_identity_path(@user, @identity, :verified => false), :method => :put, :class => 'btn btn-danger btn-large'
+    .row
+      .col-md-9
+        %p
+          In order to provide banking functionality, we need to verify your identity.
+        %p= button_to 'Verify your identity', user_banking_identity_path(@user, @identity, :verified => true), :method => :put, :class => 'btn btn-success btn-large'
+        %p= button_to 'Fail identity verification', user_banking_identity_path(@user, @identity, :verified => false), :method => :put, :class => 'btn btn-danger btn-large'

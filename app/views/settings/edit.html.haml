@@ -4,6 +4,8 @@
 #information
   .container
     = form_for @user, :url => user_settings_path(@user), :html => {:class => 'form-horizontal'} do |f|
+      = render 'shared/errors', :entity => @user
+
       %fieldset
         = render_cell 'tb/form/password', :display, :form => f, :field => :password
         = render_cell 'tb/form/password', :display, :form => f, :field => :password_confirmation

@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by_id(params[:id])
     @user.update_attributes(params[:user])
-    unless params[:user].has_key? "user_type"
-      @user.complete!
+    if @user.valid?
+      redirect_to user_path, :flash => {:success => 'User info saved.'}
+    else
+      render :action => :edit
     end
-    notice = 'User info saved.'
-    redirect_to user_path, :flash => {:success => notice}
   end
 end
