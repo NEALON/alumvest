@@ -428,16 +428,9 @@ ActiveRecord::Schema.define(version: 20131208175514) do
     t.datetime "updated_at"
   end
 
-  create_table "sometests", force: true do |t|
-    t.string   "status"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "subscription_agreements", force: true do |t|
     t.string   "status"
-    t.integer  "investment_id"
+    t.integer  "investment_finalization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -455,12 +448,6 @@ ActiveRecord::Schema.define(version: 20131208175514) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "document_id"
-  end
-
-  create_table "tempthings", force: true do |t|
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "updates", force: true do |t|
@@ -498,7 +485,6 @@ ActiveRecord::Schema.define(version: 20131208175514) do
     t.string   "state"
     t.string   "zipcode"
     t.text     "personal_statement"
-    t.string   "status"
   end
 
   create_table "versions", force: true do |t|
