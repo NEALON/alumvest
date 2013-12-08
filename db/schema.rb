@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207163051) do
+ActiveRecord::Schema.define(version: 20131206190956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -428,16 +428,9 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.datetime "updated_at"
   end
 
-  create_table "sometests", force: true do |t|
-    t.string   "status"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "subscription_agreements", force: true do |t|
     t.string   "status"
-    t.integer  "investment_id"
+    t.integer  "investment_finalization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -455,12 +448,6 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "document_id"
-  end
-
-  create_table "tempthings", force: true do |t|
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "updates", force: true do |t|
@@ -499,7 +486,6 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.string   "state"
     t.string   "zipcode"
     t.text     "personal_statement"
-    t.string   "status"
   end
 
   create_table "versions", force: true do |t|
