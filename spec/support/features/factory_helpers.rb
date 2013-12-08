@@ -28,8 +28,7 @@ module Features
                                  :email => 'investor@alumvest.com',
                                  :user_type => 'investor',
                                  :identities => [@identity],
-                                 :uid => @identity.id,
-                                 :profile_complete => true)
+                                 :uid => @identity.id)
       @user.investor.update_attribute :accredited_investor_status, 'approved'
       @user
     end

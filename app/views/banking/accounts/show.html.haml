@@ -3,4 +3,7 @@
 
 #information
   .container
-    = render @banking_account.status
+    %p
+      Your account balance:
+      -##account-balance= number_to_currency(@banking_account.balance)
+      #account-balance= number_to_currency(0)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207163051) do
+ActiveRecord::Schema.define(version: 20131208175514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.string   "address_1"
     t.string   "address_2"
     t.string   "bancbox_status"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
@@ -119,6 +118,7 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.string   "middle_initial"
     t.integer  "funds",                  default: 0
     t.integer  "pendingbalance",         default: 0
+    t.integer  "banking_account_id"
   end
 
   create_table "bancbox_issuers", force: true do |t|
@@ -148,11 +148,11 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.string   "account_routing_number"
     t.string   "account_type"
     t.boolean  "agreement"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "funds",                      default: 0
     t.integer  "pendingbalance",             default: 0
+    t.integer  "banking_account_id"
   end
 
   create_table "bancbox_transactions", force: true do |t|
@@ -487,7 +487,6 @@ ActiveRecord::Schema.define(version: 20131207163051) do
     t.string   "email"
     t.string   "facebook"
     t.string   "linkedin"
-    t.boolean  "profile_complete",   default: false
     t.string   "user_type",          default: "guest"
     t.string   "avatar_url"
     t.string   "ssn"

@@ -3,7 +3,6 @@ class Bancbox::PersonBase < ActiveRecord::Base
   self.abstract_class = true
 
   attr_accessible :first_name, :middle_initial, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :address_2, :city, :state, :zip
-  attr_accessible :user, :user_id
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
   attr_accessible :bancbox_id
@@ -41,8 +40,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
   end
 
   after_create do
-    unless user.blank?
-      u = user
+    unless banking_account.user.blank?
+      u = banking_account.user
       self.first_name = u.first_name
       self.last_name = u.last_name
       self.email = u.email

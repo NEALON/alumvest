@@ -14,10 +14,10 @@ class SessionsController < ApplicationController
       if @user.is_owner?
         redirect_to "/owner_dashboard"
       else
-        if @user.profile_complete
+        if @user.profile_complete?
           redirect_to root_url, flash: {:success => "Signed in!" }
         else
-          redirect_to user_path(@user)
+          redirect_to edit_user_path(@user)
         end
       end
     end
