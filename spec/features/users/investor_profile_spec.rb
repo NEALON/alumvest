@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "users investor profile", :type => :feature do
+describe 'users investor profile', :type => :feature do
 
   before :each do
     sign_up :investor
@@ -8,7 +8,7 @@ describe "users investor profile", :type => :feature do
     click_on 'Investor Profile'
   end
 
-  it "shows" do
+  it 'shows' do
     expect(page).to have_content 'SSN'
     expect(page).to have_content 'Marital Status'
     expect(page).to have_content 'Financial Info'
@@ -24,7 +24,7 @@ describe "users investor profile", :type => :feature do
     expect(page).to have_content 'Personal Message'
   end
 
-  it "updates" do
+  it 'updates' do
     expect(page).to have_button 'Edit'
     click_on 'Edit'
     fill_in 'investor_ssn', :with => '12345'

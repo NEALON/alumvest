@@ -6,9 +6,10 @@
     - else
       %li{:class => "#{'active' if active == 'banking_identities'}"}
         = link_to('Identity', user_banking_identity_path(@user))
-      %li{:class => "#{'disabled'}"}
+      %li.disabled
         = link_to('Account', '#', :class => 'disabled')
-
+      %li.disabled
+        = link_to('Transactions', '#', :class => 'disabled')
     - if ((ba = @user.banking_account) && ba.activated?)
       %li{:class => "#{'active' if active == 'banking_transactions'}"}
         = link_to('Transactions', user_banking_account_bancbox_transactions_path(@user))
