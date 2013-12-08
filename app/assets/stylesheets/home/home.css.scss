@@ -17,25 +17,17 @@
 	overflow: hidden;
 
 	.container{
+		width: 960px;
 		margin: auto auto;
 		background-color: rgba(0, 0, 0, 0.4);
 		color: #ffffff;
 		position: relative;
 		top: 70px;
-	}
+		line-height: 1.3em;
 
-	.bottom{
-		width: 100%;
-		background-color: rgba(0, 0, 0, 0.4);
-		position: absolute;
-		top: calc(100% - 71px);
-		color: white;
-		padding-top: 20px;
-		padding-bottom: 20px;
-
-		.container{
-			line-height: 150%;
-			padding: 0;
+		h2{
+			font-family: 'Tinos', Georgia, serif;
+			font-weight: 700;
 		}
 	}
 }
@@ -90,14 +82,13 @@
 	.homepage-featured-campaigns{
 		.col-md-4.outline{
 			margin: 10px 15px 10px;
-			border-radius: 2px;
+			border-radius: 4px;
 			border: none;
 			display: block;
 			width: 300px;
-			min-height: 405px;
-			max-height: 405px;
+			min-height: 425px;
+			max-height: 425px;
 			overflow: none;
-			box-shadow: 0px 0px 2px #BDC3C7;
 			padding: 5px;
 
 			.company-title{
@@ -105,50 +96,69 @@
 					display: block;
 					height: 38px;
 					margin: 5px 0 5px;
-					text-transform: uppercase;
-					font-weight: 200;
+					font-family: Georgia, Helvetica Nueue, Helvetica, Arial, serif, cursive;
+					font-weight: 700;
 					overflow: hidden;
+					color: #000000;
+					text-align: left;
+
+					a{
+						display: block;
+						width: 100%;
+						color: #000000;
+					}
 
 					a:hover{
+						color: #000000;
 						text-decoration: none;
 					}
 				}
 			}
 
 			.company-short-description{
+				font-family: 'Nixie One', Georgia, Helvetica Nueue, Helvetica, Arial, serif, cursive;
+				color: #777;
 				display: block;
 				height: 110px;
 				max-height: 110px;
 				overflow: hidden;
-				font-size: 12px;
+				font-size: 15px;
 			}
 
 			.img-campaign{
+				border-top-left-radius: 2px;
+				border-top-right-radius: 2px;
 				width: 290px;
-				height: 180px;
+				height: 200px;
+			}
+
+			.company-title, .company-short-description, .company-goal{
+				padding-left: 5px;
+				padding-right: 5px;
 			}
 
 			.company-goal{
-				thead td{
-					font-weight: bold;
-					font-size: 12px;
+				color: #777777;
+				font-size: 12px;
+				.campaign-cell-number{
+					text-align: center;
+					font-weight: 600;
 				}
 
-				tbody{
+				.campaign-cell-title{
+					font-family: 'Nixie One', Georgia, Helvetica Nueue, Helvetica, Arial, serif, cursive;
+					text-align: center;
 					font-weight: 100;
-					td{
-						color: #75796F
-					}
 				}
 
 				.progress{
-					margin: 5px 0 5px;
+					margin: 5px 0 5px 0;
 				}
 
 			}
 
 			.progress.active{
-				height: 8px;
+				height: 10px;
 			}
 		}
 	}
