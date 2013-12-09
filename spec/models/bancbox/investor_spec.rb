@@ -10,7 +10,7 @@ describe Bancbox::Escrow do
   before :each do
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       @user = FactoryGirl.create(:user)
-      @issuer = FactoryGirl.create(:bancbox_issuer)
+      @investor = FactoryGirl.create(:bancbox_investor)
       @bank_account = FactoryGirl.create(:bancbox_bank_account)
       @investor.user = @user
       @investor.should be_valid
@@ -40,6 +40,15 @@ describe Bancbox::Escrow do
       @investor.investor_bank_accounts.size.should == 1
       @investor.link_bank_account(:investor, another_bank_account)
       @investor.investor_bank_accounts.size.should == 2
+    end
+  end
+
+  it "can fund escrow" do
+    VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
+      @escrow = FactoryGirl.create(:vcr_established_bancbox_escrow)
+      @escrow.issuer = @issuer
+      @escrow.fire_bancbox_status_event(:open) # manually flip it to open
+      @escrow.fund!(@investor, @bank_account, 100)
     end
   end
 end

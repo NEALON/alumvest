@@ -207,4 +207,37 @@ http_interactions:
         Rice","cfp_name":"Angelshares LLC","total_amount_escrowed":0.00,"disbursement_status":"UNLOCKED","deal":"0","disbursal_started":"NO"}'
     http_version: 
   recorded_at: Mon, 09 Dec 2013 07:22:58 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/fundEscrow
+    body:
+      encoding: US-ASCII
+      string: fund_on_availability=N&escrow_id=932980869835&investor_id=26371646098&amount=100&bank_account_number=233689268&bank_account_type=CHECKING&bank_account_holder=Flossie&bank_account_routing=011000028&text=I+authorize+BancBox+to+make+this+transaction&client_ip_address=192.168.2.10&submit_timestamp=2013-12-09+00%3A04%3A04&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 09 Dec 2013 08:04:09 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":291466562819,"amount":100,"fund_on_availability":"Y","escrow_id":932980869835,"investor_id":26371646098,"funding_schedule_id":678655633434,"escrow_current_balance":0,"investor_current_balance":0.0}'
+    http_version: 
+  recorded_at: Mon, 09 Dec 2013 08:04:09 GMT
 recorded_with: VCR 2.8.0
