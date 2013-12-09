@@ -1,0 +1,97 @@
+.team-member-block{
+  height: 580px;
+  margin: 20px 0 20px;
+
+  .col-md-5.col-xs-5{
+    padding-right: 0;
+  }
+
+  .team-member-description{
+    padding: 40px;
+    border: 1px solid #BDC3C7;
+    height: 580px;
+    border-right: none;
+    font-family: 'Open Sans Bold', sans-serif;
+    line-height: 20px;
+
+    .team-member-title{
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .team-member-name{
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-size: 22px;
+
+      a{
+        color: #000000;
+      }
+
+      a:hover{
+        text-decoration: none;
+      }
+    }
+
+    .team-member-job-responsibility{
+      font-size: 15px;
+      font-family: 'Open Sans', sans-serif;
+      color: rgba(0, 0, 0, 0.79);
+      margin-bottom: 20px;
+      height: 100px;
+      line-height: 25px;
+      overflow: hidden;
+    }
+
+    .team-member-life{
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif;
+      margin-bottom: 20px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .team-member-cap{
+    padding-left: 0;
+    height: 100%;
+
+    img{
+      border: 1px solid #BDC3C7;
+      height: 580px;
+      width: 100%;
+    }
+
+    .social-network{
+      z-index: 2;
+      height: 40px;
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+
+      a{
+        display: inline-block;
+        height: 40px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        font-family: 'Open Sans Bold', sans-serif;
+        font-size: 12px;
+        padding: 10px;
+        vertical-align: center;
+
+        span{
+          display: inline-block;
+          height: 10px;
+          width: 10px;
+          margin-right: 10px;
+          position: relative;
+          top: 2px;
+        }
+      }
+
+      a:hover{
+        text-decoration: none;
+      }
+    }
+  }
+}

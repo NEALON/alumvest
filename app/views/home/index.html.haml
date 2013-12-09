@@ -78,9 +78,6 @@
         %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
           %img{:src => image_path('home/video_play.png')}
         %h3 Connecting capital and intelligence
-        %p.text-center
-          = link_to('Watch Intro', '#', :class => "btn btn-primary btn-lg video-play", 'data-toggle' => 'modal')
-          // Modal
       - unless Rails.env.test?
         .video-wrapper
           .container
@@ -101,7 +98,6 @@
             Interested to learn more about Alumvest?
         %p.text-center
           = link_to('See How It Works', '#', :class => "btn btn-info btn-large")
-          = link_to('Watch Intro', '#', :class => "btn btn-primary btn-large video-play", 'data-toggle' => 'modal')
           = link_to('Get Registered Now', '#', :class => "btn btn-primary btn-large")
 
 #feature.row
