@@ -6,7 +6,7 @@ class Bancbox::Investor < Bancbox::PersonBase
 
   validates_presence_of [:investor_type], :on => :update
 
-  def submit!
+  def submit!(bank_account)
     super do |options|
       next BancBoxCrowd.create_investor options
     end

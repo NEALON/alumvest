@@ -1,0 +1,243 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/createInvestor
+    body:
+      encoding: US-ASCII
+      string: first_name=Baron&middle_initial&last_name=Berge&email=vanea.lynch%40berge.name&phone=5921178712&address_1=133+Yundt+Crossroad&city=East+Sheaton&state=GU&zip=19983&bank_account_number=86592162&bank_account_type=CHECKING&bank_account_holder=Casper&bank_account_routing=011000028&created_by=Baron+Berge&internal=1&verification_required=0&reference_id=f665d44b-217e-412d-84e5-fd4700c1e094&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 08 Dec 2013 18:02:35 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":646583133437,"id":26371646098,"bank_name":"Four Oaks
+        Bank & Trust Company","account_number":"542745105143","account_routing_number":"053112505","account_type":"CHECKING"}'
+    http_version: 
+  recorded_at: Sun, 08 Dec 2013 18:02:35 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/linkExternalAccount
+    body:
+      encoding: US-ASCII
+      string: bank_account_number=161477656&bank_account_type=CHECKING&bank_account_holder=Avery&bank_account_routing=011000028&investor_id=26371646098&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 08 Dec 2013 18:24:14 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":167240977398,"linked_external_account":{"id":156002},"status":1}'
+    http_version: 
+  recorded_at: Sun, 08 Dec 2013 18:24:14 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/createIssuer
+    body:
+      encoding: US-ASCII
+      string: company_name&company_type&company_registration_state&company_tax_id&first_name=Quincy&middle_initial&last_name=Johns&email=maud_schowalter%40bradtkeweber.net&phone=3237313462&address_1=3378+Hintz+Well&city=Wainoburgh&state=NC&zip=76776&bank_account_number=47854719&bank_account_type=CHECKING&bank_account_holder=Noah&bank_account_routing=011000028&created_by=Quincy+Johns&internal=1&verification_required=0&reference_id=83b7bb7f-9795-43fb-86ab-48bca02e9799&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 08 Dec 2013 18:50:12 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":535193921393,"id":110186565153,"bank_name":"Four Oaks
+        Bank & Trust Company","account_number":"542745106713","account_routing_number":"053112505","account_type":"CHECKING"}'
+    http_version: 
+  recorded_at: Sun, 08 Dec 2013 18:50:12 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/submitAgreement
+    body:
+      encoding: US-ASCII
+      string: id=110186565153&represented_signature=Quincy+Johns&agreement_type=CLICKTHROUGH&document_text=I+agree+to+Privacy+Policy%2C+Platform+Agreement%2C+Technology+Agreement+%40+bancboxinvest.com&document_name=T%26C&document_version=1.0&client_ip_address=192.168.2.10&submit_time_stamp=2013-12-08+10%3A50%3A12&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 08 Dec 2013 18:50:12 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":174022762065,"status":1,"id":529099751881}'
+    http_version: 
+  recorded_at: Sun, 08 Dec 2013 18:50:12 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/createEscrowAccount
+    body:
+      encoding: US-ASCII
+      string: name=Darren&issuer_id=110186565153&start_date=2013-12-09&close_date=2014-03-18&funding_goal=1000000.0&created_by=Darion+Rice&minimum_funding_amount=10.0&maximum_funding_amount=1000.0&securities_offered=EQUITY&issuer_signatory_name=Kyle+Escrow+Issuer&issuer_signatory_email=kyle%2Btest%2Bescrow%40alumvest.com&issuer_signatory_title=Kyle+Escrow+Title&platform_signatory_name=Lynn+Chen&platform_signatory_email=kyle%40alumvest.com&platform_signatory_title=CEO&over_funding_amount=1000000.0&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 09 Dec 2013 07:22:58 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":262106678249,"id":398785659697,"project_name":"Darren","current_balance":0.00,"total_funding":0.00,"status":"OPEN
+        PENDING","platform_signatory_name":"Lynn Chen","platform_signatory_title":"CEO","platform_signatory_email":"kyle@alumvest.com","issuer_id":110186565153,"issuer_reference_id":"83b7bb7f-9795-43fb-86ab-48bca02e9799","issuer_signatory_name":"Kyle
+        Escrow Issuer","issuer_signatory_title":"Kyle Escrow Title","issuer_signatory_email":"kyle+test+escrow@alumvest.com","minimum":10.00,"maximum":1000.00,"start_date":"2013-12-09","close_date":"2014-03-18","securities_offered":"EQUITY","initiated_on":"2013-12-09","initiated_by":"Darion
+        Rice","modified_on":"2013-12-09","modified_by":"Darion Rice"}'
+    http_version: 
+  recorded_at: Mon, 09 Dec 2013 07:22:58 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/getEscrowDetails
+    body:
+      encoding: US-ASCII
+      string: escrow_id=398785659697&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 09 Dec 2013 07:22:58 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":554027248259,"id":398785659697,"project_name":"Darren","current_balance":0.00,"notional_balance":0.00,"status":"OPEN
+        PENDING","platform_signatory_name":"Lynn Chen","platform_signatory_title":"CEO","platform_signatory_email":"kyle@alumvest.com","issuer_id":110186565153,"issuer_reference_id":"83b7bb7f-9795-43fb-86ab-48bca02e9799","issuer_signatory_name":"Kyle
+        Escrow Issuer","issuer_signatory_title":"Kyle Escrow Title","issuer_signatory_email":"kyle+test+escrow@alumvest.com","minimum_amount":10.00,"maximum_amount":1000.00,"funding_goal":1000000.00,"over_funding_amount":1000000.00,"start_date":"2013-12-09","close_date":"2014-03-18","securities_offered":"EQUITY","initiated_on":"2013-12-09","initiated_by":"Darion
+        Rice","created_on":"2013-12-09","created_by":"Darion Rice","modified_on":"2013-12-09","modified_by":"Darion
+        Rice","cfp_name":"Angelshares LLC","total_amount_escrowed":0.00,"disbursement_status":"UNLOCKED","deal":"0","disbursal_started":"NO"}'
+    http_version: 
+  recorded_at: Mon, 09 Dec 2013 07:22:58 GMT
+- request:
+    method: post
+    uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/fundEscrow
+    body:
+      encoding: US-ASCII
+      string: fund_on_availability=N&escrow_id=932980869835&investor_id=26371646098&amount=100&bank_account_number=233689268&bank_account_type=CHECKING&bank_account_holder=Flossie&bank_account_routing=011000028&text=I+authorize+BancBox+to+make+this+transaction&client_ip_address=192.168.2.10&submit_timestamp=2013-12-09+00%3A04%3A04&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 09 Dec 2013 08:04:09 GMT
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(8.1.7.v20120910)
+    body:
+      encoding: UTF-8
+      string: '{"request_id":291466562819,"amount":100,"fund_on_availability":"Y","escrow_id":932980869835,"investor_id":26371646098,"funding_schedule_id":678655633434,"escrow_current_balance":0,"investor_current_balance":0.0}'
+    http_version: 
+  recorded_at: Mon, 09 Dec 2013 08:04:09 GMT
+recorded_with: VCR 2.8.0

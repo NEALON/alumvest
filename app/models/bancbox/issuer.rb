@@ -1,11 +1,13 @@
 class Bancbox::Issuer < Bancbox::PersonBase
 
+  #TODO these fields might not be needed
   attr_accessible :company_name, :company_type, :company_registration_state, :company_tax_id,
                   :banking_account, :banking_account_id
 
   validate :validates_company_fields
 
   belongs_to :banking_account, :class_name => 'Banking::Account', :foreign_key => 'banking_account_id'
+  belongs_to :user # or :owner
   has_one :escrow, :class_name => 'Bancbox::Escrow', :foreign_key => 'bancbox_issuer_id'
 
   def validates_company_fields
@@ -21,13 +23,13 @@ class Bancbox::Issuer < Bancbox::PersonBase
     end
   end
 
-  def submit!
+  def submit!(bank_account)
     super do |common_options|
       options = {
-          :company_name => self.company_name,
-          :company_type => self.company_type,
-          :company_registration_state => self.company_registration_state,
-          :company_tax_id => self.company_tax_id,
+        :company_name => self.company_name,
+        :company_type => self.company_type,
+        :company_registration_state => self.company_registration_state,
+        :company_tax_id => self.company_tax_id,
       }
       options.merge!(common_options)
       next BancBoxCrowd.create_issuer options
