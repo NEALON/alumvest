@@ -1,5 +1,6 @@
 class Bancbox::Issuer < Bancbox::PersonBase
 
+  #TODO these fields might not be needed
   attr_accessible :company_name, :company_type, :company_registration_state, :company_tax_id
 
   validate :validates_company_fields

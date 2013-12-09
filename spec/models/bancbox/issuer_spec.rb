@@ -31,7 +31,6 @@ describe Bancbox::Issuer do
   end
 
   it "can link another external bank account" do
-    @issuer.issuer_bank_accounts.size.should == 1
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       another_bank_account = FactoryGirl.create(:bancbox_bank_account)
       another_bank_account.issuer = @issuer
@@ -40,6 +39,15 @@ describe Bancbox::Issuer do
       @issuer.issuer_bank_accounts.size.should == 1
       @issuer.link_bank_account(:issuer, another_bank_account)
       @issuer.issuer_bank_accounts.size.should == 2
+    end
+  end
+
+  it "can create escrow" do
+    VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
+      @escrow = FactoryGirl.create(:vcr_bancbox_escrow)
+      @escrow.issuer = @issuer
+      @escrow.open!.should == true
+      puts @escrow.get_details
     end
   end
 end
