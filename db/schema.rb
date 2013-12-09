@@ -431,13 +431,8 @@ ActiveRecord::Schema.define(version: 20131208175514) do
   create_table "subscription_agreements", force: true do |t|
     t.string   "status"
     t.integer  "investment_finalization_id"
-<<<<<<< HEAD
-    t.datetime "created_at"
-    t.datetime "updated_at"
-=======
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
->>>>>>> bancbox_api_update
   end
 
   create_table "teams", force: true do |t|
