@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
   has_many :identities
   has_one :investor
   has_one :banking_account, :class_name => 'Banking::Account'
-  has_one :bancbox_investor, :class_name => 'Bancbox::Investor'
-  has_one :bancbox_issuer, :class_name => 'Bancbox::Issuer'
   has_one :bancbox_identity_verification, :class_name => 'Bancbox::IdentityVerification'
 
   RequiredProfileFields = [

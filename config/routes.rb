@@ -76,10 +76,11 @@ Av::Application.routes.draw do
       resource :identity
       resource :account do
         namespace :bancbox do
-          resource :account
-          resources :transactions
-          resources :deposits
-          resources :withdrawals
+          resource :investor
+          resource :issuer
+          # resources :transactions
+          # resources :deposits
+          # resources :withdrawals
         end
       end
     end

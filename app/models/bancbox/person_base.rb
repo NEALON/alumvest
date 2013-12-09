@@ -3,7 +3,6 @@ class Bancbox::PersonBase < ActiveRecord::Base
   self.abstract_class = true
 
   attr_accessible :first_name, :middle_initial, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :address_2, :city, :state, :zip
-  attr_accessible :user, :user_id
   attr_accessible :bank_name, :account_number, :account_routing_number, :account_type, :funds, :pendingbalance
   attr_accessible :agreement
   attr_accessible :bancbox_id
@@ -30,7 +29,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
   accepts_nested_attributes_for :investor_bank_accounts, :investor_fund_transactions
   accepts_nested_attributes_for :issuer_bank_accounts, :issuer_fund_transactions
 
-  validates_presence_of [:first_name, :last_name, :ssn, :email, :phone, :date_of_birth, :address_1, :city, :state, :zip], :on => :update
+  validates_presence_of [:first_name, :last_name, :email, :phone, :address_1, :city, :state, :zip], :on => :update
   validates_inclusion_of :agreement, :in => [true], :on => :update
 
   state_machine :bancbox_status, :initial => :unsubmitted do
@@ -41,8 +40,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
   end
 
   after_create do
-    unless user.blank?
-      u = user
+    unless banking_account.user.blank?
+      u = banking_account.user
       self.first_name = u.first_name
       self.last_name = u.last_name
       self.email = u.email
@@ -59,7 +58,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
     end
   end
 
-  def submit!
+  def submit!(bank_account)
     create_reference_id!
     options = {
       :first_name => first_name,
@@ -71,12 +70,20 @@ class Bancbox::PersonBase < ActiveRecord::Base
       :city => city,
       :state => state,
       :zip => zip,
-      :ssn => ssn,
-      :dob => date_of_birth,
+      #:ssn => ssn,
+      #:dob => date_of_birth,
+      :bank_account_number => bank_account.bank_account_number,
+      :bank_account_type => bank_account.bank_account_type,
+      :bank_account_holder => bank_account.bank_account_holder,
+      :bank_account_routing => bank_account.bank_account_routing,
       :created_by => name,
+      :internal => 1,
+      :verification_required => 0,
       :reference_id => reference_id
     }
+
     ret = yield options
+
     if ret['error'].nil?
       self.bancbox_id = ret['id']
       self.bank_name = ret['bank_name']
@@ -86,6 +93,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
 
       if agree!
         fire_bancbox_status_event(:submit) # aka submit event in state machine
+        bank_account.save
+
         save
       end
     end
@@ -122,88 +131,6 @@ class Bancbox::PersonBase < ActiveRecord::Base
     }
     ret = BancBoxCrowd.submit_agreement options
     return ret['status']
-  end
-
-  def fund_account_common_options(amount, memo)
-    {
-      :represented_signature => name,
-      :reference_id => reference_id,
-      :amount => amount,
-      :memo => memo,
-      :text => "I authorize BancBox to make this transaction",
-      :agreement_type => 'CLICKTHROUGH',
-      :document_name => 'doc',
-      :document_version => 1.0,
-      :client_ip_address => server_ip,
-      :submit_timestamp => DateTime.now
-    }
-  end
-
-  def fund_account!(type, transaction, bank_account)
-    options = fund_account_common_options(transaction.amount, transaction.memo)
-    options[:linked_bank_account_id] = bank_account.bancbox_id
-    # XXX because the linked_bank_account_id does not work, so we append the bank account number
-    # in the payload for now
-    options.merge!({
-      :bank_account_number => bank_account.bank_account_number,
-      :bank_account_type => bank_account.bank_account_type,
-      :bank_account_holder => bank_account.bank_account_holder,
-      :bank_account_routing => bank_account.bank_account_routing,
-      :link_bank_account => false
-    })
-    if type == :investor
-      options[:investor_id] = bancbox_id
-    else
-      options[:issuer_id] = bancbox_id
-    end
-    logger.info options
-    ret = BancBoxCrowd.fund_account options
-    logger.info ret
-    # XXX should catch the error
-    if ret['status']
-      transaction.trans_id = ret['transaction_details']['id']
-      transaction.status = ret['transaction_details']['status']
-      transaction.trans_status = ret['transaction_details']['trans_status']
-      transaction.bank_account = bank_account
-      transaction.save
-
-      self.pendingbalance += transaction.amount
-      save
-    end
-  end
-
-  def fund_account_and_link_bank!(type, transaction, bank_account)
-    options = fund_account_common_options(transaction.amount, transaction.memo)
-    options.merge!({
-      :bank_account_number => bank_account.bank_account_number,
-      :bank_account_type => bank_account.bank_account_type,
-      :bank_account_holder => bank_account.bank_account_holder,
-      :bank_account_routing => bank_account.bank_account_routing,
-      :link_bank_account => true
-    })
-    if type == :investor
-      options[:investor_id] = bancbox_id
-    else
-      options[:issuer_id] = bancbox_id
-    end
-    logger.info options
-    ret = BancBoxCrowd.fund_account options
-    logger.info ret
-    # XXX should catch the error
-    if ret['status']
-      bank_account.bancbox_id = ret['linked_external_account']['id']
-      bank_account.reference_id = ret['linked_external_account']['reference_id']
-      bank_account.save
-
-      transaction.trans_id = ret['transaction_details']['id']
-      transaction.status = ret['transaction_details']['status']
-      transaction.trans_status = ret['transaction_details']['trans_status']
-      transaction.bank_account = bank_account
-      transaction.save
-
-      self.pendingbalance += transaction.amount
-      save
-    end
   end
 
   def link_bank_account(type, bank_account)

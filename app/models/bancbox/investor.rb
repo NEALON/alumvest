@@ -1,12 +1,12 @@
 class Bancbox::Investor < Bancbox::PersonBase
 
-  attr_accessible :investor_type
+  attr_accessible :investor_type, :banking_account, :banking_account_id
+
+  belongs_to :banking_account, :class_name => 'Banking::Account', :foreign_key => 'banking_account_id'
 
   validates_presence_of [:investor_type], :on => :update
 
-  belongs_to :user # or maybe :investor
-
-  def submit!
+  def submit!(bank_account)
     super do |options|
       next BancBoxCrowd.create_investor options
     end

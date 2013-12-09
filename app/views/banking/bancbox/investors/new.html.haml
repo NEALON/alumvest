@@ -1,0 +1,17 @@
+= render 'banking/side_navigation', :active => 'banking_accounts'
+= render 'users/header'
+
+#information
+  .container
+    = form_for @investor, :url => user_banking_account_bancbox_investor_path(@user), :html => {:class => "form-horizontal"} do |f|
+      = render 'shared/errors', :entity => @investor
+
+      %fieldset
+        = f.hidden_field :banking_account_id
+
+        - with_options :form => f do |op|
+          = op.render_cell 'tb/form/select', :display, :field =>  :investor_type, :values => ["Individual/LLC", "International", "Custodian"]
+          = f.check_box :agreement
+          = f.label :agreement,
+            "I agree to Privacy Policy, Platform Agreement, Technology Agreement @ bancboxinvest.com"
+        = render_cell 'tb/form/submit_button', :display
