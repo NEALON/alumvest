@@ -6,7 +6,7 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
-describe Bancbox::Escrow do
+describe Bancbox::Investor do
   before :each do
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       @user = FactoryGirl.create(:user)
