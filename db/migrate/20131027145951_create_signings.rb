@@ -3,7 +3,7 @@ class CreateSignings < ActiveRecord::Migration
     create_table :signings do |t|
       t.string :status, :default => 'unsigned'
 
-      t.references :investment
+      t.references :investment_finalization
       t.references :document
 
       t.timestamps

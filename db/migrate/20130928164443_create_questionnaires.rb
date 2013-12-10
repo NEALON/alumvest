@@ -7,7 +7,7 @@ class CreateQuestionnaires < ActiveRecord::Migration
       t.string :income_type
       t.string :net_worth
 
-      t.references :investment
+      t.references :investment_finalization
       t.timestamps
     end
   end
