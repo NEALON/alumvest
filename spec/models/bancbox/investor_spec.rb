@@ -12,7 +12,6 @@ describe Bancbox::Escrow do
       @user = FactoryGirl.create(:user)
       @investor = FactoryGirl.create(:bancbox_investor)
       @bank_account = FactoryGirl.create(:bancbox_bank_account)
-      @investor.user = @user
       @investor.should be_valid
       @bank_account.investor = @investor
       @bank_account.should be_valid
