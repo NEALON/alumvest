@@ -40,7 +40,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
   end
 
   after_create do
-    unless banking_account.user.blank?
+    unless banking_account.blank? or banking_account.user.blank?
       u = banking_account.user
       self.first_name = u.first_name
       self.last_name = u.last_name

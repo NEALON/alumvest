@@ -12,7 +12,6 @@ describe Bancbox::Issuer do
       @user = FactoryGirl.create(:user)
       @issuer = FactoryGirl.create(:bancbox_issuer)
       @bank_account = FactoryGirl.create(:bancbox_bank_account)
-      @issuer.user = @user
       @issuer.should be_valid
       @bank_account.issuer = @issuer
       @bank_account.should be_valid

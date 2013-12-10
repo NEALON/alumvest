@@ -9,9 +9,9 @@ FactoryGirl.define do
     state Faker::Address.state_abbr
     zip Faker::Address.zip_code
     agreement true
-    #company_name Faker::Name.first_name
-    #company_type 'LLC'
-    #company_registration_state Faker::Address.state_abbr
-    #company_tax_id Faker::Number.number(9)
+    company_name Faker::Name.first_name
+    company_type 'LLC'
+    company_registration_state Faker::Address.state_abbr
+    company_tax_id Faker::Number.number(9)
   end
 end

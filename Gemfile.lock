@@ -8,11 +8,18 @@ GIT
 
 GIT
   remote: git://github.com/interskh/banc_box_crowd
-  revision: 930f6255f8b749008abce756ad87081ccd861ad3
+  revision: ba885055d64f6863b6ded708c78a56091c935237
   specs:
     banc_box_crowd (0.0.1)
       faraday
       faraday_middleware
+
+GIT
+  remote: git://github.com/interskh/faker
+  revision: 77cf71af3aeee77c0f39f4b587af1057ef15ec78
+  specs:
+    faker (1.2.0)
+      i18n (~> 0.5)
 
 GIT
   remote: git://github.com/jcoleman/rails_admin
@@ -141,8 +148,6 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
-    faker (1.2.0)
-      i18n (~> 0.5)
     faker-medical (0.5.0)
       faker
       jeweler
@@ -360,7 +365,7 @@ DEPENDENCIES
   email_spec (~> 1.5)
   exception_notification (~> 4.0)
   factory_girl_rails (~> 4.2)
-  faker (~> 1.2)
+  faker!
   faker-medical (~> 0.5.0)
   gibbon (~> 1.0)!
   haml-rails (~> 0.4)
