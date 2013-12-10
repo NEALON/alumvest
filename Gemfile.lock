@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/interskh/banc_box_crowd
-  revision: 3cf30ccccb46e94ec351ac99ca3784b32cd94749
+  revision: 930f6255f8b749008abce756ad87081ccd861ad3
   specs:
     banc_box_crowd (0.0.1)
       faraday
@@ -122,6 +122,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -201,6 +203,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
@@ -324,9 +327,15 @@ GEM
     uglifier (2.3.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.8.0)
+    webmock (1.16.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    zeus (0.13.4.pre2)
+      method_source (>= 0.6.7)
 
 PLATFORMS
   ruby

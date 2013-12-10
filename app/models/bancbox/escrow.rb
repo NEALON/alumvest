@@ -80,6 +80,13 @@ class Bancbox::Escrow < ActiveRecord::Base
     return BancBoxCrowd.get_escrow_details options
   end
 
+  def get_activity
+    options = {
+      :escrow_id => bancbox_id
+    }
+    return BancBoxCrowd.get_escrow_activity options
+  end
+
   # TODO this should pass in a transaction model - kyle
   def fund!(investor, bank_account, amount)
     return false unless self.opened?
