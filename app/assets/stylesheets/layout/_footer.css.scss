@@ -16,9 +16,9 @@
       position: relative;
       left: 135px;
 
-      transition: width 0.5s, position 0.5s, left 0.5s;
-      -webkit-transition: width 0.5s, position 0.5s, left 0.5s;
-      -moz-transition: width 0.5s, position 0.5s, left 0.5s;
+      transition: width 0.5s, position 0.5s, left 0.5s, border-color 0.5s;
+      -webkit-transition: width 0.5s, position 0.5s, left 0.5s, border-color 0.5s;
+      -moz-transition: width 0.5s, position 0.5s, left 0.5s, border-color 0.5s;
     }
 
     #mce-EMAIL.email:focus{
