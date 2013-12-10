@@ -15,16 +15,18 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails', '~> 4.2', {:require=>false}
-  gem 'rspec', '~> 2.14'
-  gem 'rspec-rails', '~> 2.14'
-  gem 'capybara', '~> 2.1'
-  gem 'capybara-screenshot', '~> 0.3'
-  gem 'database_cleaner', '~> 1.2'
-  gem 'email_spec', '~> 1.5'
-  gem 'launchy', '~> 2.3'
-  gem 'selenium-webdriver', '~> 2.37'
-  gem 'byebug', '~> 2.3'
+  gem "factory_girl_rails", "~> 4.2", {:require=>false}
+  gem "rspec", "~> 2.14"
+  gem "rspec-rails", "~> 2.14"
+  gem "capybara", "~> 2.1"
+  gem "capybara-screenshot", "~> 0.3"
+  gem "database_cleaner", "~> 1.2"
+  gem "email_spec", "~> 1.5"
+  gem "launchy", "~> 2.3"
+  gem "selenium-webdriver", "~> 2.37"
+  gem "byebug", "~> 2.3"
+  gem "vcr", "~> 2.8"
+  gem "webmock", "~> 1.15"
 end
 
 group :production do
@@ -56,7 +58,7 @@ gem 'puma', '~> 2.6'
 gem 'pg', '~> 0.17'
 gem 'jquery-ui-rails', '~> 4.0'
 gem 'compass'
-gem 'faker', '~> 1.2'
+gem 'faker', :git => 'git://github.com/interskh/faker'
 gem 'faker-medical', '~> 0.5.0'
 gem 'docusign_rest', :git => 'git://github.com/mikepence/docusign_rest.git'
 gem 'rest-client', '~> 1.6'

@@ -1,5 +1,10 @@
-require 'spec_helper'
+require 'spec_helper_without_capybara'
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'vcr_cassettes'
+  c.hook_into :webmock
+end
 
 describe Bancbox::Escrow do
-  pending "add some examples to (or delete) #{__FILE__}"
 end

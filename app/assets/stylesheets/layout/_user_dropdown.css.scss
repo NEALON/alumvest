@@ -3,7 +3,7 @@
   text-align: center;
 
   ul.dropdown-menu{
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     border-width: 0;
     width: 120px;
     margin: 0;
@@ -28,23 +28,18 @@
 
   }
 
-  li:hover{
-    background-color: #e6e6e6;
-  }
-
   a:hover{
     background-image: none;
-    background-color: #e6e6e6;
+    background-color: #ffffff;
     color: #555555;
-  }
-
-  a img{
-    width: 19px;
-    height: 19px;
   }
 
   a#user-name{
     display: block;
     height: 50px;
+    width: 120px;
+    position: relative;
+    left: 30px;
+    margin: 0;
   }
 }

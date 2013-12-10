@@ -8,11 +8,18 @@ GIT
 
 GIT
   remote: git://github.com/interskh/banc_box_crowd
-  revision: 3cf30ccccb46e94ec351ac99ca3784b32cd94749
+  revision: ba885055d64f6863b6ded708c78a56091c935237
   specs:
     banc_box_crowd (0.0.1)
       faraday
       faraday_middleware
+
+GIT
+  remote: git://github.com/interskh/faker
+  revision: 77cf71af3aeee77c0f39f4b587af1057ef15ec78
+  specs:
+    faker (1.2.0)
+      i18n (~> 0.5)
 
 GIT
   remote: git://github.com/jcoleman/rails_admin
@@ -122,6 +129,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -139,8 +148,6 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
-    faker (1.2.0)
-      i18n (~> 0.5)
     faker-medical (0.5.0)
       faker
       jeweler
@@ -325,6 +332,10 @@ GEM
     uglifier (2.3.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.8.0)
+    webmock (1.16.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -354,7 +365,7 @@ DEPENDENCIES
   email_spec (~> 1.5)
   exception_notification (~> 4.0)
   factory_girl_rails (~> 4.2)
-  faker (~> 1.2)
+  faker!
   faker-medical (~> 0.5.0)
   gibbon (~> 1.0)!
   haml-rails (~> 0.4)
@@ -385,4 +396,6 @@ DEPENDENCIES
   selenium-webdriver (~> 2.37)
   state_machine (~> 1.2)
   uglifier (~> 2.2)
+  vcr (~> 2.8)
+  webmock (~> 1.15)
   zeus (= 0.13.4.pre2)

@@ -16,6 +16,7 @@
 @import "users/users";
 @import "company/company";
 @import "investor_dashboard";
+@import "content/team";
 @import "layout/header";
 @import "layout/modal";
 @import "layout/footer";
@@ -26,7 +27,7 @@ html, body{
 }
 
 body{
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   font-size: 12px;
 }
 
@@ -38,9 +39,9 @@ body{
 
 #content{
   width: 100%;
-  min-height: calc(100% - 52px);
+  min-height: calc(100% - 51px);
   height: auto !important;
-  height: calc(100% - 52px);
+  height: calc(100% - 51px);
   margin: 0 0 -150px 0;
 }
 

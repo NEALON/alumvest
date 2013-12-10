@@ -1,12 +1,22 @@
 require 'spec_helper_without_capybara'
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'vcr_cassettes'
+  c.hook_into :webmock
+end
 
 describe Bancbox::Investor do
-  before :all do
-    @user = FactoryGirl.create(:user)
-    @investor = FactoryGirl.create(:bancbox_investor)
-    @investor.user = @user
-    @investor.should be_valid
-    @investor.submit!
+  before :each do
+    VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
+      @user = FactoryGirl.create(:user)
+      @investor = FactoryGirl.create(:bancbox_investor)
+      @bank_account = FactoryGirl.create(:bancbox_bank_account)
+      @investor.should be_valid
+      @bank_account.investor = @investor
+      @bank_account.should be_valid
+      @investor.submit!(@bank_account)
+    end
   end
 
   it "can create a bancbox investor" do
@@ -16,46 +26,28 @@ describe Bancbox::Investor do
     @investor.account_number.should_not == nil
     @investor.account_routing_number.should_not == nil
     @investor.account_type.should_not == nil
+    @investor.investor_bank_accounts.size.should == 1
   end
 
-  it "can link external bank account" do
-    @bank_account = FactoryGirl.create(:bancbox_bank_account)
-    @bank_account.investor = @investor
-    @bank_account.should be_valid
+  it "can link another external bank account" do
+    @investor.investor_bank_accounts.size.should == 1
+    VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
+      another_bank_account = FactoryGirl.create(:bancbox_bank_account)
+      another_bank_account.investor = @investor
+      another_bank_account.should be_valid
 
-    @investor.link_bank_account(:investor, @bank_account)
-
-    @bank_account.bancbox_id.should_not == nil
-    @investor.investor_bank_accounts.size.should_not == 0
+      @investor.investor_bank_accounts.size.should == 1
+      @investor.link_bank_account(:investor, another_bank_account)
+      @investor.investor_bank_accounts.size.should == 2
+    end
   end
 
-  it "can fund account" do
-    @transaction = FactoryGirl.create(:bancbox_fund_transaction)
-    @transaction.investor = @investor
-    @transaction.should be_valid
-    @bank_account = FactoryGirl.create(:bancbox_bank_account)
-    @bank_account.investor = @investor
-    @bank_account.should be_valid
-
-    @investor.fund_account_and_link_bank!(:investor, @transaction, @bank_account)
-
-    @investor.pendingbalance.should_not == 0
-    @investor.investor_bank_accounts.size.should_not == 0
-    @investor.investor_fund_transactions.size.should_not == 0
-  end
-
-  it "can link external bank account then fund from that" do
-    @bank_account = FactoryGirl.create(:bancbox_bank_account)
-    @bank_account.investor = @investor
-    @bank_account.should be_valid
-    @investor.link_bank_account(:investor, @bank_account)
-
-    @transaction = FactoryGirl.create(:bancbox_fund_transaction)
-    @transaction.investor = @investor
-    @investor.fund_account!(:investor, @transaction, @bank_account)
-
-    @investor.pendingbalance.should_not == 0
-    @investor.investor_bank_accounts.size.should_not == 0
-    @investor.investor_fund_transactions.size.should_not == 0
+  it "can fund escrow" do
+    VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
+      @escrow = FactoryGirl.create(:vcr_established_bancbox_escrow)
+      @escrow.issuer = @issuer
+      @escrow.fire_bancbox_status_event(:open) # manually flip it to open
+      @escrow.fund!(@investor, @bank_account, 100)
+    end
   end
 end
