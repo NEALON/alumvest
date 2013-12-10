@@ -34,18 +34,18 @@
 
 #active{
 	.campaign-group-title{
-		background-color: #5dade2;
+		// background-color: #5dade2;
 	}
 }
 
 #successful{
 	.campaign-group-title{
-		background-color: #2ECC71;
+		//background-color: #2ECC71;
 	}
 }
 
 .campaign-group-title{
-	color: white;
+	color: #000000;
 	height: 50px;
 
 	.row div{
@@ -53,14 +53,14 @@
 	}
 
 	h3{
-		margin-top: 14px;
-		font-size: 20px;
+		margin-top: 15px;
+		font-size: 26px;
 		font-weight: normal;
 	}
 
 	a{
-		margin-top: 15px;
-		color: white;
+		margin-top: 24px;
+		color: #000000;
 		text-decoration: none;
 		display: block;
 		width: 100%;
@@ -71,64 +71,68 @@
 	}
 
 	a:hover{
-		color: white;
+		color: #000000;
 		text-decoration: none;
 	}
 }
 
 .campaign-row-section{
-	background-color: #f8f8f8;
+	// background-color: #f8f8f8;
 
 	.homepage-featured-campaigns{
 		.col-md-4.outline{
-			margin: 10px 15px 10px;
-			border-radius: 4px;
-			border: none;
+			margin: 30px 15px 30px;
+			border-radius: 0px;
+			border: 1px solid #f8f8f8;
+			box-shadow: none;
 			display: block;
 			width: 300px;
 			min-height: 425px;
 			max-height: 425px;
 			overflow: none;
-			padding: 5px;
+			padding: 0px;
 
 			.company-title{
 				h4{
 					display: block;
 					height: 38px;
 					margin: 5px 0 5px;
-					font-family: Georgia, Helvetica Nueue, Helvetica, Arial, serif, cursive;
+					font-family: 'Open Sans', sans-serif;
 					font-weight: 700;
 					overflow: hidden;
-					color: #000000;
+					color: rgba(0, 0, 0, 0.79);
 					text-align: left;
+					line-height: 20px;
 
 					a{
 						display: block;
 						width: 100%;
-						color: #000000;
+						color: rgba(0, 0, 0, 0.79);
 					}
 
 					a:hover{
-						color: #000000;
+						color: rgba(0, 0, 0, 0.79);
 						text-decoration: none;
 					}
 				}
 			}
 
 			.company-short-description{
-				font-family: 'Nixie One', Georgia, Helvetica Nueue, Helvetica, Arial, serif, cursive;
-				color: #777;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 14px;
+				font-weight: 100;
+				line-height: 20px;
+				color: rgba(0, 0, 0, 0.5);
 				display: block;
 				height: 110px;
 				max-height: 110px;
 				overflow: hidden;
-				font-size: 15px;
 			}
 
 			.img-campaign{
-				border-top-left-radius: 2px;
-				border-top-right-radius: 2px;
-				width: 290px;
+				// border-top-left-radius: 2px;
+				// border-top-right-radius: 2px;
+				width: 298px;
 				height: 200px;
 			}
 
