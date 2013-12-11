@@ -2,16 +2,18 @@
 
 #header{
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  background-color: white !important;
+  background-color: rgba(0, 0, 0, 0) !important;
   background-image: none;
-  border-style: solid;
-  border-width: 2px 0 0 0;
-  border-top-color: #1ABC9C;
+  // border-style: solid;
+  // border-width: 2px 0 0 0;
+  // border-top-color: #1ABC9C;
+  border: none;
   text-transform: uppercase;
   width: 100%;
   margin-bottom: 0;
   box-shadow: none;
   border-radius: 0;
+  z-index: 3;
 
   .navbar-brand{
     padding: 5px 5px 5px 15px;
