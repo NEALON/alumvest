@@ -1,7 +1,7 @@
 @import "user_dropdown";
 
 #header{
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-color: rgba(0, 0, 0, 0) !important;
   background-image: none;
   // border-style: solid;
@@ -26,6 +26,7 @@
       font-size: 14px;
       padding-left: 33px;
       border: 1px solid #BDC3C7;
+      box-shadow: none;
 
       transition: width 0.5s, border-color 0.5s;
       -moz-transition: width 0.5s, border-color 0.5s;

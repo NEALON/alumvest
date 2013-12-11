@@ -12,8 +12,8 @@
 
 #cover{
 	padding: 0;
-	min-height: 400px;
-	background: image-url('home/cover2.jpg') repeat;
+	min-height: 500px;
+	background: image-url('home/cover7.jpg') repeat;
 	overflow: hidden;
 
 	.container{
@@ -66,13 +66,14 @@
 		width: 100%;
 		height: 100%;
 		text-align: right;
+		vertical-align: top;
 		font-size: 14px;
 		vertical-align: center;
 	}
 
 	a:hover{
 		color: #000000;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 }
 
