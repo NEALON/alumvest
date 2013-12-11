@@ -1,9 +1,12 @@
-%li= link_to "About", "/about"
-%li= link_to "Team", "/about/team"
-%li= link_to "FAQ", :root
-%li= link_to "Press", :root
-%li= link_to "Terms & Conditions", :root
-%li= link_to "Join Us", :root
-%li= link_to "Privacy", :root
-%li= link_to "Contact Us", :root
-%li= link_to 'Tester Dashboard', :tester_dashboard
+%ul.nav.nav-pills
+  %li= link_to "About", "/about"
+  %li= link_to "Team", "/about/team"
+  %li= link_to "FAQ", :root
+%ul.nav.nav-pills
+  %li= link_to "Press", :root
+  %li= link_to "Terms & Conditions", :root
+  %li= link_to "Join Us", :root
+%ul.nav.nav-pills
+  %li= link_to "Privacy", :root
+  %li= link_to "Contact Us", :root
+  %li= link_to 'Tester Dashboard', :tester_dashboard

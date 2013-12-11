@@ -46,23 +46,31 @@
   background-color: #ffffff;
   display: block;
   width: 100%;
-  height: 150px;
-  min-height: 150px;
+  height: 250px;
+  min-height: 250px;
   padding: 20px 0 20px;
+  border-top: 1px solid #e0e0e0;
   margin-bottom: 0;
-  box-shadow: 0 0 5px #7F8C8D;
   clear: both;
   overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+
+  .share-group{
+    margin-top: 10px;
+    float: right;
+  }
 
   img{
     display: inline-block;
     width: 30px;
     height: 30px;
-    float: right;
   }
 
   .footer-navigation{
     li{
+      display: inline-block;
+      width: 150px;
+
       a{
         text-transform: uppercase;
         font-size: 12px;
@@ -79,6 +87,8 @@
   }
 
   .copyright{
+    margin-top: 60px;
+    text-align: center;
     p{
       font-size: 10px;
       color: #BDC3C7;
