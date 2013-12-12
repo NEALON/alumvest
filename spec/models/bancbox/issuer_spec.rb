@@ -45,8 +45,10 @@ describe Bancbox::Issuer do
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       @escrow = FactoryGirl.create(:vcr_bancbox_escrow)
       @escrow.issuer = @issuer
+      @escrow.bancbox_status_name.should == :unsubmitted
       @escrow.open!.should == true
       puts @escrow.get_details
+      @escrow.bancbox_status_name.should == :open_pending
     end
   end
 end

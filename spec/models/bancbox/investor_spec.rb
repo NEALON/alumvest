@@ -46,8 +46,9 @@ describe Bancbox::Investor do
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       @escrow = FactoryGirl.create(:vcr_established_bancbox_escrow)
       @escrow.issuer = @issuer
-      @escrow.fire_bancbox_status_event(:open) # manually flip it to open
-      @escrow.fund!(@investor, @bank_account, 100)
+      @escrow.fund!(@investor, @bank_account, 100).should == false
+      @escrow.fire_bancbox_status_event(:open_escrow) # manually flip it to open
+      @escrow.fund!(@investor, @bank_account, 100).should == true
     end
   end
 end

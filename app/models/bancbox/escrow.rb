@@ -13,10 +13,31 @@ class Bancbox::Escrow < ActiveRecord::Base
   validates_presence_of [:issuer_signatory_email, :issuer_signatory_name, :issuer_signatory_title]
 
   state_machine :bancbox_status, :initial => :unsubmitted do
+    state :open_pending
     state :opened
+    state :modify_pending
+    state :close_pending
     state :closed
-    event :open do
-      transition :unsubmitted => :opened
+    state :cancel_pending
+    state :cancel
+    state :disburse_pending
+    event :submit_open do
+      transition :unsubmitted => :open_pending
+    end
+    event :submit_close do
+      transition all => :close_pending
+    end
+    event :submit_cancel do
+      transition all => :cancel_pending
+    end
+    event :submit_disburse do
+      transition all => :disburse_pending
+    end
+    event :open_escrow do
+      transition all => :opened
+    end
+    event :close_escrow do
+      transition all => :closed
     end
   end
 
@@ -66,7 +87,7 @@ class Bancbox::Escrow < ActiveRecord::Base
       self.current_balance = ret['current_balance']
       self.total_funding = ret['total_funding']
       save
-      fire_bancbox_status_event(:open)
+      fire_bancbox_status_event(:submit_open)
       return true
     rescue BancBoxCrowd::Error
       return false
