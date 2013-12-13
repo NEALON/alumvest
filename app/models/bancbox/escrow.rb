@@ -33,10 +33,10 @@ class Bancbox::Escrow < ActiveRecord::Base
     event :submit_disburse do
       transition all => :disburse_pending
     end
-    event :open_escrow do
+    event :escrow_opened do
       transition all => :opened
     end
-    event :close_escrow do
+    event :escrow_closed do
       transition all => :closed
     end
   end
@@ -139,7 +139,7 @@ class Bancbox::Escrow < ActiveRecord::Base
     ret = get_details
     self.status = ret['status']
     if self.status == 'OPEN'
-      fire_bancbox_status_event(:open_escrow)
+      self.escrow_opened!
     end
     self.current_balance = ret['current_balance']
     self.total_funding = ret['notional_balance']

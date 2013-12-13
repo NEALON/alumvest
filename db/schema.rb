@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208175514) do
+ActiveRecord::Schema.define(version: 20131213082732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20131208175514) do
     t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "bancbox_status",           default: "unsubmitted"
   end
 
   create_table "bancbox_fund_transactions", force: true do |t|
