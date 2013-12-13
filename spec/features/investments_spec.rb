@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe 'managing investment finalizations', :type => :feature do
+describe 'managing investments', :type => :feature do
 
   before :each do
     create_owner

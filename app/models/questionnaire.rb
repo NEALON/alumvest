@@ -1,5 +1,5 @@
 class Questionnaire < ActiveRecord::Base
-  include FinalizationStep
+  include InvestmentStep
   attr_accessible :status, :annual_income, :year_of_income, :income_type, :net_worth
 
   ANNUAL_INCOMES = ["Below $200,000", "$200,000 to $299,999", "$300,000 and above"]

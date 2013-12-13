@@ -1,3 +1,3 @@
 class IrsDocGroup < ActiveRecord::Base
-  include FinalizationStep
+  include InvestmentStep
 end

@@ -1,3 +1,3 @@
 class SubscriptionAgreement < ActiveRecord::Base
-  include FinalizationStep
+  include InvestmentStep
 end
