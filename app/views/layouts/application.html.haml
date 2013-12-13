@@ -18,14 +18,11 @@
   = yield :head
   - unless Rails.env.test?
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"
-    :plain
-      <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   = render 'layouts/shareaholic_header'
 %body
   %nav#header.navbar.navbar-default{ 'role' => 'navigation'}
     .container
       .navbar-header
-        <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
         %button.navbar-toggle{ :type => 'button', "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
           %span.sr-only
           %span.icon-bar
@@ -83,10 +80,11 @@
           #sidebar.col-md-3.col-xs-12
             = yield :sidebar_right
     - else
-      .container
-        .row
-          .col-md-12.col-xs-12
-            = render 'layouts/flash', :flash => flash
+      - if content_for? flash
+        .container
+          .row
+            .col-md-12.col-xs-12
+              = render 'layouts/flash', :flash => flash
       = yield
     .push
   #footer

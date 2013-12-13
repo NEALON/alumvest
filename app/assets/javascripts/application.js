@@ -16,4 +16,5 @@
 //= require ckeditor-jquery
 //= require cocoon
 //= require bootstrap
+//= require layout/header
 //= require_tree .

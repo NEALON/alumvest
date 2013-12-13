@@ -4,9 +4,6 @@
   font-family: 'Open Sans', sans-serif;
   background-color: rgba(0, 0, 0, 0) !important;
   background-image: none;
-  // border-style: solid;
-  // border-width: 2px 0 0 0;
-  // border-top-color: #1ABC9C;
   border: none;
   text-transform: uppercase;
   width: 100%;
@@ -19,56 +16,77 @@
     padding: 5px 5px 5px 15px;
   }
 
+  .navbar-brand img{
+    height: 40px;
+    overflow: hidden;
+  }
+
+  .nav.navbar-nav{
+    li a{
+      color: #000000;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+
+    li a:hover{
+      color: #777777;
+    }
+  }
+
   #search-header{
     padding-left: 0;
+    padding-right: 0;
+    width: 40%;
+    display: inline-block;
+    background: none;
+
     .form-control{
+      position: relative;
+      left: -38px;
       border-radius: 20px;
       font-size: 14px;
       padding-left: 33px;
-      border: 1px solid #BDC3C7;
+      border: 2px solid #000000;
       box-shadow: none;
-
-      transition: width 0.5s, border-color 0.5s;
-      -moz-transition: width 0.5s, border-color 0.5s;
-      -webkit-transition: width 0.5s, border-color 0.5s;
+      width: 100%;
+      background: none;
     }
 
     .form-control:focus{
-      border-color: #1ABC9C;
       outline: none;
       box-shadow: none;
-      width: 328px;
     }
 
     span.input-group-btn{
       position: relative;
-      right: -38px;
       top: 1px;
+      z-index: 2;
+      background: none;
+
       button.btn.btn-default{
         background: none;
         background-image: none;
         border: none;
         box-shadow: none;
-        color: #BDC3C7;
+        color: #000000;
+      }
+
+      button.btn.btn-default:hover{
+        color: #777777;
+      }
+
+      button.btn.btn-default:focus{
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        color: #000000;
       }
     }
   }
 
   .navbar-collapse{
     height: 50px !important;
-  }
-
-  .navbar-brand img{
-    height: 40px;
-    overflow: hidden;
-  }
-
-  #signup{
-    background-color: #f67564;
-  }
-
-  #search-header{
-    width: 25%;
-    display: inline-block;
   }
 }
