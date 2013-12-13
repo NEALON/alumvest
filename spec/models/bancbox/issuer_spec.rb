@@ -10,8 +10,8 @@ describe Bancbox::Issuer do
   before :each do
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       @user = FactoryGirl.create(:user)
-      @issuer = FactoryGirl.create(:bancbox_issuer)
-      @bank_account = FactoryGirl.create(:bancbox_bank_account)
+      @issuer = FactoryGirl.create(:vcr_bancbox_issuer)
+      @bank_account = FactoryGirl.create(:vcr_bancbox_issuer_bank_account)
       @issuer.should be_valid
       @bank_account.issuer = @issuer
       @bank_account.should be_valid

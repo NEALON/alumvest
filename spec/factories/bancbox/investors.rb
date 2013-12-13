@@ -11,4 +11,18 @@ FactoryGirl.define do
     agreement true
     investor_type "Individual/LLC"
   end
+
+  factory :vcr_bancbox_investor, :class => Bancbox::Investor do
+    first_name "Baron"
+    last_name "Berge"
+    phone "5921178712"
+    email "vanea.lynch@berge.name"
+    address_1 "133 Yundt Crossroad"
+    city "East Sheaton"
+    state "GU"
+    zip "19983"
+    agreement true
+    investor_type "Individual/LLC"
+    reference_id "f665d44b-217e-412d-84e5-fd4700c1e094"
+  end
 end

@@ -10,8 +10,8 @@ describe Bancbox::Investor do
   before :each do
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       @user = FactoryGirl.create(:user)
-      @investor = FactoryGirl.create(:bancbox_investor)
-      @bank_account = FactoryGirl.create(:bancbox_bank_account)
+      @investor = FactoryGirl.create(:vcr_bancbox_investor)
+      @bank_account = FactoryGirl.create(:vcr_bancbox_investor_bank_account)
       @investor.should be_valid
       @bank_account.investor = @investor
       @bank_account.should be_valid
@@ -30,7 +30,6 @@ describe Bancbox::Investor do
   end
 
   it "can link another external bank account" do
-    @investor.investor_bank_accounts.size.should == 1
     VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
       another_bank_account = FactoryGirl.create(:bancbox_bank_account)
       another_bank_account.investor = @investor
