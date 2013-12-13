@@ -47,8 +47,11 @@ describe Bancbox::Issuer do
       @escrow.issuer = @issuer
       @escrow.bancbox_status_name.should == :unsubmitted
       @escrow.open!.should == true
-      puts @escrow.get_details
       @escrow.bancbox_status_name.should == :open_pending
+      @escrow.update_from_server!
+      @escrow.bancbox_status_name.should == :opened
+      @escrow.current_balance.should == 100
+      @escrow.total_funding.should == 100
     end
   end
 end

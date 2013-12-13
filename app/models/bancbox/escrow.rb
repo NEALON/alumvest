@@ -134,4 +134,15 @@ class Bancbox::Escrow < ActiveRecord::Base
       return false
     end
   end
+
+  def update_from_server!
+    ret = get_details
+    self.status = ret['status']
+    if self.status == 'OPEN'
+      fire_bancbox_status_event(:open_escrow)
+    end
+    self.current_balance = ret['current_balance']
+    self.total_funding = ret['notional_balance']
+    save
+  end
 end
