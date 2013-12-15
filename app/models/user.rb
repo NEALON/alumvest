@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
       :first_name,
       :last_name,
       :gender,
-      :date_of_birth,
-      :ssn,
       :mobile_phone,
       :home_phone,
       :address_1,

@@ -11,11 +11,12 @@ module Features
         fill_in "#{form}_middle_name", :with => Faker::Name.first_name
         fill_in "#{form}_last_name", :with => Faker::Name.last_name
         choose 'Male'#, :from => "#{form}_gender"
-        select '1967', :from => "#{form}_date_of_birth_1i"
-        select 'January', :from => "#{form}_date_of_birth_2i"
-        select '1', :from => "#{form}_date_of_birth_3i"
 
-        fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+        #select '1967', :from => "#{form}_date_of_birth_1i"
+        #select 'January', :from => "#{form}_date_of_birth_2i"
+        #select '1', :from => "#{form}_date_of_birth_3i"
+        #fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+
         fill_in "#{form}_mobile_phone", :with => Faker::Number.number(10)
         fill_in "#{form}_home_phone", :with => Faker::Number.number(10)
         fill_in "#{form}_address_1", :with => Faker::Address.street_address
@@ -40,7 +41,7 @@ module Features
       'bancbox_bank_account'.tap do |form|
         fill_in "#{form}_bank_account_holder", :with => Faker::Name.name
         select 'CHECKING', :from => "#{form}_bank_account_type"
-        fill_in "#{form}_bank_account_routing", :with => Faker::Number.number(10)
+        fill_in "#{form}_bank_account_routing", :with => Bancbox::BankAccount::DefaultRoutingNumber
         fill_in "#{form}_bank_account_number", :with => Faker::Number.number(10)
       end
       click_button 'Save'

@@ -5,10 +5,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
   attr_accessible :first_name,
                   :middle_initial,
                   :last_name,
-                  :ssn,
                   :email,
                   :phone,
-                  :date_of_birth,
                   :address_1,
                   :address_2,
                   :city,
@@ -33,13 +31,18 @@ class Bancbox::PersonBase < ActiveRecord::Base
     end
   end
 
-  after_create do
-    unless banking_account.blank? or banking_account.user.blank?
-      u = banking_account.user
-      self.first_name = u.first_name
-      self.last_name = u.last_name
-      self.email = u.email
-    end
+  def populate_fields_from_user(user)
+    update_attributes(
+        :first_name => user.first_name,
+        :last_name => user.last_name,
+        :email => user.email,
+        :phone => user.home_phone,
+        :address_1 => user.address_1,
+        :address_2 => user.address_2,
+        :city => user.city,
+        :state => user.state,
+        :zip => user.zipcode
+    )
   end
 
   def name
@@ -64,13 +67,11 @@ class Bancbox::PersonBase < ActiveRecord::Base
         :city => city,
         :state => state,
         :zip => zip,
-        #:ssn => ssn,
-        #:dob => date_of_birth,
         :bank_account_number => bank_account.bank_account_number,
         :bank_account_type => bank_account.bank_account_type,
         :bank_account_holder => bank_account.bank_account_holder,
         :bank_account_routing => bank_account.bank_account_routing,
-        :created_by => name,
+        :created_by => 'Alumvest',
         :internal => 1,
         :verification_required => 0,
         :reference_id => reference_id
@@ -146,5 +147,9 @@ class Bancbox::PersonBase < ActiveRecord::Base
       bank_account.reference_id = ret['linked_external_account']['reference_id']
       bank_account.save
     end
+  end
+
+  def has_bancbox_account?
+    not bancbox_id.nil?
   end
 end

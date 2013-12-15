@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213170628) do
+ActiveRecord::Schema.define(version: 20131215155342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20131213170628) do
     t.string   "middle_initial"
     t.integer  "funds",                  default: 0
     t.integer  "pendingbalance",         default: 0
-    t.integer  "banking_account_id"
+    t.integer  "investor_id"
   end
 
   create_table "bancbox_issuers", force: true do |t|

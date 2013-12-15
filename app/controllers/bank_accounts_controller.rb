@@ -3,7 +3,10 @@ class BankAccountsController < ApplicationController
   def new
     @user = User.find_by_id(params[:user_id])
     @active = 'bank_account'
-    @bank_account = Bancbox::BankAccount.new(:user => @user, :bank_account_holder => current_user.name)
+    @bank_account = Bancbox::BankAccount.new(
+        :user => @user,
+        :bank_account_holder => current_user.name,
+        :bank_account_routing => Bancbox::BankAccount::DefaultRoutingNumber)
     render :layout => "users"
   end
 

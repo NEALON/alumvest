@@ -18,5 +18,6 @@ class Investor < ActiveRecord::Base
                   :user_id,
                   :user
 
+  has_one :bancbox_investor, :class_name => 'Bancbox::Investor'
   has_many :investments
 end

@@ -1,6 +1,12 @@
 class Bancbox::BankAccount < ActiveRecord::Base
 
+  DefaultRoutingNumber = '267084199'
   attr_accessible :user, :user_id
+
+  after_save :notify_manager
+  def notify_manager
+    BancboxAccountManager.banking_account_updated!(user, self)
+  end
 
   belongs_to :user
   has_many :fund_transactions, :class_name => 'Bancbox::FundTransaction'

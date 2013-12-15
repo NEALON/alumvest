@@ -9,8 +9,5 @@ describe 'investor', :type => :feature do
   end
 
   it 'does stuff' do
-    sleep 10
-    true
   end
-
 end
