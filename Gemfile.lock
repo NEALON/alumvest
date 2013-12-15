@@ -332,6 +332,7 @@ GEM
     uglifier (2.3.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.5.2)
     vcr (2.8.0)
     webmock (1.16.0)
       addressable (>= 2.2.7)
@@ -396,6 +397,7 @@ DEPENDENCIES
   selenium-webdriver (~> 2.37)
   state_machine (~> 1.2)
   uglifier (~> 2.2)
+  underscore-rails
   vcr (~> 2.8)
   webmock (~> 1.15)
   zeus (= 0.13.4.pre2)

@@ -35,6 +35,7 @@ group :production do
   gem 'heroku-deflater'
 end
 
+gem 'underscore-rails'
 gem 'sass-rails', '~> 4.0'
 gem 'bootstrap-sass', '~> 3.0', {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
 gem 'coffee-rails', '~> 4.0'
