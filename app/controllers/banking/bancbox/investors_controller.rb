@@ -15,11 +15,9 @@ class Banking::Bancbox::InvestorsController < ApplicationController
   #  @bancbox_account = @banking_account.bancbox_account || Bancbox::Account.create(:banking_account => @banking_account)
   #
   #  if params[:created] == 'true'
-  #    @bancbox_account.create!
   #    @banking_account.activate!
   #    redirect_to user_banking_account_path(@user), :flash => {:success => 'Your Bancbox account was created.'}
   #  else
-  #    @bancbox_account.fail!
   #    redirect_to user_banking_account_path(@user), :flash => {:danger => 'Your Bancbox account could not be created.'}
   #  end
   #end

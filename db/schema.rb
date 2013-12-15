@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213161120) do
+ActiveRecord::Schema.define(version: 20131213170628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,16 +28,12 @@ ActiveRecord::Schema.define(version: 20131213161120) do
     t.string   "bank_account_type"
     t.string   "bank_account_holder"
     t.string   "bank_account_routing"
-    t.integer  "bancbox_investor_id"
-    t.integer  "bancbox_issuer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "bancbox_id"
     t.string   "reference_id"
+    t.integer  "user_id"
   end
-
-  add_index "bancbox_bank_accounts", ["bancbox_investor_id"], name: "index_bancbox_bank_accounts_on_bancbox_investor_id", using: :btree
-  add_index "bancbox_bank_accounts", ["bancbox_issuer_id"], name: "index_bancbox_bank_accounts_on_bancbox_issuer_id", using: :btree
 
   create_table "bancbox_escrows", force: true do |t|
     t.string   "name"
@@ -74,15 +70,13 @@ ActiveRecord::Schema.define(version: 20131213161120) do
     t.string   "memo"
     t.text     "text"
     t.integer  "bancbox_bank_account_id"
-    t.integer  "bancbox_investor_id"
-    t.integer  "bancbox_issuer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fundable_id"
+    t.string   "fundable_type"
   end
 
   add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
-  add_index "bancbox_fund_transactions", ["bancbox_investor_id"], name: "index_bancbox_fund_transactions_on_bancbox_investor_id", using: :btree
-  add_index "bancbox_fund_transactions", ["bancbox_issuer_id"], name: "index_bancbox_fund_transactions_on_bancbox_issuer_id", using: :btree
 
   create_table "bancbox_identity_verifications", force: true do |t|
     t.string   "bancbox_status"
@@ -431,7 +425,7 @@ ActiveRecord::Schema.define(version: 20131213161120) do
 
   create_table "subscription_agreements", force: true do |t|
     t.string   "status"
-    t.integer  "investment_finalization_id"
+    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

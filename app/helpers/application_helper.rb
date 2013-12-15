@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def link_to_show_or_new(entity, heading, show_path, new_path)
+    if entity
+      link_to heading, show_path
+    else
+      link_to heading, new_path
+    end
+  end
+
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join

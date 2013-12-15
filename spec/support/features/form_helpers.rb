@@ -36,6 +36,16 @@ module Features
       click_button 'Save'
     end
 
+    def fill_in_user_bank_account
+      'bancbox_bank_account'.tap do |form|
+        fill_in "#{form}_bank_account_holder", :with => Faker::Name.name
+        select 'CHECKING', :from => "#{form}_bank_account_type"
+        fill_in "#{form}_bank_account_routing", :with => Faker::Number.number(10)
+        fill_in "#{form}_bank_account_number", :with => Faker::Number.number(10)
+      end
+      click_button 'Save'
+    end
+
     def fill_in_user_advanced_info(
         mobile_phone = Faker::PhoneNumber.cell_phone,
             home_phone = Faker::PhoneNumber.phone_number,

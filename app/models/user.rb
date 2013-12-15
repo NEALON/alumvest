@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :identities
   has_one :investor
+  has_one :bank_account, :class_name => 'Bancbox::BankAccount'
   has_one :banking_account, :class_name => 'Banking::Account'
   has_one :bancbox_identity_verification, :class_name => 'Bancbox::IdentityVerification'
 
@@ -31,7 +32,7 @@ class User < ActiveRecord::Base
   validates_presence_of RequiredProfileFields, :on => :update
 
   def profile_complete?
-    RequiredProfileFields.select{|rpf| send(rpf).blank?}.empty?
+    RequiredProfileFields.select { |rpf| send(rpf).blank? }.empty?
   end
 
   def available_funds

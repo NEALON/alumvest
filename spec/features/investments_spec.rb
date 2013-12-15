@@ -9,7 +9,7 @@ describe 'managing investments', :type => :feature do
     @investor.update_attribute :accredited_investor_status, 'approved'
   end
 
-  it 'by creating an investment' do
+  it 'creates' do
     visit display_campaign_company_path(@campaign)
     click_button 'Begin Investment Process'
 
