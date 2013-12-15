@@ -1,6 +1,6 @@
 ## This is for parallax scrolling in compaign page
 $ ->
-  $('#company-nav').onePageNav
+  $('.vertical-spacer-1-em').onePageNav
     currentClass: 'active'
     changeHash: false
     scrollSpeed: 750
@@ -18,15 +18,15 @@ $ ->
   $(window).scroll (event) ->
       y = $(@).scrollTop()
       if y >= window.navTop
-        $('#header').hide()
-        $('#company-nav-container').removeClass('container')
-        $('#company-nav-container').addClass('nav-fixed')
-        $('#company-nav').addClass('container')
+        $('.vertical-spacer-1-em').addClass('nav-fixed')
+        # $('#company-nav-container').removeClass('container')
+        # $('#company-nav-container').addClass('nav-fixed')
+        # $('#company-nav').addClass('container')
       else
-        $('#company-nav-container').removeClass('nav-fixed')
-        $('#company-nav-container').addClass('container')
-        $('#company-nav').removeClass('container')
-        $('#header').show()
+        $('.vertical-spacer-1-em').removeClass('nav-fixed')
+        # $('#company-nav-container').removeClass('nav-fixed')
+        # $('#company-nav-container').addClass('container')
+        # $('#company-nav').removeClass('container')
 
   $(window).load () ->
-    window.navTop = $('#company-nav').offset().top - parseFloat($('#company-nav').css('margin-top').replace(/auto/, 0))
+    window.navTop = $('.vertical-spacer-1-em').offset().top - parseFloat($('.vertical-spacer-1-em').css('margin-top').replace(/auto/, 0))
