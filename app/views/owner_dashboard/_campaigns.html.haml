@@ -1,12 +1,16 @@
-%h3 Campaigns
+.dashboard-campaign
+  %h2 Campaigns
 
-- unless @campaigns.blank?
-  %ul
-    - @campaigns.each do |c|
-      %li
-        = "#{c.company.campaign_title} (#{c.status})"
-        = link_to "[edit]", campaign_company_path(c)
-        = link_to "[display]", display_campaign_company_path(c)
+  - unless @campaigns.blank?
+    %ul
+      - @campaigns.each do |c|
+        %li
+          %span #{c.company.campaign_title}
+          %span.campaign-live #{c.status}
+          = link_to "Edit", campaign_company_path(c)
+          %span
+            = "|"
+          = link_to "Display", display_campaign_company_path(c)
 
-- else
-  %p None.
+  - else
+    %p None.

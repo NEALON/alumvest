@@ -1,0 +1,95 @@
+// for dashboard
+#dashboard.container{
+  display: block;
+  min-height: 600px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+
+  .row{
+    min-height: 600px;
+  }
+
+  .dashboard-content{
+    font-family: 'Open Sans', sans-serif;
+
+    h2{
+      color: rgb(128, 128, 128);
+      font-size: 20px;
+      font-weight: 600;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    table{
+      display: block;
+      background-color: #ffffff;
+      border-color: rgb(238, 238, 238);
+      margin: 20px 10% 10px 0;
+      width: 90%;
+      box-shadow: rgba(0,0,0,0.08) 0px 0px 3px 0px;
+
+      thead td{
+        color: rgb(128, 128, 128);
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      tbody td{
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .dashboard-campaign{
+    ul{
+      display: block;
+      padding: 0;
+      padding-top: 30px;
+
+      li{
+        list-style-type: none;
+        display: block;
+        height: 40px;
+        padding: 10px 0;
+      }
+
+      span{
+        font-size: 14px;
+      }
+
+      .campaign-live{
+        margin-left: 10px;
+        margin-right: 20px;
+        color: $color-green;
+      }
+
+      .campaign-pending{
+        margin-left: 10px;
+        margin-right: 20px;
+        color: orange;
+      }
+
+      .campaign-disable{
+        margin-left: 10px;
+        margin-right: 20px;
+        color: red;
+      }
+
+      a{
+
+        font-size: 14px;
+      }
+    }
+
+    p{
+
+    }
+  }
+
+  .dashboard-right{
+    height: 100%;
+    min-height: 600px;
+    border-left: 1px solid #b2b9c9;
+    box-shadow: 0 0 0 -2px #b2b9c9;
+  }
+}
