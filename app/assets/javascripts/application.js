@@ -17,4 +17,5 @@
 //= require cocoon
 //= require bootstrap
 //= require layout/header
+//= require partials/scrollpy
 //= require_tree .
