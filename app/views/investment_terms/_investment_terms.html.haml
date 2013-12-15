@@ -1,6 +1,8 @@
+%hr.campaign-separator
+
 .term-content
   - unless can? :view_investment_doc, @campaign
-    %h3
+    %h3.compaign-section-header
       Investment Terms
     = render 'partials/signup_to_see_big'
   - else

@@ -15,6 +15,7 @@ $body-font-weight: 200;
 $color-green: #47a447;
 $color-blue: #428bca;
 $color-white: #ffffff;
+$color-black: #000000;
 
 // v2 code
 .company_banner{
@@ -59,6 +60,7 @@ $color-white: #ffffff;
   }
 }
 
+// parallax scrolling fixed nav bar
 .vertical-spacer-1-em.nav-fixed{
   background-color: #ffffff;
   height: 68px;
@@ -91,11 +93,13 @@ $color-white: #ffffff;
           margin: 0;
           font-family: 'Open Sans', sans-serif;
           font-weight: 600;
-          font-size: 16;
+          font-size: 14px;
+          letter-spacing: .1em;
 
           a{
+            padding-left: 0;
             position: relative;
-            top: 20px;
+            top: 17px;
             text-transform: uppercase;
             display: block;
             vertical-align: middle;
@@ -119,6 +123,7 @@ $color-white: #ffffff;
     }
 
     .col-md-2{
+      padding-left: 10px;
       height: 100%;
 
       form.button_to{
@@ -129,6 +134,8 @@ $color-white: #ffffff;
           height: 100%;
 
           input.btn.btn-large.btn-primary{
+            padding-left: 0;
+            padding-right: 0;
             background: none;
 
             color: rgba(0, 0, 0, 0.3);
@@ -139,11 +146,12 @@ $color-white: #ffffff;
 
             display: block;
             position: relative;
-            top: 22px;
+            top: 19px;
 
             font-family: 'Open Sans', sans-serif;
             font-weight: 600;
-            font-size: 16;
+            font-size: 14px;
+            letter-spacing: .1em;
 
           }
 
@@ -156,9 +164,13 @@ $color-white: #ffffff;
   }
 }
 
+hr.campaign-separator{
+  border-top: 1px dashed #111111;
+}
+
 .company-block{
   border-radius: 2px;
-  box-shadow: 0px 0px 2px #BDC3C7;
+  box-shadow: 0px 0px 1px #BDC3C7;
 }
 
 #investment-header{
@@ -166,7 +178,6 @@ $color-white: #ffffff;
     display: block;
     margin: 20px auto 0;
   }
-
 
 }
 
@@ -183,8 +194,8 @@ $color-white: #ffffff;
 }
 
 #company-tab{
+  font-family: 'Open Sans', sans-serif;
   .company-video{// company video on compaign page
-    padding: 5px;
     width: $company-left-block-width;
     height: 405px;
     margin-bottom: 20px;
@@ -203,7 +214,7 @@ $color-white: #ffffff;
       width: $company-left-content-width;
       height: 20px;
       font-size: $header-font-size;
-      color: $color-green;
+      color: $color-black;
       font-weight: $header-font-weight;
       overflow: hidden;
     }
@@ -241,7 +252,7 @@ $color-white: #ffffff;
   width: 100%;
 
   h2{
-     color: $color-green;
+     color: $color-black;
      font-weight: $header-font-weight;
      display: block;
      width: 100%;
@@ -270,7 +281,7 @@ $color-white: #ffffff;
         height: 100%;
 
         h3{
-          color: $color-green;
+          color: $color-black;
           font-weight: $header-font-weight;
           display: block;
           width: 100%;
@@ -404,18 +415,9 @@ $color-white: #ffffff;
 }
 
 #team-tab{
-  background-color: $color-white;
-  box-shadow: 0 0 5px #7F8C8D;
 
   .team-highlights{
     margin: 40px 0;
-    h3{
-      font-size: 24px;
-      font-size: 300;
-      color: #7F8C8D;
-      margin-top: 0;
-      margin-bottom: 40px;
-    }
 
     div{
       font-size: 14px;
@@ -500,7 +502,7 @@ $color-white: #ffffff;
     h3{
       font-size: 20px;
       font-weight: $header-font-weight;
-      color: $color-green;
+      color: $color-black;
     }
 
     table{
@@ -550,43 +552,32 @@ $color-white: #ffffff;
 }
 
 #faq-tab{
-  box-shadow: 0 0 5px #7F8C8D;
   padding-top: 40px;
   padding-bottom: 40px;
-
-  h3{
-    font-size: 20px;
-    font-weight: $header-font-weight;
-    color: $color-green;
-  }
 }
 
 #update-tab{
   padding-top: 40px;
   padding-bottom: 40px;
-
-  h3{
-    font-size: 20px;
-    font-weight: $header-font-weight;
-    color: $color-green;
-  }
 }
 
 #join-us-tab{
   background-color: $color-white;
-  box-shadow: 0 0 5px #7F8C8D;
   padding-top: 40px;
   padding-bottom: 40px;
-
-  h3{
-    font-size: 20px;
-    font-weight: $header-font-weight;
-    color: $color-green;
-  }
+  border-top: none;
 }
 
 #discussion-tab{
   padding-top: 15px;
+}
+
+h3.compaign-section-header{
+  font-size: 24px;
+  font-size: 300;
+  color: #7F8C8D;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
 
 // v2 for investment
@@ -690,7 +681,7 @@ $color-white: #ffffff;
 }
 
 .row-bg1 {
-  background-color: #f8f8f8;
+  background-color: $color-white;
   padding-top: 20px;
   padding-bottom: 20px;
 }
