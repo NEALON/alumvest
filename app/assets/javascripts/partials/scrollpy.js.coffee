@@ -1,3 +1,4 @@
+## This is for parallax scrolling in compaign page
 $ ->
   $('#company-nav').onePageNav
     currentClass: 'active'
@@ -28,4 +29,4 @@ $ ->
         $('#header').show()
 
   $(window).load () ->
-    window.navTop = $('#company-nav').offset().top - parseFloat($('#company-nav').css('margin-top').replace(/auto/, 0)) - 50
+    window.navTop = $('#company-nav').offset().top - parseFloat($('#company-nav').css('margin-top').replace(/auto/, 0))
