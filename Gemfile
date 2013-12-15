@@ -36,7 +36,7 @@ group :production do
 end
 
 gem 'sass-rails', '~> 4.0'
-gem 'bootstrap-sass', '~> 3.0', {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'coffee-rails', '~> 4.0'
 gem 'uglifier', '~> 2.2'
 gem 'bcrypt-ruby', '~> 3.0'

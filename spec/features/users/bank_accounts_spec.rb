@@ -21,7 +21,7 @@ describe 'users bank accounts', :type => :feature do
 
   it 'validates' do
     click_button 'Save'
-    expect(page).to have_content('errors')
+    expect(page).to have_content('error')
   end
 
   it 'makes a bancbox account when the profile is complete' do
