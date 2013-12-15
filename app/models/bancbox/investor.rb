@@ -1,8 +1,8 @@
 class Bancbox::Investor < Bancbox::PersonBase
 
-  attr_accessible :investor_type, :banking_account, :banking_account_id
+  attr_accessible :investor_type, :investor, :investor_id
 
-  belongs_to :banking_account, :class_name => 'Banking::Account', :foreign_key => 'banking_account_id'
+  belongs_to :investor
 
   validates_presence_of [:investor_type], :on => :update
 

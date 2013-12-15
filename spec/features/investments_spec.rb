@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe 'managing investment finalizations', :type => :feature do
+describe 'managing investments', :type => :feature do
 
   before :each do
     create_owner
@@ -9,7 +9,7 @@ describe 'managing investment finalizations', :type => :feature do
     @investor.update_attribute :accredited_investor_status, 'approved'
   end
 
-  it 'by creating an investment' do
+  it 'creates' do
     visit display_campaign_company_path(@campaign)
     click_button 'Begin Investment Process'
 

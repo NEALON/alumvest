@@ -1,12 +1,14 @@
 class SettingsController < ApplicationController
   def show
     @user = User.find_by_id(params[:user_id])
-    render :layout => "users", :active => 'settings_info'
+    @active = 'settings_info'
+    render :layout => "users"
   end
 
   def edit
     @user = User.find_by_id(params[:user_id])
-    render :layout => "users", :active => 'settings_info'
+    @active = 'settings_info'
+    render :layout => "users"
   end
 
   def update

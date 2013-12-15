@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module FinalizationStep
+module InvestmentStep
   extend ActiveSupport::Concern
 
   included do
