@@ -49,14 +49,6 @@ GIT
       json
       multipart-post (>= 1.1.5)
 
-GIT
-  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: 9c6c07f74ff515cf38380b014cfede14a4f0eae4
-  branch: 3
-  specs:
-    bootstrap-sass (3.0.0.0)
-      sass (~> 3.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,6 +85,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.1.4)
     byebug (2.4.0)
       columnize (~> 0.3.6)
@@ -346,7 +340,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0)
   better_errors (~> 1.0)
   binding_of_caller (~> 0.7)
-  bootstrap-sass (~> 3.0)!
+  bootstrap-sass (~> 3.0.3.0)
   byebug (~> 2.3)
   cancan (~> 1.6)
   capybara (~> 2.1)
