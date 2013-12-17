@@ -328,19 +328,22 @@ hr.campaign-separator{
 .company-raise-summary{
   padding: 5px;
   width: $company-right-block-width;
+  
 
   p{
     margin: 0;
   }
 
   div{
+    font-family: 'Open Sans', sans-serif;
     margin-top: 0;
     margin-bottom: 5px;
     height: 40px;
     font-size: 16px;
+    font-weight: 600;
     padding: 10px 15px;
     text-align: baseline;
-    color: $color-blue;
+    color: rgba(0, 0, 0, .75);
   }
 
   .double-level{
@@ -369,6 +372,11 @@ hr.campaign-separator{
     font-size: 20px;
     border: none;
     border-radius: 0;
+    color: $color-white;
+  }
+
+  a.btn.invest-now{
+    background-color: #3887be;
   }
 
   a.btn:hover{
@@ -394,9 +402,8 @@ hr.campaign-separator{
   .followers{
     height: 40px;
     margin-bottom: 5px;
-    background-color: $page-background-color;
     font-size: 16px;
-    color: $color-blue;
+    color: rgba(0, 0, 0, .75);
     padding: 10px 15px;
     text-align: baseline;
   }
@@ -407,6 +414,16 @@ hr.campaign-separator{
     border: none;
     font-size: 20px;
     border-radius: 0;
+  }
+
+  #follow-link{
+    background-color: #3bb2d0;
+    color: $color-white;
+  }
+
+  a.btn.btn-unfollow{
+    color: $color-white;
+    background-color: red;
   }
 
   .btn:hover{
