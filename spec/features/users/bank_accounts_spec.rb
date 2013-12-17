@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe 'users bank accounts', :type => :feature do
 
   before :each do
-    sign_up :investor
+    sign_up :owner
     fill_in_user_basic_info
     click_on 'Bank Account'
   end

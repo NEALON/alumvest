@@ -3,4 +3,5 @@ class Owner < ActiveRecord::Base
 
   belongs_to :user
   has_one :campaign
+  has_one :bancbox_issuer, :class_name => 'Bancbox::Issuer'
 end

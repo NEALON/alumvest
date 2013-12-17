@@ -44,7 +44,8 @@ class BankAccountsController < ApplicationController
     @bank_account = @user.bank_account
     @bank_account.update_attributes(params[:bancbox_bank_account])
     if @bank_account.valid?
-      unless @user.investor.bancbox_investor.has_bancbox_account?
+      bancbox_entity = (@user.is_investor? ? @user.investor.bancbox_investor : @user.owner.bancbox_issuer)
+      unless bancbox_entity.has_bancbox_account?
         create_bancbox_account
       else
         redirect_to user_bank_account_path(@user), :flash => {:sucess => 'Your bank account information was saved.'}
@@ -57,7 +58,11 @@ class BankAccountsController < ApplicationController
   private
 
   def create_bancbox_account
-    result = BancboxAccountManager.banking_account_updated!(@user, @bank_account)
+    if @user.is_investor?
+      result = BancboxAccountManager.submit_investor!(@user, @bank_account)
+    else
+      result = BancboxAccountManager.submit_issuer!(@user, @bank_account)
+    end
     unless result.class == BancBoxCrowd::Error
       redirect_to user_bank_account_path(@user), :flash => {:sucess => 'Your bank account information was saved.'}
     else
