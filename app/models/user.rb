@@ -2,10 +2,31 @@ class User < ActiveRecord::Base
   before_save :update_user_type
   after_create :send_welcome_email
 
-  attr_accessible :provider, :uid, :name, :first_name, :middle_name, :last_name, :gender, :date_of_birth,
-                  :email, :facebook, :linkedin, :user_type, :avatar_url
-  attr_accessible :investor_attributes, :owner_attributes, :educations_attributes
-  attr_accessible :mobile_phone, :home_phone, :address_1, :address_2, :city, :state, :zipcode, :personal_statement, :ssn
+  attr_accessible :provider,
+                  :uid,
+                  :name,
+                  :first_name,
+                  :middle_name,
+                  :last_name,
+                  :gender,
+                  :date_of_birth,
+                  :email,
+                  :facebook,
+                  :linkedin,
+                  :user_type,
+                  :avatar_url,
+                  :investor_attributes,
+                  :owner_attributes,
+                  :educations_attributes,
+                  :mobile_phone,
+                  :home_phone,
+                  :address_1,
+                  :address_2,
+                  :city,
+                  :state,
+                  :zipcode,
+                  :personal_statement,
+                  :ssn
 
   has_filepicker_image :avatar, styles: {medium: [300, 300], thumb: [128, 128]}
 

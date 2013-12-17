@@ -14,5 +14,4 @@ namespace :bancbox do
       e.update_from_server!
     end
   end
-
 end

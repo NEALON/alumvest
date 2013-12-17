@@ -35,7 +35,7 @@ module Features
 
 
     def create_live_campaign(owner)
-      FactoryGirl.create(
+      @campaign = FactoryGirl.create(
           :campaign,
           :status => "live",
           :owner => owner,

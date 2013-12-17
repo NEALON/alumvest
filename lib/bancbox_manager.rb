@@ -1,4 +1,4 @@
-class BancboxAccountManager
+class BancboxManager
 
   def self.submit_investor!(user, bank_account)
 
@@ -34,4 +34,22 @@ class BancboxAccountManager
     end
   end
 
+  def self.create_escrow!(user, campaign)
+
+    escrow = Bancbox::Escrow.create(
+        :issuer => user.owner.bancbox_issuer,
+        :campaign => campaign,
+        :name => 'Alumvest',
+        :start_date => (start_date = (campaign.starts_on || Time.now)),
+        :close_date => (start_date + campaign.investment_term.campaign_length.days),
+        :funding_goal => campaign.investment_term.fundraising_amount,
+        :minimum_funding_amount => campaign.investment_term.min_investment,
+        :maximum_funding_amount => campaign.investment_term.max_investment,
+        :securities_offered => 'EQUITY',
+        #:over_funding_amount => 0,
+        :issuer_signatory_email => user.email,
+        :issuer_signatory_name => user.full_name,
+        :issuer_signatory_title => 'Issuer'
+    )
+  end
 end
