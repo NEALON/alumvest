@@ -15,18 +15,18 @@ group :development do
 end
 
 group :test do
-  gem "factory_girl_rails", "~> 4.2", {:require=>false}
-  gem "rspec", "~> 2.14"
-  gem "rspec-rails", "~> 2.14"
-  gem "capybara", "~> 2.1"
-  gem "capybara-screenshot", "~> 0.3"
-  gem "database_cleaner", "~> 1.2"
-  gem "email_spec", "~> 1.5"
-  gem "launchy", "~> 2.3"
-  gem "selenium-webdriver", "~> 2.37"
-  gem "byebug", "~> 2.3"
-  gem "vcr", "~> 2.8"
-  gem "webmock", "~> 1.15.0"
+  gem 'factory_girl_rails', '~> 4.2', {:require=>false}
+  gem 'rspec', '~> 2.14'
+  gem 'rspec-rails', '~> 2.14'
+  gem 'capybara', '~> 2.1'
+  gem 'capybara-screenshot', '~> 0.3'
+  gem 'database_cleaner', '~> 1.2'
+  gem 'email_spec', '~> 1.5'
+  gem 'launchy', '~> 2.3'
+  gem 'selenium-webdriver', '~> 2.37'
+  gem 'byebug', '~> 2.3'
+  gem 'vcr', '~> 2.8'
+  # gem 'webmock', '~> 1.15.0'
 end
 
 group :production do
@@ -66,6 +66,5 @@ gem 'rest-client', '~> 1.6'
 gem 'cancan', '~> 1.6'
 gem 'rails_admin', :git => 'git://github.com/jcoleman/rails_admin', :branch => 'vendorize-bootstrap-2'
 gem 'protected_attributes' # rails 4 removed attr_accessible
-#gem 'banc_box_crowd', :path => '~/git/banc_box_crowd'
 gem 'banc_box_crowd', :git => 'git://github.com/interskh/banc_box_crowd'
 gem 'zeus', '0.13.4.pre2'

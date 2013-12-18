@@ -73,18 +73,6 @@ Av::Application.routes.draw do
     resource :investor
     resource :bank_account
     resource :settings
-    namespace :banking do
-      resource :identity
-      resource :account do
-        namespace :bancbox do
-          resource :investor
-          resource :issuer
-          # resources :transactions
-          # resources :deposits
-          # resources :withdrawals
-        end
-      end
-    end
 
     resource :bancbox_investor do
       get :new_fund
