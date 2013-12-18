@@ -13,7 +13,7 @@ describe Bancbox::Investor do
       @investor = FactoryGirl.create(:vcr_bancbox_investor)
       @bank_account = FactoryGirl.create(:vcr_bancbox_investor_bank_account)
       @investor.should be_valid
-      @bank_account.investor = @investor
+      @bank_account.user = @user
       @bank_account.should be_valid
       @investor.submit!(@bank_account)
     end
@@ -26,19 +26,7 @@ describe Bancbox::Investor do
     @investor.account_number.should_not == nil
     @investor.account_routing_number.should_not == nil
     @investor.account_type.should_not == nil
-    @investor.investor_bank_accounts.size.should == 1
-  end
-
-  it "can link another external bank account" do
-    VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
-      another_bank_account = FactoryGirl.create(:bancbox_bank_account)
-      another_bank_account.investor = @investor
-      another_bank_account.should be_valid
-
-      @investor.investor_bank_accounts.size.should == 1
-      @investor.link_bank_account(:investor, another_bank_account)
-      @investor.investor_bank_accounts.size.should == 2
-    end
+    @user.bank_account.should_not == nil
   end
 
   it "can fund escrow" do

@@ -328,7 +328,7 @@ GEM
       json (>= 1.8.0)
     underscore-rails (1.5.2)
     vcr (2.8.0)
-    webmock (1.16.0)
+    webmock (1.15.2)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
     websocket (1.0.7)
@@ -393,5 +393,5 @@ DEPENDENCIES
   uglifier (~> 2.2)
   underscore-rails
   vcr (~> 2.8)
-  webmock (~> 1.15)
+  webmock (~> 1.15.0)
   zeus (= 0.13.4.pre2)
