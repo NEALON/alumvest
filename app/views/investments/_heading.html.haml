@@ -1,15 +1,15 @@
 = content_for :header_1 do
-  .container
+  #investment-header.container
     .row
       .col-md-12
         %p
           %h4.thank-you Thank you for your interest in investing in:
           = render 'companies/heading'
 
-= content_for :breadcrumbs do
-  .container
-    .row
-      .col-md-12
-        %ol.breadcrumb
-          %li= link_to(@campaign.company.campaign_title, display_campaign_company_path(@campaign))
-          %li= link_to('Investment', campaign_investment_path(@campaign, @investment))
+/ = content_for :breadcrumbs do
+/   .container
+/     .row
+/       .col-md-12
+/         %ol.breadcrumb
+/           %li= link_to(@campaign.company.campaign_title, display_campaign_company_path(@campaign))
+/           %li= link_to('Investment', campaign_investment_path(@campaign, @investment))

@@ -13,6 +13,7 @@
 //= require underscore
 //= require jquery
 //= require jquery_ujs
+//= require autoNumeric
 //= require filepicker_async
 //= require ckeditor-jquery
 //= require cocoon
