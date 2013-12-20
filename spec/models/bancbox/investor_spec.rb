@@ -38,4 +38,13 @@ describe Bancbox::Investor do
       @escrow.fund!(@investor, @bank_account, 100).should == true
     end
   end
+
+  #it "can ask his investment refunded" do
+    #VCR.use_cassette('bancbox', :match_requests_on => [:method, :uri], :record => :new_episodes) do
+      #@escrow = FactoryGirl.create(:vcr_established_bancbox_escrow)
+      #@escrow.issuer = @issuer
+      #@escrow.fire_bancbox_status_event(:escrow_opened) # manually flip it to open
+      #@escrow.refund!(@investor).should == true
+    #end
+  #end
 end

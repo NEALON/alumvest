@@ -152,6 +152,21 @@ class Bancbox::Escrow < ActiveRecord::Base
     end
   end
 
+  def refund!(investor)
+    return false unless self.opened?
+    # TODO we should check ourselves that this investor has indeed invested first
+    options = {
+        :escrow_id => bancbox_id,
+        :investor_id => investor.bancbox_id
+    }
+    begin
+      BancBoxCrowd.change_investor_contribution options
+      return true
+    rescue BancBoxCrowd::Error => e
+      e
+    end
+  end
+
   def update_from_server!
     ret = get_details
     self.status = ret['status']

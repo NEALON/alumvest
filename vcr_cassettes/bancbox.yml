@@ -166,7 +166,8 @@ http_interactions:
       - Jetty(8.1.7.v20120910)
     body:
       encoding: UTF-8
-      string: '{"request_id":554027248259,"id":398785659697,"project_name":"Darren","current_balance":100.0,"notional_balance":100.0,"status":"OPEN","platform_signatory_name":"Lynn Chen","platform_signatory_title":"CEO","platform_signatory_email":"kyle@alumvest.com","issuer_id":110186565153,"issuer_reference_id":"83b7bb7f-9795-43fb-86ab-48bca02e9799","issuer_signatory_name":"Kyle
+      string: '{"request_id":554027248259,"id":398785659697,"project_name":"Darren","current_balance":100.0,"notional_balance":100.0,"status":"OPEN","platform_signatory_name":"Lynn
+        Chen","platform_signatory_title":"CEO","platform_signatory_email":"kyle@alumvest.com","issuer_id":110186565153,"issuer_reference_id":"83b7bb7f-9795-43fb-86ab-48bca02e9799","issuer_signatory_name":"Kyle
         Escrow Issuer","issuer_signatory_title":"Kyle Escrow Title","issuer_signatory_email":"kyle+test+escrow@alumvest.com","minimum_amount":10.00,"maximum_amount":1000.00,"funding_goal":1000000.00,"over_funding_amount":1000000.00,"start_date":"2013-12-09","close_date":"2014-03-18","securities_offered":"EQUITY","initiated_on":"2013-12-09","initiated_by":"Darion
         Rice","created_on":"2013-12-09","created_by":"Darion Rice","modified_on":"2013-12-09","modified_by":"Darion
         Rice","cfp_name":"Angelshares LLC","total_amount_escrowed":0.00,"disbursement_status":"UNLOCKED","deal":"0","disbursal_started":"NO"}'
@@ -235,7 +236,7 @@ http_interactions:
       - Jetty(8.1.7.v20120910)
     body:
       encoding: UTF-8
-      string: '{"request_id":731096080810,"id":178797828348,"bank_name":"Four Oaks
+      string: '{"request_id":731096080810,"id":26371646098,"bank_name":"Four Oaks
         Bank & Trust Company","account_number":"542745105177","account_routing_number":"053112505","account_type":"CHECKING"}'
     http_version: 
   recorded_at: Fri, 13 Dec 2013 07:31:29 GMT
@@ -244,7 +245,7 @@ http_interactions:
     uri: https://sandbox-api.bancboxcrowd.com/crowd/v0/cfp/submitAgreement
     body:
       encoding: US-ASCII
-      string: id=178797828348&represented_signature=Baron+Berge&agreement_type=CLICKTHROUGH&document_text=I+agree+to+Privacy+Policy%2C+Platform+Agreement%2C+Technology+Agreement+%40+bancboxinvest.com&document_name=T%26C&document_version=1.0&client_ip_address=192.168.2.106&submit_time_stamp=2013-12-12+23%3A31%3A29&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
+      string: id=26371646098&represented_signature=Baron+Berge&agreement_type=CLICKTHROUGH&document_text=I+agree+to+Privacy+Policy%2C+Platform+Agreement%2C+Technology+Agreement+%40+bancboxinvest.com&document_name=T%26C&document_version=1.0&client_ip_address=192.168.2.106&submit_time_stamp=2013-12-12+23%3A31%3A29&api_key=eadcf103-8150-494d-b956-8ea78b7eac03&secret=7a28c43ccb
     headers:
       User-Agent:
       - Faraday v0.8.8
