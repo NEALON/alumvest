@@ -27,4 +27,16 @@ FactoryGirl.define do
     agreement true
     reference_id "83b7bb7f-9795-43fb-86ab-48bca02e9799"
   end
+
+  factory :kyle_bancbox_issuer, :class => Bancbox::Issuer do
+    first_name "Kyle"
+    last_name "Oa"
+    phone "1234567890"
+    email "kyle+oa@alumvest.com"
+    address_1 "3378 Hintz Well"
+    city "Wainoburgh"
+    state "NC"
+    zip "76776"
+    agreement true
+  end
 end

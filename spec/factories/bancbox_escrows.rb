@@ -33,4 +33,18 @@ FactoryGirl.define do
 
     bancbox_id "932980869835"
   end
+
+  factory :kyle_bancbox_escrow, :class => 'Bancbox::Escrow' do
+    name "Kyle Oa"
+    start_date Date.today + 1
+    close_date Date.today + 1000
+    funding_goal 1000000
+    minimum_funding_amount 10
+    maximum_funding_amount 1000
+    securities_offered "EQUITY"
+    over_funding_amount 1000000
+    issuer_signatory_email "kyle+oa@alumvest.com"
+    issuer_signatory_name "Kyle Oa"
+    issuer_signatory_title "Kyle Oa Title"
+  end
 end
