@@ -2,7 +2,7 @@ def populate_person
   first_name (f = Faker::Name.first_name)
   last_name (l = Faker::Name.last_name)
   title Faker::Name.title
-  avatar_url 'http://placehold.it/30x30'
+  avatar_url '/30x30.gif'
   facebook "#{f}_#{l}"
   twitter "@#{f}_#{l}"
   linkedin "#{f}_#{l}"

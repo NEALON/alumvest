@@ -42,15 +42,15 @@ class InvestorsController < ApplicationController
   private
 
   def add_images_if_test!(params)
-  #  if Rails.env.test?
-  #    params[:logo_url] = 'http://placehold.it/100x100'
-  #    params[:photo_url] = 'http://placehold.it/300x150'
-  #    params[:banner_photo_url] = 'http://placehold.it/1500x400'
-  #
+    if Rails.env.test?
+      params[:logo_url] = '/100x100.gif'
+      params[:photo_url] = '/300x150'
+      params[:banner_photo_url] = '/1500x400.gif'
+
       params
-  #  else
-  #    params
-  #  end
+    else
+      params
+    end
   end
 end
 
