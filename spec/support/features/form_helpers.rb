@@ -184,7 +184,7 @@ module Features
     end
 
     def fill_in_funding_level
-      fill_in "funding_level_amount", :with => 1000
+      fill_in "funding_level_amount", :with => 10
       click_button 'Save'
     end
   end

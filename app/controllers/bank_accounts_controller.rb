@@ -59,9 +59,9 @@ class BankAccountsController < ApplicationController
 
   def create_bancbox_account
     if @user.is_investor?
-      result = BancboxManager.submit_investor!(@user, @bank_account)
+      result = TalksToBancbox.submit_investor!(@user, @bank_account)
     else
-      result = BancboxManager.submit_issuer!(@user, @bank_account)
+      result = TalksToBancbox.submit_issuer!(@user, @bank_account)
     end
     unless result.class == BancBoxCrowd::Error
       redirect_to user_bank_account_path(@user), :flash => {:sucess => 'Your bank account information was saved.'}

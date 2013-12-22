@@ -11,9 +11,15 @@ describe 'managing investment funding level', :type => :feature do
 
   it 'creates' do
     visit display_campaign_company_path(@campaign)
-
     click_link 'Invest Now'
+    within('#funding') {click_link 'Start'}
+    fill_in_funding_level
+    expect(page).to have_content('Completed')
+  end
 
+  it 'funds a bancbox escrow account' do
+    visit display_campaign_company_path(@campaign)
+    click_link 'Invest Now'
     within('#funding') {click_link 'Start'}
     fill_in_funding_level
     expect(page).to have_content('Completed')

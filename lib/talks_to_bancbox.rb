@@ -1,4 +1,4 @@
-class BancboxManager
+class TalksToBancbox
 
   def self.submit_investor!(user, bank_account)
 

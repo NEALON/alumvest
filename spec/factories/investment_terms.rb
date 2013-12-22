@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :investment_term do
-    fundraising_amount      10000
-    min_investment          100
-    max_investment          10000
+    fundraising_amount      1000
+    min_investment          10
+    max_investment          100
     campaign_length         90
     funds_retained          'All-or-nothing'
     fees_paid_by            'Owner'
