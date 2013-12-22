@@ -17,6 +17,8 @@ Av::Application.routes.draw do
   match '/admin_dashboard/reject_investor_signing', :to => 'admin_dashboard#reject_investor_signing', :via => :post
 
   get '/owner_dashboard', :to => 'owner_dashboard#index'
+  match '/owner_dashboard/create_campaign', :to => 'owner_dashboard#create_campaign', :via => :post
+
   get '/investor_dashboard', :to => 'investor_dashboard#index'
 
   get '/tester_dashboard', :to => 'tester_dashboard#index'

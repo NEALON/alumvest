@@ -1,6 +1,6 @@
 require 'spec_helper_without_capybara'
 
-describe 'TalksToBancbox' do
+describe TalksToBancbox do
 
   context 'create investor' do
     before :each do

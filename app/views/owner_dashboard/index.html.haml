@@ -2,8 +2,10 @@
   .row
     .col-md-8
       .dashboard-content
-        = render "campaigns"
-        = render "investor_signings"
+        = render 'campaigns'
+        = render 'investor_signings'
+
+        = link_to 'Create a campaign', owner_dashboard_create_campaign_path
 
     .col-md-4.dashboard-right
       .dashboard-content

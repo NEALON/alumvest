@@ -127,7 +127,7 @@ class Bancbox::Escrow < ActiveRecord::Base
 
   # TODO this should pass in a transaction model - kyle
   def fund!(investor, amount)
-    raise 'Escrow account bancbox id is not opened' unless self.opened?
+    raise "Escrow account #{bancbox_id} is not opened" unless self.opened?
     raise 'Invalid investment amount' if amount < minimum_funding_amount or amount > maximum_funding_amount
 
     options = {

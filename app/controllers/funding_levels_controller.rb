@@ -18,8 +18,12 @@ class FundingLevelsController < ApplicationController
     funding_level.update_attributes(params[:funding_level])
     if funding_level.valid?
       funding_level.complete
-      TalksToBancbox.fund_escrow!(@campaign, @investment, funding_level.amount)
-      redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Item completed.'}
+      begin
+        TalksToBancbox.fund_escrow!(@campaign, @investment, funding_level.amount)
+        redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Item completed.'}
+      rescue Exception => e
+        redirect_to campaign_investment_path(@campaign, @investment), :flash => {:danger => e.message}
+      end
     else
       render :edit
     end
