@@ -1,6 +1,7 @@
 require 'spec_helper_without_capybara'
 
 describe 'TalksToBancbox' do
+
   context 'create investor' do
     before :each do
       @user = FactoryGirl.create(:user, :user_type => 'Investor')
@@ -53,6 +54,20 @@ describe 'TalksToBancbox' do
       expect(escrow.bancbox_status_name).to eq(:unsubmitted)
       expect(escrow.open!).to eq(true)
       expect(escrow.bancbox_status_name).to eq(:open_pending)
+    end
+  end
+
+  context 'fund escrow' do
+    before :each do
+      @user = FactoryGirl.create(:user, :user_type => 'Owner')
+      @campaign = create_live_campaign(@user.owner)
+      @investor_user = FactoryGirl.create(:user, :user_type => 'Investor')
+      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor_user.investor)
+    end
+
+    it 'succeeds' do
+      result = TalksToBancbox.fund_escrow!(@campaign, @investment, 10)
+      raise result.inspect
     end
   end
 end
