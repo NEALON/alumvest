@@ -36,8 +36,7 @@
     %p.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
   - unless just_data
     %p
-      %a.btn.invest-now
-        Invest Now
+      = link_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn invest-now", :method => :get
 
 - unless just_data
 
