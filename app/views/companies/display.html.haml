@@ -24,7 +24,4 @@
     %hr.campaign-separator
     .row
       .col-md-12
-        = render 'disqus'
-
-        -#:erb
-          <div class='shareaholic-canvas' data-app='recommendations' data-app-id='202898'></div>
+        = render 'disqus' if Rails.env.production?

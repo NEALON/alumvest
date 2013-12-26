@@ -126,27 +126,24 @@ class Bancbox::Escrow < ActiveRecord::Base
   end
 
   # TODO this should pass in a transaction model - kyle
-  def fund!(investor, bank_account, amount)
-    return false unless self.opened?
-    if amount < minimum_funding_amount or amount > maximum_funding_amount
-      return false
-    end
+  def fund!(investor, amount)
+    raise "Escrow account #{bancbox_id} is not opened" unless self.opened?
+    raise 'Invalid investment amount' if amount < minimum_funding_amount or amount > maximum_funding_amount
 
     options = {
         :escrow_id => bancbox_id,
         :investor_id => investor.bancbox_id,
         :amount => amount,
-        :bank_account_number => bank_account.bank_account_number,
-        :bank_account_type => bank_account.bank_account_type,
-        :bank_account_holder => bank_account.bank_account_holder,
-        :bank_account_routing => bank_account.bank_account_routing,
+        :bank_account_number => investor.bank_account_number,
+        :bank_account_type => investor.bank_account_type,
+        :bank_account_holder => investor.bank_account_holder,
+        :bank_account_routing => investor.bank_account_routing,
         :text => 'I authorize BancBox to make this transaction',
         :client_ip_address => server_ip,
         :submit_timestamp => current_timestamp
     }
     begin
       BancBoxCrowd.fund_escrow options
-      return true
     rescue BancBoxCrowd::Error => e
       e
     end

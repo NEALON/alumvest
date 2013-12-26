@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217210507) do
+ActiveRecord::Schema.define(version: 20131218155243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bancbox_accounts", force: true do |t|
     t.string   "status"
-    t.integer  "banking_account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,15 +76,6 @@ ActiveRecord::Schema.define(version: 20131217210507) do
   end
 
   add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
-
-  create_table "bancbox_identity_verifications", force: true do |t|
-    t.string   "bancbox_status"
-    t.boolean  "is_verified",        default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "banking_account_id"
-    t.string   "status"
-  end
 
   create_table "bancbox_investors", force: true do |t|
     t.string   "ssn"
@@ -155,13 +145,6 @@ ActiveRecord::Schema.define(version: 20131217210507) do
     t.integer  "bancbox_account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "banking_accounts", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "status"
   end
 
   create_table "bus_events", force: true do |t|

@@ -33,7 +33,6 @@ module Features
       @user
     end
 
-
     def create_live_campaign(owner)
       @campaign = FactoryGirl.create(
           :campaign,
@@ -44,7 +43,8 @@ module Features
               :category => FactoryGirl.create(
                   :category)),
           :investment_term => FactoryGirl.create(:investment_term),
-          :team => FactoryGirl.create(:team)
+          :team => FactoryGirl.create(:team),
+          :bancbox_escrow =>  FactoryGirl.create(:vcr_established_bancbox_escrow)
       )
     end
   end

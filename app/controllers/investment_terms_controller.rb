@@ -63,9 +63,9 @@ class InvestmentTermsController < ApplicationController
 
   def add_images_if_test!(params)
     if Rails.env.test?
-      params[:business_plan_url] = 'http://placehold.it/30x30'
-      params[:financial_statement_url] = 'http://placehold.it/30x30'
-      params[:term_sheet_url] = 'http://placehold.it/30x30'
+      params[:business_plan_url] = '/30x30.gif'
+      params[:financial_statement_url] = '/30x30.gif'
+      params[:term_sheet_url] = '/30x30.gif'
       params
     else
       params

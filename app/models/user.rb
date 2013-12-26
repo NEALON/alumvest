@@ -33,8 +33,6 @@ class User < ActiveRecord::Base
   has_many :identities
   has_one :investor
   has_one :bank_account, :class_name => 'Bancbox::BankAccount'
-  has_one :banking_account, :class_name => 'Banking::Account'
-  has_one :bancbox_identity_verification, :class_name => 'Bancbox::IdentityVerification'
 
   RequiredProfileFields = [
       :first_name,
@@ -52,14 +50,6 @@ class User < ActiveRecord::Base
 
   def profile_complete?
     RequiredProfileFields.select { |rpf| send(rpf).blank? }.empty?
-  end
-
-  def available_funds
-    unless banking_account
-      0
-    else
-      banking_account.balance
-    end
   end
 
   has_one :owner

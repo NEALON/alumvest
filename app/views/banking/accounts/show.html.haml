@@ -1,9 +1,0 @@
-= render 'banking/side_navigation', :active => 'banking_accounts'
-= render 'users/header'
-
-#information
-  .container
-    %p
-      Your account balance:
-      -##account-balance= number_to_currency(@banking_account.balance)
-      #account-balance= number_to_currency(0)

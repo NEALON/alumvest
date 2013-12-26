@@ -4,9 +4,7 @@ class Bancbox::Issuer < Bancbox::PersonBase
   attr_accessible :company_name,
                   :company_type,
                   :company_registration_state,
-                  :company_tax_id,
-                  :banking_account,
-                  :banking_account_id
+                  :company_tax_id
 
   attr_accessible :owner, :owner_id
 

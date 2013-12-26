@@ -7,7 +7,7 @@ end
 FactoryGirl.define do
   factory :company do
     company_name          "#{Faker::Company.name}"
-    logo_url              "http://placehold.it/100x100&text=Logo"
+    logo_url              '/100x100.gif'
     short_description     Faker::Company.catch_phrase
     company_url           Faker::Internet.url
     campaign_title        Faker::Lorem.sentence
@@ -24,8 +24,8 @@ FactoryGirl.define do
     phone                 Faker::PhoneNumber.phone_number
     faq                   "FAQ #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
     video_url             'http://www.youtube.com/embed/OQSNhk5ICTI'
-    photo_url             'http://placehold.it/100x100'
-    #banner_photo_url      "http://placehold.it/1500x400.gif&text=Company%20Banner"
-    banner_photo_url      "http://placehold.it/930x400.gif&text=Company%20Banner"
+    photo_url             '/100x100.gif'
+    #banner_photo_url      '/1500x400.gif'
+    banner_photo_url      '/930x400.gif'
   end
 end
