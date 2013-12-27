@@ -19,5 +19,7 @@ class Investor < ActiveRecord::Base
                   :user
 
   has_one :bancbox_investor, :class_name => 'Bancbox::Investor'
+  has_many :veritax_orders, :class_name => 'Veritax::Order'
+
   has_many :investments
 end
