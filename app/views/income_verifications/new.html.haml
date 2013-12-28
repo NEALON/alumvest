@@ -1,0 +1,27 @@
+= render "investors/side_navigation", :active => 'income_verification'
+= render "users/header"
+
+#information
+  = form_for @income_verification, :url => user_investor_income_verification_path(@user), :html => {:class => 'form-horizontal well'} do |f|
+    = render 'shared/errors', :entity => @income_verification
+
+    %fieldset
+      = f.hidden_field :investor_id
+
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/subhead', :display, :label => 'Income Verification'
+        = op.render_cell 'tb/form/helptext', :display, :text => 'This is the help text'
+        = op.render_cell 'tb/form/text', :display, :field => :first_name
+        = op.render_cell 'tb/form/text', :display, :field => :last_name
+        = op.render_cell 'tb/form/text', :display, :field => :address
+        = op.render_cell 'tb/form/text', :display, :field => :city
+        = op.render_cell 'tb/form/text', :display, :field => :state
+        = op.render_cell 'tb/form/text', :display, :field => :zip_code
+        = op.render_cell 'tb/form/text', :display, :field => :previous_address
+        = op.render_cell 'tb/form/text', :display, :field => :previous_city
+        = op.render_cell 'tb/form/text', :display, :field => :previous_state
+        = op.render_cell 'tb/form/text', :display, :field => :previous_zip
+        = op.render_cell 'tb/form/text', :display, :field => :ssn
+        = op.render_cell 'tb/form/text', :display, :field => :email
+
+      = render_cell 'tb/form/submit_button', :display

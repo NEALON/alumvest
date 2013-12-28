@@ -37,6 +37,25 @@ module Features
       click_button 'Save'
     end
 
+    def fill_in_income_verification
+      'veritax_order'.tap do |form|
+        fill_in "#{form}_first_name", :with => Faker::Name.first_name
+        fill_in "#{form}_last_name", :with => Faker::Name.last_name
+        fill_in "#{form}_address", :with => Faker::Address.street_address
+        fill_in "#{form}_city", :with => Faker::Address.city
+        fill_in "#{form}_state", :with => Faker::Address.state_abbr
+        fill_in "#{form}_zip_code", :with => Faker::Address.zip_code
+        fill_in "#{form}_previous_address", :with => Faker::Address.street_address
+        fill_in "#{form}_previous_city", :with => Faker::Address.city
+        fill_in "#{form}_previous_state", :with => Faker::Address.state_abbr
+        fill_in "#{form}_previous_zip", :with => Faker::Address.zip_code
+        fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+        fill_in "#{form}_email", :with => Faker::Internet.email
+      end
+      click_button 'Save'
+    end
+
+
     def fill_in_user_bank_account
       'bancbox_bank_account'.tap do |form|
         fill_in "#{form}_bank_account_holder", :with => Faker::Name.name

@@ -6,7 +6,7 @@
 - else
   - url = campaign_company_job_path(@campaign, @job)
 
-= form_for [@campaign, @job], :url => url, :html => {:class => "form-horizontal"} do |f|
+= form_for [@campaign, @job], :url => url, :html => {:class => 'form-horizontal well'} do |f|
 
   = render 'shared/errors', :entity => @job
 

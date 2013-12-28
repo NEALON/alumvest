@@ -72,7 +72,9 @@ Av::Application.routes.draw do
 
   resources :users do
     resource :borrower
-    resource :investor
+    resource :investor do
+      resource :income_verification
+    end
     resource :bank_account
     resource :settings
 

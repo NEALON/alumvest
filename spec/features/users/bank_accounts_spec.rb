@@ -31,6 +31,5 @@ describe 'users bank accounts', :type => :feature do
     fill_in_user_basic_info
     click_on 'Bank Account'
     fill_in_user_bank_account
-    sleep 10
   end
 end

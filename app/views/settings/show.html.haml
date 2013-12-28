@@ -2,7 +2,6 @@
 = render 'users/header'
 
 #information
-  .container
-    = button_to 'Edit', edit_user_settings_path(@user), :class => 'btn btn-primary', :method => :get
-    = render 'shared/property_row', :header => 'Password', :value => '(redacted)'
-    = render 'shared/property_row', :header => 'Password Confirmation', :value => '(redacted)'
+  = button_to 'Edit', edit_user_settings_path(@user), :class => 'btn btn-primary', :method => :get
+  = render 'shared/property_row', :header => 'Password', :value => '(redacted)'
+  = render 'shared/property_row', :header => 'Password Confirmation', :value => '(redacted)'

@@ -2,11 +2,10 @@
 = render 'users/header'
 
 #information
-  .container
-    = form_for @user, :url => user_settings_path(@user), :html => {:class => 'form-horizontal'} do |f|
-      = render 'shared/errors', :entity => @user
+  = form_for @user, :url => user_settings_path(@user), :html => {:class => 'form-horizontal well'} do |f|
+    = render 'shared/errors', :entity => @user
 
-      %fieldset
-        = render_cell 'tb/form/password', :display, :form => f, :field => :password
-        = render_cell 'tb/form/password', :display, :form => f, :field => :password_confirmation
-        = render_cell 'tb/form/submit_button', :display
+    %fieldset
+      = render_cell 'tb/form/password', :display, :form => f, :field => :password
+      = render_cell 'tb/form/password', :display, :form => f, :field => :password_confirmation
+      = render_cell 'tb/form/submit_button', :display
