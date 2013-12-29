@@ -144,4 +144,8 @@ class User < ActiveRecord::Base
   def avatar_small
     avatar_url.blank? ? '/images/user_24.png' : avatar(w: 24, h: 24)
   end
+
+  def address
+    "#{address_1} #{address_2}"
+  end
 end

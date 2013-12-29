@@ -8,19 +8,15 @@ describe 'users investor income verification', :type => :feature do
     click_on 'Income Verification'
   end
 
-  xit 'copies existing field values' do
-    # :first_name
-    # :last_name
-    # :address
-    # :city
-    # :state
-    # :zip_code
-    # :previous_address
-    # :previous_city
-    # :previous_state
-    # :previous_zip
-    # :ssn
-    # :email
+  it 'copies existing field values' do
+    expect(page.find_field('veritax_order_ssn').value).to eq(@user.ssn || "")
+    expect(page.find_field('veritax_order_first_name').value).to eq(@user.first_name)
+    expect(page.find_field('veritax_order_last_name').value).to eq(@user.last_name || "")
+    expect(page.find_field('veritax_order_address').value).to eq(@user.address || "")
+    expect(page.find_field('veritax_order_city').value).to eq(@user.city || "")
+    expect(page.find_field('veritax_order_state').value).to eq(@user.state || "")
+    expect(page.find_field('veritax_order_zip_code').value).to eq(@user.zipcode || "")
+    expect(page.find_field('veritax_order_email').value).to eq(@user.email || "")
   end
 
   it 'creates' do
