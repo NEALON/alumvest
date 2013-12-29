@@ -33,7 +33,15 @@ describe 'users investor income verification', :type => :feature do
   end
   
   it 'validates' do
-    click_button 'Save'
+    click_button 'Review and submit'
     expect(page).to have_content('error')
   end
+
+  it 'submits to veritax' do
+    fill_in_income_verification
+    expect(page).to have_content 'Your information was saved.'
+    click_on 'Submit to Veri-Tax'
+    expect(page).to have_content 'Your information was submitted to Veri-Tax.'
+  end
 end
+

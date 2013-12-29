@@ -22,8 +22,10 @@ class Veritax::Order < ActiveRecord::Base
 
   belongs_to :investor
 
-  def self.create_via_veritax
+  def create_via_veritax!
     TalksToVeritax.new.create_esigned_order(self)
+    # TODO: evaluate the result
+    update_attribute(:status, 'submitted')
   end
 
   def when_unsubmitted(&block)
