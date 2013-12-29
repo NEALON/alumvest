@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  veritax-help-1: 'We use <a href="http://www.veri-tax.com/">Veri-tax</a> as an income verification service. Please provide the <b>address that you used for income tax filing</b> purposes below. Also include a previous filing address, if applicable during the last 3 years.'
+  veritax-help-2: 'Please note that <em>the data that you enter here will not replace the profile data that you have already entered</em> in the Alumvest system. This information will be used for income verification services, only.'
+  veritax-help-email: 'You will be emailed an <b>IRS Form 4506-T</b> to complete and e-sign. Tell us which email address to use for that.'

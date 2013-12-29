@@ -41,6 +41,8 @@ module Features
       'veritax_order'.tap do |form|
         fill_in "#{form}_first_name", :with => Faker::Name.first_name
         fill_in "#{form}_last_name", :with => Faker::Name.last_name
+        fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+        fill_in "#{form}_email", :with => Faker::Internet.email
         fill_in "#{form}_address", :with => Faker::Address.street_address
         fill_in "#{form}_city", :with => Faker::Address.city
         fill_in "#{form}_state", :with => Faker::Address.state_abbr
@@ -49,10 +51,8 @@ module Features
         fill_in "#{form}_previous_city", :with => Faker::Address.city
         fill_in "#{form}_previous_state", :with => Faker::Address.state_abbr
         fill_in "#{form}_previous_zip", :with => Faker::Address.zip_code
-        fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
-        fill_in "#{form}_email", :with => Faker::Internet.email
       end
-      click_button 'Save'
+      click_button 'Review and submit'
     end
 
 

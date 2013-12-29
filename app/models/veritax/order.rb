@@ -26,8 +26,13 @@ class Veritax::Order < ActiveRecord::Base
     TalksToVeritax.new.create_esigned_order(self)
   end
 
+  def when_unsubmitted(&block)
+    if status == 'unsubmitted'
+      yield
+    end
+  end
+
   # and we can have a task to sync those orders with their status on veritax and fire internal events accordingly, so that downstream stuff can happen like notifying an admin to review a result and subsequent workflows
   # that would talk to things here
   # true
-
 end

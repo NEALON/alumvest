@@ -1,5 +1,19 @@
-= render "investors/side_navigation", :active => 'income_verification'
-= render "users/header"
+= render 'investors/side_navigation', :active => 'income_verification'
+= render 'users/header'
 
 #information
-  = render "shared/property_row", :header => "SSN", :value => ''
+  - @income_verification.when_unsubmitted do
+    = button_to 'Edit', edit_user_investor_income_verification_path(@user), :class => 'btn btn-primary', :method => :get
+
+  = render 'shared/property_row', :header => 'First name', :value => @income_verification.first_name
+  = render 'shared/property_row', :header => 'Last name', :value => @income_verification.last_name
+  = render 'shared/property_row', :header => 'SSN', :value => @income_verification.ssn
+  = render 'shared/property_row', :header => 'Email', :value => @income_verification.email
+  = render 'shared/property_row', :header => 'Address', :value => @income_verification.address
+  = render 'shared/property_row', :header => 'City', :value => @income_verification.city
+  = render 'shared/property_row', :header => 'State', :value => @income_verification.state
+  = render 'shared/property_row', :header => 'Zip code', :value => @income_verification.zip_code
+  = render 'shared/property_row', :header => 'Previous address', :value => @income_verification.previous_address
+  = render 'shared/property_row', :header => 'Previous city', :value => @income_verification.previous_city
+  = render 'shared/property_row', :header => 'Previous state', :value => @income_verification.previous_state
+  = render 'shared/property_row', :header => 'Previous zip', :value => @income_verification.previous_zip
