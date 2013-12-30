@@ -1,11 +1,8 @@
 class TalksToBancbox
 
   def self.fund_escrow!(campaign, investment, amount)
-
     campaign.bancbox_escrow.fund!(investment.investor.bancbox_investor, amount)
-
   end
-
 
   def self.submit_investor!(user, bank_account)
 

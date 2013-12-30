@@ -2,7 +2,5 @@
   %ul.nav.nav-stacked
     %li{:class => "#{'active' if active == 'investor_profile'}"}
       = link_to('Investor Profile', user_investor_path(@user))
-    -#%li{:class => "#{'active' if active == 'bancbox_investor_profile'}"}
-      = link_to('Bancbox', user_bancbox_investor_path(@user))
-    -#%li{:class => "#{'active' if active == 'bancbox_identity_verification'}"}
-      = link_to('Bancbox Identity Verification', user_bancbox_identity_verification_path(@user))
+    %li{:class => "#{'active' if active == 'income_verification'}"}
+      = link_to_show_or_new(@income_verification, 'Income Verification', user_investor_income_verification_path(@user), new_user_investor_income_verification_path(@user))

@@ -3,7 +3,7 @@
 -else
   - if current_user != nil and @user.id == current_user.id
     - if @user.is_owner?
-      = form_for @user.owner, :url => users_owner_path(@user), :html => {:class => "form-horizontal"} do |f|
+      = form_for @user.owner, :url => users_owner_path(@user), :html => {:class => 'form-horizontal well'} do |f|
 
         = render 'shared/errors', :entity => @user.owner
 

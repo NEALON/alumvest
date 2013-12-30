@@ -72,7 +72,11 @@ Av::Application.routes.draw do
 
   resources :users do
     resource :borrower
-    resource :investor
+    resource :investor do
+      resource :income_verification do
+        put :submit_to_veritax
+      end
+    end
     resource :bank_account
     resource :settings
 

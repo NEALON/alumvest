@@ -2,18 +2,17 @@
 = render "users/header"
 
 #information
-  .container
-    = render "shared/property_row", :header => "Question", :value => nil
-    = render "shared/property_row", :header => "Question", :value => nil
-    = render "shared/property_row", :header => "Question", :value => nil
+  = render "shared/property_row", :header => "Question", :value => nil
+  = render "shared/property_row", :header => "Question", :value => nil
+  = render "shared/property_row", :header => "Question", :value => nil
 
-    = form_for @bancbox_identity_verification, :url => user_bancbox_identity_verification_path(@user), :html => {:class => "form-horizontal"} do |f|
+  = form_for @bancbox_identity_verification, :url => user_bancbox_identity_verification_path(@user), :html => {:class => 'form-horizontal well'} do |f|
 
-      = render 'shared/errors', :entity => @bancbox_identity_verification
+    = render 'shared/errors', :entity => @bancbox_identity_verification
 
-      %fieldset
-        = f.hidden_field :user_id
+    %fieldset
+      = f.hidden_field :user_id
 
-        - with_options :form => f do |op|
-          = op.render_cell 'tb/form/checkbox', :display, :field => :is_verified
-        = render_cell 'tb/form/submit_button', :display
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/checkbox', :display, :field => :is_verified
+      = render_cell 'tb/form/submit_button', :display
