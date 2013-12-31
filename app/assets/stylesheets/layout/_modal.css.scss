@@ -5,9 +5,14 @@ $field-height: 44px;
 	opacity: 0.7;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .modal{
 	width: 400px;
 	position: absolute;
+	overflow-y: auto;
 	top: 20px;
 	left: calc(50% - 200px);
 	left: -moz-calc(50% - 200px);
