@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.0'
 
 group :development do
   gem 'better_errors', '~> 1.0'
@@ -7,23 +7,22 @@ group :development do
   gem 'html2haml', '~> 1.0'
   gem 'hub', '~> 1.10', {:require=>nil}
   gem 'quiet_assets', '~> 1.0'
+end
+
+group :development, :test do
   gem 'factory_girl_rails', '~> 4.2', {:require=>false}
-  gem 'rspec', '~> 2.14'
   gem 'rspec-rails', '~> 2.14'
+  gem 'rspec', '~> 2.14'
   gem 'byebug', '~> 2.3'
 end
 
 group :test do
-  gem 'factory_girl_rails', '~> 4.2', {:require=>false}
-  gem 'rspec', '~> 2.14'
-  gem 'rspec-rails', '~> 2.14'
   gem 'capybara', '~> 2.1'
-  gem 'capybara-screenshot', '~> 0.3'
+  # gem 'capybara-screenshot', '~> 0.3'
   gem 'database_cleaner', '~> 1.2'
   gem 'email_spec', '~> 1.5'
   gem 'launchy', '~> 2.3'
-  gem 'selenium-webdriver', '~> 2.37'
-  gem 'byebug', '~> 2.3'
+  gem 'selenium-webdriver', '2.39'
   gem 'vcr', '~> 2.8'
   # gem 'webmock', '~> 1.15.0'
 end
@@ -34,6 +33,7 @@ group :production do
   gem 'heroku-deflater'
 end
 
+gem 'rubyzip', '~> 1.1.0'
 gem 'bcrypt-ruby', '~> 3.0'
 gem 'rails', '4.0.2'
 gem 'state_machine', '~> 1.2'

@@ -4,43 +4,52 @@ class TalksToVeritax
 
   attr_reader :client
 
-  WSDL = 'https://secure.veri-tax.com/vt.service/PublicAPI/VT4506/VT4506.asmx?WSDL'
-  TEST_ENDPOINT = 'https://wstest.veri-tax.com/vt.service/PublicAPI/VT4506/VT4506.asmx'
-  CERTIFICATION_ENDPOINT = 'https://cert.secure.veri-tax.com/vt.service/PublicAPI/vtservice.asmx'
+  BETA_ENDPOINT = 'https://wstest.veri-tax.com/vt.service/PublicAPI/VT4506/VT4506.asmx'
+  CERT_ENDPOINT = 'https://cert.secure.veri-tax.com/vt.service/PublicAPI/vtservice.asmx'
   PRODUCTION_ENDPOINT = 'https://secure.veri-tax.com/vt.service/PublicAPI/VT4506/VT4506.asmx'
 
+  ENDPOINT_IN_USE = CERT_ENDPOINT
+  WSDL = ENDPOINT_IN_USE + '?wsdl'
+
   # TODO: read these from the environment
-  LOGIN = 'sablovatskiy'
-  PASSWORD = 'alumvest2014'
+  LOGIN = 'AlumVest_WS'
+  PASSWORD = 'xGEaFe.w'
 
   Type4506 = 'F1040PlusWages'
+  TranscriptType = 'A'
   ESignOption = 'Option1' # send an e-signable 4506 to customer
   
   def initialize
-    @client = Savon.client(wsdl: WSDL, endpoint: TEST_ENDPOINT)
+    @client = Savon.client(wsdl: WSDL, endpoint: ENDPOINT_IN_USE)
   end
 
-  def create_esigned_order(order)
-    @client.call(:create_esigned_order,
+  def operations
+    @client.operations
+  end
+
+  def create_esign4506_order(order)
+    @client.call(:create_esign4506_order,
                  message: {
                      login: LOGIN,
                      password: PASSWORD,
                      type: Type4506,
                      loanNumber: order.id,
-                     'SSN' => '111-11-1111',
-                     first_name: 'Mike',
-                     last_name: '',
-                     address: '',
-                     city: '',
-                     state: '',
-                     zip_code: '',
-                     previous_address: '',
-                     previous_city: '',
-                     previous_state: '',
-                     previous_zip: '',
+                     'TranscriptType' => TranscriptType,
+                     'SSN' => order.ssn,
+                     first_name: order.first_name,
+                     last_name: order.last_name,
+                     address: order.address,
+                     city: order.city,
+                     state: order.state,
+                     zip_code: order.zip_code,
+                     previous_address: order.previous_address,
+                     previous_city: order.previous_city,
+                     previous_state: order.previous_state,
+                     previous_zip: order.previous_zip,
                      e_sign_option: ESignOption,
-                     'EmailAddress1' => ''
+                     'EmailAddress1' => order.email
                  })
+
     # responds with a boolean for success
     # returns an order id
   end

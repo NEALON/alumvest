@@ -4,7 +4,20 @@ describe TalksToVeritax do
 
   before :each do
     @client = subject.client
-    @order = double(:id => 1)
+    @order = double(
+        id: rand(1000000),
+        ssn: Faker::Ssn.en_ssn,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        address: Faker::Address.street_address,
+        city: Faker::Address.city,
+        state: Faker::Address.state_abbr,
+        zip_code: Faker::Address.zip,
+        previous_address: Faker::Address.street_address,
+        previous_city: Faker::Address.city,
+        previous_state: Faker::Address.state_abbr,
+        previous_zip: Faker::Address.zip,
+        email: Faker::Internet.email)
   end
 
   it 'parses the WSDL' do
@@ -12,10 +25,11 @@ describe TalksToVeritax do
     expect(@client.operations.include?(:get_order_info)).to be_true
   end
 
-  it 'creates an esigned order' do
-    response = subject.create_esigned_order(@order)
+  it 'creates an e-signed order' do
+    response = subject.create_esign4506_order(@order)
     expect(response.success?).to be_true
     raise response.body.inspect
+
     #body[:create_esigned_order_response][:create_esigned_order_result].has_key?(:error_code) or something with is_a? Hash
     #body[:create_esigned_order_response][:create_esigned_order_result][:order_id] > 0
     #
