@@ -17,7 +17,7 @@ describe "user sessions", :type => :feature do
   it "signs out" do
     sign_up
     signout
-    expect(page).to have_content('Signed out!')
+    expect(page).to have_link('Login')
   end
 
   it "signs back in" do
