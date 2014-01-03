@@ -9,7 +9,7 @@ class InvestorsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @investor = @user.investor
-    @investor.update_attributes(add_images_if_test!(params[:investor]))
+    @investor.update_attributes(params[:investor])
     if @investor.valid?
       redirect_to user_investor_path(@user), :flash => {:success => 'Investor info saved.' }
     else
@@ -38,19 +38,5 @@ class InvestorsController < ApplicationController
   #  @user = User.find(params[:user_id])
   #  @investor = @user.investor
   #end
-
-  private
-
-  def add_images_if_test!(params)
-    if Rails.env.test?
-      params[:logo_url] = '/100x100.gif'
-      params[:photo_url] = '/300x150'
-      params[:banner_photo_url] = '/1500x400.gif'
-
-      params
-    else
-      params
-    end
-  end
 end
 
