@@ -18,7 +18,7 @@ end
 
 group :test do
   gem 'capybara', '~> 2.1'
-  # gem 'capybara-screenshot', '~> 0.3'
+  gem 'capybara-screenshot', '~> 0.3'
   gem 'database_cleaner', '~> 1.2'
   gem 'email_spec', '~> 1.5'
   gem 'launchy', '~> 2.3'

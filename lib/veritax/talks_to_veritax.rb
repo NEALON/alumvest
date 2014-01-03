@@ -1,6 +1,6 @@
 require 'savon'
 
-class TalksToVeritax
+class Veritax::TalksToVeritax
 
   attr_reader :client
 
@@ -11,14 +11,14 @@ class TalksToVeritax
   ENDPOINT_IN_USE = CERT_ENDPOINT
   WSDL = ENDPOINT_IN_USE + '?wsdl'
 
-  # TODO: read these from the environment
   LOGIN = 'AlumVest_WS'
   PASSWORD = 'xGEaFe.w'
 
   Type4506 = 'F1040PlusWages'
   TranscriptType = 'A'
   ESignOption = 'Option1' # send an e-signable 4506 to customer
-  
+  Years = {:int => 2012, :int => 2011}
+
   def initialize
     @client = Savon.client(wsdl: WSDL, endpoint: ENDPOINT_IN_USE)
   end
@@ -46,12 +46,10 @@ class TalksToVeritax
                      previous_city: order.previous_city,
                      previous_state: order.previous_state,
                      previous_zip: order.previous_zip,
+                     years: Years,
                      e_sign_option: ESignOption,
                      'EmailAddress1' => order.email
                  })
-
-    # responds with a boolean for success
-    # returns an order id
   end
 
   def get_order_info(order_id)
@@ -61,17 +59,14 @@ class TalksToVeritax
                      password: PASSWORD,
                      order_id: order_id
                  })
-    # evaluate result and return stuff...
   end
 
-  # where do we get order_id from? after posting...
-
-  def get_transcript
+  def get_transcript(order_id)
     @client.call(:get_transcript,
                  message: {
                      login: LOGIN,
-                     password: PASSWORD
-                 })
-    # evaluate result and return stuff...
+                     password: PASSWORD,
+                     order_id: order_id,
+                     type: Type4506})
   end
 end

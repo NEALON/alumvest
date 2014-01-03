@@ -101,6 +101,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (0.3.14)
+      capybara (>= 1.0, < 3)
+      launchy
     cells (3.9.0)
       actionpack (>= 3.0)
       railties (>= 3.0)
@@ -367,6 +370,7 @@ DEPENDENCIES
   byebug (~> 2.3)
   cancan (~> 1.6)
   capybara (~> 2.1)
+  capybara-screenshot (~> 0.3)
   cells (~> 3.9)
   ckeditor_rails (~> 4.2)
   cocoon (~> 1.2)
