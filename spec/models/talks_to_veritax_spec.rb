@@ -4,35 +4,28 @@ describe Veritax::TalksToVeritax do
 
   before :each do
     @client = subject.client
-    @order = double(
-        id: rand(1000000),
-        ssn: Faker::Ssn.en_ssn,
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        address: Faker::Address.street_address,
-        city: Faker::Address.city,
-        state: Faker::Address.state_abbr,
-        zip_code: '18901',
-        previous_address: Faker::Address.street_address,
-        previous_city: Faker::Address.city,
-        previous_state: Faker::Address.state_abbr,
-        previous_zip: '18901',
-        email: Faker::Internet.email)
+    attrs = {
+      id: rand(1000000),
+      ssn: Faker::Ssn.en_ssn,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      address: Faker::Address.street_address,
+      city: Faker::Address.city,
+      state: Faker::Address.state_abbr,
+      previous_address: Faker::Address.street_address,
+      previous_city: Faker::Address.city,
+      previous_state: Faker::Address.state_abbr,
+      previous_zip: '18901',
+      email: Faker::Internet.email
+    }
+    @order = double(attrs.merge(zip_code: '18901'))
+    @bad_order = double(attrs.merge(zip_code: '666'))
+  end
 
-    @bad_order = double(
-        id: rand(1000000),
-        ssn: Faker::Ssn.en_ssn,
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        address: Faker::Address.street_address,
-        city: Faker::Address.city,
-        state: Faker::Address.state_abbr,
-        zip_code: '666',
-        previous_address: Faker::Address.street_address,
-        previous_city: Faker::Address.city,
-        previous_state: Faker::Address.state_abbr,
-        previous_zip: '18901',
-        email: Faker::Internet.email)
+  def create_order(order)
+    response = subject.create_esign4506_order(order)
+    expect(response.success?).to be_true
+    result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
   end
 
   it 'parses the WSDL' do
@@ -41,25 +34,18 @@ describe Veritax::TalksToVeritax do
   end
 
   it 'successfully creates an e-signed 4506 order' do
-    response = subject.create_esign4506_order(@order)
-    expect(response.success?).to be_true
-    result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
+    result = create_order(@order)
     expect(result.success?).to be_true
   end
 
   it 'fails to create an e-signed 4506 order' do
-    response = subject.create_esign4506_order(@bad_order)
-    expect(response.success?).to be_true
-    result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
+    result = create_order(@bad_order)
     expect(result.success?).to be_false
     expect(result.message).to eq('Order data is invalid: Please enter a valid 5 digit Zip Code')
   end
 
   it 'gets order info' do
-    response = subject.create_esign4506_order(@order)
-    expect(response.success?).to be_true
-    result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
-
+    result = create_order(@order)
     response2 = subject.get_order_info(result.order_id)
     expect(response2.success?).to be_true
     info = Veritax::OrderInfo.new(response2.body[:get_order_info_response][:get_order_info_result])
