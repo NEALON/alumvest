@@ -1,7 +1,7 @@
 class TalksToBancbox
 
   def self.fund_escrow!(campaign, investment, amount)
-    campaign.bancbox_escrow.fund!(investment.investor.bancbox_investor, amount)
+    campaign.bancbox_escrow.fund!(investment.investor.investor, amount)
   end
 
   def self.submit_investor!(user, bank_account)
@@ -39,8 +39,7 @@ class TalksToBancbox
   end
 
   def self.create_escrow!(user, campaign)
-
-    escrow = Bancbox::Escrow.create(
+    Bancbox::Escrow.create(
         :issuer => user.owner.bancbox_issuer,
         :campaign => campaign,
         :name => 'Alumvest',
