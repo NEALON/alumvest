@@ -86,7 +86,6 @@ Av::Application.routes.draw do
       post :fund
       post :bank_account
     end
-    resource :bancbox_issuer
     resource :bancbox_identity_verification
   end
 

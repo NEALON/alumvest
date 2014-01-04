@@ -4,9 +4,6 @@
       = link_to('Basic Information', user_path(@user))
     %li{:class => "#{'active' if active == 'bank_account'}"}
       = link_to_show_or_new(@user.bank_account, 'Bank Account', user_bank_account_path(@user), new_user_bank_account_path(@user))
-    - if @user.is_owner?
-      %li{:class => "#{'active' if active == 'bancbox_issuer_profile'}"}
-        = link_to('Bancbox', user_bancbox_issuer_path(@user))
     %li{:class => "#{'active' if active == 'settings_info'}"}
       = link_to('Settings', user_settings_path(@user))
     -#%li{:class => "#{'active' if active == 'notifications'}"}
