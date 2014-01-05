@@ -82,7 +82,8 @@ class Bancbox::Escrow < ActiveRecord::Base
     options = {
         :name => name,
         :issuer_id => issuer.bancbox_id,
-        :start_date => start_date.to_s,
+        # in case the we are already behind start date
+        :start_date => [start_date, Date.today].max.to_s,
         :close_date => close_date.to_s,
         :funding_goal => funding_goal,
         :created_by => issuer.name,

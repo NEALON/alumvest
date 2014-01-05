@@ -43,7 +43,7 @@ class TalksToBancbox
         :issuer => user.owner.bancbox_issuer,
         :campaign => campaign,
         :name => 'Alumvest',
-        :start_date => (start_date = (campaign.starts_on || Time.now)),
+        :start_date => (start_date = (campaign.starts_on || Date.today)),
         :close_date => (start_date + campaign.investment_term.campaign_length.days),
         :funding_goal => campaign.investment_term.fundraising_amount,
         :minimum_funding_amount => campaign.investment_term.min_investment,

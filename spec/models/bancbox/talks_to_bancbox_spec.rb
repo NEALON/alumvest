@@ -1,4 +1,5 @@
 require 'spec_helper_without_capybara'
+WebMock.allow_net_connect!
 
 describe TalksToBancbox do
 
@@ -42,7 +43,7 @@ describe TalksToBancbox do
     before :each do
       @user = FactoryGirl.create(:user, :user_type => 'Owner')
       @bank_account = FactoryGirl.create(:bank_account, :user => @user)
-      @campaign = create_live_campaign(@user.owner)
+      @campaign = create_live_campaign_without_escrow(@owner)
       TalksToBancbox.submit_issuer!(@user, @bank_account)
     end
 
