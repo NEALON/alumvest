@@ -17,15 +17,43 @@ class Veritax::Order < ActiveRecord::Base
                   :vt_order_id,
                   :status
 
+  #state_machine :status, :initial => :new do
+  #  event :complete do
+  #    transition :new => :completed
+  #  end
+  #  state :new
+  #  state :completed
+  #  state :submission_error
+  #end
 
   validates_presence_of  [:ssn, :first_name, :last_name, :address, :city, :state, :zip_code, :email]
 
   belongs_to :investor
 
+  def complete!
+    update_attribute(:status, 'completed')
+  end
+
+  def completed?
+    status == 'completed'
+  end
+
   def create_via_veritax!
-    TalksToVeritax.new.create_esigned_order(self)
-    # TODO: evaluate the result
-    update_attribute(:status, 'submitted')
+    response = Veritax::TalksToVeritax.new.create_esign4506_order(self)
+
+    if response.success?
+      result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
+      if result.success?
+        update_attribute(:vt_order_id, result.order_id)
+        complete!
+      else
+        # TODO: veritax returns an error
+        raise result.inspect
+      end
+    else
+      # TODO, cannot process verisign order
+      raise response.inspect
+    end
   end
 
   def when_unsubmitted(&block)

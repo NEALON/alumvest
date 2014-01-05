@@ -44,7 +44,11 @@ class IncomeVerificationsController < ApplicationController
   def submit_to_veritax
     load_income_verification
     @income_verification.create_via_veritax!
-    redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was submitted to Veri-Tax. (via simulation)'}
+    if @income_verification.reload.completed?
+      redirect_to user_investor_income_verification_path(@user), flash: {success: "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}. Please check your inbox for your e-signable form."}
+    else
+      raise @income_verification.inspect
+    end
   end
 
   def show
