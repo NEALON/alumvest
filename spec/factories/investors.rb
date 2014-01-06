@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :investor do
-    ssn "MyString"
+    ssn "000-00-0000"
     marital_status "MyString"
     financial_info "MyText"
     spending_habits "MyText"

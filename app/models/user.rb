@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
       :email]
 
   validates_presence_of RequiredProfileFields, :on => :update
+  validates :ssn, ssn: true
 
   def profile_complete?
     RequiredProfileFields.select { |rpf| send(rpf).blank? }.empty?

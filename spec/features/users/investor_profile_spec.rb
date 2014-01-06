@@ -27,9 +27,9 @@ describe 'users investor profile', :type => :feature do
   it 'updates' do
     expect(page).to have_button 'Edit'
     click_on 'Edit'
-    fill_in 'investor_ssn', :with => '12345'
+    fill_in 'investor_ssn', :with => '123-45-6789'
     click_on 'Save'
     expect(page).to have_content 'info saved'
-    expect(page).to have_content '12345'
+    expect(page).to have_content '123-45-6789'
   end
 end
