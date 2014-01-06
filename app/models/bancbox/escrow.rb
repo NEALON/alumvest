@@ -126,11 +126,12 @@ class Bancbox::Escrow < ActiveRecord::Base
     return BancBoxCrowd.get_escrow_activity options
   end
 
-  def fund!(bancbox_investor, amount)
+  def fund!(investor, amount)
     raise "Escrow account #{bancbox_id} is not opened" unless self.opened?
     raise 'Invalid investment amount' if amount < minimum_funding_amount or amount > maximum_funding_amount
 
-    bank_account = bancbox_investor.investor.user.bank_account
+    bancbox_investor = investor.bancbox_investor
+    bank_account = investor.user.bank_account
     options = {
         :escrow_id => bancbox_id,
         :investor_id => bancbox_investor.bancbox_id,

@@ -63,7 +63,10 @@ describe TalksToBancbox do
       @user = FactoryGirl.create(:user, :user_type => 'Owner')
       @campaign = create_live_campaign(@user.owner)
       @investor_user = FactoryGirl.create(:user, :user_type => 'Investor')
-      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor_user.investor)
+      @bank_account = FactoryGirl.create(:bank_account, :user => @investor_user)
+      TalksToBancbox.submit_investor!(@investor_user, @bank_account)
+      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor_user.reload.investor)
+      @campaign.bancbox_escrow.fire_bancbox_status_event(:escrow_opened) # manually flip it to open
     end
 
     it 'succeeds' do

@@ -37,7 +37,7 @@ describe Bancbox::Investor do
       @escrow = FactoryGirl.create(:vcr_established_bancbox_escrow)
       @escrow.issuer = @issuer
       @escrow.fire_bancbox_status_event(:escrow_opened) # manually flip it to open
-      ret = @escrow.fund!(@bancbox_investor, 100)
+      ret = @escrow.fund!(@investor, 100)
       ret["amount"].should == 100
       ret["escrow_current_balance"].should == 100
     end
