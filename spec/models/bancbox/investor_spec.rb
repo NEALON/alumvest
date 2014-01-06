@@ -13,7 +13,7 @@ describe Bancbox::Investor do
       @investor = FactoryGirl.create(:investor)
       @investor.user = @user
       @bancbox_investor = FactoryGirl.create(:vcr_bancbox_investor)
-      @bancbox_investor.investor = @investor
+      @bancbox_investor.investor_user = @investor
       @bank_account = FactoryGirl.create(:vcr_bancbox_investor_bank_account)
       @bancbox_investor.should be_valid
       @bank_account.user = @user
