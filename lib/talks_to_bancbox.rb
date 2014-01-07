@@ -8,7 +8,7 @@ class TalksToBancbox
 
     bancbox_investor = user.investor.bancbox_investor ||
         Bancbox::Investor.create(
-            :investor => user.investor,
+            :investor_user => user.investor,
             :investor_type => 'Individual/LLC',
             :agreement => true)
     # TODO yuck, let's remove this redundancy:

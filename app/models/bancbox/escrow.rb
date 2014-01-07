@@ -141,6 +141,7 @@ class Bancbox::Escrow < ActiveRecord::Base
         :bank_account_holder => bank_account.bank_account_holder,
         :bank_account_routing => bank_account.bank_account_routing,
         :text => 'I authorize BancBox to make this transaction',
+        :fund_on_availability => true,
         :client_ip_address => server_ip,
         :submit_timestamp => current_timestamp
     }

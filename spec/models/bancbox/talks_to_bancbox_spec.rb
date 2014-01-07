@@ -71,7 +71,7 @@ describe TalksToBancbox do
 
     it 'succeeds' do
       result = TalksToBancbox.fund_escrow!(@campaign, @investment, 10)
-      raise result.inspect
+      expect(result["investor_id"].to_s).to eq(@investor_user.investor.bancbox_investor.bancbox_id)
     end
   end
 end
