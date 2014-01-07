@@ -1,4 +1,5 @@
 require 'spec_helper_without_capybara'
+WebMock.allow_net_connect!
 
 describe TalksToBancbox do
 
@@ -42,7 +43,7 @@ describe TalksToBancbox do
     before :each do
       @user = FactoryGirl.create(:user, :user_type => 'Owner')
       @bank_account = FactoryGirl.create(:bank_account, :user => @user)
-      @campaign = create_live_campaign(@user.owner)
+      @campaign = create_live_campaign_without_escrow(@owner)
       TalksToBancbox.submit_issuer!(@user, @bank_account)
     end
 
@@ -62,12 +63,15 @@ describe TalksToBancbox do
       @user = FactoryGirl.create(:user, :user_type => 'Owner')
       @campaign = create_live_campaign(@user.owner)
       @investor_user = FactoryGirl.create(:user, :user_type => 'Investor')
-      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor_user.investor)
+      @bank_account = FactoryGirl.create(:bank_account, :user => @investor_user)
+      TalksToBancbox.submit_investor!(@investor_user, @bank_account)
+      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor_user.reload.investor)
+      @campaign.bancbox_escrow.fire_bancbox_status_event(:escrow_opened) # manually flip it to open
     end
 
     it 'succeeds' do
       result = TalksToBancbox.fund_escrow!(@campaign, @investment, 10)
-      raise result.inspect
+      expect(result["investor_id"].to_s).to eq(@investor_user.investor.bancbox_investor.bancbox_id)
     end
   end
 end

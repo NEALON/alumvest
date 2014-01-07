@@ -47,6 +47,20 @@ module Features
           :bancbox_escrow =>  FactoryGirl.create(:vcr_established_bancbox_escrow)
       )
     end
+
+    def create_live_campaign_without_escrow(owner)
+      @campaign = FactoryGirl.create(
+          :campaign,
+          :status => "live",
+          :owner => owner,
+          :company => FactoryGirl.create(
+              :company,
+              :category => FactoryGirl.create(
+                  :category)),
+          :investment_term => FactoryGirl.create(:investment_term),
+          :team => FactoryGirl.create(:team),
+      )
+    end
   end
 end
 

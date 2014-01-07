@@ -82,7 +82,8 @@ class Bancbox::Escrow < ActiveRecord::Base
     options = {
         :name => name,
         :issuer_id => issuer.bancbox_id,
-        :start_date => start_date.to_s,
+        # in case the we are already behind start date
+        :start_date => [start_date, Date.today].max.to_s,
         :close_date => close_date.to_s,
         :funding_goal => funding_goal,
         :created_by => issuer.name,
@@ -125,20 +126,22 @@ class Bancbox::Escrow < ActiveRecord::Base
     return BancBoxCrowd.get_escrow_activity options
   end
 
-  # TODO this should pass in a transaction model - kyle
   def fund!(investor, amount)
     raise "Escrow account #{bancbox_id} is not opened" unless self.opened?
     raise 'Invalid investment amount' if amount < minimum_funding_amount or amount > maximum_funding_amount
 
+    bancbox_investor = investor.bancbox_investor
+    bank_account = investor.user.bank_account
     options = {
         :escrow_id => bancbox_id,
-        :investor_id => investor.bancbox_id,
+        :investor_id => bancbox_investor.bancbox_id,
         :amount => amount,
-        :bank_account_number => investor.bank_account_number,
-        :bank_account_type => investor.bank_account_type,
-        :bank_account_holder => investor.bank_account_holder,
-        :bank_account_routing => investor.bank_account_routing,
+        :bank_account_number => bank_account.bank_account_number,
+        :bank_account_type => bank_account.bank_account_type,
+        :bank_account_holder => bank_account.bank_account_holder,
+        :bank_account_routing => bank_account.bank_account_routing,
         :text => 'I authorize BancBox to make this transaction',
+        :fund_on_availability => true,
         :client_ip_address => server_ip,
         :submit_timestamp => current_timestamp
     }
