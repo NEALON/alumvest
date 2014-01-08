@@ -14,6 +14,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'rspec', '~> 2.14'
   gem 'byebug', '~> 2.3'
+  gem 'pry', '~>0.9'
+  gem 'pry-rescue', '~>1.1'
 end
 
 group :test do

@@ -22,4 +22,6 @@ class Investor < ActiveRecord::Base
   has_one :income_verification, class_name:  'Veritax::Order'
 
   has_many :investments
+
+  validates :ssn, ssn: true, :allow_blank => true
 end

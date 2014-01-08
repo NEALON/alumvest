@@ -1,14 +1,14 @@
 class TalksToBancbox
 
   def self.fund_escrow!(campaign, investment, amount)
-    campaign.bancbox_escrow.fund!(investment.investor.bancbox_investor, amount)
+    campaign.bancbox_escrow.fund!(investment.investor, amount)
   end
 
   def self.submit_investor!(user, bank_account)
 
     bancbox_investor = user.investor.bancbox_investor ||
         Bancbox::Investor.create(
-            :investor => user.investor,
+            :investor_user => user.investor,
             :investor_type => 'Individual/LLC',
             :agreement => true)
     # TODO yuck, let's remove this redundancy:
@@ -39,12 +39,11 @@ class TalksToBancbox
   end
 
   def self.create_escrow!(user, campaign)
-
-    escrow = Bancbox::Escrow.create(
+    Bancbox::Escrow.create(
         :issuer => user.owner.bancbox_issuer,
         :campaign => campaign,
         :name => 'Alumvest',
-        :start_date => (start_date = (campaign.starts_on || Time.now)),
+        :start_date => (start_date = (campaign.starts_on || Date.today)),
         :close_date => (start_date + campaign.investment_term.campaign_length.days),
         :funding_goal => campaign.investment_term.fundraising_amount,
         :minimum_funding_amount => campaign.investment_term.min_investment,

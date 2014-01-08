@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :owner do
-    ssn "MyString"
+    ssn "000-00-0000"
     financial_info "MyText"
     experience "MyText"
     expertise "MyText"
