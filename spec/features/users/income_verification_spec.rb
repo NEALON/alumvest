@@ -37,11 +37,18 @@ describe 'users investor income verification', :type => :feature do
     expect(page).to have_content('error')
   end
 
-  it 'submits to veritax' do
+  it 'successfully submits to veritax' do
     fill_in_income_verification
     expect(page).to have_content 'Your information was saved.'
     click_on 'Submit to Veri-Tax'
-    expect(page).to have_content 'Your information was submitted to Veri-Tax.'
+    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax (Order id:'
+  end
+
+  it 'unsuccessfully submits to veritax' do
+    pending
+  end
+
+  it 'displays (refreshes?) veritax order status' do
+    pending
   end
 end
-

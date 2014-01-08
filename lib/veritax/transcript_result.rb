@@ -11,4 +11,8 @@ class Veritax::TranscriptResult
   def success?
     @code == 'Success'
   end
+
+  def write_to_file(file)
+    IO.binwrite(file, document_bytes)
+  end
 end
