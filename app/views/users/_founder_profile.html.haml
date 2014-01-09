@@ -12,7 +12,7 @@
             = f.hidden_field :user_id
           
             - with_options :form => owf do |op|
-              = op.render_cell 'tb/form/text', :display, :field => :ssn
+              = op.render_cell 'tb/form/text', :display, :field => :ssn, :placeholder => "XXX-XX-XXXX"
               = op.render_cell 'tb/form/select', :display, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
               = op.render_cell 'tb/form/richtext', :display, :field => :financial_info
               = op.render_cell 'tb/form/richtext', :display, :field => :experience
