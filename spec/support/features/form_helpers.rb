@@ -202,8 +202,8 @@ module Features
       click_button 'Save'
     end
 
-    def fill_in_funding_level
-      fill_in "funding_level_amount", :with => 10
+    def fill_in_funding_level(num=10)
+      fill_in "funding_level_amount", :with => num
       click_button 'Save'
     end
   end
