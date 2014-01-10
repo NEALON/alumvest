@@ -18,8 +18,8 @@
       = op.render_cell 'tb/form/text', :display, :field => :state
       = op.render_cell 'tb/form/text', :display, :field => :zipcode
       = op.render_cell 'tb/form/text', :display, :field => :email
-      = op.render_cell 'tb/form/text', :display, :field => :facebook
-      = op.render_cell 'tb/form/text', :display, :field => :linkedin
+      = op.render_cell 'tb/form/text', :display, :field => :facebook, :placeholder => "http://www.facebook.com/user_name"
+      = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => "http://www.linkedin.com/in/user_name"
       = op.render_cell 'tb/form/richtext', :display, :field => :personal_statement
 
     %hr
