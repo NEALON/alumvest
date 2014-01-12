@@ -78,4 +78,6 @@ gem 'rest-client', '~> 1.6'
 gem 'savon', '~> 2.3.0'
 gem 'banc_box_crowd', :git => 'git://github.com/interskh/banc_box_crowd'
 
+gem 'attr_encrypted', '~> 1.3.1'
+
 gem 'zeus', '0.13.4.pre2'

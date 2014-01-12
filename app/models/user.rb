@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
                   :zipcode,
                   :personal_statement,
                   :ssn
+  attr_encrypted :ssn, :key => 'secret'
 
   has_filepicker_image :avatar, styles: {medium: [300, 300], thumb: [128, 128]}
 
