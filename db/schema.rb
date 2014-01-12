@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227194931) do
+ActiveRecord::Schema.define(version: 20140112044634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20131227194931) do
   add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
 
   create_table "bancbox_investors", force: true do |t|
-    t.string   "ssn"
     t.string   "investor_type"
     t.string   "email"
     t.string   "phone"
@@ -104,6 +103,7 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.integer  "funds",                  default: 0
     t.integer  "pendingbalance",         default: 0
     t.integer  "investor_id"
+    t.string   "encrypted_ssn"
   end
 
   create_table "bancbox_issuers", force: true do |t|
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.string   "middle_initial"
     t.string   "last_name"
     t.string   "name"
-    t.string   "ssn"
     t.string   "email"
     t.string   "phone"
     t.string   "date_of_birth"
@@ -137,6 +136,7 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.integer  "funds",                      default: 0
     t.integer  "pendingbalance",             default: 0
     t.integer  "owner_id"
+    t.string   "encrypted_ssn"
   end
 
   create_table "bancbox_transactions", force: true do |t|
@@ -222,16 +222,16 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.string   "degree"
     t.integer  "user_id"
     t.integer  "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "envelope_events", force: true do |t|
     t.integer  "envelope_id"
     t.string   "status"
     t.datetime "status_date_time"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "envelopes", force: true do |t|
@@ -240,8 +240,8 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.string   "email_subject"
     t.string   "uri"
     t.text     "email_body"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "signing_id"
   end
 
@@ -303,7 +303,6 @@ ActiveRecord::Schema.define(version: 20131227194931) do
   end
 
   create_table "investors", force: true do |t|
-    t.string   "ssn"
     t.string   "marital_status"
     t.text     "financial_info"
     t.text     "spending_habits"
@@ -321,6 +320,7 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "encrypted_ssn"
   end
 
   add_index "investors", ["user_id"], name: "index_investors_on_user_id", using: :btree
@@ -344,7 +344,6 @@ ActiveRecord::Schema.define(version: 20131227194931) do
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
 
   create_table "owners", force: true do |t|
-    t.string   "ssn"
     t.text     "financial_info"
     t.text     "experience"
     t.text     "expertise"
@@ -353,6 +352,7 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "encrypted_ssn"
   end
 
   add_index "owners", ["user_id"], name: "index_owners_on_user_id", using: :btree
@@ -402,8 +402,8 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.string   "status",        default: "unsigned"
     t.integer  "investment_id"
     t.integer  "document_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscription_agreements", force: true do |t|
@@ -423,8 +423,8 @@ ActiveRecord::Schema.define(version: 20131227194931) do
 
   create_table "templates", force: true do |t|
     t.string   "template_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "document_id"
   end
 
@@ -454,7 +454,6 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.string   "linkedin"
     t.string   "user_type",          default: "guest"
     t.string   "avatar_url"
-    t.string   "ssn"
     t.string   "mobile_phone"
     t.string   "home_phone"
     t.string   "address_1"
@@ -463,10 +462,10 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.string   "state"
     t.string   "zipcode"
     t.text     "personal_statement"
+    t.string   "encrypted_ssn"
   end
 
   create_table "veritax_orders", force: true do |t|
-    t.string   "ssn",              null: false
     t.string   "first_name",       null: false
     t.string   "last_name",        null: false
     t.string   "address",          null: false
@@ -483,6 +482,7 @@ ActiveRecord::Schema.define(version: 20131227194931) do
     t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_ssn"
   end
 
   create_table "versions", force: true do |t|

@@ -16,6 +16,7 @@ class Veritax::Order < ActiveRecord::Base
                   :email,
                   :vt_order_id,
                   :status
+  attr_encrypted :ssn, :key => 'secret'
 
   #state_machine :status, :initial => :new do
   #  event :complete do
