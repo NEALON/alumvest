@@ -1,0 +1,11 @@
+= render 'investors/side_navigation', :active => 'investor_newsfeed'
+= render 'users/header'
+
+#information
+  %h4
+    Your Investor Newsfeed
+  %p
+    Recent activity for your account and investments.
+  %hr
+  - @events.each do |e|
+    = render e

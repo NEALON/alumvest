@@ -1,0 +1,4 @@
+%p
+  = 'You encountered an error when you submitted an '
+  = link_to 'income verification request', user_investor_income_verification_path(veritax_order_submitted.investor.user)
+  = "to Veri-Tax #{time_ago_in_words(veritax_order_submitted.created_at)} ago."

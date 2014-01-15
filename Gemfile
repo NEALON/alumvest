@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.0.0'
 
 group :development do
   gem 'better_errors', '~> 1.0'
@@ -26,7 +26,7 @@ group :test do
   gem 'launchy', '~> 2.3'
   gem 'selenium-webdriver', '2.39'
   gem 'vcr', '~> 2.8'
-  gem 'webmock', '~> 1.15.0'
+  # gem 'webmock', '~> 1.15.0'
 end
 
 group :production do

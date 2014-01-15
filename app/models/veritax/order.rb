@@ -15,6 +15,7 @@ class Veritax::Order < ActiveRecord::Base
                   :previous_zip,
                   :email,
                   :vt_order_id,
+                  :vt_error,
                   :status
 
   #state_machine :status, :initial => :new do
@@ -32,23 +33,34 @@ class Veritax::Order < ActiveRecord::Base
 
   def complete!
     update_attribute(:status, 'completed')
+    Bus::Event::VeritaxOrderSubmitted.create(:investor => investor, :veritax_order => self)
   end
 
   def completed?
     status == 'completed'
   end
 
+  def error!
+    update_attribute(:status, 'errored')
+    Bus::Event::VeritaxOrderSubmitted.create(:investor => investor, :veritax_order => self)
+  end
+
+  def error?
+    status == 'errored'
+  end
+
   def create_via_veritax!
     response = Veritax::TalksToVeritax.new.create_esign4506_order(self)
 
     if response.success?
-      result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
+      result = Veritax::OrderResult.new(
+          response.body[:create_esign4506_order_response][:create_esign4506_order_result])
       if result.success?
         update_attribute(:vt_order_id, result.order_id)
         complete!
       else
-        # TODO: veritax returns an error
-        raise result.inspect
+        update_attribute(:vt_error, result.message)
+        error!
       end
     else
       # TODO, cannot process verisign order
@@ -56,8 +68,8 @@ class Veritax::Order < ActiveRecord::Base
     end
   end
 
-  def when_unsubmitted(&block)
-    if status == 'unsubmitted'
+  def when_not_completed(&block)
+    if status != 'completed'
       yield
     end
   end
