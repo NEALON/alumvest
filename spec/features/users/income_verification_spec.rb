@@ -62,8 +62,6 @@ describe 'users investor income verification', :type => :feature do
     fill_in_income_verification
     click_on 'Submit to Veri-Tax'
     expect(page).to have_content 'Your information was successfully submitted to Veri-Tax (Order id:'
-    raise Bus::Event.all.inspect
-    sleep 10
   end
 
   it 'displays (refreshes?) veritax order status' do
