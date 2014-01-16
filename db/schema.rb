@@ -486,6 +486,7 @@ ActiveRecord::Schema.define(version: 20140115160224) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "vt_error"
+    t.string   "vt_status"
   end
 
   create_table "versions", force: true do |t|

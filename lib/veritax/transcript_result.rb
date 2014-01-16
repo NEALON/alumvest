@@ -13,6 +13,6 @@ class Veritax::TranscriptResult
   end
 
   def write_to_file(file)
-    IO.binwrite(file, document_bytes)
+    IO.binwrite(file, document_bytes.unpack('M'))
   end
 end

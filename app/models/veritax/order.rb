@@ -16,6 +16,7 @@ class Veritax::Order < ActiveRecord::Base
                   :email,
                   :vt_order_id,
                   :vt_error,
+                  :vt_status,
                   :status
 
   #state_machine :status, :initial => :new do
@@ -49,6 +50,13 @@ class Veritax::Order < ActiveRecord::Base
     status == 'errored'
   end
 
+  def vt_status_changed!
+    if vt_status == 'NotReceived'
+      # NO-OP
+    else
+    end
+  end
+
   def create_via_veritax!
     response = Veritax::TalksToVeritax.new.create_esign4506_order(self)
 
@@ -65,6 +73,20 @@ class Veritax::Order < ActiveRecord::Base
     else
       # TODO, cannot process verisign order
       raise response.inspect
+    end
+  end
+
+  def get_order_info!
+    response = Veritax::TalksToVeritax.new.get_order_info(vt_order_id)
+    if response.success?
+      info = Veritax::OrderInfo.new(
+          response.body[:get_order_info_response][:get_order_info_result])
+      if info.status != vt_status
+        update_attribute(:vt_status, info.status)
+        vt_status_changed!
+      end
+    else
+      # TODO log this information and continue
     end
   end
 

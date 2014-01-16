@@ -41,8 +41,8 @@ describe 'users investor income verification', :type => :feature do
     fill_in_income_verification
     expect(page).to have_content 'Your information was saved.'
     click_on 'Submit to Veri-Tax'
-    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax (Order id:'
-    expect(page).to have_content 'Your Investor Newfeed'
+    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
+    expect(page).to have_content 'Your Investor Newsfeed'
   end
 
   it 'unsuccessfully submits to veritax' do
@@ -61,10 +61,6 @@ describe 'users investor income verification', :type => :feature do
     click_on 'Edit'
     fill_in_income_verification
     click_on 'Submit to Veri-Tax'
-    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax (Order id:'
-  end
-
-  it 'displays (refreshes?) veritax order status' do
-    pending
+    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
   end
 end
