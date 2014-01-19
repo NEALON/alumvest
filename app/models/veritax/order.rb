@@ -17,6 +17,7 @@ class Veritax::Order < ActiveRecord::Base
                   :vt_order_id,
                   :vt_error,
                   :vt_status,
+                  :vt_transcript,
                   :status
 
   #state_machine :status, :initial => :new do
@@ -90,6 +91,17 @@ class Veritax::Order < ActiveRecord::Base
     end
   end
 
+  def get_transcript!
+    response = Veritax::TalksToVeritax.new.get_transcript(vt_order_id)
+    result = Veritax::TranscriptResult.new(response.body[:get_transcript_response][:get_transcript_result])
+    update_attribute(:vt_transcript, result.document_bytes)
+    vt_transcript
+  end
+
+  def transcript_file_name
+     "/#{SecureRandom.uuid}.pdf"
+  end
+
   def when_not_completed(&block)
     if status != 'completed'
       yield
@@ -98,5 +110,4 @@ class Veritax::Order < ActiveRecord::Base
 
   # and we can have a task to sync those orders with their status on veritax and fire internal events accordingly, so that downstream stuff can happen like notifying an admin to review a result and subsequent workflows
   # that would talk to things here
-  # true
 end

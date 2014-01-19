@@ -2,12 +2,6 @@ require 'spec_helper_without_capybara'
 
 describe Veritax::TalksToVeritax do
 
-  # transient values for testing w/ VeriTax
-  # duplicated in vertiax_order_vt_order_statuses_spec
-  CompletedOrderId = '2987595'
-  ReceivedOrderId = '2987596'
-  CanceledOrderId = '2987602'
-
   before :each do
     @client = subject.client
     attrs = {
@@ -90,8 +84,6 @@ describe Veritax::TalksToVeritax do
     response = subject.get_transcript(CompletedOrderId)
     expect(response.success?).to be_true
     result = Veritax::TranscriptResult.new(response.body[:get_transcript_response][:get_transcript_result])
-    result.write_to_file("#{Rails.root}/temp_file.pdf")
+    result.write_to_file("#{Rails.root}/#{SecureRandom.uuid}.pdf")
   end
-
-  # TODO: use getting a transcript for an in-progress order to simulate an internal error
 end

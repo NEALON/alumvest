@@ -1,11 +1,6 @@
-require File.dirname(__FILE__) + '/../../spec_helper'
+require 'spec_helper'
 
 describe 'users investor income verification veritax order statuses', :type => :feature do
-
-  # duplicated in talks_to_veritax_spec
-  ReceivedOrderId = '2987596'
-  CompletedOrderId = '2987595'
-  CanceledOrderId = '2987602'
 
   context 'a new order' do
     before :each do
@@ -26,38 +21,29 @@ describe 'users investor income verification veritax order statuses', :type => :
   end
 
   context 'an existing order' do
-    before :each do
-      @attrs = {id: rand(1000000),
-               ssn: Faker::Ssn.en_ssn,
-               first_name: Faker::Name.first_name,
-               last_name: Faker::Name.last_name,
-               address: Faker::Address.street_address,
-               city: Faker::Address.city,
-               state: Faker::Address.state_abbr,
-               zip_code: '18901',
-               previous_address: Faker::Address.street_address,
-               previous_city: Faker::Address.city,
-               previous_state: Faker::Address.state_abbr,
-               previous_zip: '18901',
-               email: Faker::Internet.email}
-    end
 
     it 'gets Received status' do
-      vo = FactoryGirl.create(:veritax_order, @attrs.merge(:vt_order_id => ReceivedOrderId))
+      vo = FactoryGirl.create(:veritax_order, :vt_order_id => ReceivedOrderId)
       vo.get_order_info!
       expect(vo.vt_status).to eq('Received')
     end
 
     it 'gets Completed status' do
-      vo = FactoryGirl.create(:veritax_order, @attrs.merge(:vt_order_id => CompletedOrderId))
+      vo = FactoryGirl.create(:veritax_order, :vt_order_id => CompletedOrderId)
       vo.get_order_info!
       expect(vo.vt_status).to eq('Completed')
     end
 
     it 'gets Cancled status' do
-      vo = FactoryGirl.create(:veritax_order, @attrs.merge(:vt_order_id => CanceledOrderId))
+      vo = FactoryGirl.create(:veritax_order, :vt_order_id => CanceledOrderId)
       vo.get_order_info!
       expect(vo.vt_status).to eq('Canceled')
+    end
+
+    it 'gets a transcript for a Completed order' do
+      vo = FactoryGirl.create(:veritax_order, :vt_order_id => CompletedOrderId)
+      result = vo.get_transcript!
+      expect(result.blank?).to eq(false)
     end
   end
 end
