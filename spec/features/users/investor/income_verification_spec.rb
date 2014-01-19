@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../spec_helper'
+require 'spec_helper'
 
 describe 'users investor income verification', :type => :feature do
 
@@ -41,14 +41,26 @@ describe 'users investor income verification', :type => :feature do
     fill_in_income_verification
     expect(page).to have_content 'Your information was saved.'
     click_on 'Submit to Veri-Tax'
-    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax (Order id:'
+    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
+    expect(page).to have_content 'Your Investor Newsfeed'
   end
 
   it 'unsuccessfully submits to veritax' do
-    pending
+    fill_in_income_verification(666)
+    click_on 'Submit to Veri-Tax'
+    expect(page).to have_content 'An error was encountered'
   end
 
-  it 'displays (refreshes?) veritax order status' do
-    pending
+  it 'retries submission after an error' do
+    fill_in_income_verification(666)
+    click_on 'Submit to Veri-Tax'
+    expect(page).to have_content 'An error was encountered'
+    click_on 'Investor Newsfeed'
+    expect(page).to have_content 'You encountered an error'
+    click_on 'Income Verification'
+    click_on 'Edit'
+    fill_in_income_verification
+    click_on 'Submit to Veri-Tax'
+    expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
   end
 end

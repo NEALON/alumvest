@@ -7,6 +7,8 @@ require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 require 'factory_girl_rails'
 require 'vcr'
+require 'veritax_orders'
+include VeritaxOrders
 
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = true

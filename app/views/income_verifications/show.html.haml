@@ -2,7 +2,7 @@
 = render 'users/header'
 
 #information
-  - @income_verification.when_unsubmitted do
+  - @income_verification.when_not_completed do
     %table
       %tr
         %td

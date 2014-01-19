@@ -15,6 +15,9 @@ class Veritax::Order < ActiveRecord::Base
                   :previous_zip,
                   :email,
                   :vt_order_id,
+                  :vt_error,
+                  :vt_status,
+                  :vt_transcript,
                   :status
   attr_encrypted :ssn, :key => 'secret'
 
@@ -33,23 +36,41 @@ class Veritax::Order < ActiveRecord::Base
 
   def complete!
     update_attribute(:status, 'completed')
+    Bus::Event::VeritaxOrderSubmittedSuccessfully.create(:investor => investor, :veritax_order => self)
   end
 
   def completed?
     status == 'completed'
   end
 
+  def error!
+    update_attribute(:status, 'errored')
+    Bus::Event::VeritaxOrderSubmittedWithError.create(:investor => investor, :veritax_order => self)
+  end
+
+  def error?
+    status == 'errored'
+  end
+
+  def vt_status_changed!
+    if vt_status == 'NotReceived'
+      # NO-OP
+    else
+    end
+  end
+
   def create_via_veritax!
     response = Veritax::TalksToVeritax.new.create_esign4506_order(self)
 
     if response.success?
-      result = Veritax::OrderResult.new(response.body[:create_esign4506_order_response][:create_esign4506_order_result])
+      result = Veritax::OrderResult.new(
+          response.body[:create_esign4506_order_response][:create_esign4506_order_result])
       if result.success?
         update_attribute(:vt_order_id, result.order_id)
         complete!
       else
-        # TODO: veritax returns an error
-        raise result.inspect
+        update_attribute(:vt_error, result.message)
+        error!
       end
     else
       # TODO, cannot process verisign order
@@ -57,13 +78,37 @@ class Veritax::Order < ActiveRecord::Base
     end
   end
 
-  def when_unsubmitted(&block)
-    if status == 'unsubmitted'
+  def get_order_info!
+    response = Veritax::TalksToVeritax.new.get_order_info(vt_order_id)
+    if response.success?
+      info = Veritax::OrderInfo.new(
+          response.body[:get_order_info_response][:get_order_info_result])
+      if info.status != vt_status
+        update_attribute(:vt_status, info.status)
+        vt_status_changed!
+      end
+    else
+      # TODO log this information and continue
+    end
+  end
+
+  def get_transcript!
+    response = Veritax::TalksToVeritax.new.get_transcript(vt_order_id)
+    result = Veritax::TranscriptResult.new(response.body[:get_transcript_response][:get_transcript_result])
+    update_attribute(:vt_transcript, result.document_bytes)
+    vt_transcript
+  end
+
+  def transcript_file_name
+     "/#{SecureRandom.uuid}.pdf"
+  end
+
+  def when_not_completed(&block)
+    if status != 'completed'
       yield
     end
   end
 
   # and we can have a task to sync those orders with their status on veritax and fire internal events accordingly, so that downstream stuff can happen like notifying an admin to review a result and subsequent workflows
   # that would talk to things here
-  # true
 end

@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def link_to_show_or_new(entity, heading, show_path, new_path)
-    if entity
+    if entity.blank?
       link_to heading, show_path
     else
       link_to heading, new_path
