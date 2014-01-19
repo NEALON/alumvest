@@ -1,6 +1,6 @@
 class Investor < ActiveRecord::Base
   belongs_to :user
-  attr_encrypted :ssn, :key => 'secret'
+  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
   attr_accessible :accredited_investor_status,
                   :company,
                   :experience,

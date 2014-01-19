@@ -1,6 +1,6 @@
 class Owner < ActiveRecord::Base
   attr_accessible :experience, :expertise, :financial_info, :marital_status, :personal_message, :ssn
-  attr_encrypted :ssn, :key => 'secret'
+  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
 
   belongs_to :user
   has_one :campaign

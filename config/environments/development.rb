@@ -48,4 +48,6 @@ Av::Application.configure do
   ENV['MAILCHIMP_API_KEY'] = '8c194cd48f5416725f97c6a9010e46dd-us7'
   ENV['MAILCHIMP_LIST_ID'] = '318a0cb2de'
 
+  ENV['SSN_SECRET'] = 'secret'
+
 end

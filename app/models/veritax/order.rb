@@ -16,7 +16,7 @@ class Veritax::Order < ActiveRecord::Base
                   :email,
                   :vt_order_id,
                   :status
-  attr_encrypted :ssn, :key => 'secret'
+  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
 
 
   validates_presence_of  [:ssn, :first_name, :last_name, :address, :city, :state, :zip_code, :email]
