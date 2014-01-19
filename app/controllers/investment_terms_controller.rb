@@ -34,9 +34,8 @@ class InvestmentTermsController < ApplicationController
       render :show
     end
   end
-  
+
   def check_for_completeness
-    @investment_term.update_attributes(params[:investment_term])
     if @investment_term.make_ready_for_review
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms are complete.' }
     else

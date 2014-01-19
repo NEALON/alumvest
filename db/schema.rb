@@ -222,16 +222,16 @@ ActiveRecord::Schema.define(version: 20140112044634) do
     t.string   "degree"
     t.integer  "user_id"
     t.integer  "person_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "envelope_events", force: true do |t|
     t.integer  "envelope_id"
     t.string   "status"
     t.datetime "status_date_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "envelopes", force: true do |t|
@@ -240,8 +240,8 @@ ActiveRecord::Schema.define(version: 20140112044634) do
     t.string   "email_subject"
     t.string   "uri"
     t.text     "email_body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "signing_id"
   end
 
@@ -402,8 +402,8 @@ ActiveRecord::Schema.define(version: 20140112044634) do
     t.string   "status",        default: "unsigned"
     t.integer  "investment_id"
     t.integer  "document_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "subscription_agreements", force: true do |t|
@@ -423,8 +423,8 @@ ActiveRecord::Schema.define(version: 20140112044634) do
 
   create_table "templates", force: true do |t|
     t.string   "template_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "document_id"
   end
 

@@ -35,7 +35,6 @@ class CompaniesController < ApplicationController
   def check_for_completeness
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
-    @company.update_attributes(params[:company])
     if @company.make_ready_for_review
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Company info is complete.' }
     else
