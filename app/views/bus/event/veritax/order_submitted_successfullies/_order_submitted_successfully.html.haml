@@ -1,0 +1,4 @@
+%p
+  = 'You successfully submitted an '
+  = link_to 'income verification request', user_investor_income_verification_path(order_submitted_successfully.investor.user)
+  = "to Veri-Tax #{time_ago_in_words(order_submitted_successfully.created_at)} ago."

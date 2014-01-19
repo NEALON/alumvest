@@ -36,7 +36,7 @@ class Veritax::Order < ActiveRecord::Base
 
   def complete!
     update_attribute(:status, 'completed')
-    Bus::Event::VeritaxOrderSubmittedSuccessfully.create(:investor => investor, :veritax_order => self)
+    Bus::Event::Veritax::OrderSubmittedSuccessfully.create(:investor => investor, :veritax_order => self)
   end
 
   def completed?
@@ -45,7 +45,7 @@ class Veritax::Order < ActiveRecord::Base
 
   def error!
     update_attribute(:status, 'errored')
-    Bus::Event::VeritaxOrderSubmittedWithError.create(:investor => investor, :veritax_order => self)
+    Bus::Event::Veritax::OrderSubmittedWithError.create(:investor => investor, :veritax_order => self)
   end
 
   def error?

@@ -1,0 +1,7 @@
+= render "side_navigation", :active => 'admin_income_verification_events'
+= render "users/header"
+
+#information
+  %h3 Income Verification Events
+  - @order_completed_events.each do |event|
+    = render :partial => '/admins/veritax_order_completed', :locals => {:event => event, :investor => event.investor}

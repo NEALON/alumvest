@@ -87,7 +87,9 @@ Av::Application.routes.draw do
       post :fund
       post :bank_account
     end
-    resource :admin
+    resource :admin do
+      get :income_verification_events
+    end
     resource :owner
     resource :bancbox_identity_verification
   end

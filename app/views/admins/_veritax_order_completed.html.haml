@@ -1,0 +1,11 @@
+%p
+  %table.table{:width => "100%"}
+    %tr
+      %td
+        An income verification order was successfully completed for
+        = link_to investor.user.name, user_path(investor.user)
+      %td
+        = link_to 'Review the transcript', '#'
+      %td
+        = link_to 'Approve', '#', :class => 'btn btn-xs btn-success'
+        = link_to 'Reject', '#', :class => 'btn btn-xs btn-danger'
