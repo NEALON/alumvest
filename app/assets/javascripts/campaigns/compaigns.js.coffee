@@ -8,3 +8,6 @@ $ ->
       $("#invest-now-alert").removeClass 'hide'
       return false
 
+  $(".btn-follow").click ->
+    $("form#new_follow").submit()
+

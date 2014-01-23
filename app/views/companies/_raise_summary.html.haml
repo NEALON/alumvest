@@ -59,7 +59,7 @@
             %fieldset
               = f.hidden_field :campaign_id
               = f.hidden_field :user_id
-              %a.btn.btn-unfollow{:name => 'commit', :type => 'submit'}
+              %a.btn.btn-unfollow.btn-follow{:name => 'commit', :type => 'submit'}
                 %span.glyphicon.glyphicon-minus
                 Unfollow this Campaign
         - else
@@ -68,6 +68,6 @@
             %fieldset
               = f.hidden_field :campaign_id
               = f.hidden_field :user_id
-              %a#follow-link.btn{:name => 'commit', :type => 'submit'}
+              %a#follow-link.btn.btn-follow{:name => 'commit', :type => 'submit'}
                 %span.glyphicon.glyphicon-plus
                 Follow this Campaign
