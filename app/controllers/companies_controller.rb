@@ -45,7 +45,7 @@ class CompaniesController < ApplicationController
   def preview
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
-    @disable_nav = true
+    @is_preview = true
     render 'display'
   end
 

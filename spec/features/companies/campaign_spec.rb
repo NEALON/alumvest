@@ -44,7 +44,7 @@ describe 'submitting a campaign for review', :type => :feature do
     #
     click_link 'Join Us'
     sleep 3
-     end
+  end
 
   it 'by unsuccessfully submitting it' do
     #visit campaign_company_path(@campaign)

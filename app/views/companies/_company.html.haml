@@ -10,6 +10,11 @@
         = link_to('Yes, I want to sign up!', '#signup-modal', :class => '', 'data-toggle' => 'modal')
       - else
         = link_to('Yes, I want to become an accredited investor!', user_path(current_user.id))
+  - if @is_preview
+    #preview-alert.alert.alert-info.alert-dismissable
+      %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+        &times;
+      This is a preview of the campaign
   = hidden_field_tag :invest_url, new_campaign_investment_path(@company.campaign),
     id: "invest-url"
   -# main (left)
