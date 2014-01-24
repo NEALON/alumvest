@@ -4,9 +4,10 @@
 #company-tab.row-bg1
   .container
     = render 'company'
-#team-tab
-  .container
-    = render 'teams/team'
+- if @campaign.team
+  #team-tab
+    .container
+      = render 'teams/team'
 - if @investment_term
   #investment-term-tab
     .container
