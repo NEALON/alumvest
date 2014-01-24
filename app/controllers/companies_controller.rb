@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
     if @company.valid?
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Company saved.' }
     else
-      render :edit
+      render :new, :error => 'Correct the data to make this complete.'
     end
   end
 
