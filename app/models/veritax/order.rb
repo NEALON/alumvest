@@ -52,11 +52,11 @@ class Veritax::Order < ActiveRecord::Base
     status == 'errored'
   end
 
-  def vt_status_changed!
-    if vt_status == 'NotReceived'
-      # NO-OP
-    else
+  def vt_status_changed!(current_status, new_status)
+    if current_status.blank? && new_status == 'Completed'
+      Bus::Event::Veritax::OrderCompleted.create(:veritax_order => self, :investor => investor)
     end
+    update_attribute(:vt_status, new_status)
   end
 
   def create_via_veritax!
@@ -84,8 +84,7 @@ class Veritax::Order < ActiveRecord::Base
       info = Veritax::OrderInfo.new(
           response.body[:get_order_info_response][:get_order_info_result])
       if info.status != vt_status
-        update_attribute(:vt_status, info.status)
-        vt_status_changed!
+        vt_status_changed!(vt_status, info.status)
       end
     else
       # TODO log this information and continue

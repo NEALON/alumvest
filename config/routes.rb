@@ -89,6 +89,8 @@ Av::Application.routes.draw do
     end
     resource :admin do
       get :income_verification_events
+      get :simulate_completed_order
+      get :simulate_canceled_order
     end
     resource :owner
     resource :bancbox_identity_verification

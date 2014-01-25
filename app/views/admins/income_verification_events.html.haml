@@ -3,5 +3,12 @@
 
 #information
   %h3 Income Verification Events
-  - @order_completed_events.each do |event|
-    = render :partial => '/admins/veritax_order_completed', :locals => {:event => event, :investor => event.investor}
+
+  %table.table
+    - @order_completed_events.each do |event|
+      %tr
+        = render :partial => '/admins/veritax_order_completed', :locals => {:event => event, :investor => event.investor}
+
+    - @order_submitted_successfully_events.each do |event|
+      %tr
+        = render :partial => '/admins/veritax_order_submitted_successfully', :locals => {:event => event, :investor => event.investor}

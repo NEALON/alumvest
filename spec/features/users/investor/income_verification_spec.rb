@@ -62,5 +62,6 @@ describe 'users investor income verification', :type => :feature do
     fill_in_income_verification
     click_on 'Submit to Veri-Tax'
     expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
+    screenshot_and_open_image
   end
 end
