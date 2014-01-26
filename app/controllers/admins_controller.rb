@@ -12,8 +12,12 @@ class AdminsController < ApplicationController
     @user = User.find(params[:user_id])
     # TODO: merging and sorting these events
     # TODO: event filtering
-    @order_submitted_successfully_events = Bus::Event::Veritax::OrderSubmittedSuccessfully.all.order('id desc')
-    @order_completed_events = Bus::Event::Veritax::OrderCompleted.all.order('id desc')
+    @events = Bus::Event.find_by_sql("
+      select * from bus_events
+      where type = 'Bus::Event::Veritax::OrderSubmittedSuccessfully'
+      or type = 'Bus::Event::Veritax::OrderCompleted'
+      or type = 'Bus::Event::Veritax::OrderCanceled'
+      order by id desc")
     render :layout => 'admins'
   end
 

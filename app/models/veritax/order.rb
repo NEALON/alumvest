@@ -21,15 +21,6 @@ class Veritax::Order < ActiveRecord::Base
                   :status
   attr_encrypted :ssn, :key => 'secret'
 
-  #state_machine :status, :initial => :new do
-  #  event :complete do
-  #    transition :new => :completed
-  #  end
-  #  state :new
-  #  state :completed
-  #  state :submission_error
-  #end
-
   validates_presence_of  [:ssn, :first_name, :last_name, :address, :city, :state, :zip_code, :email]
 
   belongs_to :investor
@@ -53,9 +44,14 @@ class Veritax::Order < ActiveRecord::Base
   end
 
   def vt_status_changed!(current_status, new_status)
+
     if current_status.blank? && new_status == 'Completed'
       Bus::Event::Veritax::OrderCompleted.create(:veritax_order => self, :investor => investor)
     end
+    if current_status.blank? && new_status == 'Canceled'
+      Bus::Event::Veritax::OrderCa.create(:veritax_order => self, :investor => investor)
+    end
+
     update_attribute(:vt_status, new_status)
   end
 

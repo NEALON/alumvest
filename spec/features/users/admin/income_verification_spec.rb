@@ -27,7 +27,7 @@ describe 'users investor income verification', :type => :feature do
 
     it 'simulates a completed order' do
       click_on 'Complete'
-      screenshot_and_open_image
+      expect(page).to have_content('An income verification order was successfully completed')
     end
 
     it 'simulates a canceled order' do
