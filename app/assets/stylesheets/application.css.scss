@@ -12,15 +12,17 @@
 
 @import "bootstrap";
 @import "vendor/bootstrap/bootstrap-theme";
+
 @import "layout/header";
 @import "layout/modal";
 @import "layout/footer";
-@import "home/home";
-@import "users/users";
-@import "company/company";
-@import "investor_dashboard";
+
+@import "home/main";
+@import "users/main";
+@import "company/main";
+@import "dashboard/main";
+
 @import "content/team";
-@import "dashboard/dashboard";
 
 html, body{
   width: 100%;
