@@ -16,6 +16,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
                   :pendingbalance,
                   :agreement,
                   :bancbox_id
+  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
 
   # has_many :fund_transactions, :as => :fundable
   # has_many :bank_accounts

@@ -1,1 +1,6 @@
-#questionnaire= render_cell 'workflow_step', :display, :label => "Complete our accredited investor questionnaire", :description => "Certify your accredited investor status.", :link => link_to("Start", edit_campaign_investment_questionnaire_path(@campaign, @investment), :class => "btn btn-primary"), :status => @investment.questionnaire.try(:status)
+%a#questionnaire.investment-flow{:href => edit_campaign_investment_questionnaire_path(@campaign, @investment)}
+  .row
+    %label Complete our accredited investor questionnaire
+    %span.investment-flow-status{:class => @investment.questionnaire.try(:status)}=  @investment.questionnaire.try(:status)
+  .investment-flow-description Certify your accredited investor status.
+  .investment-start Start

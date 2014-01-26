@@ -44,11 +44,28 @@ describe 'submitting a campaign for review', :type => :feature do
     #
     click_link 'Join Us'
     sleep 3
-     end
+  end
 
   it 'by unsuccessfully submitting it' do
     #visit campaign_company_path(@campaign)
     #click_link 'Submit for review'
     #screenshot_and_open_image
   end
+end
+
+describe 'preview campaign', :type => :feature do
+  before :each do
+    sign_up :owner
+    @category = FactoryGirl.create(:category)
+    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
+  end
+
+  it 'can preview campaign' do
+    create_new_company @campaign
+    click_link 'Preview'
+    within_window(page.driver.browser.window_handles.last) do
+      page.should have_content "This is a preview of the campaign"
+    end
+  end
+
 end

@@ -3,7 +3,7 @@
     .col-md-8
       = form_for [@campaign, @investment, @funding_level], :url => campaign_investment_funding_level_path(@campaign, @investment), :html => {:class => 'form-horizontal well'} do |f|
 
-        = render 'shared/errors', :entity => @company
+        = render 'shared/errors', :entity => @funding_level
         = render_cell "tb/form/subhead", :display, :label => "Funding Level"
 
         %fieldset

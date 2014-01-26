@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
       render :action => :new
     end
   end
-  
+
   def edit
     @team.team_members.build if @team.team_members.blank?
     render :new
@@ -29,10 +29,9 @@ class TeamsController < ApplicationController
     else
       render :edit
     end
-  end  
+  end
 
   def check_for_completeness
-    @team.update_attributes(params[:team])
     if @team.make_ready_for_review
       redirect_to campaign_team_path(@team.campaign), :flash => {:success => 'Team info is complete.' }
     else

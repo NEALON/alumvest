@@ -1,6 +1,4 @@
 // all about company
-
-@import "common/color";
 @import "investment";
 
 $company-left-block-width: 630px;
@@ -14,6 +12,11 @@ $body-font-size: 14px;
 $body-font-weight: 200;
 
 // v2 code
+
+.campaign-company-header{
+  padding-top: 80px;
+}
+
 .company_banner{
   img{
     width: 100%;
@@ -167,14 +170,6 @@ hr.campaign-separator{
 .company-block{
   border-radius: 2px;
   box-shadow: 0px 0px 1px #BDC3C7;
-}
-
-#investment-header{
-  a.btn{
-    display: block;
-    margin: 20px auto 0;
-  }
-
 }
 
 .blur{
