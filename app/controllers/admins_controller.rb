@@ -14,9 +14,9 @@ class AdminsController < ApplicationController
     # TODO: event filtering
     @events = Bus::Event.find_by_sql("
       select * from bus_events
-      where type = 'Bus::Event::Veritax::OrderSubmittedSuccessfully'
-      or type = 'Bus::Event::Veritax::OrderCompleted'
-      or type = 'Bus::Event::Veritax::OrderCanceled'
+      where type = 'Bus::Event::VeritaxEvent::OrderSubmittedSuccessfully'
+      or type = 'Bus::Event::VeritaxEvent::OrderCompleted'
+      or type = 'Bus::Event::VeritaxEvent::OrderCanceled'
       order by id desc")
     render :layout => 'admins'
   end

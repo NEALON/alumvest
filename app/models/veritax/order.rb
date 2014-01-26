@@ -27,7 +27,7 @@ class Veritax::Order < ActiveRecord::Base
 
   def complete!
     update_attribute(:status, 'completed')
-    Bus::Event::Veritax::OrderSubmittedSuccessfully.create(
+    Bus::Event::VeritaxEvent::OrderSubmittedSuccessfully.create(
         :investor => investor,
         :veritax_order => self)
   end
@@ -38,7 +38,7 @@ class Veritax::Order < ActiveRecord::Base
 
   def error!
     update_attribute(:status, 'errored')
-    Bus::Event::Veritax::OrderSubmittedWithError.create(
+    Bus::Event::VeritaxEvent::OrderSubmittedWithError.create(
         :investor => investor,
         :veritax_order => self)
   end
@@ -50,12 +50,12 @@ class Veritax::Order < ActiveRecord::Base
   def vt_status_changed!(current_status, new_status)
 
     if current_status.blank? && new_status == 'Completed'
-      Bus::Event::Veritax::OrderCompleted.create(
+      Bus::Event::VeritaxEvent::OrderCompleted.create(
           :veritax_order => self,
           :investor => investor)
     end
     if current_status.blank? && new_status == 'Canceled'
-      Bus::Event::Veritax::OrderCanceled.create(
+      Bus::Event::VeritaxEvent::OrderCanceled.create(
           :veritax_order => self,
           :investor => investor)
     end
