@@ -107,8 +107,12 @@ class User < ActiveRecord::Base
     user_type.downcase == 'admin'
   end
 
+  def when_admin(&block); yield if is_admin?; end
+  def when_investor(&block); yield if is_investor?; end
+  def when_owner(&block); yield if is_owner?; end
+
   def user_type_undefined?
-    !is_owner? && !is_investor?
+    !is_owner? && !is_investor? && !is_admin?
   end
 
   def update_user_type

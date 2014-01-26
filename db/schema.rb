@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112044634) do
+ActiveRecord::Schema.define(version: 20140125222844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,7 +154,11 @@ ActiveRecord::Schema.define(version: 20140112044634) do
     t.integer  "signing_id"
     t.integer  "admin_id"
     t.integer  "campaign_id"
+    t.integer  "investor_id"
+    t.integer  "veritax_order_id"
   end
+
+  add_index "bus_events", ["type"], name: "index_bus_events_on_type", using: :btree
 
   create_table "campaigns", force: true do |t|
     t.string   "status"
@@ -483,6 +487,9 @@ ActiveRecord::Schema.define(version: 20140112044634) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_ssn"
+    t.string   "vt_error"
+    t.string   "vt_status"
+    t.text     "vt_transcript"
   end
 
   create_table "versions", force: true do |t|

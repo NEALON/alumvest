@@ -45,9 +45,9 @@ class IncomeVerificationsController < ApplicationController
     load_income_verification
     @income_verification.create_via_veritax!
     if @income_verification.reload.completed?
-      redirect_to user_investor_income_verification_path(@user), flash: {success: "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}. Please check your inbox for your e-signable form."}
+      redirect_to user_investor_events_path(@user), flash: {success: "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}). Please check your inbox for your e-signable form."}
     else
-      raise @income_verification.inspect
+      redirect_to edit_user_investor_income_verification_path(@user, @income_verification), flash: {error: "An error was encounteredd while trying to process your order: #{@income_verification.vt_error})."}
     end
   end
 

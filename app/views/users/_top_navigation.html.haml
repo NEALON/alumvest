@@ -3,5 +3,12 @@
     %ul#user-profile-nav.nav.nav-tabs
       %li{:class => ('active' if active == :user_info)}
         = link_to("User Information", user_path(@user))
-      %li{:class => ('active' if active == :investor_info)}
-        = link_to("Investor Dashboard", user_investor_path(@user))
+      - @user.when_admin do
+        %li{:class => ('active' if active == :admin_info)}
+          = link_to("Admin Dashboard", user_admin_path(@user))
+      - @user.when_investor do
+        %li{:class => ('active' if active == :investor_info)}
+          = link_to("Investor Dashboard", user_investor_path(@user))
+      - @user.when_owner do
+        %li{:class => ('active' if active == :owner_info)}
+          = link_to("Owner Dashboard", user_owner_path(@user))

@@ -1,0 +1,8 @@
+%td
+  An income verification order was successfully submitted to Veri-Tax for
+  = link_to investor.user.name, user_path(investor.user)
+%td
+%td
+  = link_to 'Complete',simulate_completed_order_user_admin_path(current_user, :veritax_order_id => event.veritax_order.id), :class => 'btn btn-xs btn-success'
+%td
+  = link_to 'Cancel', simulate_canceled_order_user_admin_path(current_user, :veritax_order_id => event.veritax_order.id), :class => 'btn btn-xs btn-danger'

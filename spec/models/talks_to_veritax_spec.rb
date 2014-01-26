@@ -2,10 +2,6 @@ require 'spec_helper_without_capybara'
 
 describe Veritax::TalksToVeritax do
 
-  CompletedOrderId = '2987595' # transient value for testing w/ VeriTax
-  InProgressOrderId = '2987596'
-  RejectedOrderId = '2987602'
-
   before :each do
     @client = subject.client
     attrs = {
@@ -59,13 +55,13 @@ describe Veritax::TalksToVeritax do
     expect(info.problem_description).to eq(nil)
   end
 
-  it 'gets in-progress order info' do
-    response2 = subject.get_order_info(InProgressOrderId)
+  it 'gets received order info' do
+    response2 = subject.get_order_info(ReceivedOrderId)
     expect(response2.success?).to be_true
     info = Veritax::OrderInfo.new(response2.body[:get_order_info_response][:get_order_info_result])
-    expect(info.status).to eq('InProgress')
+    expect(info.status).to eq('Received')
     expect(info.order_completed_date).to eq(nil)
-    expect(info.problem_description).to eq(nil)
+    expect(info.problem_description).not_to eq(nil)
   end
 
   it 'gets completed order info' do
@@ -77,8 +73,8 @@ describe Veritax::TalksToVeritax do
     expect(info.problem_description).to eq(nil)
   end
 
-  it 'gets rejected order info' do
-    response2 = subject.get_order_info(RejectedOrderId)
+  it 'gets canceled order info' do
+    response2 = subject.get_order_info(CanceledOrderId)
     expect(response2.success?).to be_true
     info = Veritax::OrderInfo.new(response2.body[:get_order_info_response][:get_order_info_result])
     expect(info.status).to eq('Canceled')
@@ -88,10 +84,6 @@ describe Veritax::TalksToVeritax do
     response = subject.get_transcript(CompletedOrderId)
     expect(response.success?).to be_true
     result = Veritax::TranscriptResult.new(response.body[:get_transcript_response][:get_transcript_result])
-    result.write_to_file("#{Rails.root}/temp_file.pdf")
-    raise result.inspect
-    # TODO: save those bytes to a file and make it sure it is a readable PDF
+    result.write_to_file("#{Rails.root}/#{SecureRandom.uuid}.pdf")
   end
-
-  # TODO: use getting a transcript for an in-progress order to simulate internal error
 end

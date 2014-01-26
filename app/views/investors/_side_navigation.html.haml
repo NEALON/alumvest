@@ -1,6 +1,11 @@
 = content_for :sidebar_left do
   %ul.nav.nav-stacked
+    %li{:class => "#{'active' if active == 'investor_newsfeed'}"}
+      = link_to('Investor Newsfeed', user_investor_events_path(@user))
     %li{:class => "#{'active' if active == 'investor_profile'}"}
       = link_to('Investor Profile', user_investor_path(@user))
     %li{:class => "#{'active' if active == 'income_verification'}"}
-      = link_to_show_or_new(@income_verification, 'Income Verification', user_investor_income_verification_path(@user), new_user_investor_income_verification_path(@user))
+      - if @user.investor.income_verification.nil?
+        = link_to 'Income Verification', new_user_investor_income_verification_path(@user)
+      - else
+        = link_to 'Income Verification', user_investor_income_verification_path(@user)

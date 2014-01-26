@@ -73,6 +73,7 @@ Av::Application.routes.draw do
   resources :users do
     resource :borrower
     resource :investor do
+      resources :events
       resource :income_verification do
         put :submit_to_veritax
       end
@@ -86,6 +87,12 @@ Av::Application.routes.draw do
       post :fund
       post :bank_account
     end
+    resource :admin do
+      get :income_verification_events
+      get :simulate_completed_order
+      get :simulate_canceled_order
+    end
+    resource :owner
     resource :bancbox_identity_verification
   end
 

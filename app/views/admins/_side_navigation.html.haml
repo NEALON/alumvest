@@ -1,0 +1,6 @@
+= content_for :sidebar_left do
+  %ul.nav.nav-stacked
+    %li{:class => "#{'active' if active == 'admin_dashboard'}"}
+      = link_to('Dashboard', user_admin_path(@user))
+    %li{:class => "#{'active' if active == 'admin_income_verification_events'}"}
+      = link_to('Income Verification Events', income_verification_events_user_admin_path(@user))

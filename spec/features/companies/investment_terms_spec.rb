@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../spec_helper'
+require 'spec_helper'
 
 describe "managing company investment terms", :type => :feature do
 
