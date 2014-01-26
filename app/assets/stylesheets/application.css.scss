@@ -10,8 +10,13 @@
  *
 */
 
+// import vendor libraries
 @import "bootstrap";
 @import "vendor/bootstrap/bootstrap-theme";
+
+// import mixins, variables and functions
+@import "core/font";
+@import "core/color";
 
 @import "layout/header";
 @import "layout/modal";
@@ -32,6 +37,7 @@ html, body{
 body{
   background-color: #ffffff;
   font-size: 12px;
+  font-family: $font-open-sans;
 }
 
 .container{
