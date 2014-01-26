@@ -19,7 +19,7 @@ class Veritax::Order < ActiveRecord::Base
                   :vt_status,
                   :vt_transcript,
                   :status
-  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
+  attr_encrypted :ssn, :key => (Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET'])
 
   validates_presence_of  [:ssn, :first_name, :last_name, :address, :city, :state, :zip_code, :email]
 
@@ -27,7 +27,9 @@ class Veritax::Order < ActiveRecord::Base
 
   def complete!
     update_attribute(:status, 'completed')
-    Bus::Event::Veritax::OrderSubmittedSuccessfully.create(:investor => investor, :veritax_order => self)
+    Bus::Event::Veritax::OrderSubmittedSuccessfully.create(
+        :investor => investor,
+        :veritax_order => self)
   end
 
   def completed?
@@ -36,7 +38,9 @@ class Veritax::Order < ActiveRecord::Base
 
   def error!
     update_attribute(:status, 'errored')
-    Bus::Event::Veritax::OrderSubmittedWithError.create(:investor => investor, :veritax_order => self)
+    Bus::Event::Veritax::OrderSubmittedWithError.create(
+        :investor => investor,
+        :veritax_order => self)
   end
 
   def error?
@@ -46,10 +50,14 @@ class Veritax::Order < ActiveRecord::Base
   def vt_status_changed!(current_status, new_status)
 
     if current_status.blank? && new_status == 'Completed'
-      Bus::Event::Veritax::OrderCompleted.create(:veritax_order => self, :investor => investor)
+      Bus::Event::Veritax::OrderCompleted.create(
+          :veritax_order => self,
+          :investor => investor)
     end
     if current_status.blank? && new_status == 'Canceled'
-      Bus::Event::Veritax::OrderCa.create(:veritax_order => self, :investor => investor)
+      Bus::Event::Veritax::OrderCanceled.create(
+          :veritax_order => self,
+          :investor => investor)
     end
 
     update_attribute(:vt_status, new_status)

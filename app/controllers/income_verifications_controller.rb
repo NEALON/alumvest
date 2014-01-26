@@ -18,7 +18,7 @@ class IncomeVerificationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @investor = @user.investor
-    @income_verification = Veritax::Order.create(params[:veritax_order].merge(status: 'unsubmitted'))
+    @income_verification = Veritax::Order.create(params[:veritax_order].merge(:status => 'unsubmitted'))
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was saved.'}
     else
