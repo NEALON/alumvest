@@ -4,7 +4,7 @@
     = render 'companies/heading'
 
     - if @investment.can_finalize?
-      %p= link_to "Submit this investment for review", campaign_investment_submit_for_review_path(@campaign, @investment), :method => :put, :class => 'btn btn-success btn-large'
+      %p= link_to 'Submit this investment for review', campaign_investment_submit_for_review_path(@campaign, @investment), :method => :put, :class => 'btn btn-success btn-large'
 
     = render :partial => 'funding'
     = render :partial => 'questionnaire'

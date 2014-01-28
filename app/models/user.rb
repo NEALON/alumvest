@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
                   :zipcode,
                   :personal_statement,
                   :ssn
-  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
+  attr_encrypted :ssn, :key => Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET']
 
   has_filepicker_image :avatar, styles: {medium: [300, 300], thumb: [128, 128]}
 

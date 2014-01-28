@@ -3,7 +3,7 @@
 
 #information
   = button_to 'Edit', edit_user_bank_account_path(@user), :class => 'btn btn-primary btn-xs', :method => :get
-  = render 'shared/property_row', :header => 'Bank account holder', :value => @bank_account.bank_account_holder
-  = render 'shared/property_row', :header => 'Bank account type', :value => @bank_account.bank_account_type
-  = render 'shared/property_row', :header => 'Bank account routing', :value => @bank_account.bank_account_routing
-  = render 'shared/property_row', :header => 'Bank account number', :value => @bank_account.bank_account_number
+  = render 'shared/property_row', :header => 'Bank account holder', :value => @bank_account.try(:bank_account_holder)
+  = render 'shared/property_row', :header => 'Bank account type', :value => @bank_account.try(:bank_account_type)
+  = render 'shared/property_row', :header => 'Bank account routing', :value => @bank_account.try(:bank_account_routing)
+  = render 'shared/property_row', :header => 'Bank account number', :value => @bank_account.try(:bank_account_number)

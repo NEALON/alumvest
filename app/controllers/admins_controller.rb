@@ -48,7 +48,7 @@ class AdminsController < ApplicationController
     )
       redirect_to investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing approved.'}
     else
-      redirect_to investor_signings_user_admin_path(current_user), :flash => {:danger => 'Could not approve signing.'}
+      redirect_to investor_signings_user_admin_path(current_user), :flash => {:warning => 'Could not approve signing.'}
     end
   end
 
@@ -59,7 +59,7 @@ class AdminsController < ApplicationController
     )
       redirect_to  investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing rejected.'}
     else
-      redirect_to investor_signings_user_admin_path(current_user), :flash => {:danger => 'Could not reject signing.'}
+      redirect_to investor_signings_user_admin_path(current_user), :flash => {:warning => 'Could not reject signing.'}
     end
   end
 end

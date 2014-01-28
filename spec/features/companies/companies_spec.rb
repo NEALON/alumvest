@@ -4,7 +4,7 @@ include ActionView::Helpers::SanitizeHelper
 include ActionView::Helpers::DateHelper
 include ActionView::Helpers::NumberHelper
 
-describe "managing company basics", :type => :feature do
+describe 'managing company basics', :type => :feature do
 
   before :each do
     sign_up :issuer
@@ -12,7 +12,7 @@ describe "managing company basics", :type => :feature do
     @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
   end
 
-  it "by editing one" do
+  it 'by editing one' do
     create_new_company @campaign
     edit_company @campaign
     @company = @campaign.company
@@ -26,7 +26,6 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content strip_tags @company.company_details
     expect(page).to have_content @company.founded_on_year
     expect(page).to have_content @company.ownership_structure
-    # expect(page).to have_content(@company.category.name)
     expect(page).to have_content @company.address_1
     expect(page).to have_content @company.address_2
     expect(page).to have_content @company.city
@@ -34,25 +33,21 @@ describe "managing company basics", :type => :feature do
     expect(page).to have_content @company.zip
     expect(page).to have_content @company.phone
     expect(page).to have_content strip_tags @company.faq
-    # expect(page).to have_content @company.video_url
-    # expect(page).to have_css("img[src$='#{@company.photo_url}']")
-    # expect(page).to have_css("img[src$='#{@company.banner_photo_url}']")
-    
   end
 
-  it "by successfully submitting for review" do
+  it 'by successfully submitting for review' do
     create_new_company @campaign
     click_link 'Check for completeness'
     (expect page).to have_content 'is complete'
   end
 
-  it "by unsuccessfully submitting for review" do
+  it 'by unsuccessfully submitting for review' do
     create_blank_new_company @campaign
     click_link 'Check for completeness'
     (expect page).to have_content 'errors'
   end
 
-  it "by showing a company as a campaign" do
+  it 'by showing a company as a campaign' do
     create_new_company @campaign
     @company = @campaign.company
     investment_term = FactoryGirl.create(:investment_term, :campaign => @campaign)

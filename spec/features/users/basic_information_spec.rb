@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe 'users basic information', :type => :feature do
 
   before :each do

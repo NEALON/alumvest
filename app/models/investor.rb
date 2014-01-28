@@ -1,6 +1,9 @@
 class Investor < ActiveRecord::Base
+
   belongs_to :user
-  attr_encrypted :ssn, :key => ENV['SSN_SECRET']
+
+  attr_encrypted :ssn, :key => Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET']
+
   attr_accessible :accredited_investor_status,
                   :company,
                   :experience,

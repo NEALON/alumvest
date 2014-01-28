@@ -64,8 +64,7 @@ describe 'preview campaign', :type => :feature do
     create_new_company @campaign
     click_link 'Preview'
     within_window(page.driver.browser.window_handles.last) do
-      page.should have_content "This is a preview of the campaign"
+      page.should have_content 'This is a preview of the campaign'
     end
   end
-
 end

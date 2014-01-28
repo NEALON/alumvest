@@ -9,7 +9,7 @@ class InvestmentsController < ApplicationController
       end
       redirect_to [@campaign, f]
     else
-      redirect_to display_campaign_company_path(@campaign), :flash => {:danger => "Please sign in as an investor to invest!"}
+      redirect_to display_campaign_company_path(@campaign), :flash => {:warning => "Please sign in as an investor to invest!"}
     end
   end
 

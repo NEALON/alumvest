@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to root_url, flash: {:danger => "Authentication failed, please try again."}
+    redirect_to root_url, flash: {:warning => "Authentication failed, please try again."}
   end
 end

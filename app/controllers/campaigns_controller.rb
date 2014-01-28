@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
     if @campaign.submit_for_review
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Congratulations! Your campaign is now submitted for review.'}
     else
-      redirect_to campaign_company_path(@campaign), :flash => {:danger => company.invalid_items.join(', ')}
+      redirect_to campaign_company_path(@campaign), :flash => {:warning => company.invalid_items.join(', ')}
     end
   end
 

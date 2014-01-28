@@ -3,4 +3,5 @@
     %label Confirm your subscription agreement
     %span.investment-flow-status{:class => @investment.subscription_agreement.try(:status)}=  @investment.subscription_agreement.try(:status)
   .investment-flow-description Sign up for your subscription agreement.
-  .investment-start Start
+  .investment-start
+    = link_to 'Start', edit_campaign_investment_subscription_agreement_path(@campaign, @investment)

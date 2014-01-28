@@ -1,17 +1,18 @@
 require 'spec_helper'
-describe "users settings", :type => :feature do
+
+describe 'users settings', :type => :feature do
 
   before :each do
     sign_up :investor
     click_on 'Settings'
   end
 
-  it "shows" do
+  it 'shows' do
     expect(page).to have_content 'Password'
     expect(page).to have_content 'Password Confirmation'
   end
 
-  it "fails to update" do
+  it 'fails to update' do
     expect(page).to have_button 'Edit'
     click_on 'Edit'
 
@@ -22,7 +23,7 @@ describe "users settings", :type => :feature do
     expect(page).to have_content('Password info failed to update.')
   end
 
-  it "updates" do
+  it 'updates' do
     click_on 'Edit'
 
     fill_in 'user_password', :with => '123456'

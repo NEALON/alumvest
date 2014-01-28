@@ -3,4 +3,5 @@
     %label Sign contracts
     %span.investment-flow-status{:class => @investment.contract_doc_group.try(:status)}=  @investment.contract_doc_group.try(:status)
   .investment-flow-description Sign all of the required contracts.
-  .investment-start Start
+  .investment-start
+    = link_to 'Start', edit_campaign_investment_contract_doc_group_path(@campaign, @investment)

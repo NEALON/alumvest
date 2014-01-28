@@ -3,4 +3,5 @@
     %label Finalize your funding level
     %span.investment-flow-status{:class => @investment.funding_level.try(:status)}=  @investment.funding_level.try(:status)
   .investment-flow-description Please verify your funding level.
-  .investment-start Start
+  .investment-start
+    = link_to 'Start', edit_campaign_investment_funding_level_path(@campaign, @investment)

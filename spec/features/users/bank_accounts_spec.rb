@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe 'users bank accounts', :type => :feature do
 
   before :each do

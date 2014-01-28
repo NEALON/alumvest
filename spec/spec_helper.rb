@@ -13,7 +13,7 @@ include VeritaxOrders
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = true
 end
-# WebMock.allow_net_connect!
+WebMock.allow_net_connect!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

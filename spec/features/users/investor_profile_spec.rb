@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe 'users investor profile', :type => :feature do
 
   before :each do

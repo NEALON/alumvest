@@ -23,21 +23,16 @@ describe 'users investor income verification', :type => :feature do
 
     it 'sees their listing' do
       expect(page).to have_content('order was successfully submitted')
-      screenshot_and_open_image
     end
 
     it 'simulates a completed order' do
-      screenshot_and_open_image
-
       click_on 'Complete'
       expect(page).to have_content('An income verification order was successfully completed')
-      screenshot_and_open_image
-
     end
 
     it 'simulates a canceled order' do
       click_on 'Cancel'
-      screenshot_and_open_image
+      expect(page).to have_content('An income verification order was canceled')
     end
   end
 
@@ -63,7 +58,7 @@ describe 'users investor income verification', :type => :feature do
 
     it 'sees their listing' do
       click_on 'Income Verification Events'
-      screenshot_and_open_image
+      expect(page).to have_content('An income verification order was successfully completed')
     end
   end
 end

@@ -22,7 +22,7 @@ class FundingLevelsController < ApplicationController
         TalksToBancbox.fund_escrow!(@campaign, @investment, @funding_level.amount)
         redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Item completed.'}
       rescue Exception => e
-        redirect_to campaign_investment_path(@campaign, @investment), :flash => {:danger => e.message}
+        redirect_to campaign_investment_path(@campaign, @investment), :flash => {:warning => e.message}
       end
     else
       @company = @campaign.company
