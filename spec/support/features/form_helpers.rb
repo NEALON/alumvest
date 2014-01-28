@@ -89,14 +89,14 @@ module Features
       click_button 'Save'
     end
 
-    def fill_in_user_owner_profile
+    def fill_in_user_issuer_profile
       'user'.tap do |form|
-        fill_in "#{form}_owner_attributes_ssn", :with => '000-00-0000'
-        select 'Married', :from => "#{form}_owner_attributes_marital_status"
-        fill_in "#{form}_owner_attributes_financial_info", :with => Faker::Lorem.sentence(10)
-        fill_in "#{form}_owner_attributes_experience", :with => Faker::Lorem.sentence(10)
-        fill_in "#{form}_owner_attributes_expertise", :with => Faker::Lorem.sentence(10)
-        fill_in "#{form}_owner_attributes_personal_message", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_issuer_attributes_ssn", :with => '000-00-0000'
+        select 'Married', :from => "#{form}_issuer_attributes_marital_status"
+        fill_in "#{form}_issuer_attributes_financial_info", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_issuer_attributes_experience", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_issuer_attributes_expertise", :with => Faker::Lorem.sentence(10)
+        fill_in "#{form}_issuer_attributes_personal_message", :with => Faker::Lorem.sentence(10)
       end
       click_button 'Save'
     end
@@ -149,7 +149,7 @@ module Features
         select '90', :from => "#{form}_campaign_length"
         select 'Convertible Note', :from => "#{form}_equity_type"
         select 'All-or-nothing', :from => "#{form}_funds_retained"
-        select 'Owner', :from => "#{form}_fees_paid_by"
+        select 'Issuer', :from => "#{form}_fees_paid_by"
         fill_in "#{form}_elevator_pitch", :with => investment_term.elevator_pitch
         fill_in "#{form}_investment_details", :with => investment_term.investment_details
 

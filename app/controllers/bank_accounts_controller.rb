@@ -44,7 +44,7 @@ class BankAccountsController < ApplicationController
     @bank_account = @user.bank_account
     @bank_account.update_attributes(params[:bancbox_bank_account])
     if @bank_account.valid?
-      bancbox_entity = (@user.is_investor? ? @user.investor.bancbox_investor : @user.owner.bancbox_issuer)
+      bancbox_entity = (@user.is_investor? ? @user.investor.bancbox_investor : @user.issuer.bancbox_issuer)
       unless bancbox_entity.has_bancbox_account?
         create_bancbox_account
       else

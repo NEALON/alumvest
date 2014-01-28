@@ -7,9 +7,9 @@ include ActionView::Helpers::NumberHelper
 describe "managing company basics", :type => :feature do
 
   before :each do
-    sign_up :owner
+    sign_up :issuer
     @category = FactoryGirl.create(:category)
-    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
+    @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
   end
 
   it "by editing one" do

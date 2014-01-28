@@ -34,6 +34,6 @@ class CampaignsController < ApplicationController
   def load_campaign
     @campaign = Campaign.find(params[:campaign_id])
     @company = @campaign.company
-    @user = @campaign.owner.user
+    @user = @campaign.issuer.user
   end
 end

@@ -23,9 +23,9 @@ class TalksToBancbox
 
   def self.submit_issuer!(user, bank_account)
 
-    bancbox_issuer = user.owner.bancbox_issuer ||
+    bancbox_issuer = user.issuer.bancbox_issuer ||
         Bancbox::Issuer.create(
-            :owner => user.owner,
+            :issuer => user.issuer,
             :agreement => true)
 
     # TODO yuck, let's remove this redundancy:
@@ -40,7 +40,7 @@ class TalksToBancbox
 
   def self.create_escrow!(user, campaign)
     Bancbox::Escrow.create(
-        :issuer => user.owner.bancbox_issuer,
+        :issuer => user.issuer.bancbox_issuer,
         :campaign => campaign,
         :name => 'Alumvest',
         :start_date => (start_date = (campaign.starts_on || Date.today)),

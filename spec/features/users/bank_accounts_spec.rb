@@ -2,7 +2,7 @@ require 'spec_helper'
 describe 'users bank accounts', :type => :feature do
 
   before :each do
-    sign_up :owner
+    sign_up :issuer
     fill_in_user_basic_info
     click_on 'Bank Account'
   end

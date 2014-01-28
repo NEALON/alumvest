@@ -1,7 +1,7 @@
 module Features
   module SessionHelpers
     def sign_up(
-        role = :owner,
+        role = :issuer,
             first_name = Faker::Name.first_name || 'Mike',
             last_name = Faker::Name.last_name,
             email = Faker::Internet.email,
@@ -9,7 +9,7 @@ module Features
 
       @first_name, @last_name, @email, @password = first_name, last_name, email, password
       visit '/'
-      click_link "Register"
+      click_link 'Register'
       fill_in 'first_name', :with => first_name
       fill_in 'last_name', :with => last_name
       fill_in 'email', :with => email
@@ -17,21 +17,21 @@ module Features
       fill_in 'password_confirmation', :with => password
 
       case role
-        when :owner, :admin
-          choose 'owner'
+        when :issuer, :admin
+          choose 'issuer'
         when :investor
           choose 'investor'
       end
 
       click_button 'Signup'
-      @user, @owner, @investor = User.last, User.last.owner, User.last.investor
+      @user, @issuer, @investor = User.last, User.last.issuer, User.last.investor
 
-      @user.update_attribute(:user_type, "admin") if role == :admin
+      @user.update_attribute(:user_type, 'admin') if role == :admin
     end
 
     def signout
-      click_link "user-name"
-      click_link "Sign out"
+      click_link 'user-name'
+      click_link 'Sign out'
     end
 
     def sign_in(email = @email, password = @password)

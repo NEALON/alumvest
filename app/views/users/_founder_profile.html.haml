@@ -2,12 +2,12 @@
   %h2 User not found
 -else
   - if current_user != nil and @user.id == current_user.id
-    - if @user.is_owner?
-      = form_for @user.owner, :url => users_owner_path(@user), :html => {:class => 'form-horizontal well'} do |f|
+    - if @user.is_issuer?
+      = form_for @user.issuer, :url => users_issuer_path(@user), :html => {:class => 'form-horizontal well'} do |f|
 
-        = render 'shared/errors', :entity => @user.owner
+        = render 'shared/errors', :entity => @user.issuer
 
-        = fields_for :owner do |owf|
+        = fields_for :issuer do |owf|
           %fieldset
             = f.hidden_field :user_id
           

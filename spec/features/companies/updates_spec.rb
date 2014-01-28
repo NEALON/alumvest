@@ -2,9 +2,9 @@ require 'spec_helper'
 describe "managing company updates", :type => :feature do
 
   before :each do
-    sign_up :owner
+    sign_up :issuer
     @category = FactoryGirl.create(:category)
-    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
+    @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
     @company = FactoryGirl.create(:company, :campaign => @campaign)
   end
 

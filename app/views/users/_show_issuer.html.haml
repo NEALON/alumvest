@@ -1,0 +1,14 @@
+- if @user.is_issuer?
+
+  - campaign = @user.issuer.campaign || Campaign.create(:issuer => @user.issuer)
+
+  - link = campaign.company ? campaign_company_path(campaign) : new_campaign_company_path(campaign)
+  = link_to link do
+    %button.btn.btn-primary.btn-lg Manage your campaign
+
+  = render 'shared/property_row', :header => 'SSN', :value => @user.issuer.ssn
+  = render 'shared/property_row', :header => 'Marital Status', :value => @user.issuer.marital_status
+  = render 'shared/property_row', :header => 'Financial Info', :value => @user.issuer.financial_info
+  = render 'shared/property_row', :header => 'Experience', :value => @user.issuer.experience
+  = render 'shared/property_row', :header => 'Expertise', :value => @user.issuer.expertise
+  = render 'shared/property_row', :header => 'Personal Message', :value => (raw @user.issuer.personal_message)

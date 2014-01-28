@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                   :user_type,
                   :avatar_url,
                   :investor_attributes,
-                  :owner_attributes,
+                  :issuer_attributes,
                   :educations_attributes,
                   :mobile_phone,
                   :home_phone,
@@ -54,8 +54,8 @@ class User < ActiveRecord::Base
     RequiredProfileFields.select { |rpf| send(rpf).blank? }.empty?
   end
 
-  has_one :owner
-  accepts_nested_attributes_for :investor, :owner
+  has_one :issuer
+  accepts_nested_attributes_for :investor, :issuer
   has_many :follows, dependent: :destroy
   has_many :educations, dependent: :destroy
   accepts_nested_attributes_for :educations, allow_destroy: true
@@ -99,8 +99,8 @@ class User < ActiveRecord::Base
     self.investor.accredited_investor_status == 'approved'
   end
 
-  def is_owner?
-    user_type.downcase == 'owner'
+  def is_issuer?
+    user_type.downcase == 'issuer'
   end
 
   def is_admin?
@@ -109,10 +109,10 @@ class User < ActiveRecord::Base
 
   def when_admin(&block); yield if is_admin?; end
   def when_investor(&block); yield if is_investor?; end
-  def when_owner(&block); yield if is_owner?; end
+  def when_issuer(&block); yield if is_issuer?; end
 
   def user_type_undefined?
-    !is_owner? && !is_investor? && !is_admin?
+    !is_issuer? && !is_investor? && !is_admin?
   end
 
   def update_user_type
@@ -120,8 +120,8 @@ class User < ActiveRecord::Base
       if self.is_investor?
         self.investor = Investor.new
       end
-      if self.is_owner?
-        self.owner = Owner.new
+      if self.is_issuer?
+        self.issuer = Issuer.new
       end
     end
   end

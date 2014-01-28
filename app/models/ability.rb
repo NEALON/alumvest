@@ -40,15 +40,15 @@ class Ability
     unless user.nil?
       can :manage, User
 
-      # owner
-      if user.is_owner?
-        can :manage, Owner
+      # issuer
+      if user.is_issuer?
+        can :manage, Issuer
 
-        can :view_risk_n_challenge, Campaign, :owner_id => user.owner.id
-        can :view_financial, Campaign, :owner_id => user.owner.id
-        can :view_exact_funding_amount, Campaign, :owner_id => user.owner.id
-        can :view_pitch_deck, Campaign, :owner_id => user.owner.id
-        can :view_investment_doc, Campaign, :owner_id => user.owner.id
+        can :view_risk_n_challenge, Campaign, :issuer_id => user.issuer.id
+        can :view_financial, Campaign, :issuer_id => user.issuer.id
+        can :view_exact_funding_amount, Campaign, :issuer_id => user.issuer.id
+        can :view_pitch_deck, Campaign, :issuer_id => user.issuer.id
+        can :view_investment_doc, Campaign, :issuer_id => user.issuer.id
       end
 
       if user.is_investor?

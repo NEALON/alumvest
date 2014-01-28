@@ -12,8 +12,8 @@ Av::Application.routes.draw do
   get '/auth/failure', :to => 'sessions#failure'
   match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :delete
 
-  get '/owner_dashboard', :to => 'owner_dashboard#index'
-  get '/owner_dashboard/create_campaign', :to => 'owner_dashboard#create_campaign'
+  get '/issuer_dashboard', :to => 'issuer_dashboard#index'
+  get '/issuer_dashboard/create_campaign', :to => 'issuer_dashboard#create_campaign'
 
   get '/investor_dashboard', :to => 'investor_dashboard#index'
 
@@ -91,7 +91,7 @@ Av::Application.routes.draw do
       post :approve_investor_signing
       post :reject_investor_signing
     end
-    resource :owner
+    resource :issuer
     resource :bancbox_identity_verification
   end
 

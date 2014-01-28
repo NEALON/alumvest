@@ -1,4 +1,4 @@
-class Owner < ActiveRecord::Base
+class Issuer < ActiveRecord::Base
   attr_accessible :experience, :expertise, :financial_info, :marital_status, :personal_message, :ssn
   attr_encrypted :ssn, :key => ENV['SSN_SECRET']
 

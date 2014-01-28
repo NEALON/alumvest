@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "admin", :type => :feature do
 
   before :each do
-    create_owner
-    @campaign = create_live_campaign(@user.owner)
+    create_issuer
+    @campaign = create_live_campaign(@user.issuer)
     sign_up :admin
   end
 

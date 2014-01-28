@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       redirect_to user_admin_path(@user)
     else
       if @user.profile_complete?
-        if @user.is_owner?
-          redirect_to user_owner_path(@user)
+        if @user.is_issuer?
+          redirect_to user_issuer_path(@user)
         else
           redirect_to root_url, flash: {:success => "Signed in!"}
         end

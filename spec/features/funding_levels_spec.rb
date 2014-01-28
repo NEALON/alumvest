@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'managing investment funding level', :type => :feature do
 
   before :each do
-    create_owner
-    @campaign = create_live_campaign(@user.owner)
+    create_issuer
+    @campaign = create_live_campaign(@user.issuer)
     @investor = create_accredited_investor
     sign_in @investor.identities.first.email, @investor.identities.first.password
   end

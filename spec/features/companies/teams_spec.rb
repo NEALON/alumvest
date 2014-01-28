@@ -4,9 +4,9 @@ include ActionView::Helpers::SanitizeHelper
 describe "managing campaign teams", :type => :feature do
 
   before :each do
-    sign_up :owner
+    sign_up :issuer
     @category = FactoryGirl.create(:category)
-    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
+    @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
   end
 
   it "creates" do

@@ -11,7 +11,7 @@
           %p= "There are #{@test_users.count} test users in the system."
           - @test_users.each do |tu|
             %p.col-md-offset-1= raw "User #{tu.email} is an <strong>#{tu.user_type}</strong>."
-            - if tu.is_owner? && (c = tu.owner.campaign)
+            - if tu.is_issuer? && (c = tu.issuer.campaign)
               %p.col-md-offset-2
                 Campaign:
                 = "#{c.company.campaign_title} (#{c.status})"

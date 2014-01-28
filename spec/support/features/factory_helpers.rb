@@ -1,17 +1,17 @@
 module Features
   module FactoryHelpers
 
-    def create_owner
+    def create_issuer
       @identity = FactoryGirl.create(:identity,
-                                     :last_name => 'Owner',
-                                     :email => 'owner@alumvest.com')
+                                     :last_name => 'Issuer',
+                                     :email => 'issuer@alumvest.com')
       @user = FactoryGirl.create(:user,
                                  :first_name => 'Alumvest',
                                  :middle_name => 'Test',
-                                 :last_name => 'Owner',
+                                 :last_name => 'Issuer',
                                  :provider => 'identity',
-                                 :email => 'owner@alumvest.com',
-                                 :user_type => 'owner',
+                                 :email => 'issuer@alumvest.com',
+                                 :user_type => 'Issuer',
                                  :identities => [@identity],
                                  :uid => @identity.id)
     end
@@ -33,11 +33,11 @@ module Features
       @user
     end
 
-    def create_live_campaign(owner)
+    def create_live_campaign(issuer)
       @campaign = FactoryGirl.create(
           :campaign,
-          :status => "live",
-          :owner => owner,
+          :status => 'live',
+          :issuer => issuer,
           :company => FactoryGirl.create(
               :company,
               :category => FactoryGirl.create(
@@ -48,11 +48,11 @@ module Features
       )
     end
 
-    def create_live_campaign_without_escrow(owner)
+    def create_live_campaign_without_escrow(issuer)
       @campaign = FactoryGirl.create(
           :campaign,
-          :status => "live",
-          :owner => owner,
+          :status => 'live',
+          :issuer => issuer,
           :company => FactoryGirl.create(
               :company,
               :category => FactoryGirl.create(

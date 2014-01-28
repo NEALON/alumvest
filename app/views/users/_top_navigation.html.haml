@@ -9,6 +9,6 @@
       - @user.when_investor do
         %li{:class => ('active' if active == :investor_info)}
           = link_to("Investor Dashboard", user_investor_path(@user))
-      - @user.when_owner do
-        %li{:class => ('active' if active == :owner_info)}
-          = link_to("Owner Dashboard", user_owner_path(@user))
+      - @user.when_issuer do
+        %li{:class => ('active' if active == :issuer_info)}
+          = link_to("Issuer Dashboard", user_issuer_path(@user))

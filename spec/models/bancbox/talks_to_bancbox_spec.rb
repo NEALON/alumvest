@@ -23,13 +23,13 @@ describe TalksToBancbox do
 
   context 'create issuer' do
     before :each do
-      @user = FactoryGirl.create(:user, :user_type => 'Owner')
+      @user = FactoryGirl.create(:user, :user_type => 'Issuer')
       @bank_account = FactoryGirl.create(:bank_account, :user => @user)
     end
 
     it 'succeeds' do
       expect(TalksToBancbox.submit_issuer!(@user, @bank_account)).to be_true
-      expect(@user.reload.owner.bancbox_issuer.has_bancbox_account?).to be_true
+      expect(@user.reload.issuer.bancbox_issuer.has_bancbox_account?).to be_true
     end
 
     it 'fails' do
@@ -41,9 +41,9 @@ describe TalksToBancbox do
 
   context 'create escrow' do
     before :each do
-      @user = FactoryGirl.create(:user, :user_type => 'Owner')
+      @user = FactoryGirl.create(:user, :user_type => 'Issuer')
       @bank_account = FactoryGirl.create(:bank_account, :user => @user)
-      @campaign = create_live_campaign_without_escrow(@owner)
+      @campaign = create_live_campaign_without_escrow(@issuer)
       TalksToBancbox.submit_issuer!(@user, @bank_account)
     end
 
@@ -60,8 +60,8 @@ describe TalksToBancbox do
 
   context 'fund escrow' do
     before :each do
-      @user = FactoryGirl.create(:user, :user_type => 'Owner')
-      @campaign = create_live_campaign(@user.owner)
+      @user = FactoryGirl.create(:user, :user_type => 'Issuer')
+      @campaign = create_live_campaign(@user.issuer)
       @investor_user = FactoryGirl.create(:user, :user_type => 'Investor')
       @bank_account = FactoryGirl.create(:bank_account, :user => @investor_user)
       TalksToBancbox.submit_investor!(@investor_user, @bank_account)

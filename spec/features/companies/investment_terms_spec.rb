@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "managing company investment terms", :type => :feature do
 
   before :each do
-    sign_up :owner
+    sign_up :issuer
     @category = FactoryGirl.create(:category)
-    @campaign = FactoryGirl.create(:campaign, :owner => @owner)
+    @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
   end
 
   it "by creating one" do

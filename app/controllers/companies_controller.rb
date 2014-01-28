@@ -1,9 +1,9 @@
 class CompaniesController < ApplicationController
-  before_filter :check_owner, :except => [:display, :show]
+  before_filter :check_issuer, :except => [:display, :show]
 
-  def check_owner
+  def check_issuer
     @campaign = Campaign.find(params[:campaign_id])
-    unless current_user and current_user.is_owner? and current_user.owner == @campaign.owner
+    unless current_user and current_user.is_issuer? and current_user.issuer == @campaign.issuer
       redirect_to root_url
     end
   end

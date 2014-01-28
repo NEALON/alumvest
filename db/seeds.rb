@@ -9,6 +9,6 @@ end
 
 include Features::FactoryHelpers
 
-create_owner
-create_live_campaign(@user.owner)
+create_issuer
+create_live_campaign(@user.issuer)
 create_accredited_investor

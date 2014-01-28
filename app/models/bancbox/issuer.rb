@@ -6,11 +6,11 @@ class Bancbox::Issuer < Bancbox::PersonBase
                   :company_registration_state,
                   :company_tax_id
 
-  attr_accessible :owner, :owner_id
+  attr_accessible :issuer, :issuer_id
 
   validate :validates_company_fields
 
-  belongs_to :owner
+  belongs_to :issuer
   has_one :escrow, :class_name => 'Bancbox::Escrow', :foreign_key => 'bancbox_issuer_id'
 
   def validates_company_fields

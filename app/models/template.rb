@@ -24,8 +24,8 @@ class Template < ActiveRecord::Base
                 {
                     :embedded => true,
                     :name => 'Mike Pence',
-                    :email => 'mike.pence+owner@gmail.com',
-                    :role_name => 'owner'
+                    :email => 'mike.pence+issuer@gmail.com',
+                    :role_name => 'issuer'
                 }
             ]
         })

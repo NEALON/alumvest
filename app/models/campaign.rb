@@ -1,8 +1,8 @@
 class Campaign < ActiveRecord::Base
 
-  attr_accessible :status, :owner_id, :owner
+  attr_accessible :status, :issuer_id, :issuer
 
-  belongs_to :owner
+  belongs_to :issuer
   has_one :company
   has_one :team
   has_one :investment_term
