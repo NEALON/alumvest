@@ -1,0 +1,10 @@
+- campaign = signing.investment.campaign
+%td
+  = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
+%td
+  = link_to signing.investment.investor.user.name, '#'
+%td
+  = link_to signing.document.name, envelope_signed_document_path(signing.envelope), :target => '_blank'
+%td
+  = link_to 'Approve', approve_investor_signing_user_admin_path(:signing => signing, :admin => current_user), :method => :post, :class => 'btn btn-default btn-xs'
+  = link_to 'Reject', reject_investor_signing_user_admin_path(:signing => signing, :admin => current_user), :method => :post, :class => 'btn btn-default btn-xs'

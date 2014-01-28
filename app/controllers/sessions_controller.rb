@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
 
     if @user.is_admin?
-      redirect_to "/admin_dashboard"
+      redirect_to user_admin_path(@user)
     else
       if @user.profile_complete?
         if @user.is_owner?
-          redirect_to "/owner_dashboard"
+          redirect_to user_owner_path(@user)
         else
           redirect_to root_url, flash: {:success => "Signed in!"}
         end

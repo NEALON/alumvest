@@ -79,4 +79,8 @@ class Signing < ActiveRecord::Base
   def self.investor_signature_approved
     where(:status => 'investor_signature_approved').order('created_at DESC')
   end
+
+  def to_admin_partial_path
+    'admins/investor_signing'
+  end
 end

@@ -1,0 +1,10 @@
+= render 'side_navigation', :active => 'admin_income_verification_events'
+= render 'users/header'
+
+#information
+  %h3 Investor Signings
+
+  %table.table
+    - @investor_signings.each do |s|
+      %tr
+        = render :partial => s.to_admin_partial_path, :locals => {:signing => s}

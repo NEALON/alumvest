@@ -4,3 +4,5 @@
       = link_to('Dashboard', user_admin_path(@user))
     %li{:class => "#{'active' if active == 'admin_income_verification_events'}"}
       = link_to('Income Verification Events', income_verification_events_user_admin_path(@user))
+    %li{:class => "#{'active' if active == 'admin_investor_signings'}"}
+      = link_to('Investor Signings', investor_signings_user_admin_path(@user))

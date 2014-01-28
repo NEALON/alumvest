@@ -13,27 +13,27 @@ describe 'managing investments', :type => :feature do
     visit display_campaign_company_path(@campaign)
     click_link 'Invest Now'
 
-    within('#funding') { click_link 'Start' }
+    within('#funding') { click_on 'Start' }
     fill_in_funding_level
     #expect(page).to have_content 'Item completed.'
     within('#funding') { expect(page).to have_content('Completed') }
 
-    within('#questionnaire') { click_link 'Start' }
+    within('#questionnaire') { click_on 'Start' }
     fill_in_questionnaire
     #expect(page).to have_content 'Item completed.'
     within('#questionnaire') { expect(page).to have_content('Completed') }
 
-    # within('#contracts') {click_link 'Start'}
+    # within('#contracts') {click_on 'Start'}
     #    # click_link 'Complete this item'
     # expect(page).to have_content 'Item completed.'
     # within('#contracts') {expect(page).to have_content('Completed')}
     #
-    within('#subscription') { click_link 'Start' }
+    within('#subscription') { click_on 'Start' }
     click_link 'Complete this item'
     #expect(page).to have_content 'Item completed.'
     within('#subscription') { expect(page).to have_content('Completed') }
 
-    within('#irs') { click_link 'Start' }
+    within('#irs') { click_on 'Start' }
     click_link 'Complete this item'
     #expect(page).to have_content 'Item completed.'
     within('#irs') { expect(page).to have_content('Completed') }

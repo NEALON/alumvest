@@ -1,5 +1,3 @@
-require_relative '../../spec/veritax_orders'
-
 class AdminsController < ApplicationController
   include VeritaxOrders # for simulating responses
 
@@ -21,6 +19,12 @@ class AdminsController < ApplicationController
     render :layout => 'admins'
   end
 
+  def investor_signings
+    @user = User.find(params[:user_id])
+    @investor_signings = Signing.signed_by_investor
+    render :layout => 'admins'
+  end
+
   def simulate_completed_order
     order = Veritax::Order.find(params[:veritax_order_id])
     order.update_attribute(:vt_order_id, CompletedOrderId)
@@ -35,6 +39,28 @@ class AdminsController < ApplicationController
     order.get_order_info!
 
     redirect_to income_verification_events_user_admin_path(current_user)
+  end
+
+  def approve_investor_signing
+    if Bus::Event::SigningApproved.create(
+        :signing => Signing.find(params[:signing]),
+        :admin => User.find(params[:admin])
+    )
+      redirect_to investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing approved.'}
+    else
+      redirect_to investor_signings_user_admin_path(current_user), :flash => {:danger => 'Could not approve signing.'}
+    end
+  end
+
+  def reject_investor_signing
+    if Bus::Event::SigningRejected.create(
+        :signing => Signing.find(params[:signing]),
+        :admin => User.find(params[:admin])
+    )
+      redirect_to  investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing rejected.'}
+    else
+      redirect_to investor_signings_user_admin_path(current_user), :flash => {:danger => 'Could not reject signing.'}
+    end
   end
 end
 
