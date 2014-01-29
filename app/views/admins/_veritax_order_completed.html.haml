@@ -2,7 +2,7 @@
   An income verification order was successfully completed for
   = link_to investor.user.full_name, user_path(investor.user)
 %td
-  = link_to 'Review the transcript', '#'
+  = link_to 'Review the transcript', event.veritax_order.transcript_url
 %td
   = link_to 'Approve', '#', :class => 'btn btn-xs btn-success'
 %td

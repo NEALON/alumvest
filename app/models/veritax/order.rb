@@ -103,7 +103,13 @@ class Veritax::Order < ActiveRecord::Base
   end
 
   def transcript_file_name
-     "/#{SecureRandom.uuid}.pdf"
+     @transcript_file_name ||= "/#{SecureRandom.uuid}.pdf"
+  end
+
+  def transcript_url
+    get_transcript! unless vt_transcript
+    IO.binwrite(transcript_file_name, Base64.decode64(vt_transcript))
+    "#{Rails.root}/tmp/transcript_file_name"
   end
 
   def when_not_completed(&block)
@@ -111,7 +117,4 @@ class Veritax::Order < ActiveRecord::Base
       yield
     end
   end
-
-  # and we can have a task to sync those orders with their status on veritax and fire internal events accordingly, so that downstream stuff can happen like notifying an admin to review a result and subsequent workflows
-  # that would talk to things here
 end
