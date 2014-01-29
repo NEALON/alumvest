@@ -3,7 +3,7 @@ class IncomeVerificationsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @investor = @user.investor
-    @income_verification = Veritax::Order.new(investor: @investor,
+    @income_verification = Veritax::Order::Order.new(investor: @investor,
                                               ssn: @user.ssn,
                                               first_name: @user.first_name,
                                               last_name: @user.last_name,
@@ -18,7 +18,7 @@ class IncomeVerificationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @investor = @user.investor
-    @income_verification = Veritax::Order.create(params[:veritax_order].merge(:status => 'unsubmitted'))
+    @income_verification = Veritax::Order::Order.create(params[:veritax_order_order])
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was saved.'}
     else
@@ -33,7 +33,7 @@ class IncomeVerificationsController < ApplicationController
 
   def update
     load_income_verification
-    @income_verification.update_attributes(params[:veritax_order])
+    @income_verification.update_attributes(params[:veritax_order_order])
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was saved.'}
     else
@@ -44,10 +44,10 @@ class IncomeVerificationsController < ApplicationController
   def submit_to_veritax
     load_income_verification
     @income_verification.create_via_veritax!
-    if @income_verification.reload.completed?
+    if @income_verification.reload.submitted?
       redirect_to user_investor_events_path(@user), flash: {success: "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}). Please check your inbox for your e-signable form."}
     else
-      redirect_to edit_user_investor_income_verification_path(@user, @income_verification), flash: {error: "An error was encounteredd while trying to process your order: #{@income_verification.vt_error})."}
+      redirect_to edit_user_investor_income_verification_path(@user, @income_verification), flash: {warning: "An error was encounteredd while trying to process your order: #{@income_verification.vt_error})."}
     end
   end
 

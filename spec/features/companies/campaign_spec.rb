@@ -40,8 +40,7 @@ describe 'submitting a campaign for review', :type => :feature do
 
     #click_link 'Updates'
     #sleep 2
-    #screenshot_and_save_page if $do_screenshots
-    #
+
     click_link 'Join Us'
     sleep 3
   end
@@ -49,7 +48,6 @@ describe 'submitting a campaign for review', :type => :feature do
   it 'by unsuccessfully submitting it' do
     #visit campaign_company_path(@campaign)
     #click_link 'Submit for review'
-    #screenshot_and_open_image
   end
 end
 

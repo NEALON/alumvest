@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
     if @company.valid?
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Company saved.' }
     else
-      render :new, :error => 'Correct the data to make this complete.'
+      render :new, :warning => 'Correct the data to make this complete.'
     end
   end
 
@@ -41,7 +41,7 @@ class CompaniesController < ApplicationController
     if @company.make_ready_for_review
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Company info is complete.' }
     else
-      render :new, :error => 'Correct the data to make this complete.'
+      render :new, :warning => 'Correct the data to make this complete.'
     end
   end
 
