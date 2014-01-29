@@ -22,7 +22,7 @@ class Investment < ActiveRecord::Base
             Signing.create(
                 :investment => self,
                 :document => doc),
-            {:name => investor.user.name,
+            {:name => investor.user.full_name,
             :email => investor.user.email})
       end
     end

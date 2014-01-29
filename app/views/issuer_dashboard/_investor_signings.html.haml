@@ -19,7 +19,7 @@
           %td
             = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
           %td
-            = link_to s.investment.investor.user.name, '#'
+            = link_to s.investment.investor.user.full_name, '#'
           %td
             = link_to s.document.name, envelope_signed_document_path(s.envelope), :target => '_blank'
           %td
