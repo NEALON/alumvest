@@ -102,16 +102,6 @@ class Veritax::Order < ActiveRecord::Base
     vt_transcript
   end
 
-  def transcript_file_name
-     @transcript_file_name ||= "/#{SecureRandom.uuid}.pdf"
-  end
-
-  def transcript_url
-    get_transcript! unless vt_transcript
-    IO.binwrite(transcript_file_name, Base64.decode64(vt_transcript))
-    "#{Rails.root}/tmp/transcript_file_name"
-  end
-
   def when_not_completed(&block)
     if status != 'completed'
       yield

@@ -88,6 +88,7 @@ Av::Application.routes.draw do
       get :investor_signings
       get :simulate_completed_order
       get :simulate_canceled_order
+      get :income_verification_transcript
       post :approve_investor_signing
       post :reject_investor_signing
     end

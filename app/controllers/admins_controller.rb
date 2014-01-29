@@ -41,6 +41,11 @@ class AdminsController < ApplicationController
     redirect_to income_verification_events_user_admin_path(current_user)
   end
 
+  def income_verification_transcript
+    order = Veritax::Order.find(params[:veritax_order_id])
+    send_data Base64.decode64(order.vt_transcript), :filename => 'transcript.pdf', :type => 'application/pdf'
+  end
+
   def approve_investor_signing
     if Bus::Event::SigningApproved.create(
         :signing => Signing.find(params[:signing]),
