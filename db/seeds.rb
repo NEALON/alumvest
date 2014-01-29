@@ -12,3 +12,4 @@ include Features::FactoryHelpers
 create_issuer
 create_live_campaign(@user.issuer)
 create_accredited_investor
+create_admin

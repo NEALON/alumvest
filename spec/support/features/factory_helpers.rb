@@ -26,7 +26,7 @@ module Features
                                  :last_name => 'Investor',
                                  :provider => 'identity',
                                  :email => 'investor@alumvest.com',
-                                 :user_type => 'investor',
+                                 :user_type => 'Investor',
                                  :identities => [@identity],
                                  :uid => @identity.id)
       @user.investor.update_attribute :accredited_investor_status, 'approved'
@@ -60,6 +60,21 @@ module Features
           :investment_term => FactoryGirl.create(:investment_term),
           :team => FactoryGirl.create(:team),
       )
+    end
+
+    def create_admin
+        @identity = FactoryGirl.create(:identity,
+                                       :last_name => 'Admin',
+                                       :email => 'admin@alumvest.com')
+        @user = FactoryGirl.create(:user,
+                                   :first_name => 'Alumvest',
+                                   :middle_name => 'Test',
+                                   :last_name => 'Admin',
+                                   :provider => 'identity',
+                                   :email => 'admin@alumvest.com',
+                                   :user_type => 'Admin',
+                                   :identities => [@identity],
+                                   :uid => @identity.id)
     end
   end
 end
