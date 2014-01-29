@@ -39,7 +39,7 @@ class InvestmentTermsController < ApplicationController
     if @investment_term.make_ready_for_review
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms are complete.' }
     else
-      render :new, :flash => {:error => 'Correct the data to make this complete.'}
+      render :new, :flash => {:warning => 'Correct the data to make this complete.'}
     end
   end
 

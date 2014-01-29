@@ -25,8 +25,8 @@ class Campaign < ActiveRecord::Base
   end
 
   # scopes
-  def self.reviewable;  where(:status => "submitted_for_review"); end
-  def self.live;        where(:status => "live")                ; end
+  def self.reviewable;  where(:status => 'submitted_for_review'); end
+  def self.live;        where(:status => 'live')                ; end
 
   def can_submit_for_review?
     (company && company.ready_for_review?) &&

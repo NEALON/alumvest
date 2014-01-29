@@ -2,7 +2,7 @@
 = render 'users/header'
 
 #information
-  = button_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-primary btn-xs', :method => :get
+  = button_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-default btn-xs', :method => :get
   = render 'shared/property_row', :header => 'SSN', :value => @investor.ssn
   = render 'shared/property_row', :header => 'Marital Status', :value => @investor.marital_status
   = render 'shared/property_row', :header => 'Financial Info', :value => @investor.financial_info

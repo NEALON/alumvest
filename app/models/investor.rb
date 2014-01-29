@@ -23,7 +23,7 @@ class Investor < ActiveRecord::Base
                   :user
 
   has_one :bancbox_investor, class_name: 'Bancbox::Investor'
-  has_one :income_verification, class_name:  'Veritax::Order'
+  has_one :income_verification, class_name:  'Veritax::Order::Order'
 
   has_many :investments
   has_many :events, :class_name => 'Bus::Event'

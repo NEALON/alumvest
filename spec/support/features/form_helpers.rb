@@ -38,7 +38,7 @@ module Features
     end
 
     def fill_in_income_verification(zip = '18901')
-      'veritax_order'.tap do |form|
+      'veritax_order_order'.tap do |form|
         fill_in "#{form}_first_name", :with => Faker::Name.first_name
         fill_in "#{form}_last_name", :with => Faker::Name.last_name
         fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn

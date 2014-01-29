@@ -34,7 +34,7 @@ class EnvelopesController < ApplicationController
       redirect_to "/#{filename}"
     else
       # TODO: some logging
-      redirect_to :back, :flash => {:error => "Error retrieving file."}
+      redirect_to :back, :flash => {:warning => "Error retrieving file."}
     end
   end
 end

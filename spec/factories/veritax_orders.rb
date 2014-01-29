@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :veritax_order, :class => 'Veritax::Order' do
+  factory :veritax_order, :class => 'Veritax::Order::Order' do
     id {rand(1000000)}
     ssn Faker::Ssn.en_ssn
     first_name Faker::Name.first_name

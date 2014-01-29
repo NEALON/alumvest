@@ -2,7 +2,7 @@
 = render 'users/header'
 
 #information
-  = button_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary btn-xs', :method => :get
+  = button_to 'Edit', edit_user_path(@user), :class => 'btn btn-default btn-xs', :method => :get
   = render 'shared/property_row', :header => 'First Name', :value => @user.first_name
   = render 'shared/property_row', :header => 'Middle Name', :value => @user.middle_name
   = render 'shared/property_row', :header => 'Last Name', :value => @user.last_name

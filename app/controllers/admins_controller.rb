@@ -26,7 +26,7 @@ class AdminsController < ApplicationController
   end
 
   def simulate_completed_order
-    order = Veritax::Order.find(params[:veritax_order_id])
+    order = Veritax::Order::Order.find(params[:veritax_order_id])
     order.update_attribute(:vt_order_id, CompletedOrderId)
     order.get_order_info!
 
@@ -34,7 +34,7 @@ class AdminsController < ApplicationController
   end
 
   def simulate_canceled_order
-    order = Veritax::Order.find(params[:veritax_order_id])
+    order = Veritax::Order::Order.find(params[:veritax_order_id])
     order.update_attribute(:vt_order_id, CanceledOrderId)
     order.get_order_info!
 

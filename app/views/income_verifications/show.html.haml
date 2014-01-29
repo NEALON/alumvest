@@ -2,13 +2,13 @@
 = render 'users/header'
 
 #information
-  - @income_verification.when_not_completed do
+  - unless @income_verification.submitted?
     %table
       %tr
         %td
-          = button_to 'Edit', edit_user_investor_income_verification_path(@user), :class => 'btn btn-primary btn-xs', :method => :get
+          = button_to 'Edit', edit_user_investor_income_verification_path(@user), :class => 'btn btn-default btn-xs', :method => :get
         %td
-          = button_to 'Submit to Veri-Tax', submit_to_veritax_user_investor_income_verification_path(@user), :class => 'btn btn-primary btn-xs', :method => :put
+          = button_to 'Submit to Veri-Tax', submit_to_veritax_user_investor_income_verification_path(@user), :class => 'btn btn-default btn-xs', :method => :put
 
   = render 'shared/property_row', :header => 'First name', :value => @income_verification.first_name
   = render 'shared/property_row', :header => 'Last name', :value => @income_verification.last_name
