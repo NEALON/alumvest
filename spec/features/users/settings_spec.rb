@@ -16,8 +16,8 @@ describe 'users settings', :type => :feature do
     expect(page).to have_button 'Edit'
     click_on 'Edit'
 
-    fill_in 'user_password', :with => '123456'
-    fill_in 'user_password_confirmation', :with => '123'
+    fill_in 'alumvest_user_base_password', :with => '123456'
+    fill_in 'alumvest_user_base_password_confirmation', :with => '123'
     click_button 'Save'
 
     expect(page).to have_content('Password info failed to update.')
@@ -26,8 +26,8 @@ describe 'users settings', :type => :feature do
   it 'updates' do
     click_on 'Edit'
 
-    fill_in 'user_password', :with => '123456'
-    fill_in 'user_password_confirmation', :with => '123456'
+    fill_in 'alumvest_user_base_password', :with => '123456'
+    fill_in 'alumvest_user_base_password_confirmation', :with => '123456'
     click_button 'Save'
 
     expect(page).to have_content('Password info saved.')

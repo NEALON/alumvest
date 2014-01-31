@@ -30,8 +30,8 @@ module Features
         fill_in "#{form}_personal_statement", :with => Faker::Lorem.sentence(15)
 
         click_link "Add Education"
-        all(:css, "#educations input[id^='user_educations'][id$='_school']").last.set(Faker::Name.first_name)
-        degree_select = all(:css, "#educations select[id^='user_educations'][id$='_degree']").last
+        all(:css, "#educations input[id^='alumvest_user_base_educations'][id$='_school']").last.set(Faker::Name.first_name)
+        degree_select = all(:css, "#educations select[id^='alumvest_user_base_educations'][id$='_degree']").last
         degree_select.select "Undergraduate"
       end
       click_button 'Save'

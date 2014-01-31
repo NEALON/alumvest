@@ -62,16 +62,16 @@ describe TalksToBancbox do
     before :each do
       @user = FactoryGirl.create(:user, :user_type => 'Issuer')
       @campaign = create_live_campaign(@user.issuer)
-      @investor_user = FactoryGirl.create(:user, :user_type => 'Investor')
-      @bank_account = FactoryGirl.create(:bank_account, :user => @investor_user)
-      TalksToBancbox.submit_investor!(@investor_user, @bank_account)
-      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor_user.reload.investor)
+      @investor = FactoryGirl.create(:user, :user_type => 'Investor')
+      @bank_account = FactoryGirl.create(:bank_account, :user => @investor)
+      TalksToBancbox.submit_investor!(@investor, @bank_account)
+      @investment = FactoryGirl.create(:investment, :campaign => @campaign, :investor => @investor.reload.investor)
       @campaign.bancbox_escrow.fire_bancbox_status_event(:escrow_opened) # manually flip it to open
     end
 
     it 'succeeds' do
       result = TalksToBancbox.fund_escrow!(@campaign, @investment, 10)
-      expect(result["investor_id"].to_s).to eq(@investor_user.investor.bancbox_investor.bancbox_id)
+      expect(result["investor_id"].to_s).to eq(@investor.investor.bancbox_investor.bancbox_id)
     end
   end
 end
