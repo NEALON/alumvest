@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :update do
+  factory :update, :class => Alumvest::Update do
     subject Faker::Lorem.sentence
     details "#{Faker::Lorem.sentence} #{Faker::Lorem.sentence}"
     visibility "Just Me"

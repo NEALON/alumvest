@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :investment_term do
+  factory :investment_term, :class => Alumvest::InvestmentTerm::Base do
     fundraising_amount      1000
     min_investment          10
     max_investment          100

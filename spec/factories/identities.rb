@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :identity do
+  factory :identity, :class => Alumvest::Identity do
     first_name 'Alumvest'
     last_name 'Last Name'
     email 'someone@alumvest.com'

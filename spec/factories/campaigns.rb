@@ -1,3 +1,3 @@
 FactoryGirl.define do
-  factory :campaign
+  factory :campaign, :class => Alumvest::Campaign::Base
 end

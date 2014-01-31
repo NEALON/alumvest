@@ -1,1 +1,0 @@
-class TeamMember < Person; end

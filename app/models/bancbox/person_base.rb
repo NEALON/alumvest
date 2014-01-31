@@ -106,7 +106,7 @@ class Bancbox::PersonBase < ActiveRecord::Base
   def server_ip
     require 'socket'
     ip=Socket.ip_address_list.detect { |intf| intf.ipv4_private? }
-    myip = ip ? ip.ip_address : "127.0.0.1"
+    myip = ip ? ip.ip_address : '127.0.0.1'
     return myip
   end
 
@@ -119,9 +119,9 @@ class Bancbox::PersonBase < ActiveRecord::Base
         :id => bancbox_id,
         :represented_signature => name,
         :agreement_type => 'CLICKTHROUGH',
-        :document_text => "I agree to Privacy Policy, Platform Agreement, Technology Agreement @ bancboxinvest.com",
-        :document_name => "T&C",
-        :document_version => "1.0",
+        :document_text => 'I agree to Privacy Policy, Platform Agreement, Technology Agreement @ bancboxinvest.com',
+        :document_name => 'T&C',
+        :document_version => '1.0',
         :client_ip_address => server_ip,
         :submit_time_stamp => current_timestamp
     }

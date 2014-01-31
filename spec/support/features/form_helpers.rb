@@ -6,7 +6,7 @@ module Features
     end
 
     def fill_in_user_basic_info
-      'user'.tap do |form|
+      'alumvest_user_base'.tap do |form|
         fill_in "#{form}_first_name", :with => Faker::Name.first_name
         fill_in "#{form}_middle_name", :with => Faker::Name.first_name
         fill_in "#{form}_last_name", :with => Faker::Name.last_name
@@ -38,7 +38,7 @@ module Features
     end
 
     def fill_in_income_verification(zip = '18901')
-      'veritax_order_order'.tap do |form|
+      'veritax_order_base'.tap do |form|
         fill_in "#{form}_first_name", :with => Faker::Name.first_name
         fill_in "#{form}_last_name", :with => Faker::Name.last_name
         fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
@@ -74,7 +74,7 @@ module Features
             zip_code = Faker::Address.zip_code,
             ps = Faker::Lorem.sentence(10)
     )
-      'user'.tap do |form|
+      'alumvest_user_base'.tap do |form|
         select '1988', :from => "#{form}_date_of_birth_1i"
         select 'January', :from => "#{form}_date_of_birth_2i"
         select '1', :from => "#{form}_date_of_birth_3i"
@@ -90,7 +90,7 @@ module Features
     end
 
     def fill_in_user_issuer_profile
-      'user'.tap do |form|
+      'alumvest_user_base'.tap do |form|
         fill_in "#{form}_issuer_attributes_ssn", :with => '000-00-0000'
         select 'Married', :from => "#{form}_issuer_attributes_marital_status"
         fill_in "#{form}_issuer_attributes_financial_info", :with => Faker::Lorem.sentence(10)
@@ -102,7 +102,7 @@ module Features
     end
 
     def fill_in_user_investor_profile
-      'investor'.tap do |form|
+      'alumvest_investor_base'.tap do |form|
         fill_in "#{form}_ssn", :with => '000-00-0000'
         select 'Married', :from => "#{form}_marital_status"
         fill_in "#{form}_financial_info", :with => Faker::Lorem.sentence(10)
@@ -115,7 +115,7 @@ module Features
 
     def fill_in_company(campaign)
       company = FactoryGirl.build(:company, :campaign => campaign)
-      'company'.tap do |form|
+      'alumvest_company_base'.tap do |form|
         fill_in "#{form}_company_name", :with => company.company_name
         # filepicker fill_in "#{form}_logo_url", :with => Faker::Internet.url
         fill_in "#{form}_short_description", :with => company.short_description
@@ -142,7 +142,7 @@ module Features
 
     def fill_in_investment_term(campaign)
       investment_term = FactoryGirl.build(:investment_term, :campaign => campaign)
-      'investment_term'.tap do |form|
+      'alumvest_investment_term_base'.tap do |form|
         fill_in "#{form}_fundraising_amount", :with => investment_term.fundraising_amount
         fill_in "#{form}_min_investment", :with => 100
         fill_in "#{form}_max_investment", :with => 10000
@@ -166,12 +166,12 @@ module Features
     def fill_in_team(campaign)
       team = create_team_via_factories(campaign)
 
-      fill_in "team_team_highlights", :with => team.team_highlights
+      fill_in 'alumvest_team_base_team_highlights', :with => team.team_highlights
 
       ['first_name', 'last_name', 'title', 'facebook', 'twitter', 'linkedin', 'video_url'].each do |field|
-        fill_in "team_team_members_attributes_0_#{field}", :with => team.team_members.first.send(field)
+        fill_in "alumvest_team_base_team_members_attributes_0_#{field}", :with => team.team_members.first.send(field)
       end
-      fill_in "team_team_members_attributes_0_introduction", :with => team.team_members.first.introduction
+      fill_in 'alumvest_team_base_team_members_attributes_0_introduction', :with => team.team_members.first.introduction
 
       click_button 'Save'
     end
@@ -179,10 +179,10 @@ module Features
     def fill_in_update(company)
       update = FactoryGirl.build(:update, :company => company)
 
-      fill_in "update_subject", :with => update.subject
-      fill_in "update_details", :with => update.details
+      fill_in 'alumvest_update_subject', :with => update.subject
+      fill_in 'alumvest_update_details', :with => update.details
       choose update.visibility
-      fill_in "update_video_url", :with => update.video_url
+      fill_in 'alumvest_update_video_url', :with => update.video_url
 
       click_button 'Save'
     end
@@ -190,9 +190,9 @@ module Features
     def fill_in_job(company)
       job = FactoryGirl.build(:job, :company => company)
 
-      fill_in "job_title", :with => job.title
-      fill_in "job_description", :with => job.description
-      fill_in "job_contact", :with => job.contact
+      fill_in 'alumvest_job_title', :with => job.title
+      fill_in 'alumvest_job_description', :with => job.description
+      fill_in 'alumvest_job_contact', :with => job.contact
 
       click_button 'Save'
     end
@@ -202,7 +202,7 @@ module Features
     end
 
     def fill_in_funding_level(num=10)
-      fill_in "funding_level_amount", :with => num
+      fill_in 'alumvest_funding_level_amount', :with => num
       click_button 'Save'
     end
   end

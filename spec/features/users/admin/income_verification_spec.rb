@@ -15,7 +15,7 @@ describe 'users investor income verification', :type => :feature do
       @the_investor = @investor
 
       sign_up :admin
-      u = User.last
+      u = Alumvest::User::Base.last
       u.update_attribute(:user_type, 'admin')
       visit user_admin_path(u)
       click_on 'Income Verification Events'
@@ -43,7 +43,7 @@ describe 'users investor income verification', :type => :feature do
       @the_investor = @investor
       signout
       sign_up :admin
-      u = User.last
+      u = Alumvest::User::Base.last
       u.update_attribute(:user_type, 'admin')
       visit user_admin_path(u)
 

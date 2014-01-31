@@ -1,1 +1,0 @@
-class SubscriptionDoc < Document; end

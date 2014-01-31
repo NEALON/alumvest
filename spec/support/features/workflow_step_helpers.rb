@@ -18,7 +18,7 @@ module Features
     def create_new_investment_term(campaign)
       visit new_campaign_investment_term_path campaign
       fill_in_investment_term campaign
-      InvestmentTerm.last
+      Alumvest::InvestmentTerm::Base.last
     end
 
     def create_blank_new_investment_term(campaign)
@@ -29,7 +29,7 @@ module Features
     def create_new_team(campaign)
       visit new_campaign_team_path campaign
       fill_in_team campaign
-      Team.last
+      Alumvest::Team::Base.last
     end
 
     def create_blank_new_team(campaign)
@@ -40,13 +40,13 @@ module Features
     def create_new_job(company)
       visit new_campaign_company_job_path company.campaign
       fill_in_job company
-      Job.last
+      Alumvest::Job.last
     end
 
     def create_new_update(company)
       visit new_campaign_company_update_path company.campaign
       fill_in_update company
-      Update.last
+      Alumvest::Update.last
     end
 
     def create_blank_new_update(campaign)

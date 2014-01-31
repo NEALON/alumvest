@@ -24,7 +24,9 @@ module Features
       end
 
       click_button 'Signup'
-      @user, @issuer, @investor = User.last, User.last.issuer, User.last.investor
+      @user = Alumvest::User::Base.last
+      @issuer = @user.issuer
+      @investor = @user.investor
 
       @user.update_attribute(:user_type, 'admin') if role == :admin
     end

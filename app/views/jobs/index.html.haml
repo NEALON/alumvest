@@ -1,6 +1,6 @@
 = render 'campaigns/management_navigation', :active => :jobs, :campaign => @campaign
 - if @company
   = render "form", :active => :new
-  = render @jobs
+  = render :partial => 'jobs/job', :collection =>  @jobs
 - else
   %p You have to fill in the company data before posting jobs.

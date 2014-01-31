@@ -1,9 +1,9 @@
 class IncomeVerificationsController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
+    @user = Alumvest::User::Base.find(params[:user_id])
     @investor = @user.investor
-    @income_verification = Veritax::Order::Order.new(investor: @investor,
+    @income_verification = Veritax::Order::Base.new(investor: @investor,
                                               ssn: @user.ssn,
                                               first_name: @user.first_name,
                                               last_name: @user.last_name,
@@ -16,9 +16,9 @@ class IncomeVerificationsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = Alumvest::User::Base.find(params[:user_id])
     @investor = @user.investor
-    @income_verification = Veritax::Order::Order.create(params[:veritax_order_order])
+    @income_verification = Veritax::Order::Base.create(params[:veritax_order_base])
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was saved.'}
     else
@@ -33,7 +33,7 @@ class IncomeVerificationsController < ApplicationController
 
   def update
     load_income_verification
-    @income_verification.update_attributes(params[:veritax_order_order])
+    @income_verification.update_attributes(params[:veritax_order_base])
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was saved.'}
     else
@@ -59,7 +59,7 @@ class IncomeVerificationsController < ApplicationController
   private
 
   def load_income_verification
-    @user = User.find(params[:user_id])
+    @user = Alumvest::User::Base.find(params[:user_id])
     @investor = @user.investor
     @income_verification =  @investor.income_verification
   end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :education do
+  factory :education, :class => Alumvest::Education do
     school "MyString"
     degree "MyString"
   end

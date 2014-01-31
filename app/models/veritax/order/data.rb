@@ -4,6 +4,8 @@ module Veritax::Order::Data
   extend ActiveSupport::Concern
 
   included do
+    self.table_name = :veritax_orders
+
     attr_accessible :investor,
                     :investor_id,
                     :ssn,
@@ -27,6 +29,6 @@ module Veritax::Order::Data
 
     validates_presence_of [:ssn, :first_name, :last_name, :address, :city, :state, :zip_code, :email]
 
-    belongs_to :investor
+    belongs_to :investor, :class_name => 'Alumvest::Investor::Base'
   end
 end

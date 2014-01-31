@@ -54,7 +54,7 @@
           and #{@campaign.follows.count - 10} more
       - if current_user
         - if current_user.following?(@campaign)
-          - follow = Follow.new(:campaign => @campaign, :user => current_user)
+          - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
           = form_for follow, :url => campaign_unfollow_path do |f|
             %fieldset
               = f.hidden_field :campaign_id
@@ -63,7 +63,7 @@
                 %span.glyphicon.glyphicon-minus
                 Unfollow this Campaign
         - else
-          - follow = Follow.new(:campaign => @campaign, :user => current_user)
+          - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
           = form_for follow, :url => campaign_follow_path do |f|
             %fieldset
               = f.hidden_field :campaign_id

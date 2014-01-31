@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :follow do
+  factory :follow, :class => Alumvest::Follow do
     user nil
     campaign nil
   end

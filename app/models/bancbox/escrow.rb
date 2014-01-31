@@ -1,7 +1,7 @@
 class Bancbox::Escrow < ActiveRecord::Base
 
   belongs_to :issuer, class_name: 'Bancbox::Issuer', :foreign_key => :bancbox_issuer_id
-  belongs_to :campaign
+  belongs_to :campaign, :class_name => 'Alumvest::Campaign::Base'
 
   attr_accessible :name,
                   :start_date,

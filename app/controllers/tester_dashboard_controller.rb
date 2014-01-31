@@ -1,6 +1,6 @@
 class TesterDashboardController < ApplicationController
   def index
-    @test_users = User.where(:middle_name => 'Test')
+    @test_users = Alumvest::User::Base.where(:middle_name => 'Test')
   end
 
   def reset_database

@@ -11,8 +11,8 @@ def populate_person
 end
 
 FactoryGirl.define do
-  factory :team_member do populate_person; end
-  factory :team do
+  factory :team_member, :class => Alumvest::TeamMember do populate_person; end
+  factory :team, :class => Alumvest::Team::Base do
     team_highlights "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
   end
 end

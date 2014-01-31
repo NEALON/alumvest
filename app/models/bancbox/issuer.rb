@@ -10,7 +10,7 @@ class Bancbox::Issuer < Bancbox::PersonBase
 
   validate :validates_company_fields
 
-  belongs_to :issuer
+  belongs_to :issuer, :class_name => 'Alumvest::Issuer::Base'
   has_one :escrow, :class_name => 'Bancbox::Escrow', :foreign_key => 'bancbox_issuer_id'
 
   def validates_company_fields

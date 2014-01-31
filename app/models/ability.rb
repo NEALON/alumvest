@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-    #   user ||= User.new # guest user (not logged in)
+    #   user ||= Alumvest::User::Base.new # guest user (not logged in)
     #   if user.admin?
     #     can :manage, :all
     #   else
@@ -30,46 +30,46 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     # default user
-    cannot :view_risk_n_challenge, Campaign
-    cannot :view_financial, Campaign
-    cannot :view_exact_funding_amount, Campaign
-    cannot :view_pitch_deck, Campaign
-    cannot :view_investment_doc, Campaign
-    cannot :invest, Campaign
+    cannot :view_risk_n_challenge, Alumvest::Campaign::Base
+    cannot :view_financial, Alumvest::Campaign::Base
+    cannot :view_exact_funding_amount, Alumvest::Campaign::Base
+    cannot :view_pitch_deck, Alumvest::Campaign::Base
+    cannot :view_investment_doc, Alumvest::Campaign::Base
+    cannot :invest, Alumvest::Campaign::Base
 
     unless user.nil?
-      can :manage, User
+      can :manage, Alumvest::User::Base
 
       # issuer
       if user.is_issuer?
-        can :manage, Issuer
+        can :manage, Alumvest::Issuer::Base
 
-        can :view_risk_n_challenge, Campaign, :issuer_id => user.issuer.id
-        can :view_financial, Campaign, :issuer_id => user.issuer.id
-        can :view_exact_funding_amount, Campaign, :issuer_id => user.issuer.id
-        can :view_pitch_deck, Campaign, :issuer_id => user.issuer.id
-        can :view_investment_doc, Campaign, :issuer_id => user.issuer.id
+        can :view_risk_n_challenge, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
+        can :view_financial, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
+        can :view_exact_funding_amount, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
+        can :view_pitch_deck, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
+        can :view_investment_doc, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
       end
 
       if user.is_investor?
-        can :manage, Investor
+        can :manage, Alumvest::Investor::Base
 
         if user.is_self_accredited_investor?
-          can :view_risk_n_challenge, Campaign
-          can :view_exact_funding_amount, Campaign
+          can :view_risk_n_challenge, Alumvest::Campaign::Base
+          can :view_exact_funding_amount, Alumvest::Campaign::Base
         end
 
         # this is a superset of self_accredited_investor
         if user.is_accredited_investor?
-          can :view_financial, Campaign
-          can :view_pitch_deck, Campaign
-          can :view_investment_doc, Campaign
-          can :invest, Campaign
+          can :view_financial, Alumvest::Campaign::Base
+          can :view_pitch_deck, Alumvest::Campaign::Base
+          can :view_investment_doc, Alumvest::Campaign::Base
+          can :invest, Alumvest::Campaign::Base
         end
 
         # admin can do anything
         if user.is_admin?
-          can :manage, Campaign
+          can :manage, Alumvest::Campaign::Base
         end
       end
     end

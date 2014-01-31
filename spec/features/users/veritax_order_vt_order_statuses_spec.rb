@@ -14,7 +14,7 @@ describe 'users investor income verification veritax order statuses', :type => :
       expect(page).to have_content 'Your information was saved.'
       click_on 'Submit to Veri-Tax'
       expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
-      vo = Veritax::Order::Order.last
+      vo = Veritax::Order::Base.last
       vo.get_order_info!
       #expect(vo.vt_status).to eq('NotReceived')
     end

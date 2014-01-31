@@ -1,11 +1,11 @@
 FactoryGirl.define do
-  factory :category do
+  factory :category, :class => Alumvest::Category::Base do
     name "Category #{Faker::Lorem.word}"
   end
 end
 
 FactoryGirl.define do
-  factory :company do
+  factory :company, :class => Alumvest::Company::Base do
     company_name          "#{Faker::Company.name}"
     logo_url              'http://placehold.it/100x100'
     short_description     Faker::Company.catch_phrase
@@ -15,7 +15,7 @@ FactoryGirl.define do
     company_details       Faker::Lorem.sentence
     founded_on_year       5.years.ago.year
     ownership_structure   'Corporation'
-    category_id           (Category.first.try(:id) || FactoryGirl.create(:category).id)
+    category_id           (Alumvest::Category::Base.first.try(:id) || FactoryGirl.create(:category).id)
     address_1             Faker::Address.street_address
     address_2             Faker::Address.secondary_address
     city                  Faker::Address.city

@@ -1,7 +1,7 @@
 class InvestmentsController < ApplicationController
 
   def new
-    @campaign = Campaign.find(params[:campaign_id])
+    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     if current_user and current_user.is_investor?
       investor = current_user.investor
       unless (f = investor.investments.find_by_campaign_id(@campaign.id))
@@ -14,13 +14,13 @@ class InvestmentsController < ApplicationController
   end
 
   def show
-    @campaign = Campaign.find(params[:campaign_id])
+    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @company = @campaign.company
     @investment = Investment.find(params[:id])
   end
 
   def submit_for_review
-    @campaign = Campaign.find(params[:campaign_id])
+    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @investment = Investment.find(params[:investment_id])
     @investment.finalize
     redirect_to display_campaign_company_path(@campaign), :flash => {:success => "Thank you for your investment!"}
