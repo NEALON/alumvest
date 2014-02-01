@@ -152,10 +152,14 @@ $body-font-weight: 200;
             font-size: 14px;
             letter-spacing: .1em;
 
-          }
+            &:focus{
+              border-color: $color-white;
+              outline: none;
+            }
 
-          input.btn.btn-large.btn-primary:hover{
-            color: #000000;
+            &:hover{
+              color: #000000;
+            }
           }
         }
       }
@@ -319,7 +323,7 @@ hr.campaign-separator{
 .company-raise-summary{
   padding: 5px;
   width: $company-right-block-width;
-  
+
 
   p{
     margin: 0;
