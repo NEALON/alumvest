@@ -35,6 +35,7 @@ class TeamsController < ApplicationController
     if @team.make_ready_for_review
       redirect_to campaign_team_path(@team.campaign), :flash => {:success => 'Team info is complete.' }
     else
+      @team.team_members.build if @team.team_members.blank?
       render :new, :warning => 'Correct the data to make this complete.' # because we use it for both new and edit
     end
   end
