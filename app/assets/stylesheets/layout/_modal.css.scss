@@ -1,19 +1,37 @@
+$modal-width: 400px;
+$form-width: 370px;
 $field-width: 100%;
 $field-height: 44px;
 
+.modal-open{
+	overflow: auto;
+}
+
 .modal-backdrop.in{
-	opacity: 0.7;
+	opacity: 1;
+	background-color: $color-white;
 }
 
 .modal{
-	width: 400px;
-	position: absolute;
+	width: $modal-width;
+	position: fixed;
 	overflow-y: auto;
-	top: 20px;
+	top: 50px;
 	left: calc(50% - 200px);
 	left: -moz-calc(50% - 200px);
   left: -webkit-calc(50% - 200px);
   padding: 0;
+  border: none;
+  box-shadow: none;
+
+  .modal-content{
+  	box-shadow: none;
+  	border: none;
+  }
+
+  .modal-header{
+  	border: none;
+  }
 
 	.modal-dialog.modal-large{
 		margin: 0;
@@ -22,6 +40,10 @@ $field-height: 44px;
 		overflow: hidden;
 
 		.modal-body{
+			width: $field-width;
+			margin: 0;
+			padding: 0;
+
 			input, button, a{
 				display: block;
 				width: $field-width;
@@ -49,6 +71,17 @@ $field-height: 44px;
 					padding-top: 10px;
 				}
 			}
+
+			.btn-third-party{
+				margin: 10px auto 0;
+				width: $form-width - 38px;
+			}
 		}
+	}
+
+	.form-horizontal{
+		background: none;
+		border: none;
+		box-shadow: none;
 	}
 }
