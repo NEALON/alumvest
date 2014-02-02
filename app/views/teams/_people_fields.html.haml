@@ -4,9 +4,9 @@
     = op.render_cell 'tb/form/text', :display, :field => :last_name
     = op.render_cell 'tb/form/text', :display, :field => :title
     = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
-    = op.render_cell 'tb/form/text', :display, :field => :facebook
-    = op.render_cell 'tb/form/text', :display, :field => :twitter
-    = op.render_cell 'tb/form/text', :display, :field => :linkedin
+    = op.render_cell 'tb/form/text', :display, :field => :facebook, :placeholder => 'facebook_id'
+    = op.render_cell 'tb/form/text', :display, :field => :twitter, :placeholder => 'twitter_id'
+    = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => 'linkedin_id'
     = op.render_cell 'tb/form/richtext', :display, :field => :introduction
     = op.render_cell 'tb/form/text', :display, :field => :video_url
   %hr
