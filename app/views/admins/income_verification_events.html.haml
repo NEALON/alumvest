@@ -3,6 +3,9 @@
 
 #information
   %table.table
-    - @events.each do |event|
-      %tr
-        = render :partial => event.to_admin_partial_path, :locals => {:event => event, :investor => event.investor}
+    - if @events.blank?
+      No data present.
+    - else
+      - @events.each do |event|
+        %tr
+          = render :partial => event.to_admin_partial_path, :locals => {:event => event, :investor => event.investor}

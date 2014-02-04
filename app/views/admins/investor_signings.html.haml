@@ -1,8 +1,11 @@
-= render 'side_navigation', :active => 'admin_income_verification_events'
+= render 'side_navigation', :active => 'admin_investor_signings'
 = render 'users/header'
 
 #information
   %table.table
-    - @investor_signings.each do |s|
-      %tr
-        = render :partial => s.to_admin_partial_path, :locals => {:signing => s}
+    - if @investor_signings.blank?
+      No data present.
+    - else
+      - @investor_signings.each do |s|
+        %tr
+          = render :partial => s.to_admin_partial_path, :locals => {:signing => s}
