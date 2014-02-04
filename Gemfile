@@ -10,7 +10,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', '~> 4.2', {:require=>false}
   gem 'rspec-rails', '~> 2.14'
   gem 'rspec', '~> 2.14'
   gem 'byebug', '~> 2.3'
@@ -80,3 +79,5 @@ gem 'banc_box_crowd', :git => 'git://github.com/interskh/banc_box_crowd'
 gem 'attr_encrypted', '~> 1.3.1'
 
 gem 'zeus', '0.13.4.pre2'
+
+gem 'factory_girl_rails', '~> 4.2', {:require=>false} # yes, we need this in production for database reset for testers
