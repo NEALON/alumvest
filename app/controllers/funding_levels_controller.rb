@@ -3,7 +3,7 @@ class FundingLevelsController < ApplicationController
   def edit
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = Investment.find(params[:investment_id])
+    @investment = Alumvest::Investment::Base.find(params[:investment_id])
     unless @investment.funding_level
       @investment.funding_level = FundingLevel.create(:investment => @investment, :amount => 0)
     end
@@ -13,7 +13,7 @@ class FundingLevelsController < ApplicationController
 
   def update
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
-    @investment = Investment.find(params[:investment_id])
+    @investment = Alumvest::Investment::Base.find(params[:investment_id])
     @funding_level = @investment.funding_level
     @funding_level.update_attributes(params[:alumvest_funding_level])
     if @funding_level.valid?

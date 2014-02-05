@@ -83,6 +83,7 @@ Av::Application.routes.draw do
       post :fund
       post :bank_account
     end
+
     resource :admin do
       get :income_verification_events
       get :investor_signings
@@ -92,6 +93,7 @@ Av::Application.routes.draw do
       post :approve_investor_signing
       post :reject_investor_signing
     end
+
     resource :issuer
     resource :bancbox_identity_verification
   end

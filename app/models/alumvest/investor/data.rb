@@ -38,10 +38,15 @@ module Alumvest::Investor::Data
     has_many :investments,
              :class_name => 'Alumvest::Investment::Base',
              :foreign_key => 'investor_id'
+    has_many :campaigns, :through => :investments
     has_many :events,
              :class_name => 'Bus::Event',
              :foreign_key => 'investor_id'
 
     validates :ssn, ssn: true, :allow_blank => true
+
+    def invested_in?(campaign)
+      ! investments.blank? && ! campaigns.include?(campaign)
+    end
   end
 end

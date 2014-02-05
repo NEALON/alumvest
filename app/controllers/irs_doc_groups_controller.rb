@@ -2,7 +2,7 @@ class IrsDocGroupsController < ApplicationController
 
   def new
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
-    @investment = Investment.find(params[:investment_id])
+    @investment = Alumvest::Investment::Base.find(params[:investment_id])
     unless @investment.irs_doc_group
       IrsDocGroup.create(:investment => @investment)
     end
@@ -11,7 +11,7 @@ class IrsDocGroupsController < ApplicationController
 
   def update
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
-    @investment = Investment.find(params[:investment_id])
+    @investment = Alumvest::Investment::Base.find(params[:investment_id])
     @investment.irs_doc_group.complete
     redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Item completed.'}
   end
@@ -19,7 +19,7 @@ class IrsDocGroupsController < ApplicationController
   def show
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = Investment.find(params[:investment_id])
+    @investment = Alumvest::Investment::Base.find(params[:investment_id])
     @irs_doc_group = @investment.irs_doc_group
     render :layout => 'investment_finalizers'
   end
