@@ -2,12 +2,5 @@
   %ul.nav.nav-stacked
     %li{:class => "#{'active' if active == 'basic_info'}"}
       = link_to('Basic Information', user_path(@user))
-
-    %li{:class => "#{'active' if active == 'bank_account'}"}
-      - if @user.bank_account.nil?
-        = link_to 'Bank Account', new_user_bank_account_path(@user)
-      - else
-        = link_to 'Bank Account', user_bank_account_path(@user, @user.bank_account)
-
     %li{:class => "#{'active' if active == 'settings_info'}"}
       = link_to('Settings', user_settings_path(@user))
