@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128202635) do
+ActiveRecord::Schema.define(version: 20140208195215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,13 +329,6 @@ ActiveRecord::Schema.define(version: 20140128202635) do
 
   add_index "investors", ["user_id"], name: "index_investors_on_user_id", using: :btree
 
-  create_table "irs_doc_groups", force: true do |t|
-    t.string   "status"
-    t.integer  "investment_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "issuers", force: true do |t|
     t.text     "financial_info"
     t.text     "experience"
@@ -376,17 +369,6 @@ ActiveRecord::Schema.define(version: 20140128202635) do
     t.string   "video_url"
     t.string   "title"
     t.text     "introduction"
-  end
-
-  create_table "questionnaires", force: true do |t|
-    t.string   "status"
-    t.string   "annual_income"
-    t.string   "year_of_income"
-    t.string   "income_type"
-    t.string   "net_worth"
-    t.integer  "investment_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "rails_admin_histories", force: true do |t|

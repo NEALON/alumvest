@@ -54,11 +54,9 @@ Av::Application.routes.draw do
 
     resources :investments do
       resource :funding_level
-      resource :questionnaire
       resource :identity_verification
       resource :contract_doc_group
       resource :subscription_agreement
-      resource :irs_doc_group
       put :submit_for_review
     end
     post :submit_for_review

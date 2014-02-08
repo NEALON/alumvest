@@ -13,10 +13,8 @@ module Alumvest::Investment::State
 
     def can_finalize?
       funding_level.try(:completed?) &&
-          questionnaire.try(:completed?) &&
           contract_doc_group.try(:completed?) &&
-          subscription_agreement.try(:completed?) &&
-          irs_doc_group.try(:completed?)
+          subscription_agreement.try(:completed?)
     end
 
     def self.finalized

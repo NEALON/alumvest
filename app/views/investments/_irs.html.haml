@@ -1,7 +1,0 @@
-%a#irs.investment-flow{:href => new_campaign_investment_irs_doc_group_path(@campaign, @investment)}
-  .row
-    %label Submit IRS forms
-    %span.investment-flow-status{:class => @investment.irs_doc_group.try(:status)}=  @investment.irs_doc_group.try(:status)
-  .investment-flow-description Send required tax documents.
-  .investment-start
-    = link_to 'Start', edit_campaign_investment_irs_doc_group_path(@campaign, @investment)

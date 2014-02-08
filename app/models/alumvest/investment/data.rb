@@ -14,17 +14,11 @@ module Alumvest::Investment::Data
     has_one :funding_level,
             :class_name => 'Alumvest::FundingLevel',
             :foreign_key => 'investment_id'
-    has_one :questionnaire,
-            :class_name => 'Alumvest::Questionnaire',
-            :foreign_key => 'investment_id'
     has_one :contract_doc_group,
             :class_name => 'Alumvest::ContractDocGroup',
             :foreign_key => 'investment_id'
     has_one :subscription_agreement,
             :class_name => 'Alumvest::SubscriptionAgreement',
-            :foreign_key => 'investment_id'
-    has_one :irs_doc_group,
-            :class_name => 'Alumvest::IrsDocGroup',
             :foreign_key => 'investment_id'
 
     # TODO: may need to be associated with some of the above entities
