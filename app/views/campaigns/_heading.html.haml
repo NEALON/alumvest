@@ -2,15 +2,6 @@
   - unless @company.banner_photo_url.blank?
     .company_banner
       = image_tag(@company.banner_for_campaign_home_display)
-      / .jumbotron.company_banner_info
-      /   .container
-      /     .row
-      /       .col-md-9
-      /         %h3= @company.company_name
-      /         %p= @company.short_description
-      /       .col-md-3
-      /         %a.btn.btn-success.invest-now
-      /           Invest Now
 
 //  :erb
 //    <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202784' style="min-height: 65px"></div>

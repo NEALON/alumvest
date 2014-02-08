@@ -12,14 +12,12 @@ describe 'users manages investment finalization', :type => :feature do
   it 'creates an investor dashboard event when they begin a finalization' do
     visit display_campaign_company_path(@campaign)
     click_on 'Invest Now'
-  end
-
-  it 'shows step 1 as completed for an accredited investor' do
-    visit display_campaign_company_path(@campaign)
     screenshot_and_open_image
   end
 
-  it 'redirects to an existing finalization if already present' do
+  it 'shows step 1 as completed for an accredited investor' do
+  end
 
+  it 'redirects to an existing finalization if already present' do
   end
 end

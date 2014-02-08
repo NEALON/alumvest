@@ -8,7 +8,9 @@ class InvestmentsController < ApplicationController
       if investor.invested_in?(@campaign)
         investment = investor.investments.find_by_campaign_id(@campaign.id)
       else
-        investment  = Alumvest::Investment::Base.create(:campaign => @campaign, :investor => investor)
+        investment = Alumvest::Investment::Base.create(
+            :campaign => @campaign,
+            :investor => investor)
       end
 
       redirect_to campaign_investment_path(@campaign, investment)

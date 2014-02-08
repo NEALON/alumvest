@@ -26,6 +26,7 @@ group :test do
   gem 'selenium-webdriver', '2.39'
   gem 'vcr', '~> 2.8'
   gem 'webmock', '~> 1.15.0'
+  gem 'sqlite3'
 end
 
 group :production do
@@ -81,3 +82,4 @@ gem 'attr_encrypted', '~> 1.3.1'
 gem 'zeus', '0.13.4.pre2'
 
 gem 'factory_girl_rails', '~> 4.2', {:require=>false} # yes, we need this in production for database reset for testers
+
