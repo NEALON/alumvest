@@ -1,0 +1,12 @@
+= render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
+
+.container
+  .row
+    .col-md-8
+      = form_for @investment, :url => campaign_investments_path(@campaign), :html => {:class => 'form-horizontal well'} do |f|
+        = render 'shared/errors', :entity => @investment
+        = render_cell 'tb/form/subhead', :display, :label => 'Investment Amount'
+
+        %fieldset
+          = render_cell 'tb/form/text', :display, :form => f, :field => :amount
+          = render_cell 'tb/form/submit_button', :display

@@ -33,6 +33,10 @@ module Features
       @user
     end
 
+    def create_investment(campaign, investor)
+      @investment = FactoryGirl.create(:investment, :amount => 100, :campaign => campaign, :investor => investor)
+    end
+
     def create_live_campaign(issuer)
       @campaign = FactoryGirl.create(
           :campaign,

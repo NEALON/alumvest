@@ -18,9 +18,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
                   :bancbox_id
   attr_encrypted :ssn, :key => ENV['SSN_SECRET']
 
-  # has_many :fund_transactions, :as => :fundable
   # has_many :bank_accounts
-  # accepts_nested_attributes_for :bank_accounts, :fund_transactions
+  # accepts_nested_attributes_for :bank_accounts
 
   validates_presence_of [:first_name, :last_name, :email, :phone, :address_1, :city, :state, :zip], :on => :update
   validates_inclusion_of :agreement, :in => [true], :on => :update

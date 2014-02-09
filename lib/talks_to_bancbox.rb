@@ -11,7 +11,7 @@ class TalksToBancbox
             :investor => user.investor,
             :investor_type => 'Individual/LLC',
             :agreement => true)
-    # TODO yuck, let's remove this redundancy:
+
     bancbox_investor.populate_fields_from_user(user)
 
     begin
@@ -39,7 +39,7 @@ class TalksToBancbox
   end
 
   def self.create_escrow!(user, campaign)
-    Bancbox::Escrow.create(
+    Bancbox::Escrow::Base.create(
         :issuer => user.issuer.bancbox_issuer,
         :campaign => campaign,
         :name => 'Alumvest',

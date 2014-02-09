@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208195215) do
+ActiveRecord::Schema.define(version: 20140209162135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,17 @@ ActiveRecord::Schema.define(version: 20140208195215) do
   end
 
   add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
+
+  create_table "bancbox_funding_xns", force: true do |t|
+    t.string   "bank_account_number"
+    t.string   "bank_account_type"
+    t.string   "bank_account_holder"
+    t.string   "bank_account_routing"
+    t.integer  "escrow_id"
+    t.integer  "investment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bancbox_investors", force: true do |t|
     t.string   "investor_type"
@@ -260,14 +271,6 @@ ActiveRecord::Schema.define(version: 20140208195215) do
   add_index "follows", ["user_id", "campaign_id"], name: "index_follows_on_user_id_and_campaign_id", unique: true, using: :btree
   add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
-  create_table "funding_levels", force: true do |t|
-    t.string   "status"
-    t.integer  "amount"
-    t.integer  "investment_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "identities", force: true do |t|
     t.string   "first_name"
     t.string   "email"
@@ -304,6 +307,7 @@ ActiveRecord::Schema.define(version: 20140208195215) do
     t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "amount"
   end
 
   create_table "investors", force: true do |t|

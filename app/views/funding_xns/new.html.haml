@@ -1,0 +1,19 @@
+= render 'investments/navigation', :active => 'payment', :campaign => @campaign
+
+.container
+  .row
+    .col-md-8
+      = form_for @funding_xn, :url => campaign_investment_funding_transaction_path(@campaign, @investment), :html => {:class => 'form-horizontal well'} do |f|
+        = render 'shared/errors', :entity => @funding_xn
+        = render_cell 'tb/form/subhead', :display, :label => 'Payment'
+
+        = f.hidden_field :investment_id
+        = f.hidden_field :bancbox_escrow_id
+
+        %fieldset
+          - with_options :form => f do |op|
+            = op.render_cell 'tb/form/text', :display, :field => :bank_account_holder
+            = op.render_cell 'tb/form/select', :display, :field => :bank_account_type, :values => ["CHECKING", "SAVING"]
+            = op.render_cell 'tb/form/text', :display, :field => :bank_account_routing
+            = op.render_cell 'tb/form/text', :display, :field => :bank_account_number
+          = render_cell 'tb/form/submit_button', :display, :label => 'Save'

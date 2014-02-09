@@ -1,5 +1,3 @@
 FactoryGirl.define do
-  factory :investment, :class => Alumvest::Investment::Base do
-    status 'pending'
-  end
+  factory :investment, :class => Alumvest::Investment::Base
 end

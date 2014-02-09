@@ -6,14 +6,16 @@
 <!--[if IE 9]>    <html class="gt-ie9" lang="en"> <![endif]-->
 <!--[if gte IE 9]><!--> <html lang="en"> <!--<![endif]-->
 %head
-  %meta{:charset => "utf-8"}/
-  %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %meta{:charset => 'utf-8'}/
+  %meta{:content => 'width=device-width, initial-scale=1.0', :name => 'viewport'}/
   %title
-    \#{title = (yield :title); title.blank? ? "AlumVest" : title}
+    \#{title = (yield :title); title.blank? ? 'AlumVest' : title}
   = favicon_link_tag '/favicon.png'
-  = stylesheet_link_tag "application"
-  = stylesheet_link_tag "//cdn-images.mailchimp.com/embedcode/slim-081711.css" unless Rails.env.test?
-  = javascript_include_tag "application"
+  = stylesheet_link_tag 'application'
+  = stylesheet_link_tag '//cdn-images.mailchimp.com/embedcode/slim-081711.css' unless Rails.env.test?
+  = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+
+  = javascript_include_tag 'application'
   = csrf_meta_tags
   = yield :head
   - unless Rails.env.test?

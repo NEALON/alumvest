@@ -20,7 +20,7 @@ module Alumvest::Campaign::Data
             :class_name => 'Alumvest::InvestmentTerm::Base',
             :foreign_key => 'campaign_id'
     has_one :bancbox_escrow,
-            :class_name => 'Bancbox::Escrow',
+            :class_name => 'Bancbox::Escrow::Base',
             :foreign_key => 'campaign_id'
     has_many :investments,
              :class_name => 'Alumvest::Investment::Base',

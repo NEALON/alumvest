@@ -197,8 +197,8 @@ module Features
       click_button 'Save'
     end
 
-    def fill_in_funding_level(num=10)
-      fill_in 'alumvest_funding_level_amount', :with => num
+    def fill_in_investment_amount(num=10)
+      fill_in 'alumvest_investment_base_amount', :with => num
       click_button 'Save'
     end
   end

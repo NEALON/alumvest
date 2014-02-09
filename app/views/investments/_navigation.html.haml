@@ -1,0 +1,24 @@
+= content_for :sidebar_left do
+  %ul.nav.nav-stacked
+    %li{:class => "#{'active' if active == 'investment_amount'}"}
+      - if @investment.new_record?
+        = link_to 'Investment', new_campaign_investment_path(@campaign)
+      - else
+        = link_to 'Investment', campaign_investment_path(@campaign, @investment)
+
+    %li{:class => "#{'active' if active == 'investor_verification'}"}
+      = link_to 'Investor Verification', '#'
+
+    %li{:class => "#{'active' if active == 'payment'}"}
+      - if @investment.new_record?
+        = link_to 'Payment', '#', :class => 'disabled'
+      - else
+        - if @investment.bancbox_funding_xn
+          = link_to 'Payment', campaign_investment_funding_xn_path(@campaign, @investment, @funding_xn)
+        - else
+          = link_to 'Payment', new_campaign_investment_funding_xn_path(@campaign, @investment)
+
+
+
+    %li{:class => "#{'active' if active == 'investment_documents'}"}
+      = link_to 'Document Signings', '#'
