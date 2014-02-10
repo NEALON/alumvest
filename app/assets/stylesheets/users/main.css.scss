@@ -121,10 +121,14 @@ $nav-tab-height: 37px;
 	padding-bottom: 30px;
 
 	.button_to .btn{
+		height: 32px;
+	}
+
+	.btn{
 		background-color: #1ABC9C;
 		border: none;
-		min-width: 90px;
-		width: 163px;
+		min-width: 163px;
+		width: auto;
 		height: 32px;
 		border-radius: 4px;
 		background-image: none;
@@ -134,7 +138,7 @@ $nav-tab-height: 37px;
 		margin-bottom: 10px;
 
 		font-family: 'Open Sans', sans-serif;
-		line-height: 32px;
+		line-height: 15px;
 		color: $color-white;
 		font-size: 15px;
 		font-weight: bold;
@@ -144,7 +148,7 @@ $nav-tab-height: 37px;
 		vertical-align: middle;
 
 		position: relative;
-		left: 47px;
+		left: 241px;
 
 		&:focus{
 			outline: none;
@@ -181,20 +185,24 @@ $nav-tab-height: 37px;
 		border: none;
 		box-shadow: none;
 
+		hr{
+			display: none;
+		}
+
 		fieldset .form-group{
 			height: 35px;
 			vertical-align: middle;
 			margin-right: 0;
 			line-height: 20px;
 
-			.form-label{
+			.control-label{
 				vertical-align: middle;
 				font-size: 14px;
 			}
 
-			.form-value{
-				font-size: 14px;
-				font-style: normal;
+			.btn{
+				position: relative;
+				left: 0;
 			}
 		}
 	}
