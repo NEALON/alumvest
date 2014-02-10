@@ -2,7 +2,6 @@
 = render 'users/header'
 
 #information
-  = button_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-default btn-xs', :method => :get
   = render 'shared/property_row', :header => 'SSN', :value => @investor.ssn
   = render 'shared/property_row', :header => 'Marital Status', :value => @investor.marital_status
   = render 'shared/property_row', :header => 'Financial Info', :value => @investor.financial_info
@@ -16,3 +15,4 @@
   = render 'shared/property_row', :header => 'Experience', :value => @investor.experience
   = render 'shared/property_row', :header => 'Expertise', :value => @investor.expertise
   = render 'shared/property_row', :header => 'Personal Message', :value => (raw @investor.personal_message)
+  = button_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-default btn-xs', :method => :get

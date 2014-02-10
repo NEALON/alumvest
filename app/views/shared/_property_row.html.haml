@@ -5,7 +5,7 @@
         &nbsp;
       - else
         = header
-  .col-xs-8.col-md-8{:id => "#{header.parameterize}"}
+  .col-xs-8.col-md-8.form-value{:id => "#{header.parameterize}"}
     - unless value.blank?
       = value
     - else
