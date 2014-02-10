@@ -190,7 +190,7 @@ $nav-tab-height: 37px;
 		}
 
 		fieldset .form-group{
-			height: 35px;
+			min-height: 35px;
 			vertical-align: middle;
 			margin-right: 0;
 			line-height: 20px;
@@ -203,6 +203,15 @@ $nav-tab-height: 37px;
 			.btn{
 				position: relative;
 				left: 0;
+			}
+		}
+
+		fieldset .links{
+			padding-left: 6px;
+
+			a:hover{
+				text-decoration: none;
+				color: #428bca;
 			}
 		}
 	}
