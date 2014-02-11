@@ -130,6 +130,7 @@ GEM
       sass (~> 3.1)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
+    dalli (2.7.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -211,6 +212,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
@@ -393,6 +395,7 @@ DEPENDENCIES
   cocoon (~> 1.2)
   coffee-rails (~> 4.0)
   compass
+  dalli
   database_cleaner (~> 1.2)
   docusign_rest!
   email_spec (~> 1.5)
@@ -409,6 +412,7 @@ DEPENDENCIES
   jquery-rails (~> 3.0)
   jquery-ui-rails (~> 4.0)
   launchy (~> 2.3)
+  memcachier
   money-rails (~> 0.8.1)
   newrelic_rpm (~> 3.6)
   omniauth-facebook (~> 1.4)
