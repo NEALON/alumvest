@@ -2,7 +2,7 @@
 = render 'users/header'
 
 #information
-  = form_for @income_verification, :url => user_investor_income_verification_path(@user), :html => {:class => 'form-horizontal well'} do |f|
+  = form_for @income_verification, :url => user_investor_income_verification_path(@user), :html => {:class => 'form-horizontal editting-form well'} do |f|
     = render 'shared/errors', :entity => @income_verification
 
     %fieldset
@@ -21,7 +21,6 @@
         = op.render_cell 'tb/form/text', :display, :field => :city
         = op.render_cell 'tb/form/text', :display, :field => :state
         = op.render_cell 'tb/form/text', :display, :field => :zip_code
-        %p &nbsp;
         = op.render_cell 'tb/form/text', :display, :field => :previous_address
         = op.render_cell 'tb/form/text', :display, :field => :previous_city
         = op.render_cell 'tb/form/text', :display, :field => :previous_state

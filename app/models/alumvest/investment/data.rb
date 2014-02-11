@@ -4,7 +4,9 @@ module Alumvest::Investment::Data
   extend ActiveSupport::Concern
 
   included do
-    attr_accessible :status, :campaign, :investor, :amount
+    attr_accessible :status, :campaign, :investor, :amount_cents
+
+    monetize :amount_cents
 
     self.table_name = :investments
 

@@ -2,7 +2,6 @@
 = render 'users/header'
 
 #information
-  = button_to 'Edit', edit_user_path(@user), :class => 'btn btn-default btn-xs', :method => :get
   = render 'shared/property_row', :header => 'First Name', :value => @user.first_name
   = render 'shared/property_row', :header => 'Middle Name', :value => @user.middle_name
   = render 'shared/property_row', :header => 'Last Name', :value => @user.last_name
@@ -20,6 +19,7 @@
   = render 'shared/property_row', :header => 'Facebook', :value => @user.facebook
   = render 'shared/property_row', :header => 'LinkedIn', :value => @user.linkedin
   = render 'shared/property_row', :header => 'Personal Statement', :value => (raw @user.personal_statement)
+  = button_to 'Update', edit_user_path(@user), :class => 'btn btn-default btn-xs', :method => :get
 
 - if current_user && current_user == @user && current_user.user_type_undefined?
   #user-type-modal.modal.fade

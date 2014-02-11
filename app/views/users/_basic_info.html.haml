@@ -1,4 +1,4 @@
-= form_for @user, :url => user_path(@user), :html => {:class => 'form-horizontal well'} do |f|
+= form_for @user, :url => user_path(@user), :html => {:class => 'form-horizontal editting-form well'} do |f|
   = render 'shared/errors', :entity => @user
 
   %fieldset
@@ -22,11 +22,10 @@
       = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => "http://www.linkedin.com/in/user_name"
       = op.render_cell 'tb/form/richtext', :display, :field => :personal_statement
 
-    %hr
-    %h4 Education
+      = op.render_cell 'tb/form/subhead', :display, :label => "Education"
     #educations
       = f.fields_for :educations do |e|
         = render 'education_fields', :f => e
-      .links
+      .links.col-md-8.col-md-offset-4
         = link_to_add_association 'Add Education', f, :educations
     = render_cell 'tb/form/submit_button', :display
