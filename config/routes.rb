@@ -53,7 +53,7 @@ Av::Application.routes.draw do
     end
 
     resources :investments do
-      resources :funding_xns
+      resource :funding_xn
       resource :identity_verification
       resource :contract_doc_group
       resource :subscription_agreement

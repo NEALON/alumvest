@@ -1,6 +1,6 @@
 class Bancbox::FundingXn < ActiveRecord::Base
 
-  attr_accessible :investment, :investment_id, :bancbox_escrow, :escrow_id
+  attr_accessible :investment, :investment_id, :escrow_id
 
   belongs_to :investment, :class_name => 'Alumvest::Investment::Base'
 

@@ -4,7 +4,7 @@ class FundingXnsController < ApplicationController
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @company = @campaign.company
     @investment = Alumvest::Investment::Base.find(params[:investment_id])
-    @funding_xn = Bancbox::FundingXn.new(:investment => @investment, :bancbox_escrow => @campaign.bancbox_escrow)
+    @funding_xn = Bancbox::FundingXn.new(:investment => @investment, :escrow_id => @campaign.bancbox_escrow.id)
     render :layout => 'investments'
   end
 
