@@ -53,6 +53,7 @@ class Ability
 
       if user.is_investor?
         can :manage, Alumvest::Investor::Base
+        can :manage, Alumvest::Investment::Base
 
         if user.is_self_accredited_investor?
           can :view_risk_n_challenge, Alumvest::Campaign::Base
