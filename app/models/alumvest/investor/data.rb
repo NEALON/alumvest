@@ -46,7 +46,7 @@ module Alumvest::Investor::Data
     validates :ssn, ssn: true, :allow_blank => true
 
     def invested_in?(campaign)
-      ! investments.blank? && ! campaigns.include?(campaign)
+      campaigns.include?(campaign)
     end
   end
 end

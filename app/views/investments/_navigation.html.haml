@@ -1,6 +1,7 @@
 = content_for :sidebar_left do
   %ul.nav.nav-stacked
     %li{:class => "#{'active' if active == 'investment_amount'}"}
+
       - if @investment.new_record?
         = link_to 'Investment', new_campaign_investment_path(@campaign)
       - else
@@ -18,7 +19,8 @@
         - else
           = link_to 'Payment', new_campaign_investment_funding_xn_path(@campaign, @investment)
 
-
-
     %li{:class => "#{'active' if active == 'investment_documents'}"}
       = link_to 'Document Signings', '#'
+
+    %li{:class => "#{'active' if active == 'review'}"}
+      = link_to 'Review and Finalize', '#'
