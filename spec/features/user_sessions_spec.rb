@@ -27,30 +27,26 @@ describe 'user sessions', :type => :feature do
     expect(page).to have_link('Sign out')
   end
 
-  #it 'registers fb issuer' do
-  #  set_omniauth
-  #
-  #  visit '/'
-  #  click_link 'Register'
-  #  click_link 'Facebook'
-  #  visit user_path(@issuer.user)
-  #
-  #  expect(page).to have_link 'Edit Profile'
-  #  expect(page).to have_link 'Sign out'
-  #
-  #  click_button 'I am an Investor'
-  #  expect(page).to have_link 'Investor'
-  #  signout
-  #
-  #  click_link 'Login'
-  #  within '#login-modal' do
-  #    click_link 'Facebook'
-  #  end
-  #  expect(page).to have_link 'Investor'
-  #  expect(page).to have_link 'Sign out'
-  #
-  #  unset_omniauth
-  #end
+  it 'registers fb issuer' do
+    set_omniauth
+
+    visit '/'
+    click_link 'Register'
+    click_link 'Facebook'
+
+    click_button 'I am an Investor'
+    expect(page).to have_link 'Investor'
+    signout
+
+    click_link 'Login'
+    within '#login-modal' do
+      click_link 'Facebook'
+    end
+    expect(page).to have_link 'Investor'
+    expect(page).to have_link 'Sign out'
+
+    unset_omniauth
+  end
 
   it 'sends out welcome email after sign up' do
     sign_up :issuer
