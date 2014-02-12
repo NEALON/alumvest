@@ -1,0 +1,18 @@
+#user-type-modal.modal.fade
+  .modal-dialog.modal-large
+    .modal-content
+      .modal-header
+        %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        .h4
+          Are you an investor or an issuer?
+      .modal-body
+        = form_for [current_user], :url => user_path(current_user), :html => {:class => 'form-horizontal well form-compact'} do |f|
+          = f.hidden_field :user_type, :value => 'Investor'
+          = f.submit 'I am an Investor', :class => 'btn btn-primary btn-lg btn-block'
+        = form_for [current_user], :url => user_path(current_user), :html => {:class => 'form-horizontal well form-compact'} do |f|
+          = f.hidden_field :user_type, :value => 'Issuer'
+          = f.submit 'I am an Issuer', :class => 'btn btn-success btn-lg btn-block'
+:javascript
+  $('#user-type-modal').modal()
+
