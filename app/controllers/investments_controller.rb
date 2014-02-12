@@ -3,20 +3,8 @@ class InvestmentsController < ApplicationController
   def new
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @company = @campaign.company
-    if current_user and current_user.is_investor?
-      investor = current_user.investor
-
-      if investor.invested_in?(@campaign)
-        redirect_to campaign_investment_path(@campaign, investor.investments.find_by_campaign_id(@campaign.id))
-      else
-        @investment = Alumvest::Investment::Base.new(
-            :campaign => @campaign,
-            :investor => investor)
-      end
-      render :layout => 'investments'
-    else
-      redirect_to display_campaign_company_path(@campaign), :flash => {:warning => 'Please sign in to invest!'}
-    end
+    @investment = Alumvest::Investment::Base.new(:campaign => @campaign, :investor => current_user.investor)
+    render :layout => 'investments'
   end
 
   def create

@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def link_to_campaign_investment(investor, campaign)
+    if investor.invested_in?(@campaign)
+      link_to 'Manage Investment', campaign_investment_path(@campaign, investor.investments.find_by_campaign_id(@campaign.id)), :class => "btn invest-now", :method => :get
+    else
+      link_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn invest-now", :method => :get
+    end
+  end
+
   def link_to_show_or_new(entity, heading, show_path, new_path)
     if entity.blank?
       link_to heading, show_path
