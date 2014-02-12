@@ -117,5 +117,7 @@
 
   = render :partial => 'layouts/signup_modal'
   = render :partial => 'layouts/login_modal'
+  - if current_user && current_user.user_type_undefined?
+    = render :partial => 'layouts/user_type_modal'
   = yield :scripts
 </html>

@@ -68,8 +68,12 @@ module Alumvest::User::Data
         :zipcode,
         :email]
 
-    validates_presence_of RequiredProfileFields, :on => :update
+    validates_presence_of RequiredProfileFields, :on => :update, :unless => "user_type_changed?"
     validates :ssn, ssn: true, :allow_blank => true
+
+    def update_user_type?
+      user
+    end
 
     def profile_complete?
       RequiredProfileFields.select { |rpf| send(rpf).blank? }.empty?
