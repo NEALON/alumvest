@@ -7,6 +7,24 @@ class InvestmentsController < ApplicationController
     render :layout => 'investments'
   end
 
+  def edit
+    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @company = @campaign.company
+    @investment = Alumvest::Investment::Base.find(params[:id])
+    render :layout => 'investments'
+  end
+
+  def update
+    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @company = @campaign.company
+    @investment = Alumvest::Investment::Base.find(params[:id])
+    if @investment.valid?
+      redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
+    else
+      render :new
+    end
+  end
+
   def create
     @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
     @company = @campaign.company
