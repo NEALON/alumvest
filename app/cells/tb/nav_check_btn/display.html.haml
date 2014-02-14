@@ -1,0 +1,5 @@
+%li{:class => "#{'active' if @active}"}
+  - opacity = @checked ? 1 : 0
+  - status_check = "<span style='color: black; opacity: #{opacity}'>&nbsp;&#10004;</span>"
+
+  = link_to "#{@label} #{status_check}".html_safe, (@enabled ? @link : '#'), :class => "#{'disabled' unless @enabled}"

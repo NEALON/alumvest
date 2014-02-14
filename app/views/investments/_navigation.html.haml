@@ -1,26 +1,11 @@
 = content_for :sidebar_left do
   %ul.nav.nav-stacked
-    %li{:class => "#{'active' if active == 'investment_amount'}"}
+    = render_cell 'tb/nav_check_btn', :display, :label => 'Investment',:checked => false, :enabled => true, :active => (active == 'investment_amount'), :link => (@investment.new_record? ? new_campaign_investment_path(@campaign) : campaign_investment_path(@campaign, @investment))
 
-      - if @investment.new_record?
-        = link_to 'Investment', new_campaign_investment_path(@campaign)
-      - else
-        = link_to 'Investment', campaign_investment_path(@campaign, @investment)
+    = render_cell 'tb/nav_check_btn', :display, :label => 'Investor Verification', :checked => false, :enabled => false, :active => (active == 'investor_verification'), :link => '#'
 
-    %li{:class => "#{'active' if active == 'investor_verification'}"}
-      = link_to 'Investor Verification', '#'
+    = render_cell 'tb/nav_check_btn', :display, :label => 'Payment', :checked => false, :enabled => false, :active => (active == 'payment'), :link => payment_link(@campaign, @investment, @funding_xn)
 
-    %li{:class => "#{'active' if active == 'payment'}"}
-      - if @investment.new_record?
-        = link_to 'Payment', '#', :class => 'disabled'
-      - else
-        - if @investment.bancbox_funding_xn
-          = link_to 'Payment', campaign_investment_funding_xn_path(@campaign, @investment, @funding_xn)
-        - else
-          = link_to 'Payment', new_campaign_investment_funding_xn_path(@campaign, @investment)
+    = render_cell 'tb/nav_check_btn', :display, :label => 'Document Signings', :checked => false, :enabled => false, :active => (active == 'investment_documents'), :link => '#'
 
-    %li{:class => "#{'active' if active == 'investment_documents'}"}
-      = link_to 'Document Signings', '#'
-
-    %li{:class => "#{'active' if active == 'review'}"}
-      = link_to 'Review and Finalize', '#'
+    = render_cell 'tb/nav_check_btn', :display, :label => 'Review and Finalize', :checked => false, :enabled => false, :active => (active == 'review'), :link => '#'

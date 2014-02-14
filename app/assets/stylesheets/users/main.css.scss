@@ -101,11 +101,18 @@ $nav-tab-height: 37px;
 		background-color: #3887be;
 	}
 
+    .nav-stacked li a.disabled {
+ 		background-color: darkgray;
+ 	}
 
 	.nav-stacked li a:hover{
 		background-color: #3bb2d0;
 		color: #ffffff;
 	}
+
+    .nav-stacked li a.disabled:hover {
+	  background-color: darkgray;
+    }
 
 	.nav-stacked li.active{
 		a{

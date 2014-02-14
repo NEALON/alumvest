@@ -39,4 +39,17 @@ module ApplicationHelper
       'Nonprofit Corporation'
     ]
   end
+
+  def payment_link(campaign, investment, funding_xn)
+
+    if funding_xn
+      campaign_investment_funding_xn_path(campaign, investment, funding_xn)
+    else
+      unless investment.new_record?
+        new_campaign_investment_funding_xn_path(campaign, investment)
+      else
+        '#'
+      end
+    end
+  end
 end
