@@ -15,8 +15,6 @@ Av::Application.routes.draw do
   get '/issuer_dashboard', :to => 'issuer_dashboard#index'
   get '/issuer_dashboard/create_campaign', :to => 'issuer_dashboard#create_campaign'
 
-  get '/investor_dashboard', :to => 'investor_dashboard#index'
-
   get '/tester_dashboard', :to => 'tester_dashboard#index'
   get '/tester_dashboard/reset_database', :to => 'tester_dashboard#reset_database', :via => :get
 
@@ -54,6 +52,7 @@ Av::Application.routes.draw do
 
     resources :investments do
       resource :funding_xn
+      get :investor_verification
       resource :identity_verification
       resource :contract_doc_group
       resource :subscription_agreement

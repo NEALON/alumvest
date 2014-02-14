@@ -1,0 +1,7 @@
+= render 'investments/navigation', :active => 'investor_verification', :campaign => @campaign
+
+%p
+  = "You can #{income_verification_link('verify your income')} via your #{link_to 'Investor Dashboard', user_investor_path(current_user)}.".html_safe
+%p
+  Once you are a verified accredited investor, you can resume your investment in this company. A link back to this investment can be found in your
+  = "#{link_to 'Investor Newsfeed', user_investor_events_path(current_user)}.".html_safe

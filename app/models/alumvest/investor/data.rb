@@ -48,5 +48,9 @@ module Alumvest::Investor::Data
     def invested_in?(campaign)
       campaigns.include?(campaign)
     end
+
+    def is_accredited?
+      accredited_investor_status == 'approved'
+    end
   end
 end

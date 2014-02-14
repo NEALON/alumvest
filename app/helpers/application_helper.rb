@@ -30,13 +30,13 @@ module ApplicationHelper
 
   def ownership_structures
     [
-      'Sole Proprietorship',
-      'General Partnership',
-      'Limited Partnership',
-      'Limited Liability Partnership',
-      'Limited Liability Company (LLC)',
-      'Corporation',
-      'Nonprofit Corporation'
+        'Sole Proprietorship',
+        'General Partnership',
+        'Limited Partnership',
+        'Limited Liability Partnership',
+        'Limited Liability Company (LLC)',
+        'Corporation',
+        'Nonprofit Corporation'
     ]
   end
 
@@ -50,6 +50,14 @@ module ApplicationHelper
       else
         '#'
       end
+    end
+  end
+
+  def income_verification_link(label)
+    if current_user.investor.income_verification.nil?
+      link_to label, new_user_investor_income_verification_path(current_user)
+    else
+      link_to label, user_investor_income_verification_path(current_user)
     end
   end
 end
