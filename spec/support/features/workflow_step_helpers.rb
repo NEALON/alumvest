@@ -59,5 +59,11 @@ module Features
       team.team_members << FactoryGirl.create(:team_member)
       team
     end
+
+    def create_investment_amount
+      visit display_campaign_company_path(@campaign)
+      click_on 'Invest Now'
+      fill_in_investment_amount 123.45
+    end
   end
 end

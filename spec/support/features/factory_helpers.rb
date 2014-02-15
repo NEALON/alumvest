@@ -17,6 +17,22 @@ module Features
     end
 
     def create_accredited_investor
+      create_non_accredited_investor
+      update_accredited_investor_status 'approved'
+      @user
+    end
+
+    def create_self_accredited_investor
+      create_non_accredited_investor
+      update_accredited_investor_status 'self'
+      @user
+    end
+
+    def update_accredited_investor_status(status)
+      @user.investor.update_attribute :accredited_investor_status, status
+    end
+
+    def create_non_accredited_investor
       @identity = FactoryGirl.create(:identity,
                                      :last_name => 'Investor',
                                      :email => 'investor@alumvest.com')
@@ -29,8 +45,6 @@ module Features
                                  :user_type => 'Investor',
                                  :identities => [@identity],
                                  :uid => @identity.id)
-      @user.investor.update_attribute :accredited_investor_status, 'approved'
-      @user
     end
 
     def create_investment(campaign, investor)
