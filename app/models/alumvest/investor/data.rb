@@ -29,8 +29,11 @@ module Alumvest::Investor::Data
                     :user_id,
                     :user
 
+    has_one :accredited_investor_status,
+            :class_name => 'Alumvest::SelfAccreditedStatus',
+            :foreign_key => 'investor_id'
     has_one :bancbox_investor,
-            class_name: 'Bancbox::Investor',
+            :class_name => 'Bancbox::Investor',
             :foreign_key => 'investor_id'
     has_one :income_verification,
             :class_name => 'Veritax::Order::Base',
