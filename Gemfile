@@ -34,8 +34,6 @@ group :production do
   gem 'heroku-deflater'
 end
 
-gem 'money-rails', '~> 0.8.1'
-
 gem 'rubyzip', '~> 1.1.0'
 gem 'bcrypt-ruby', '~> 3.0'
 gem 'rails', '4.0.2'

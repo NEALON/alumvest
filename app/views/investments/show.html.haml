@@ -4,6 +4,6 @@
   %p
     = button_to 'Edit', edit_campaign_investment_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :get
 
-    = render 'shared/property_row', :header => 'Amount', :value => number_to_currency(@investment.amount * 100)
+    = render 'shared/property_row', :header => 'Amount', :value => number_to_currency(@investment.amount)
 
 -#= render 'investments/progress', :active => 'investment_amount', :campaign => @campaign

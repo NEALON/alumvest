@@ -198,7 +198,7 @@ module Features
     end
 
     def fill_in_investment_amount(num=10)
-      fill_in 'alumvest_investment_base_amount_cents', :with => num
+      fill_in 'alumvest_investment_base_amount', :with => num
       click_button 'Save'
     end
   end

@@ -5,7 +5,7 @@ describe 'users manages investments', :type => :feature do
   def create_investment
     visit display_campaign_company_path(@campaign)
     click_on 'Invest Now'
-    fill_in_investment_amount
+    fill_in_investment_amount 123.45
   end
 
   before :each do
@@ -16,7 +16,9 @@ describe 'users manages investments', :type => :feature do
   end
 
   it 'creates a new investment' do
+    create_investment
     expect(page).to have_content 'Investment amount saved.'
+    expect(page).to have_content '$123.45'
   end
 
   it 'shows investor accreditation as not completed for a non-accredited investor' do
