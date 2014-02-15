@@ -58,6 +58,7 @@ class Ability
         if user.is_self_accredited_investor?
           can :view_risk_n_challenge, Alumvest::Campaign::Base
           can :view_exact_funding_amount, Alumvest::Campaign::Base
+          can :invest, Alumvest::Campaign::Base
         end
 
         # this is a superset of self_accredited_investor
@@ -65,7 +66,6 @@ class Ability
           can :view_financial, Alumvest::Campaign::Base
           can :view_pitch_deck, Alumvest::Campaign::Base
           can :view_investment_doc, Alumvest::Campaign::Base
-          can :invest, Alumvest::Campaign::Base
         end
 
         # admin can do anything

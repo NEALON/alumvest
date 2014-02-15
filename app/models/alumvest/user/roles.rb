@@ -9,7 +9,7 @@ module Alumvest::User::Roles
     end
 
     def is_self_accredited_investor?
-      not (self.is_investor? and self.investor.accredited_investor_status.nil?)
+      self.investor.accredited_investor_status == 'self'
     end
 
     def is_accredited_investor?
