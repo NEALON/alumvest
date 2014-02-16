@@ -1,0 +1,4 @@
+%p
+  = 'You started an investment in '
+  = link_to investment_initiated.investment.campaign.company.campaign_title, '#'
+  = "#{time_ago_in_words(investment_initiated.created_at)} ago."

@@ -24,6 +24,12 @@ class InvestmentsController < ApplicationController
   def create
     @investment = Alumvest::Investment::Base.create(params[:alumvest_investment_base])
     if @investment.valid?
+      Bus::Event::InvestmentInitiated.create(
+          :campaign => @campaign,
+          :investment => @investment,
+          :investor => @investment.investor
+      )
+
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
       render :new

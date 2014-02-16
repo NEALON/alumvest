@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users manages investments', :type => :feature do
+describe 'investment investor accreditation', :type => :feature do
 
   before :each do
     create_issuer

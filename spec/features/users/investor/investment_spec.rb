@@ -5,7 +5,7 @@ describe 'users manages investments', :type => :feature do
   before :each do
     create_issuer
     @campaign = create_live_campaign(@user.issuer)
-    create_accredited_investor
+    create_self_accredited_investor
     sign_in 'investor@alumvest.com', 'secret'
   end
 
@@ -15,16 +15,10 @@ describe 'users manages investments', :type => :feature do
     expect(page).to have_content '$123.45'
   end
 
-  it 'creates an investor dashboard event when they begin a finalization' do
-    pending
-  end
-
-  it 'redirects to an existing investment if already present' do
-    pending
-  end
-
-  it 'disables subsequent steps until an investment amount is entered' do
-    pending
+  it 'creates an investor dashboard event on investment creation' do
+    create_investment_amount
+    visit user_investor_events_path(@user)
+    expect(page).to have_content('You started an investment')
   end
 
   it 'does not allow editing of the amount if payment or signing has been started' do
