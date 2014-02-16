@@ -309,7 +309,7 @@ ActiveRecord::Schema.define(version: 20140216033519) do
     t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount_cents"
+    t.decimal  "amount",      precision: 8, scale: 2
   end
 
   create_table "investors", force: true do |t|
@@ -384,8 +384,8 @@ ActiveRecord::Schema.define(version: 20140216033519) do
     t.string   "table"
     t.integer  "month",      limit: 2
     t.integer  "year",       limit: 8
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
@@ -471,17 +471,17 @@ ActiveRecord::Schema.define(version: 20140216033519) do
   end
 
   create_table "veritax_orders", force: true do |t|
-    t.string   "first_name",       null: false
-    t.string   "last_name",        null: false
-    t.string   "address",          null: false
-    t.string   "city",             null: false
-    t.string   "state",            null: false
-    t.string   "zip_code",         null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
     t.string   "previous_address"
     t.string   "previous_city"
     t.string   "previous_state"
     t.string   "previous_zip"
-    t.string   "email",            null: false
+    t.string   "email"
     t.string   "vt_order_id"
     t.string   "status"
     t.integer  "investor_id"
@@ -494,9 +494,9 @@ ActiveRecord::Schema.define(version: 20140216033519) do
   end
 
   create_table "versions", force: true do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
+    t.string   "item_type"
+    t.integer  "item_id"
+    t.string   "event"
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
