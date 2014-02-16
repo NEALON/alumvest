@@ -11,7 +11,7 @@ module Alumvest::Issuer::Data
 
     belongs_to :user, :class_name => 'Alumvest::User::Base'
 
-    has_one :campaign,
+    has_many :campaigns,
             :class_name => 'Alumvest::Campaign::Base',
             :foreign_key => 'issuer_id'
     has_one :bancbox_issuer,
