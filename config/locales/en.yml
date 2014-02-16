@@ -6,3 +6,22 @@ en:
   veritax-help-1: 'We use <a href="http://www.veri-tax.com/">Veri-tax</a> as an income verification service. Please provide the <b>address that you used for income tax filing</b> purposes below. Also include a previous filing address, if applicable during the last 3 years.'
   veritax-help-2: 'Please note that <em>the data that you enter here will not replace the profile data that you have already entered</em> in the Alumvest system. This information will be used for income verification services, only.'
   veritax-help-email: 'You will be emailed an <b>IRS Form 4506-T</b> to complete and e-sign. Tell us which email address to use for that.'
+  self-accredited-status:
+    info: 'Below, we will ask you to <b>self-verify</b> that you are an accredited investor. Before you make your investment, we will also ask you to <b>officially verify</b> your accredited investor status through one of our thrid-party service providers.'
+    financial-status:
+      title: 'Financial Status'
+      status-1: 'My net worth is over $1 million, excluding my home.'
+      status-2: 'My income was $200k+ for past two years. I except the same this year.'
+      status-3: 'I invest on behalf of an accredited business or VC firm'
+      status-4: 'I am not accredited, but intend to invest when the SEC changes the law on 2014'
+    terms:
+      title: 'Terms'
+      info: 'I represent that the information I supplied above is accurate and'
+      startup_fail: 'I understand most startups fail, I can bear a 100% loss on my investments'
+      responsible: 'I understand I am responsible for my own due diligence'
+      av_permission: 'I give permission to AlumVest to verify my accredited status'
+      tos: 'I agree to the Terms and Conditions'
+    submit: "Submit & Discover Your Alumni's Startups"
+    input-warning: "You need to check all the boxes before continue."
+    qualified-info: "You have identified yourself as accredited investor. Now you can browse your alumni's startups."
+    non-qualified-info: "You are not qualified as accredited investor now. Please chcck us back after SEC changes law on 2014."

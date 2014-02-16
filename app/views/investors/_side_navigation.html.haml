@@ -6,3 +6,6 @@
       = link_to('Investor Newsfeed', user_investor_events_path(@user))
     %li{:class => "#{'active' if active == 'income_verification'}"}
       = income_verification_link('Income Verification')
+    - if active == 'self_accredited_status'
+      %li{:class => "#{'active'}"}
+        = link_to 'Accredited Investor', new_user_investor_self_accredited_status_path(current_user)

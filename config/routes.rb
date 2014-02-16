@@ -67,6 +67,7 @@ Av::Application.routes.draw do
     resource :borrower
     resource :investor do
       resources :events, :controller => 'investor_events'
+      resource :self_accredited_status
       resource :income_verification do
         put :submit_to_veritax
       end

@@ -60,4 +60,16 @@ module ApplicationHelper
       link_to label, user_investor_income_verification_path(current_user)
     end
   end
+
+  def user_profile_entry_link(user, edit=false)
+    if user.is_investor? and not user.finishes_self_accredited_form?
+      return new_user_investor_self_accredited_status_path(user)
+    else
+      if edit
+        return edit_user_path(user)
+      else
+        return user_path(user)
+      end
+    end
+  end
 end

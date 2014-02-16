@@ -29,7 +29,7 @@ module Alumvest::Investor::Data
                     :user_id,
                     :user
 
-    has_one :accredited_investor_status,
+    has_one :self_accredited_status,
             :class_name => 'Alumvest::SelfAccreditedStatus',
             :foreign_key => 'investor_id'
     has_one :bancbox_investor,

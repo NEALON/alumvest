@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
           redirect_to root_url, flash: {:success => "Signed in!"}
         end
       else
-        redirect_to edit_user_path(@user)
+        redirect_to view_context.user_profile_entry_link(@user)
       end
     end
   end

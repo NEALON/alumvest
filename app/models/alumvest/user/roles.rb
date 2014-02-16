@@ -25,6 +25,10 @@ module Alumvest::User::Roles
       user_type.downcase == 'admin'
     end
 
+    def finishes_self_accredited_form?
+      self.is_investor? and self.investor.finishes_self_accredited_form?
+    end
+
     def when_admin(&block)
       yield if is_admin?;
     end

@@ -309,7 +309,7 @@ ActiveRecord::Schema.define(version: 20140216033519) do
     t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "amount",      precision: 8, scale: 2
+    t.integer  "amount_cents"
   end
 
   create_table "investors", force: true do |t|
@@ -384,11 +384,24 @@ ActiveRecord::Schema.define(version: 20140216033519) do
     t.string   "table"
     t.integer  "month",      limit: 2
     t.integer  "year",       limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+
+  create_table "self_accredited_statuses", force: true do |t|
+    t.integer  "financial_status"
+    t.boolean  "term_startup_fail"
+    t.boolean  "term_responsible"
+    t.boolean  "term_av_permission"
+    t.boolean  "term_tos"
+    t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+  add_index "self_accredited_statuses", ["investor_id"], name: "index_self_accredited_statuses_on_investor_id", using: :btree
 
   create_table "signings", force: true do |t|
     t.string   "status",        default: "unsigned"

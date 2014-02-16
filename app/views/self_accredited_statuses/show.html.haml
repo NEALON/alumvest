@@ -1,0 +1,50 @@
+= render 'investors/side_navigation', :active => 'self_accredited_status'
+= render 'users/header'
+
+#self-accredited-status
+  - if @self_accredited_status.accredited?
+    .alert.alert-success.alert-dismissable
+      = I18n.t('self-accredited-status.qualified-info')
+  - else
+    .alert.alert-info.alert-dismissable
+      = I18n.t('self-accredited-status.non-qualified-info')
+  = I18n.t('self-accredited-status.info').html_safe
+  %hr
+  = form_for @self_accredited_status, :url => '', :html => {:class => 'form-horizontal editting-form well'} do |f|
+
+    %fieldset
+      = f.hidden_field :investor_id
+      .form-group
+        .col-md-3
+          = f.label I18n.t('self-accredited-status.financial-status.title')
+        .col-md-9
+          .row
+            = f.radio_button :financial_status, 1, :disabled => true
+            = I18n.t('self-accredited-status.financial-status.status-1')
+          .row
+            = f.radio_button :financial_status, 2, :disabled => true
+            = I18n.t('self-accredited-status.financial-status.status-2')
+          .row
+            = f.radio_button :financial_status, 3, :disabled => true
+            = I18n.t('self-accredited-status.financial-status.status-3')
+          .row
+            = f.radio_button :financial_status, 4, :disabled => true
+            = I18n.t('self-accredited-status.financial-status.status-4')
+      .form-group
+        .col-md-3
+          = f.label I18n.t('self-accredited-status.terms.title')
+        .col-md-9
+          .row
+            = I18n.t('self-accredited-status.terms.info')
+          .row
+            = f.check_box :term_startup_fail, :disabled => true
+            = I18n.t('self-accredited-status.terms.startup_fail')
+          .row
+            = f.check_box :term_responsible, :disabled => true
+            = I18n.t('self-accredited-status.terms.responsible')
+          .row
+            = f.check_box :term_av_permission, :disabled => true
+            = I18n.t('self-accredited-status.terms.av_permission')
+          .row
+            = f.check_box :term_tos, :disabled => true
+            = I18n.t('self-accredited-status.terms.tos')
