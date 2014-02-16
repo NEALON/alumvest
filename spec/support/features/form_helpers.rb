@@ -89,6 +89,20 @@ module Features
       click_button 'Save'
     end
 
+    def fill_in_self_accredited_status(accredited)
+      if accredited
+        choose('alumvest_self_accredited_status_financial_status_1')
+      else
+        choose('alumvest_self_accredited_status_financial_status_4')
+      end
+
+      check('alumvest_self_accredited_status_term_startup_fail')
+      check('alumvest_self_accredited_status_term_responsible')
+      check('alumvest_self_accredited_status_term_av_permission')
+      check('alumvest_self_accredited_status_term_tos')
+      click_button "Submit & Discover Your Alumni's Startups"
+    end
+
     def fill_in_user_issuer_profile
       'alumvest_user_base'.tap do |form|
         fill_in "#{form}_issuer_attributes_ssn", :with => '000-00-0000'
