@@ -1,0 +1,8 @@
+= render 'issuers/side_navigation', :active => 'issuer_newsfeed'
+= render 'users/header'
+
+#information
+  %h4
+    Your Document Signings
+  %hr
+  = render @signings
