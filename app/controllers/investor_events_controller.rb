@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class InventorEventsController < ApplicationController
 
   def index
     @user = Alumvest::User::Base.find(params[:user_id])

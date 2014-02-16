@@ -17,6 +17,9 @@ module Alumvest::Issuer::Data
     has_one :bancbox_issuer,
             :class_name => 'Bancbox::Issuer',
             :foreign_key => 'issuer_id'
+    has_many :events,
+             :class_name => 'Bus::Event',
+             :foreign_key => 'issuer_id'
 
     validates :ssn, ssn: true, :allow_blank => true
   end

@@ -1,0 +1,10 @@
+= render 'issuers/side_navigation', :active => 'issuer_newsfeed'
+= render 'users/header'
+
+#information
+  %h4
+    Your Issuer Newsfeed
+  %p
+    Recent activity for your account and investments.
+  %hr
+  = render @events

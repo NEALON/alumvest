@@ -66,7 +66,7 @@ Av::Application.routes.draw do
   resources :users do
     resource :borrower
     resource :investor do
-      resources :events
+      resources :events, :controller => 'investor_events'
       resource :income_verification do
         put :submit_to_veritax
       end
@@ -91,7 +91,9 @@ Av::Application.routes.draw do
       post :reject_investor_signing
     end
 
-    resource :issuer
+    resource :issuer do
+      resources :events, :controller => 'issuer_events'
+    end
     resource :bancbox_identity_verification
   end
 

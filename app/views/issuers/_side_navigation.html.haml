@@ -1,0 +1,10 @@
+= content_for :sidebar_left do
+  %ul.nav.nav-stacked
+    %li{:class => "#{'active' if active == 'issuer_profile'}"}
+      = link_to('Issuer Profile', user_issuer_path(@user))
+    %li{:class => "#{'active' if active == 'issuer_newsfeed'}"}
+      = link_to('Issuer Newsfeed', user_issuer_events_path(@user))
+    %li{:class => "#{'active' if active == 'issuer_campaigns'}"}
+      = link_to('Campaigns', '#')
+    %li{:class => "#{'active' if active == 'issuer_signings'}"}
+      = link_to('Document Signings', '#')
