@@ -92,8 +92,11 @@ Av::Application.routes.draw do
     end
 
     resource :issuer do
-      resources :events, :controller => 'issuer_events'
+      resources :events, :controller => 'issuer/events'
+      resources :campaigns, :controller => 'issuer/campaigns'
+      resources :signings, :controller => 'issuer/signings'
     end
+
     resource :bancbox_identity_verification
   end
 

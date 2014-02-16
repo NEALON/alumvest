@@ -18,10 +18,11 @@ describe 'users issuer dashboard', :type => :feature do
 
   it 'shows the campaigns' do
     click_on 'Campaigns'
-    screenshot_and_open_image
+    expect(page).to have_content('Your Campaigns')
   end
 
   it 'shows the signings' do
-    pending
+    click_on 'Document Signings'
+    expect(page).to have_content('Your Document Signings')
   end
 end
