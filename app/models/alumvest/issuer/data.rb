@@ -4,10 +4,11 @@ module Alumvest::Issuer::Data
   extend ActiveSupport::Concern
 
   included do
+    self.table_name = :issuers
+
     attr_accessible :experience, :expertise, :financial_info, :marital_status, :personal_message, :ssn
     attr_encrypted :ssn, :key => Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET']
 
-    self.table_name = :issuers
 
     belongs_to :user, :class_name => 'Alumvest::User::Base'
 

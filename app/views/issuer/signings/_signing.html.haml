@@ -1,0 +1,8 @@
+%span
+  = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
+%span
+  = link_to s.investment.investor.user.full_name, '#'
+%span
+  = link_to s.document.name, envelope_signed_document_path(s.envelope), :target => '_blank'
+%span
+  = link_to 'Sign', s.envelope.get_recipient_view('issuer'), :class => 'btn btn-default btn-xs'

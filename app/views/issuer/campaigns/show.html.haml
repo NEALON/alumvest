@@ -1,0 +1,11 @@
+= render 'issuers/side_navigation', :active => 'issuer_campaigns'
+= render 'users/header'
+
+#information
+  %h4
+    Your Campaign
+  %hr
+    - unless @campaign.blank?
+      = render :partial => 'issuer/campaigns/campaign', :campaign => @campaign
+    - else
+      = link_to 'Create your campaign', user_issuer_campaign_path(current_user), :class => 'btn btn-primary', :method => :post

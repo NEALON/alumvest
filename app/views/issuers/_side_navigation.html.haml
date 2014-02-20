@@ -5,6 +5,6 @@
     %li{:class => "#{'active' if active == 'issuer_newsfeed'}"}
       = link_to('Issuer Newsfeed', user_issuer_events_path(@user))
     %li{:class => "#{'active' if active == 'issuer_campaigns'}"}
-      = link_to('Campaigns', user_issuer_campaigns_path(@user))
+      = link_to('Campaign', user_issuer_campaign_path(@user))
     %li{:class => "#{'active' if active == 'issuer_signings'}"}
       = link_to('Document Signings', user_issuer_signings_path(@user))

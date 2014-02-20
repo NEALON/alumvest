@@ -1,6 +1,5 @@
 Av::Application.routes.draw do
 
-  get 'investor_dashboard/index'
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -11,9 +10,6 @@ Av::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create', :via => [:get, :post]
   get '/auth/failure', :to => 'sessions#failure'
   match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :delete
-
-  get '/issuer_dashboard', :to => 'issuer_dashboard#index'
-  get '/issuer_dashboard/create_campaign', :to => 'issuer_dashboard#create_campaign'
 
   get '/tester_dashboard', :to => 'tester_dashboard#index'
   get '/tester_dashboard/reset_database', :to => 'tester_dashboard#reset_database', :via => :get
@@ -65,15 +61,24 @@ Av::Application.routes.draw do
 
   resources :users do
     resource :borrower
+
     resource :investor do
-      resources :events, :controller => 'investor_events'
+      resources :events, :controller => 'investor/events'
       resource :self_accredited_status
       resource :income_verification do
         put :submit_to_veritax
       end
     end
+
+    resource :issuer do
+      resources :events, :controller => 'issuer/events'
+      resource :campaign, :controller => 'issuer/campaigns'
+      resources :signings, :controller => 'issuer/signings'
+    end
+
     resource :bank_account
     resource :settings
+
 
     resource :bancbox_investor do
       get :new_fund
@@ -92,11 +97,6 @@ Av::Application.routes.draw do
       post :reject_investor_signing
     end
 
-    resource :issuer do
-      resources :events, :controller => 'issuer/events'
-      resources :campaigns, :controller => 'issuer/campaigns'
-      resources :signings, :controller => 'issuer/signings'
-    end
 
     resource :bancbox_identity_verification
   end

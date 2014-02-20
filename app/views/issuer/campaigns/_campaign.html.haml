@@ -1,0 +1,6 @@
+%span #{@campaign.company.campaign_title}
+%span.campaign-live #{@campaign.status}
+= link_to 'Edit', campaign_company_path(@campaign)
+%span
+  = '|'
+= link_to 'Display', display_campaign_company_path(@campaign)

@@ -7,4 +7,9 @@
   %p
     Recent activity for your account and investments.
   %hr
-  = render @events
+    - unless @events.blank?
+      - @events.each do |e|
+        = render partial:  e.to_partial_path, :locals => {:event => e}
+    - else
+      %p
+        There are no events to review here.

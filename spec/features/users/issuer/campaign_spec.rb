@@ -7,13 +7,22 @@ describe 'submitting a campaign for review', :type => :feature do
 
   context 'other stuff' do
     before :each do
-      sign_up :issuer
       @category = FactoryGirl.create(:category)
-      @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
+      sign_up :issuer
+      click_on 'Issuer Dashboard'
+      click_on 'Campaign'
+    end
+
+    it 'creates the campaign' do
+      click_on 'Create your campaign'
+      expect(page).to have_content('New company')
     end
 
     it 'successfully' do
-      create_new_company @campaign
+      click_on 'Create your campaign'
+      @campaign = CampaignBase.first
+
+      fill_in_company(@campaign)
       click_link 'Check for completeness'
       (expect page).to have_content 'is complete'
 
@@ -27,23 +36,6 @@ describe 'submitting a campaign for review', :type => :feature do
 
       click_link 'Submit for review'
       (expect page).to have_content 'Your campaign is now submitted for review'
-
-      # now, see it on the home page
-      visit '/'
-      click_link @campaign.company.campaign_title
-      sleep 2
-
-      click_link 'Team'
-      sleep 2
-
-      click_link 'Investment Terms'
-      sleep 2
-
-      #click_link 'Updates'
-      #sleep 2
-
-      click_link 'Join Us'
-      sleep 3
     end
 
     it 'by unsuccessfully submitting it' do
@@ -53,18 +45,3 @@ describe 'submitting a campaign for review', :type => :feature do
   end
 end
 
-describe 'preview campaign', :type => :feature do
-  before :each do
-    sign_up :issuer
-    @category = FactoryGirl.create(:category)
-    @campaign = FactoryGirl.create(:campaign, :issuer => @issuer)
-  end
-
-  it 'can preview campaign' do
-    create_new_company @campaign
-    click_link 'Preview'
-    within_window(page.driver.browser.window_handles.last) do
-      page.should have_content 'This is a preview of the campaign'
-    end
-  end
-end

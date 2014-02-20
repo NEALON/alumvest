@@ -8,7 +8,7 @@ describe 'users issuer dashboard', :type => :feature do
   end
 
   it 'shows the profile' do
-    expect(page).to have_content('This is the Issuer Profile')
+    expect(page).to have_content('Your Issuer Profile')
   end
 
   it 'shows the newsfeed' do
@@ -16,9 +16,17 @@ describe 'users issuer dashboard', :type => :feature do
     expect(page).to have_content('Your Issuer Newsfeed')
   end
 
-  it 'shows the campaigns' do
-    click_on 'Campaigns'
-    expect(page).to have_content('Your Campaigns')
+  it 'shows the campaign creation button' do
+    click_on 'Campaign'
+    expect(page).to have_content('Your Campaign')
+    expect(page).to have_link('Create your campaign')
+  end
+
+  it 'shows the campaign' do
+    create_live_campaign(@issuer)
+    click_on 'Campaign'
+    expect(page).to have_link('Edit')
+    expect(page).to have_link('Display')
   end
 
   it 'shows the signings' do

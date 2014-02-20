@@ -46,23 +46,4 @@ describe 'managing company basics', :type => :feature do
     click_link 'Check for completeness'
     (expect page).to have_content 'errors'
   end
-
-  it 'by showing a company as a campaign' do
-    create_new_company @campaign
-    @company = @campaign.company
-    investment_term = FactoryGirl.create(:investment_term, :campaign => @campaign)
-    team = FactoryGirl.create(:team, :campaign => @campaign)
-
-    visit display_campaign_company_path(@campaign)
-
-    expect(page).to have_content @company.company_name
-    expect(page).to have_content @company.short_description
-    expect(page).to have_content @company.founded_on_year
-    expect(page).to have_content @company.campaign_title
-    expect(page).to have_content strip_tags @company.company_details
-    expect(page).to have_content strip_tags @company.faq
-    expect(page).to have_content number_to_currency investment_term.fundraising_amount
-    expect(page).to have_content investment_term.campaign_length
-    expect(page).to have_content strip_tags @company.company_highlights
-  end
 end

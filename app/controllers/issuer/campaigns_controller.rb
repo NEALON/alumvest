@@ -1,10 +1,17 @@
 class Issuer::CampaignsController < ApplicationController
 
-  def index
+  def show
     @user = Alumvest::User::Base.find(params[:user_id])
     @issuer = @user.issuer
-    @campaigns = @issuer.campaign
+    @campaign = @issuer.campaign
     render layout: 'issuers'
+  end
+
+  def create
+    user = UserBase.find(params[:user_id])
+    campaign = CampaignBase.create(
+        :issuer => user.issuer)
+    redirect_to new_campaign_company_path(campaign)
   end
 end
 

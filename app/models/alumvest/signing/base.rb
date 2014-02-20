@@ -1,5 +1,7 @@
 module Alumvest::Signing
   class Base < ActiveRecord::Base
+    ::SigningBase = self
+
     include Alumvest::Signing::Data
     include Alumvest::Signing::Presenters
     include Alumvest::Signing::State

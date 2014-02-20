@@ -5,4 +5,10 @@
   %h4
     Your Document Signings
   %hr
-  = render @signings
+    - unless @signings.empty?
+      - @signgings.each do |s|
+
+        = render :partial => 'issuer/signings/signing', :signing => s
+    - else
+      %p
+        There are no signings here right now.
