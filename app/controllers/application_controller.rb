@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   before_filter :authenticate
 
+  InvestementBase = Alumvest::Investment::Base
+  CampaignBase = Alumvest::Campaign::Base
+  SigningBase = Alumvest::Signing::Base
+  UserBase = Alumvest::User::Base
+
   def authenticate
     Rails.env == 'production' && !ENV['public'] && authenticate_or_request_with_http_basic do |username, password|
       username == "chen" && password == "ling"

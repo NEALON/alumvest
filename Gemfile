@@ -85,4 +85,4 @@ gem 'factory_girl_rails', '~> 4.2', {:require=>false} # yes, we need this in pro
 
 gem 'dalli'
 gem 'memcachier'
-
+gem 'abstract_method'

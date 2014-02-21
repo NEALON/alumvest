@@ -1,7 +1,6 @@
 module Alumvest::User
 
   class Base < ActiveRecord::Base
-    ::UserBase = self
 
     include Alumvest::User::Data
     include Alumvest::User::Roles

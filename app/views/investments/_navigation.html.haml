@@ -1,12 +1,3 @@
 = content_for :sidebar_left do
-  %ul.nav.nav-stacked
-    = render_cell 'tb/nav_check_btn', :display, :label => 'Investment',:checked => (@investment.persisted?), :enabled => true, :active => (active == 'investment_amount'), :link => (@investment.new_record? ? new_campaign_investment_path(@campaign) : campaign_investment_path(@campaign, @investment))
 
-    = render_cell 'tb/nav_check_btn', :display, :label => 'Investor Verification', :checked => @is_accredited, :enabled => (@investment.persisted? && ! @is_accredited), :active => (active == 'investor_verification'), :link => (@investment.persisted? ? campaign_investment_investor_verification_path(@campaign, @investment) : '#')
-
-    = render_cell 'tb/nav_check_btn', :display, :label => 'Payment', :checked => false, :enabled => false, :active => (active == 'payment'), :link => payment_link(@campaign, @investment, @funding_xn)
-
-    = render_cell 'tb/nav_check_btn', :display, :label => 'Document Signings', :checked => false, :enabled => false, :active => (active == 'investment_documents'), :link => '#'
-
-    = render_cell 'tb/nav_check_btn', :display, :label => 'Review and Finalize', :checked => false, :enabled => false, :active => (active == 'review'), :link => '#'
-
+  = @workflow.render(active)

@@ -1,6 +1,5 @@
 module Alumvest::Campaign
   class Base < ActiveRecord::Base
-    ::CampaignBase = self
     include Alumvest::Campaign::Data
     include Alumvest::Campaign::State
     include Alumvest::Campaign::Events

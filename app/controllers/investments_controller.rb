@@ -3,17 +3,18 @@ class InvestmentsController < ApplicationController
   before_filter :load_campaign_and_company
 
   def new
-    @investment = Alumvest::Investment::Base.new(:campaign => @campaign, :investor => current_user.investor)
+    @investment = InvestmentBase.new(:campaign => @campaign, :investor => current_user.investor)
+    @workflow = InvestmentWorkflow.new(@investment)
     render :layout => 'investments'
   end
 
   def edit
-    @investment = Alumvest::Investment::Base.find(params[:id])
+    @investment = InvestmentBase.find(params[:id])
     render :layout => 'investments'
   end
 
   def update
-    @investment = Alumvest::Investment::Base.find(params[:id])
+    @investment = InvestmentBase.find(params[:id])
     if @investment.valid?
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
@@ -22,7 +23,7 @@ class InvestmentsController < ApplicationController
   end
 
   def create
-    @investment = Alumvest::Investment::Base.create(params[:alumvest_investment_base])
+    @investment = InvestmentBase.create(params[:alumvest_investment_base])
     if @investment.valid?
       Bus::Event::InvestmentInitiated.create(
           :campaign => @campaign,
@@ -37,17 +38,18 @@ class InvestmentsController < ApplicationController
   end
 
   def show
-    @investment = Alumvest::Investment::Base.find(params[:id])
+    @investment = InvestmentBase.find(params[:id])
+    @workflow = InvestmentWorkflow.new(@investment)
     render :layout => 'investments'
   end
 
   def investor_verification
-    @investment = Alumvest::Investment::Base.find(params[:investment_id])
+    @investment = InvestmentBase.find(params[:investment_id])
     render :layout => 'investments'
   end
 
   def submit_for_review
-    @investment = Alumvest::Investment::Base.find(params[:investment_id])
+    @investment = InvestmentBase.find(params[:investment_id])
     @investment.finalize
     redirect_to display_campaign_company_path(@campaign), :flash => {:success => "Thank you for your investment!"}
   end
