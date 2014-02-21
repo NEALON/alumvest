@@ -7,5 +7,5 @@
   = f.hidden_field :investor_id
 
   %fieldset
-    = render_cell 'tb/form/moneyfield', :display, :label => 'Amount', :form => f, :field => :amount, :placeholder => '$10,000.00'
+    = render_cell 'tb/form/text', :display, :label => 'Amount (in U.S. dollar)', :form => f, :field => :amount, :placeholder => '10000.00'
     = render_cell 'tb/form/submit_button', :display, :label => 'Save'
