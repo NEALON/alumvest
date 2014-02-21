@@ -2,13 +2,13 @@ class UsersController < ApplicationController
   def show
     @user = Alumvest::User::Base.find_by_id(params[:id])
     @active = 'basic_info'
-    render :layout => "users"
+    render :layout => 'users'
   end
 
   def edit
     @user = Alumvest::User::Base.find_by_id(params[:id])
     @active = 'basic_info'
-    render :layout => "users"
+    render :layout => 'users'
   end
 
   def update

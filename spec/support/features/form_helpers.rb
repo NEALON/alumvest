@@ -29,10 +29,10 @@ module Features
         fill_in "#{form}_linkedin", :with => Faker::Internet.user_name
         fill_in "#{form}_personal_statement", :with => Faker::Lorem.sentence(15)
 
-        click_link "Add Education"
+        click_link 'Add Education'
         all(:css, "#educations input[id^='alumvest_user_base_educations'][id$='_school']").last.set(Faker::Name.first_name)
         degree_select = all(:css, "#educations select[id^='alumvest_user_base_educations'][id$='_degree']").last
-        degree_select.select "Undergraduate"
+        degree_select.select 'Undergraduate'
       end
       click_button 'Save'
     end
@@ -89,7 +89,7 @@ module Features
       click_button 'Save'
     end
 
-    def fill_in_self_accredited_status(accredited)
+    def fill_in_self_accredited_status(accredited = true)
       if accredited
         choose('alumvest_self_accredited_status_financial_status_1')
       else

@@ -40,10 +40,10 @@ describe 'users investor income verification veritax order statuses', :type => :
       expect(vo.vt_status).to eq('Canceled')
     end
 
-    it 'gets a transcript for a Completed order' do
-      vo = FactoryGirl.create(:veritax_order, :vt_order_id => CompletedOrderId)
-      result = vo.get_transcript!
-      expect(result.blank?).to eq(false)
-    end
+    #it 'gets a transcript for a Completed order' do
+    #  vo = FactoryGirl.create(:veritax_order, :vt_order_id => CompletedOrderId)
+    #  result = vo.get_transcript!
+    #  expect(result.blank?).to eq(false)
+    #end
   end
 end

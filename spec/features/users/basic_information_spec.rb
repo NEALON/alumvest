@@ -4,6 +4,8 @@ describe 'users basic information', :type => :feature do
 
   before :each do
     sign_up :investor
+    click_on 'User Information'
+    click_on 'Edit'
   end
 
   it 'updates' do

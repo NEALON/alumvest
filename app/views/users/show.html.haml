@@ -19,4 +19,4 @@
   = render 'shared/property_row', :header => 'Facebook', :value => @user.facebook
   = render 'shared/property_row', :header => 'LinkedIn', :value => @user.linkedin
   = render 'shared/property_row', :header => 'Personal Statement', :value => (raw @user.personal_statement)
-  = button_to 'Update', edit_user_path(@user), :class => 'btn btn-default btn-xs', :method => :get
+  = button_to 'Edit', edit_user_path(@user), :class => 'btn btn-default btn-xs', :method => :get
