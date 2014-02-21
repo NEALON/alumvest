@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users investor profile', :type => :feature do
+describe 'investor manages profile', :type => :feature do
 
   before :each do
     sign_up :investor

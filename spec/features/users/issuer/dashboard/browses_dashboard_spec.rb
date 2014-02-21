@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users issuer dashboard', :type => :feature do
+describe 'issuer browses dashboard', :type => :feature do
 
   before :each do
     sign_up :issuer

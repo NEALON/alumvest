@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'funding xn', :type => :feature do
+describe 'accredited investor creates funding xn', :type => :feature do
 
   before :each do
     create_issuer

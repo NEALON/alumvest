@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'managing company investment terms', :type => :feature do
+describe 'issuer manages investment terms', :type => :feature do
 
   before :each do
     sign_up :issuer

@@ -3,7 +3,7 @@ require 'spec_helper'
 include ActionView::Helpers::SanitizeHelper
 include ActionView::Helpers::DateHelper
 
-describe 'submitting a campaign for review', :type => :feature do
+describe 'issuer creates campaign', :type => :feature do
 
   context 'other stuff' do
     before :each do

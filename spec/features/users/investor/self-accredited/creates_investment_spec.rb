@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users manages investments', :type => :feature do
+describe 'self-accredited investor creates investment', :type => :feature do
 
   before :each do
     create_issuer
@@ -13,6 +13,7 @@ describe 'users manages investments', :type => :feature do
     create_investment_amount
     expect(page).to have_content 'Investment amount saved.'
     expect(page).to have_content '$123.45'
+    screenshot_and_open_image
   end
 
   it 'creates an investor dashboard event on investment creation' do

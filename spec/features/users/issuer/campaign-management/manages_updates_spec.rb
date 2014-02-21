@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'managing company updates', :type => :feature do
+describe 'issuer manages updates', :type => :feature do
 
   before :each do
     sign_up :issuer

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users investor income verification', :type => :feature do
+describe 'non-accredited investor manages income verification', :type => :feature do
 
   before :each do
     sign_up :investor

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'managing company jobs', :type => :feature do
+describe 'issuer manages jobs', :type => :feature do
 
   before :each do
     sign_up :issuer

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users basic information', :type => :feature do
+describe 'users manages basic information', :type => :feature do
 
   before :each do
     sign_up :investor

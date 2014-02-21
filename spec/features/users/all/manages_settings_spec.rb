@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'users settings', :type => :feature do
+describe 'user manages settings', :type => :feature do
 
   before :each do
     sign_up :investor

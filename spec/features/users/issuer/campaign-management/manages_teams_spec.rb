@@ -1,7 +1,7 @@
 require 'spec_helper'
 include ActionView::Helpers::SanitizeHelper
 
-describe 'managing campaign teams', :type => :feature do
+describe 'issuer manages teams', :type => :feature do
 
   before :each do
     sign_up :issuer

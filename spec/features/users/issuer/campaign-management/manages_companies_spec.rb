@@ -4,7 +4,7 @@ include ActionView::Helpers::SanitizeHelper
 include ActionView::Helpers::DateHelper
 include ActionView::Helpers::NumberHelper
 
-describe 'managing company basics', :type => :feature do
+describe 'issuer manages company', :type => :feature do
 
   before :each do
     sign_up :issuer

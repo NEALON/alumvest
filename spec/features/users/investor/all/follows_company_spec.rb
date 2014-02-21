@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'following company', :type => :feature do
+describe 'non-accredited investor follows company', :type => :feature do
 
   before :each do
     create_issuer

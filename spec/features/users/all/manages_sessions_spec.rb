@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'user sessions', :type => :feature do
+describe 'user manages sessions', :type => :feature do
 
   it 'registers email issuer' do
     sign_up :issuer
