@@ -20,5 +20,4 @@
 //= require bootstrap
 //= require layout/header
 //= require partials/scrollpy
-//= require partials/money_fields
 //= require_tree .
