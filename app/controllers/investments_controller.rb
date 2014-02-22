@@ -57,7 +57,7 @@ class InvestmentsController < ApplicationController
   private
 
   def load_campaign_and_company
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @is_accredited = current_user.investor.is_accredited?
   end

@@ -1,16 +1,16 @@
 class BancboxIdentityVerificationsController < ApplicationController
   def show
-    @user = Alumvest::User::Base.find_by_id(params[:user_id])
+    @user = UserBase.find_by_id(params[:user_id])
     @bancbox_identity_verification = @user.bancbox_identity_verification || Bancbox::IdentityVerification.create(:user => @user)
   end
 
   def edit
-    @user = Alumvest::User::Base.find_by_id(params[:user_id])
+    @user = UserBase.find_by_id(params[:user_id])
     @bancbox_identity_verification = @user.bancbox_identity_verification
   end
   
   def update
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @bancbox_identity_verification = @user.bancbox_identity_verification
     @bancbox_identity_verification.update_attributes(params[:bancbox_identity_verification])
     if @bancbox_identity_verification.valid?

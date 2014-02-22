@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   before_filter :authenticate
 
-  InvestementBase = Alumvest::Investment::Base
-  CampaignBase = Alumvest::Campaign::Base
-  SigningBase = Alumvest::Signing::Base
   UserBase = Alumvest::User::Base
+  CampaignBase = Alumvest::Campaign::Base
+  CompanyBase = Alumvest::Company::Base
+  InvestmentBase = Alumvest::Investment::Base
+  SigningBase = Alumvest::Signing::Base
 
   def authenticate
     Rails.env == 'production' && !ENV['public'] && authenticate_or_request_with_http_basic do |username, password|
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= begin
       if session[:user_id]
-        Alumvest::User::Base.find(session[:user_id])
+        UserBase.find(session[:user_id])
       end
     rescue
       nil

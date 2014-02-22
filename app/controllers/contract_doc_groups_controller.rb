@@ -1,8 +1,8 @@
 class ContractDocGroupsController < ApplicationController
 
   def new
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
-    @investment = Alumvest::Investment::Base.find(params[:investment_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
+    @investment = InvestmentBase.find(params[:investment_id])
     unless @investment.contract_doc_group
       ContractDocGroup.create(:investment => @investment)
     end
@@ -10,20 +10,19 @@ class ContractDocGroupsController < ApplicationController
   end
 
   def update
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
-    @investment = Alumvest::Investment::Base.find(params[:investment_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
+    @investment = InvestmentBase.find(params[:investment_id])
     @investment.contract_doc_group.complete
     redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Item completed.'}
   end
 
   def show
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = Alumvest::Investment::Base.find(params[:investment_id])
+    @investment = InvestmentBase.find(params[:investment_id])
     @contract_doc_group = @investment.contract_doc_group
     @investment.make_signings && @investment.reload if @investment.signings.blank?
     @signings = @investment.signings
-    render :layout => 'investment_finalizers'
   end
 end
 

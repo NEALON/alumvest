@@ -14,8 +14,6 @@ Av::Application.routes.draw do
   get '/tester_dashboard', :to => 'tester_dashboard#index'
   get '/tester_dashboard/reset_database', :to => 'tester_dashboard#reset_database', :via => :get
 
-  get 'home/index'
-
   match '/about', :to => 'content_page#index', :via => [:get]
   match '/about/team', :to => 'content_page#team', :via => [:get]
   match '/about/contact', :to => 'content_page#contact', :via => [:get]
@@ -60,7 +58,9 @@ Av::Application.routes.draw do
   end
 
   resources :users do
-    resource :borrower
+
+    resource :bank_account
+    resource :settings
 
     resource :investor do
       resources :events, :controller => 'investor/events'
@@ -75,10 +75,6 @@ Av::Application.routes.draw do
       resource :campaign, :controller => 'issuer/campaigns'
       resources :signings, :controller => 'issuer/signings'
     end
-
-    resource :bank_account
-    resource :settings
-
 
     resource :bancbox_investor do
       get :new_fund
@@ -96,7 +92,6 @@ Av::Application.routes.draw do
       post :approve_investor_signing
       post :reject_investor_signing
     end
-
 
     resource :bancbox_identity_verification
   end

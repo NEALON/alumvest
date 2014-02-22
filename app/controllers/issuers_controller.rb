@@ -1,13 +1,13 @@
 class IssuersController < ApplicationController
 
   def edit
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @issuer = @user.issuer
     render :layout => 'issuers'
   end
 
   def update
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @issuer = @user.issuer
     @issuer.update_attributes(params[:alumvest_issuer_base])
     if @issuer.valid?
@@ -18,7 +18,7 @@ class IssuersController < ApplicationController
   end
 
   def show
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @issuer = @user.issuer || Alumvest::Issuer::Base.new(:user => @user)
     render :layout => 'issuers'
   end

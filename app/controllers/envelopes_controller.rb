@@ -15,9 +15,9 @@ class EnvelopesController < ApplicationController
                       investment.campaign,
                       investment),
                   :flash => {
-                      :success => "Document signing status has been updated."}
+                      :success => 'Document signing status has been updated.'}
     else
-      redirect_to root_path, :flash => {:warning => "Could not update envelope."}
+      redirect_to root_path, :flash => {:warning => 'Could not update envelope.'}
     end
   end
 

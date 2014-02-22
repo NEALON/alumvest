@@ -1,7 +1,7 @@
 class Issuer::CampaignsController < ApplicationController
 
   def show
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @issuer = @user.issuer
     @campaign = @issuer.campaign
     render layout: 'issuers'

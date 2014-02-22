@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   before_filter :load_team, :except => [:new, :create]
 
   def new
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @team = Alumvest::Team::Base.new(:campaign => @campaign)
     @team.team_members.build
   end
@@ -52,7 +52,7 @@ class TeamsController < ApplicationController
   private
 
   def load_team
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @team = @campaign.team
   end

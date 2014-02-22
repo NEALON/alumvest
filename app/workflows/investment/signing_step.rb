@@ -9,7 +9,7 @@ class SigningStep < NavableStep
   end
 
   def enabled?
-    false
+    @investment.persisted?
   end
 
   def active?(active_view)
