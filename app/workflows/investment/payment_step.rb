@@ -9,7 +9,8 @@ class PaymentStep < NavableStep
   end
 
   def enabled?
-    @investment.persisted?
+    false
+    # @investment.persisted?
   end
 
   def active?(active_view)

@@ -10,6 +10,7 @@ class InvestmentsController < ApplicationController
 
   def edit
     @investment = InvestmentBase.find(params[:id])
+    @workflow = InvestmentWorkflow.new(@investment)
     render :layout => 'investments'
   end
 
@@ -45,6 +46,7 @@ class InvestmentsController < ApplicationController
 
   def investor_verification
     @investment = InvestmentBase.find(params[:investment_id])
+    @workflow = InvestmentWorkflow.new(@investment)
     render :layout => 'investments'
   end
 
@@ -57,7 +59,7 @@ class InvestmentsController < ApplicationController
   private
 
   def load_campaign_and_company
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @is_accredited = current_user.investor.is_accredited?
   end

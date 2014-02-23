@@ -10,10 +10,10 @@ describe 'accredited investor signs documents', :type => :feature do
     @investment = create_investment(@campaign, @user.investor)
   end
 
-  it 'signs a document' do
+  it 'views a signable document' do
     visit campaign_investment_path(@campaign, @investment)
-    sleep 10
-    # screenshot_and_open_image
-    pending
+    click_on 'Document Signings'
+    click_on 'Signable Document'
+    expect(page).to have_content('Request for Signature')
   end
 end

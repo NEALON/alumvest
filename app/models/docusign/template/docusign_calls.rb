@@ -31,11 +31,11 @@ module Docusign::Template::DocusignCalls
           })
 
       if envelope['status'] && envelope['status'] == 'sent'
-        envelopes << dse = Envelope.new(
+        envelopes << dse = EnvelopeBase.new(
             :signing => signing,
             :envelope_id => envelope['envelopeId'],
             :uri => envelope['uri'])
-        dse.events << dse_event = EnvelopeEvent.create(
+        dse.events << dse_event = EnvelopeEventBase.create(
             :envelope => dse,
             :status => envelope['status'],
             :status_date_time => envelope['statusDateTime'])

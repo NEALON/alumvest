@@ -1,7 +1,7 @@
 class IncomeVerificationsController < ApplicationController
 
   def new
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification = Veritax::Order::Base.new(investor: @investor,
                                               ssn: @user.ssn,
@@ -16,7 +16,7 @@ class IncomeVerificationsController < ApplicationController
   end
 
   def create
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification = Veritax::Order::Base.create(params[:veritax_order_base])
     if @income_verification.valid?
@@ -59,7 +59,7 @@ class IncomeVerificationsController < ApplicationController
   private
 
   def load_income_verification
-    @user = Alumvest::User::Base.find(params[:user_id])
+    @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification =  @investor.income_verification
   end

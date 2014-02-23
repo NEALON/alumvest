@@ -14,9 +14,6 @@ module Alumvest::Investment::Data
     has_one :contract_doc_group,
             :class_name => 'Alumvest::ContractDocGroup',
             :foreign_key => 'investment_id'
-    has_one :subscription_agreement,
-            :class_name => 'Alumvest::SubscriptionAgreement',
-            :foreign_key => 'investment_id'
 
     has_one :bancbox_funding_xn, :class_name => 'Bancbox::FundingXn', :foreign_key => 'investment_id'
 
@@ -24,22 +21,6 @@ module Alumvest::Investment::Data
     has_many :signings, :dependent => :delete_all, :class_name => 'Alumvest::Signing::Base', :foreign_key => 'investment_id'
 
     validates_presence_of :amount
-    validates :amount,
-              :numericality => {:less_than_or_equal_to => 10000000} #max
-
-    #  after_create :make_signings
-
-    def make_signings
-      [campaign.investment_term.subscription_docs, campaign.investment_term.other_docs].each do |collection|
-        collection.where(:signature_required => true).each do |doc|
-          doc.template.create_envelope(
-              Alumvest::Signing::Base.create(
-                  :investment => self,
-                  :document => doc),
-              {:name => investor.user.full_name,
-              :email => investor.user.email})
-        end
-      end
-    end
+    validates :amount, :numericality => {:less_than_or_equal_to => 10000000} #max
   end
 end

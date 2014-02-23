@@ -3,14 +3,14 @@ class InvestmentTermsController < ApplicationController
   before_filter :load_investment_term, :except => [:new, :create]
 
   def new
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @investment_term = Alumvest::InvestmentTerm::Base.new(:campaign => @campaign)
     @investment_term.subscription_docs.build
     @investment_term.other_docs.build
   end
 
   def create
-    @campaign = Alumvest::Campaign::Base.find(params[:alumvest_investment_term_base][:campaign_id])
+    @campaign = CampaignBase.find(params[:alumvest_investment_term_base][:campaign_id])
     @investment_term = Alumvest::InvestmentTerm::Base.create(add_images_if_test!(params[:alumvest_investment_term_base]))
     if @investment_term.valid?
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms saved.' }
@@ -57,7 +57,7 @@ class InvestmentTermsController < ApplicationController
   private
 
   def load_investment_term
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment_term = @campaign.investment_term
   end

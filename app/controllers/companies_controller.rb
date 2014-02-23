@@ -2,18 +2,18 @@ class CompaniesController < ApplicationController
   before_filter :check_issuer, :except => [:display, :show]
 
   def check_issuer
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     unless current_user and current_user.is_issuer? and current_user.issuer == @campaign.issuer
       redirect_to root_url
     end
   end
 
   def new
-    @company = Alumvest::Company::Base.new(:campaign => @campaign)
+    @company = CompanyBase.new(:campaign => @campaign)
   end
 
   def create
-    @company = Alumvest::Company::Base.create(add_images_if_test!(params[:alumvest_company_base]))
+    @company = CompanyBase.create(add_images_if_test!(params[:alumvest_company_base]))
     if @company.valid?
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Company saved.' }
     else
@@ -52,12 +52,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
   end
 
   def display
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment_term = @campaign.investment_term
     @updates = @company.updates

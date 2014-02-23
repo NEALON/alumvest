@@ -1,20 +1,20 @@
 class UpdatesController < ApplicationController
 
   def index
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @update = Alumvest::Update.new(:company => @company)
     @updates = @company.try(:updates)
   end
 
   def new
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @update = Alumvest::Update.new(:company => @company)
   end
 
   def create
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @update = Alumvest::Update.create(params[:alumvest_update])
     if @update.valid?
@@ -25,7 +25,7 @@ class UpdatesController < ApplicationController
   end
 
   def edit
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @update = Alumvest::Update.find(params[:id])
 
@@ -33,7 +33,7 @@ class UpdatesController < ApplicationController
   end
 
   def update
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @update = Alumvest::Update.find(params[:id])
     @update.update_attributes(params[:alumvest_update])
@@ -45,7 +45,7 @@ class UpdatesController < ApplicationController
   end
 
   def destroy
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     update = Alumvest::Update.find(params[:id])
     update.destroy

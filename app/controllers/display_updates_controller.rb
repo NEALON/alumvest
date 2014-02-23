@@ -1,7 +1,7 @@
 class DisplayUpdatesController < ApplicationController
 
   def index
-    @campaign = Alumvest::Campaign::Base.find(params[:campaign_id])
+    @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @updates = @company.updates
   end

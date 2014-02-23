@@ -9,7 +9,7 @@ class SigningStep < NavableStep
   end
 
   def enabled?
-    false
+    @investment.persisted?
   end
 
   def active?(active_view)
@@ -17,6 +17,6 @@ class SigningStep < NavableStep
   end
 
   def link
-    '#'
+    campaign_investment_contract_doc_group_path(@investment.campaign, @investment)
   end
 end
