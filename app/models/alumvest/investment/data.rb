@@ -14,9 +14,6 @@ module Alumvest::Investment::Data
     has_one :contract_doc_group,
             :class_name => 'Alumvest::ContractDocGroup',
             :foreign_key => 'investment_id'
-    has_one :subscription_agreement,
-            :class_name => 'Alumvest::SubscriptionAgreement',
-            :foreign_key => 'investment_id'
 
     has_one :bancbox_funding_xn, :class_name => 'Bancbox::FundingXn', :foreign_key => 'investment_id'
 

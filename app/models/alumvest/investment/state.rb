@@ -12,7 +12,7 @@ module Alumvest::Investment::State
     end
 
     def can_finalize?
-      contract_doc_group.try(:completed?) && subscription_agreement.try(:completed?)
+      contract_doc_group.try(:completed?)
     end
 
     def self.finalized
