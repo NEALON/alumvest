@@ -5,6 +5,7 @@ module Alumvest
     validates_presence_of [:name, :file_url]
 
     belongs_to :documentable, :polymorphic => true
+
     has_one :template,
             :class_name => 'Docusign::Template::Base',
             :foreign_key => 'document_id'

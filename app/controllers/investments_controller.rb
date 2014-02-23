@@ -10,6 +10,7 @@ class InvestmentsController < ApplicationController
 
   def edit
     @investment = InvestmentBase.find(params[:id])
+    @workflow = InvestmentWorkflow.new(@investment)
     render :layout => 'investments'
   end
 
@@ -45,6 +46,7 @@ class InvestmentsController < ApplicationController
 
   def investor_verification
     @investment = InvestmentBase.find(params[:investment_id])
+    @workflow = InvestmentWorkflow.new(@investment)
     render :layout => 'investments'
   end
 

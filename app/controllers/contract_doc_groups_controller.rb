@@ -20,9 +20,14 @@ class ContractDocGroupsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+    @workflow = InvestmentWorkflow.new(@investment)
     @contract_doc_group = @investment.contract_doc_group
-    @investment.make_signings && @investment.reload if @investment.signings.blank?
+
+    @campaign.investment_term.make_signable_document_envelopes(@investment) &&
+        @investment.reload if @investment.signings.blank?
+
     @signings = @investment.signings
+
+    render :layout => 'investments'
   end
 end
-

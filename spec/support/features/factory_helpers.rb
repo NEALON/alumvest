@@ -52,18 +52,19 @@ module Features
     end
 
     def create_live_campaign(issuer)
-      @campaign = FactoryGirl.create(
-          :campaign,
-          :status => 'live',
-          :issuer => issuer,
-          :company => FactoryGirl.create(
-              :company,
-              :category => FactoryGirl.create(
-                  :category)),
-          :investment_term => FactoryGirl.create(:investment_term),
-          :team => FactoryGirl.create(:team),
-          :bancbox_escrow =>  FactoryGirl.create(:vcr_established_bancbox_escrow)
+      @campaign = FactoryGirl.create(:campaign,
+                                     :status => 'live',
+                                     :issuer => issuer,
+                                     :company =>
+                                         FactoryGirl.create(:company,
+                                                            :category =>
+                                                                FactoryGirl.create(:category)),
+                                     :investment_term => FactoryGirl.create(:investment_term),
+                                     :team => FactoryGirl.create(:team),
+                                     :bancbox_escrow => FactoryGirl.create(:vcr_established_bancbox_escrow)
       )
+      @document = FactoryGirl.create(:signable_subscription_document, :documentable => @campaign.investment_term)
+      @campaign
     end
 
     def create_live_campaign_without_escrow(issuer)
@@ -81,18 +82,18 @@ module Features
     end
 
     def create_admin
-        @identity = FactoryGirl.create(:identity,
-                                       :last_name => 'Admin',
-                                       :email => 'admin@alumvest.com')
-        @user = FactoryGirl.create(:user,
-                                   :first_name => 'Alumvest',
-                                   :middle_name => 'Test',
-                                   :last_name => 'Admin',
-                                   :provider => 'identity',
-                                   :email => 'admin@alumvest.com',
-                                   :user_type => 'Admin',
-                                   :identities => [@identity],
-                                   :uid => @identity.id)
+      @identity = FactoryGirl.create(:identity,
+                                     :last_name => 'Admin',
+                                     :email => 'admin@alumvest.com')
+      @user = FactoryGirl.create(:user,
+                                 :first_name => 'Alumvest',
+                                 :middle_name => 'Test',
+                                 :last_name => 'Admin',
+                                 :provider => 'identity',
+                                 :email => 'admin@alumvest.com',
+                                 :user_type => 'Admin',
+                                 :identities => [@identity],
+                                 :uid => @identity.id)
     end
   end
 end

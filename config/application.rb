@@ -109,5 +109,15 @@ module Av
             }
           }
         )
+
+    config.after_initialize do
+      ::UserBase = Alumvest::User::Base
+      ::CampaignBase = Alumvest::Campaign::Base
+      ::CompanyBase = Alumvest::Company::Base
+      ::InvestmentBase = Alumvest::Investment::Base
+      ::SigningBase = Alumvest::Signing::Base
+      ::EnvelopeBase = Docusign::Envelope::Base
+      ::EnvelopeEventBase = Docusign::EnvelopeEvent::Base
+    end
   end
 end
