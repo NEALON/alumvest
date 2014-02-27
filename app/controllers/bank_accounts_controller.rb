@@ -9,6 +9,7 @@ class BankAccountsController < ApplicationController
           :user => @user,
           :bank_account_holder => current_user.name,
           :bank_account_routing => Bancbox::BankAccount::DefaultRoutingNumber)
+      authorize! :manage, @bank_account
       render :layout => 'users'
     else
       render 'show_profile_incomplete', :layout => 'users'
@@ -18,6 +19,7 @@ class BankAccountsController < ApplicationController
   def create
     @user = UserBase.find_by_id(params[:user_id])
     @bank_account = Bancbox::BankAccount.create(params[:bancbox_bank_account])
+    authorize! :manage, @bank_account
     if @bank_account.valid?
       create_bancbox_account
     else
@@ -29,6 +31,7 @@ class BankAccountsController < ApplicationController
     @user = UserBase.find_by_id(params[:user_id])
     @active = 'bank_account'
     @bank_account = @user.bank_account
+    authorize! :manage, @bank_account
     render :layout => 'users'
   end
 
@@ -36,12 +39,14 @@ class BankAccountsController < ApplicationController
     @user = UserBase.find_by_id(params[:user_id])
     @active = 'bank_account'
     @bank_account = @user.bank_account
+    authorize! :manage, @bank_account
     render 'edit', :layout => 'users'
   end
 
   def update
     @user = UserBase.find_by_id(params[:user_id])
     @bank_account = @user.bank_account
+    authorize! :manage, @bank_account
     @bank_account.update_attributes(params[:bancbox_bank_account])
     if @bank_account.valid?
       bancbox_entity = (@user.is_investor? ? @user.investor.bancbox_investor : @user.issuer.bancbox_issuer)
