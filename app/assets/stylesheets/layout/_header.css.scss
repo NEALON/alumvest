@@ -40,6 +40,7 @@
     width: 39%;
     display: inline-block;
     background: none;
+    border: none;
 
     .form-control{
       position: relative;
@@ -85,8 +86,27 @@
       }
     }
   }
+}
 
-  .navbar-collapse{
-    height: 50px !important;
+@media (max-width: 600px) {
+  #user-dropdown a#user-name{
+    position: relative;
+    left: 0;
+  }
+
+  #header #search-header{
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  ul.nav.navbar-nav{
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-right{
+    float: left;
   }
 }

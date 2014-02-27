@@ -1,0 +1,37 @@
+%nav#header.navbar.navbar-default{ 'role' => 'navigation'}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{ :type => 'button', "data-toggle" => "collapse", "data-target" => "#header-content"}
+        %span.sr-only
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a{:href => '/', :class => 'navbar-brand'}
+        %img{:src => image_path('home/logo.png'), :alt => 'Alumvest'}
+    - unless content_for?(:without_navigation) || (yield :without_navigation) == true
+      #header-content.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          = render partial: 'layouts/header_navigation'
+        %div.navbar-form#search-header
+          %div.input-group
+            %span.input-group-btn
+              %button.btn.btn-default{:type => 'button'}
+                %span.glyphicon.glyphicon-search
+            %input.form-control{ :type => 'text', :placeholder => 'Search'}
+        %ul.nav.navbar-nav.navbar-right
+          - if current_user
+            %li#user-dropdown.dropdown
+              = link_to '#', :id => "user-name", :class => "dropdown-toggle", 'data-toggle' => 'dropdown' do
+                = current_user.first_name
+              %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "user-name"}
+                - if current_user.is_admin?
+                  %li= link_to 'Dashboard', user_admin_path(current_user), :class => "btn"
+                - if current_user.is_issuer?
+                  %li= link_to 'Dashboard', user_issuer_path(current_user), :class => "btn"
+                - if current_user.is_investor?
+                  %li= link_to 'Dashboard', user_investor_path(current_user), :class => "btn"
+                %li= link_to 'Profile & Settings', user_path(current_user.id), :class => "btn"
+                %li= link_to 'Sign out', logout_path, :class => "btn", :method => :delete
+          - else
+            %li= link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')
+            %li= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
