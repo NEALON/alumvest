@@ -29,6 +29,9 @@
 
 @import "content/team";
 
+// import open sans earlier in the system
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+
 html, body{
   width: 100%;
   height: 100%;

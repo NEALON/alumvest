@@ -31,6 +31,12 @@ $field-height: 44px;
 
   .modal-header{
   	border: none;
+
+    button.close{
+      &:focus{
+        outline: none;
+      }
+    }
   }
 
 	.modal-dialog.modal-large{
@@ -44,12 +50,27 @@ $field-height: 44px;
 			margin: 0;
 			padding: 0;
 
+      .close{
+        margin: 30px 18px;
+        border: 1px #000000 solid;
+        border-right: 1px #000000 solid;
+        width: $form-width - 38px;
+        height: $field-height;
+        font-size: 16px;
+        font-weight: bold;
+
+        &:focus{
+          outline: none;
+        }
+      }
+
 			input, button, a{
 				display: block;
 				width: $field-width;
 				height: $field-height;
 				font-size: 16px;
 				font-weight: bold;
+        border-radius: 6px;
 			}
 
 			label.radio-inline{
