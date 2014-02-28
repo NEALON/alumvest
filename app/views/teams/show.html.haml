@@ -4,7 +4,7 @@
   = render_cell 'tb/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign)
   - if @team.draft?
     = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
-  = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_team_path(@campaign), :new_page => true
+  = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_team_path(@campaign), :new_page => (not Rails.env.test?)
 
 .panel
   %p

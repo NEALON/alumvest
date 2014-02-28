@@ -6,7 +6,7 @@ module Alumvest::Issuer::Data
   included do
     self.table_name = :issuers
 
-    attr_accessible :experience, :expertise, :financial_info, :marital_status, :personal_message, :ssn
+    attr_accessible :experience, :expertise, :financial_info, :marital_status, :personal_message, :ssn, :user
     attr_encrypted :ssn, :key => Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET']
 
 
