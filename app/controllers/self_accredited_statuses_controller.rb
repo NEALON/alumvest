@@ -5,6 +5,7 @@ class SelfAccreditedStatusesController < ApplicationController
     unless @user.finishes_self_accredited_form?
       @investor = @user.investor
       @self_accredited_status = Alumvest::SelfAccreditedStatus.new(investor: @investor)
+      authorize! :manage, @self_accredited_status
       render layout: 'investors'
     else
       redirect_to user_investor_self_accredited_status_path(@user)
@@ -15,6 +16,7 @@ class SelfAccreditedStatusesController < ApplicationController
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @self_accredited_status = Alumvest::SelfAccreditedStatus.create(params[:alumvest_self_accredited_status])
+    authorize! :manage, @self_accredited_status
     if @self_accredited_status.valid?
       if @self_accredited_status.accredited?
         @investor.update_attributes(:accredited_investor_status => 'self')
@@ -27,16 +29,19 @@ class SelfAccreditedStatusesController < ApplicationController
 
   def edit
     load_self_accredited_status
+    authorize! :manage, @self_accredited_status
     render action: :show, layout: 'investors'
   end
 
   def update
     load_self_accredited_status
+    authorize! :manage, @self_accredited_status
     render action: :show, layout: 'investors'
   end
 
   def show
     if load_self_accredited_status
+      authorize! :manage, @self_accredited_status
       render layout: 'investors'
     else
       redirect_to new_user_investor_self_accredited_status_path(@user)

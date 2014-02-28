@@ -4,6 +4,7 @@ class InvestmentTermsController < ApplicationController
 
   def new
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @investment_term = Alumvest::InvestmentTerm::Base.new(:campaign => @campaign)
     @investment_term.subscription_docs.build
     @investment_term.other_docs.build
@@ -11,6 +12,7 @@ class InvestmentTermsController < ApplicationController
 
   def create
     @campaign = CampaignBase.find(params[:alumvest_investment_term_base][:campaign_id])
+    authorize! :manage, @campaign
     @investment_term = Alumvest::InvestmentTerm::Base.create(add_images_if_test!(params[:alumvest_investment_term_base]))
     if @investment_term.valid?
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms saved.' }
@@ -58,6 +60,7 @@ class InvestmentTermsController < ApplicationController
 
   def load_investment_term
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     @investment_term = @campaign.investment_term
   end

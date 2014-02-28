@@ -4,6 +4,7 @@ class CampaignsController < ApplicationController
 
   def submit_for_review
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     if @campaign.submit_for_review
       redirect_to campaign_company_path(@campaign), :flash => {:success => 'Congratulations! Your campaign is now submitted for review.'}
     else

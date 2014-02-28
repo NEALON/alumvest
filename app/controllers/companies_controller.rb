@@ -3,9 +3,7 @@ class CompaniesController < ApplicationController
 
   def check_issuer
     @campaign = CampaignBase.find(params[:campaign_id])
-    unless current_user and current_user.is_issuer? and current_user.issuer == @campaign.issuer
-      redirect_to root_url
-    end
+    authorize! :manage, @campaign
   end
 
   def new

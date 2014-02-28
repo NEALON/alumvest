@@ -9,12 +9,14 @@ class JobsController < ApplicationController
 
   def new
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     @job = Alumvest::Job.new(:company => @company)
   end
 
   def create
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     @job = Alumvest::Job.create(params[:alumvest_job])
     if @job.valid?
@@ -26,6 +28,7 @@ class JobsController < ApplicationController
 
   def edit
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     @job = Alumvest::Job.find(params[:id])
 
@@ -34,6 +37,7 @@ class JobsController < ApplicationController
 
   def update
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     @job = Alumvest::Job.find(params[:id])
     @job.update_attributes(params[:alumvest_job])
@@ -46,6 +50,7 @@ class JobsController < ApplicationController
 
   def destroy
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     job = Alumvest::Job.find(params[:id])
     job.destroy
