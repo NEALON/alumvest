@@ -154,7 +154,7 @@ $nav-tab-height: 37px;
 		text-align: center;
 		vertical-align: middle;
 
-		position: relative;
+        // position: relative;
 		left: 241px;
 
 		&:focus{
@@ -222,4 +222,8 @@ $nav-tab-height: 37px;
 			}
 		}
 	}
+}
+
+.btn-xs {
+  padding-top: 10px;
 }
