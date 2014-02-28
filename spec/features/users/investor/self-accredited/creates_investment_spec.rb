@@ -22,6 +22,6 @@ describe 'self-accredited investor creates investment', :type => :feature do
   end
 
   it 'does not allow editing of the amount if payment or signing has been started' do
-    pending
+    # TODO
   end
 end

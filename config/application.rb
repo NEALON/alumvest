@@ -111,13 +111,17 @@ module Av
         )
 
     config.after_initialize do
-      ::UserBase = Alumvest::User::Base
-      ::CampaignBase = Alumvest::Campaign::Base
-      ::CompanyBase = Alumvest::Company::Base
-      ::InvestmentBase = Alumvest::Investment::Base
-      ::SigningBase = Alumvest::Signing::Base
-      ::EnvelopeBase = Docusign::Envelope::Base
+
+      ::CampaignBase =      Alumvest::Campaign::Base
+      ::CompanyBase =       Alumvest::Company::Base
+      ::InvestmentBase =    Alumvest::Investment::Base
+      ::InvestorBase =      Alumvest::Investor::Base
+      ::IssuerBase =        Alumvest::Issuer::Base
+      ::SigningBase =       Alumvest::Signing::Base
+      ::UserBase =          Alumvest::User::Base
+
       ::EnvelopeEventBase = Docusign::EnvelopeEvent::Base
+      ::EnvelopeBase =      Docusign::Envelope::Base
     end
   end
 end

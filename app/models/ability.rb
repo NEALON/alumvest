@@ -2,9 +2,62 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    # default user
+    cannot :view_risk_n_challenge, CampaignBase
+    cannot :view_financial, CampaignBase
+    cannot :view_exact_funding_amount, CampaignBase
+    cannot :view_pitch_deck, CampaignBase
+    cannot :view_investment_doc, CampaignBase
+    cannot :invest, CampaignBase
+
+    unless user.nil?
+      can :manage, UserBase
+      can :manage, Bancbox::BankAccount, :user_id => user.id
+
+      # issuer
+      if user.is_issuer?
+        can :manage,IssuerBase
+
+        can :manage, CampaignBase, :issuer_id => user.issuer.id
+        can :view_risk_n_challenge, CampaignBase, :issuer_id => user.issuer.id
+        can :view_financial, CampaignBase, :issuer_id => user.issuer.id
+        can :view_exact_funding_amount, CampaignBase, :issuer_id => user.issuer.id
+        can :view_pitch_deck, CampaignBase, :issuer_id => user.issuer.id
+        can :view_investment_doc, CampaignBase, :issuer_id => user.issuer.id
+      end
+
+      if user.is_investor?
+        can :manage,InvestorBase
+        can :manage, InvestmentBase
+        can :manage, Alumvest::SelfAccreditedStatus, :investor_id => user.investor.id
+        can :manage, Veritax::Order::Base, :investor_id => user.investor.id
+
+        if user.is_self_accredited_investor?
+          can :view_risk_n_challenge, CampaignBase
+          can :view_exact_funding_amount, CampaignBase
+          can :invest, CampaignBase
+        end
+
+        # this is a superset of self_accredited_investor
+        if user.is_accredited_investor?
+          can :view_financial, CampaignBase
+          can :view_pitch_deck, CampaignBase
+          can :view_investment_doc, CampaignBase
+        end
+
+        # admin can do anything
+        if user.is_admin?
+          can :manage, CampaignBase
+        end
+      end
+    end
+  end
+end
+
     # Define abilities for the passed in user here. For example:
     #
-    #   user ||= Alumvest::User::Base.new # guest user (not logged in)
+    #   user ||= UserBase.new # guest user (not logged in)
     #   if user.admin?
     #     can :manage, :all
     #   else
@@ -28,55 +81,3 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-
-    # default user
-    cannot :view_risk_n_challenge, Alumvest::Campaign::Base
-    cannot :view_financial, Alumvest::Campaign::Base
-    cannot :view_exact_funding_amount, Alumvest::Campaign::Base
-    cannot :view_pitch_deck, Alumvest::Campaign::Base
-    cannot :view_investment_doc, Alumvest::Campaign::Base
-    cannot :invest, Alumvest::Campaign::Base
-
-    unless user.nil?
-      can :manage, Alumvest::User::Base
-      can :manage, Bancbox::BankAccount, :user_id => user.id
-
-      # issuer
-      if user.is_issuer?
-        can :manage, Alumvest::Issuer::Base
-
-        can :manage, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
-        can :view_risk_n_challenge, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
-        can :view_financial, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
-        can :view_exact_funding_amount, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
-        can :view_pitch_deck, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
-        can :view_investment_doc, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
-      end
-
-      if user.is_investor?
-        can :manage, Alumvest::Investor::Base
-        can :manage, Alumvest::Investment::Base
-        can :manage, Alumvest::SelfAccreditedStatus, :investor_id => user.investor.id
-        can :manage, Veritax::Order::Base, :investor_id => user.investor.id
-
-        if user.is_self_accredited_investor?
-          can :view_risk_n_challenge, Alumvest::Campaign::Base
-          can :view_exact_funding_amount, Alumvest::Campaign::Base
-          can :invest, Alumvest::Campaign::Base
-        end
-
-        # this is a superset of self_accredited_investor
-        if user.is_accredited_investor?
-          can :view_financial, Alumvest::Campaign::Base
-          can :view_pitch_deck, Alumvest::Campaign::Base
-          can :view_investment_doc, Alumvest::Campaign::Base
-        end
-
-        # admin can do anything
-        if user.is_admin?
-          can :manage, Alumvest::Campaign::Base
-        end
-      end
-    end
-  end
-end

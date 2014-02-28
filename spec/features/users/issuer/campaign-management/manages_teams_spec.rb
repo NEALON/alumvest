@@ -10,6 +10,7 @@ describe 'issuer manages teams', :type => :feature do
   end
 
   it 'creates' do
+    # fixme
     create_new_team(@campaign)
     team = Alumvest::Team::Base.last
     expect(page).to have_content strip_tags team.team_highlights
@@ -24,12 +25,14 @@ describe 'issuer manages teams', :type => :feature do
   end
   
   it 'submits for review' do
+    # fixme
     create_new_team @campaign
     click_link 'Check for completeness'
     (expect page).to have_content 'is complete'
   end
 
   it 'fails submission for review' do
+    # fixme
     create_blank_new_team @campaign
     click_link 'Check for completeness'
     (expect page).to have_content 'errors'
