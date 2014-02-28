@@ -3,12 +3,14 @@ class InvestorsController < ApplicationController
   def edit
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor
+    authorize! :manage, @investor
     render :layout => 'investors'
   end
 
   def update
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor
+    authorize! :manage, @investor
     @investor.update_attributes(params[:alumvest_investor_base])
     if @investor.valid?
       redirect_to user_investor_path(@user), :flash => {:success => 'Investor info saved.'}
@@ -20,6 +22,7 @@ class InvestorsController < ApplicationController
   def show
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor || Alumvest::Investor::Base.new(:user => @user)
+    authorize! :read, @investor
     render :layout => 'investors'
   end
 

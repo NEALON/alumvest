@@ -1,18 +1,21 @@
 class SettingsController < ApplicationController
   def show
     @user = UserBase.find_by_id(params[:user_id])
+    authorize! :read, @user
     @active = 'settings_info'
     render :layout => "users"
   end
 
   def edit
     @user = UserBase.find_by_id(params[:user_id])
+    authorize! :manage, @user
     @active = 'settings_info'
     render :layout => "users"
   end
 
   def update
     @user = UserBase.find(params[:user_id])
+    authorize! :manage, @user
     @identity = Alumvest::Identity.find(@user.uid)
     @identity.password = params[:alumvest_user_base]["password"]
     @identity.password_confirmation = params[:alumvest_user_base]["password_confirmation"]

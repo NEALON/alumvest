@@ -3,6 +3,7 @@ class ContractDocGroupsController < ApplicationController
   def new
     @campaign = CampaignBase.find(params[:campaign_id])
     @investment = InvestmentBase.find(params[:investment_id])
+    authorize! :manage, @investment
     unless @investment.contract_doc_group
       ContractDocGroup.create(:investment => @investment)
     end
@@ -12,6 +13,7 @@ class ContractDocGroupsController < ApplicationController
   def update
     @campaign = CampaignBase.find(params[:campaign_id])
     @investment = InvestmentBase.find(params[:investment_id])
+    authorize! :manage, @investment
     @investment.contract_doc_group.complete
     redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Item completed.'}
   end
@@ -20,6 +22,7 @@ class ContractDocGroupsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+    authorize! :manage, @investment
     @workflow = InvestmentWorkflow.new(@investment)
     @contract_doc_group = @investment.contract_doc_group
 

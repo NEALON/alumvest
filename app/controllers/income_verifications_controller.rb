@@ -12,6 +12,7 @@ class IncomeVerificationsController < ApplicationController
                                               state: @user.state,
                                               zip_code: @user.zipcode,
                                               email: @user.email)
+    authorize! :manage, @income_verification
     render layout: 'investors'
   end
 
@@ -19,6 +20,7 @@ class IncomeVerificationsController < ApplicationController
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification = Veritax::Order::Base.create(params[:veritax_order_base])
+    authorize! :manage, @income_verification
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), flash: {success: 'Your information was saved.'}
     else
@@ -62,6 +64,7 @@ class IncomeVerificationsController < ApplicationController
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification =  @investor.income_verification
+    authorize! :manage, @income_verification
   end
 end
 

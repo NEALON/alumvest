@@ -39,11 +39,13 @@ class Ability
 
     unless user.nil?
       can :manage, Alumvest::User::Base
+      can :manage, Bancbox::BankAccount, :user_id => user.id
 
       # issuer
       if user.is_issuer?
         can :manage, Alumvest::Issuer::Base
 
+        can :manage, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
         can :view_risk_n_challenge, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
         can :view_financial, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
         can :view_exact_funding_amount, Alumvest::Campaign::Base, :issuer_id => user.issuer.id
@@ -54,6 +56,8 @@ class Ability
       if user.is_investor?
         can :manage, Alumvest::Investor::Base
         can :manage, Alumvest::Investment::Base
+        can :manage, Alumvest::SelfAccreditedStatus, :investor_id => user.investor.id
+        can :manage, Veritax::Order::Base, :investor_id => user.investor.id
 
         if user.is_self_accredited_investor?
           can :view_risk_n_challenge, Alumvest::Campaign::Base

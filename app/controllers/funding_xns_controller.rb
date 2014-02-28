@@ -4,6 +4,7 @@ class FundingXnsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+    authorize! :manage, @investment
     @funding_xn = Bancbox::FundingXn.new(:investment => @investment, :escrow_id => @campaign.bancbox_escrow.id)
     render :layout => 'investments'
   end
@@ -12,6 +13,7 @@ class FundingXnsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+    authorize! :manage, @investment
     @funding_xn = Bancbox::FundingXn.create(params[:bancbox_funding_xn])
 
     if @funding_xn.valid?
@@ -25,6 +27,7 @@ class FundingXnsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+    authorize! :manage, @investment
     @funding_xn = Bancbox::FundingXn.find(params[:id])
     render :layout => 'investments'
   end

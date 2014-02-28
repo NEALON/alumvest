@@ -4,12 +4,14 @@ class TeamsController < ApplicationController
 
   def new
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @team = Alumvest::Team::Base.new(:campaign => @campaign)
     @team.team_members.build
   end
 
   def create
     @team = Alumvest::Team::Base.create(params[:alumvest_team_base])
+    authorize! :manage, @campaign
     if @team.valid?
       redirect_to campaign_team_path(@team.campaign), :flash => {:success => 'Campaign team info saved.' }
     else
@@ -53,6 +55,7 @@ class TeamsController < ApplicationController
 
   def load_team
     @campaign = CampaignBase.find(params[:campaign_id])
+    authorize! :manage, @campaign
     @company = @campaign.company
     @team = @campaign.team
   end
