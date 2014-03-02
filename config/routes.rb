@@ -1,6 +1,5 @@
 Av::Application.routes.draw do
 
-  get "dashboard/index"
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -63,7 +62,7 @@ Av::Application.routes.draw do
     resource :bank_account
     resource :settings
 
-    resources :dashboard
+    resource :dashboard
 
     resource :investor do
       resources :events, :controller => 'investor/events'
