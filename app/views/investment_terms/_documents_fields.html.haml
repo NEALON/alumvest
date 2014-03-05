@@ -4,10 +4,8 @@
     = op.render_cell 'tb/form/filepicker', :display, :field => :file_url, :label => "File", :type => "doc"
     = op.render_cell 'tb/form/checkbox', :display, :field => :signature_required, :label => "File", :type => "doc"
 
-:erb
-  <div class="form-group">
-    <div class="col-md-3 control-label">&nbsp;</div>
-    <div class="col-md-7">
-      <%= link_to_remove_association "Remove this file", f, :class => 'btn btn-default btn-xs' %>
-    </div>
-  </div>
+  .form-group
+    .col-md-8.col-md-offset-4
+      = link_to_remove_association 'Remove this file', f, :class => 'btn btn-default btn-xs'
+
+      %hr

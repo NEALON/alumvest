@@ -10,14 +10,15 @@
     = op.render_cell 'tb/form/richtext', :display, :field => :introduction
     = op.render_cell 'tb/form/text', :display, :field => :video_url
   %hr
-  %h4 Education
-  #educations
-    = f.fields_for :educations do |e|
-      = render 'education_fields', :f => e
-    .links
-      = link_to_add_association 'Add Education', f, :educations
 
-  :erb
-    <div class="form-group">
-      <%= link_to_remove_association "Remove this person", f, :class => 'btn btn-default btn-xs' %>
-    </div>
+  .form-group
+    .col-md-8.col-md-offset-4
+      %h4 Education
+      #educations
+        = f.fields_for :educations do |e|
+          = render 'education_fields', :f => e
+        .links
+          = link_to_add_association 'Add Education', f, :educations
+
+      = link_to_remove_association 'Remove this person', f, :class => 'btn btn-default btn-xs'
+      %hr

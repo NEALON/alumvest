@@ -1,5 +1,5 @@
 - content_for :header_1 do
-  - unless @company.banner_photo_url.blank?
+  - unless  @company.blank? || @company.banner_photo_url.blank?
     .company_banner
       = image_tag(@company.banner_for_campaign_home_display)
 

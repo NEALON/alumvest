@@ -1,8 +1,0 @@
-<div class="form-group">
-  <%= label_tag @field, @label, :class => "col-md-4 control-label" %>
-  <div class="col-md-8">
-    <% unless Rails.env.test? %>
-        <%= @form.filepicker_field @field, @type, :html_options => {:class => 'btn btn-default'}, :delete_button_html => 'Remove' %>
-    <% end %>
-  </div>
-</div>

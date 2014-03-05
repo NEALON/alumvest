@@ -3,7 +3,6 @@
 = f.fields_for grouping do |member|
   = render 'people_fields', {:f => member}
 
-  :erb
-    <div class="form-group">
-      <%= link_to_add_association 'Add another person', f, grouping, :partial => 'people_fields', :force_non_association_create => true, :class => 'btn btn-default btn-xs' %>
-    </div>
+  .form-group
+    .col-md-8.col-md-offset-4
+      = link_to_add_association 'Add another person', f, grouping, :partial => 'people_fields', :force_non_association_create => true, :class => 'btn btn-default btn-xs'
