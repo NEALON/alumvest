@@ -14,5 +14,9 @@ FactoryGirl.define do
   factory :team_member, :class => Alumvest::TeamMember do populate_person; end
   factory :team, :class => Alumvest::Team::Base do
     team_highlights "#{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)} #{Faker::Lorem.sentence(10)}"
+
+    after(:create) do |team|
+      FactoryGirl.create(:team_member, :populatable => team)
+    end
   end
 end
