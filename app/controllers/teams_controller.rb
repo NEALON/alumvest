@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   end
 
   def create
+    @campaign = CampaignBase.find(params[:campaign_id])
     @team = Alumvest::Team::Base.create(params[:alumvest_team_base])
     authorize! :manage, @campaign
     if @team.valid?
