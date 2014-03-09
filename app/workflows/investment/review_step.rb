@@ -1,7 +1,7 @@
 class ReviewStep < NavableStep
 
   def label
-    'Review and Finalize'
+    'Review'
   end
 
   def checked?

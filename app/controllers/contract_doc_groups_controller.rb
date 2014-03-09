@@ -5,7 +5,7 @@ class ContractDocGroupsController < ApplicationController
     @investment = InvestmentBase.find(params[:investment_id])
     authorize! :manage, @investment
     unless @investment.contract_doc_group
-      ContractDocGroup.create(:investment => @investment)
+      Alumvest::ContractDocGroup.create(:investment => @investment)
     end
     redirect_to campaign_investment_contract_doc_group_path(@campaign, @investment)
   end
@@ -22,6 +22,7 @@ class ContractDocGroupsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+
     authorize! :manage, @investment
     @workflow = InvestmentWorkflow.new(@investment)
     @contract_doc_group = @investment.contract_doc_group
@@ -30,7 +31,6 @@ class ContractDocGroupsController < ApplicationController
         @investment.reload if @investment.signings.blank?
 
     @signings = @investment.signings
-
     render :layout => 'investments'
   end
 end

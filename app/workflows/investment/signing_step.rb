@@ -1,7 +1,7 @@
 class SigningStep < NavableStep
 
   def label
-    'Document Signings'
+    'Documents'
   end
 
   def checked?

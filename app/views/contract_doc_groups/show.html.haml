@@ -1,18 +1,26 @@
 = render 'investments/navigation', :active => 'investment_documents', :campaign => @campaign
 
-%table.table
-  %thead
-    %tr
-      %td
-        Document name
-      %td
-        Document status
-  - @signings.each do |signing|
-    %tbody
+.well
+  %table.table
+    %thead
       %tr
         %td
-          = link_to_unless signing.status == 'completed', signing.document.name, signing.envelope.get_recipient_view('investor')
+          Document
         %td
-          = signing.status_for_end_user
+          Status
+        %td
+          Action
+    - @signings.each do |signing|
+      %tbody
+        %tr
+          %td
+            = signing.document.name
+          %td
+            = signing.status_for_end_user
+          %td
+            - if signing.status == 'unsigned'
+              = link_to 'Review and Sign', signing.envelope.get_recipient_view('investor')
+            - else
+              None
 
 -# %iframe.col-md-12{:src => @signing_url, :style => 'min-height: 500px'}
