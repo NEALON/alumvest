@@ -26,7 +26,6 @@ describe 'issuer creates campaign', :type => :feature do
       click_link 'Check for completeness'
       (expect page).to have_content 'is complete'
 
-      # fixme
       create_new_team @campaign
       click_link 'Check for completeness'
       (expect page).to have_content 'is complete'

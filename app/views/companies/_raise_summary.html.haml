@@ -34,9 +34,10 @@
     = @campaign.investors.count
   %p.progress
     %p.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
-  - unless just_data || @is_preview
-    %p
-      = link_to_campaign_investment(current_user.investor, @company.campaign)
+  - if current_user and current_user.is_investor?
+    - unless just_data || @is_preview
+      %p
+        = link_to_campaign_investment(current_user.investor, @company.campaign)
 
 - unless just_data
 
