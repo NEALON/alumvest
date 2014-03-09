@@ -18,7 +18,7 @@
           %td
             = signing.status_for_end_user
           %td
-            - if signing.status == 'unsigned'
+            - if ['canceled', 'unsigned'].include? signing.status
               = link_to 'Review and Sign', signing.envelope.get_recipient_view('investor')
             - else
               None
