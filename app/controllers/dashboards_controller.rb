@@ -5,7 +5,13 @@ class DashboardsController < ApplicationController
 
   def show
     @user = UserBase.find(params[:user_id])
-    @investor = @user.investor || Alumvest::Issuer::Base.new(:user => @user)
-    authorize! :read, @investor
+    if @user.user_type === "Investor"
+      render 'dashboards/investor'
+    elsif @user.user_type === "Issuer"
+      render 'dashboards/issuer'
+    # else
+    #   render :layout => ''
+    end
+
   end
 end
