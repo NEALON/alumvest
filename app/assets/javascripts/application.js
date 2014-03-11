@@ -20,4 +20,7 @@
 //= require bootstrap
 //= require layout/header
 //= require partials/scrollpy
+//= require backbone-min
+//= requrie frontend/modules/.
+//= require frontend/main
 //= require_tree .
