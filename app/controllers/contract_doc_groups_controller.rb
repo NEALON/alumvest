@@ -5,7 +5,7 @@ class ContractDocGroupsController < ApplicationController
     @investment = InvestmentBase.find(params[:investment_id])
     authorize! :manage, @investment
     unless @investment.contract_doc_group
-      ContractDocGroup.create(:investment => @investment)
+      Alumvest::ContractDocGroup.create(:investment => @investment)
     end
     redirect_to campaign_investment_contract_doc_group_path(@campaign, @investment)
   end
@@ -22,15 +22,23 @@ class ContractDocGroupsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @investment = InvestmentBase.find(params[:investment_id])
+
     authorize! :manage, @investment
     @workflow = InvestmentWorkflow.new(@investment)
     @contract_doc_group = @investment.contract_doc_group
 
-    @campaign.investment_term.make_signable_document_envelopes(@investment) &&
-        @investment.reload if @investment.signings.blank?
+    if @investment.signings.blank?
+      begin
+        raise 'An exception!' if ($TEST_SAYS_DIE_DIE_DIE == true)
+        @campaign.investment_term.make_signable_document_envelopes(@investment)
+        @investment.reload
+      rescue
+        @oy_an_exception_exists = true
+        flash[:warning] = 'An exception occurred!'
+      end
+    end
 
     @signings = @investment.signings
-
     render :layout => 'investments'
   end
 end

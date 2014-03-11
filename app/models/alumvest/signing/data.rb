@@ -18,11 +18,6 @@ module Alumvest::Signing::Data
              :class_name => 'Bus::Event::SigningReview',
              :foreign_key => 'signing_id'
 
-    after_create :make_envelope
-    def make_envelope
-      document.template.create_envelope(self, investment.investor)
-    end
-
     def self.signed_by_investor
       where(:status => 'signed_by_investor').order('created_at DESC')
     end

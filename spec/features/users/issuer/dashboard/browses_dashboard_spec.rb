@@ -30,7 +30,7 @@ describe 'issuer browses dashboard', :type => :feature do
   end
 
   it 'shows the signings' do
-    click_on 'Document Signings'
-    expect(page).to have_content('Your Document Signings')
+    click_on 'Documents'
+    expect(page).to have_content('Your Documents')
   end
 end
