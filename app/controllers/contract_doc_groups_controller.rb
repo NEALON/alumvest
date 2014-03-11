@@ -27,8 +27,16 @@ class ContractDocGroupsController < ApplicationController
     @workflow = InvestmentWorkflow.new(@investment)
     @contract_doc_group = @investment.contract_doc_group
 
-    @campaign.investment_term.make_signable_document_envelopes(@investment) &&
-        @investment.reload if @investment.signings.blank?
+    if @investment.signings.blank?
+      begin
+        raise 'An exception!' if ($TEST_SAYS_DIE_DIE_DIE == true)
+        @campaign.investment_term.make_signable_document_envelopes(@investment)
+        @investment.reload
+      rescue
+        @oy_an_exception_exists = true
+        flash[:warning] = 'An exception occurred!'
+      end
+    end
 
     @signings = @investment.signings
     render :layout => 'investments'
