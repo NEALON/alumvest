@@ -1,10 +1,12 @@
 = render 'campaigns/management_navigation', :active => :company, :campaign => @campaign
 
-%p
-  = render_cell 'tb/mini_link_button', :display, :label => 'Edit Company', :link => edit_campaign_company_path(@campaign)
-  - if @company.draft?
-    = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_company_path(@campaign)
-  = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_company_path(@campaign), :new_page => (not Rails.env.test?)
+%p.row
+  .col-xs-12.col-md-4
+  .col-xs-12.col-md-8
+    = render_cell 'tb/mini_link_button', :display, :label => 'Edit Company', :link => edit_campaign_company_path(@campaign)
+    - if @company.draft?
+      = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_company_path(@campaign)
+    = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_company_path(@campaign), :new_page => (not Rails.env.test?)
 
 .panel
   %p
@@ -25,7 +27,12 @@
   = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
   = render 'shared/property_row', :header => 'Phone', :value => @company.phone
   = render 'shared/property_row', :header => 'faq', :value => (raw @company.faq)
-  = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        Video
+    .col-xs-8.col-md-8.form-value#video
+      = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
   = render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(w:64, h:64) unless @company.photo.blank?)
   = render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(w:64, h:64) unless @company.photo.blank?)
   %br
