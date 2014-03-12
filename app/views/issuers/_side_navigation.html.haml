@@ -8,3 +8,8 @@
       = link_to('Campaign', user_issuer_campaign_path(@user))
     %li{:class => "#{'active' if active == 'issuer_signings'}"}
       = link_to('Documents', user_issuer_signings_path(@user))
+    %li{:class => "#{'active' if active == 'bank_account'}"}
+      - if @user.bank_account.nil?
+        = link_to 'Bank Account', new_user_bank_account_path(@user)
+      - else
+        = link_to 'Bank Account', user_bank_account_path(@user, @user.bank_account)
