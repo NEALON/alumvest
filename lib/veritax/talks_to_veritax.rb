@@ -7,16 +7,16 @@ class Veritax::TalksToVeritax
   CERT_ENDPOINT = 'https://cert.secure.veri-tax.com/vt.service/PublicAPI/vtservice.asmx'.freeze
   PRODUCTION_ENDPOINT = 'https://secure.veri-tax.com/vt.service/PublicAPI/vtservice.asmx'.freeze
 
-  #if Rails.env.production?
+  if Rails.env.production?
     ENDPOINT_IN_USE = PRODUCTION_ENDPOINT
-  #else
-  #  ENDPOINT_IN_USE = CERT_ENDPOINT
-  #end
+  else
+    ENDPOINT_IN_USE = CERT_ENDPOINT
+  end
 
   WSDL = ENDPOINT_IN_USE + '?wsdl'
 
-  LOGIN = 'AlumVest_WS'
-  PASSWORD = 'xGEaFe.w'
+  LOGIN = 'sablovatskiy'
+  PASSWORD = 'alumvest2014'
 
   Type4506 = 'F1040PlusWages'
   TranscriptType = 'A'
