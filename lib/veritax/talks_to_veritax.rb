@@ -9,14 +9,15 @@ class Veritax::TalksToVeritax
 
   if Rails.env.production?
     ENDPOINT_IN_USE = PRODUCTION_ENDPOINT
+    LOGIN = 'sablovatskiy'
+    PASSWORD = 'alumvest2014'
   else
     ENDPOINT_IN_USE = CERT_ENDPOINT
+    LOGIN = 'AlumVest_WS'
+    PASSWORD = 'xGEaFe.w'
   end
 
   WSDL = ENDPOINT_IN_USE + '?wsdl'
-
-  LOGIN = 'sablovatskiy'
-  PASSWORD = 'alumvest2014'
 
   Type4506 = 'F1040PlusWages'
   TranscriptType = 'A'
