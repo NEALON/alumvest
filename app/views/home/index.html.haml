@@ -1,23 +1,18 @@
 
-= content_for :header_1 do
+#cover.jumbotron
   .container
-    .row-bg1
-      .col-md-12
-        %h3 &nbsp;
-
-        #goal
-          %h2 Welcome to Alumvest!
-          .cover-description.well
-            %p
-              AlumVest is an equity and rewards crowdfunding platform that connects entrepreneurs from leading U.S. educational institutions with alumni investors and supporters.
-            %p
-              We focus on alumni and school networks because of the “Alumni Effect”—the desire or willingness to get involved through a common or emotional bond shared between alumni. We believe in social investing! AlumVest allows investors and supporters to back people from their trusted school & affinity networks – networks that put social pressure and encourages entrepreneurs to succeed. In doing so, it enables investors to focus time and money on ventures they can identify with and trust.
-            %p{:style => 'margin-top: 2em'}
-              = link_to('Learn more', '#', :class => "btn btn-primary btn-large")
-        .shareaholic-canvas{"data-app" => "share_buttons", "data-app-id" => "202842", style: "min-height: 65px"}
-
-        %hr
-
+    / #goal
+    /   %h2 Welcome to Alumvest!
+    /   .cover-description
+    /     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    /   %p
+    /     = link_to('Learn more', '#', :class => "btn btn-primary btn-large")
+  / .bottom
+  /   .container
+  /     Connecting capital and intelligence, Alumvest engages alumni and peers to seed and mentor entrepreneurs.
+  / :erb
+  /   <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
+  / %hr
 
 - unless @reviewable_campaigns.blank?
   #active
