@@ -11,11 +11,11 @@
 
   = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
 
-  %h5 Team members
   %p
+    - if @team.team_members.length > 0
+      %h4.sub-title Team members
     - @team.team_members.each do |p|
       = p.full_name
       = p.title
       = render 'shared/youtube', :video_url => p.video_url, :width => 590, :height => 400
       %br
-  %br

@@ -17,16 +17,36 @@
   = render 'shared/property_row', :header => 'Elevator Pitch', :value => (raw @investment_term.elevator_pitch)
   = render 'shared/property_row', :header => 'Investment Details', :value => (raw @investment_term.investment_details)
 
-  %ul
-    %li= link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
-    %li= link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url
-    %li= link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        Business plan
+    .col-xs-8.col-md-8.form-value
+      = link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        Financial statement
+    .col-xs-8.col-md-8.form-value
+      = link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        Term sheet
+    .col-xs-8.col-md-8.form-value
+      = link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url
 
-  %ul
-    - @investment_term.subscription_docs.each do |doc|
-      %li= link_to doc.name, doc.file_url
-
-  %ul
-    - @investment_term.other_docs.each do |doc|
-      %li= link_to doc.name, doc.file_url
-  %br
+  - @investment_term.subscription_docs.each do |doc|
+    .row.form-row
+      .col-xs-4.col-md-4.form-label
+        %b.pull-right
+          doc.name
+      .col-xs-8.col-md-8.form-value
+        = link_to doc.name, doc.file_url
+  - @investment_term.other_docs.each do |doc|
+    .row.form-row
+      .col-xs-4.col-md-4.form-label
+        %b.pull-right
+          doc.name
+      .col-xs-8.col-md-8.form-value
+        = link_to doc.name, doc.file_url
