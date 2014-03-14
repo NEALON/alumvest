@@ -36,7 +36,7 @@ end
 
 gem 'rubyzip', '~> 1.1.0'
 gem 'bcrypt-ruby', '~> 3.0'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.4'
 gem 'state_machine', '~> 1.2'
 
 gem 'omniauth-identity', '~> 1.1'
