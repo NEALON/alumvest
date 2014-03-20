@@ -1,4 +1,4 @@
-%span #{@campaign.company.campaign_title}
+%span #{@campaign.company.try(:campaign_title) || 'Untitled campaign'}
 %span.campaign-live #{@campaign.status}
 = link_to 'Edit', campaign_company_path(@campaign)
 %span
