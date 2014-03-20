@@ -15,6 +15,6 @@ describe 'users manages basic information', :type => :feature do
 
   it 'validates required fields' do
     click_on 'Save'
-    expect(page).to have_content '6 errors encountered'
+    expect(page).to have_content '6 errors were encountered'
   end
 end
