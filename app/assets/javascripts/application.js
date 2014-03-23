@@ -13,6 +13,8 @@
 //= require underscore
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require autoNumeric
 //= require filepicker_async
 //= require ckeditor-jquery
@@ -23,4 +25,6 @@
 //= require backbone-min
 //= requrie frontend/modules/.
 //= require frontend/main
+//= require validation/login_validation
+//= require validation/signup_validation
 //= require_tree .
