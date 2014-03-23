@@ -20,11 +20,5 @@
 //= require ckeditor-jquery
 //= require cocoon
 //= require bootstrap
-//= require layout/header
-//= require partials/scrollpy
 //= require backbone-min
-//= requrie frontend/modules/.
-//= require frontend/main
-//= require validation/login_validation
-//= require validation/signup_validation
 //= require_tree .
