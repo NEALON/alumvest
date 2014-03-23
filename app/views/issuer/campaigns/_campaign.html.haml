@@ -1,6 +1,10 @@
-%span #{@campaign.company.campaign_title}
+%span #{@campaign.company.try(:campaign_title) || 'Untitled campaign'}
 %span.campaign-live #{@campaign.status}
-= link_to 'Edit', campaign_company_path(@campaign)
-%span
-  = '|'
-= link_to 'Display', display_campaign_company_path(@campaign)
+
+- if @campaign.company
+  = link_to 'Edit', edit_campaign_company_path(@campaign)
+  %span
+    = '|'
+  = link_to 'Display', display_campaign_company_path(@campaign)
+- else
+  = link_to 'Edit', new_campaign_company_path(@campaign)

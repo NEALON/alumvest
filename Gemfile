@@ -36,7 +36,7 @@ end
 
 gem 'rubyzip', '~> 1.1.0'
 gem 'bcrypt-ruby', '~> 3.0'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.4'
 gem 'state_machine', '~> 1.2'
 
 gem 'omniauth-identity', '~> 1.1'
@@ -44,7 +44,7 @@ gem 'omniauth-facebook', '~> 1.4'
 gem 'omniauth-linkedin', '~> 0.1'
 
 gem 'underscore-rails'
-gem 'sass-rails', '~> 4.0'
+gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.0.3.0' #, {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
 gem 'coffee-rails', '~> 4.0'
 gem 'uglifier', '~> 2.2'
