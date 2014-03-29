@@ -1,7 +1,7 @@
 = render 'campaigns/management_navigation', :active => :funding, :campaign => @campaign
 
 %p
-  = render_cell 'tb/mini_link_button', :display, :label => 'Edit Investment Terms', :link => edit_campaign_investment_term_path(@campaign)
+  = render_cell 'tb/mini_link_button', :display, :label => 'Edit Investment Terms', :link => edit_campaign_investment_term_path(@campaign) unless @campaign.published?
   - if @investment_term.draft?
     = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_investment_term_path(@campaign)
   = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_investment_term_path(@campaign), :new_page => (not Rails.env.test?)

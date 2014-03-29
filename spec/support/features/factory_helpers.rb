@@ -66,6 +66,24 @@ module Features
       @campaign
     end
 
+    def create_publishable_campaign(issuer)
+      @campaign = FactoryGirl.create(:campaign,
+                                     :status => 'draft',
+                                     :issuer => issuer,
+                                     :company =>
+                                         FactoryGirl.create(:company,
+                                                            :status => 'ready_for_review',
+                                                            :category =>
+                                                                FactoryGirl.create(:category)),
+                                     :investment_term => FactoryGirl.create(:investment_term, :status => 'ready_for_review')
+      )
+      @campaign.team = create_team_via_factories(@campaign, :create)
+      @campaign.team.make_ready_for_review
+      @campaign.save
+      @document = FactoryGirl.create(:signable_subscription_document, :documentable => @campaign.investment_term)
+      @campaign
+    end
+
     def create_live_campaign(issuer)
       @campaign = FactoryGirl.create(:campaign,
                                      :status => 'live',
@@ -92,7 +110,7 @@ module Features
               :category => FactoryGirl.create(
                   :category)),
           :investment_term => FactoryGirl.create(:investment_term),
-          :team => FactoryGirl.create(:team),
+          :team => FactoryGirl.create(:team)
       )
     end
 
