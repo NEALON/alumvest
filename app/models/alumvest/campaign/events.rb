@@ -5,7 +5,7 @@ module Alumvest::Campaign::Events
 
   included do
     def generate_event
-      Bus::Event::CampaignSubmittedForReview.create(:campaign => self)
+      Bus::Event::Campaign::Published.create(:campaign => self)
     end
   end
 end

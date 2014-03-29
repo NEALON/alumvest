@@ -26,12 +26,4 @@ describe 'users bank accounts', :type => :feature do
     click_button 'Save'
     expect(page).to have_content('error')
   end
-
-  it 'makes a bancbox account when the profile is complete' do
-    click_on 'Basic Information'
-    click_on 'Edit'
-    fill_in_user_basic_info
-    click_on 'Bank Account'
-    fill_in_user_bank_account
-  end
 end

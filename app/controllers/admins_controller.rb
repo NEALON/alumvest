@@ -6,6 +6,12 @@ class AdminsController < ApplicationController
     render :layout => 'admins'
   end
 
+  def campaign_publication_events
+    @user = UserBase.find(params[:user_id])
+    @events = Bus::Event::Campaign::Published.all.order('id DESC')
+    render :layout => 'admins'
+  end
+
   def income_verification_events
     @user = UserBase.find(params[:user_id])
     # TODO: merging and sorting these events

@@ -34,13 +34,8 @@ describe 'issuer creates campaign', :type => :feature do
       click_link 'Check for completeness'
       (expect page).to have_content 'are complete'
 
-      click_link 'Submit for review'
-      (expect page).to have_content 'Your campaign is now submitted for review'
-    end
-
-    it 'by unsuccessfully submitting it' do
-      #visit campaign_company_path(@campaign)
-      #click_link 'Submit for review'
+      click_link 'Publish'
+      (expect page).to have_content 'Congratulations! Your campaign is now published and ready for our review.'
     end
   end
 end

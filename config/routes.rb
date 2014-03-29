@@ -52,7 +52,7 @@ Av::Application.routes.draw do
       resource :subscription_agreement
       put :submit_for_review
     end
-    post :submit_for_review
+    post :publish
     post :follow
     post :unfollow
   end
@@ -87,6 +87,7 @@ Av::Application.routes.draw do
 
     resource :admin do
       get :income_verification_events
+      get :campaign_publication_events
       get :investor_signings
       get :simulate_completed_order
       get :simulate_canceled_order

@@ -1,12 +1,12 @@
 class CampaignsController < ApplicationController
 
-  before_filter :load_campaign, :except => :submit_for_review
+  before_filter :load_campaign, :except => :publish
 
-  def submit_for_review
+  def publish
     @campaign = CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
-    if @campaign.submit_for_review
-      redirect_to campaign_company_path(@campaign), :flash => {:success => 'Congratulations! Your campaign is now submitted for review.'}
+    if @campaign.publish
+      redirect_to campaign_company_path(@campaign), :flash => {:success => 'Congratulations! Your campaign is now published and ready for our review.'}
     else
       redirect_to campaign_company_path(@campaign), :flash => {:warning => company.invalid_items.join(', ')}
     end

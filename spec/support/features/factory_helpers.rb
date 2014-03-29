@@ -51,6 +51,21 @@ module Features
       @investment = FactoryGirl.create(:investment, :amount => 100, :campaign => campaign, :investor => investor)
     end
 
+    def create_draft_campaign(issuer)
+      @campaign = FactoryGirl.create(:campaign,
+                                     :status => 'draft',
+                                     :issuer => issuer,
+                                     :company =>
+                                         FactoryGirl.create(:company,
+                                                            :category =>
+                                                                FactoryGirl.create(:category)),
+                                     :investment_term => FactoryGirl.create(:investment_term),
+                                     :team => FactoryGirl.create(:team)
+      )
+      @document = FactoryGirl.create(:signable_subscription_document, :documentable => @campaign.investment_term)
+      @campaign
+    end
+
     def create_live_campaign(issuer)
       @campaign = FactoryGirl.create(:campaign,
                                      :status => 'live',

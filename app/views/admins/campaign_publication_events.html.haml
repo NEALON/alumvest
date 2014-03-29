@@ -1,0 +1,11 @@
+= render 'side_navigation', :active => 'admin_campaign_publication_events'
+= render 'users/header'
+
+#information
+  %table.table
+    - if @events.blank?
+      No data present.
+    - else
+      - @events.each do |event|
+        %tr
+          = render :partial => event.to_admin_partial_path, :locals => {:event => event, :campaign => event.campaign}
