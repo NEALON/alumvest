@@ -13,14 +13,12 @@
 //= require underscore
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require autoNumeric
 //= require filepicker_async
 //= require ckeditor-jquery
 //= require cocoon
 //= require bootstrap
-//= require layout/header
-//= require partials/scrollpy
 //= require backbone-min
-//= requrie frontend/modules/.
-//= require frontend/main
 //= require_tree .
