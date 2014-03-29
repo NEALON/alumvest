@@ -17,6 +17,8 @@ Av::Application.routes.draw do
   get '/tester_dashboard', :to => 'tester_dashboard#index'
   get '/tester_dashboard/reset_database', :to => 'tester_dashboard#reset_database', :via => :get
 
+  get '/dashboard', :to => 'dashboard#index'
+
   match '/about', :to => 'content_page#index', :via => [:get]
   match '/about/team', :to => 'content_page#team', :via => [:get]
   match '/about/contact', :to => 'content_page#contact', :via => [:get]
@@ -71,8 +73,6 @@ Av::Application.routes.draw do
 
     resource :bank_account
     resource :settings
-
-    resource :dashboard
 
     resource :investor do
       resources :events, :controller => 'investor/events'
