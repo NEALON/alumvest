@@ -9,7 +9,6 @@ module Alumvest::Issuer::Data
     attr_accessible :experience, :expertise, :financial_info, :marital_status, :personal_message, :ssn, :user
     attr_encrypted :ssn, :key => Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET']
 
-
     belongs_to :user, :class_name => 'Alumvest::User::Base'
 
     has_one :campaign,

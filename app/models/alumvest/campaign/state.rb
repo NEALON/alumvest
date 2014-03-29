@@ -6,7 +6,7 @@ module Alumvest::Campaign::State
   included do
     state_machine :status, :initial => :draft do
       event :publish do
-        transition :draft => :published, :if => :generate_event
+        transition :draft => :published, :if => :generate_published_event
       end
 
       state :published
