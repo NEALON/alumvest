@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223140926) do
+ActiveRecord::Schema.define(version: 20140329214545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -389,6 +389,14 @@ ActiveRecord::Schema.define(version: 20140223140926) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.string   "result"
+    t.text     "notes"
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "self_accredited_statuses", force: true do |t|
     t.integer  "financial_status"

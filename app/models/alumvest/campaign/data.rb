@@ -22,6 +22,9 @@ module Alumvest::Campaign::Data
     has_one :bancbox_escrow,
             :class_name => 'Bancbox::Escrow::Base',
             :foreign_key => 'campaign_id'
+    has_one :review,
+            :class_name => 'Alumvest::Review',
+            :foreign_key => 'campaign_id'
     has_many :investments,
              :class_name => 'Alumvest::Investment::Base',
              :foreign_key => 'campaign_id'

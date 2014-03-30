@@ -61,8 +61,8 @@ RSpec.configure do |config|
   end
 
   config.before(:each, :type => :feature) do
-    #page.driver.browser.manage.window.resize_to(1600,1000)
-    page.driver.browser.manage.window.maximize
+    # page.driver.browser.manage.window.resize_to(1600,1000)
+    # page.driver.browser.manage.window.maximize
   end
 
   config.after(:each) do

@@ -2,8 +2,7 @@
   A campaign was published for review
 %td
   = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
-
--#%td
--#  = link_to 'Approve', '#', :class => 'btn btn-xs btn-success'
--#%td
--#  = link_to 'Reject', '#', :class => 'btn btn-xs btn-danger'
+%td
+  - if campaign.published?
+    = link_to 'Go Live',  go_live_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'
+    = link_to 'Reject', reject_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'

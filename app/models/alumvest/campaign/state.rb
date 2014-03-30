@@ -9,16 +9,25 @@ module Alumvest::Campaign::State
         transition :draft => :published, :if => :generate_published_event
       end
 
+      event :go_live do
+        transition :published => :live
+      end
+
+      event :reject do
+        transition :published => :rejected
+      end
+
       state :published
       state :live
+      state :rejected
     end
 
     def self.reviewable;
-      where(:status => 'published');
+      where(:status => 'published')
     end
 
     def self.live;
-      where(:status => 'live');
+      where(:status => 'live')
     end
 
     def can_publish?

@@ -1,5 +1,7 @@
 Av::Application.routes.draw do
 
+  get "reviews/go_live"
+  get "reviews/reject"
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -87,13 +89,19 @@ Av::Application.routes.draw do
 
     resource :admin do
       get :income_verification_events
-      get :campaign_publication_events
+      get :campaign_events
       get :investor_signings
       get :simulate_completed_order
       get :simulate_canceled_order
       get :income_verification_transcript
       post :approve_investor_signing
       post :reject_investor_signing
+      resources :campaigns do
+        resource :review do
+          post :go_live
+          post :reject
+        end
+      end
     end
 
     resource :bancbox_identity_verification
