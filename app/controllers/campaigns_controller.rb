@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
     @campaign = CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     if @campaign.publish
-      redirect_to campaign_company_path(@campaign), :flash => {:success => 'Congratulations! Your campaign is now published and ready for our review.'}
+      redirect_to user_issuer_events_path(current_user), :flash => {:success => 'Congratulations! Your campaign is now published and ready for our review.'}
     else
       redirect_to campaign_company_path(@campaign), :flash => {:warning => company.invalid_items.join(', ')}
     end
