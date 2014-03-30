@@ -1,4 +1,4 @@
-class Bus::Event::Campaign::Rejected Bus::Event
+class Bus::Event::Campaign::Rejected < Bus::Event
   attr_accessible :campaign, :campaign_id, :issuer, :issuer_id
 
   belongs_to :campaign, :class_name => 'Alumvest::Campaign::Base'
