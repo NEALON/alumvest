@@ -9,7 +9,7 @@ end
 
 include Features::FactoryHelpers
 
-create_issuer
-create_publishable_campaign(@user.issuer)
 create_accredited_investor
 create_admin
+create_issuer
+create_publishable_campaign(@user.issuer)
