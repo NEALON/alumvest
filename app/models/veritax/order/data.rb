@@ -30,5 +30,9 @@ module Veritax::Order::Data
     validates_presence_of [:ssn, :first_name, :last_name, :address, :city, :state, :zip_code, :email]
 
     belongs_to :investor, :class_name => 'Alumvest::Investor::Base'
+
+    def self.submitted
+      where(:status => 'submitted')
+    end
   end
 end

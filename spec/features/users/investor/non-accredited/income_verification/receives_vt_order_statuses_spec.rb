@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'self-accredited investor receives veritax order statuses', :type => :feature do
+describe 'non-accredited investor receives veritax order statuses', :type => :feature do
 
   context 'a new order' do
     before :each do

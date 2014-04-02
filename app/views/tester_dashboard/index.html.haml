@@ -15,7 +15,7 @@
               %p.col-md-offset-2
                 Campaign:
                 = "#{c.company.campaign_title} (#{c.status})"
-                = link_to "[edit]", campaign_company_path(c)
+                = link_to "[show]", campaign_company_path(c)
                 = link_to "[display]", display_campaign_company_path(c)
         - else
           There are no test users in the database.

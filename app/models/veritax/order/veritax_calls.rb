@@ -38,7 +38,7 @@ module Veritax::Order::VeritaxCalls
             raise "Unhandled Veritax order status: #{vt_status}"
         end
       else
-        # TODO log this information and continue
+        raise "Unhandled condition encountered retrieving order info: #{response.inspect}"
       end
     end
 

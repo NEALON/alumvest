@@ -80,10 +80,10 @@ describe Veritax::TalksToVeritax do
     expect(info.status).to eq('Canceled')
   end
 
-  it 'gets transcript' do
-    response = subject.get_transcript(CompletedOrderId)
-    expect(response.success?).to be_true
-    result = Veritax::TranscriptResult.new(response.body[:get_transcript_response][:get_transcript_result])
-    result.write_to_file("#{Rails.root}/#{SecureRandom.uuid}.pdf")
-  end
+  #it 'gets transcript' do
+  #  response = subject.get_transcript(CompletedOrderId)
+  #  expect(response.success?).to be_true
+  #  result = Veritax::TranscriptResult.new(response.body[:get_transcript_response][:get_transcript_result])
+  #  result.write_to_file("#{Rails.root}/#{SecureRandom.uuid}.pdf")
+  #end
 end
