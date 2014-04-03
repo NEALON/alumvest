@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
     @events = Bus::Event.find_by_sql("
       select * from bus_events
       where type = 'Bus::Event::Campaign::Published'
-      or type = 'Bus::Event::Campaign::WentLive'
+      or type = 'Bus::Event::Campaign::Accepted'
       or type = 'Bus::Event::Campaign::Rejected'
       order by id desc")
 

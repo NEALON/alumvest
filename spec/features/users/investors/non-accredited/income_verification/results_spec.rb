@@ -18,12 +18,14 @@ describe 'non-accredited investor income verification results', :type => :featur
       sign_in 'admin@alumvest.com', 'secret'
       click_on 'Income Verification Events'
       expect(page).to have_content('An income verification order was successfully completed')
+sleep 10
     end
 
     it 'displays completed orders to the investor' do
       sign_in 'investor@alumvest.com', 'secret'
       visit user_investor_events_path(@investor.user)
       expect(page).to have_content('Your income verification request was marked as completed')
+      sleep 10
     end
   end
 

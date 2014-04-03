@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
-  def go_live
+  def accept
     campaign = CampaignBase.find(params[:campaign_id])
-    Alumvest::Review.create(:campaign => campaign, :result => 'go_live')
-    Bus::Event::Campaign::WentLive.create(:campaign => campaign, :issuer => campaign.issuer)
-    campaign.go_live
-    IssuerMailer.go_live(campaign.issuer.user.email).deliver
+    Alumvest::Review.create(:campaign => campaign, :result => 'accept')
+    Bus::Event::Campaign::Accepted.create(:campaign => campaign, :issuer => campaign.issuer)
+    campaign.accept
+    IssuerMailer.accept(campaign.issuer.user.email).deliver
     redirect_to campaign_events_user_admin_path(current_user),
-                :flash => {:success => 'Campaign was reviewed with a Go Live outcome.'}
+                :flash => {:success => 'Campaign was reviewed and accepted.'}
   end
 
   def reject
@@ -16,6 +16,6 @@ class ReviewsController < ApplicationController
     IssuerMailer.reject(campaign.issuer.user.email).deliver
     campaign.reject
     redirect_to campaign_events_user_admin_path(current_user),
-                :flash => {:success => 'Campaign was reviewed with a Reject outcome.'}
+                :flash => {:success => 'Campaign was reviewed and rejected.'}
   end
 end

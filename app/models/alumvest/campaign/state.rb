@@ -9,24 +9,40 @@ module Alumvest::Campaign::State
         transition :draft => :published, :if => :generate_published_event
       end
 
-      event :go_live do
-        transition :published => :live
-      end
-
       event :reject do
         transition :published => :rejected
       end
 
+      event :accept do
+        transition :published  => :accepted
+      end
+
+      event :create_escrow do
+        transition :accepted => :escrow_created
+      end
+
+      event :go_live do
+        transition :escrow_created => :live
+      end
+
       state :published
-      state :live
+
       state :rejected
+
+      state :accepted
+      state :escrow_created
+      state :live
     end
 
-    def self.reviewable;
+    def self.reviewable
       where(:status => 'published')
     end
 
-    def self.live;
+    def self.accepted
+      where(:status => 'accepted')
+    end
+
+    def self.live
       where(:status => 'live')
     end
 

@@ -1,7 +1,7 @@
 Av::Application.routes.draw do
 
-  get "reviews/go_live"
-  get "reviews/reject"
+  get 'reviews/accept'
+  get 'reviews/reject'
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -45,6 +45,8 @@ Av::Application.routes.draw do
       get :preview
       get :display
     end
+
+    resource :bancbox_escrow
 
     resources :investments do
       resource :funding_xn
@@ -98,7 +100,7 @@ Av::Application.routes.draw do
       post :reject_investor_signing
       resources :campaigns do
         resource :review do
-          post :go_live
+          post :accept
           post :reject
         end
       end

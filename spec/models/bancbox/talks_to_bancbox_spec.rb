@@ -48,9 +48,8 @@ describe TalksToBancbox do
     end
 
     it 'succeeds' do
-      result = TalksToBancbox.create_escrow!(@user.reload, @campaign)
-      expect(result).to be_true
-      escrow = @campaign.bancbox_escrow
+      #raise @user.issuer.reload.inspect
+      escrow = Bancbox::Escrow::Base.create_from_campaign(@user, @campaign)
       expect(escrow).to_not be_nil
       expect(escrow.bancbox_status_name).to eq(:unsubmitted)
       expect(escrow.open!).to eq(true)

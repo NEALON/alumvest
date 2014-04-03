@@ -84,6 +84,10 @@ module Features
       @campaign
     end
 
+    def create_published_campaign(issuer)
+      create_publishable_campaign(issuer).publish
+    end
+
     def create_live_campaign(issuer)
       @campaign = FactoryGirl.create(:campaign,
                                      :status => 'live',

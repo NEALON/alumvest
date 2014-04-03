@@ -1,7 +1,7 @@
 class IssuerMailer < ActionMailer::Base
   default :from => 'admin@alumvest.com'
 
-  def go_live(email)
+  def accept(email)
     @greeting = "Hi"
 
     mail :to => email

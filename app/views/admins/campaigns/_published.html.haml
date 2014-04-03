@@ -4,5 +4,5 @@
   = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
 %td
   - if campaign.published?
-    = link_to 'Go Live',  go_live_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'
+    = link_to 'Accept',  accept_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'
     = link_to 'Reject', reject_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'

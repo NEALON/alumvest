@@ -1,0 +1,7 @@
+%td
+  A campaign was accepted
+%td
+  = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
+%td
+  - if campaign.accepted? and campaign.bancbox_escrow.blank?
+    = link_to 'Create an Escrow Account', campaign_bancbox_escrow_path(campaign), :method => :post, :class => 'btn btn-default btn-xs'
