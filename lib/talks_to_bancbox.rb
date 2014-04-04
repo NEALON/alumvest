@@ -28,8 +28,8 @@ class TalksToBancbox
             :issuer => user.issuer,
             :agreement => true)
 
-    # TODO yuck, let's remove this redundancy:
     bancbox_issuer.populate_fields_from_user(user)
+    bancbox_issuer.save
 
     begin
       bancbox_issuer.submit!(bank_account)

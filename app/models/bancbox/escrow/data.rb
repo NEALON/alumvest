@@ -53,7 +53,7 @@ module Bancbox::Escrow::Data
       create(
           :issuer => (issuer_user.issuer.bancbox_issuer || (raise 'The campaign issuer needs to have an account on Bancbox')),
           :campaign => campaign,
-          :name => campaign.company.name,
+          :name => campaign.company.company_name,
           :start_date => (start_date = (campaign.starts_on || Date.today)),
           :close_date => (start_date + campaign.investment_term.campaign_length.days + 14.days),
           :funding_goal => campaign.investment_term.fundraising_amount,

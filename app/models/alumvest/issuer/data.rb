@@ -21,6 +21,6 @@ module Alumvest::Issuer::Data
              :class_name => 'Bus::Event',
              :foreign_key => 'issuer_id'
 
-    validates :ssn, ssn: true, :allow_blank => true
+    validates :ssn, :ssn => true, :allow_blank => true
   end
 end

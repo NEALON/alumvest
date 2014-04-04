@@ -45,10 +45,10 @@ describe TalksToBancbox do
       @bank_account = FactoryGirl.create(:bank_account, :user => @user)
       @campaign = create_live_campaign_without_escrow(@issuer)
       TalksToBancbox.submit_issuer!(@user, @bank_account)
+      @user.reload
     end
 
     it 'succeeds' do
-      #raise @user.issuer.reload.inspect
       escrow = Bancbox::Escrow::Base.create_from_campaign(@user, @campaign)
       expect(escrow).to_not be_nil
       expect(escrow.bancbox_status_name).to eq(:unsubmitted)
