@@ -10,7 +10,7 @@
       = I18n.t('self-accredited-status.non-qualified-info')
   = I18n.t('self-accredited-status.info').html_safe
   %hr
-  = form_for @self_accredited_status, :url => '', :html => {:class => 'form-horizontal editting-form well'} do |f|
+  = form_for @self_accredited_status, :url => '', :html => {:id => 'self-accredited-status-form', :class => 'form-horizontal editting-form well'} do |f|
 
     %fieldset
       = f.hidden_field :investor_id
