@@ -98,6 +98,8 @@ Av::Application.routes.draw do
       get :income_verification_transcript
       post :approve_investor_signing
       post :reject_investor_signing
+      put :approve_income_verification
+      put :reject_income_verification
       resources :campaigns do
         resource :review do
           post :accept

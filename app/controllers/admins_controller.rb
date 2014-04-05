@@ -24,9 +24,11 @@ class AdminsController < ApplicationController
     # TODO: event filtering
     @events = Bus::Event.find_by_sql("
       select * from bus_events
-      where type = 'Bus::Event::VeritaxEvent::OrderSubmittedSuccessfully'
-      or type = 'Bus::Event::VeritaxEvent::OrderCompleted'
-      or type = 'Bus::Event::VeritaxEvent::OrderCanceled'
+      where type = 'Bus::Event::VeritaxOrder::SubmittedSuccessfully'
+      or type = 'Bus::Event::VeritaxOrder::Completed'
+      or type = 'Bus::Event::VeritaxOrder::Canceled'
+      or type = 'Bus::Event::VeritaxOrder::Approved'
+      or type = 'Bus::Event::VeritaxOrder::Rejected'
       order by id desc")
     render :layout => 'admins'
   end
@@ -78,5 +80,17 @@ class AdminsController < ApplicationController
     else
       redirect_to investor_signings_user_admin_path(current_user), :flash => {:warning => 'Could not reject signing.'}
     end
+  end
+
+  def approve_income_verification
+    order = OrderBase.find(params[:income_verification_id])
+    order.approve!
+    redirect_to income_verification_events_user_admin_path(current_user), :flash => {:success => 'Accredited investor income approved.'}
+  end
+
+  def reject_income_verification
+    order = OrderBase.find(params[:income_verification_id])
+    order.reject!
+    redirect_to income_verification_events_user_admin_path(current_user), :flash => {:success => 'Accredited investor income rejected.'}
   end
 end

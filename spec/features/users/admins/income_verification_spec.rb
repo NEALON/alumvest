@@ -14,11 +14,9 @@ describe 'users investor income verification', :type => :feature do
       signout
       @the_investor = @investor
 
-      sign_up :admin
-      u = Alumvest::User::Base.last
-      u.update_attribute(:user_type, 'admin')
-      visit user_admin_path(u)
-      click_on 'Income Verification Events'
+      admin_user = create_admin
+      sign_in 'admin@alumvest.com', 'secret'
+      visit income_verification_events_user_admin_path(admin_user)
     end
 
     it 'sees their listing' do
@@ -39,26 +37,31 @@ describe 'users investor income verification', :type => :feature do
   context 'viewing completed veritax orders' do
 
     before :each do
-      sign_up :investor
-      @the_investor = @investor
-      signout
-      sign_up :admin
-      u = Alumvest::User::Base.last
-      u.update_attribute(:user_type, 'admin')
-      visit user_admin_path(u)
-
+      investor_user = create_self_accredited_investor
+      admin_user = create_admin
       order = FactoryGirl.create(:veritax_order,
-                                 :investor => @the_investor,
+                                 :investor => investor_user.investor,
                                  :status => 'completed',
                                  :vt_order_id => CompletedOrderId)
       FactoryGirl.create(:veritax_order_completed,
                          :veritax_order => order,
-                         :investor => @the_investor)
+                         :investor => investor_user.investor)
+      sign_in 'admin@alumvest.com', 'secret'
+      visit income_verification_events_user_admin_path(admin_user)
     end
 
-    it 'sees their listing' do
-      click_on 'Income Verification Events'
+    it 'lists' do
       expect(page).to have_content('An income verification order was successfully completed')
+    end
+
+    it 'approves' do
+      click_on 'Approve'
+      expect(page).to have_content('Accredited investor income approved.')
+    end
+
+    it 'rejects' do
+      click_on 'Reject'
+      expect(page).to have_content('Accredited investor income rejected.')
     end
   end
 end

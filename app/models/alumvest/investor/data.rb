@@ -46,7 +46,7 @@ module Alumvest::Investor::Data
              :class_name => 'Bus::Event',
              :foreign_key => 'investor_id'
 
-    validates :ssn, ssn: true, :allow_blank => true
+    validates :ssn, :ssn => true, :allow_blank => true
 
     def invested_in?(campaign)
       campaigns.include?(campaign)
@@ -54,6 +54,10 @@ module Alumvest::Investor::Data
 
     def is_accredited?
       accredited_investor_status == 'approved'
+    end
+
+    def approve!
+      update_attribute(:accredited_investor_status, 'approved')
     end
   end
 end

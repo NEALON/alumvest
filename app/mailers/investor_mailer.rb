@@ -4,6 +4,18 @@ class InvestorMailer < ActionMailer::Base
   def veritax_order_status_updated(email)
     @greeting = "Hi"
 
-    mail to: email
+    mail :to => email
+  end
+
+  def accredited_investor_approved(email)
+    @greeting = "Hi"
+
+    mail :to => email
+  end
+
+  def accredited_investor_rejected(email)
+    @greeting = "Hi"
+
+    mail :to => email
   end
 end

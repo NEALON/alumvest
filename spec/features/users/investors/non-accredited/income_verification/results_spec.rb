@@ -4,7 +4,7 @@ describe 'non-accredited investor income verification results', :type => :featur
 
   context 'completed' do
     before :each do
-      create_admin
+      @admin_user = create_admin
       @investor = create_non_accredited_investor.investor
       @vt_order = FactoryGirl.create(
           :veritax_order,
@@ -18,14 +18,36 @@ describe 'non-accredited investor income verification results', :type => :featur
       sign_in 'admin@alumvest.com', 'secret'
       click_on 'Income Verification Events'
       expect(page).to have_content('An income verification order was successfully completed')
-sleep 10
     end
 
     it 'displays completed orders to the investor' do
       sign_in 'investor@alumvest.com', 'secret'
       visit user_investor_events_path(@investor.user)
       expect(page).to have_content('Your income verification request was marked as completed')
-      sleep 10
+    end
+
+    context 'approved' do
+      it 'should' do
+        sign_in 'admin@alumvest.com', 'secret'
+        visit income_verification_events_user_admin_path(@admin_user)
+        click_on 'Approve'
+        signout
+        sign_in 'investor@alumvest.com', 'secret'
+        visit user_investor_events_path(@investor.user)
+        expect(page).to have_content('Your income verification request was approved')
+      end
+    end
+
+    context 'rejected' do
+      it 'should' do
+        sign_in 'admin@alumvest.com', 'secret'
+        visit income_verification_events_user_admin_path(@admin_user)
+        click_on 'Reject'
+        signout
+        sign_in 'investor@alumvest.com', 'secret'
+        visit user_investor_events_path(@investor.user)
+        expect(page).to have_content('Your income verification request was rejected')
+      end
     end
   end
 

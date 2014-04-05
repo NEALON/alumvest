@@ -4,7 +4,7 @@ class Investor::EventsController < ApplicationController
     @user = UserBase.find(params[:user_id])
     @investor = @user.investor
     @events = @investor.events.order('id DESC')
-    render layout: 'investors'
+    render :layout => 'investors'
   end
 end
 

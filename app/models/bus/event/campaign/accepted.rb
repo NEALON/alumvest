@@ -5,6 +5,6 @@ class Bus::Event::Campaign::Accepted < Bus::Event
   belongs_to :issuer, :class_name => 'Alumvest::Issuer::Base'
 
   def to_admin_partial_path
-    'admins/campaigns/accepted'
+    'admins/events/campaigns/accepted'
   end
 end
