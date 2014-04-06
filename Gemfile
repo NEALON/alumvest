@@ -73,7 +73,7 @@ gem 'cancan', '~> 1.6'
 gem 'rails_admin', :git => 'git://github.com/jcoleman/rails_admin', :branch => 'vendorize-bootstrap-2'
 gem 'protected_attributes' # rails 4 removed attr_accessible
 
-gem 'docusign_rest', :git => 'git://github.com/mikepence/docusign_rest.git'
+gem 'docusign_rest', '~> 0.1', :git => 'git://github.com/mikepence/docusign_rest.git'
 gem 'rest-client', '~> 1.6'
 gem 'savon', '~> 2.3.0'
 gem 'banc_box_crowd', :git => 'git://github.com/interskh/banc_box_crowd'

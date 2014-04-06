@@ -17,7 +17,6 @@ module Docusign::Envelope::DocusignCalls
     end
 
     def post_new_status(status)
-      # For now, just pass it up the hierarchy. In the near future, we will do some more info to validate the status retrieval
       signing.post_new_status(status)
     end
   end

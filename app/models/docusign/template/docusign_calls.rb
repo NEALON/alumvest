@@ -19,7 +19,17 @@ module Docusign::Template::DocusignCalls
                       :embedded => true,
                       :name => 'Mike Pence',
                       :email => 'mike.pence+investor@gmail.com',
-                      :role_name => 'investor'
+                      :role_name => 'investor',
+                      :tabs =>
+                          {:number_tabs => [
+                              {
+                                  :label => 'investment_amount',
+                                  :name => 'investment amount',
+                                  :value => '999',
+                                  :document_id => '1'
+                              }
+                          ]
+                          },
                   },
                   {
                       :embedded => true,
@@ -41,7 +51,6 @@ module Docusign::Template::DocusignCalls
             :status_date_time => envelope['statusDateTime'])
         dse
       else
-        # TODO: some logging of the error
         raise envelope.inspect
       end
     end

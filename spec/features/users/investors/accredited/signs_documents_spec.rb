@@ -23,6 +23,12 @@ describe 'accredited investor signing documents', :type => :feature do
     click_on 'Documents'
     click_on 'Review and Sign'
     click_on 'Review Document'
+
+    # TODO: execute a script to stuff some numbers in there, something like
+    # see http://stackoverflow.com/questions/596481/simulate-javascript-key-events/596580#596580
+    script = "jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(57) });"
+    page.driver.browser.execute_script(script)
+
     click_on 'Sign Here'
     page.driver.browser.execute_script("$('.Btnyellow_reskin').click();")
     expect(page).to have_content('Document signing status has been updated.')
