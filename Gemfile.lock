@@ -43,11 +43,11 @@ GIT
 
 GIT
   remote: git://github.com/mikepence/docusign_rest.git
-  revision: 93bced249e22dfda0395496d4cfad1ee6b9ce42a
+  revision: 23fe8d8881e713f29ceabffdf6ac9d4ae1122b98
   specs:
-    docusign_rest (0.0.9)
+    docusign_rest (0.1.1)
       json
-      multipart-post (>= 1.1.5)
+      multipart-post (>= 1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -397,7 +397,7 @@ DEPENDENCIES
   compass
   dalli
   database_cleaner (~> 1.2)
-  docusign_rest!
+  docusign_rest (~> 0.1)!
   email_spec (~> 1.5)
   factory_girl_rails (~> 4.2)
   faker!
