@@ -24,4 +24,9 @@ $(document).ready () ->
       required: "You must agree to the Terms and Conditions."
 
   $('#self-accredited-status-form .btn.btn-success').click (event) ->
-    $('#self-accredited-status-form').validate({rules, messages})
+    $('#self-accredited-status-form').validate {
+      rules
+      messages
+      errorPlacement: (error, element) ->
+        error.appendTo(element.parent(".row").parent(".col-md-9"))
+    }
