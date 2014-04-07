@@ -76,7 +76,7 @@ gem 'protected_attributes' # rails 4 removed attr_accessible
 gem 'docusign_rest', '~> 0.1', :git => 'git://github.com/mikepence/docusign_rest.git'
 gem 'rest-client', '~> 1.6'
 gem 'savon', '~> 2.3.0'
-gem 'banc_box_crowd', :git => 'git://github.com/interskh/banc_box_crowd'
+gem 'banc_box_crowd', :git => 'git://github.com/mikepence/banc_box_crowd.git'
 
 gem 'attr_encrypted', '~> 1.3.1'
 

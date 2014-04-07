@@ -7,14 +7,6 @@ GIT
       multi_json (>= 1.3.4)
 
 GIT
-  remote: git://github.com/interskh/banc_box_crowd
-  revision: f6ec0b2872712f0a808a3a3aaaf857f54caa1bd8
-  specs:
-    banc_box_crowd (0.0.1)
-      faraday
-      faraday_middleware
-
-GIT
   remote: git://github.com/interskh/faker
   revision: 77cf71af3aeee77c0f39f4b587af1057ef15ec78
   specs:
@@ -40,6 +32,14 @@ GIT
       remotipart (~> 1.0)
       safe_yaml (~> 0.9)
       sass-rails (~> 4.0)
+
+GIT
+  remote: git://github.com/mikepence/banc_box_crowd.git
+  revision: 4c213fbaf1a0ed0a170e32e431ca9032661ee811
+  specs:
+    banc_box_crowd (0.0.1)
+      faraday
+      faraday_middleware
 
 GIT
   remote: git://github.com/mikepence/docusign_rest.git
@@ -151,7 +151,7 @@ GEM
       faker
       jeweler
       rspec
-    faraday (0.8.8)
+    faraday (0.8.9)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
