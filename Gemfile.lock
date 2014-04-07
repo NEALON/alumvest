@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: git://github.com/mikepence/banc_box_crowd.git
-  revision: 3e7649e799d0ea7431bfee176a0a9a062295916b
+  revision: 4c213fbaf1a0ed0a170e32e431ca9032661ee811
   specs:
     banc_box_crowd (0.0.1)
       faraday
