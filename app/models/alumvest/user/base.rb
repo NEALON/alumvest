@@ -36,5 +36,13 @@ module Alumvest::User
     def address
       "#{address_1} #{address_2}"
     end
+
+    def location
+      "#{city}, #{state}"
+    end
+
+    def schools
+      educations.map{|e| e.school}.join(', ')
+    end
   end
 end
