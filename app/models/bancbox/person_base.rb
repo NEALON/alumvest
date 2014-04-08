@@ -92,6 +92,8 @@ class Bancbox::PersonBase < ActiveRecord::Base
 
         save
       end
+    else
+      raise ret['error']
     end
   end
 
