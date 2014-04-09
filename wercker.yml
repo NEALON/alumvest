@@ -27,7 +27,7 @@ build:
                 echo "ruby version $(ruby --version) running"
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
-                dkpg -l
+                dpkg -l
 
         - script:
             name: setup headless firefox
