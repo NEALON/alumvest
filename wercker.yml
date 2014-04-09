@@ -42,7 +42,7 @@ build:
 
         - script:
             name: prepare db
-            code: bundle exec rake db:schema:load
+            code: bundle exec rake db:test:prepare
 
         - script:
             name: rspec
