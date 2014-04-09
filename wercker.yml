@@ -47,6 +47,5 @@ build:
         - script:
             name: rspec
             code: |
-              bundle exec rspec spec/features/users/all/manages_sessions_spec.rb
-              cat /pipeline/build/tmp/capybara/*.html
+              bundle exec rspec spec/features/users/all/manages_sessions_spec.rb || cat /pipeline/build/tmp/capybara/*.html
 
