@@ -29,6 +29,12 @@ build:
                 echo -p "gem list: $(gem list)"
 
         - script:
+            name: setup headless firefox
+            code: |
+              export DISPLAY=:99.0
+              sh -e /etc/init.d/xvfb start
+
+        - script:
             name: prepare db
             code: bundle exec rake db:schema:load
 
