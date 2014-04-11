@@ -15,7 +15,7 @@ module Features
         #select '1967', :from => "#{form}_date_of_birth_1i"
         #select 'January', :from => "#{form}_date_of_birth_2i"
         #select '1', :from => "#{form}_date_of_birth_3i"
-        #fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+        #fill_in "#{form}_ssn", :with => '111111111'
 
         fill_in "#{form}_mobile_phone", :with => Faker::Number.number(10)
         fill_in "#{form}_home_phone", :with => Faker::Number.number(10)
@@ -23,7 +23,7 @@ module Features
         fill_in "#{form}_address_2", :with => Faker::Address.secondary_address
         fill_in "#{form}_city", :with => Faker::Address.city
         fill_in "#{form}_state", :with => Faker::Address.state_abbr
-        fill_in "#{form}_zipcode", :with => Faker::Address.zip_code
+        fill_in "#{form}_zipcode", :with => '34234'
         fill_in "#{form}_email", :with => Faker::Internet.email
         fill_in "#{form}_facebook", :with => Faker::Internet.user_name
         fill_in "#{form}_linkedin", :with => Faker::Internet.user_name
@@ -41,7 +41,7 @@ module Features
       'veritax_order_base'.tap do |form|
         fill_in "#{form}_first_name", :with => Faker::Name.first_name
         fill_in "#{form}_last_name", :with => Faker::Name.last_name
-        fill_in "#{form}_ssn", :with => Faker::Ssn.en_ssn
+        fill_in "#{form}_ssn", :with => 111111111
         fill_in "#{form}_email", :with => 'mike.pence@gmail.com'
         fill_in "#{form}_address", :with => Faker::Address.street_address
         fill_in "#{form}_city", :with => Faker::Address.city
@@ -105,7 +105,7 @@ module Features
 
     def fill_in_user_issuer_profile
       'alumvest_user_base'.tap do |form|
-        fill_in "#{form}_issuer_attributes_ssn", :with => '000-00-0000'
+        fill_in "#{form}_issuer_attributes_ssn", :with => '111111111'
         select 'Married', :from => "#{form}_issuer_attributes_marital_status"
         fill_in "#{form}_issuer_attributes_financial_info", :with => Faker::Lorem.sentence(10)
         fill_in "#{form}_issuer_attributes_experience", :with => Faker::Lorem.sentence(10)
@@ -117,7 +117,7 @@ module Features
 
     def fill_in_user_investor_profile
       'alumvest_investor_base'.tap do |form|
-        fill_in "#{form}_ssn", :with => '000-00-0000'
+        fill_in "#{form}_ssn", :with => '111111111'
         select 'Married', :from => "#{form}_marital_status"
         fill_in "#{form}_financial_info", :with => Faker::Lorem.sentence(10)
         fill_in "#{form}_experience", :with => Faker::Lorem.sentence(10)

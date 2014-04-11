@@ -11,6 +11,7 @@ include VeritaxOrders
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.fail_fast = true
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   # ## Mock Framework
@@ -32,12 +33,6 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.include Features::FactoryHelpers
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = "random"
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
