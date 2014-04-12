@@ -17,10 +17,14 @@ class PaymentStep < NavableStep
   end
 
   def link
-    if @payment
-      campaign_investment_online_payment_path(@campaign, @investment)
+    if @investment.persisted?
+      if @payment
+        campaign_investment_online_payment_path(@campaign, @investment)
+      else
+        new_campaign_investment_online_payment_path(@campaign, @investment)
+      end
     else
-      new_campaign_investment_online_payment_path(@campaign, @investment)
+      '#'
     end
   end
 end

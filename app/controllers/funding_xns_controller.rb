@@ -19,7 +19,7 @@ class FundingXnsController < ApplicationController
     if @funding_xn.valid?
       redirect_to campaign_investment_funding_xn_path(@campaign, @investment, @funding_xn), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new
+      render :new, :layout => 'investments'
     end
   end
 

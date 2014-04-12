@@ -16,15 +16,17 @@ class InvestmentsController < ApplicationController
 
   def update
     @investment = InvestmentBase.find(params[:id])
+    @workflow = InvestmentWorkflow.new(@investment)
     if @investment.valid?
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new
+      render :new, :layout => 'investments'
     end
   end
 
   def create
     @investment = InvestmentBase.create(params[:alumvest_investment_base])
+    @workflow = InvestmentWorkflow.new(@investment)
     if @investment.valid?
       Bus::Event::InvestmentInitiated.create(
           :campaign => @campaign,
@@ -34,7 +36,7 @@ class InvestmentsController < ApplicationController
 
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new
+      render :new, :layout => 'investments'
     end
   end
 
