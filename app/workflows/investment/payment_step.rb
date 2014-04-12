@@ -9,8 +9,7 @@ class PaymentStep < NavableStep
   end
 
   def enabled?
-    false
-    # @investment.persisted?
+    @investment.persisted?
   end
 
   def active?(active_view)
@@ -18,7 +17,10 @@ class PaymentStep < NavableStep
   end
 
   def link
-    '#'
-    # payment_link(@campaign, @investment)
+    if @payment
+      campaign_investment_online_payment_path(@campaign, @investment)
+    else
+      new_campaign_investment_online_payment_path(@campaign, @investment)
+    end
   end
 end

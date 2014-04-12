@@ -11,6 +11,9 @@ module Alumvest::Investment::Data
     belongs_to :campaign, :class_name => 'Alumvest::Campaign::Base'
     belongs_to :investor, :class_name => 'Alumvest::Investor::Base'
 
+    has_one :online_payment,
+            :class_name => 'Alumvest::OnlinePaymentBase',
+            :foreign_key => 'investment_id'
     has_one :contract_doc_group,
             :class_name => 'Alumvest::ContractDocGroup',
             :foreign_key => 'investment_id'

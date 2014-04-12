@@ -12,6 +12,8 @@ describe 'accredited investor creates funding xn', :type => :feature do
 
   it 'creates a new funding xn' do
     visit campaign_investment_path(@campaign, @investment)
+    click_on 'Payment'
+    # screenshot_and_open_image
     # TODO
   end
 end

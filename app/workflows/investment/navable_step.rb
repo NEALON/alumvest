@@ -10,6 +10,7 @@ class NavableStep
   def initialize(investment)
     @investment = investment
     @campaign = @investment.try(:campaign)
+    @payment = @investment.try(:payment)
   end
 
   def render(active)

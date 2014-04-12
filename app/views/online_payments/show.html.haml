@@ -1,0 +1,10 @@
+= render 'investments/navigation', :active => 'payment', :campaign => @campaign
+
+#information.well
+  = button_to 'Edit', edit_campaign_investment_online_payment_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :get
+  = render 'shared/property_row', :header => '', :value => "You are identifying your account to fund your investment of #{number_to_currency(@investment.amount)}"
+
+  = render 'shared/property_row', :header => 'Bank account holder', :value => @payment.try(:bank_account_holder)
+  = render 'shared/property_row', :header => 'Bank account type', :value => @payment.try(:bank_account_type)
+  = render 'shared/property_row', :header => 'Bank account routing', :value => @payment.try(:bank_account_routing)
+  = render 'shared/property_row', :header => 'Bank account number', :value => @payment.try(:bank_account_number)

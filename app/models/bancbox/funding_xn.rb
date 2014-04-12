@@ -7,11 +7,10 @@ class Bancbox::FundingXn < ActiveRecord::Base
   belongs_to :bancbox_escrow, :class_name => 'Bancbox::Escrow::Base'
 
   # other possible fields
-  #  :amount, although that would be a de-normalization
+  #  :amount
   #  :trans_id,
   #  :status,
   #  :trans_status,
-  #  :amount,
   #  :memo,
   #  :text,
 

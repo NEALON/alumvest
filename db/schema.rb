@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329214545) do
+ActiveRecord::Schema.define(version: 20140412143351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -359,6 +359,18 @@ ActiveRecord::Schema.define(version: 20140329214545) do
   end
 
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+
+  create_table "online_payments", force: true do |t|
+    t.decimal  "amount"
+    t.string   "bank_account_number"
+    t.string   "bank_account_type"
+    t.string   "bank_account_holder"
+    t.string   "bank_account_routing"
+    t.integer  "escrow_id"
+    t.integer  "investment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "people", force: true do |t|
     t.string   "type"

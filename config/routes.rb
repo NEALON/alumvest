@@ -49,6 +49,8 @@ Av::Application.routes.draw do
     resource :bancbox_escrow
 
     resources :investments do
+      resource :online_payment
+      resource :offline_payment
       resource :funding_xn
       get :investor_verification
       resource :identity_verification
