@@ -2,7 +2,7 @@
 = render 'users/header'
 
 #information
-  = form_for @income_verification, :url => user_investor_income_verification_path(@user), :html => {:id => 'income_verification_form', :class => 'form-horizontal editting-form well'} do |f|
+  = form_for @income_verification, :url => user_investor_income_verification_path(@user), :html => {:id => 'income_verification_form', :class => 'form-horizontal editing-form well'} do |f|
     = render 'shared/errors', :entity => @income_verification
 
     %fieldset
@@ -14,7 +14,7 @@
         = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-2').html_safe
         = op.render_cell 'tb/form/text', :display, :field => :first_name
         = op.render_cell 'tb/form/text', :display, :field => :last_name
-        = op.render_cell 'tb/form/text', :display, :field => :ssn, label: 'SSN', :placeholder => "XXX-XX-XXXX"
+        = op.render_cell 'tb/form/text', :display, :field => :ssn, :label => 'SSN', :placeholder => "XXX-XX-XXXX"
         = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-email').html_safe
         = op.render_cell 'tb/form/text', :display, :field => :email
         = op.render_cell 'tb/form/text', :display, :field => :address
@@ -26,4 +26,4 @@
         = op.render_cell 'tb/form/text', :display, :field => :previous_state
         = op.render_cell 'tb/form/text', :display, :field => :previous_zip
 
-      = render_cell 'tb/form/submit_button', :display, label: 'Review and submit'
+      = render_cell 'tb/form/submit_button', :display, :label => 'Review and submit'

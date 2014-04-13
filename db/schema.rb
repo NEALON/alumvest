@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329214545) do
+ActiveRecord::Schema.define(version: 20140413133044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,14 +78,10 @@ ActiveRecord::Schema.define(version: 20140329214545) do
   add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
 
   create_table "bancbox_funding_xns", force: true do |t|
-    t.string   "bank_account_number"
-    t.string   "bank_account_type"
-    t.string   "bank_account_holder"
-    t.string   "bank_account_routing"
     t.integer  "escrow_id"
-    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "payment_id"
   end
 
   create_table "bancbox_investors", force: true do |t|
@@ -301,6 +297,8 @@ ActiveRecord::Schema.define(version: 20140329214545) do
     t.integer  "campaign_id"
     t.decimal  "min_investment"
     t.decimal  "max_investment"
+    t.decimal  "min_investment_amount"
+    t.decimal  "max_investment_amount"
   end
 
   create_table "investments", force: true do |t|
@@ -309,7 +307,8 @@ ActiveRecord::Schema.define(version: 20140329214545) do
     t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "amount",      precision: 8, scale: 2
+    t.decimal  "amount",       precision: 8, scale: 2
+    t.string   "payment_type"
   end
 
   create_table "investors", force: true do |t|
@@ -359,6 +358,19 @@ ActiveRecord::Schema.define(version: 20140329214545) do
   end
 
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+
+  create_table "online_payments", force: true do |t|
+    t.decimal  "amount"
+    t.string   "bank_account_number"
+    t.string   "bank_account_type"
+    t.string   "bank_account_holder"
+    t.string   "bank_account_routing"
+    t.integer  "escrow_id"
+    t.integer  "investment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+  end
 
   create_table "people", force: true do |t|
     t.string   "type"

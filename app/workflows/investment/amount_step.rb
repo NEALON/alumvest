@@ -1,4 +1,4 @@
-class AmountStep < NavableStep
+class AmountStep < NavigableStep
 
   def label
     'Investment'

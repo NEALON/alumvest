@@ -1,4 +1,4 @@
-class NavableStep
+class NavigableStep
   include Rails.application.routes.url_helpers
 
   abstract_method :label
@@ -10,6 +10,7 @@ class NavableStep
   def initialize(investment)
     @investment = investment
     @campaign = @investment.try(:campaign)
+    @payment = @investment.try(:payment)
   end
 
   def render(active)

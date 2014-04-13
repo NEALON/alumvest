@@ -1,4 +1,4 @@
-class SigningStep < NavableStep
+class SigningStep < NavigableStep
 
   def label
     'Documents'

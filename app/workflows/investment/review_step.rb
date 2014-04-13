@@ -1,4 +1,4 @@
-class ReviewStep < NavableStep
+class ReviewStep < NavigableStep
 
   def label
     'Review'

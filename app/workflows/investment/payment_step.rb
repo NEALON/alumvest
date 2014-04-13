@@ -1,16 +1,15 @@
-class PaymentStep < NavableStep
+class PaymentStep < NavigableStep
 
   def label
     'Payment'
   end
 
   def checked?
-    false
+    @payment.try(:funded?)
   end
 
   def enabled?
-    false
-    # @investment.persisted?
+    @investment.persisted?
   end
 
   def active?(active_view)
@@ -18,7 +17,22 @@ class PaymentStep < NavableStep
   end
 
   def link
-    '#'
-    # payment_link(@campaign, @investment)
+    if @investment.persisted?
+      if @investment.payment_type
+        if @investment.payment_type == 'online'
+          if @payment
+            campaign_investment_online_payment_path(@campaign, @investment)
+          else
+            new_campaign_investment_online_payment_path(@campaign, @investment)
+          end
+        else
+          '#'
+        end
+      else
+        campaign_investment_payment_type_path(@campaign, @investment)
+      end
+    else
+      '#'
+    end
   end
 end

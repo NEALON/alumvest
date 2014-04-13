@@ -16,15 +16,17 @@ class InvestmentsController < ApplicationController
 
   def update
     @investment = InvestmentBase.find(params[:id])
+    @workflow = InvestmentWorkflow.new(@investment)
     if @investment.valid?
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new
+      render :new, :layout => 'investments'
     end
   end
 
   def create
     @investment = InvestmentBase.create(params[:alumvest_investment_base])
+    @workflow = InvestmentWorkflow.new(@investment)
     if @investment.valid?
       Bus::Event::InvestmentInitiated.create(
           :campaign => @campaign,
@@ -34,7 +36,7 @@ class InvestmentsController < ApplicationController
 
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new
+      render :new, :layout => 'investments'
     end
   end
 
@@ -54,6 +56,19 @@ class InvestmentsController < ApplicationController
     @investment = InvestmentBase.find(params[:investment_id])
     @investment.finalize
     redirect_to display_campaign_company_path(@campaign), :flash => {:success => "Thank you for your investment!"}
+  end
+
+  def payment_type
+    @investment = InvestmentBase.find(params[:investment_id])
+    @workflow = InvestmentWorkflow.new(@investment)
+    render :layout => 'investments'
+  end
+
+  def update_payment_type
+    @campaign = CampaignBase.find(params[:campaign_id])
+    @investment = InvestmentBase.find(params[:investment_id])
+    @investment.update_attributes(:payment_type => params[:payment_type])
+    redirect_to new_campaign_investment_online_payment_path(@campaign, @investment), :flash => {:success => "You have opted for online payment."}
   end
 
   private

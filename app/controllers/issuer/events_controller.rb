@@ -7,4 +7,3 @@ class Issuer::EventsController < ApplicationController
     render :layout => 'issuers'
   end
 end
-
