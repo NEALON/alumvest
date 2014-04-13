@@ -1,6 +1,6 @@
 = render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
 
-= form_for @investment, :url => campaign_investment_path(@campaign, @investment), :html => {:class => 'form-horizontal editting-form well'} do |f|
+= form_for @investment, :url => campaign_investment_path(@campaign, @investment), :html => {:class => 'form-horizontal editing-form well'} do |f|
   = render 'shared/errors', :entity => @investment
   = render_cell 'tb/form/subhead', :display, :label => 'Investment Amount'
   = f.hidden_field :campaign_id

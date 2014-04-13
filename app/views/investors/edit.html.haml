@@ -2,7 +2,7 @@
 = render "users/header"
 
 #information
-  = form_for @investor, :url => user_investor_path(@user), :html => {:id => 'investor_profile_form', :class => 'form-horizontal editting-form well'} do |f|
+  = form_for @investor, :url => user_investor_path(@user), :html => {:id => 'investor_profile_form', :class => 'form-horizontal editing-form well'} do |f|
     = render 'shared/errors', :entity => @investor
 
     %fieldset
