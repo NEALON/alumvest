@@ -19,6 +19,18 @@ $nav-tab-height: 37px;
 
 #information{
 	padding-top: 0;
+
+	form{
+		background-image: none;
+		background: none;
+		background-color: #ffffff;
+		border: none;
+		box-shadow: none;
+
+		hr{
+			border: none;
+		}
+	}
 }
 
 #tabsContent .tab-pane .form-row{
@@ -151,7 +163,7 @@ $nav-tab-height: 37px;
 		margin-bottom: 10px;
 
 		font-family: 'Open Sans', sans-serif;
-		line-height: 32px;
+		line-height: 100%;
 		color: $color-white;
 		font-size: 15px;
 		font-weight: bold;
@@ -224,6 +236,7 @@ $nav-tab-height: 37px;
 			}
 
 			.btn{
+				line-height: 100%;
 				position: relative;
 				left: 0;
 			}
