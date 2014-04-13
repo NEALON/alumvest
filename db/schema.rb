@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412143351) do
+ActiveRecord::Schema.define(version: 20140413101700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -301,6 +301,8 @@ ActiveRecord::Schema.define(version: 20140412143351) do
     t.integer  "campaign_id"
     t.decimal  "min_investment"
     t.decimal  "max_investment"
+    t.decimal  "min_investment_amount"
+    t.decimal  "max_investment_amount"
   end
 
   create_table "investments", force: true do |t|
@@ -309,7 +311,8 @@ ActiveRecord::Schema.define(version: 20140412143351) do
     t.integer  "investor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "amount",      precision: 8, scale: 2
+    t.decimal  "amount",       precision: 8, scale: 2
+    t.string   "payment_type"
   end
 
   create_table "investors", force: true do |t|

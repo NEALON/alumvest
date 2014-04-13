@@ -58,6 +58,19 @@ class InvestmentsController < ApplicationController
     redirect_to display_campaign_company_path(@campaign), :flash => {:success => "Thank you for your investment!"}
   end
 
+  def payment_type
+    @investment = InvestmentBase.find(params[:investment_id])
+    @workflow = InvestmentWorkflow.new(@investment)
+    render :layout => 'investments'
+  end
+
+  def update_payment_type
+    @campaign = CampaignBase.find(params[:campaign_id])
+    @investment = InvestmentBase.find(params[:investment_id])
+    @investment.update_attributes(:payment_type => params[:payment_type])
+    redirect_to new_campaign_investment_online_payment_path(@campaign, @investment), :flash => {:success => "You have opted for online payment."}
+  end
+
   private
 
   def load_campaign_and_company

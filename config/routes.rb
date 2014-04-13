@@ -2,6 +2,7 @@ Av::Application.routes.draw do
 
   get 'reviews/accept'
   get 'reviews/reject'
+
   resources :envelopes do
     get :record_event
     get :signed_document
@@ -53,6 +54,8 @@ Av::Application.routes.draw do
       resource :offline_payment
       resource :funding_xn
       get :investor_verification
+      get :payment_type
+      put :update_payment_type
       resource :identity_verification
       resource :contract_doc_group
       resource :subscription_agreement

@@ -1,0 +1,16 @@
+= render 'investments/navigation', :active => 'payment', :campaign => @campaign
+
+#information
+  %h3
+    Select Payment Method
+  %p
+    Please indicate below the method which you would like to use to fund your investment amount into a designated escrow account, set up specifically for the particular company in which you desire to invest.
+  .col-md-6
+    = link_to campaign_investment_update_payment_type_path(@campaign, @investment, :payment_type => :online), :method => :put, :id => 'online-link' do
+      %h4 Online Payment
+      %p I have a US bank account and would like to pay via ACH.
+  .col-md-6
+    -#= link_to campaign_investment_update_payment_type_path(@campaign, @investment, :payment_type => :offline), :method => :put, :id => 'offline-link' do
+    = link_to '#', :method => :put, :id => 'offline-link' do
+      %h4 Offline Payment
+      %p I will be paying by wire transfer (US or international investors) or by check (US investors only).

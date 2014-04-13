@@ -1,4 +1,4 @@
-class NavableStep
+class NavigableStep
   include Rails.application.routes.url_helpers
 
   abstract_method :label

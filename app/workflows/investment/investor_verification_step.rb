@@ -1,4 +1,4 @@
-class InvestorVerificationStep < NavableStep
+class InvestorVerificationStep < NavigableStep
 
   def label
     'Investor Verification'

@@ -1,4 +1,4 @@
-class PaymentStep < NavableStep
+class PaymentStep < NavigableStep
 
   def label
     'Payment'
@@ -18,10 +18,18 @@ class PaymentStep < NavableStep
 
   def link
     if @investment.persisted?
-      if @payment
-        campaign_investment_online_payment_path(@campaign, @investment)
+      if @investment.payment_type
+        if @investment.payment_type == 'online'
+          if @payment
+            campaign_investment_online_payment_path(@campaign, @investment)
+          else
+            new_campaign_investment_online_payment_path(@campaign, @investment)
+          end
+        else
+          '#'
+        end
       else
-        new_campaign_investment_online_payment_path(@campaign, @investment)
+        campaign_investment_payment_type_path(@campaign, @investment)
       end
     else
       '#'

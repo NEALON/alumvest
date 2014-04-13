@@ -13,13 +13,22 @@ describe 'accredited investor manages online payment', :type => :feature do
   it 'creates successfully' do
     visit campaign_investment_path(@campaign, @investment)
     click_on 'Payment'
+    click_on 'online-link'
     fill_in_online_payment
     expect(page).to have_content('Account information for online payment saved.')
+  end
+
+  it 'opts for offline payment' do
+    #visit campaign_investment_path(@campaign, @investment)
+    #click_on 'Payment'
+    #click_on 'offline-link'
+    # TODO: sees instructions and link to confirm
   end
 
   it 'cannot create due to failing validations' do
     visit campaign_investment_path(@campaign, @investment)
     click_on 'Payment'
+    click_on 'online-link'
     click_on 'Save'
     expect(page).to have_content('3 errors were encountered')
   end

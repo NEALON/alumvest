@@ -6,7 +6,7 @@ module Alumvest::Investment::Data
   included do
     include ActionView::Helpers::NumberHelper
 
-    attr_accessible :status, :campaign, :campaign_id, :investor, :investor_id, :amount
+    attr_accessible :status, :campaign, :campaign_id, :investor, :investor_id, :amount, :payment_type
 
     self.table_name = :investments
 
