@@ -1,12 +1,14 @@
 = render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
 
 #information.well
-  = form_for @investment, :url => campaign_investments_path(@campaign), :html => {:class => 'form-horizontal editting-form well'} do |f|
+  = form_for @investment, :url => campaign_investments_path(@campaign), :html => {:class => 'form-horizontal editing-form well'} do |f|
     = render 'shared/errors', :entity => @investment
     = render_cell 'tb/form/subhead', :display, :label => 'Investment Amount'
     = f.hidden_field :campaign_id
     = f.hidden_field :investor_id
 
     %fieldset
-      = render_cell 'tb/form/text', :display, :label => 'Amount (in U.S. dollar)', :form => f, :field => :amount, :placeholder => '10000.00'
+      = render_cell 'tb/form/helptext', :display, :text => "Minimum and maximum investment values are #{number_to_currency(@campaign.investment_term.min_investment)} and #{number_to_currency(@campaign.investment_term.max_investment)}"
+
+      = render_cell 'tb/form/text', :display, :label => 'Amount (in U.S. dollar)', :form => f, :field => :amount, :placeholder => "#{@campaign.investment_term.max_investment}"
       = render_cell 'tb/form/submit_button', :display, :label => 'Save'

@@ -60,7 +60,7 @@ module Features
       team
     end
 
-    def create_investment_amount(amount = 123.45)
+    def create_investment_amount(amount = 99.99)
       visit display_campaign_company_path(@campaign)
       click_on 'Invest Now'
       fill_in_investment_amount amount

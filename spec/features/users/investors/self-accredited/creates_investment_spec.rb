@@ -12,7 +12,7 @@ describe 'self-accredited investor creates investment', :type => :feature do
   it 'creates a new investment' do
     create_investment_amount
     expect(page).to have_content 'Investment amount saved.'
-    expect(page).to have_content '$123.45'
+    expect(page).to have_content '$99.99'
   end
 
   it 'fails to create a new investment due to low amount' do
