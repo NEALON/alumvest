@@ -5,7 +5,7 @@ class PaymentStep < NavigableStep
   end
 
   def checked?
-    false
+    @payment.try(:funded?)
   end
 
   def enabled?

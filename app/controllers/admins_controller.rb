@@ -13,6 +13,7 @@ class AdminsController < ApplicationController
       where type = 'Bus::Event::Campaign::Published'
       or type = 'Bus::Event::Campaign::Accepted'
       or type = 'Bus::Event::Campaign::Rejected'
+      or type = 'Bus::Event::Investment::Funded'
       order by id desc")
 
     render :layout => 'admins'
