@@ -34,6 +34,8 @@ group :production do
   gem 'heroku-deflater'
 end
 
+gem 'airbrake'
+
 gem 'rubyzip', '~> 1.1.0'
 gem 'bcrypt-ruby', '~> 3.0'
 gem 'rails', '4.0.4'
