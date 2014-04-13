@@ -15,9 +15,12 @@ module Alumvest::OnlinePaymentData
 
     self.table_name = :online_payments
 
-    belongs_to :investment, :class_name => 'Alumvest::Investment::Base'
+    belongs_to :investment,
+               :class_name => 'Alumvest::Investment::Base'
 
-    has_one :funding_xn, :class_name => 'Bancbox::FundingXn', :foreign_key => 'investment_id'
+    has_one :funding_xn,
+            :class_name => 'Bancbox::FundingXn',
+            :foreign_key => 'payment_id'
 
     validates_presence_of [:bank_account_number, :bank_account_type, :bank_account_holder, :bank_account_routing]
   end

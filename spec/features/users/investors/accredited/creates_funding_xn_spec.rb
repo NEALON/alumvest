@@ -8,12 +8,12 @@ describe 'accredited investor creates funding xn', :type => :feature do
     create_accredited_investor
     sign_in 'investor@alumvest.com', 'secret'
     @investment = create_investment(@campaign, @user.investor)
+    @payment = FactoryGirl.create(:online_payment, :investment => @investment)
   end
 
   it 'creates a new funding xn' do
-    visit campaign_investment_path(@campaign, @investment)
-    click_on 'Payment'
-    # screenshot_and_open_image
-    # TODO
+    visit campaign_investment_online_payment_path(@campaign, @investment)
+    click_on 'Initiate ACH Transfer'
+    expect(page).to have_content('Your ACH payment has been initiated.')
   end
 end

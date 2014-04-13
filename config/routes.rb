@@ -50,9 +50,10 @@ Av::Application.routes.draw do
     resource :bancbox_escrow
 
     resources :investments do
-      resource :online_payment
+      resource :online_payment do
+        resource :funding_xn
+      end
       resource :offline_payment
-      resource :funding_xn
       get :investor_verification
       get :payment_type
       put :update_payment_type

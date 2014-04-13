@@ -1,10 +1,13 @@
 class Bancbox::FundingXn < ActiveRecord::Base
 
-  attr_accessible :investment, :investment_id, :escrow_id
+  attr_accessible :online_payment, :online_payment_id, :escrow, :escrow_id
 
-  belongs_to :investment, :class_name => 'Alumvest::Investment::Base'
+  belongs_to :online_payment,
+             :class_name => 'Alumvest::OnlinePaymentBase',
+             :foreign_key => 'payment_id'
 
-  belongs_to :bancbox_escrow, :class_name => 'Bancbox::Escrow::Base'
+  belongs_to :bancbox_escrow,
+             :class_name => 'Bancbox::Escrow::Base'
 
   # other possible fields
   #  :amount
@@ -13,5 +16,4 @@ class Bancbox::FundingXn < ActiveRecord::Base
   #  :trans_status,
   #  :memo,
   #  :text,
-
 end

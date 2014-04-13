@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413101700) do
+ActiveRecord::Schema.define(version: 20140413133044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,14 +78,10 @@ ActiveRecord::Schema.define(version: 20140413101700) do
   add_index "bancbox_fund_transactions", ["bancbox_bank_account_id"], name: "index_bancbox_fund_transactions_on_bancbox_bank_account_id", using: :btree
 
   create_table "bancbox_funding_xns", force: true do |t|
-    t.string   "bank_account_number"
-    t.string   "bank_account_type"
-    t.string   "bank_account_holder"
-    t.string   "bank_account_routing"
     t.integer  "escrow_id"
-    t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "payment_id"
   end
 
   create_table "bancbox_investors", force: true do |t|
@@ -373,6 +369,7 @@ ActiveRecord::Schema.define(version: 20140413101700) do
     t.integer  "investment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "people", force: true do |t|
