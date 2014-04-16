@@ -1,6 +1,7 @@
 #dashboard.container
   .row
     .col-md-8
+
       .dashboard-content
         %h2 Tester Dashboard
         %hr
@@ -24,4 +25,5 @@
       .dashboard-content
         %h2 Actions
         %hr
-        = button_to 'Reset the database', tester_dashboard_reset_database_path, :class => 'btn btn-danger btn-large', :method => :get
+        %p= button_to 'Reset the database', tester_dashboard_reset_database_path, :class => 'btn btn-danger btn-large', :method => :get
+        %p= button_to 'Promote Income Verifications', tester_dashboard_promote_income_verifications_path, :class => 'btn btn-danger btn-large', :method => :get

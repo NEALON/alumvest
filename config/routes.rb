@@ -16,6 +16,7 @@ Av::Application.routes.draw do
 
   get '/tester_dashboard', :to => 'tester_dashboard#index'
   get '/tester_dashboard/reset_database', :to => 'tester_dashboard#reset_database', :via => :get
+  get '/tester_dashboard/promote_income_verifications', :to => 'tester_dashboard#promote_income_verifications', :via => :get
 
   get '/dashboard', :to => 'dashboard#index'
 

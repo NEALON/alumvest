@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :signing, :class => Alumvest::Signing::Base do
-    status "MyString"
+    status "undefined"
   end
 end

@@ -5,6 +5,12 @@ class TesterDashboardController < ApplicationController
 
   def reset_database
     %x[rake db:seed]
-    redirect_to tester_dashboard_path, :flash => {:success => 'Database has been reset.'}
+    redirect_to tester_dashboard_path
+  end
+
+  def promote_income_verifications
+    Veritax::Order::Base.drafted.map(&:submit!)
+    Veritax::Order::Base.submitted.map(&:complete!)
+    redirect_to tester_dashboard_path
   end
 end

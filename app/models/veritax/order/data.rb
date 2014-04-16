@@ -31,6 +31,10 @@ module Veritax::Order::Data
 
     belongs_to :investor, :class_name => 'Alumvest::Investor::Base'
 
+    def self.drafted
+      where(:status => 'draft')
+    end
+
     def self.submitted
       where(:status => 'submitted')
     end
