@@ -35,5 +35,9 @@ module Alumvest::Campaign::Data
              :dependent => :destroy,
              :class_name => 'Alumvest::Follow',
              :foreign_key => 'campaign_id'
+
+    def raised
+      investments.where(:status => 'pending').sum(:amount)
+    end
   end
 end

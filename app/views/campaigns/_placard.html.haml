@@ -11,7 +11,7 @@
   .company-goal
     .row
       .campaign-cell-number.col-md-4.col-xs-4
-        = number_to_currency (investment_sum = 0)
+        = number_to_currency (investment_sum = campaign.raised)
       .campaign-cell-number.col-md-4.col-xs-4
         = number_to_currency (fundraising_amount = campaign.investment_term.fundraising_amount)
       .campaign-cell-number.col-md-4.col-xs-4

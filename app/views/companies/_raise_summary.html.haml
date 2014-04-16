@@ -1,7 +1,7 @@
 %div.company-raise-summary.company-block
   %div.double-level
     - if can? :view_exact_funding_amount, @campaign
-      = number_to_currency (0)
+      = number_to_currency (@company.campaign.raised)
       %p.raise-label Raised
     - else
       = render 'partials/signup_to_see_small'
