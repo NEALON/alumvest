@@ -65,5 +65,18 @@ module Features
       click_on 'Invest Now'
       fill_in_investment_amount amount
     end
+
+    def create_funded_investment
+      @issuer = create_issuer.issuer
+      @campaign = create_live_campaign(@user.issuer)
+      create_accredited_investor
+
+      sign_in 'investor@alumvest.com', 'secret'
+      @investment = create_investment(@campaign, @user.investor)
+      @payment = FactoryGirl.create(:online_payment, :investment => @investment)
+
+      visit campaign_investment_online_payment_path(@campaign, @investment)
+      click_on 'Initiate ACH Transfer'
+    end
   end
 end

@@ -1,0 +1,5 @@
+%td
+  = "An investment of #{number_to_currency(funded.investment.amount)} was funded"
+%td
+  = link_to funded.campaign.company.campaign_title, display_campaign_company_path(funded.campaign)
+%td
