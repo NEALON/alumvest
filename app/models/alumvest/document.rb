@@ -1,6 +1,6 @@
 module Alumvest
   class Document < ActiveRecord::Base
-    attr_accessible :name, :file_url, :signature_required
+    attr_accessible :name, :file_url, :signature_required, :distribute_at_closing
 
     validates_presence_of [:name, :file_url]
 

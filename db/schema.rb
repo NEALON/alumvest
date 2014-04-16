@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413133044) do
+ActiveRecord::Schema.define(version: 20140416144336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20140413133044) do
     t.integer  "veritax_order_id"
     t.integer  "investment_id"
     t.integer  "issuer_id"
+    t.integer  "payment_id"
   end
 
   add_index "bus_events", ["type"], name: "index_bus_events_on_type", using: :btree
@@ -227,7 +228,8 @@ ActiveRecord::Schema.define(version: 20140413133044) do
     t.string   "documentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "signature_required", default: false
+    t.boolean  "signature_required",    default: false
+    t.boolean  "distribute_at_closing", default: false
   end
 
   create_table "educations", force: true do |t|
