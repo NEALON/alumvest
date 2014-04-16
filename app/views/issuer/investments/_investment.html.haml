@@ -1,0 +1,9 @@
+%tr
+  %td
+    = investment.investor.user.full_name
+  %td
+    = number_to_currency(investment.amount)
+  %td
+    = investment.status
+  %td
+    = "#{time_ago_in_words(investment.created_at)} ago"

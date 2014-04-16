@@ -84,7 +84,9 @@ Av::Application.routes.draw do
 
     resource :issuer do
       resources :events, :controller => 'issuer/events'
-      resource :campaign, :controller => 'issuer/campaigns'
+      resource :campaign, :controller => 'issuer/campaigns' do
+        resources :investments, :controller => 'issuer/investments'
+      end
       resources :signings, :controller => 'issuer/signings'
     end
 

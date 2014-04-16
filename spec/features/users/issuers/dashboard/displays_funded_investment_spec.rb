@@ -14,6 +14,7 @@ describe 'issuers dashboard displays funded investment', :type => :feature do
   end
 
   it 'displays investment information' do
-    pending
+    visit user_issuer_campaign_investments_path(@issuer.user)
+    expect(page).to have_content('$100')
   end
 end

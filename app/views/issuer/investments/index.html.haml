@@ -1,0 +1,20 @@
+= render 'issuers/side_navigation', :active => 'issuer_campaign_investments'
+= render 'users/header'
+
+#information
+  %p
+    %table.table
+      %thead
+        %tr
+          %th
+            Investor
+          %th
+            Amount
+          %th
+            Status
+          %th
+            Created
+
+      %tbody
+        - @investments.each do |i|
+          = render :partial => 'investment', :locals => {:investment => i}
