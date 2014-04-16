@@ -11,7 +11,7 @@
     - unless content_for?(:without_navigation) || (yield :without_navigation) == true
       #header-content.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          = render partial: 'layouts/header_navigation'
+          = render :partial => 'layouts/header_navigation'
         %div.navbar-form#search-header
           %div.input-group
             %span.input-group-btn
