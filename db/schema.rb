@@ -299,8 +299,6 @@ ActiveRecord::Schema.define(version: 20140416144336) do
     t.integer  "campaign_id"
     t.decimal  "min_investment"
     t.decimal  "max_investment"
-    t.decimal  "min_investment_amount"
-    t.decimal  "max_investment_amount"
   end
 
   create_table "investments", force: true do |t|

@@ -54,12 +54,6 @@ module Features
       click_button 'Save'
     end
     
-    def create_team_via_factories(campaign, build_or_create = :build)
-      team = FactoryGirl.send(build_or_create, :team, :campaign => campaign)
-      team.team_members << FactoryGirl.create(:team_member)
-      team
-    end
-
     def create_investment_amount(amount = 99.99)
       visit display_campaign_company_path(@campaign)
       click_on 'Invest Now'

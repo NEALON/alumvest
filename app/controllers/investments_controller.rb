@@ -16,6 +16,7 @@ class InvestmentsController < ApplicationController
 
   def update
     @investment = InvestmentBase.find(params[:id])
+    @investment.update_attributes(params[:alumvest_investment_base])
     @workflow = InvestmentWorkflow.new(@investment)
     if @investment.valid?
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }

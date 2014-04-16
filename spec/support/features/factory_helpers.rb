@@ -16,6 +16,22 @@ module Features
                                  :uid => @identity.id)
     end
 
+    def create_issuer_and_live_campaign
+      identity = FactoryGirl.create(:identity,
+                                     :last_name => 'Issuer',
+                                     :email => 'issuer+live@alumvest.com')
+      user = FactoryGirl.create(:user,
+                                 :first_name => 'Issuer',
+                                 :middle_name => 'Test',
+                                 :last_name => 'Alumvest',
+                                 :provider => 'identity',
+                                 :email => 'issuer+live@alumvest.com',
+                                 :user_type => 'Issuer',
+                                 :identities => [identity],
+                                 :uid => identity.id)
+      create_live_campaign(user.issuer)
+    end
+
     def create_accredited_investor
       create_non_accredited_investor
       update_accredited_investor_status 'approved'
@@ -82,6 +98,12 @@ module Features
       @campaign.save
       @document = FactoryGirl.create(:signable_subscription_document, :documentable => @campaign.investment_term)
       @campaign
+    end
+
+    def create_team_via_factories(campaign, build_or_create = :build)
+      team = FactoryGirl.send(build_or_create, :team, :campaign => campaign)
+      team.team_members << FactoryGirl.create(:team_member)
+      team
     end
 
     def create_published_campaign(issuer)

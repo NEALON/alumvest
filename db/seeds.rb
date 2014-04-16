@@ -13,3 +13,5 @@ create_accredited_investor
 create_admin
 create_issuer
 create_publishable_campaign(@user.issuer)
+
+create_issuer_and_live_campaign

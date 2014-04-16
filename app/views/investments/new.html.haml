@@ -6,19 +6,19 @@
     = render_cell 'tb/form/subhead', :display, :label => 'Investment Amount'
     = f.hidden_field :campaign_id
     = f.hidden_field :investor_id
-    = f.hidden_field 'company-valuation', :value => '1000000'
-    = f.hidden_field 'equity-percentage', :value => '10'
+    = hidden_field 'company', 'valuation', :value => '1000000'
+    = hidden_field 'equity', 'percentage', :value => '10'
 
     %fieldset
       = render_cell 'tb/form/helptext', :display, :text => "Minimum and maximum investment values are #{number_to_currency(@campaign.investment_term.min_investment)} and #{number_to_currency(@campaign.investment_term.max_investment)}"
-      = render_cell 'tb/form/text', :display, :label => 'Amount (in U.S. dollar)', :form => f, :field => :amount, :placeholder => "#{@campaign.investment_term.max_investment}"
+      = render_cell 'tb/form/text', :display, :label => 'Amount (in U.S. dollars)', :form => f, :field => :amount, :placeholder => "#{@campaign.investment_term.max_investment}"
       = render_cell 'tb/form/updating_helptext', :display, :text => "", :id => 'investment-equity-percentage'
 
       :javascript
         $("#alumvest_investment_base_amount").keydown(function () {
 
-            var company_value = $('#alumvest_investment_base_company-valuation').val();
-            var equity_percentage = $('#alumvest_investment_base_equity-percentage').val();
+            var company_value = $('#company_valuation').val();
+            var equity_percentage = $('#equity_percentage').val();
             var equity_value = company_value * equity_percentage * .01;
             var investment_amount = $('#alumvest_investment_base_amount').val();
             var investment_percent = investment_amount / company_value * 100;
