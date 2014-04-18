@@ -16,13 +16,13 @@ describe 'user manages sessions', :type => :feature do
 
   it 'signs out' do
     sign_up
-    signout
+    sign_out
     expect(page).to have_link('Login')
   end
 
   it 'signs back in' do
     sign_up
-    signout
+    sign_out
     sign_in
     expect(page).to have_link('Sign out')
   end
@@ -36,7 +36,7 @@ describe 'user manages sessions', :type => :feature do
 
     click_button 'I am an Investor'
     expect(page).to have_link 'Investor'
-    signout
+    sign_out
 
     click_link 'Login'
     within '#login-modal' do

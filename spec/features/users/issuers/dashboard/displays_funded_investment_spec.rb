@@ -4,7 +4,7 @@ describe 'issuers dashboard displays funded investment', :type => :feature do
 
   before :each do
     create_funded_investment
-    signout
+    sign_out
     sign_in 'issuer@alumvest.com', 'secret'
   end
 

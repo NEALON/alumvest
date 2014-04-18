@@ -12,7 +12,7 @@ describe 'admin reviews published campaigns', :type => :feature do
     visit campaign_investment_online_payment_path(@campaign, @investment)
     click_on 'Initiate ACH Transfer'
 
-    signout
+    sign_out
 
     admin_user = create_admin
     sign_in 'admin@alumvest.com', 'secret'

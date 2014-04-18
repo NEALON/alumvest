@@ -31,7 +31,7 @@ module Features
       @user.update_attribute(:user_type, 'admin') if role == :admin
     end
 
-    def signout
+    def sign_out
       click_link 'user-name'
       click_link 'Sign out'
     end

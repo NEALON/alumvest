@@ -11,7 +11,7 @@ describe 'users investor income verification', :type => :feature do
       click_on 'Income Verification'
       fill_in_income_verification
       click_on 'Submit to Veri-Tax'
-      signout
+      sign_out
       @the_investor = @investor
 
       admin_user = create_admin

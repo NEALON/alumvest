@@ -31,7 +31,7 @@ describe 'non-accredited investor income verification results', :type => :featur
         sign_in 'admin@alumvest.com', 'secret'
         visit income_verification_events_user_admin_path(@admin_user)
         click_on 'Approve'
-        signout
+        sign_out
         sign_in 'investor@alumvest.com', 'secret'
         visit user_investor_events_path(@investor.user)
         expect(page).to have_content('Your income verification request was approved')
@@ -43,7 +43,7 @@ describe 'non-accredited investor income verification results', :type => :featur
         sign_in 'admin@alumvest.com', 'secret'
         visit income_verification_events_user_admin_path(@admin_user)
         click_on 'Reject'
-        signout
+        sign_out
         sign_in 'investor@alumvest.com', 'secret'
         visit user_investor_events_path(@investor.user)
         expect(page).to have_content('Your income verification request was rejected')

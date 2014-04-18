@@ -8,7 +8,7 @@ describe 'admin reviews published campaigns', :type => :feature do
     sign_in 'issuer@alumvest.com', 'secret'
     visit campaign_company_path(@campaign)
     click_on 'Publish'
-    signout
+    sign_out
 
     admin_user = create_admin
     sign_in 'admin@alumvest.com', 'secret'
@@ -24,7 +24,7 @@ describe 'admin reviews published campaigns', :type => :feature do
     click_on 'Accept'
     expect(page).to have_content('Campaign was reviewed and accepted.')
     expect(page).to have_content('A campaign was accepted')
-    signout
+    sign_out
     sign_in 'issuer@alumvest.com', 'secret'
     visit user_issuer_events_path(@issuer_user)
     expect(page).to have_content('Your campaign was accepted')
@@ -34,7 +34,7 @@ describe 'admin reviews published campaigns', :type => :feature do
     click_on 'Reject'
     expect(page).to have_content('Campaign was reviewed and rejected.')
     expect(page).to have_content('A campaign was rejected')
-    signout
+    sign_out
     sign_in 'issuer@alumvest.com', 'secret'
     visit user_issuer_events_path(@issuer_user)
     expect(page).to have_content('Your campaign was rejected')
