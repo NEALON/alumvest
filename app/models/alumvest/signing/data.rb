@@ -15,7 +15,7 @@ module Alumvest::Signing::Data
             :class_name => 'Docusign::Envelope::Base',
             :foreign_key => 'signing_id'
     has_many :signing_reviews,
-             :class_name => 'Bus::Event::SigningReview',
+             :class_name => 'Bus::Event::Investment::Signing::Review',
              :foreign_key => 'signing_id'
 
     def self.signed_by_investor

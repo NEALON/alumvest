@@ -4,9 +4,8 @@
   %table.table
     %tr
       %td.company-logo-side
-        = image_tag @company.logo(w:100, h:100) unless @company.logo.blank?
+        = image_tag @company.logo(:w => 100, :h => 100) unless @company.logo.blank?
       %td
         %h3= @company.company_name
         %p.short-description= @company.short_description
         %p.company-short-info= "Founded #{(@company.founded_on_year)}"
-

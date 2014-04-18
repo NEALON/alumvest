@@ -62,7 +62,7 @@ class AdminsController < ApplicationController
   end
 
   def approve_investor_signing
-    if Bus::Event::SigningApproved.create(
+    if Bus::Event::Investment::Signing::Approved.create(
         :signing => SigningBase.find(params[:signing]),
         :admin => UserBase.find(params[:admin])
     )
@@ -73,9 +73,10 @@ class AdminsController < ApplicationController
   end
 
   def reject_investor_signing
-    if Bus::Event::SigningRejected.create(
+    if Bus::Event::Investment::Signing::Rejected.create(
         :signing => SigningBase.find(params[:signing]),
-        :admin => UserBase.find(params[:admin])
+        :admin => UserBase.find(params[:admin]),
+        :investor => InvestorBase.find(params[:investor])
     )
       redirect_to  investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing rejected.'}
     else
