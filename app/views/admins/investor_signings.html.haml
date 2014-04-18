@@ -2,10 +2,24 @@
 = render 'users/header'
 
 #information
-  %table.table
-    - if @investor_signings.blank?
-      No data present.
-    - else
+  - if @investor_signings.blank?
+    No data present.
+  - else
+    %table.table
+
+    %table.table
+      %thead
+        %tr
+          %th
+            Campaign
+          %th
+            Investment
+          %th
+            Document
+          %th
+            Action
+
+      %tbody
       - @investor_signings.each do |s|
         %tr
           = render :partial => s.to_admin_partial_path, :locals => {:signing => s}
