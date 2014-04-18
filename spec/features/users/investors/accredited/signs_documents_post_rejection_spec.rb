@@ -28,15 +28,21 @@ describe 'accredited investor signs documents post rejection', :type => :feature
 
     # investor returns...
     sign_in 'investor@alumvest.com', 'secret'
+    visit user_investor_events_path(@investor.user)
   end
 
   it 'sees the rejection in their newsfeed' do
-    visit user_investor_events_path(@investor.user)
     expect(page).to have_content('One of your document signings was rejected.')
   end
 
-  # TODO: they return to the investment documents
-  # TODO: they are able to re-sign
+  it 'returns to the signing page for the document' do
+    click_on 'document signings'
+    sleep 30
+    # TODO: they return to the investment documents
+  end
 
+  it 'lets them sign the document again' do
+    # TODO: they are able to re-sign
+  end
 end
 

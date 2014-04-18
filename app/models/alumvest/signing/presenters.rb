@@ -9,7 +9,14 @@ module Alumvest::Signing::Presenters
     end
 
     def status_for_end_user
-      status == 'signed_by_investor' ? 'under review' : status
+      case status
+        when 'signed_by_investor'
+          'under review'
+        when 'investor_signature_rejected'
+          'voided by administrator'
+        else
+          status
+      end
     end
   end
 end

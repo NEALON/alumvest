@@ -12,5 +12,9 @@ module Alumvest
     has_one :signing,
             :class_name => 'Alumvest::Signing::Base',
             :foreign_key => 'document_id'
+
+    def self.requires_signature
+      where(:signature_required => true)
+    end
   end
 end

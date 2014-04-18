@@ -1,1 +1,4 @@
-%p One of your document signings was rejected.
+%p
+  One of your
+  = link_to 'document signings', campaign_investment_contract_doc_group_path(event.signing.investment.campaign, event.signing.investment)
+  was rejected.
