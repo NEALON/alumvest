@@ -9,7 +9,7 @@ module Docusign::TemplateDocusignCalls
 
       envelope = client.create_envelope_from_template(
           {
-              :template_id => template_id,
+              :template_id => docusign_template_id,
               :status => 'sent',
               :email => {
                   :subject => document.name,

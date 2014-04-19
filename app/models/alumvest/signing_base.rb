@@ -1,4 +1,5 @@
 class Alumvest::SigningBase < ActiveRecord::Base
+
   include Alumvest::SigningPresenters
   include Alumvest::SigningState
 
@@ -9,7 +10,7 @@ class Alumvest::SigningBase < ActiveRecord::Base
   belongs_to :investment, :class_name => 'Alumvest::InvestmentBase'
   belongs_to :document, :class_name => 'Alumvest::Document'
 
-  has_one :envelope,
+  has_many :envelopes,
           :class_name => 'Docusign::EnvelopeBase',
           :foreign_key => 'signing_id'
   has_many :signing_reviews,
