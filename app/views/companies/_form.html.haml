@@ -15,7 +15,7 @@
       = op.render_cell 'tb/form/richtext', :display, :field => :company_details
       = op.render_cell 'tb/form/select', :display, :field =>  :founded_on_year, :values => Array(1990..Date.today.year)
       = op.render_cell 'tb/form/select', :display, :field =>  :ownership_structure, :values => ownership_structures
-      = op.render_cell 'tb/form/select', :display, :field =>  :category_id, :values => Alumvest::Category::Base.for_select
+      = op.render_cell 'tb/form/select', :display, :field =>  :category_id, :values => Alumvest::CategoryBase.for_select
       = op.render_cell 'tb/form/text', :display, :field => :address_1
       = op.render_cell 'tb/form/text', :display, :field => :address_2
       = op.render_cell 'tb/form/text', :display, :field => :city

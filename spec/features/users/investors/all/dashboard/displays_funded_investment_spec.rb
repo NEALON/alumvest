@@ -8,6 +8,6 @@ describe 'investor dashboard displays funded investment', :type => :feature do
 
   it 'sees the event in the investor newsfeed' do
     visit user_investor_events_path(@user)
-    expect(page).to have_content 'An investment of $100.00 was funded for BionicEyez See More less than a minute ago.'
+    expect(page).to have_content 'An investment of $100.00 was funded'
   end
 end

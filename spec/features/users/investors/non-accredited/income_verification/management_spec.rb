@@ -32,11 +32,6 @@ describe 'non-accredited investor manages income verification', :type => :featur
     expect(page).to have_content 'Your information was saved.'
   end
   
-  it 'validates' do
-    click_button 'Review and submit'
-    expect(page).to have_content('error')
-  end
-
   it 'successfully submits to veritax' do
     fill_in_income_verification
     expect(page).to have_content 'Your information was saved.'

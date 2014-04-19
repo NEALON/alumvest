@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def accept
-    campaign = CampaignBase.find(params[:campaign_id])
+    campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     Alumvest::Review.create(:campaign => campaign, :result => 'accept')
     Bus::Event::Campaign::Accepted.create(:campaign => campaign, :issuer => campaign.issuer)
     campaign.accept
@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def reject
-    campaign = CampaignBase.find(params[:campaign_id])
+    campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     Alumvest::Review.create(:campaign => campaign, :result => 'reject')
     Bus::Event::Campaign::Rejected.create(:campaign => campaign, :issuer => campaign.issuer)
     IssuerMailer.reject(campaign.issuer.user.email).deliver

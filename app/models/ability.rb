@@ -4,50 +4,50 @@ class Ability
   def initialize(user)
 
     # default user
-    cannot :view_risk_n_challenge, CampaignBase
-    cannot :view_financial, CampaignBase
-    cannot :view_exact_funding_amount, CampaignBase
-    cannot :view_pitch_deck, CampaignBase
-    cannot :view_investment_doc, CampaignBase
-    cannot :invest, CampaignBase
+    cannot :view_risk_n_challenge, Alumvest::CampaignBase
+    cannot :view_financial, Alumvest::CampaignBase
+    cannot :view_exact_funding_amount, Alumvest::CampaignBase
+    cannot :view_pitch_deck, Alumvest::CampaignBase
+    cannot :view_investment_doc, Alumvest::CampaignBase
+    cannot :invest, Alumvest::CampaignBase
 
     unless user.nil?
-      can :manage, UserBase
+      can :manage, Alumvest::UserBase
       can :manage, Bancbox::BankAccount, :user_id => user.id
 
       # issuer
       if user.is_issuer?
-        can :manage, IssuerBase
+        can :manage, Alumvest::IssuerBase
 
-        can :manage, CampaignBase, :issuer_id => user.issuer.id
-        can :view_risk_n_challenge, CampaignBase, :issuer_id => user.issuer.id
-        can :view_financial, CampaignBase, :issuer_id => user.issuer.id
-        can :view_exact_funding_amount, CampaignBase, :issuer_id => user.issuer.id
-        can :view_pitch_deck, CampaignBase, :issuer_id => user.issuer.id
-        can :view_investment_doc, CampaignBase, :issuer_id => user.issuer.id
+        can :manage, Alumvest::CampaignBase, :issuer_id => user.issuer.id
+        can :view_risk_n_challenge, Alumvest::CampaignBase, :issuer_id => user.issuer.id
+        can :view_financial, Alumvest::CampaignBase, :issuer_id => user.issuer.id
+        can :view_exact_funding_amount, Alumvest::CampaignBase, :issuer_id => user.issuer.id
+        can :view_pitch_deck, Alumvest::CampaignBase, :issuer_id => user.issuer.id
+        can :view_investment_doc, Alumvest::CampaignBase, :issuer_id => user.issuer.id
       end
 
       if user.is_investor?
-        can :manage, InvestorBase
-        can :manage, InvestmentBase
+        can :manage, Alumvest::InvestorBase
+        can :manage, Alumvest::InvestmentBase
         can :manage, Alumvest::SelfAccreditedStatus, :investor_id => user.investor.id
-        can :manage, Veritax::Order::Base, :investor_id => user.investor.id
+        can :manage, Veritax::OrderBase, :investor_id => user.investor.id
 
         if user.is_self_accredited_investor? or user.is_accredited_investor?
-          can :view_risk_n_challenge, CampaignBase
-          can :view_exact_funding_amount, CampaignBase
-          can :invest, CampaignBase
+          can :view_risk_n_challenge, Alumvest::CampaignBase
+          can :view_exact_funding_amount, Alumvest::CampaignBase
+          can :invest, Alumvest::CampaignBase
 
           if user.is_accredited_investor?
-            can :view_financial, CampaignBase
-            can :view_pitch_deck, CampaignBase
-            can :view_investment_doc, CampaignBase
+            can :view_financial, Alumvest::CampaignBase
+            can :view_pitch_deck, Alumvest::CampaignBase
+            can :view_investment_doc, Alumvest::CampaignBase
           end
         end
 
         # admin can do anything
         if user.is_admin?
-          can :manage, CampaignBase
+          can :manage, Alumvest::CampaignBase
         end
       end
     end
@@ -56,7 +56,7 @@ end
 
 # Define abilities for the passed in user here. For example:
 #
-#   user ||= UserBase.new # guest user (not logged in)
+#   user ||= Alumvest::UserBase.new # guest user (not logged in)
 #   if user.admin?
 #     can :manage, :all
 #   else

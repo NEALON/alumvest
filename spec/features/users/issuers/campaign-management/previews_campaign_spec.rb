@@ -8,7 +8,7 @@ describe 'issuer previews campaign', :type => :feature do
     click_on 'Issuer Dashboard'
     click_on 'Campaign'
     click_on 'Create your campaign'
-    @campaign = CampaignBase.first
+    @campaign = Alumvest::CampaignBase.first
   end
 
   it 'previews company' do

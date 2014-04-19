@@ -1,14 +1,14 @@
 class InvestorsController < ApplicationController
 
   def edit
-    @user = UserBase.find(params[:user_id])
+    @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     authorize! :manage, @investor
     render :layout => 'investors'
   end
 
   def update
-    @user = UserBase.find(params[:user_id])
+    @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     authorize! :manage, @investor
     @investor.update_attributes(params[:alumvest_investor_base])
@@ -20,19 +20,19 @@ class InvestorsController < ApplicationController
   end
 
   def show
-    @user = UserBase.find(params[:user_id])
-    @investor = @user.investor || Alumvest::Investor::Base.new(:user => @user)
+    @user = Alumvest::UserBase.find(params[:user_id])
+    @investor = @user.investor || Alumvest::InvestorBase.new(:user => @user)
     authorize! :read, @investor
     render :layout => 'investors'
   end
 
   #def display
-  #  @user = UserBase.find(params[:user_id])
+  #  @user = Alumvest::UserBase.find(params[:user_id])
   #  @investor = @user.investor
   #end
   #
   #def check_for_completeness
-  #  @user = UserBase.find(params[:user_id])
+  #  @user = Alumvest::UserBase.find(params[:user_id])
   #  @investor = @user.investor
   #  @investor.update_attributes(params[:alumvest_investor_base])
   #  if @investor.make_ready_for_review

@@ -1,6 +1,6 @@
 - if @user.is_issuer?
 
-  - campaign = @user.issuer.campaign || Alumvest::Campaign::Base.create(:issuer => @user.issuer)
+  - campaign = @user.issuer.campaign || Alumvest::CampaignBase.create(:issuer => @user.issuer)
 
   - link = campaign.company ? campaign_company_path(campaign) : new_campaign_company_path(campaign)
   = link_to link do

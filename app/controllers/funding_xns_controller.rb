@@ -1,9 +1,9 @@
 class FundingXnsController < ApplicationController
 
   def create
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = InvestmentBase.find(params[:investment_id])
+    @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @payment = @investment.online_payment
     authorize! :manage, @investment
     @funding_xn = Bancbox::FundingXn.create(:online_payment => @payment)

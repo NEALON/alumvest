@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
   def show
-    @user = UserBase.find_by_id(params[:id])
+    @user = Alumvest::UserBase.find_by_id(params[:id])
     @active = 'basic_info'
     render :layout => 'users'
   end
 
   def edit
-    @user = UserBase.find_by_id(params[:id])
+    @user = Alumvest::UserBase.find_by_id(params[:id])
     authorize! :manage, @user
     @active = 'basic_info'
     render :layout => 'users'
   end
 
   def update
-    @user = UserBase.find_by_id(params[:id])
+    @user = Alumvest::UserBase.find_by_id(params[:id])
     authorize! :manage, @user
     @user.update_attributes(params[:alumvest_user_base])
     if (params[:alumvest_user_base].size == 1 and params[:alumvest_user_base].has_key? :user_type) or @user.valid?

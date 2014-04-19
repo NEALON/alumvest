@@ -1,7 +1,7 @@
 class SelfAccreditedStatusesController < ApplicationController
 
   def new
-    @user = UserBase.find(params[:user_id])
+    @user = Alumvest::UserBase.find(params[:user_id])
     unless @user.finishes_self_accredited_form?
       @investor = @user.investor
       @self_accredited_status = Alumvest::SelfAccreditedStatus.new(investor: @investor)
@@ -13,7 +13,7 @@ class SelfAccreditedStatusesController < ApplicationController
   end
 
   def create
-    @user = UserBase.find(params[:user_id])
+    @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     @self_accredited_status = Alumvest::SelfAccreditedStatus.create(params[:alumvest_self_accredited_status])
     authorize! :manage, @self_accredited_status
@@ -51,7 +51,7 @@ class SelfAccreditedStatusesController < ApplicationController
   private
 
   def load_self_accredited_status
-    @user = UserBase.find(params[:user_id])
+    @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     @self_accredited_status =  @investor.self_accredited_status
     if @self_accredited_status.nil?

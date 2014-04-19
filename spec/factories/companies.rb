@@ -1,11 +1,11 @@
 FactoryGirl.define do
-  factory :category, :class => Alumvest::Category::Base do
+  factory :category, :class => Alumvest::CategoryBase do
     name 'Science and Technology'
   end
 end
 
 FactoryGirl.define do
-  factory :company, :class => Alumvest::Company::Base do
+  factory :company, :class => Alumvest::CompanyBase do
     company_name          'BionicEyez'
     logo_url              'https://www.filepicker.io/api/file/PJWqNjCRSynIP9SYSDo4'
     short_description     'Eyeglasses that show messages to the user: emails, news, scores, directions, heartbeats...'
@@ -37,7 +37,7 @@ FactoryGirl.define do
                           }
     founded_on_year       5.years.ago.year
     ownership_structure   'Corporation'
-    category_id           (Alumvest::Category::Base.first.try(:id) || FactoryGirl.create(:category).id)
+    category_id           (Alumvest::CategoryBase.first.try(:id) || FactoryGirl.create(:category).id)
     address_1             Faker::Address.street_address
     address_2             Faker::Address.secondary_address
     city                  Faker::Address.city

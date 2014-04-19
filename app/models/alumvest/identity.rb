@@ -4,8 +4,8 @@ module Alumvest
 
     validates_presence_of :first_name
     validates_uniqueness_of :email
-    validates :email, email: true
+    validates :email, :email => true
 
-    belongs_to :user, :class_name => 'Alumvest::User::Base'
+    belongs_to :user, :class_name => 'Alumvest::UserBase'
   end
 end

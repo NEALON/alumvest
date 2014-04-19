@@ -109,21 +109,5 @@ module Av
             }
           }
         )
-
-    config.after_initialize do
-
-      ::CampaignBase =      Alumvest::Campaign::Base
-      ::CompanyBase =       Alumvest::Company::Base
-      ::InvestmentBase =    Alumvest::Investment::Base
-      ::InvestorBase =      Alumvest::Investor::Base
-      ::IssuerBase =        Alumvest::Issuer::Base
-      ::SigningBase =       Alumvest::Signing::Base
-      ::UserBase =          Alumvest::User::Base
-
-      ::EnvelopeEventBase = Docusign::EnvelopeEvent::Base
-      ::EnvelopeBase =      Docusign::Envelope::Base
-
-      ::OrderBase =         Veritax::Order::Base
-    end
   end
 end

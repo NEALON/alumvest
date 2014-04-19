@@ -7,10 +7,10 @@ module Alumvest
     belongs_to :documentable, :polymorphic => true
 
     has_one :template,
-            :class_name => 'Docusign::Template::Base',
+            :class_name => 'Docusign::TemplateBase',
             :foreign_key => 'document_id'
     has_one :signing,
-            :class_name => 'Alumvest::Signing::Base',
+            :class_name => 'Alumvest::SigningBase',
             :foreign_key => 'document_id'
 
     def self.requires_signature

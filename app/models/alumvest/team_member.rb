@@ -1,4 +1,4 @@
 module Alumvest
-  class TeamMember < Alumvest::Person::Base
+  class TeamMember < Alumvest::PersonBase
   end
 end

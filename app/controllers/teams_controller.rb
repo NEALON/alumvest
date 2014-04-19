@@ -3,15 +3,15 @@ class TeamsController < ApplicationController
   before_filter :load_team, :except => [:new, :create]
 
   def new
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
-    @team = Alumvest::Team::Base.new(:campaign => @campaign)
+    @team = Alumvest::TeamBase.new(:campaign => @campaign)
     @team.team_members.build
   end
 
   def create
-    @campaign = CampaignBase.find(params[:campaign_id])
-    @team = Alumvest::Team::Base.create(params[:alumvest_team_base])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+    @team = Alumvest::TeamBase.create(params[:alumvest_team_base])
     authorize! :manage, @campaign
     if @team.valid?
       redirect_to campaign_team_path(@team.campaign), :flash => {:success => 'Campaign team info saved.' }
@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
   private
 
   def load_team
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     @team = @campaign.team

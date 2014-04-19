@@ -3,7 +3,7 @@ class Bancbox::BankAccount < ActiveRecord::Base
   DefaultRoutingNumber = '267084199'
   attr_accessible :user, :user_id
 
-  belongs_to :user, :class_name => 'Alumvest::User::Base'
+  belongs_to :user, :class_name => 'Alumvest::UserBase'
 
   attr_accessible :bancbox_id,
                   :reference_id,

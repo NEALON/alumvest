@@ -18,7 +18,7 @@ module Features
     def create_new_investment_term(campaign)
       visit new_campaign_investment_term_path campaign
       fill_in_investment_term campaign
-      Alumvest::InvestmentTerm::Base.last
+      Alumvest::InvestmentTermBase.last
     end
 
     def create_blank_new_investment_term(campaign)
@@ -29,7 +29,7 @@ module Features
     def create_new_team(campaign)
       visit new_campaign_team_path campaign
       fill_in_team campaign
-      Alumvest::Team::Base.last
+      Alumvest::TeamBase.last
     end
 
     def create_blank_new_team(campaign)

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :investor, :class => Alumvest::Investor::Base do
+  factory :investor, :class => Alumvest::InvestorBase do
     ssn "000-00-0000"
     marital_status "MyString"
     financial_info "MyText"

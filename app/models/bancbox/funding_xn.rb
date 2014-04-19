@@ -7,7 +7,7 @@ class Bancbox::FundingXn < ActiveRecord::Base
              :foreign_key => 'payment_id'
 
   belongs_to :bancbox_escrow,
-             :class_name => 'Bancbox::Escrow::Base'
+             :class_name => 'Bancbox::EscrowBase'
 
   # other possible fields
   #  :amount

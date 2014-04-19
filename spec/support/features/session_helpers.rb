@@ -24,7 +24,7 @@ module Features
       end
 
       click_button 'Signup'
-      @user = Alumvest::User::Base.last
+      @user = Alumvest::UserBase.last
       @issuer = @user.issuer
       @investor = @user.investor
 

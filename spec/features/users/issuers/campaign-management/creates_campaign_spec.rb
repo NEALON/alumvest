@@ -20,7 +20,7 @@ describe 'issuer creates campaign', :type => :feature do
 
     it 'successfully' do
       click_on 'Create your campaign'
-      @campaign = CampaignBase.first
+      @campaign = Alumvest::CampaignBase.first
 
       fill_in_company(@campaign)
       click_link 'Check for completeness'

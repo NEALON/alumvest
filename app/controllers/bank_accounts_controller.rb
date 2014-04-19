@@ -1,7 +1,7 @@
 class BankAccountsController < ApplicationController
 
   def new
-    @user = UserBase.find_by_id(params[:user_id])
+    @user = Alumvest::UserBase.find_by_id(params[:user_id])
     @active = 'bank_account'
 
     if @user.profile_complete?
@@ -17,7 +17,7 @@ class BankAccountsController < ApplicationController
   end
 
   def create
-    @user = UserBase.find_by_id(params[:user_id])
+    @user = Alumvest::UserBase.find_by_id(params[:user_id])
     @bank_account = Bancbox::BankAccount.create(params[:bancbox_bank_account])
     authorize! :manage, @bank_account
     if @bank_account.valid?
@@ -28,7 +28,7 @@ class BankAccountsController < ApplicationController
   end
 
   def show
-    @user = UserBase.find_by_id(params[:user_id])
+    @user = Alumvest::UserBase.find_by_id(params[:user_id])
     @active = 'bank_account'
     @bank_account = @user.bank_account
     authorize! :manage, @bank_account
@@ -36,7 +36,7 @@ class BankAccountsController < ApplicationController
   end
 
   def edit
-    @user = UserBase.find_by_id(params[:user_id])
+    @user = Alumvest::UserBase.find_by_id(params[:user_id])
     @active = 'bank_account'
     @bank_account = @user.bank_account
     authorize! :manage, @bank_account
@@ -44,7 +44,7 @@ class BankAccountsController < ApplicationController
   end
 
   def update
-    @user = UserBase.find_by_id(params[:user_id])
+    @user = Alumvest::UserBase.find_by_id(params[:user_id])
     @bank_account = @user.bank_account
     authorize! :manage, @bank_account
     @bank_account.update_attributes(params[:bancbox_bank_account])

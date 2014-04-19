@@ -17,7 +17,7 @@ module Alumvest
       investment.investment_terms.subscription_docs.where(
           :signature_required => true).each do |doc|
         doc.template.create_envelope(
-            Alumvest::Signing::Base.create(
+            Alumvest::SigningBase.create(
                 :investment => investment,
                 :document => doc),
             {:name => investment.investor.user.full_name,

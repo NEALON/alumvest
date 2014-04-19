@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
   before_filter :load_campaign, :except => :publish
 
   def publish
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     if @campaign.publish
       redirect_to user_issuer_events_path(current_user), :flash => {:success => 'Congratulations! Your campaign is now published and ready for our review.'}
@@ -33,7 +33,7 @@ class CampaignsController < ApplicationController
   private
 
   def load_campaign
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
     @user = @campaign.issuer.user
   end

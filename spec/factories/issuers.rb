@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :issuer, :class => Alumvest::Issuer::Base do
+  factory :issuer, :class => Alumvest::IssuerBase do
     ssn '000-00-0000'
     financial_info 'MyText'
     experience 'MyText'

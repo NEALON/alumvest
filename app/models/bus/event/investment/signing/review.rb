@@ -6,9 +6,9 @@ class Bus::Event::Investment::Signing::Review < Bus::Event
                   :investor,
                   :investor_id
 
-  belongs_to :signing, :class_name => 'Alumvest::Signing::Base'
-  belongs_to :admin, :class_name => 'Alumvest::User::Base'
-  belongs_to :investor, :class_name => 'Alumvest::Investor::Base'
+  belongs_to :signing, :class_name => 'Alumvest::SigningBase'
+  belongs_to :admin, :class_name => 'Alumvest::UserBase'
+  belongs_to :investor, :class_name => 'Alumvest::InvestorBase'
 
   after_create :update_signing_status
 

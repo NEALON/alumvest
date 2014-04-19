@@ -1,9 +1,9 @@
 class OnlinePaymentsController < ApplicationController
 
   def new
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = InvestmentBase.find(params[:investment_id])
+    @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
     authorize! :manage, @investment
     @payment = Alumvest::OnlinePaymentBase.new(:investment => @investment)
@@ -11,9 +11,9 @@ class OnlinePaymentsController < ApplicationController
   end
 
   def create
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = InvestmentBase.find(params[:investment_id])
+    @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
     authorize! :manage, @investment
     @payment = Alumvest::OnlinePaymentBase.create(params[:alumvest_online_payment_base])
@@ -26,9 +26,9 @@ class OnlinePaymentsController < ApplicationController
   end
 
   def edit
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = InvestmentBase.find(params[:investment_id])
+    @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
     @payment = @investment.online_payment
     authorize! :manage, @investment
@@ -36,9 +36,9 @@ class OnlinePaymentsController < ApplicationController
   end
 
   def update
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = InvestmentBase.find(params[:investment_id])
+    @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
     @payment = @investment.online_payment
     authorize! :manage, @investment
@@ -51,9 +51,9 @@ class OnlinePaymentsController < ApplicationController
   end
 
   def show
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @company = @campaign.company
-    @investment = InvestmentBase.find(params[:investment_id])
+    @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
     authorize! :manage, @investment
     @payment = @investment.online_payment

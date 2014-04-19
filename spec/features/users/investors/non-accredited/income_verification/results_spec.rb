@@ -11,7 +11,7 @@ describe 'non-accredited investor income verification results', :type => :featur
           :investor => @investor,
           :vt_order_id => CompletedOrderId,
           :status => 'submitted')
-      Veritax::Order::Base.update_order_statuses!
+      Veritax::OrderBase.update_order_statuses!
     end
 
     it 'displays completed orders to the admin' do
@@ -60,7 +60,7 @@ describe 'non-accredited investor income verification results', :type => :featur
           :investor => @investor,
           :vt_order_id => CanceledOrderId,
           :status => 'submitted')
-      Veritax::Order::Base.update_order_statuses!
+      Veritax::OrderBase.update_order_statuses!
     end
 
     it 'displays completed orders to the admin' do

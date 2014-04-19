@@ -3,7 +3,7 @@ module Alumvest
     attr_accessible :investor, :investor_id
     attr_accessible :financial_status, :term_startup_fail, :term_responsible, :term_av_permission, :term_tos
 
-    belongs_to :investor, :class_name => 'Alumvest::Investor::Base'
+    belongs_to :investor, :class_name => 'Alumvest::InvestorBase'
     validate :validation
 
     def validation

@@ -1,7 +1,7 @@
 class UpdatesController < ApplicationController
 
   def index
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     @update = Alumvest::Update.new(:company => @company)
@@ -9,14 +9,14 @@ class UpdatesController < ApplicationController
   end
 
   def new
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     @update = Alumvest::Update.new(:company => @company)
   end
 
   def create
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     @update = Alumvest::Update.create(params[:alumvest_update])
@@ -28,7 +28,7 @@ class UpdatesController < ApplicationController
   end
 
   def edit
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     @update = Alumvest::Update.find(params[:id])
@@ -37,7 +37,7 @@ class UpdatesController < ApplicationController
   end
 
   def update
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     @update = Alumvest::Update.find(params[:id])
@@ -50,7 +50,7 @@ class UpdatesController < ApplicationController
   end
 
   def destroy
-    @campaign = CampaignBase.find(params[:campaign_id])
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @company = @campaign.company
     update = Alumvest::Update.find(params[:id])

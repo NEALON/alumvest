@@ -1,6 +1,6 @@
 class TesterDashboardController < ApplicationController
   def index
-    @test_users = UserBase.where(:middle_name => 'Test')
+    @test_users = Alumvest::UserBase.where(:middle_name => 'Test')
   end
 
   def reset_database
@@ -9,8 +9,8 @@ class TesterDashboardController < ApplicationController
   end
 
   def promote_income_verifications
-    Veritax::Order::Base.drafted.map(&:submit!)
-    Veritax::Order::Base.submitted.map(&:complete!)
+    Veritax::OrderBase.drafted.map(&:submit!)
+    Veritax::OrderBase.submitted.map(&:complete!)
     redirect_to tester_dashboard_path
   end
 end

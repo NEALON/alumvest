@@ -11,7 +11,7 @@ describe 'teams', :type => :feature do
 
   it 'creates' do
     create_new_team(@campaign)
-    team = Alumvest::Team::Base.last
+    team = Alumvest::TeamBase.last
     expect(page).to have_content strip_tags team.team_highlights
     expect(page).to have_content('Campaign team info saved.')
   end

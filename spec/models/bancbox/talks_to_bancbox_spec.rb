@@ -49,7 +49,7 @@ describe TalksToBancbox do
     end
 
     it 'succeeds' do
-      escrow = Bancbox::Escrow::Base.create_from_campaign(@user, @campaign)
+      escrow = Bancbox::EscrowBase.create_from_campaign(@user, @campaign)
       expect(escrow).to_not be_nil
       expect(escrow.bancbox_status_name).to eq(:unsubmitted)
       expect(escrow.open!).to eq(true)

@@ -14,7 +14,7 @@ describe 'non-accredited investor receives veritax order statuses', :type => :fe
       expect(page).to have_content 'Your information was saved.'
       click_on 'Submit to Veri-Tax'
       expect(page).to have_content 'Your information was successfully submitted to Veri-Tax'
-      vo = Veritax::Order::Base.last
+      vo = Veritax::OrderBase.last
       # vo.get_order_info!
       # expect(vo.vt_status).to eq('NotReceived')
     end

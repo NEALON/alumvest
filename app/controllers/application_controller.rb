@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= begin
       if session[:user_id]
-        UserBase.find(session[:user_id])
+        Alumvest::UserBase.find(session[:user_id])
       end
     rescue
       nil

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = UserBase.from_omniauth(env["omniauth.auth"])
+    @user = Alumvest::UserBase.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
 
     if @user.is_admin?
