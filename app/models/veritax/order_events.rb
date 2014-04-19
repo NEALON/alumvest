@@ -25,7 +25,7 @@ module Veritax::OrderEvents
     end
 
     def fire_order_approved
-      Bus::Event::VeritaxOrder::Approved.create(:veritax_order.id => self.id, :investor => investor)
+      Bus::Event::VeritaxOrder::Approved.create(:veritax_order_id => self.id, :investor => investor)
       InvestorMailer.accredited_investor_approved(investor.user.email).deliver
       investor.approve!
     end

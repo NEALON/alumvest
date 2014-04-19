@@ -19,7 +19,7 @@ describe 'admin creates an escrow account for accepted campaigns', :type => :fea
 
   it 'succeeds' do
     click_on 'Create an Escrow Account'
-    sleep 10
+    # TODO: finish this test
   end
 
   it 'fails due to issuer not having a bancbox issuer account' do

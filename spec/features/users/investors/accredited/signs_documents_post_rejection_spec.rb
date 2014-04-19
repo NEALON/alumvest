@@ -37,7 +37,6 @@ describe 'accredited investor signs documents post rejection', :type => :feature
 
   it 'returns to the signing page for the document' do
     click_on 'document signings'
-    sleep 30
     # TODO: they return to the investment documents
   end
 
