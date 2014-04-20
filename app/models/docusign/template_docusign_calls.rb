@@ -17,8 +17,8 @@ module Docusign::TemplateDocusignCalls
               :signers => [
                   {
                       :embedded => true,
-                      :name => 'Mike Pence',
-                      :email => 'mike.pence+investor@gmail.com',
+                      :name => investor[:name],
+                      :email => investor[:email],
                       :role_name => 'investor',
                       :tabs =>
                           {:number_tabs => [
@@ -33,8 +33,8 @@ module Docusign::TemplateDocusignCalls
                   },
                   {
                       :embedded => true,
-                      :name => 'Mike Pence',
-                      :email => 'mike.pence+issuer@gmail.com',
+                      :name => signing.investment.campaign.issuer.user.full_name,
+                      :email => signing.investment.campaign.issuer.user.email,
                       :role_name => 'issuer'
                   }
               ]
