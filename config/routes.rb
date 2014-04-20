@@ -24,6 +24,7 @@ Av::Application.routes.draw do
   match '/about/team', :to => 'content_page#team', :via => [:get]
   match '/about/contact', :to => 'content_page#contact', :via => [:get]
   match '/about/privacy', :to => 'content_page#privacy', :via => [:get]
+  match '/about/how-it-works', :to => 'content_page#howItWorks', :via => [:get]
 
   resources :sessions
   resources :identities

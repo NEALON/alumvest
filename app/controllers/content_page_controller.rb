@@ -10,4 +10,7 @@ class ContentPageController < ApplicationController
 
   def privacy
   end
+
+  def howItWorks
+  end
 end

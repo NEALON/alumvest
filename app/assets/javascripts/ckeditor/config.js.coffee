@@ -33,4 +33,4 @@ CKEDITOR.editorConfig = (config) ->
   	{ name: 'insert' },
   ];
 
-  config.filebrowserUploadUrl = '/common/filepicker';
+  config.filebrowserUploadUrl = '/common/filepicker'

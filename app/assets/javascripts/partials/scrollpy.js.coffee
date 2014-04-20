@@ -16,7 +16,7 @@ $ ->
       # I get fired when you enter a section and I pass the list item of the section
 
   $(window).scroll (event) ->
-      y = $(@).scrollTop()
+      y = $(this).scrollTop()
       if y >= window.navTop
         $('.vertical-spacer-1-em').addClass('nav-fixed')
         # $('#company-nav-container').removeClass('container')
