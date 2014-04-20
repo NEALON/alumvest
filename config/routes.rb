@@ -23,6 +23,7 @@ Av::Application.routes.draw do
   match '/about', :to => 'content_page#index', :via => [:get]
   match '/about/team', :to => 'content_page#team', :via => [:get]
   match '/about/contact', :to => 'content_page#contact', :via => [:get]
+  match '/about/privacy', :to => 'content_page#privacy', :via => [:get]
 
   resources :sessions
   resources :identities

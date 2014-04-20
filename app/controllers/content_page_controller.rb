@@ -7,4 +7,7 @@ class ContentPageController < ApplicationController
 
   def contact
   end
+
+  def privacy
+  end
 end
