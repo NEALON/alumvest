@@ -6,13 +6,14 @@ module Docusign::EnvelopeDocusignCalls
   included do
     def get_recipient_view(for_role)
       client = DocusignRest::Client.new
-      case for_role
-        when 'investor'
-          name = signing.investment.investor.user.full_name,
-          email = signing.investment.investor.user.email,
-        when 'issuer'
-          name = signing.investment.campaign.issuer.user.full_name,
-          email = signing.investment.campaign.issuer.user.email,
+      if for_role == 'investor'
+        name = signing.investment.investor.user.full_name
+        email = signing.investment.investor.user.email
+      end
+
+      if for_role == 'issuer'
+        name = signing.investment.campaign.issuer.user.full_name
+        email = signing.investment.campaign.issuer.user.email
       end
       view = client.get_recipient_view(
           {
