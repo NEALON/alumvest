@@ -1,5 +1,6 @@
 class Alumvest::InvestmentBase < ActiveRecord::Base
   include Alumvest::InvestmentState
+  include ActionView::Helpers::NumberHelper
 
   attr_accessible :status, :campaign, :campaign_id, :investor, :investor_id, :amount, :payment_type
 
