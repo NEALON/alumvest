@@ -1,18 +1,22 @@
 .how-it-works{
-  .nav.nav-pills.nav-stacked{
+  #how-it-works-nav{
     z-index: 2;
     position: fixed;
     left: 200px;
     top: 20%;
-    border: none;
     width: 200px;
 
-    li{
-      width: 100%;
+    ul{
+      border: none;
+      li{
+        width: 100%;
+      }
     }
   }
 
   .how-it-works-process{
+    overflow: scroll;
+    display: block;
     .step-process{
       width: 100%;
       height: 100vh;
@@ -24,6 +28,15 @@
       background-image: image-url('home/cover4.jpg');
     }
     #step3{
+      background-image: image-url('home/cover5.jpg');
+    }
+    #step4{
+      background-image: image-url('home/cover3.jpg');
+    }
+    #step5{
+      background-image: image-url('home/cover4.jpg');
+    }
+    #step6{
       background-image: image-url('home/cover5.jpg');
     }
   }
