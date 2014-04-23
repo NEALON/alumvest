@@ -25,6 +25,8 @@
       .dashboard-content
         %h2 Actions
         %hr
-        %p= request.original_url
+        -if request.original_url.include?('alumvest-test')
+          %p
+            Don't reset the database on test without backing up important data.
         %p= button_to 'Reset the database', tester_dashboard_reset_database_path, :class => 'btn btn-danger btn-large', :method => :get
         %p= button_to 'Promote Income Verifications', tester_dashboard_promote_income_verifications_path, :class => 'btn btn-danger btn-large', :method => :get
