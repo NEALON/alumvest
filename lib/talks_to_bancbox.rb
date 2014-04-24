@@ -33,8 +33,6 @@ class TalksToBancbox
 
     begin
       bancbox_issuer.submit!(bank_account)
-    rescue BancBoxCrowd::Error => e
-      e
     end
   end
 end
