@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: git://github.com/mikepence/banc_box_crowd.git
-  revision: fd866e4891f9aba3dfd104a4dd1a708b16693ef3
+  revision: a1e5f2dda218770163e6dcbba82b53eba3c421b1
   specs:
     banc_box_crowd (0.0.1)
       faraday
@@ -154,10 +154,10 @@ GEM
       faker
       jeweler
       rspec
-    faraday (0.8.9)
-      multipart-post (~> 1.2.0)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
     ffi (1.9.3)
     font-awesome-rails (3.2.1.3)
       railties (>= 3.2, < 5.0)
@@ -226,7 +226,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.9.0)
     multi_xml (0.5.5)
-    multipart-post (1.2.0)
+    multipart-post (2.0.0)
     nested_form (0.3.2)
     newrelic_rpm (3.6.9.171)
     nokogiri (1.6.0)
