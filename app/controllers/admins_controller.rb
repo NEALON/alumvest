@@ -95,4 +95,16 @@ class AdminsController < ApplicationController
     order.reject!
     redirect_to income_verification_events_user_admin_path(current_user), :flash => {:success => 'Accredited investor income rejected.'}
   end
+
+  def disable_campaign
+    campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+    campaign.disable!
+    redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully disabled this campaign.'}
+  end
+
+  def enable_campaign
+    campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+    campaign.enable!
+    redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully disabled this campaign.'}
+  end
 end

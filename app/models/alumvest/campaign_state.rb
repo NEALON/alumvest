@@ -25,13 +25,21 @@ module Alumvest::CampaignState
         transition :escrow_created => :live
       end
 
-      state :published
+      event :disable! do
+        transition :live => :disabled
+      end
+
+      event :enable! do
+        transition :disabled => :live
+      end
+
+      state :published # by campaign creator for admin review
 
       state :rejected
-
       state :accepted
       state :escrow_created
       state :live
+      state :disabled
     end
 
     def self.reviewable
