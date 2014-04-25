@@ -2,17 +2,21 @@ module Alumvest
   class ContractDocGroup < ActiveRecord::Base
     include InvestmentStep
 
+    has_many :envelope_workflows,
+             :class_name => 'Alumvest::EnvelopeWorkflowBase',
+             :foreign_key => :contract_doc_group_id
+
+    def envelope_workflows_from(investment_term)
+      investment_term.subscription_docs.collect { |sd| sd.template }.uniq.each do |template|
+        Alumvest::EnvelopeWorkflowBase.create(
+                  :contract_doc_group => self,
+                  :template => template) unless envelope_workflows.include?(template)
+      end
+      envelope_workflows
+    end
+
     def make_signable_document_envelopes
-
-      signable_docs = investment.investment_terms.subscription_docs.requires_signature
-
-      # this does not make sense because the envelopes should belong to the investment
-      # or, more appropriately, an investment has many signable documents
-
-      # make envelopes for docs that don't have one
-      # make envelopes for docs that have investor_signature_rejected
-      # and no subsequent signed_by_investor envelope or
-      # investor_signature_approved envelope
+      # TODO: this goes somewhere else
 
       investment.investment_terms.subscription_docs.where(
           :signature_required => true).each do |doc|

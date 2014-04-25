@@ -6,13 +6,14 @@ module InvestmentStep
   included do
     attr_accessible :status, :investment, :investment_id
 
-    belongs_to :investment, :class_name => 'Alumvest::Investment::Base'
+    belongs_to :investment, :class_name => 'Alumvest::InvestmentBase'
 
-    state_machine :status, :initial => :pending do
-      event :complete do
-        transition :pending => :completed
+    state_machine :status, :initial => :incomplete do
+      event :complete! do
+        transition :incomplete => :completed
       end
 
+      state :incomplete
       state :completed
     end
   end
