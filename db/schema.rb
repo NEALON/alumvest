@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419192254) do
+ActiveRecord::Schema.define(version: 20140416144336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,8 +166,6 @@ ActiveRecord::Schema.define(version: 20140419192254) do
     t.integer  "investment_id"
     t.integer  "issuer_id"
     t.integer  "payment_id"
-    t.integer  "envelope_id"
-    t.integer  "envelope_workflow_id"
   end
 
   add_index "bus_events", ["type"], name: "index_bus_events_on_type", using: :btree
@@ -232,7 +230,6 @@ ActiveRecord::Schema.define(version: 20140419192254) do
     t.datetime "updated_at"
     t.boolean  "signature_required",    default: false
     t.boolean  "distribute_at_closing", default: false
-    t.integer  "template_id"
   end
 
   create_table "educations", force: true do |t|
@@ -248,14 +245,6 @@ ActiveRecord::Schema.define(version: 20140419192254) do
     t.integer  "envelope_id"
     t.string   "status"
     t.datetime "status_date_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "envelope_workflows", force: true do |t|
-    t.integer  "contract_doc_group_id"
-    t.integer  "template_id"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -451,10 +440,10 @@ ActiveRecord::Schema.define(version: 20140419192254) do
   end
 
   create_table "templates", force: true do |t|
-    t.string   "docusign_template_id"
+    t.string   "template_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.integer  "document_id"
   end
 
   create_table "updates", force: true do |t|

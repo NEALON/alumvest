@@ -86,12 +86,10 @@ class Bancbox::PersonBase < ActiveRecord::Base
       self.account_routing_number = ret['account_routing_number']
       self.account_type = ret['account_type']
 
-      if agree!
-        fire_bancbox_status_event(:submit) # aka submit event in state machine
-        bank_account.save
+      fire_bancbox_status_event(:submit) # aka submit event in state machine
+      bank_account.save
 
-        save
-      end
+      save
     else
       raise ret['error']
     end
