@@ -23,8 +23,12 @@
   = render 'layouts/shareaholic_header'
 %body
   = render 'layouts/header'
-  #content
-    = yield :header_1 if content_for? :header_1
+  #content{:style => 'clear: both'}
+    - if content_for? :header_1
+      .row
+        .container
+          .col-md-12
+            = yield :header_1
     = yield :breadcrumbs if content_for? :breadcrumbs
     = yield :sub_navigation if content_for? :sub_navigation
 

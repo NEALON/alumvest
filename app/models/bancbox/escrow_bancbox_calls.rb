@@ -36,8 +36,8 @@ module Bancbox::EscrowBancboxCalls
         save
         fire_bancbox_status_event(:submit_open)
         return true
-      rescue BancBoxCrowd::Error => e
-        e
+      # rescue BancBoxCrowd::Error => e
+      #   e
       end
     end
 
