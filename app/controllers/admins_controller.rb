@@ -108,6 +108,18 @@ class AdminsController < ApplicationController
     redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully disabled this campaign.'}
   end
 
+  def close_campaign
+    campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+    campaign.close!
+    redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully closed this campaign.'}
+  end
+
+  def cancel_campaign
+    campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+    campaign.cancel!
+    redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully canceled this campaign.'}
+  end
+
   def bancbox_investments
     @user = current_user
     @investor = Alumvest::InvestorBase.find(params[:investor_id])

@@ -39,4 +39,12 @@ class Alumvest::CampaignBase < ActiveRecord::Base
   def raised
     investments.where(:status => 'pending').sum(:amount)
   end
+
+  def close_escrow
+    bancbox_escrow.close!
+  end
+
+  def cancel_escrow
+    bancbox_escrow.cancel!
+  end
 end

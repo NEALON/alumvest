@@ -112,6 +112,8 @@ Av::Application.routes.draw do
       post :approve_investor_signing
       post :reject_investor_signing
       put :disable_campaign
+      put :close_campaign
+      put :cancel_campaign
       put :enable_campaign
       put :approve_income_verification
       put :reject_income_verification

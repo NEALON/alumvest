@@ -36,9 +36,25 @@ module Bancbox::EscrowBancboxCalls
         save
         fire_bancbox_status_event(:submit_open)
         return true
-      # rescue BancBoxCrowd::Error => e
-      #   e
+        # rescue BancBoxCrowd::Error => e
+        #   e
       end
+    end
+
+    def close!
+      options = {
+          :escrow_id => bancbox_id,
+          :reason => 'Closed by Alumvest admin'
+      }
+      return BancBoxCrowd.close_escrow options
+    end
+
+    def cancel!
+      options = {
+          :escrow_id => bancbox_id,
+          :reason => 'Canceled by Alumvest admin'
+      }
+      return BancBoxCrowd.cancel_escrow options
     end
 
     def get_details
