@@ -126,4 +126,24 @@ class AdminsController < ApplicationController
     @investments = @investor.bancbox_investor.refresh_investments
     render :layout => 'admins'
   end
+
+  def escrow_account
+    @user = current_user
+    @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+    @escrow_account = @campaign.bancbox_escrow
+    render :layout => 'admins'
+  end
+
+  def update_escrow_account
+    @user = current_user
+    @escrow_account = Bancbox::EscrowBase.find(params[:escrow_account_id])
+    @campaign = @escrow_account.campaign
+
+    Bancbox::EscrowBase.transaction do
+      @escrow_account.update_attributes(params[:bancbox_escrow_base])
+      @escrow_account.update_on_server!
+    end
+
+    redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully updated escrow account.'}
+  end
 end

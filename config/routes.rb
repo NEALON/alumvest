@@ -117,6 +117,8 @@ Av::Application.routes.draw do
       put :enable_campaign
       put :approve_income_verification
       put :reject_income_verification
+      get :escrow_account
+      put :update_escrow_account
       resources :campaigns do
         resource :review do
           post :accept

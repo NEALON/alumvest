@@ -122,5 +122,21 @@ module Bancbox::EscrowBancboxCalls
       self.total_funding = ret['notional_balance']
       save
     end
+
+    def update_on_server!
+      options = {
+          :escrow_id => bancbox_id,
+          :close_date => close_date,
+          :over_funding_amount => over_funding_amount,
+          :funding_goal => funding_goal
+      }
+
+      begin
+        BancBoxCrowd.update_escrow_account options
+        return true
+      rescue BancBoxCrowd::Error => e
+        e
+      end
+    end
   end
 end

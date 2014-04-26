@@ -1,0 +1,20 @@
+= render 'side_navigation', :active => 'admin_escrow_account'
+= render 'users/header'
+
+#information
+  %h3= "Escrow account for '#{@campaign.company.campaign_title}'"
+  %hr
+  %p
+    %em
+      The Bancbox API supports only changing one of these values at a time.
+  = form_for @escrow_account, :url =>  update_escrow_account_user_admin_path(@user, :escrow_account_id => @escrow_account.id), :method => :put, :html => {:class => 'form-horizontal well'} do |f|
+
+    = render 'shared/errors', :entity => @bancbox_identity_verification
+
+    %fieldset
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/dateselect', :display, :field => :close_date
+        = op.render_cell 'tb/form/text', :display, :field => :funding_goal
+        = op.render_cell 'tb/form/text', :display, :field => :over_funding_amount
+
+      = render_cell 'tb/form/submit_button', :display
