@@ -107,4 +107,11 @@ class AdminsController < ApplicationController
     campaign.enable!
     redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully disabled this campaign.'}
   end
+
+  def bancbox_investments
+    @user = current_user
+    @investor = Alumvest::InvestorBase.find(params[:investor_id])
+    @investments = @investor.bancbox_investor.refresh_investments
+    render :layout => 'admins'
+  end
 end

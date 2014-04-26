@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe 'admin reviews published campaigns', :type => :feature do
+describe 'admin views payments', :type => :feature do
 
   before :each do
     create_issuer
     @campaign = create_live_campaign(@user.issuer)
-    create_accredited_investor
+    @investor = create_accredited_investor.investor
     sign_in 'investor@alumvest.com', 'secret'
     @investment = create_investment(@campaign, @user.investor)
     @payment = FactoryGirl.create(:online_payment, :investment => @investment)
@@ -20,7 +20,13 @@ describe 'admin reviews published campaigns', :type => :feature do
     click_on 'Campaign Events'
   end
 
-  it 'sees their listing' do
+  it 'displays a listing' do
     expect(page).to have_content(' An investment of $100.00 was funded')
+  end
+
+  it 'displays their bancbox investments' do
+    bancbox_investor = FactoryGirl.create(:bancbox_investor, :investor => @investor)
+    click_on 'Bancbox Investments'
+    expect(page).to have_content('$1,000.57')
   end
 end

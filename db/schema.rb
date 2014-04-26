@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419192254) do
+ActiveRecord::Schema.define(version: 20140426011040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,19 @@ ActiveRecord::Schema.define(version: 20140419192254) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "payment_id"
+  end
+
+  create_table "bancbox_investments", force: true do |t|
+    t.integer  "bancbox_investor_id"
+    t.string   "project"
+    t.datetime "investment_date"
+    t.decimal  "amount"
+    t.boolean  "is_refunded"
+    t.boolean  "is_cfp_fee_refunded"
+    t.boolean  "is_reversed"
+    t.boolean  "can_reverse"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bancbox_investors", force: true do |t|

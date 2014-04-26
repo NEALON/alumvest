@@ -8,3 +8,7 @@
       = link_to('Income Verification Events', income_verification_events_user_admin_path(@user))
     %li{:class => "#{'active' if active == 'admin_investor_signings'}"}
       = link_to('Investor Signings', investor_signings_user_admin_path(@user))
+
+    - if active == 'admin_investments'
+      %li.active
+        = link_to('Bancbox Investments', '#')

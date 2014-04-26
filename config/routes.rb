@@ -100,6 +100,7 @@ Av::Application.routes.draw do
       post :bank_account
     end
 
+    # TODO: nest these resources
     resource :admin do
       get :income_verification_events
       get :campaign_events
@@ -107,6 +108,7 @@ Av::Application.routes.draw do
       get :simulate_completed_order
       get :simulate_canceled_order
       get :income_verification_transcript
+      get :bancbox_investments
       post :approve_investor_signing
       post :reject_investor_signing
       put :disable_campaign

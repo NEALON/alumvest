@@ -1,0 +1,48 @@
+= render 'side_navigation', :active => 'admin_investments'
+= render 'users/header'
+
+#information
+  %h3= "Bancbox Investments for '#{@investor.user.full_name}'"
+  %table.table
+    - if @investments.blank?
+      No data present.
+    - else
+      %thead
+        %tr
+          %th
+            Campaign
+          %th
+            Investment Date
+          %th
+            Amount
+          %th
+            Refunded?
+          %th
+            Platform fee refunded?
+          %th
+            Reversed?
+          %th
+            Reversible?
+
+      %tbdoy
+      - @investments.each do |i|
+        %tr
+          %td
+            = i.project
+          %td
+            = "#{time_ago_in_words(i.investment_date)} ago"
+          %td
+            = number_to_currency(i.amount)
+          %td
+            = i.is_refunded
+          %td
+            = i.is_cfp_fee_refunded
+          %td
+            = i.is_reversed
+          %td
+            = i.can_reverse
+
+
+      -#- @events.each do |event|
+        %tr
+          = render :partial => event.to_admin_partial_path, :locals => {:event => event, :campaign => event.campaign}
