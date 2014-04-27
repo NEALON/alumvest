@@ -10,11 +10,11 @@ describe 'admin reviews signings', :type => :feature do
         (create_accredited_investor.investor)
     )
 
-    FactoryGirl.create(:signing,
+    @signing = FactoryGirl.create(:signing,
                        :investment => investment,
                        :document => FactoryGirl.create(:signable_subscription_document),
-                       :envelope => FactoryGirl.create(:envelope),
                        :status => 'signed_by_investor')
+    @signing.envelopes << FactoryGirl.create(:envelope, :signing => @signing)
 
     admin_user = create_admin
     sign_in 'admin@alumvest.com', 'secret'
@@ -35,5 +35,6 @@ describe 'admin reviews signings', :type => :feature do
   it 'rejects' do
     click_on 'Reject'
     expect(page).to have_content('Signing rejected.')
+    raise @signing.status
   end
 end

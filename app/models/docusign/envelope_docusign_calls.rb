@@ -25,6 +25,11 @@ module Docusign::EnvelopeDocusignCalls
       )
     end
 
+    def void!
+      client = DocusignRest::Client.new
+      client.void_envelope(:envelope_id => envelope_id)
+    end
+
     def post_new_status(status)
       signing.post_new_status(status)
     end

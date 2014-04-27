@@ -14,13 +14,13 @@ module Alumvest::SigningState
       end
 
       event :reject_investor_signature! do
-        # TO DO: void the envelope
         transition :signed_by_investor => :investor_signature_rejected
       end
 
       event :cancel! do
         transition :unsigned => :canceled
       end
+
       event :decline! do
         transition :unsigned => :declined
       end

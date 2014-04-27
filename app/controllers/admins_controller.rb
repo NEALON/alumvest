@@ -66,6 +66,7 @@ class AdminsController < ApplicationController
         :signing => Alumvest::SigningBase.find(params[:signing]),
         :admin => Alumvest::UserBase.find(params[:admin])
     )
+      signing.accept_investor_signature!
       redirect_to investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing approved.'}
     else
       redirect_to investor_signings_user_admin_path(current_user), :flash => {:warning => 'Could not approve signing.'}
@@ -73,11 +74,16 @@ class AdminsController < ApplicationController
   end
 
   def reject_investor_signing
+    signing = Alumvest::SigningBase.find(params[:signing])
+    admin = Alumvest::UserBase.find(params[:admin])
+    investor = Alumvest::InvestorBase.find(params[:investor])
     if Bus::Event::Investment::Signing::Rejected.create(
-        :signing => Alumvest::SigningBase.find(params[:signing]),
-        :admin => Alumvest::UserBase.find(params[:admin]),
-        :investor => Alumvest::InvestorBase.find(params[:investor])
+        :signing => signing,
+        :admin => admin,
+        :investor => investor
     )
+      signing.envelopes.last.void!
+      signing.reject_investor_signature!
       redirect_to  investor_signings_user_admin_path(current_user), :flash => {:success => 'Signing rejected.'}
     else
       redirect_to investor_signings_user_admin_path(current_user), :flash => {:warning => 'Could not reject signing.'}
