@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: git://github.com/mikepence/docusign_rest.git
-  revision: 23fe8d8881e713f29ceabffdf6ac9d4ae1122b98
+  revision: b51555e4d08c78c66614ff6dfb8581cf5e8faea0
   specs:
     docusign_rest (0.1.1)
       json
