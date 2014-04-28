@@ -5,9 +5,9 @@ class Docusign::TemplateBase < ActiveRecord::Base
 
   self.table_name = :templates
 
-  has_many :envelope_workflows,
-           :class_name => 'Alumvest::EnvelopeWorkflowBase',
-           :foreign_key => 'template_id'
+  has_many :signings,
+           :class_name => 'Alumvest::SigningBase',
+           :foreign_key => :template_id
 
   has_many :documents,
            :class_name => 'Alumvest::Document',

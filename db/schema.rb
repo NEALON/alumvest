@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426011040) do
+ActiveRecord::Schema.define(version: 20140428000016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,7 +180,6 @@ ActiveRecord::Schema.define(version: 20140426011040) do
     t.integer  "issuer_id"
     t.integer  "payment_id"
     t.integer  "envelope_id"
-    t.integer  "envelope_workflow_id"
   end
 
   add_index "bus_events", ["type"], name: "index_bus_events_on_type", using: :btree
@@ -261,14 +260,6 @@ ActiveRecord::Schema.define(version: 20140426011040) do
     t.integer  "envelope_id"
     t.string   "status"
     t.datetime "status_date_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "envelope_workflows", force: true do |t|
-    t.integer  "contract_doc_group_id"
-    t.integer  "template_id"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -448,11 +439,11 @@ ActiveRecord::Schema.define(version: 20140426011040) do
   add_index "self_accredited_statuses", ["investor_id"], name: "index_self_accredited_statuses_on_investor_id", using: :btree
 
   create_table "signings", force: true do |t|
-    t.string   "status",        default: "unsigned"
-    t.integer  "investment_id"
-    t.integer  "document_id"
+    t.string   "status",                default: "unsigned"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contract_doc_group_id"
+    t.integer  "template_id"
   end
 
   create_table "teams", force: true do |t|

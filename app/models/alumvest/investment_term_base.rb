@@ -32,4 +32,7 @@ class Alumvest::InvestmentTermBase < ActiveRecord::Base
                                 :reject_if => proc { |attributes| attributes['name'].blank? && attributes['file_url'].blank? },
                                 :allow_destroy => true
 
+  def templates
+    subscription_docs.collect { |sd| sd.template }.uniq
+  end
 end

@@ -3,12 +3,16 @@ class Alumvest::SigningBase < ActiveRecord::Base
   include Alumvest::SigningPresenters
   include Alumvest::SigningState
 
-  attr_accessible :status, :investment, :document
+  attr_accessible :status, :contract_doc_group, :document
 
   self.table_name = :signings
 
-  belongs_to :investment, :class_name => 'Alumvest::InvestmentBase'
-  belongs_to :document, :class_name => 'Alumvest::Document'
+  belongs_to :contract_doc_group,
+             :class_name => 'Alumvest::ContractDocGroup',
+             :foreign_key => :contract_doc_group_id
+  belongs_to :template,
+             :class_name => 'Docusign::TemplateBase',
+             :foreign_key => :template_id
 
   has_many :envelopes,
           :class_name => 'Docusign::EnvelopeBase',

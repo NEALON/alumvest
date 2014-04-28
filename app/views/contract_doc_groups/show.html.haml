@@ -13,13 +13,13 @@
 
     %tbody
 
-      - @envelope_workflows.each do |workflow|
+      - @signings.each do |signing|
         %tr
           %td
-            = workflow.template.name
+            = signing.template.name
           %td
-            = workflow.status
+            = signing.status
           %td
-            - if workflow.status == 'unsigned'
+            - if signing.status == 'unsigned'
               = link_to 'Sign', '#', :class => 'btn btn-xs btn-success', :method => :get
               - #signing.envelope.get_recipient_view('investor')

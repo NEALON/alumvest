@@ -122,9 +122,8 @@ module Features
                                      :team => FactoryGirl.create(:team),
                                      :bancbox_escrow => FactoryGirl.create(:vcr_established_bancbox_escrow)
       )
-      #@document = FactoryGirl.create(:signable_subscription_document,
-      #                               :documentable => @campaign.investment_term)
-      @campaign
+      FactoryGirl.create(:signable_subscription_document, :documentable => @campaign.investment_term)
+      @campaign.reload
     end
 
     def create_live_campaign_without_escrow(issuer)
