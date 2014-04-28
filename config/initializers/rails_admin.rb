@@ -21,6 +21,28 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.excluded_models = [
+      "AmountStep",
+      "Investment::NavigableStep",
+      "Bus::Event",
+      "Bus::Event::Campaign::Accepted",
+      "Bus::Event::Campaign::Published",
+      "Bus::Event::Campaign::Rejected",
+      "Bus::Event::Investment::Signing::Approved",
+      "Bus::Event::Investment::Signing::Rejected",
+      "Bus::Event::Investment::Signing::Review",
+      "Bus::Event::Investment::Event",
+      "Bus::Event::Investment::Funded",
+      "Bus::Event::VeritaxOrder::Approved",
+      "Bus::Event::VeritaxOrder::Base",
+      "Bus::Event::VeritaxOrder::Canceled",
+      "Bus::Event::VeritaxOrder::Completed",
+      "Bus::Event::VeritaxOrder::Rejected",
+      "Bus::Event::VeritaxOrder::SubmittedSuccessfully",
+      "Bus::Event::VeritaxOrder::SubmittedWithError",
+      "Bus::Event::InvestmentInitiated"
+  ]
+
   ADMIN_EMAILS = ['interskh@gmail.com', 'mikepence@gmail.com', 'kyle@alumvest.com', 'lynn@alumvest.com', 'lynnduke@gmail.com', 'chinesecode@gmail.com', 'daniel.yang625@gmail.com', 'sasha.ablovatskiy@gmail.com']
 
   # If you want to track changes on your models:
