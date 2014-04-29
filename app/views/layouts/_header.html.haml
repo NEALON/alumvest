@@ -12,12 +12,12 @@
       #header-content.collapse.navbar-collapse
         %ul.nav.navbar-nav
           = render :partial => 'layouts/header_navigation'
-        %div.navbar-form#search-header
-          %div.input-group
-            %span.input-group-btn
-              %button.btn.btn-default{:type => 'button'}
-                %span.glyphicon.glyphicon-search
-            %input.form-control{ :type => 'text', :placeholder => 'Search'}
+        / %div.navbar-form#search-header
+        /   %div.input-group
+        /     %span.input-group-btn
+        /       %button.btn.btn-default{:type => 'button'}
+        /         %span.glyphicon.glyphicon-search
+        /     %input.form-control{ :type => 'text', :placeholder => 'Search'}
         %ul.nav.navbar-nav.navbar-right
           - if current_user
             %li#user-dropdown.dropdown

@@ -73,9 +73,7 @@
       .container-bg.container-bg-video
         - unless Rails.env.test?
           %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%'}
-            %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.m4v", :type => "video/mp4"}
-            %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.ogv", :type => "video/ogg"}
-            %source{:src => "//d1gwm4cf8hecp4.cloudfront.net/vid/home/emarald.webm", :type => "video/webm"}
+            %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
         .container-bg.container-bg-overlay
       .container-bg.container-bg-text.text-center
         %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
