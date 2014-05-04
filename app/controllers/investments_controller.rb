@@ -2,16 +2,16 @@ class InvestmentsController < ApplicationController
 
   before_filter :load_campaign_and_company
 
+  layout 'investments'
+
   def new
     @investment = Alumvest::InvestmentBase.new(:campaign => @campaign, :investor => current_user.investor)
     @workflow = InvestmentWorkflow.new(@investment)
-    render :layout => 'investments'
   end
 
   def edit
     @investment = Alumvest::InvestmentBase.find(params[:id])
     @workflow = InvestmentWorkflow.new(@investment)
-    render :layout => 'investments'
   end
 
   def update
@@ -21,7 +21,7 @@ class InvestmentsController < ApplicationController
     if @investment.valid?
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new, :layout => 'investments'
+      render :new
     end
   end
 
@@ -37,20 +37,18 @@ class InvestmentsController < ApplicationController
 
       redirect_to campaign_investment_path(@campaign, @investment), :flash => {:success => 'Investment amount saved.' }
     else
-      render :new, :layout => 'investments'
+      render :new
     end
   end
 
   def show
     @investment = Alumvest::InvestmentBase.find(params[:id])
     @workflow = InvestmentWorkflow.new(@investment)
-    render :layout => 'investments'
   end
 
   def investor_verification
     @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
-    render :layout => 'investments'
   end
 
   def submit_for_review
@@ -62,7 +60,6 @@ class InvestmentsController < ApplicationController
   def payment_type
     @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @workflow = InvestmentWorkflow.new(@investment)
-    render :layout => 'investments'
   end
 
   def update_payment_type
