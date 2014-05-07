@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
+gem 'rake',  '10.3.1'
+
 group :development do
   gem 'better_errors', '~> 1.0'
   gem 'binding_of_caller', '~> 0.7'
