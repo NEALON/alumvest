@@ -20,5 +20,4 @@
 //= require ckeditor-jquery
 //= require cocoon
 //= require bootstrap
-//= require backbone-min
 //= require_tree .
