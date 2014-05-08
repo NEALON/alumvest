@@ -7,9 +7,7 @@
       = op.render_cell 'tb/form/text', :display, :field => :first_name
       = op.render_cell 'tb/form/text', :display, :field => :middle_name
       = op.render_cell 'tb/form/text', :display, :field => :last_name
-      = op.render_cell 'tb/form/radiobutton', :display, :field => :gender, :values => ["Male", "Female"]
-      -#= op.render_cell 'tb/form/dateselect', :display, :field => :date_of_birth
-      -#= op.render_cell 'tb/form/text', :display, :field => :ssn, :placeholder => "XXX-XX-XXXX"
+      = op.render_cell 'tb/form/select', :display, :form => f, :field => :gender, :values => ["Male", "Female"]
       = op.render_cell 'tb/form/text', :display, :field => :mobile_phone
       = op.render_cell 'tb/form/text', :display, :field => :home_phone
       = op.render_cell 'tb/form/text', :display, :field => :address_1
