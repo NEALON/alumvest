@@ -25,6 +25,11 @@ class Alumvest::InvestmentBase < ActiveRecord::Base
   validate { not_lt_min_investment_amount(:amount) }
   validate { not_gt_max_investment_amount(:amount) }
 
+ def amount=(num)
+    num.gsub!(',','') if num.is_a?(String)
+    self[:amount] = num
+ end
+
   def not_lt_min_investment_amount(attr)
     min = campaign.investment_term.min_investment
     errors.add(attr.to_sym, "must be at least #{number_to_currency(min)}") if send(attr) < min
