@@ -13,18 +13,20 @@ class CampaignsController < ApplicationController
   end
 
   def follow
-    if current_user and current_user.id == params[:follow][:user_id].to_i
+    if current_user and current_user.id == params[:alumvest_follow][:user_id].to_i
       current_user.follow!(@campaign)
-      redirect_to display_campaign_company_path(@campaign), :flash => {:success => 'Successfully follow this campaign.'}
+      redirect_to display_campaign_company_path(@campaign),
+                  :flash => {:success => 'You successfully followed this campaign.'}
     else
       redirect_to display_campaign_company_path(@campaign)
     end
   end
 
   def unfollow
-    if current_user and current_user.id == params[:follow][:user_id].to_i and current_user.following?(@campaign)
+    if current_user and current_user.id == params[:alumvest_follow][:user_id].to_i and current_user.following?(@campaign)
       current_user.unfollow!(@campaign)
-      redirect_to display_campaign_company_path(@campaign), :flash => {:success => 'Successfully unfollow this campaign.'}
+      redirect_to display_campaign_company_path(@campaign),
+                  :flash => {:success => 'You successfully stopped following this campaign.'}
     else
       redirect_to display_campaign_company_path(@campaign)
     end

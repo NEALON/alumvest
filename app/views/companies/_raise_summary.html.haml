@@ -60,15 +60,12 @@
             %fieldset
               = f.hidden_field :campaign_id
               = f.hidden_field :user_id
-              %a.btn.btn-unfollow.btn-follow{:name => 'commit', :type => 'submit'}
-                %span.glyphicon.glyphicon-minus
-                Unfollow this Campaign
+              = f.submit 'Un-follow this Campaign', :class => 'btn btn-unfollow'
+
         - else
           - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
           = form_for follow, :url => campaign_follow_path do |f|
             %fieldset
               = f.hidden_field :campaign_id
               = f.hidden_field :user_id
-              %a#follow-link.btn.btn-follow{:name => 'commit', :type => 'submit'}
-                %span.glyphicon.glyphicon-plus
-                Follow this Campaign
+              = f.submit 'Follow this Campaign', :class => 'btn btn-follow'
