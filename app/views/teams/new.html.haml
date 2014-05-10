@@ -1,2 +1,7 @@
 = render 'campaigns/management_navigation', :active => :people, :campaign => @campaign
 = render 'form'
+
+:javascript
+  $('#main-content').on('cocoon:after-insert', function(e, insertedItem) {
+   insertedItem.children().find('.ckeditor').ckeditor()
+  });
