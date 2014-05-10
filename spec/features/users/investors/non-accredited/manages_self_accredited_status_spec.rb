@@ -13,8 +13,9 @@ describe 'non-accredited investor manages self-accredited status', :type => :fea
   end
 
   it 'handles non-qualified investor' do
+    # we are now overriding this behavior to treat all investors as initially eligible
     expect(page).to have_button I18n.t('self-accredited-status.submit')
     fill_in_self_accredited_status(false)
-    expect(page).to have_content I18n.t('self-accredited-status.non-qualified-info')
+    expect(page).to have_content I18n.t('self-accredited-status.qualified-info')
   end
 end

@@ -1,13 +1,8 @@
 = render 'investors/side_navigation', :active => 'self_accredited_status'
-= render 'users/header'
 
 #self-accredited-status
-  - if @self_accredited_status.accredited?
-    .alert.alert-success.alert-dismissable
-      = I18n.t('self-accredited-status.qualified-info')
-  - else
-    .alert.alert-info.alert-dismissable
-      = I18n.t('self-accredited-status.non-qualified-info')
+  .alert.alert-success.alert-dismissable
+    = I18n.t('self-accredited-status.qualified-info')
   = I18n.t('self-accredited-status.info').html_safe
   %hr
   = form_for @self_accredited_status, :url => '', :html => {:id => 'self-accredited-status-form', :class => 'form-horizontal editing-form well'} do |f|

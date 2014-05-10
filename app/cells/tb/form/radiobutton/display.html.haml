@@ -1,0 +1,7 @@
+.form-group
+  = label_tag @field, nil, :class => "col-md-4 control-label"
+  .col-md-8
+    - @values.each do |value|
+      %label.radio-inline{:for => @field}
+        = @form.radio_button @field, @value
+        = value

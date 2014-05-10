@@ -7,8 +7,8 @@ describe 'issuer browses dashboard', :type => :feature do
     click_on 'Issuer Dashboard'
   end
 
-  it 'shows the profile' do
-    expect(page).to have_content('Your Issuer Profile')
+  it 'shows' do
+    expect(page).to have_content('Your Issuer Dashboard')
   end
 
   it 'shows the newsfeed' do
