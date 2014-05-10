@@ -18,9 +18,7 @@ class SelfAccreditedStatusesController < ApplicationController
     @self_accredited_status = Alumvest::SelfAccreditedStatus.create(params[:alumvest_self_accredited_status])
     authorize! :manage, @self_accredited_status
     if @self_accredited_status.valid?
-      if @self_accredited_status.accredited?
-        @investor.update_attributes(:accredited_investor_status => 'self')
-      end
+      @investor.update_attributes(:accredited_investor_status => 'self')
       redirect_to user_investor_self_accredited_status_path(@user)
     else
       render action: :new, layout: 'investors'
