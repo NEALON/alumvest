@@ -18,17 +18,17 @@ module Features
 
     def create_issuer_and_live_campaign
       identity = FactoryGirl.create(:identity,
-                                     :last_name => 'Issuer',
-                                     :email => 'issuer+live@alumvest.com')
+                                    :last_name => 'Issuer',
+                                    :email => 'issuer+live@alumvest.com')
       user = FactoryGirl.create(:user,
-                                 :first_name => 'Issuer',
-                                 :middle_name => 'Test',
-                                 :last_name => 'Alumvest',
-                                 :provider => 'identity',
-                                 :email => 'issuer+live@alumvest.com',
-                                 :user_type => 'Issuer',
-                                 :identities => [identity],
-                                 :uid => identity.id)
+                                :first_name => 'Issuer',
+                                :middle_name => 'Test',
+                                :last_name => 'Alumvest',
+                                :provider => 'identity',
+                                :email => 'issuer+live@alumvest.com',
+                                :user_type => 'Issuer',
+                                :identities => [identity],
+                                :uid => identity.id)
       create_live_campaign(user.issuer)
     end
 
@@ -107,8 +107,26 @@ module Features
     end
 
     def create_published_campaign(issuer)
-      create_publishable_campaign(issuer).publish
+      campaign = create_publishable_campaign(issuer)
+      campaign.publish
+      campaign
     end
+
+    def create_accepted_campaign(issuer)
+      campaign = create_published_campaign(issuer)
+      campaign.accept
+      campaign
+    end
+
+    def create_accepted_campaign_with_escrow(issuer)
+      campaign = create_accepted_campaign(issuer)
+      FactoryGirl.create(:bancbox_escrow,
+                         :campaign => campaign,
+                         :status => 'OPEN_PENDING',
+                         :bancbox_status => 'open_pending')
+      campaign.reload
+    end
+
 
     def create_live_campaign(issuer)
       @campaign = FactoryGirl.create(:campaign,

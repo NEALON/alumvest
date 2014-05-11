@@ -1,15 +1,15 @@
 namespace :bancbox do
-  desc "TODO"
+  desc 'TODO'
   task update_investors: :environment do
   end
 
-  desc "TODO"
+  desc 'TODO'
   task update_issuers: :environment do
   end
 
-  desc "Update escrows"
+  desc 'Update escrow accounts'
   task update_escrows: :environment do
-    Bancbox::Escrow::Base.all.each do |e|
+    Bancbox::EscrowBase.all.each do |e|
       p "Updating escrow ##{e.id}: #{e.name}"
       e.update_from_server!
     end

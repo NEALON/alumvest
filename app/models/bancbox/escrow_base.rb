@@ -1,8 +1,15 @@
 class Bancbox::EscrowBase < ActiveRecord::Base
 
+  # TODO: bancbox_status and status should probably be switched
+
   include Bancbox::EscrowState
-  include Bancbox::EscrowBancboxCalls
+  include Bancbox::EscrowEvents
+  include Bancbox::EscrowTalksToBancbox
   include Network
+
+  BANCBOX_STATUS_OPEN_PENDING = 'OPEN_PENDING'.freeze
+  BANCBOX_STATUS_OPEN         = 'OPEN'.freeze
+  BANCBOX_STATUS_CLOSED       = 'CLOSED'.freeze
 
   self.table_name = 'bancbox_escrows'
 

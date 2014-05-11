@@ -34,7 +34,7 @@ describe Bancbox::Issuer do
       @escrow = FactoryGirl.create(:vcr_bancbox_escrow)
       @escrow.issuer = @issuer
       @escrow.bancbox_status_name.should == :unsubmitted
-      @escrow.open!.should == true
+      @escrow.open_account!.should == true
       @escrow.bancbox_status_name.should == :open_pending
       @escrow.update_from_server!
       @escrow.bancbox_status_name.should == :opened

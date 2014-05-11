@@ -41,7 +41,7 @@ class Alumvest::CampaignBase < ActiveRecord::Base
   end
 
   def close_escrow
-    bancbox_escrow.close!
+    bancbox_escrow.close_account!
   end
 
   def cancel_escrow

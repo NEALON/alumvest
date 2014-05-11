@@ -1,12 +1,12 @@
 require 'active_support/concern'
 
-module Bancbox::EscrowBancboxCalls
+module Bancbox::EscrowTalksToBancbox
   extend ActiveSupport::Concern
 
   included do
-    def open!
+    def open_account!
       return false unless self.valid?
-      return true if self.opened?
+      return true if self.open?
       create_reference_id!
       options = {
           :name => name,
@@ -41,7 +41,7 @@ module Bancbox::EscrowBancboxCalls
       end
     end
 
-    def close!
+    def close_account!
       options = {
           :escrow_id => bancbox_id,
           :reason => 'Closed by Alumvest admin'
@@ -61,7 +61,7 @@ module Bancbox::EscrowBancboxCalls
       options = {
           :escrow_id => bancbox_id
       }
-      return BancBoxCrowd.get_escrow_details options
+      return BancBoxCrowd.get_escrow_details(options)
     end
 
     def get_activity
@@ -114,13 +114,13 @@ module Bancbox::EscrowBancboxCalls
 
     def update_from_server!
       ret = get_details
-      self.status = ret['status']
-      if self.status == 'OPEN'
-        self.escrow_opened!
-      end
-      self.current_balance = ret['current_balance']
-      self.total_funding = ret['notional_balance']
+      status = ret['status']
+      current_balance = ret['current_balance']
+      total_funding = ret['notional_balance']
       save
+      if status == Bancbox::EscrowBase::BANCBOX_STATUS_OPEN
+        opened! unless open?
+      end
     end
 
     def update_on_server!

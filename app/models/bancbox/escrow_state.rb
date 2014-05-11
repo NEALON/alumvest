@@ -6,7 +6,7 @@ module Bancbox::EscrowState
   included do
     state_machine :bancbox_status, :initial => :unsubmitted do
       state :open_pending
-      state :opened
+      state :open
       state :modify_pending
       state :close_pending
       state :closed
@@ -30,8 +30,8 @@ module Bancbox::EscrowState
         transition all => :disburse_pending
       end
 
-      event :escrow_opened do
-        transition all => :opened
+      event :opened! do
+        transition all => :open, :if => :generate_opened_event
       end
 
       event :escrow_closed do

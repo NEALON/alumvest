@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428000016) do
+ActiveRecord::Schema.define(version: 20140511142648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20140428000016) do
     t.integer  "issuer_id"
     t.integer  "payment_id"
     t.integer  "envelope_id"
+    t.integer  "bancbox_escrow_id"
   end
 
   add_index "bus_events", ["type"], name: "index_bus_events_on_type", using: :btree

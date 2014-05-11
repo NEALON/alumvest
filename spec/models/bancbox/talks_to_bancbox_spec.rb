@@ -52,7 +52,7 @@ describe TalksToBancbox do
       escrow = Bancbox::EscrowBase.create_from_campaign(@user, @campaign)
       expect(escrow).to_not be_nil
       expect(escrow.bancbox_status_name).to eq(:unsubmitted)
-      expect(escrow.open!).to eq(true)
+      expect(escrow.open_account!).to eq(true)
       expect(escrow.bancbox_status_name).to eq(:open_pending)
     end
   end
