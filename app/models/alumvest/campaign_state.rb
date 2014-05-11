@@ -21,8 +21,8 @@ module Alumvest::CampaignState
         transition :accepted => :escrow_created
       end
 
-      event :go_live do
-        transition :escrow_created => :live
+      event :go_live! do
+        transition :escrow_created => :live, :if => :generate_went_live_event
       end
 
       event :disable! do

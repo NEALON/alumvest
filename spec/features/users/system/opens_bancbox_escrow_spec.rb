@@ -19,6 +19,8 @@ describe 'system opens bancbox escrow', :type => :feature do
 
   it do
     expect(page).to have_content('The Bancbox escrow account was approved and opened')
+    expect(page).to have_content('Congratulations')
+    expect(page).to have_content('went live')
   end
 end
 

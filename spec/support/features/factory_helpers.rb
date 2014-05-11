@@ -120,6 +120,7 @@ module Features
 
     def create_accepted_campaign_with_escrow(issuer)
       campaign = create_accepted_campaign(issuer)
+      campaign.update_attribute(:status, 'escrow_created')
       FactoryGirl.create(:bancbox_escrow,
                          :campaign => campaign,
                          :status => 'OPEN_PENDING',
