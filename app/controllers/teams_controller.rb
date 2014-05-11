@@ -21,11 +21,13 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    authorize! :manage, @campaign
     @team.team_members.build if @team.team_members.blank?
     render :new
   end
 
   def update
+    authorize! :manage, @campaign
     @team.update_attributes(params[:alumvest_team_base])
     if @team.valid?
       redirect_to campaign_team_path(@team.campaign), :flash => {:success => 'Campaign team info saved.' }
@@ -35,6 +37,7 @@ class TeamsController < ApplicationController
   end
 
   def check_for_completeness
+    authorize! :manage, @campaign
     if @team.make_ready_for_review
       redirect_to campaign_team_path(@team.campaign), :flash => {:success => 'Team info is complete.' }
     else
@@ -44,6 +47,7 @@ class TeamsController < ApplicationController
   end
 
   def preview
+    authorize! :manage, @campaign
     @disable_nav = true
     @is_preview = true
     render 'display'
@@ -57,7 +61,7 @@ class TeamsController < ApplicationController
 
   def load_team
     @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
-    authorize! :manage, @campaign
+    #authorize! :manage, @campaign
     @company = @campaign.company
     @team = @campaign.team
   end
