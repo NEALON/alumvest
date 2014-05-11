@@ -6,10 +6,11 @@ module Bancbox::EscrowEvents
   included do
 
     def generate_opened_event
+      # raise campaign.issuer.inspect
       Bus::Event::BancboxEscrow::Opened.create(
               :campaign => campaign,
               :bancbox_escrow => self,
-              :issuer => issuer
+              :issuer => campaign.issuer
       )
     end
   end

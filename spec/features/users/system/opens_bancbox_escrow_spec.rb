@@ -3,24 +3,22 @@ require 'spec_helper'
 include ActionView::Helpers::SanitizeHelper
 include ActionView::Helpers::DateHelper
 
-describe 'issuer publishes campaign', :type => :feature do
+describe 'system opens bancbox escrow', :type => :feature do
+
+  # intended to capture the system realizing that the bancbox_escrow was opened
+  # by executing a call to the bancbox API
 
   before :each do
-    create_issuer
-    create_publishable_campaign(@user.issuer)
+    @issuer = create_issuer.issuer
+    @campaign = create_accepted_campaign_with_escrow(@issuer)
+    @campaign.bancbox_escrow.update_from_server!
+
     sign_in 'issuer@alumvest.com', 'secret'
-    visit campaign_company_path(@campaign)
+    visit user_issuer_events_path(@issuer.user)
   end
 
-  it 'successfully' do
-    click_on 'Publish'
-    expect(page).to have_content('Congratulations!')
-  end
-
-  it 'shows in the issuer newsfeed' do
-    click_on 'Publish'
-    visit user_issuer_events_path(@user)
-    expect(page).to have_content('You successfully published a campaign')
+  it do
+    expect(page).to have_content('The Bancbox escrow account was approved and opened')
   end
 end
 

@@ -1,0 +1,4 @@
+%p
+  = "The Bancbox escrow account was approved and opened for "
+  = link_to opened.campaign.company.campaign_title, '#'
+  = "#{time_ago_in_words(opened.created_at)} ago"
