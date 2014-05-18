@@ -8,7 +8,7 @@ namespace :bancbox do
   end
 
   desc 'Update escrow accounts'
-  task update_escrow_accountss: :environment do
+  task update_escrow_accounts: :environment do
     Bancbox::EscrowBase.all.each do |e|
       p "Updating escrow ##{e.id}: #{e.name}"
       e.update_from_server!
