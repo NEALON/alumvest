@@ -11,8 +11,6 @@ module Bancbox::EscrowEvents
               :bancbox_escrow => self,
               :issuer => campaign.issuer
       )
-      # maybe not the most intuitive place for this to go
-      campaign.go_live!
     end
   end
 end

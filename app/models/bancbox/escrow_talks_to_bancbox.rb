@@ -119,7 +119,12 @@ module Bancbox::EscrowTalksToBancbox
       total_funding = ret['notional_balance']
       save
       if status == Bancbox::EscrowBase::BANCBOX_STATUS_OPEN
-        opened! unless open?
+        unless open?
+          # major side effect, calls for its own class, or method in CampaignBase or something
+          opened!
+          campaign.created_escrow!
+          campaign.go_live!
+        end
       end
     end
 

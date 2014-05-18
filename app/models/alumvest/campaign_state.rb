@@ -17,7 +17,7 @@ module Alumvest::CampaignState
         transition :published  => :accepted
       end
 
-      event :create_escrow do
+      event :created_escrow! do
         transition :accepted => :escrow_created
       end
 
