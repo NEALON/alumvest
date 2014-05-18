@@ -72,7 +72,7 @@
     .jumbotron
       .container-bg.container-bg-video
         - unless Rails.env.test?
-          %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%'}
+          %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%', :muted => "muted"}
             %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
         .container-bg.container-bg-overlay
       .container-bg.container-bg-text.text-center
