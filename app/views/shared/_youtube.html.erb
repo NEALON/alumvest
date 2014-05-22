@@ -1,8 +1,0 @@
-<div class="company-video company-block">
-	<% unless video_url.blank? or Rails.env.test? %>
-	    <div>
-		    <iframe width="<%= width %>" height="<%= height %>" src="<%= video_url -%>?feature=oembed&showinfo=0" frameborder="0" allowfullscreen>
-		    </iframe>
-	    </div>
-	<% end %>
-</div>

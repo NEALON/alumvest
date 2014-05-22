@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511142648) do
+ActiveRecord::Schema.define(version: 20140522184747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -226,6 +226,8 @@ ActiveRecord::Schema.define(version: 20140511142648) do
     t.string   "banner_photo_url"
     t.string   "aggregate_status"
     t.integer  "campaign_id"
+    t.string   "slideshare_url"
+    t.string   "home_photo_url"
   end
 
   create_table "contract_doc_groups", force: true do |t|

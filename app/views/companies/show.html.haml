@@ -33,6 +33,19 @@
         Video
     .col-xs-8.col-md-8.form-value#video
       = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        Slideshare
+    .col-xs-8.col-md-8.form-value#video
+      = render 'shared/slideshare', :slideshare_embed_url => @company.slideshare_embed_url, :width => 597, :height => 486
+  .row.form-row
+    .col-xs-4.col-md-4.form-label
+      %b.pull-right
+        Home Image
+    .col-xs-8.col-md-8.form-value#video
+      = image_tag @company.home_photo_display
+
   = render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(:w => 64, :h => 64) unless @company.photo.blank?)
   = render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(:w => 64, :h => 64) unless @company.photo.blank?)
   %br

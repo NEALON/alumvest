@@ -22,6 +22,8 @@ class Alumvest::CompanyBase < ActiveRecord::Base
                   :phone,
                   :faq,
                   :video_url,
+                  :slideshare_url,
+                  :home_photo_url,
                   :photo_url,
                   :banner_photo_url,
                   :status,
@@ -31,6 +33,7 @@ class Alumvest::CompanyBase < ActiveRecord::Base
   attr_reader :invalid_items
 
   has_filepicker_image :logo, :styles => {:medium => [300, 300], :thumb => [100, 100]}
+  has_filepicker_image :home_photo
   has_filepicker_image :photo
   has_filepicker_image :banner_photo
 

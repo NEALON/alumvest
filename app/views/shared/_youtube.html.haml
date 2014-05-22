@@ -1,0 +1,4 @@
+.company-video.company-block
+  - unless video_url.blank? or Rails.env.test?
+    %div
+      %iframe{allowfullscreen: "", frameborder: "0", height: height, src: "#{video_url}?feature=oembed&showinfo=0", width: width}

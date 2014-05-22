@@ -1,0 +1,4 @@
+.company-video.company-block
+  - unless @company.slideshare_url.blank? # or Rails.env.test?
+    %div
+      %iframe{:src => "#{@company.slideshare_embed_url}", :width => "597", :height => "486"}

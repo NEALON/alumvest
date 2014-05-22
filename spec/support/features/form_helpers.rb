@@ -158,6 +158,8 @@ module Features
         fill_in "#{form}_phone", :with => company.phone
         fill_in "#{form}_faq", :with => company.faq
         fill_in "#{form}_video_url", :with => 'http://www.youtube.com/embed/OQSNhk5ICTI'
+        fill_in "#{form}_slideshare_url", :with => 'http://www.slideshare.net/redsquirrel/path14-winning'
+
         # filepicker fill_in "#{form}_photo_url", :with => Faker::Internet.url
         # filepicker fill_in "#{form}_banner_photo_url", :with => Faker::Internet.url
       end
