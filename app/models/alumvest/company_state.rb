@@ -26,7 +26,6 @@ module Alumvest::CompanyState
          :zip,
          :phone,
          :faq,
-         :video_url,
          :banner_photo_url].each do |attr|
           validates attr, :presence => true
         end
