@@ -10,13 +10,15 @@
  *
 */
 
+// import mixins, variables and functions
+@import "core/color";
+@import "core/font";
+@import "core/variables_bootstrap";
+
 // import vendor libraries
 @import "bootstrap";
-@import "vendor/bootstrap/bootstrap-theme";
-
-// import mixins, variables and functions
-@import "core/font";
-@import "core/color";
+@import "bootstrap/theme";
+//@import "vendor/bootstrap/bootstrap-theme";
 
 @import "layout/header";
 @import "layout/modal";
@@ -39,22 +41,14 @@ html, body{
   height: 100%;
 }
 
-body{
-  background-color: #ffffff;
-  font-size: 12px;
-  font-family: $font-open-sans;
-}
-
-.container{
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 990px;
+b, strong {
+  font-weight: 700;
 }
 
 .container-fluid{
   margin-right: auto;
   margin-left: auto;
-  max-width: 990px;
+  max-width: 990px + $grid-gutter-width;
 }
 
 #content{

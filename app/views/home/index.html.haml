@@ -1,6 +1,31 @@
 
-#cover.jumbotron
-  .container
+.masthead
+  .inner
+    .container
+      .left-info
+        .wrapper-video#video-home
+          .close-video{:data => {:toggle => "tooltip", :placement => "top"}, :title => "Close"}
+            %i.fa.fa-times
+          .inner
+            .backface-video
+              - unless Rails.env.test?
+                %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :muted => "muted"}
+                  %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
+                .overlay-video
+                  .bg
+                  .inner
+                    .play-btn
+                      %i.fa.fa-play-circle
+                    %h4 Connecting capital and intelligence
+            .video-content
+              - unless Rails.env.test?
+                <!-- Plugin for Vimeo -->
+                <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+                %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
+                  
+        %p.h3 Connecting capital and intelligence, AlumVest engages alumni and peers to seed and mentor entrepreneurs
+          
+    
     / #goal
     /   %h2 Welcome to Alumvest!
     /   .cover-description
@@ -67,27 +92,28 @@
         /     Close
         /   %button.btn.btn-primary{:type => 'button'}
         /     Save Changes
-#video-trailer.row
-  .col-md-12
-    .jumbotron
-      .container-bg.container-bg-video
+-#
+  #video-trailer.row
+    .col-md-12
+      .jumbotron
+        .container-bg.container-bg-video
+          - unless Rails.env.test?
+            %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%', :muted => "muted"}
+              %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
+          .container-bg.container-bg-overlay
+        .container-bg.container-bg-text.text-center
+          %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
+            %img{:src => image_path('home/video_play.png')}
+          %h3 Connecting capital and intelligence
         - unless Rails.env.test?
-          %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%', :muted => "muted"}
-            %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
-        .container-bg.container-bg-overlay
-      .container-bg.container-bg-text.text-center
-        %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
-          %img{:src => image_path('home/video_play.png')}
-        %h3 Connecting capital and intelligence
-      - unless Rails.env.test?
-        .video-wrapper
-          .container
-            <!-- Plugin for Vimeo -->
-            <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
-
-            #video-player.embed-video
-              - unless Rails.env.test?
-                %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
+          .video-wrapper
+            .container
+              <!-- Plugin for Vimeo -->
+              <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+  
+              #video-player.embed-video
+                - unless Rails.env.test?
+                  %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
 
 #how-it-works.row
   .col-md-12

@@ -1,7 +1,6 @@
 @import "user_dropdown";
 
 #header{
-  font-family: 'Open Sans', sans-serif;
   background-color: rgba(0, 0, 0, 0) !important;
   background-image: none;
   border: none;
@@ -21,12 +20,16 @@
     overflow: hidden;
   }
 
-  .nav.navbar-nav{
-    li a{
+  .nav.navbar-nav {
+    li a {
       color: #000000;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: .1em;
+      
+      @media (min-width: $screen-md-min) {
+        font-size: 14px;
+      }
     }
 
     li a:hover{
