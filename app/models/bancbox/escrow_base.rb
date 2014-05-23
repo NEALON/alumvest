@@ -33,7 +33,8 @@ class Bancbox::EscrowBase < ActiveRecord::Base
                   :campaign_id,
                   :campaign,
                   :issuer_id,
-                  :issuer
+                  :issuer,
+                  :over_funding_amount
 
   validates_presence_of [:name,
                          :start_date,

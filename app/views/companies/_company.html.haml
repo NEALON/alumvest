@@ -15,17 +15,15 @@
   -# main (left)
   .col-md-8
     = render 'heading'
-    - case @company.presents_via?
-    - when :video
-    - when :slideshare
-
-    = render 'shared/youtube', :video_url => @company.video_url, :width => 630, :height => 404
-    = render 'shared/slideshare', :width => 597, :height => 486
-    .company-video.company-block
-      - unless @company.home_photo_url.blank? # or Rails.env.test?
-        %div
-
-          %iframe{:src => "#{@company.slideshare_embed_url}", :width => "597", :height => "486"}
+    - if @company.video_url.present?
+      = render 'shared/youtube', :video_url => @company.video_url, :width => 630, :height => 404
+    - if @company.slideshare_url.present?
+      = render 'shared/slideshare', :width => 597, :height => 486
+    - if @company.home_photo_url.present?
+      .company-video.company-block
+        - unless @company.home_photo_url.blank? # or Rails.env.test?
+          %div
+            %iframe{:src => "#{@company.slideshare_embed_url}", :width => "597", :height => "486"}
 
     = render 'company_details'
     = render 'company_highlights'
