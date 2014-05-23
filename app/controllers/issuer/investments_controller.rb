@@ -5,7 +5,6 @@ class Issuer::InvestmentsController < ApplicationController
     @issuer = @user.issuer
     @campaign = @issuer.campaign
     @investments = @campaign.investments
-    render :layout => 'issuers'
   end
 end
 

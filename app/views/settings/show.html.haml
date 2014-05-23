@@ -1,4 +1,10 @@
-= render 'users/side_navigation', :active => @active
+= content_for :header_1 do
+  #title
+
+- if @user.investor.present?
+  = render 'investors/side_navigation', :active => @active
+- else
+  = render 'users/side_navigation', :active => @active
 
 #information
   = render 'shared/property_row', :header => 'Password', :value => '(redacted)'

@@ -3,14 +3,12 @@ class SettingsController < ApplicationController
     @user = Alumvest::UserBase.find_by_id(params[:user_id])
     authorize! :read, @user
     @active = 'settings_info'
-    render :layout => "users"
   end
 
   def edit
     @user = Alumvest::UserBase.find_by_id(params[:user_id])
     authorize! :manage, @user
     @active = 'settings_info'
-    render :layout => "users"
   end
 
   def update

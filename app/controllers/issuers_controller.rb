@@ -4,7 +4,6 @@ class IssuersController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @issuer = @user.issuer
     authorize! :manage, @issuer
-    render :layout => 'issuers'
   end
 
   def update
@@ -23,6 +22,5 @@ class IssuersController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @issuer = @user.issuer || Alumvest::IssuerBase.new(:user => @user)
     authorize! :read, @issuer
-    render :layout => 'issuers'
   end
 end

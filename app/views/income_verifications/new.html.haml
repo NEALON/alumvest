@@ -1,3 +1,6 @@
+= content_for :header_1 do
+  #title
+
 = render 'investors/side_navigation', :active => 'income_verification'
 
 #information
@@ -8,7 +11,7 @@
       = f.hidden_field :investor_id
 
       - with_options :form => f do |op|
-        = op.render_cell 'tb/form/subhead', :display, :label => 'Income Verification'
+        = op.render_cell 'tb/form/subhead', :display, :label => 'Investor Certification'
         = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-1').html_safe
         = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-2').html_safe
         = op.render_cell 'tb/form/text', :display, :field => :first_name

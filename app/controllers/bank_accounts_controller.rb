@@ -10,9 +10,8 @@ class BankAccountsController < ApplicationController
           :bank_account_holder => current_user.name,
           :bank_account_routing => Bancbox::BankAccount::DefaultRoutingNumber)
       authorize! :manage, @bank_account
-      render :layout => 'issuers'
     else
-      render 'show_profile_incomplete', :layout => 'issuers'
+      render 'show_profile_incomplete'
     end
   end
 
@@ -32,7 +31,6 @@ class BankAccountsController < ApplicationController
     @active = 'bank_account'
     @bank_account = @user.bank_account
     authorize! :manage, @bank_account
-    render :layout => 'issuers'
   end
 
   def edit
@@ -40,7 +38,7 @@ class BankAccountsController < ApplicationController
     @active = 'bank_account'
     @bank_account = @user.bank_account
     authorize! :manage, @bank_account
-    render 'edit', :layout => 'issuers'
+    render 'edit'
   end
 
   def update

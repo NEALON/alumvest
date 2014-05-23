@@ -1,6 +1,2 @@
 = content_for :sidebar_left do
   %ul.nav.nav-stacked
-    %li{:class => "#{'active' if active == 'basic_info'}"}
-      = link_to('Basic Information', user_path(@user))
-    %li{:class => "#{'active' if active == 'settings_info'}"}
-      = link_to('Settings', user_settings_path(@user))
