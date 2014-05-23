@@ -4,7 +4,6 @@ class InvestorsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     authorize! :manage, @investor
-    render :layout => 'investors'
   end
 
   def update
@@ -23,7 +22,12 @@ class InvestorsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor || Alumvest::InvestorBase.new(:user => @user)
     authorize! :read, @investor
-    render :layout => 'investors'
+  end
+
+  def dashboard
+    @user = Alumvest::UserBase.find(params[:user_id])
+    @investor = @user.investor || Alumvest::InvestorBase.new(:user => @user)
+    authorize! :read, @investor
   end
 
   #def display

@@ -78,6 +78,7 @@ Av::Application.routes.draw do
     resource :settings
 
     resource :investor do
+      get :dashboard
       resources :events, :controller => 'investor/events'
       resource :self_accredited_status
       resource :income_verification do

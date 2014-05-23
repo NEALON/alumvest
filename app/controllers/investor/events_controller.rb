@@ -4,7 +4,6 @@ class Investor::EventsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     @events = @investor.events.order('id DESC')
-    render :layout => 'investors'
   end
 end
 

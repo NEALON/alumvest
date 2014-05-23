@@ -1,11 +1,23 @@
 = content_for :sidebar_left do
   %ul.nav.nav-stacked
+
+    %li{:class => "#{'active' if active == 'investor_dashboard'}"}
+      = link_to('Dashboard', dashboard_user_investor_path(@user))
     %li{:class => "#{'active' if active == 'investor_profile'}"}
-      = link_to('Investor Profile', user_investor_path(@user))
+      = link_to('Profile & Privacy', user_investor_path(@user))
+    %li{:class => "#{'active' if active == 'basic_info'}"}
+      = link_to('Account Info', user_path(@user))
+    %li{:class => "#{'active' if active == 'settings_info'}"}
+      = link_to('Password', user_settings_path(@user))
     %li{:class => "#{'active' if active == 'investor_newsfeed'}"}
-      = link_to('Investor Newsfeed', user_investor_events_path(@user))
+      = link_to('Notifications', user_investor_events_path(@user))
+    %li{:class => "#{'active' if active == 'social_networks'}"}
+      = link_to('Social Networks', '#')
     %li{:class => "#{'active' if active == 'income_verification'}"}
-      = income_verification_link('Income Verification')
+      = income_verification_link('Investor Certification')
+    %li{:class => "#{'active' if active == 'bank_accounts'}"}
+      = link_to('Bank Accounts', '#')
+
     - if active == 'self_accredited_status'
       %li{:class => "#{'active'}"}
         = link_to 'Accredited Investor', new_user_investor_self_accredited_status_path(current_user)

@@ -13,7 +13,6 @@ class IncomeVerificationsController < ApplicationController
                                               :zip_code => @user.zipcode,
                                               :email => @user.email)
     authorize! :manage, @income_verification
-    render :layout => 'investors'
   end
 
   def create
@@ -24,13 +23,13 @@ class IncomeVerificationsController < ApplicationController
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), :flash => {:success => 'Your information was saved.'}
     else
-      render :action => :new, :layout => 'investors'
+      render :action => :new
     end
   end
 
   def edit
     load_income_verification
-    render :action => 'new', :layout => 'investors'
+    render :action => 'new'
   end
 
   def update
@@ -39,7 +38,7 @@ class IncomeVerificationsController < ApplicationController
     if @income_verification.valid?
       redirect_to user_investor_income_verification_path(@user), :flash => {:success => 'Your information was saved.'}
     else
-      render :action => :new, :layout => 'investors'
+      render :action => :new
     end
   end
 
@@ -55,7 +54,6 @@ class IncomeVerificationsController < ApplicationController
 
   def show
     load_income_verification
-    render :layout => 'investors'
   end
 
   private

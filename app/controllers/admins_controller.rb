@@ -150,6 +150,6 @@ class AdminsController < ApplicationController
       @escrow_account.update_on_server!
     end
 
-    redirect_to display_campaign_company_path(campaign), :flash => {:success => 'Successfully updated escrow account.'}
+    redirect_to display_campaign_company_path(@campaign), :flash => {:success => 'Successfully updated escrow account.'}
   end
 end

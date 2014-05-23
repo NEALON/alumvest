@@ -6,7 +6,6 @@ class SelfAccreditedStatusesController < ApplicationController
       @investor = @user.investor
       @self_accredited_status = Alumvest::SelfAccreditedStatus.new(investor: @investor)
       authorize! :manage, @self_accredited_status
-      render layout: 'investors'
     else
       redirect_to user_investor_self_accredited_status_path(@user)
     end
@@ -21,26 +20,25 @@ class SelfAccreditedStatusesController < ApplicationController
       @investor.update_attributes(:accredited_investor_status => 'self')
       redirect_to user_investor_self_accredited_status_path(@user)
     else
-      render action: :new, layout: 'investors'
+      render :action => :new
     end
   end
 
   def edit
     load_self_accredited_status
     authorize! :manage, @self_accredited_status
-    render action: :show, layout: 'investors'
+    render action: :show
   end
 
   def update
     load_self_accredited_status
     authorize! :manage, @self_accredited_status
-    render action: :show, layout: 'investors'
+    render action: :show
   end
 
   def show
     if load_self_accredited_status
       authorize! :manage, @self_accredited_status
-      render layout: 'investors'
     else
       redirect_to new_user_investor_self_accredited_status_path(@user)
     end

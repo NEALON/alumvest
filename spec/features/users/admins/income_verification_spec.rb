@@ -7,8 +7,7 @@ describe 'users investor income verification', :type => :feature do
     before :each do
 
       sign_up :investor
-      click_on 'Investor Dashboard'
-      click_on 'Income Verification'
+      click_on 'Investor Certification'
       fill_in_income_verification
       click_on 'Submit to Veri-Tax'
       sign_out
