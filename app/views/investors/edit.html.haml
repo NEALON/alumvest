@@ -30,9 +30,10 @@
         = op.render_cell 'tb/form/text', :display, :field => :city
         = op.render_cell 'tb/form/text', :display, :field => :state
         = op.render_cell 'tb/form/text', :display, :field => :zip
-        = op.render_cell 'tb/form/filepicker', :display, :field => :photo_url
-        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investments
-        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investor_status
+        = op.render_cell 'tb/form/filepicker', :display, :field => :photo_url, :label => 'Photo'
+
+        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investments, :label => 'Hide my investments on Alumvest'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investor_status, :label => 'Hide my investor status except to founders of companies I invest in'
 
         %hr
         %h1= 'Legal Name & Address'

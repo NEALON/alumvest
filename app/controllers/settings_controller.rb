@@ -23,6 +23,6 @@ class SettingsController < ApplicationController
       notice = 'Password info failed to update.'
       return redirect_to edit_user_settings_path(@user), :flash => {:warning => notice}
     end
-    redirect_to user_settings_path, :flash => {:success => notice}
+    redirect_to edit_user_settings_path, :flash => {:success => notice}
   end
 end

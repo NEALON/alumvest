@@ -6,7 +6,9 @@
 - else
   = render 'users/side_navigation', :active => @active
 
-#information
+#information.dashboard
+  %h1
+    Change your password
   = form_for @user, :url => user_settings_path(@user), :html => {:id => 'user_settings_form', :class => 'form-horizontal editing-form well'} do |f|
     = render 'shared/errors', :entity => @user
 

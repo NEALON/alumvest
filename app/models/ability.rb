@@ -30,6 +30,7 @@ class Ability
       if user.is_investor?
         can :manage, Alumvest::InvestorBase
         can :manage, Alumvest::InvestmentBase
+
         can :manage, Alumvest::SelfAccreditedStatus, :investor_id => user.investor.id
         can :manage, Veritax::OrderBase, :investor_id => user.investor.id
 
