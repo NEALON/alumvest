@@ -3,7 +3,8 @@ class Tb::Form::TextCell  < Cell::Rails
   def display(opts = {})
     @form = opts[:form]
     @field = opts[:field]
-    @placeholder = opts[:placeholder] || ""
+    @label = opts[:label] || @field
+    @placeholder = opts[:placeholder] || ''
 
     render
   end

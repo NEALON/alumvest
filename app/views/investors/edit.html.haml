@@ -1,6 +1,21 @@
 = render "side_navigation", :active => 'investor_profile'
 
-#information
+
+#information.dashboard
+  %h1= 'Profile & Privacy'
+
+  .user-profile
+    .user-profile-avatar
+      - if @user.avatar.blank?
+        = image_tag @user.avatar(:thumb)
+      - else
+        %img{:src => "http://placehold.it/128x128"}
+    .user-profile-name
+      = @user.full_name
+    .user-profile-location
+      = @user.city
+      = @user.state
+
   = form_for @investor, :url => user_investor_path(@user), :html => {:id => 'investor_profile_form', :class => 'form-horizontal editing-form well'} do |f|
     = render 'shared/errors', :entity => @investor
 
@@ -8,17 +23,25 @@
       = f.hidden_field :user_id
 
       - with_options :form => f do |op|
-        = op.render_cell 'tb/form/text', :display, :field => :ssn, :placeholder => "XXX-XX-XXXX"
-        = op.render_cell 'tb/form/select', :display, :field =>  :marital_status, :values => ["Single", "Married", "Separated", "Divorced", "Widowed", "Cohabiting", "Civil Union", "Domestic Partnership"]
-        = op.render_cell 'tb/form/richtext', :display, :field => :financial_info
-        = op.render_cell 'tb/form/text', :display, :field => :spending_habits
-        = op.render_cell 'tb/form/text', :display, :field => :income
-        = op.render_cell 'tb/form/text', :display, :field => :income_type
-        = op.render_cell 'tb/form/text', :display, :field => :net_worth
-        = op.render_cell 'tb/form/text', :display, :field => :investor_representations
-        = op.render_cell 'tb/form/text', :display, :field => :company
-        = op.render_cell 'tb/form/text', :display, :field => :job_title
-        = op.render_cell 'tb/form/richtext', :display, :field => :experience
-        = op.render_cell 'tb/form/richtext', :display, :field => :expertise
-        = op.render_cell 'tb/form/richtext', :display, :field => :personal_message
-      = render_cell 'tb/form/submit_button', :display
+
+        = op.render_cell 'tb/form/text', :display, :field => :tagline, :placeholder => 'About you, in a couple of words...'
+        = op.render_cell 'tb/form/text', :display, :field => :website, :placeholder => 'http://www...'
+        = op.render_cell 'tb/form/text', :display, :field => :bio
+        = op.render_cell 'tb/form/text', :display, :field => :city
+        = op.render_cell 'tb/form/text', :display, :field => :state
+        = op.render_cell 'tb/form/text', :display, :field => :zip
+        = op.render_cell 'tb/form/filepicker', :display, :field => :photo_url
+        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investments
+        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investor_status
+
+        %hr
+        %h1= 'Legal Name & Address'
+
+        = op.render_cell 'tb/form/text', :display, :field => :legal_name
+        = op.render_cell 'tb/form/text', :display, :field => :legal_address, :label => 'Address'
+        = op.render_cell 'tb/form/text', :display, :field => :legal_city, :label => 'City'
+        = op.render_cell 'tb/form/text', :display, :field => :legal_state, :label => 'State'
+        = op.render_cell 'tb/form/text', :display, :field => :legal_postal_code, :label => 'Postal Code'
+        = op.render_cell 'tb/form/text', :display, :field => :legal_country, :label => 'Country'
+
+      = render_cell 'tb/form/submit_button', :display, :label => 'Update'

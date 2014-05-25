@@ -3,7 +3,25 @@
 
 = render 'side_navigation', :active => 'investor_profile'
 
-#information
+#information.dashboard
+  %h1= 'Profile & Privacy'
+
+  -#t.string   "tagline"
+  -#t.string   "website"
+  -#t.text     "bio"
+  -#t.string   "city"
+  -#t.string   "state"
+  -#t.string   "zip"
+  -#t.string   "photo_url"
+  -#t.boolean  "hide_investments"
+  -#t.boolean  "hide_investor_status"
+  -#t.string   "legal_name"
+  -#t.string   "legal_address"
+  -#t.string   "legal_city"
+  -#t.string   "legal_state"
+  -#t.string   "legal_postal_code"
+  -#t.string   "legal_country"
+
   = render 'shared/property_row', :header => 'SSN', :value => @investor.ssn
   = render 'shared/property_row', :header => 'Marital Status', :value => @investor.marital_status
   = render 'shared/property_row', :header => 'Financial Info', :value => @investor.financial_info

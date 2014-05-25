@@ -22,7 +22,8 @@ class Alumvest::InvestorBase < ActiveRecord::Base
                   :spending_habits,
                   :ssn,
                   :user_id,
-                  :user
+                  :user,
+                  :tagline, :website, :bio, :city, :state, :zip, :photo_url, :hide_investments, :hide_investor_status, :legal_name, :legal_address, :legal_city, :legal_state, :legal_postal_code, :legal_country
 
   has_one :self_accredited_status,
           :class_name => 'Alumvest::SelfAccreditedStatus',
