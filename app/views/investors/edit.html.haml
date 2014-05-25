@@ -1,5 +1,7 @@
-= render "side_navigation", :active => 'investor_profile'
+= content_for :header_1 do
+  #title
 
+= render "side_navigation", :active => 'investor_profile'
 
 #information.dashboard
   %h1= 'Profile & Privacy'

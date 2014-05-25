@@ -1,0 +1,18 @@
+= content_for :header_1 do
+  #title
+
+= render 'investors/side_navigation', :active => 'basic_info'
+
+#information.dashboard
+  %h1
+    Account info
+  = form_for @user, :url => user_account_info_path(@user), :html => {:id => 'user_account_info_form', :class => 'form-horizontal editing-form well'} do |f|
+    = render 'shared/errors', :entity => @user
+
+    %fieldset
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/text', :display, :field => :first_name
+        = op.render_cell 'tb/form/text', :display, :field => :last_name
+        = op.render_cell 'tb/form/text', :display, :field => :email
+
+      = render_cell 'tb/form/submit_button', :display, :label => 'Save'

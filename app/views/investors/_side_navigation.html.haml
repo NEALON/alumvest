@@ -6,7 +6,7 @@
     %li{:class => "#{'active' if active == 'investor_profile'}"}
       = link_to('Profile & Privacy', edit_user_investor_path(@user))
     %li{:class => "#{'active' if active == 'basic_info'}"}
-      = link_to('Account Info', user_path(@user))
+      = link_to('Account Info', edit_user_account_info_path(@user))
     %li{:class => "#{'active' if active == 'settings_info'}"}
       = link_to('Password', edit_user_settings_path(@user))
     %li{:class => "#{'active' if active == 'notification_prefs'}"}
