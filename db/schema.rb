@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525105320) do
+ActiveRecord::Schema.define(version: 20140525160034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -503,7 +503,7 @@ ActiveRecord::Schema.define(version: 20140525105320) do
     t.string   "email"
     t.string   "facebook"
     t.string   "linkedin"
-    t.string   "user_type",          default: "guest"
+    t.string   "user_type",               default: "guest"
     t.string   "avatar_url"
     t.string   "mobile_phone"
     t.string   "home_phone"
@@ -514,6 +514,15 @@ ActiveRecord::Schema.define(version: 20140525105320) do
     t.string   "zipcode"
     t.text     "personal_statement"
     t.string   "encrypted_ssn"
+    t.boolean  "direct_message_pref",     default: true
+    t.boolean  "comment_reply_pref",      default: true
+    t.boolean  "update_pref",             default: true
+    t.boolean  "funding_milestone_pref",  default: true
+    t.boolean  "profile_update_pref",     default: true
+    t.boolean  "answer_pref",             default: true
+    t.boolean  "alumvest_update_pref",    default: true
+    t.boolean  "featured_startup_pref",   default: true
+    t.boolean  "highlighted_update_pref", default: true
   end
 
   create_table "veritax_orders", force: true do |t|

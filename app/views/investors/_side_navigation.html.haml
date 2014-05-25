@@ -9,8 +9,8 @@
       = link_to('Account Info', user_path(@user))
     %li{:class => "#{'active' if active == 'settings_info'}"}
       = link_to('Password', edit_user_settings_path(@user))
-    %li{:class => "#{'active' if active == 'investor_newsfeed'}"}
-      = link_to('Notifications', user_investor_events_path(@user))
+    %li{:class => "#{'active' if active == 'notification_prefs'}"}
+      = link_to('Notifications', edit_user_notification_prefs_path(@user))
     %li{:class => "#{'active' if active == 'social_networks'}"}
       = link_to('Social Networks', '#')
     %li{:class => "#{'active' if active == 'income_verification'}"}

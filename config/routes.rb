@@ -77,6 +77,8 @@ Av::Application.routes.draw do
     resource :bank_account
     resource :settings
 
+    resource :notification_prefs, :only => [:edit, :update]
+
     resource :investor do
       get :dashboard
       resources :events, :controller => 'investor/events'
