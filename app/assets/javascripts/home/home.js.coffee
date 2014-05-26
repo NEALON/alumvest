@@ -2,16 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-#playVideo = ->
-	#$('.container-bg').hide()
-	#$('#video-trailer').css 'background-color', '#000000'
-	#$('.video-wrapper').show()
-	#$f('vimeo_player').api 'play'
-
-#jQuery ->
-	#$('.video-play').bind 'click', (event) ->
-		#playVideo()
-		#false
 
 toggleVideo = ->
   parent = $("#video-home")
@@ -29,9 +19,20 @@ toggleVideo = ->
     
     if backfaceVideo.length
       if Object::toString.call(backfaceVideo[0].pause) is "[object Function]"
-        backfaceVideo[0].pause();
+        backfaceVideo[0].load()
+        backfaceVideo[0].pause()
+        backfaceVideo[0].muted = true
     
   parent.toggleClass "active"
+  
+window['endBackfaceVideo'] = ->
+  backfaceVideo = $("#video-home .backface-video video")
+  
+  if backfaceVideo.length
+    if Object::toString.call(backfaceVideo[0].play) is "[object Function]"
+      backfaceVideo[0].play()
+      backfaceVideo[0].muted = true
+      backfaceVideo[0].loop = true
 
 $(document).ready ->
   $("body").on "click", "#video-home .backface-video, #video-home .close-video", (event) ->

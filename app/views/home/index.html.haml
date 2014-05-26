@@ -10,14 +10,14 @@
           .inner
             .backface-video
               - unless Rails.env.test?
-                %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :muted => "muted"}
+                %video{:autoplay => 'autoplay', :onended => "window['endBackfaceVideo']()"}
                   %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
                 .overlay-video
                   .bg
                   .inner
                     .play-btn
                       %i.fa.fa-play-circle
-                    %h4 Connecting capital and intelligence
+                    %h4 Play AlumVest Video
             .video-content
               - unless Rails.env.test?
                 <!-- Plugin for Vimeo -->
