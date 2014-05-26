@@ -42,6 +42,10 @@ html, body{
   height: 100%;
 }
 
+a {
+  &, &:hover, &:focus { outline: none !important; }
+}
+
 b, strong {
   font-weight: 700;
 }

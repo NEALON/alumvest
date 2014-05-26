@@ -1,3 +1,16 @@
 .btn-default { 
   background: none $btn-default-bg !important;
 }
+
+.modal {
+  .btn-soc .fa {
+    font-size: 26px;
+    float: left;
+    line-height: 1.0;
+    margin-left: 10px;
+    margin-right: -100%;
+    position: relative;
+    text-shadow: 0px -1px 1px rgba($black, .3);
+    top: -2px;
+  }
+}

@@ -5,14 +5,14 @@
       .left-info
         %p.triangle-img
           =image_tag("home/triangle-learn-more.png", :class => 'img-responsive')
-        %button.btn.btn-lg.btn-primary{:data => {:toggle => "modal", :target => "#home-video", "toggle-video" => "home"}}
+        %button.btn.btn-lg.btn-primary{:data => {:toggle => "modal", :target => "#home-video"}}
           %i.fa.fa-play-circle
           See Our Video
       /.left-info
 /.masthead
           
 .modal.fade#home-video
-  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", "data-toggle-video" => "home", type: "button"} &times;
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
   .modal-dialog.modal-lg
     .modal-content
       .modal-header
@@ -27,7 +27,9 @@
             <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
             %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", "data-toggle-video" => "home", type: "button"} Back to homepage
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"}
+          %i.fa.fa-angle-double-left
+          Back to homepage
     /.modal-content
   /.modal-dialog
 /.modal

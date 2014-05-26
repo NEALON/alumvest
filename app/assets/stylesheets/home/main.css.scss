@@ -39,6 +39,7 @@
 	    width: 250px;
 	    
 	    .fa {
+	      display: inline;
 	      font-size: 32px;
 	      line-height: 0;
 	      margin-right: 10px;
@@ -48,6 +49,23 @@
 	    }
 	  }
 	}
+}
+
+.horizontal-separator {  
+  border-top: 1px solid #e5e5e5;
+  color: $black;  
+  font: {size: 16px; weight: 400; style: italic;}
+  margin: 30px -8px 15px;
+  text-align: center;
+  
+  > .inner {
+    background-color: $white;
+    display: inline-block;
+    padding: 0 20px;
+    position: relative;
+    top: -13px;
+    z-index: 1;
+  }
 }
 
 .video-trailer-wrapper {
