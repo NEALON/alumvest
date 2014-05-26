@@ -3,11 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .masthead {
-	background: image-url('home/pretty.jpg') repeat;
-	background-repeat: no-repeat;
+	background: image-url('home/pretty.jpg') left top no-repeat darken($white, 20%);
 	
 	@media (min-width: $screen-sm-min) {
-	  background-size: cover;
+	  background: {size: cover; position: center top;}
     min-height: 600px;
   }
 
@@ -19,138 +18,75 @@
 	  }
 	}
 	
-	.left-info {
-	  color: $white;
-	  
-	  h2, .h2, h3, .h3 {
-	    line-height: 1.4;
-      text-shadow: 1px 1px rgba($black, .6);
-	  }
-	  
+	.left-info { text-align: center;
 	  @media (min-width: $screen-sm-min) {
-	    width: 50%;
+	    margin-top: 40px;
+	    width: 40%;
 	  }
-	}
-	
-	.wrapper-video {
-	  background: $black;
-	  position: relative;
 	  
-	  > .inner {
-  	  margin-bottom: 20px;
-  	  overflow: hidden;
-      padding-top: 56.4%;
-  	  position: relative;
-  	  width: 100%;
-  	}
-	  
-	  .close-video {
-	    color: $white;
-	    cursor: pointer;
-	    display: none;
-	    font-size: 20px;
-      position: absolute;
-      right: 0;
-      top: -35px;
-      @include transition(all .3s);
-      
-      @media (min-width: $screen-sm-min) {
-        right: -25px;
-        top: -7px; 
-      }
-            
-      &:hover, &:focus {
-        color: $green-light;
-      }
-    }
-	  
-	  .video-content {
-	    display: none;
-	    z-index: 1;
+	  .triangle-img { 
+	    margin-bottom: 60px;
 	    
-	    &, video, iframe {
-  	    height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
+	    > img {
+	      left: 6px;
+	      margin: 0 auto;
+	      position: relative; 
+	    }
 	  }
 	  
-	  .backface-video {	    
-	    &, video, iframe {
-	      height: 100%;
-	      left: 0;
-	      position: absolute;
-	      top: 0;
-	      width: 100%;
-	    }
+	  .btn {
+	    max-width: 100%;
+	    width: 250px;
 	    
-	    .overlay-video {
-	      cursor: pointer;
-	      text-align: center;
-	      
-	      &, .bg, .inner {
-	        height: 100%;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 100%;
-          z-index: 5;
-	      }
-	      
-	      .bg {
-	        background: image-url('home/video-bg.jpg') center center;
-          background-size: cover;
-          @include opacity(.5);
-          @include transition(all .3s);
-          z-index: -1;
-	      }
-	      
-	      .inner {
-	        color: $white;
-          height: 200px;
-          margin-top: -80px;
-          padding: 20px;
-          text-shadow: 1px 1px rgba($black, .6);
-          top: 50%;
-          
-          .play-btn { 
-            font-size: 85px; 
-            line-height: 1.0;
-          }
-          
-          h4, .h4, .play-btn { @include transition(all .3s); }
-	      }
-	      
-	      &:hover, &:focus {
-	        .inner {
-            color: $green-light;
-            
-            .play-btn { 
-              @include scale(1.2);
-              text-shadow: none;
-            }
-          }
-          
-          .bg {
-            @include box-shadow(inset 0 0 80px 12px rgba($black, .65));
-          }
-	      }
-	    }
-	  }
-	  
-	  &.active {
-	    .close-video {
-        display: block;
-	    }
-	    .video-content {
-	      display: block;
-	      z-index: 5;
+	    .fa {
+	      font-size: 32px;
+	      line-height: 0;
+	      margin-right: 10px;
+	      position: relative;
+	      text-shadow: 0px -1px 1px rgba($black, .7);
+	      top: 5px;
 	    }
 	  }
 	}
 }
+
+.video-trailer-wrapper {
+  background: $black;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56%;
+  position: relative;
+  
+  video, iframe {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .overlay-bg {
+    background: image-url('home/video-bg.jpg') center center;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    @include opacity(.5);
+    position: absolute;
+    top: 0;
+    @include transition(all .3s);
+    width: 100%;
+    z-index: 2;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    padding-top: 37%;
+    
+    video, iframe {
+      top: -15%;
+    }
+  }
+}
+
+.no-video .video-trailer-wrapper { display: none; }
 
 #active{
 	.campaign-group-title{
@@ -200,16 +136,17 @@
 	// background-color: #f8f8f8;
 
 	.homepage-featured-campaigns{
-		.col-md-4.outline{
-			margin: 30px 15px 30px;
-			border-radius: 0px;
-			border: 1px solid #f8f8f8;
+		.outline{
+			margin: 30px 0 30px;
+			border-radius: 4px;
+			border: 1px solid darken(#f8f8f8, 5%);
 			box-shadow: none;
 			display: block;
 			width: 300px;
 			min-height: 425px;
 			max-height: 425px;
-			overflow: none;
+			max-width: 100%;
+			overflow: hidden;
 			padding: 0px;
 
 			.company-title{
@@ -289,77 +226,6 @@
 	}
 }
 
-
-#videoModal{
-	.modal-dialog{
-		width: 80%;
-		padding-top: 40px;
-		padding-bottom: 40px;
-	}
-
-	.modal-body{
-		padding: 0;
-	}
-}
-
-#video-trailer{
-	width: 100%;
-	min-height: 500px;
-	max-height: 500px;
-	margin-left: 0;
-	margin-right: 0;
-
-	.col-md-12{
-		padding: 0;
-	}
-
-	.jumbotron{
-		display: block;
-		padding: 0;
-		max-height: 718px;
-		margin-bottom: 0;
-	}
-
-	.container-bg{
-		overflow: hidden;
-		height: 500px;
-	}
-
-	.container-bg-overlay{
-		width: 100%;
-		height: 100%;
-		background: image-url('home/video-bg.jpg') center center;
-		background-size: cover;
-		opacity: .5;
-		z-index: 1;
-		position: absolute;
-		top: 0;
-	}
-
-	.container-bg-text{
-		width: 100%;
-		z-index: 2;
-		position: absolute;
-		top: 150px;
-		color: white;
-
-		img{
-			width: 75px;
-			height: 75px;
-		}
-	}
-
-	.video-wrapper{
-		display: none;
-		width: 100%;
-		position: absolute;
-		top: 0px;
-		overflow: hidden;
-		height: 500px;
-
-	}
-}
-
 #how-it-works{
 	margin: 0;
 
@@ -401,5 +267,33 @@
 
 .no-marg-bottom {
   margin-bottom: 0 !important;
+}
+
+.marg-bottom {
+  margin-bottom: ($line-height-computed / 2) !important;
+}
+
+.marg-top {
+  margin-top: ($line-height-computed / 2) !important;
+}
+
+.flex-video {
+  height: 0;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 1.38889rem;
+  padding-bottom: 67.5%;  
+  
+  &.widescreen { padding-bottom: 56.34%; }
+  &.vimeo { padding-top: 0; }
+  
+  iframe, object, embed, video {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
 
