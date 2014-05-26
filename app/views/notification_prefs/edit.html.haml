@@ -1,0 +1,33 @@
+= content_for :header_1 do
+  #title
+
+= render 'investors/side_navigation', :active => 'notification_prefs'
+
+#information.dashboard
+  %h1
+    Notifications
+  = form_for @user, :url => user_notification_prefs_path(@user), :html => {:id => 'user_notification_prefs_form', :class => 'form-horizontal editing-form well'} do |f|
+    = render 'shared/errors', :entity => @user
+
+    %fieldset
+      - with_options :form => f do |op|
+        %h2
+          Social & Investment Activity & Updates
+        %h3
+          Email me when
+        = op.render_cell 'tb/form/checkbox', :display, :field => :direct_message_pref,      :label => 'I am sent a direct message'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :comment_reply_pref,       :label => 'Someone replies to my comment or question'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :update_pref,              :label => 'A company or fund I follow posts an update'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :funding_milestone_pref,   :label => 'A company or fund I follow hits a funding milestone'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :profile_update_pref,      :label => 'A company or fund I follow updates their profile'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :answer_pref,              :label => 'A company or fund I follow answers a question'
+        %h2
+          Alumvest Activity & Updates
+        %h3
+          Email me with
+
+        = op.render_cell 'tb/form/checkbox', :display, :field => :alumvest_update_pref,     :label => 'Important updates about Alumvest'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :featured_startup_pref,    :label => 'Featured startups (no more than twice a week)'
+        = op.render_cell 'tb/form/checkbox', :display, :field => :highlighted_update_pref,  :label => 'Highlighted updates from trending startups (no more than every 2 weeks)'
+
+      = render_cell 'tb/form/submit_button', :display, :label => 'Save'

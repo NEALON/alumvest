@@ -12,7 +12,7 @@ class InvestorsController < ApplicationController
     authorize! :manage, @investor
     @investor.update_attributes(params[:alumvest_investor_base])
     if @investor.valid?
-      redirect_to user_investor_path(@user), :flash => {:success => 'Investor info saved.'}
+      redirect_to edit_user_investor_path(@user), :flash => {:success => 'Investor info saved.'}
     else
       render :edit
     end

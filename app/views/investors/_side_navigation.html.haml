@@ -4,19 +4,19 @@
     %li{:class => "#{'active' if active == 'investor_dashboard'}"}
       = link_to('Dashboard', dashboard_user_investor_path(@user))
     %li{:class => "#{'active' if active == 'investor_profile'}"}
-      = link_to('Profile & Privacy', user_investor_path(@user))
+      = link_to('Profile & Privacy', edit_user_investor_path(@user))
     %li{:class => "#{'active' if active == 'basic_info'}"}
-      = link_to('Account Info', user_path(@user))
+      = link_to('Account Info', edit_user_account_info_path(@user))
     %li{:class => "#{'active' if active == 'settings_info'}"}
-      = link_to('Password', user_settings_path(@user))
-    %li{:class => "#{'active' if active == 'investor_newsfeed'}"}
-      = link_to('Notifications', user_investor_events_path(@user))
+      = link_to('Password', edit_user_settings_path(@user))
+    %li{:class => "#{'active' if active == 'notification_prefs'}"}
+      = link_to('Notifications', edit_user_notification_prefs_path(@user))
     %li{:class => "#{'active' if active == 'social_networks'}"}
       = link_to('Social Networks', '#')
     %li{:class => "#{'active' if active == 'income_verification'}"}
       = income_verification_link('Investor Certification')
-    %li{:class => "#{'active' if active == 'bank_accounts'}"}
-      = link_to('Bank Accounts', '#')
+    %li{:class => "#{'active' if active == 'bank_account'}"}
+      = link_to('Bank Account', edit_user_bank_account_path(@user))
 
     - if active == 'self_accredited_status'
       %li{:class => "#{'active'}"}

@@ -13,5 +13,5 @@
       = f.hidden_field :user_id
 
       - with_options :form => f do |op|
-        = op.render_cell 'tb/form/checkbox', :display, :field => :is_verified
+        = op.render_cell 'tb/form/checkbox', :display, :field => :is_verified, :label => 'Is verified'
       = render_cell 'tb/form/submit_button', :display

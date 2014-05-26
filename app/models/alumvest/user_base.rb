@@ -32,7 +32,17 @@ class Alumvest::UserBase < ActiveRecord::Base
                   :state,
                   :zipcode,
                   :personal_statement,
-                  :ssn
+                  :ssn,
+                  :direct_message_pref,
+                  :comment_reply_pref,
+                  :update_pref,
+                  :funding_milestone_pref,
+                  :profile_update_pref,
+                  :answer_pref,
+                  :alumvest_update_pref,
+                  :featured_startup_pref,
+                  :highlighted_update_pref
+
   attr_encrypted :ssn, :key => Rails.env.test? ? 'ssn_secret' : ENV['SSN_SECRET']
 
   has_filepicker_image :avatar, :styles => {:medium => [300, 300], :thumb => [128, 128]}
