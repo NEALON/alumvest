@@ -276,6 +276,29 @@
 }
 
 /**
+ * Featured on Home page
+ */
+
+.wrapper-featured {
+  background: #47c9af;
+  text-align: center;
+  padding: {top: 10px; bottom: 5px;}
+  
+  h4 { margin-bottom: 15px; }
+  
+  .item { margin-bottom: 25px; 
+    img { margin: {left: auto; right: auto;} }
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    //text-align: left;
+    
+    //.item img { margin: {left: 0; right: 0;} }
+  }
+}
+
+
+/**
  * Special Classes
  */
 

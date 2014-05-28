@@ -89,16 +89,16 @@
           = link_to('See How It Works', '/about/how-it-works', :class => "btn btn-info btn-large marg-bottom")
           = link_to('Sign Up Now', '#signup-modal', 'data-toggle' => 'modal', :class => "btn btn-primary btn-large marg-bottom")
 
-#feature
+.wrapper-featured
   .container  
-    %h4 Featured in
+    %h4 Featured In
     .row
-      .col-md-3
-        %img{ :src => image_path('feature_logo/mashable.png')}
-      .col-md-3
-        - unless Rails.env.test?
-          %img{ :src => image_path('https://d1dve5icbq0xf0.cloudfront.net/assets/home_forbes1@2x-524f588e9b812e0bbd0b31efcf836038.png')}
-      .col-md-3
-        %img{ :src => image_path('feature_logo/bloomberg.png')}
-      .col-md-3
-        %img{ :src => image_path('feature_logo/betabeat.png')}
+      .col-sm-5.col-sm-offset-1
+        .item
+          = link_to 'http://crowdfundbeat.com/livecrowdfundtv-devinthorpe-alumvest/', :title => 'CrowdFundBeat', :target => '_blank' do
+            = image_tag("feature_logo/crowdfundbeats.png", :height => 45, :class => 'img-responsive')
+      .col-sm-5
+        .item
+          = link_to 'http://www.vilcap.com/portfolio2/alumvest', :title => 'VillageCapital', :target => '_blank' do
+            = image_tag("feature_logo/villagecapitals.png", :height => 45, :class => 'img-responsive')
+            
