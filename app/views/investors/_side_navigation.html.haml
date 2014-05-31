@@ -1,6 +1,5 @@
-= content_for :sidebar_left do
-  %ul.nav.nav-stacked
-
+%nav.dashboard-nav
+  %ul.nav.nav-pills.nav-stacked
     %li{:class => "#{'active' if active == 'investor_dashboard'}"}
       = link_to('Dashboard', dashboard_user_investor_path(@user))
     %li{:class => "#{'active' if active == 'investor_profile'}"}
@@ -17,7 +16,7 @@
       = income_verification_link('Investor Certification')
     %li{:class => "#{'active' if active == 'bank_account'}"}
       = link_to('Bank Account', edit_user_bank_account_path(@user))
-
+  
     - if active == 'self_accredited_status'
       %li{:class => "#{'active'}"}
         = link_to 'Accredited Investor', new_user_investor_self_accredited_status_path(current_user)

@@ -1,3 +1,75 @@
+-#
+  .container
+    %h1 
+      H1 Headings
+      %small small text
+    %h2 
+      H2 Headings
+      %small small text
+    %h3 
+      H3 Headings
+      %small small text
+    %h4 
+      H4 Headings
+      %small small text
+    %h5 
+      H5 Headings
+      %small small text
+    %h6 
+      H6 Headings
+      %small small text
+      
+    %p
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      
+    %p.lead
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      
+    %p.text-success
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      
+    %p.text-primary
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    
+    %form.form-horizontal{role: "form"}
+      .form-group
+        %label.col-sm-2.control-label{for: "inputEmail3"} Email
+        .col-sm-10.has-feedback
+          %input#inputEmail3.form-control{placeholder: "Email", type: "text"}/
+          %i.glyphicon.glyphicon-ok.form-control-feedback
+      .form-group
+        %label.col-sm-2.control-label{for: "inputPassword3"} Password
+        .col-sm-10.has-feedback
+          %input#inputPassword3.form-control{placeholder: "Password", type: "text"}/
+          %i.glyphicon.glyphicon-ok.form-control-feedback
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          .checkbox
+            %label
+              %input{type: "checkbox"}/
+              Remember me
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          %button.btn.btn-default{type: "submit"} Sign in
+    
+    %form{role: "form"}
+      .form-group
+        %label{for: "exampleInputEmail1"} Email address
+        %input#exampleInputEmail1.form-control{placeholder: "Enter email", type: "text"}/
+      .form-group
+        %label{for: "exampleInputPassword1"} Password
+        %input#exampleInputPassword1.form-control{placeholder: "Password", type: "text"}/
+      .form-group
+        %label{for: "exampleInputFile"} File input
+        %input#exampleInputFile{type: "file"}/
+        %p.help-block Example block-level help text here.
+      .checkbox
+        %label
+          %input{type: "checkbox"}/
+          Check me out
+      %button.btn.btn-primary{type: "submit"} Submit
+      %button.btn.btn-success.btn-lg{type: "submit"} Button
+    
 .container
   .team-block
     %h3 Our Team

@@ -1,18 +1,26 @@
-= content_for :header_1 do
-  #title
-
-= render 'investors/side_navigation', :active => 'basic_info'
-
-#information.dashboard
-  %h1
-    Account info
-  = form_for @user, :url => user_account_info_path(@user), :html => {:id => 'user_account_info_form', :class => 'form-horizontal editing-form well'} do |f|
-    = render 'shared/errors', :entity => @user
-
-    %fieldset
-      - with_options :form => f do |op|
-        = op.render_cell 'tb/form/text', :display, :field => :first_name
-        = op.render_cell 'tb/form/text', :display, :field => :last_name
-        = op.render_cell 'tb/form/text', :display, :field => :email
-
-      = render_cell 'tb/form/submit_button', :display, :label => 'Save'
+.wrapper-dashboard
+  .row
+    .col-md-4
+      = render 'investors/side_navigation', :active => 'basic_info'
+      
+    .col-md-8.pull-right
+      .dashboard-content
+        %h1.text-primary Account Info
+        = form_for @user, :url => user_account_info_path(@user), :html => {:id => 'user_account_info_form', :class => 'form-horizontal account-info-fr'} do |f|
+          = render 'shared/errors', :entity => @user
+      
+          %fieldset
+            - with_options :form => f do |op|
+              = op.render_cell 'tb/form/text', :display, :field => :first_name
+              = op.render_cell 'tb/form/text', :display, :field => :last_name
+              .form-group
+                %label.col-sm-3.control-label Username
+                .col-sm-5
+                  %input{type: "text", class: "form-control", value: ""}
+                .col-sm-4
+                  %p.form-control-static https:alumvest.com/sasha
+              = op.render_cell 'tb/form/text', :display, :field => :email, :help => 'Email will not be publicly displayed.'
+      
+            = render_cell 'tb/form/submit_button', :display, :label => 'Save'
+            
+      

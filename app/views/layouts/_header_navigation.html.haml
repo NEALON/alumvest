@@ -1,3 +1,7 @@
-%li= link_to 'How it works', '/about/how-it-works'
-%li= link_to 'Find Startups', '/'
+- if current_user
+  - if current_user.is_investor?
+    %li.active= link_to 'Invest', '#'
+  
 %li= link_to 'Raise Funds', '#'
+%li{:class => request.env['PATH_INFO'] == "/about/how-it-works" ? "active" : ''}= link_to 'How it works', '/about/how-it-works'
+%li= link_to 'Blog', '#'

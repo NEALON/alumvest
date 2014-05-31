@@ -2,10 +2,6 @@
   &, &:hover, &:focus { outline: none; }
 }
 
-.modal-backdrop.in {
-  @include opacity(1);
-}
-
 .modal-title {
   color: lighten($black, 70%);
   text-align: right;
@@ -19,15 +15,6 @@
 .modal-content {
   @include box-shadow(none);
   border-radius: 0;
-}
-
-@media (min-width: $screen-sm) {
-  .modal-sm { width: $modal-sm; }
-  .modal-md, .modal-lg { width: $modal-md; }
-}
-
-@media (min-width: $screen-md) {
-  .modal-lg { width: $modal-lg; }
 }
 
 .modal-footer {

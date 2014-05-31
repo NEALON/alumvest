@@ -5,6 +5,7 @@ class Tb::Form::TextCell  < Cell::Rails
     @field = opts[:field]
     @label = opts[:label] || @field
     @placeholder = opts[:placeholder] || ''
+    @help = opts[:help] || ''
 
     render
   end

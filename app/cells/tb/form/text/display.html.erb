@@ -1,6 +1,12 @@
 <div class="form-group">
-  <%= label_tag @label, nil, :class => "col-md-4 control-label" %>
-  <div class="col-md-8">
+  <%= label_tag @label, nil, :class => "col-sm-3 control-label" %>
+  <div class="col-sm-5">
     <%= @form.text_field @field, :class => "form-control input-md" , :placeholder => @placeholder %>
   </div>
+  
+  <% unless @help.nil? || (!@help.nil? && @help.empty?) %>
+    <div class="col-sm-4">
+      <p class="form-control-static"><%= @help %></p>
+    </div>
+  <% end %>
 </div>

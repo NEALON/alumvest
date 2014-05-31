@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+*/
+
+// import mixins, variables and functions
+@import "core/color";
+@import "core/font";
+@import "core/variables_bootstrap";
+
+// import vendor libraries
+@import "bootstrap";
+@import "bootstrap/theme";
+//@import "vendor/bootstrap/bootstrap-theme";
+
+@import "layout/header";
+@import "layout/modal";
+@import "layout/buttons";
+@import "layout/footer";
+
+@import "home/main";
+@import "users/main";
+@import "company/main";
+@import "dashboard/main";
+
+@import "content/team";
+@import "content/privacy";
+@import "content/how-it-works";
+
+// import open sans earlier in the system
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  &, &:hover, &:focus { outline: none !important; }
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+.container-fluid{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 990px + $grid-gutter-width;
+}
+
+#content{
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 0 -250px 0;
+}
+
+.push{
+  height: 250px;
+  min-height: 250px;
+  clear: both;
+}
+
+.blank {
+  color: #BDC3C7;
+}
+
+.sub-navigation {
+  margin-top: 1em;
+}

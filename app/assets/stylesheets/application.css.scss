@@ -1,24 +1,277 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
-*/
+/*!
+ * Project: Alumvest
+ * Date: 05302014
+ * 
+ * Author: Eugene Tsurcan 
+ * Front End Developer 
+ * [http://www.linkedin.com/in/eugenetsurcan] 
+ *  
+ */
+
+// Core variables and mixins
+@import "variables";
+@import "mixins";
+
+// Vendor libraries
+@import "bootstrap.scss";
+
+@import "font-awesome.scss";
+
+// Import Fonts
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic|Roboto:700,700italic,400,400italic|Open+Sans:400italic,400);
+
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html, body { }
+
+body { }
+
+.root { background: darken($white, 5%); }
+
+a, .btn {
+  &, &:hover, &:focus, &:active { outline: 0 !important; }
+}
+
+// Set transitions
+a, button, .btn, .form-control, .form-control-feedback { @include transition(#{all .3s}); 
+  &:hover, &:focus { @include transition(#{all .08s}); }
+}
+
+// Flex Video lets browsers automatically scale video objects in your webpages
+.flex-video { position: relative; padding-bottom: 67.5%; height: 0; overflow: hidden; 
+  &.widescreen { padding-bottom: 56.34%; }
+  &.squarescreen { padding-bottom: 100%; }
+  &.vimeo { padding-top: 0; }
+  
+  iframe, object, embed, video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+}
+
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Buttons Styles
+   ========================================================================== */
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn { font-family: $font-family-open-sans; padding: {left: 30px; right: 30px;} text-shadow: none; }
+
+.btn-default {
+  @include button-variant-hover($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+.btn-primary {
+  @include button-variant-hover($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+// Success appears as green
+.btn-success {
+  @include button-variant-hover($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+// Info appears as blue-green
+.btn-info {
+  @include button-variant-hover($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+// Warning appears as orange
+.btn-warning {
+  @include button-variant-hover($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+// Danger and error appear as red
+.btn-danger {
+  @include button-variant-hover($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+
+/* ==========================================================================
+   Form Styles
+   ========================================================================== */
+.form-control { font-weight: normal;
+  &, &:focus { @include box-shadow(none); }
+  &:focus { color: $blue-light; }
+}
+
+// Form control feedback states
+.has-feedback {
+  .form-control { border-radius: 0 100px 100px 0; 
+    &:focus + .form-control-feedback { background: $input-border-focus; }
+  }
+  .form-control-feedback { background: $input-border; border-radius: 100px; color: $white; }
+}
+
+label { font: {size: 17px; weight: normal;} }
+
+// Horizontal forms
+.form-horizontal {
+  // Reset spacing and right align labels, but scope to media queries so that
+  // labels on narrow viewports stack the same as a default form example.
+  @media (min-width: $screen-sm-min) {
+    .control-label { padding-top: ($padding-base-vertical + 1) - 2; }
+  }
+  
+  .form-control-static {
+    font-size: 12px;
+    padding-top: ($padding-base-vertical + 2);
+    padding-bottom: ($padding-base-vertical + 2);
+  }
+}
+
+.form-group { margin-bottom: 19px; }
+
+.form-action { margin-top: 22px; }
+
+
+/* ==========================================================================
+   Header Styles
+   ========================================================================== */
+.header { background: $white; @include box-shadow(0 2px 5px rgba($black, .1)); border: 0 none; font-weight: bold; text-transform: uppercase;
+  @media (min-width: $screen-sm) { 
+    & { font-size: 11px; }
+    .dropdown-menu { font-size: 12px; }
+  }
+  
+  @media (min-width: $screen-md) {
+    .dropdown-menu, & { font-size: 14px; }
+  }
+  
+  .navbar-brand { padding: {top: (($navbar-height - 36) / 2); bottom: (($navbar-height - 36) / 2);} }
+  
+  .navbar-nav > li {    
+    > a { 
+      @media (min-width: $screen-sm) { padding: {left: 10px; right: 10px;} }
+      @media (min-width: $screen-md) { padding: {left: 15px; right: 15px;} }
+    }
+    
+    &.active > a { @include box-shadow(inset 0 -1px 8px rgba($black, .2)); cursor: default; }
+    
+    &.inverse {
+      > a { color: $navbar-default-link-hover-color; 
+        &:hover, &:focus { color: $navbar-default-link-color; }
+      }
+      
+      &.open > a { color: $white; }
+    }
+  }
+  
+  .search-fr { margin: {top: 2px; bottom: 2px;}
+    .form-control, .form-control-feedback { background: darken($white, 5%); border-radius: 100px; color: $gray-dark; }
+    
+    .form-control { border-color: darken($white, 5%); @include placeholder($gray-dark);
+      &:focus { background: $white; border-color: $input-border-focus !important; color: $blue-light;
+        + .form-control-feedback { background: $input-border-focus; color: $white;
+          &:hover, &:focus { background: darken($input-border-focus, 10%); color: $white; }
+        }
+      }
+    }
+    
+    .form-control-feedback { border: 0 none; @include box-shadow(none); margin: 0; padding: 0; }
+    
+    &:hover {
+      .form-control { border-color: darken($white, 15%); }
+      .form-control-feedback { background: darken($white, 15%); }
+    }
+    
+    &.expanded {
+      .form-control { width: 100%; }
+    }
+    
+    @media (min-width: $screen-sm) {    
+      .form-control { padding: {left: 0; right: 0;} width: $input-height-small; }
+      
+      &.expanded {
+        .form-control { padding: {left: $padding-small-horizontal; right: ($input-height-base * 1.25);} width: 125px; }
+      }
+    }
+    
+    @media (min-width: $screen-md) {
+      &.expanded {
+        .form-control { width: 185px; }
+      }
+    }
+  }
+}
+
+.no-boxshadow .header { border-bottom: 1px solid darken($white, 10%); }
+
+
+/* ==========================================================================
+   Menu Styles
+   ========================================================================== */
+  
+
+/* ==========================================================================
+   Main Styles
+   ========================================================================== */
+  
+/**
+ * Wrapper Content
+ */ 
+.wrapper-content { padding: {top: 69px; bottom: 140px;} }
+
+// Catchall baseclass
+.glyphicon { font-family: 'Glyphicons Halflings' !important; } 
+
+/**
+ * Dashboard
+ */
+.wrapper-dashboard { background: #f7f7f7; border: 2px solid $white; border-radius: 4px; 
+  .dashboard-content { background: $white; @include clearfix; min-height: 792px; padding: 5px 37px 20px; 
+    h1 { margin-bottom: 39px; }
+  }
+}
+
+.account-info-fr {
+  @media (min-width: $screen-lg) {
+    .control-label { width: 105px; }
+    .form-action > * { margin-left: 105px; }
+  }
+}
+
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+.footer {  }
+
+
+/* ==========================================================================
+   Special Classes
+   ========================================================================== */
+  
+.no-marg-top { margin-top: 0 !important; }
+.no-marg-bottom { margin-bottom: 0 !important; }
+
+.marg-top { margin-top: 22px !important; }
+.marg-bottom { margin-bottom: 22px !important; }
+.marg-right { margin-right: 15px !important; }
+.marg-left { margin-left: 15px !important; }
+
+.lower { text-transform: lowercase !important; }
+.upper { text-transform: uppercase !important; }
+
+.text-center-sm { text-align: center; 
+  @media (min-width: $screen-md-min) { text-align: inherit; }
+}
+
+.strong, .bold { font-weight: bold; }
+.stronger, .bolder { font-weight: bolder; }
+
+.nowrap { white-space: nowrap !important; }
+
+.col-centered { float: none; margin: 0 auto; }
+
+
+
+// NEED TO DELETE IN FUTURE
 
 // import mixins, variables and functions
 @import "core/color";
 @import "core/font";
-@import "core/variables_bootstrap";
-
-// import vendor libraries
-@import "bootstrap";
-@import "bootstrap/theme";
-//@import "vendor/bootstrap/bootstrap-theme";
 
 @import "layout/header";
 @import "layout/modal";
@@ -34,46 +287,3 @@
 @import "content/privacy";
 @import "content/how-it-works";
 
-// import open sans earlier in the system
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
-
-html, body{
-  width: 100%;
-  height: 100%;
-}
-
-a {
-  &, &:hover, &:focus { outline: none !important; }
-}
-
-b, strong {
-  font-weight: 700;
-}
-
-.container-fluid{
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 990px + $grid-gutter-width;
-}
-
-#content{
-  width: 100%;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 0 -250px 0;
-}
-
-.push{
-  height: 250px;
-  min-height: 250px;
-  clear: both;
-}
-
-.blank {
-  color: #BDC3C7;
-}
-
-.sub-navigation {
-  margin-top: 1em;
-}

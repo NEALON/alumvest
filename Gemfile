@@ -49,18 +49,18 @@ gem 'omniauth-linkedin', '~> 0.1'
 
 gem 'underscore-rails'
 gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', '~> 3.0.3.0' #, {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
+gem 'bootstrap-sass', '~> 3.1.1' #, {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
+gem 'font-awesome-sass'
+gem 'modernizr-rails'
 gem 'coffee-rails', '~> 4.0'
-gem 'uglifier', '~> 2.2'
 gem 'haml-rails', '~> 0.4'
+gem 'uglifier', '~> 2.2'
 gem 'jquery-rails', '~> 3.0'
 gem 'jquery-ui-rails', '~> 4.0'
 gem 'jquery-validation-rails', '~> 1.11.1.1'
-gem 'compass'
 gem 'cells', '~> 3.9'
 gem 'ckeditor_rails', '~> 4.2'
 gem 'cocoon', '~> 1.2'
-gem 'modernizr-rails'
 
 gem 'has_filepicker_image' #, '~> 0.0', {:git=>'git://github.com/interskh/has_filepicker_image.git', :branch=>'rails4'}
 gem 'httparty', '~> 0.12'

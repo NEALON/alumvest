@@ -1,32 +1,43 @@
-%nav#header.navbar.navbar-default{ 'role' => 'navigation'}
-  .container-fluid
+%header.header.navbar.navbar-default
+  .container
     .navbar-header
-      %button.navbar-toggle{ :type => 'button', "data-toggle" => "collapse", "data-target" => "#header-content"}
-        %span.sr-only
+      %button.navbar-toggle{"data-target" => "#header-content", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a{:href => '/', :class => 'navbar-brand'}
-        %img{:src => image_path('home/logo.png'), :alt => 'Alumvest'}
+      = link_to '/', :class => 'navbar-brand' do
+        = image_tag('logotype.png', :alt => 'Alumvest', :title => 'Alumvest')
+        
     - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-      #header-content.collapse.navbar-collapse
-        %ul.nav.navbar-nav.navbar-right
+      .collapse.navbar-collapse#header-content
+        %ul.nav.navbar-nav.navbar-right  
           = render :partial => 'layouts/header_navigation'
-
+          
+          %li.search-fr#top-search-fr
+            %form.navbar-form{role: "search"}
+              .has-feedback
+                %input.form-control.input-sm{placeholder: "Search here", type: "text"}
+                %button.btn.glyphicon.glyphicon-search.form-control-feedback{type: "submit"}                   
+              
           - if current_user
-            %li#user-dropdown.dropdown
+            %li.dropdown.inverse
               = link_to '#', :id => "user-name", :class => "dropdown-toggle", 'data-toggle' => 'dropdown' do
                 = current_user.first_name
+                %b.caret
               %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "user-name"}
                 - if current_user.is_admin?
-                  %li= link_to 'Dashboard', user_admin_path(current_user), :class => "btn"
+                  %li= link_to 'Dashboard', user_admin_path(current_user)
                 - if current_user.is_issuer?
-                  %li= link_to 'Dashboard', user_issuer_path(current_user), :class => "btn"
+                  %li= link_to 'Dashboard', user_issuer_path(current_user)
                 - if current_user.is_investor?
-                  %li= link_to 'Dashboard', dashboard_user_investor_path(current_user), :class => "btn"
+                  %li= link_to 'Dashboard', dashboard_user_investor_path(current_user)
                 -#%li= link_to 'Dashboard', dashboard_path, :class => "btn"
-                %li= link_to 'Settings', user_path(current_user.id), :class => "btn"
-                %li= link_to 'Sign out', logout_path, :class => "btn", :method => :delete
+                %li= link_to 'Settings', user_path(current_user.id)
+                %li= link_to 'Sign out', logout_path, :method => :delete
           - else
-            %li= link_to('Register', '#signup-modal', :class => '', 'data-toggle' => 'modal')
-            %li= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')
+            %li.inverse= link_to('Signup', '#signup-modal', :class => '', 'data-toggle' => 'modal')
+            %li.inverse= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')             
+  
+/ END .header
+  
