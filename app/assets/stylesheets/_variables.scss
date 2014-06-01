@@ -8,6 +8,7 @@ $blue           : #3588e0;
 $blue-light     : #4f84bf;
 $blue-lighten   : #88baf0;
 $green          : #7bb81a;
+$green-dark     : #55a137;
 
 
 
@@ -36,7 +37,7 @@ $gray-light:             lighten(#000, 70%) !default;   // #999
 $gray-lighter:           #dbdbdb; // #eee
 
 $brand-primary:         $blue;
-$brand-success:         $green;
+$brand-success:         $green-dark;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
@@ -52,7 +53,7 @@ $body-bg:               $white;
 $text-color:            $gray;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            $blue;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      $gray-dark;
 
@@ -72,12 +73,19 @@ $font-size-base:          14px;
 $font-size-large:         ceil(($font-size-base * 1.4285)) !default; // ~20px
 $font-size-small:         ceil(($font-size-base * 0.7857)); // ~11px
 
-$font-size-h1:            ceil(($font-size-base * 2.6428)) !default; // ~37px
-$font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
-$font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
-$font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~18px
-$font-size-h5:            $font-size-base !default;
-$font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~12px
+$font-size-h1-lg:            ceil(($font-size-base * 2.6428)); // ~37px
+$font-size-h2-lg:            ceil(($font-size-base * 2.14)); // ~30px
+$font-size-h3-lg:            ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4-lg:            ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h5-lg:            $font-size-base;
+$font-size-h6-lg:            ceil(($font-size-base * 0.85)); // ~12px
+
+$font-size-h1:            ceil(($font-size-base * 1.9285)); // ~27px
+$font-size-h2:            ceil(($font-size-base * 1.71)); // ~24px
+$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h5:            $font-size-base;
+$font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.384615384; // 18/14
@@ -372,7 +380,7 @@ $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 // Navbar links
 $navbar-default-link-color:                $gray-dark;
 $navbar-default-link-hover-color:          $blue;
-$navbar-default-link-hover-bg:             transparent;
+$navbar-default-link-hover-bg:             darken($white, 5%);
 $navbar-default-link-active-color:         $white;
 $navbar-default-link-active-bg:            $blue;
 $navbar-default-link-disabled-color:       #ccc !default;
@@ -420,8 +428,8 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 //##
 
 //=== Shared nav styles
-$nav-link-padding:                          10px 15px !default;
-$nav-link-hover-bg:                         $gray-lighter !default;
+$nav-link-padding:                          14px 10px;
+$nav-link-hover-bg:                         #8c8c8c;
 
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;
@@ -441,9 +449,9 @@ $nav-tabs-justified-link-border-color:            #ddd !default;
 $nav-tabs-justified-active-link-border-color:     $body-bg !default;
 
 //== Pills
-$nav-pills-border-radius:                   $border-radius-base !default;
-$nav-pills-active-link-hover-bg:            $component-active-bg !default;
-$nav-pills-active-link-hover-color:         $component-active-color !default;
+$nav-pills-border-radius:                   0;
+$nav-pills-active-link-hover-bg:            $white;
+$nav-pills-active-link-hover-color:         $blue-light;
 
 
 //== Pagination
@@ -498,12 +506,12 @@ $jumbotron-font-size:            ceil(($font-size-base * 1.5)) !default;
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             mix($green, $black);
-$state-success-bg:               mix($green, $white);
+$state-success-text:             #3c763d !default;
+$state-success-bg:               #dff0d8 !default;
 $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
-$state-info-text:                mix($blue, $black);
-$state-info-bg:                  mix($blue, $white);
+$state-info-text:                #31708f !default;
+$state-info-bg:                  #d9edf7 !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
 
 $state-warning-text:             #8a6d3b !default;
@@ -622,8 +630,8 @@ $modal-sm:                    300px !default;
 //
 //## Define alert colors, border radius, and padding.
 
-$alert-padding:               15px !default;
-$alert-border-radius:         $border-radius-base !default;
+$alert-padding:               10px;
+$alert-border-radius:         0;
 $alert-link-font-weight:      bold !default;
 
 $alert-success-bg:            $state-success-bg !default;

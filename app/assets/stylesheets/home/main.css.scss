@@ -4,6 +4,9 @@
 
 .masthead {
 	background: image-url('home/pretty.jpg') left top no-repeat darken($white, 20%);
+	margin-top: -30px;
+	
+	@media (min-width: $screen-sm) { margin-top: -69px; }
 	
 	@media (min-width: $screen-sm-min) {
 	  background: {size: cover; position: center top;}

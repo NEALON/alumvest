@@ -1,21 +1,36 @@
 %nav.dashboard-nav
   %ul.nav.nav-pills.nav-stacked
     %li{:class => "#{'active' if active == 'investor_dashboard'}"}
-      = link_to('Dashboard', dashboard_user_investor_path(@user))
+      = link_to dashboard_user_investor_path(@user) do
+        %i.fa.fa-align-right.fa-rotate-90.fa-fw 
+        %span.hidden-xs Dashboard
     %li{:class => "#{'active' if active == 'investor_profile'}"}
-      = link_to('Profile & Privacy', edit_user_investor_path(@user))
+      = link_to edit_user_investor_path(@user) do
+        %i.fa.fa-user.fa-fw 
+        %span.hidden-xs Profile & Privacy
     %li{:class => "#{'active' if active == 'basic_info'}"}
-      = link_to('Account Info', edit_user_account_info_path(@user))
+      = link_to edit_user_account_info_path(@user) do
+        %i.fa.fa-info-circle.fa-fw
+        %span.hidden-xs Account Info
     %li{:class => "#{'active' if active == 'settings_info'}"}
-      = link_to('Password', edit_user_settings_path(@user))
+      = link_to edit_user_settings_path(@user) do
+        %i.fa.fa-key.fa-fw 
+        %span.hidden-xs Password
     %li{:class => "#{'active' if active == 'notification_prefs'}"}
-      = link_to('Notifications', edit_user_notification_prefs_path(@user))
+      = link_to edit_user_notification_prefs_path(@user) do
+        %i.fa.fa-exclamation-triangle.fa-fw 
+        %span.hidden-xs Notifications
     %li{:class => "#{'active' if active == 'social_networks'}"}
-      = link_to('Social Networks', '#')
+      = link_to '#' do
+        %i.fa.fa-heart.fa-fw 
+        %span.hidden-xs Social Networks
     %li{:class => "#{'active' if active == 'income_verification'}"}
-      = income_verification_link('Investor Certification')
+      = raw(income_verification_link('Investor Certification'))
+        
     %li{:class => "#{'active' if active == 'bank_account'}"}
-      = link_to('Bank Account', edit_user_bank_account_path(@user))
+      = link_to edit_user_bank_account_path(@user) do
+        %i.fa.fa-usd.fa-fw 
+        %span.hidden-xs Bank Account
   
     - if active == 'self_accredited_status'
       %li{:class => "#{'active'}"}

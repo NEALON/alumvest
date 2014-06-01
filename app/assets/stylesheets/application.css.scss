@@ -18,7 +18,7 @@
 @import "font-awesome.scss";
 
 // Import Fonts
-@import url(//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic|Roboto:700,700italic,400,400italic|Open+Sans:400italic,400);
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic,700,700italic|Roboto:700,700italic,400,400italic|Open+Sans:400italic,400);
 
 
 /* ==========================================================================
@@ -53,6 +53,10 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 /* ==========================================================================
    Typography
    ========================================================================== */
+@media (min-width: $screen-sm) {
+  h1, .h1 { font-size: $font-size-h1-lg; }
+  h2, .h2 { font-size: $font-size-h2-lg; }
+}
 
 
 /* ==========================================================================
@@ -64,27 +68,53 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 
 .btn { font-family: $font-family-open-sans; padding: {left: 30px; right: 30px;} text-shadow: none; }
 
-.btn-default {
-  @include button-variant-hover($btn-default-color, $btn-default-bg, $btn-default-border);
+.boxshadow {
+  .btn { border-width: 0; padding: {top: ($padding-base-vertical + 1); bottom: ($padding-base-vertical + 1);} }
+  .btn-lg { padding: {top: ($padding-large-vertical + 1); bottom: ($padding-large-vertical + 1);} }
+  .btn-sm { padding: {top: ($padding-small-vertical + 1); bottom: ($padding-small-vertical + 1);} }
+  .btn-xs { padding: {top: ($padding-xs-vertical + 1); bottom: ($padding-xs-vertical + 1);} }
+  .btn-xl {
+    @media (min-width: $screen-lg) { font-size: 26px; padding: {top: 20px; bottom: 20px;} }
+  }
+  
+  .btn-default {
+    @include button-variant-hover($btn-default-color, $btn-default-bg, $btn-default-border);
+  }
+  .btn-primary {
+    @include button-variant-hover($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  }
+  // Success appears as green
+  .btn-success {
+    @include button-variant-hover($btn-success-color, $btn-success-bg, $btn-success-border);
+  }
+  // Info appears as blue-green
+  .btn-info {
+    @include button-variant-hover($btn-info-color, $btn-info-bg, $btn-info-border);
+  }
+  // Warning appears as orange
+  .btn-warning {
+    @include button-variant-hover($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  }
+  // Danger and error appear as red
+  .btn-danger {
+    @include button-variant-hover($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  }
+  
+  .btn-transparent { border-width: 1px; padding: {top: $padding-base-vertical; bottom: $padding-base-vertical;} 
+    &.btn-xl {
+      @media (min-width: $screen-lg) { border-width: 2px; padding: {top: 18px; bottom: 18px;} }
+    }
+  }
 }
-.btn-primary {
-  @include button-variant-hover($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+
+// Transparent 
+.btn-transparent {
+  @include button-variant-transparent($white, mix($blue, $white));
 }
-// Success appears as green
-.btn-success {
-  @include button-variant-hover($btn-success-color, $btn-success-bg, $btn-success-border);
-}
-// Info appears as blue-green
-.btn-info {
-  @include button-variant-hover($btn-info-color, $btn-info-bg, $btn-info-border);
-}
-// Warning appears as orange
-.btn-warning {
-  @include button-variant-hover($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-// Danger and error appear as red
-.btn-danger {
-  @include button-variant-hover($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+
+// Extra large btn
+.btn-xl { @extend .btn-lg;
+  @media (min-width: $screen-lg) { font-size: 26px; padding: {top: 19px; bottom: 19px;} }
 }
 
 
@@ -127,6 +157,42 @@ label { font: {size: 17px; weight: normal;} }
 
 
 /* ==========================================================================
+   Navs Styles
+   ========================================================================== */
+.nav { font-family: $font-family-serif;
+  > li {
+    > a { @include transition(none);
+      &:hover, &:focus { background-image: none; filter: none; color: $white; }
+    }
+    
+    @media (min-width: $screen-md) {
+      > a {
+        &:hover, &:focus { font-weight: bold; }
+      }
+      
+      &.active > a { font-weight: normal; }
+    }
+  }
+}
+
+.nav-pills {
+  > li > a { color: $gray; }
+  
+  > li.active > a {
+    &, &:hover, &:focus { background-image: none; filter: none; }
+  }
+}
+
+.nav-stacked {
+  > li { border-bottom: 1px solid $gray-lighter; @include box-shadow(inset 0 -1px 0 0 $white);
+    + li { margin-top: 0; }
+    
+    > a { background: #fbfbfb; @include gradient-vertical($white, #f9f9f9); }
+  }
+}
+
+
+/* ==========================================================================
    Header Styles
    ========================================================================== */
 .header { background: $white; @include box-shadow(0 2px 5px rgba($black, .1)); border: 0 none; font-weight: bold; text-transform: uppercase;
@@ -139,11 +205,16 @@ label { font: {size: 17px; weight: normal;} }
     .dropdown-menu, & { font-size: 14px; }
   }
   
+  .nav { font-family: inherit; }
+  
   .navbar-brand { padding: {top: (($navbar-height - 36) / 2); bottom: (($navbar-height - 36) / 2);} }
   
   .navbar-nav > li {    
     > a { 
-      @media (min-width: $screen-sm) { padding: {left: 10px; right: 10px;} }
+      @media (min-width: $screen-sm) { padding: {left: 10px; right: 10px;} 
+        &:hover, &:focus { background: none transparent; }
+      }
+      
       @media (min-width: $screen-md) { padding: {left: 15px; right: 15px;} }
     }
     
@@ -158,7 +229,11 @@ label { font: {size: 17px; weight: normal;} }
     }
   }
   
-  .search-fr { margin: {top: 2px; bottom: 2px;}
+  .search-fr {
+    @media (min-width: $screen-sm) { margin: {top: 2px; bottom: 2px;} }
+    
+    .navbar-form { margin: {left: 0; right: 0;} }
+  
     .form-control, .form-control-feedback { background: darken($white, 5%); border-radius: 100px; color: $gray-dark; }
     
     .form-control { border-color: darken($white, 5%); @include placeholder($gray-dark);
@@ -169,7 +244,7 @@ label { font: {size: 17px; weight: normal;} }
       }
     }
     
-    .form-control-feedback { border: 0 none; @include box-shadow(none); margin: 0; padding: 0; }
+    .form-control-feedback { border: 0 none; @include box-shadow(none); margin: 0; padding: 0; top: 0; }
     
     &:hover {
       .form-control { border-color: darken($white, 15%); }
@@ -211,25 +286,65 @@ label { font: {size: 17px; weight: normal;} }
 /**
  * Wrapper Content
  */ 
-.wrapper-content { padding: {top: 69px; bottom: 140px;} }
+.wrapper-content { padding: {top: 30px; bottom: 60px;} 
+  @media (min-width: $screen-sm) { padding: {top: 69px; bottom: 140px;} }
+}
 
 // Catchall baseclass
 .glyphicon { font-family: 'Glyphicons Halflings' !important; } 
 
 /**
  * Dashboard
- */
-.wrapper-dashboard { background: #f7f7f7; border: 2px solid $white; border-radius: 4px; 
-  .dashboard-content { background: $white; @include clearfix; min-height: 792px; padding: 5px 37px 20px; 
-    h1 { margin-bottom: 39px; }
+ */ 
+.wrapper-dashboard { background: #f7f7f7; border: 2px solid $white; border-radius: 4px; @include box-shadow(0 0px 8px rgba($black, .1));
+  // Dashboard Content (right info)
+  .dashboard-content { background: $white; @include box-shadow(-8px 0 10px -7px rgba($black, .1)); @include clearfix; min-height: 792px; padding: 24px 37px 20px; 
+    h1 { margin-bottom: 25px; 
+      @media (min-width: $screen-sm) { margin-bottom: 39px; }
+    }
+  }
+  
+  // Dashboard Navigation (left info)
+  .dashboard-nav { font-size: 11px; margin-right: (-$grid-gutter-width - 2px); 
+    .nav-pills > li {
+      > a { text-align: center;
+        .fa { font-size: 18px; }
+        
+        @media (min-width: $screen-sm) {
+          .fa { display: block; font-size: 24px; margin: 0 auto 8px; }
+        }
+        
+        @media (min-width: $screen-md) { padding: {left: 25px; right: 25px;} text-align: left; 
+          .fa { display: inline-block; font-size: inherit; margin: 0 12px 0 0; }
+        }
+      }
+      
+      &.active { position: relative; z-index: 5; }
+      
+      &:first-child {
+        &, > a { border-radius: 4px 0 0 0; }
+      }
+    }
+    
+    @media (min-width: $screen-md) { font-size: 14px; }    
+    @media (min-width: $screen-lg) { font-size: 16px; }
   }
 }
 
+.no-boxshadow .wrapper-dashboard .dashboard-content { border-left: 1px solid $gray-lighter; }
+
 .account-info-fr {
-  @media (min-width: $screen-lg) {
-    .control-label { width: 105px; }
+  @media (min-width: $screen-sm) {
+    .control-label { white-space: nowrap; width: 105px; }
     .form-action > * { margin-left: 105px; }
   }
+}
+
+/**
+ * Whant next Unit
+ */
+.what-next-unit { background: image-url("bg-what-next-unit.jpg") center center repeat $black; background-size: cover; color: $white; padding: {top: 62px; bottom: 75px;} text-align: center; 
+  h2 { margin-bottom: 83px; }
 }
 
 

@@ -51,13 +51,35 @@
               #sidebar.col-md-3.col-xs-12
                 = yield :sidebar_right
         - else
-          .container
-            - if content_for? flash
+          - if content_for? flash
+            .container
               = render 'layouts/flash', :flash => flash
-              
-            = yield
+            
+          = yield
         
       / END .wrapper-content
+      
+      %section.what-next-unit
+        .container
+          %h2 What Next ? know More about us
+          .row
+            .col-sm-4
+              .row
+                .col-sm-10.col-xs-10.col-xs-offset-1
+                  = link_to '/about/how-it-works', :class => 'btn btn-primary btn-block btn-xl upper marg-bottom' do
+                    How it works
+            .col-sm-4
+              .row
+                .col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
+                  = link_to '#', :class => 'btn btn-transparent btn-block btn-xl upper marg-bottom' do
+                    Watch Video
+            .col-sm-4
+              .row
+                .col-sm-10.col-sm-offset-2.col-xs-10.col-xs-offset-1
+                  = link_to '#', :class => 'btn btn-success btn-block btn-xl upper marg-bottom' do
+                    Entrepreneurs
+            
+      / END .what-next-unit
       
     / END .root
       
@@ -87,8 +109,9 @@
             Copyright &copy; 2014 AlumVest, Inc.  All Rights Reserved.
   
     / Modals 
-    = render :partial => 'layouts/signup_modal'
-    = render :partial => 'layouts/login_modal'
+    - unless current_user
+      = render :partial => 'layouts/signup_modal'
+      = render :partial => 'layouts/login_modal'
     
     - if current_user && current_user.user_type_undefined?
       = render :partial => 'layouts/user_type_modal'

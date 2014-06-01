@@ -54,10 +54,14 @@ module ApplicationHelper
   end
 
   def income_verification_link(label)
-    if current_user.investor.income_verification.nil?
-      link_to label, new_user_investor_income_verification_path(current_user)
+    if current_user.investor.income_verification.nil?      
+      link_to new_user_investor_income_verification_path(current_user) do
+        content_tag(:i, "", class: "fa fa-file-text fa-fw").html_safe + ' ' + ('<span class="hidden-xs">' + label + '</span>').html_safe
+      end
     else
-      link_to label, user_investor_income_verification_path(current_user)
+      link_to user_investor_income_verification_path(current_user) do
+        content_tag(:i, "", class: "fa fa-file-text fa-fw").html_safe + ' ' + ('<span class="hidden-xs">' + label + '</span>').html_safe
+      end
     end
   end
 
