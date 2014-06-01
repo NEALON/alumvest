@@ -1,12 +1,17 @@
-%ul.nav.nav-pills
-  %li= link_to "About", "/about"
-  %li= link_to "Team", "/about/team"
-  %li= link_to "FAQ", :root
-%ul.nav.nav-pills
-  %li= link_to "Press", :root
-  %li= link_to "Terms & Conditions", :root
-  %li= link_to "Join Us", :root
-%ul.nav.nav-pills
-  %li= link_to "Privacy", "/about/privacy"
-  %li= link_to "Contact Us", :root
-  %li= link_to 'Tester Dashboard', :tester_dashboard
+%nav.nav-footer
+  %ul.breadcrumb
+    %li
+      = link_to "Home", :root
+    %li
+      = link_to "About us", "/about"
+    %li
+      = link_to "How it works?", "/about/how-it-works"
+    %li
+      = link_to "Terms & Conditions", '#'
+    %li
+      = link_to "Faq", '#'
+    %li
+      = link_to "Blog", '#'
+    %li
+      = link_to "Contact us", '#'
+    

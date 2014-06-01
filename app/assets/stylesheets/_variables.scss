@@ -10,6 +10,15 @@ $blue-lighten   : #88baf0;
 $green          : #7bb81a;
 $green-dark     : #55a137;
 
+$facebook-blue  : #3b5998;
+$twitter-blue   : #00aced;
+$google-red     : #dd4b39;
+$youtube-red    : #bb0000;
+$linkedin-blue  : #007bb6;
+$instagram-blue : #517fa4;
+$pinterest-red  : #cb2027;
+$twitter-blue   : #00aced;
+
 
 
 
@@ -30,7 +39,7 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-darker:            lighten(#000, 13.5%) !default; // #222
+$gray-darker:            #383b3f; // #222
 $gray-dark:              #454545;
 $gray:                   #616e7b;
 $gray-light:             lighten(#000, 70%) !default;   // #999

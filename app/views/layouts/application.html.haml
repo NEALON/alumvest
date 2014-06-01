@@ -59,54 +59,13 @@
         
       / END .wrapper-content
       
-      %section.what-next-unit
-        .container
-          %h2 What Next ? know More about us
-          .row
-            .col-sm-4
-              .row
-                .col-sm-10.col-xs-10.col-xs-offset-1
-                  = link_to '/about/how-it-works', :class => 'btn btn-primary btn-block btn-xl upper marg-bottom' do
-                    How it works
-            .col-sm-4
-              .row
-                .col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
-                  = link_to '#', :class => 'btn btn-transparent btn-block btn-xl upper marg-bottom' do
-                    Watch Video
-            .col-sm-4
-              .row
-                .col-sm-10.col-sm-offset-2.col-xs-10.col-xs-offset-1
-                  = link_to '#', :class => 'btn btn-success btn-block btn-xl upper marg-bottom' do
-                    Entrepreneurs
-            
-      / END .what-next-unit
+      = render :partial => 'shared/what_next'
+      
+      = render :partial => 'shared/featured'
       
     / END .root
-      
-    #footer
-      .container
-        .row
-          - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-            .col-md-6.col-xs-12.footer-navigation
-              = render 'layouts/footer_navigation'
-            .col-md-6.col-xs-12
-              #mc_embed_signup
-                %form#mc-embedded-subscribe-form.validate{:action => "http://alumvest.us7.list-manage.com/subscribe/post?u=87110e136bca68b8e0ebfaa1f&amp;id=d1076d6921", :method => "post", :name => "mc-embedded-subscribe-form", :target => "_blank", :novalidate => "true"}
-                  / %label{ :for => "mce-EMAIL" } Subscribe to our mailing list
-                  %input#mce-EMAIL.email{ :type => "email", :value => "", :name => "EMAIL", :placeholder => "Email", :required => "true"}
-                  /  real people should not fill this in and expect good things - do not remove this or risk form bot signups
-                  %input#mc-embedded-subscribe.button{ :type => "submit", :value => "Subscribe", :name => "subscribe" }
-                  %div{ :style => "position: absolute; left: -5000px;" }
-                    %input{ :type => "text", :name => "b_87110e136bca68b8e0ebfaa1f_d1076d6921", :value => "" }
-              .share-group
-                %img{ :src => image_path('home/facebook.png')}
-                %img{ :src => image_path('home/twitter.png')}
-                %img{ :src => image_path('home/google_plus.png')}
-                %img{ :src => image_path('home/linkedin.png')}
-        / %hr
-        .copyright
-          %p
-            Copyright &copy; 2014 AlumVest, Inc.  All Rights Reserved.
+    
+    = render :partial => 'layouts/footer'
   
     / Modals 
     - unless current_user
