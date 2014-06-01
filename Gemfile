@@ -52,6 +52,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.1.1' #, {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
 gem 'font-awesome-sass'
 gem 'modernizr-rails'
+gem 'simple_form', '~> 3.1.0.rc1'
+#gem 'country_select', '~> 1.3.1'
 gem 'coffee-rails', '~> 4.0'
 gem 'haml-rails', '~> 0.4'
 gem 'uglifier', '~> 2.2'

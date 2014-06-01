@@ -1,50 +1,103 @@
-= content_for :header_1 do
-  #title
-
-= render "side_navigation", :active => 'investor_profile'
-
-#information.dashboard
-  %h1= 'Profile & Privacy'
-
-  .user-profile
-    .user-profile-avatar
-      - if @user.avatar.blank?
-        = image_tag @user.avatar(:thumb)
-      - else
-        %img{:src => "http://placehold.it/128x128"}
-    .user-profile-name
-      = @user.full_name
-    .user-profile-location
-      = @user.city
-      = @user.state
-
-  = form_for @investor, :url => user_investor_path(@user), :html => {:id => 'investor_profile_form', :class => 'form-horizontal editing-form well'} do |f|
-    = render 'shared/errors', :entity => @investor
-
-    %fieldset
-      = f.hidden_field :user_id
-
-      - with_options :form => f do |op|
-
-        = op.render_cell 'tb/form/text', :display, :field => :tagline, :placeholder => 'About you, in a couple of words...'
-        = op.render_cell 'tb/form/text', :display, :field => :website, :placeholder => 'http://www...'
-        = op.render_cell 'tb/form/text', :display, :field => :bio
-        = op.render_cell 'tb/form/text', :display, :field => :city
-        = op.render_cell 'tb/form/text', :display, :field => :state
-        = op.render_cell 'tb/form/text', :display, :field => :zip
-        = op.render_cell 'tb/form/filepicker', :display, :field => :photo_url, :label => 'Photo'
-
-        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investments, :label => 'Hide my investments on Alumvest'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :hide_investor_status, :label => 'Hide my investor status except to founders of companies I invest in'
-
-        %hr
-        %h1= 'Legal Name & Address'
-
-        = op.render_cell 'tb/form/text', :display, :field => :legal_name
-        = op.render_cell 'tb/form/text', :display, :field => :legal_address, :label => 'Address'
-        = op.render_cell 'tb/form/text', :display, :field => :legal_city, :label => 'City'
-        = op.render_cell 'tb/form/text', :display, :field => :legal_state, :label => 'State'
-        = op.render_cell 'tb/form/text', :display, :field => :legal_postal_code, :label => 'Postal Code'
-        = op.render_cell 'tb/form/text', :display, :field => :legal_country, :label => 'Country'
-
-      = render_cell 'tb/form/submit_button', :display, :label => 'Update'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'investors/side_navigation', :active => 'investor_profile'
+      
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Profile & Privacy
+          
+          .user-head-info
+            .media
+              .pull-left
+                -#
+                  - if @user.avatar.blank?
+                    = image_tag @user.avatar(:thumb)
+                    
+                  - else
+                    %img{:src => "http://placehold.it/92x92"}
+              
+                - if !@investor.photo_url.blank?
+                  = image_tag(@investor.photo_url + "/convert?w=92&h=92", :class => 'img-thumbnail')
+                - else
+                  = image_tag("noavatar.gif", :class => 'img-thumbnail')
+                  
+              .media-body
+                %h3.name
+                  = @user.full_name
+                .invests
+                  %span.count-invests 21
+                  %sup Invests
+                %ul.list-inline
+                  - unless @investor.city.nil? || @investor.city.empty?
+                    %li
+                      %i.fa.fa-globe
+                      = @investor.city
+                  %li
+                    Member since October 2013
+                    
+          / END .user-head-info
+                  
+          = simple_form_for @investor, url: user_investor_path(@user), html: {class: 'user-info-fr'} do |f|
+            = render 'shared/errors', :entity => @investor
+            = f.error_notification
+            
+            = f.hidden_field :user_id
+            
+            .form-horizontal.profile-privacy-fr
+              = f.input :tagline, :placeholder => 'About you.. in a couple of words....', :as => :text, input_html: {:rows => 3}, :wrapper => :horizontal_form
+              = f.input :website, :placeholder => 'www//...', :wrapper => :horizontal_form
+              = f.input :bio, :placeholder => '"Your summary bio as you would like for others to see it"', :as => :string, :wrapper => :horizontal_form
+              .form-group.no-marg-bottom
+                %label.col-sm-3.control-label Address
+                .col-sm-9
+                  .row
+                    .col-sm-5
+                      = f.input :city, :label => false, :wrapper => false, :placeholder => 'City', input_html: {:class => 'marg-bottom'}
+                    .col-sm-4
+                      = f.input :state, :label => false, :wrapper => false, :placeholder => 'State', input_html: {:class => 'marg-bottom'}
+                    .col-sm-3
+                      = f.input :zip, :label => false, :wrapper => false, :placeholder => 'Zip', input_html: {:class => 'marg-bottom'}
+              .form-group
+                %label.col-sm-3.control-label Photo
+                .col-sm-9
+                  .row
+                    .col-sm-5
+                      - unless Rails.env.test?
+                        = f.filepicker_field :photo_url, 'default', :html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"
+              .form-group
+                %label.col-sm-3.control-label Privacy
+                .col-sm-9
+                  = f.input :hide_investments, :label => 'Hide my investments on AlumVest', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                  = f.input :hide_investor_status, :label => 'Hide my investor status except to founders of companies I invest in', :wrapper => :horizontal_boolean_row
+              
+              %hr
+              
+              %h2.h1.text-primary.no-marg-top Legal Name & Address
+              %p.lead This Information is required for securities to be issued to you. It will be provided to startups or funds you invest in.
+              
+              = f.submit 'Update', :class => 'btn btn-primary btn-lg'
+                    
+              
+          = form_for @investor, :url => user_investor_path(@user), :html => {:id => 'investor_profile_form'} do |f|
+            = render 'shared/errors', :entity => @investor
+          
+            %fieldset
+              = f.hidden_field :user_id
+              
+              
+                
+                
+              - with_options :form => f do |op|
+        
+                = op.render_cell 'tb/form/text', :display, :field => :legal_name
+                = op.render_cell 'tb/form/text', :display, :field => :legal_address, :label => 'Address'
+                = op.render_cell 'tb/form/text', :display, :field => :legal_city, :label => 'City'
+                = op.render_cell 'tb/form/text', :display, :field => :legal_state, :label => 'State'
+                = op.render_cell 'tb/form/text', :display, :field => :legal_postal_code, :label => 'Postal Code'
+                = op.render_cell 'tb/form/text', :display, :field => :legal_country, :label => 'Country'
+        
+              = render_cell 'tb/form/submit_button', :display, :label => 'Update'

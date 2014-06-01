@@ -53,6 +53,8 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 /* ==========================================================================
    Typography
    ========================================================================== */
+h3, .h3 { font: {family: $font-family-sans-serif; weight: bold;} }
+
 @media (min-width: $screen-sm) {
   h1, .h1 { font-size: $font-size-h1-lg; }
   h2, .h2 { font-size: $font-size-h2-lg; }
@@ -72,6 +74,10 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
   }
 }
 
+.lead { font-weight: normal;
+  @media (min-width: $screen-sm) { font-size: 16px; }
+}
+
 
 /* ==========================================================================
    Buttons Styles
@@ -88,11 +94,16 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
   .btn-sm { padding: {top: ($padding-small-vertical + 1); bottom: ($padding-small-vertical + 1);} }
   .btn-xs { padding: {top: ($padding-xs-vertical + 1); bottom: ($padding-xs-vertical + 1);} }
   .btn-xl {
-    @media (min-width: $screen-lg) { font-size: 26px; padding: {top: 20px; bottom: 20px;} }
+    @media (min-width: $screen-lg) { font-size: 26px; padding: {top: ($padding-xl-vertical + 1); bottom: ($padding-xl-vertical + 1);} }
   }
   
-  .btn-default {
+  .btn-default { border-width: 1px; padding: {top: $padding-base-vertical; bottom: $padding-base-vertical;}
     @include button-variant-hover($btn-default-color, $btn-default-bg, $btn-default-border);
+    
+    &.btn-lg { padding: {top: $padding-large-vertical; bottom: $padding-large-vertical;} }
+    &.btn-sm { padding: {top: $padding-small-vertical; bottom: $padding-small-vertical;} }
+    &.btn-xs { padding: {top: $padding-xs-vertical; bottom: $padding-xs-vertical;} }
+    &.btn-xl { padding: {top: $padding-xl-vertical; bottom: $padding-xl-vertical;} }
   }
   .btn-primary {
     @include button-variant-hover($btn-primary-color, $btn-primary-bg, $btn-primary-border);
@@ -116,23 +127,23 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
   
   .btn-transparent { border-width: 1px; padding: {top: $padding-base-vertical; bottom: $padding-base-vertical;} 
     &.btn-xl {
-      @media (min-width: $screen-lg) { border-width: 2px; padding: {top: 18px; bottom: 18px;} }
+      @media (min-width: $screen-lg) { border-width: 2px; padding: {top: ($padding-xl-vertical - 1); bottom: ($padding-xl-vertical - 1);} }
     }
   }
 }
 
 // Transparent 
 .btn-transparent {
-  @include button-variant-transparent($white, mix($blue, $white));
+  @include button-variant-transparent($white);
   
   &.btn-xl {
-    @media (min-width: $screen-lg) { border-width: 2px; padding: {top: 18px; bottom: 18px;} }
+    @media (min-width: $screen-lg) { border-width: 2px; padding: {top: ($padding-xl-vertical - 1); bottom: ($padding-xl-vertical - 1);} }
   }
 }
 
 // Extra large btn
 .btn-xl { @extend .btn-lg;
-  @media (min-width: $screen-lg) { font-size: 26px; padding: {top: 19px; bottom: 19px;} }
+  @media (min-width: $screen-lg) { font-size: 26px; padding: {top: $padding-xl-vertical; bottom: $padding-xl-vertical;} }
 }
 
 
@@ -173,6 +184,12 @@ label { font: {size: 17px; weight: normal;} }
 
 .form-action { margin-top: 22px; }
 
+textarea { resize: vertical; }
+
+.radio, .checkbox {
+  label { font-size: $font-size-base; }
+}
+
 
 /* ==========================================================================
    Navs Styles
@@ -181,14 +198,6 @@ label { font: {size: 17px; weight: normal;} }
   > li {
     > a { @include transition(none);
       &:hover, &:focus { background-image: none; filter: none; color: $white; }
-    }
-    
-    @media (min-width: $screen-md) {
-      > a {
-        &:hover, &:focus { font-weight: bold; }
-      }
-      
-      &.active > a { font-weight: normal; }
     }
   }
 }
@@ -323,7 +332,7 @@ label { font: {size: 17px; weight: normal;} }
   }
   
   // Dashboard Navigation (left info)
-  .dashboard-nav { font-size: 11px; margin-right: (-$grid-gutter-width - 2px); 
+  .dashboard-nav { font-size: 11px; margin-right: (-$grid-gutter-width); 
     .nav-pills > li {
       > a { text-align: center;
         .fa { font-size: 18px; }
@@ -351,10 +360,20 @@ label { font: {size: 17px; weight: normal;} }
 
 .no-boxshadow .wrapper-dashboard .dashboard-content { border-left: 1px solid $gray-lighter; }
 
+// Account Info Form
 .account-info-fr {
   @media (min-width: $screen-sm) {
     .control-label { white-space: nowrap; width: 105px; }
     .form-action > * { margin-left: 105px; }
+  }
+}
+
+// Profile Privacy Form
+.profile-privacy-fr {
+  @media (min-width: $screen-sm) {
+    .control-label { float: left; white-space: nowrap; width: 85px; 
+      + [class^="col-"], [class*=" col-"] { float: none; margin-left: 85px; width: auto; }
+    }
   }
 }
 
@@ -373,6 +392,21 @@ label { font: {size: 17px; weight: normal;} }
     .wrap-img { display: block; height: 0; overflow: hidden; position: relative; padding-bottom: 19%;      
       img { height: 100%; left: 0; margin-top: -9.5%; position: absolute; top: 50%; }
     }
+  }
+}
+
+/**
+ * User profile styles
+ */
+.user-head-info { font: {size: 13px; weight: bold;} margin-bottom: 31px;
+  .name { margin-top: -1px; }
+  .invests { font: {family: $font-family-serif; size: 35px; weight: 300;} margin-bottom: 4px; 
+    .count-invests { color: $blue; font: {size: 35px; weight: 300;} }
+    sup { font: {family: $font-family-sans-serif; size: 13px; weight: bold;} left: -0.3em; top: -1.2em; }
+  }
+  .list-inline { margin-bottom: 0;
+    .fa { font-size: 15px; margin-right: 2px; position: relative; top: 1px; }
+    > li { margin-right: 18px; }
   }
 }
 
@@ -442,7 +476,7 @@ label { font: {size: 17px; weight: normal;} }
 .no-marg-bottom { margin-bottom: 0 !important; }
 
 .marg-top { margin-top: 22px !important; }
-.marg-bottom { margin-bottom: 22px !important; }
+.marg-bottom { margin-bottom: 19px !important; }
 .marg-right { margin-right: 15px !important; }
 .marg-left { margin-left: 15px !important; }
 

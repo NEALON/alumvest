@@ -10,21 +10,22 @@
           
           %h1.text-primary.no-marg-top Account Info
           
-          = form_for @user, :url => user_account_info_path(@user), :html => {:id => 'user_account_info_form', :class => 'form-horizontal account-info-fr'} do |f|
+          = simple_form_for @user, url: user_account_info_path(@user), html: {class: 'form-horizontal account-info-fr'}, wrapper: :horizontal_form_with_inline_help do |f|
             = render 'shared/errors', :entity => @user
-        
-            %fieldset
-              - with_options :form => f do |op|
-                = op.render_cell 'tb/form/text', :display, :field => :first_name
-                = op.render_cell 'tb/form/text', :display, :field => :last_name                
-                .form-group
-                  %label.col-sm-3.control-label Username
-                  .col-sm-5
-                    %input{type: "text", class: "form-control", value: ""}
-                  .col-sm-4
-                    %p.form-control-static https:alumvest.com/sasha
-                = op.render_cell 'tb/form/text', :display, :field => :email, :help => 'Email will not be publicly displayed.'
-        
-              = render_cell 'tb/form/submit_button', :display, :label => 'Save'
+            = f.error_notification
+            
+            = f.input :first_name
+            = f.input :last_name
+            .form-group
+              %label.col-sm-3.control-label Username
+              .col-sm-5
+                %input{type: "text", class: "form-control", value: ""}
+              .col-sm-4
+                %p.form-control-static https:alumvest.com/sasha
+            = f.input :email, :hint => 'Email will not be publicly displayed.' 
+            
+            .form-group.form-action 
+              .col-sm-5.col-sm-offset-3        
+                = f.submit 'Save', :class => 'btn btn-primary btn-lg'
             
       
