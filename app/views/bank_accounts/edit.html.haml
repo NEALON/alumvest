@@ -8,7 +8,8 @@
 
 #information.dashboard
   %h1
-    Link your Bank Account  = form_for @bank_account, :url => user_bank_account_path(@user), :html => {:id => 'issuer_bank_account_form', :class => 'form-horizontal well'} do |f|
+    Link your Bank Account
+  = form_for @bank_account, :url => user_bank_account_path(@user), :html => {:id => 'issuer_bank_account_form', :class => 'form-horizontal well'} do |f|
     = render 'shared/errors', :entity => @bank_account
     = f.hidden_field :user_id
     %fieldset
