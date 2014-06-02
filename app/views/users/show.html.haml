@@ -1,7 +1,7 @@
 = content_for :header_1 do
   #title
 
-- if @user.investor.present?
+- if @user.investor.present? and @user.id == current_user.id
   = render 'investors/side_navigation', :active =>  @active
 - else
   = render 'users/side_navigation', :active => @active
