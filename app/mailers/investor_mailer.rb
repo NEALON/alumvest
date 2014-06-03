@@ -1,18 +1,21 @@
 class InvestorMailer < ActionMailer::Base
-  default :from => 'info@alumvest.com'
+  default :from => 'admin@alumvest.com'
 
-  def veritax_order_status_updated(investor)
-    @investor = investor
-    mail :to => investor.user.email
+  def veritax_order_status_updated(email)
+    @greeting = "Hi"
+
+    mail :to => email
   end
 
-  def accredited_investor_approved(investor)
-    @investor = investor
-    mail :to => investor.user.email
+  def accredited_investor_approved(email)
+    @greeting = "Hi"
+
+    mail :to => email
   end
 
-  def accredited_investor_rejected(investor)
-    @investor = investor
-    mail :to => investor.user.email
+  def accredited_investor_rejected(email)
+    @greeting = "Hi"
+
+    mail :to => email
   end
 end

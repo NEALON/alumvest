@@ -1,38 +1,18 @@
 
-.masthead
-  .inner
-    .container
-      .left-info
-        %p.triangle-img
-          =image_tag("home/triangle-learn-more.png", :class => 'img-responsive')
-        %button.btn.btn-lg.btn-primary{:data => {:toggle => "modal", :target => "#home-video"}}
-          %i.fa.fa-play-circle
-          See Our Video
-      /.left-info
-/.masthead
-          
-.modal.fade#home-video
-  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
-  .modal-dialog.modal-lg
-    .modal-content
-      .modal-header
-        %h4.modal-title 
-          .logo.pull-left
-            %img{:src => image_path('home/logo.png'), :alt => 'Alumvest', :width => 120}
-          See Our Video
-      .modal-body
-        - unless Rails.env.test?
-          .flex-video.widescreen.vimeo.no-marg-bottom
-            <!-- Plugin for Vimeo -->
-            <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
-            %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"}
-          %i.fa.fa-angle-double-left
-          Back to homepage
-    /.modal-content
-  /.modal-dialog
-/.modal
+#cover.jumbotron
+  .container
+    / #goal
+    /   %h2 Welcome to Alumvest!
+    /   .cover-description
+    /     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    /   %p
+    /     = link_to('Learn more', '#', :class => "btn btn-primary btn-large")
+  / .bottom
+  /   .container
+  /     Connecting capital and intelligence, Alumvest engages alumni and peers to seed and mentor entrepreneurs.
+  / :erb
+  /   <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='202842' style="min-height: 65px"></div>
+  / %hr
 
 - unless @reviewable_campaigns.blank?
   #active
@@ -71,34 +51,67 @@
           - @live_campaigns.each do |campaign|
             = render "campaigns/placard", :campaign => campaign
 
-#babson-video.video-trailer-wrapper
-  - unless Rails.env.test?
-    %video{:autoplay => 'autoplay', :onended => "window['endBabsonVideo']()"}
-      %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
-    .overlay-bg
+#videoModal.modal.fade{ :tabindex => '-1', :role => 'dialog', 'aria-labelledby' => 'myModalLabel', 'aria-hidden' => 'true'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ :type => 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+          &times;
+        %h4.modal-title#myModalLabel
+          Alumvest Intro
+      - unless Rails.env.test?
+        .modal-body
+          %iframe{:src => '//player.vimeo.com/video/75979909?portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true' }
+        / .modal-footer
+        /   %button.btn.btn-default{ :type => 'button', 'data-dismiss' => 'modal'}
+        /     Close
+        /   %button.btn.btn-primary{:type => 'button'}
+        /     Save Changes
+#video-trailer.row
+  .col-md-12
+    .jumbotron
+      .container-bg.container-bg-video
+        - unless Rails.env.test?
+          %video{:autoplay => 'autoplay', :loop => 'loop', :onended => 'this.play()', :style => 'width: 100%', :muted => "muted"}
+            %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
+        .container-bg.container-bg-overlay
+      .container-bg.container-bg-text.text-center
+        %a#playVideo.video-play{:href => '#', 'data-toggle' => 'modal'}
+          %img{:src => image_path('home/video_play.png')}
+        %h3 Connecting capital and intelligence
+      - unless Rails.env.test?
+        .video-wrapper
+          .container
+            <!-- Plugin for Vimeo -->
+            <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+
+            #video-player.embed-video
+              - unless Rails.env.test?
+                %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
 
 #how-it-works.row
   .col-md-12
     .jumbotron
       .container
-        %h2.text-center Invest In Someone Like You
+        %h2.text-center Discover thousands of great projects
         %p.text-center
           %em
             Interested to learn more about Alumvest?
-        .text-center
-          = link_to('See How It Works', '/about/how-it-works', :class => "btn btn-info btn-large marg-bottom")
-          = link_to('Sign Up Now', '#signup-modal', 'data-toggle' => 'modal', :class => "btn btn-primary btn-large marg-bottom")
+        %p.text-center
+          = link_to('See How It Works', '/about/how-it-works', :class => "btn btn-info btn-large")
+          = link_to('Get Registered Now', '#signup-modal', 'data-toggle' => 'modal', :class => "btn btn-primary btn-large")
 
-.wrapper-featured
-  .container  
-    %h4 Featured In
-    .row
-      .col-sm-5.col-sm-offset-1
-        .item
-          = link_to 'http://crowdfundbeat.com/livecrowdfundtv-devinthorpe-alumvest/', :title => 'CrowdFundBeat', :target => '_blank' do
-            = image_tag("feature_logo/crowdfundbeats.png", :height => 45, :class => 'img-responsive')
-      .col-sm-5
-        .item
-          = link_to 'http://www.vilcap.com/portfolio2/alumvest', :title => 'VillageCapital', :target => '_blank' do
-            = image_tag("feature_logo/villagecapitals.png", :height => 45, :class => 'img-responsive')
-            
+#feature.row
+  .col-md-12
+    .container
+      %h4 Featured in
+      .row
+        .col-md-3
+          %img{ :src => image_path('feature_logo/mashable.png')}
+        .col-md-3
+          - unless Rails.env.test?
+            %img{ :src => image_path('https://d1dve5icbq0xf0.cloudfront.net/assets/home_forbes1@2x-524f588e9b812e0bbd0b31efcf836038.png')}
+        .col-md-3
+          %img{ :src => image_path('feature_logo/bloomberg.png')}
+        .col-md-3
+          %img{ :src => image_path('feature_logo/betabeat.png')}

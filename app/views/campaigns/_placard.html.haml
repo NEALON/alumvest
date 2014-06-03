@@ -1,29 +1,28 @@
-.col-md-4.col-sm-6
-  .columns.panel.outline
-    = link_to display_campaign_company_path(campaign) do
-      = image_tag campaign.company.photo_for_card_display, :class => "img-campaign img-responsive"
-  
-    .company-title
-      %h4
-        = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
-    .company-short-description
-      %p
-        = campaign.company.short_description
-    .company-goal
-      .row
-        .campaign-cell-number.col-md-4.col-xs-4
-          = number_to_currency (investment_sum = campaign.raised)
-        .campaign-cell-number.col-md-4.col-xs-4
-          = number_to_currency (fundraising_amount = campaign.investment_term.fundraising_amount)
-        .campaign-cell-number.col-md-4.col-xs-4
-          = campaign.investments.finalized.count
-        .campaign-cell-title.col-md-4.col-xs-4
-          Raised
-        .campaign-cell-title.col-md-4.col-xs-4
-          Goal
-        .campaign-cell-title.col-md-4.col-xs-4
-          Investors
-  
-  
-      .progress.active
-        .progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}
+.col-md-4.columns.panel.outline
+  = link_to display_campaign_company_path(campaign) do
+    = image_tag campaign.company.photo_for_card_display, :class => "img-campaign"
+
+  .company-title
+    %h4
+      = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
+  .company-short-description
+    %p
+      = campaign.company.short_description
+  .company-goal
+    .row
+      .campaign-cell-number.col-md-4.col-xs-4
+        = number_to_currency (investment_sum = campaign.raised)
+      .campaign-cell-number.col-md-4.col-xs-4
+        = number_to_currency (fundraising_amount = campaign.investment_term.fundraising_amount)
+      .campaign-cell-number.col-md-4.col-xs-4
+        = campaign.investments.finalized.count
+      .campaign-cell-title.col-md-4.col-xs-4
+        Raised
+      .campaign-cell-title.col-md-4.col-xs-4
+        Goal
+      .campaign-cell-title.col-md-4.col-xs-4
+        Investors
+
+
+    .progress.active
+      .progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}

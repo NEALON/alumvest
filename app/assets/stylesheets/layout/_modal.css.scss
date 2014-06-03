@@ -1,53 +1,112 @@
-.close {
-  &, &:hover, &:focus { outline: none; }
+$modal-width: 400px;
+$form-width: 370px;
+$field-width: 100%;
+$field-height: 44px;
+
+.modal-open{
+	overflow: auto;
 }
 
-.modal-backdrop.in {
-  @include opacity(1);
+.modal-backdrop.in{
+	opacity: 1;
+	background-color: $color-white;
 }
 
-.modal-title {
-  color: lighten($black, 70%);
-  text-align: right;
-  
-  .logo {
-    position: relative;
-    top: -2px;
+.modal{
+	width: $modal-width;
+	position: fixed;
+	overflow-y: auto;
+	top: 50px;
+	left: calc(50% - 200px);
+	left: -moz-calc(50% - 200px);
+  left: -webkit-calc(50% - 200px);
+  padding: 0;
+  border: none;
+  box-shadow: none;
+
+  .modal-content{
+  	box-shadow: none;
+  	border: none;
   }
-}
 
-.modal-content {
-  @include box-shadow(none);
-  border-radius: 0;
-}
+  .modal-header{
+  	border: none;
 
-@media (min-width: $screen-sm) {
-  .modal-sm { width: $modal-sm; }
-  .modal-md, .modal-lg { width: $modal-md; }
-}
-
-@media (min-width: $screen-md) {
-  .modal-lg { width: $modal-lg; }
-}
-
-.modal-footer {
-  margin-top: 0;
-  text-align: center;
-}
-
-.modal > .close {
-  font-size: 35px;
-  line-height: 1.0;
-  padding: 10px;
-  position: relative;
-  z-index: ($zindex-modal + 3);
-}
-
-.signup-modal {
-  .radio-inline { line-height: 25px; padding-left: 30px;
-    input[type="radio"] { height: 25px; margin: {left: -30px; top: 1px;} width: 25px; }
+    button.close{
+      &:focus{
+        outline: none;
+      }
+    }
   }
+
+	.modal-dialog.modal-large{
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		.modal-body{
+			width: $field-width;
+			margin: 0;
+			padding: 0;
+
+      .close{
+        margin: 30px 18px;
+        border: 1px #000000 solid;
+        border-right: 1px #000000 solid;
+        width: $form-width - 38px;
+        height: $field-height;
+        font-size: 16px;
+        font-weight: bold;
+
+        &:focus{
+          outline: none;
+        }
+      }
+
+			input, button, a{
+				display: block;
+				width: $field-width;
+				height: $field-height;
+				font-size: 16px;
+				font-weight: bold;
+        border-radius: 6px;
+			}
+
+			label.radio-inline{
+				display: block;
+				height: $field-height;
+				font-size: 16px;
+				font-weight: bold;
+				padding: 0;
+
+				input{
+					display: inline-block;
+					margin: 0;
+					width: 30px;
+				}
+
+				span{
+					display: inline-block;
+					height: 100%;
+					padding-top: 10px;
+				}
+			}
+
+			.btn-third-party{
+				margin: 10px auto 0;
+				width: $form-width - 38px;
+			}
+
+      .form-compact{
+        padding: 0px;
+      }
+		}
+	}
+
+	.form-horizontal{
+		background: none;
+		border: none;
+		box-shadow: none;
+	}
 }
-
-
-

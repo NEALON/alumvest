@@ -10,19 +10,16 @@
  *
 */
 
-// import mixins, variables and functions
-@import "core/color";
-@import "core/font";
-@import "core/variables_bootstrap";
-
 // import vendor libraries
 @import "bootstrap";
-@import "bootstrap/theme";
-//@import "vendor/bootstrap/bootstrap-theme";
+@import "vendor/bootstrap/bootstrap-theme";
+
+// import mixins, variables and functions
+@import "core/font";
+@import "core/color";
 
 @import "layout/header";
 @import "layout/modal";
-@import "layout/buttons";
 @import "layout/footer";
 
 @import "home/main";
@@ -42,18 +39,22 @@ html, body{
   height: 100%;
 }
 
-a {
-  &, &:hover, &:focus { outline: none !important; }
+body{
+  background-color: #ffffff;
+  font-size: 12px;
+  font-family: $font-open-sans;
 }
 
-b, strong {
-  font-weight: 700;
+.container{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 990px;
 }
 
 .container-fluid{
   margin-right: auto;
   margin-left: auto;
-  max-width: 990px + $grid-gutter-width;
+  max-width: 990px;
 }
 
 #content{

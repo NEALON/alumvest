@@ -60,7 +60,6 @@ gem 'compass'
 gem 'cells', '~> 3.9'
 gem 'ckeditor_rails', '~> 4.2'
 gem 'cocoon', '~> 1.2'
-gem 'modernizr-rails'
 
 gem 'has_filepicker_image' #, '~> 0.0', {:git=>'git://github.com/interskh/has_filepicker_image.git', :branch=>'rails4'}
 gem 'httparty', '~> 0.12'
