@@ -24,12 +24,11 @@
 /* ==========================================================================
    Base
    ========================================================================== */
-
-html, body { }
-
-body { }
-
 .root { background: darken($white, 5%); }
+
+a {
+  &, &:hover, &:focus { text-decoration: none; }
+}
 
 a, .btn {
   &, &:hover, &:focus, &:active { outline: 0 !important; }
@@ -53,11 +52,14 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 /* ==========================================================================
    Typography
    ========================================================================== */
+p { margin-bottom: 16px; }
+
 h3, .h3 { font: {family: $font-family-sans-serif; weight: bold;} }
 
 @media (min-width: $screen-sm) {
   h1, .h1 { font-size: $font-size-h1-lg; }
   h2, .h2 { font-size: $font-size-h2-lg; }
+  h3, .h3 { font-size: $font-size-h3-lg; }
 }
 
 .separator-line { overflow: hidden; text-align: center; 
@@ -74,7 +76,7 @@ h3, .h3 { font: {family: $font-family-sans-serif; weight: bold;} }
   }
 }
 
-.lead { font-weight: normal;
+.lead { font: {size: 14px; weight: normal;}
   @media (min-width: $screen-sm) { font-size: 16px; }
 }
 
@@ -160,7 +162,8 @@ h3, .h3 { font: {family: $font-family-sans-serif; weight: bold;} }
   .form-control { border-radius: 0 100px 100px 0; 
     &:focus + .form-control-feedback { background: $input-border-focus; }
   }
-  .form-control-feedback { background: $input-border; border-radius: 100px; color: $white; }
+  
+  .form-control-feedback { background: $input-border; border-radius: 100px; color: $white; top: 0; }
 }
 
 label { font: {size: 17px; weight: normal;} }
@@ -271,7 +274,7 @@ textarea { resize: vertical; }
       }
     }
     
-    .form-control-feedback { border: 0 none; @include box-shadow(none); margin: 0; padding: 0; top: 0; }
+    .form-control-feedback { border: 0 none; @include box-shadow(none); margin: 0; padding: 0; }
     
     &:hover {
       .form-control { border-color: darken($white, 15%); }
@@ -325,9 +328,11 @@ textarea { resize: vertical; }
  */ 
 .wrapper-dashboard { background: #f7f7f7; border: 2px solid $white; border-radius: 4px; @include box-shadow(0 0px 8px rgba($black, .1));
   // Dashboard Content (right info)
-  .dashboard-content { background: $white; @include box-shadow(-8px 0 10px -7px rgba($black, .1)); @include clearfix; min-height: 792px; padding: 24px 37px 20px; 
-    h1 { margin-bottom: 25px; 
-      @media (min-width: $screen-sm) { margin-bottom: 39px; }
+  .dashboard-content { background: $white; @include box-shadow(-8px 0 10px -7px rgba($black, .1)); @include clearfix; min-height: 792px; padding: 13px 15px 80px; 
+    h1 { margin-bottom: 25px; }
+    
+    @media (min-width: $screen-sm) { padding: 24px 37px 170px; 
+      h1 { margin-bottom: 39px; }
     }
   }
   
@@ -398,15 +403,29 @@ textarea { resize: vertical; }
 /**
  * User profile styles
  */
-.user-head-info { font: {size: 13px; weight: bold;} margin-bottom: 31px;
-  .name { margin-top: -1px; }
+.user-head-info { font-size: 12px; margin-bottom: 31px;
+  .user-avatar { max-width: 100%; width: 75px; }
+  
+  .name { margin: {top: -1px; bottom: 3px;} }
+  
   .invests { font: {family: $font-family-serif; size: 35px; weight: 300;} margin-bottom: 4px; 
     .count-invests { color: $blue; font: {size: 35px; weight: 300;} }
     sup { font: {family: $font-family-sans-serif; size: 13px; weight: bold;} left: -0.3em; top: -1.2em; }
   }
-  .list-inline { margin-bottom: 0;
+  
+  .list-inline { margin: 0;
     .fa { font-size: 15px; margin-right: 2px; position: relative; top: 1px; }
-    > li { margin-right: 18px; }
+    > li { display: block; line-height: 1.1; margin: 0 0 10px; padding: 0; }
+  }
+  
+  @media (min-width: $screen-sm) { font: {size: 13px; weight: bold;} 
+    .user-avatar { width: auto; }
+    
+    .name { margin: {top: 0; bottom: ($line-height-computed / 2);} }
+    
+    .list-inline {
+      > li { display: inline; line-height: inherit; margin: 0 23px 0 0; }
+    }
   }
 }
 

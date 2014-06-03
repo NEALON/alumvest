@@ -12,7 +12,7 @@
           
           .user-head-info
             .media
-              .pull-left
+              .user-avatar.pull-left
                 -#
                   - if @user.avatar.blank?
                     = image_tag @user.avatar(:thumb)
@@ -74,30 +74,28 @@
                   = f.input :hide_investments, :label => 'Hide my investments on AlumVest', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
                   = f.input :hide_investor_status, :label => 'Hide my investor status except to founders of companies I invest in', :wrapper => :horizontal_boolean_row
               
-              %hr
-              
-              %h2.h1.text-primary.no-marg-top Legal Name & Address
-              %p.lead This Information is required for securities to be issued to you. It will be provided to startups or funds you invest in.
-              
+            %hr
+            
+            %h2.h1.text-primary.no-marg-top Legal Name & Address
+            %p.lead This Information is required for securities to be issued to you. It will be provided to startups or funds you invest in.
+            
+            .form-vertical.marg-top
+              .row
+                .col-lg-10
+                  = f.input :legal_name, :label => 'Legal Name', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  = f.input :legal_address, :label => 'Address', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .row
+                    .col-sm-6
+                      = f.input :legal_city, :label => 'City', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                    .col-sm-6
+                      = f.input :legal_state, :label => 'State', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .row
+                    .col-sm-6
+                      = f.input :legal_postal_code, :label => 'Postal Code', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                    .col-sm-6
+                      = f.input :legal_country, :label => 'Country', :as => :string, :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                    
+            .form-action
+              %p.small If you don't have a US address, you can leave <strong>State</strong> blank.
               = f.submit 'Update', :class => 'btn btn-primary btn-lg'
                     
-              
-          = form_for @investor, :url => user_investor_path(@user), :html => {:id => 'investor_profile_form'} do |f|
-            = render 'shared/errors', :entity => @investor
-          
-            %fieldset
-              = f.hidden_field :user_id
-              
-              
-                
-                
-              - with_options :form => f do |op|
-        
-                = op.render_cell 'tb/form/text', :display, :field => :legal_name
-                = op.render_cell 'tb/form/text', :display, :field => :legal_address, :label => 'Address'
-                = op.render_cell 'tb/form/text', :display, :field => :legal_city, :label => 'City'
-                = op.render_cell 'tb/form/text', :display, :field => :legal_state, :label => 'State'
-                = op.render_cell 'tb/form/text', :display, :field => :legal_postal_code, :label => 'Postal Code'
-                = op.render_cell 'tb/form/text', :display, :field => :legal_country, :label => 'Country'
-        
-              = render_cell 'tb/form/submit_button', :display, :label => 'Update'
