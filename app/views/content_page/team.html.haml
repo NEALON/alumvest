@@ -1,230 +1,115 @@
--#
-  .container
-    %h1 
-      H1 Headings
-      %small small text
-    %h2 
-      H2 Headings
-      %small small text
-    %h3 
-      H3 Headings
-      %small small text
-    %h4 
-      H4 Headings
-      %small small text
-    %h5 
-      H5 Headings
-      %small small text
-    %h6 
-      H6 Headings
-      %small small text
-      
-    %p
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      
-    %p.lead
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      
-    %p.text-success
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      
-    %p.text-primary
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    
-    %form.form-horizontal{role: "form"}
-      .form-group
-        %label.col-sm-2.control-label{for: "inputEmail3"} Email
-        .col-sm-10.has-feedback
-          %input#inputEmail3.form-control{placeholder: "Email", type: "text"}/
-          %i.glyphicon.glyphicon-ok.form-control-feedback
-      .form-group
-        %label.col-sm-2.control-label{for: "inputPassword3"} Password
-        .col-sm-10.has-feedback
-          %input#inputPassword3.form-control{placeholder: "Password", type: "text"}/
-          %i.glyphicon.glyphicon-ok.form-control-feedback
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          .checkbox
-            %label
-              %input{type: "checkbox"}/
-              Remember me
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          %button.btn.btn-default{type: "submit"} Sign in
-    
-    %form{role: "form"}
-      .form-group
-        %label{for: "exampleInputEmail1"} Email address
-        %input#exampleInputEmail1.form-control{placeholder: "Enter email", type: "text"}/
-      .form-group
-        %label{for: "exampleInputPassword1"} Password
-        %input#exampleInputPassword1.form-control{placeholder: "Password", type: "text"}/
-      .form-group
-        %label{for: "exampleInputFile"} File input
-        %input#exampleInputFile{type: "file"}/
-        %p.help-block Example block-level help text here.
-      .checkbox
-        %label
-          %input{type: "checkbox"}/
-          Check me out
-      %button.btn.btn-primary{type: "submit"} Submit
-      %button.btn.btn-success.btn-lg{type: "submit"} Button
-    
-.container
-  .team-block
-    %h3 Our Team
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/lynn-chen.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Founder & CEO
-            .team-member-name
-              = link_to "Lynn Chen", "#lynn-chen"
-            .team-member-job-responsibility
-              Duke’ 06 (Communication & Media Studies), Columbia MBA’ Student (Finance & Entrepreneurship) (on entrepreneurial leave)
-            .team-member-life
-              Lynn is AlumVest’s driving force and the person behind the concept of alumni crowdfunding. Lynn makes things happen and loves to network. Previously Lynn founded two profitable startups (education startup and cross-border consultancy startup). Lynn was also a sales director at Groupon and international business strategist at comScore. Lynn is an entrepreneur at heart and is incredibly passionate about unlocking the opportunities and connections that the alumni community offers to innovative entrepreneurs. Lynn was born in China and speaks fluent Chinese.
-          
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/pub/lynn-chen/3/529/155', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-  
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/sasha-ablovatskiy.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Co-Founder, COO & Chief Legal Officer
-            .team-member-name
-              = link_to "Sasha Ablovatskiy", "#sasha-ablovatskiy"
-            .team-member-job-responsibility
-              UCLA’ 01 (Economics), University of San Diego JD’ 04
-            .team-member-life
-              Sasha is AlumVest’s idea, business development and innovation person, as well as the individual who makes sure that things are done in compliance with all things that lawyers have to worry about. Sasha has 10+ years of legal experience in securities, corporate and m&a law at a major NYC-based international law firm and 2 boutique NYC law firms. Having 1st hand seen a lack of funding opportunities for quality startups in the current “funding reality”, Sasha is driven by the entrepreneurship spirit and AlumVest’s mission to connect innovative entrepreneurs with their alumni investors and supporters. Sasha is a partner at Foley Shechter LLP, a NYC boutique law firm specializing in securities and corporate law and venture capital, startups and crowdfunding matters. Sasha was born in Odessa, Ukraine and speaks fluent Russian and is proficient in Ukrainian and Spanish.
-          
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/pub/sasha-ablovatskiy/6/4a3/134/', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-              
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/kyle-sun.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Back-end Lead
-            .team-member-name
-              = link_to "Kyle Sun", "#kyle-sun"
-            .team-member-job-responsibility
-              Carnegie Mellon University’ 10 (MS in Information Security Technology & Management)
-            .team-member-life
-              Kyle is a doer and is the brains behind AlumVest’s platform, innovation and all the things that make AlumVest work. Kyle previously was a senior software developer at Zynga. Kyle is a hacker who likes to use cutting-edge technologies to change the world and a team player who can also learn things fast and get things done. Kyle is also an avid gamer and has built a number of websites. Kyle was born in China and speaks fluent Chinese.
-          
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/in/kylesun', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-              
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/toby-zhang.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Head of Business Development & School Engagement
-            .team-member-name
-              = link_to "Toby Zhang", "#toby-zhang"
-            .team-member-job-responsibility
-              Wharton MBA’ Student 14
-            .team-member-life
-              Toby is all things business development and analysis and what keeps our users coming back to us. Toby is in charge school engagement and development. Toby is also currently an MBA Student at Wharton; Growth Business Consultant at Wharton Small Business Development Center; and Consultant at Wharton Global Consulting Practicum - advising a large software company on business opportunities with SMEs in Africa by leveraging cloud/S-a-a-S technologies.
-          
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/pub/toby-zhang/15/a93/235', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-              
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/alan.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Back-end Lead
-            .team-member-name
-              = link_to "Han (Alan) Hua", "#alan"
-            .team-member-job-responsibility
-              Carnegie Mellon University
-            .team-member-life
-              Alan is the creative brains behind making us look good and coming up with awesome ideas of how to make AlumVest a great visual and data experience for our investors. Alan is also currently an engineer with Groupon and was previously a developer at CMU CREATE Lab. Alan was a founder of TEDxFDU, part of TEDxSummit 2012 in Qatar and TEDxShanghai.
-          
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/pub/han-hua/31/aaa/572', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-              
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/che.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Designer & UI Consultant
-            .team-member-name
-              = link_to "Chaitanya (Che) Zion", "#che"
-            .team-member-job-responsibility
-              Dr. Ambedkar University’ 10 (Math, Physics & Computer Science)
-            .team-member-life
-              Che is AlumVest’s design guru. Che is a web strategist with over 10+ years of web technology, graphic design and 3D animation experience with a technical expertise on a global level. Che also has extensive experience and knowledge of UI. Che dreams big and his creative ideas are only limited by his imagination. Che is a co-founder at ThinkDraft Web Agency. Che was born in India.
-          
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/pub/chaitanya-zion/17/153/63b', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-    
-    .clearfix
-              
-    %h3 Our Advisors
-    .team-member-block
-      .row
-        .col-md-5.col-sm-6
-          .team-member-description
-            %p.team-member-photo
-              =link_to '#', :class => 'thumb-arround-face' do
-                =image_tag("team/dean-miller.jpg", :width => 200, :height => 200)
-            .team-member-title
-              Advisor
-            .team-member-name
-              = link_to "Dean Miller", "#dean-miller"
-            .team-member-job-responsibility
-              Wharton MBA’ 14; Managing Director, Novitas Capital; Adjunct Professor at Wharton; President of Wharton Alumni Organization
-            
-        .team-member-cap.clearfix.col-md-7.col-sm-6{:style => 'background-image: url("//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg");'}
-          .social-network
-            =link_to 'http://www.linkedin.com/pub/dean-miller/0/347/955', :target => '_blank' do
-              %span.glyphicon.glyphicon-send
-              linkedin
-  
+.container.team-block
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            CEO
+          .team-member-name
+            = link_to "Lynn Chen", "#lynn-chen"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg') }
+        .social-network
+          %a{ :href => '#' }
+            %span.glyphicon.glyphicon-send
+            facebook
+          %a{ :href => '#' }
+            %span.glyphicon.glyphicon-send
+            linkedin
+          %a{ :href => '#' }
+            %span.glyphicon.glyphicon-send
+            twitter
+
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            COO
+          .team-member-name
+            = link_to "Sasha", "#sasha"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg')}
+
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            PM
+          .team-member-name
+            = link_to "Daniel Yang", "#daniel-yang"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg')}
+
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            Backend
+          .team-member-name
+            = link_to "Kyle Sun", "#kyle-sun"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg')}
+
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            Backend
+          .team-member-name
+            = link_to "Mike Pence", "#mike-pence"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg')}
+
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            Frontend
+          .team-member-name
+            = link_to "Han Hua", "#han-hua"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg')}
+
+  .team-member-block
+    .row
+      .col-md-5.col-xs-5
+        .team-member-description
+          .team-member-title
+            Designer
+          .team-member-name
+            = link_to "Linlin Pan", "#linlin-pan"
+          .team-member-job-responsibility
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          .team-member-life
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .team-member-cap.col-md-7.col-xs-7
+        %img{ :src => image_path('//farm6.staticflickr.com/5549/9729095194_7954a958b1_c.jpg')}

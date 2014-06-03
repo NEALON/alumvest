@@ -1,21 +1,11 @@
-.modal.fade#signup-modal.signup-modal
-  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
-  .modal-dialog.modal-sm
+#signup-modal.modal.fade
+  .modal-dialog.modal-large
     .modal-content
       .modal-header
-        %h4.modal-title 
-          .logo.pull-left
-            %img{:src => image_path('home/logo.png'), :alt => 'Alumvest', :width => 120}
-          Sign Up
-      .modal-body
-        = render "layouts/signup_email"
-        .horizontal-separator
-          .inner or
-        = render "layouts/auth_facebook_linkedin"
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"}
-          %i.fa.fa-angle-double-left
-          Back to page
-    /.modal-content
-  /.modal-dialog
-/.modal
+        / %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+        /   %span.glyphicon.glyphicon-remove
+      .modal-body.modal-row.row
+        .col-md-12
+          = render "layouts/signup_email"
+          = render "layouts/auth_facebook_linkedin"
+          %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'} Back to homepage

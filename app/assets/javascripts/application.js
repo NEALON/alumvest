@@ -21,7 +21,3 @@
 //= require cocoon
 //= require bootstrap
 //= require_tree .
-
-$(document).ready(function() {
-  $('[data-toggle="tooltip"]').tooltip();
-});

@@ -1,46 +1,55 @@
-<form id="signup_form" class='form-vertical' action="/auth/identity/register" method="post">
+
+<form id="signup_form" class='form-horizontal well' action="/auth/identity/register" method="post">
   <fieldset>
     <div class="form-group">
-      <%= text_field_tag :first_name, @identity.try(:first_name), :class => "form-control input-lg", :placeholder => "First Name" %>
-    </div>
-
-    <div class="form-group">
-      <%= text_field_tag :last_name, @identity.try(:last_name), :class => "form-control input-lg", :placeholder => "Last Name" %>
-    </div>
-
-    <div class="form-group">
-      <%= text_field_tag :email, @identity.try(:email), :class => "form-control input-lg", :placeholder => "Email" %>
-    </div>
-
-    <div class="form-group">
-      <%= password_field_tag :password, @identity.try(:password), :class => "form-control input-lg", :placeholder => "Password" %>
-    </div>
-
-    <div class="form-group">
-      <%= password_field_tag :password_confirmation, @identity.try(:password_confirmation), :class => "form-control input-lg", :placeholder => "Confirm Password" %>
-    </div>
-    
-    <div class="row marg-bottom">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="radio-inline" for="investor">
-            <input type="radio" name="description" id="investor" value="Investor" checked="checked">
-            <span>Investor</span>
-          </label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="radio-inline" for="issuer">
-            <input type="radio" name="description" id="issuer" value="Issuer">
-            <span>Issuer</span>
-          </label>
-        </div>
+      <div class="col-md-12">
+        <%= text_field_tag :first_name, @identity.try(:first_name), :class => "form-control input-md", :placeholder => "First Name" %>
       </div>
     </div>
 
     <div class="form-group">
-      <button id="singlebutton" name="commit" type="submit" class="btn btn-success btn-lg btn-block">Signup</button>
+      <div class="col-md-12">
+        <%= text_field_tag :last_name, @identity.try(:last_name), :class => "form-control input-md", :placeholder => "Last Name" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <%= text_field_tag :email, @identity.try(:email), :class => "form-control input-md", :placeholder => "Email" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <%= password_field_tag :password, @identity.try(:password), :class => "form-control input-md", :placeholder => "Password" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <%= password_field_tag :password_confirmation, @identity.try(:password_confirmation), :class => "form-control input-md", :placeholder => "Confirm Password" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6 col-xs-12">
+        <label class="radio-inline" for="description">
+          <input type="radio" name="description" id="investor" value="Investor" checked="checked">
+          <span>Investor</span>
+        </label>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <label class="radio-inline" for="description">
+          <input type="radio" name="description" id="issuer" value="Issuer">
+          <span>Issuer</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <button id="singlebutton" name="commit" type="submit" class="btn btn-primary btn-success">Signup</button>
+      </div>
     </div>
   </fieldset>
 </form>

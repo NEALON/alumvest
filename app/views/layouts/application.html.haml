@@ -19,8 +19,9 @@
     
     = render 'layouts/shareaholic_header'
     
-    /[if lt IE 9]
-      %script{:src => "//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
+    - unless Rails.env.test?
+      /[if lt IE 9]
+        %script{:src => "//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
   %body
     
     .root
@@ -77,3 +78,4 @@
     
     = javascript_include_tag 'application'
     = yield :scripts
+    
