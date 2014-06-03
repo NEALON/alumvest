@@ -10,9 +10,8 @@
           
           %h1.text-primary.no-marg-top Account Info
           
-          = simple_form_for @user, url: user_account_info_path(@user), html: {class: 'form-horizontal account-info-fr'}, wrapper: :horizontal_form_with_inline_help do |f|
-            = render 'shared/errors', :entity => @user
-            = f.error_notification
+          = simple_form_for @user, url: user_account_info_path(@user), html: {class: 'form-horizontal account-info-fr'}, wrapper: :horizontal_form_with_inline_help, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification       
             
             = f.input :first_name
             = f.input :last_name

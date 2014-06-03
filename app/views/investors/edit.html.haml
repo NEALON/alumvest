@@ -41,10 +41,8 @@
                     
           / END .user-head-info
                   
-          = simple_form_for @investor, url: user_investor_path(@user), html: {class: 'user-info-fr'} do |f|
-            = render 'shared/errors', :entity => @investor
-            = f.error_notification
-            
+          = simple_form_for @investor, url: user_investor_path(@user), html: {class: 'user-info-fr'}, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification              
             = f.hidden_field :user_id
             
             .form-horizontal.profile-privacy-fr

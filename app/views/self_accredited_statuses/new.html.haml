@@ -1,50 +1,58 @@
-= render 'investors/side_navigation', :active => 'self_accredited_status'
-
-#self-accredited-status
-  = I18n.t('self-accredited-status.info').html_safe
-  %hr
-  = form_for @self_accredited_status, :url => user_investor_self_accredited_status_path(@user), :html => {:id => 'self-accredited-status-form', :class => 'form-horizontal editing-form well'} do |f|
-    - unless @self_accredited_status.errors.empty?
-      .error_messages
-      %h2= I18n.t('self-accredited-status.input-warning')
-
-    %fieldset
-      = f.hidden_field :investor_id
-      .form-group
-        .col-md-3
-          = f.label I18n.t('self-accredited-status.financial-status.title')
-        .col-md-9
-          .row
-            = f.radio_button :financial_status, 1
-            = I18n.t('self-accredited-status.financial-status.status-1')
-          .row
-            = f.radio_button :financial_status, 2
-            = I18n.t('self-accredited-status.financial-status.status-2')
-          .row
-            = f.radio_button :financial_status, 3
-            = I18n.t('self-accredited-status.financial-status.status-3')
-          .row
-            = f.radio_button :financial_status, 4
-            = I18n.t('self-accredited-status.financial-status.status-4')
-      .form-group
-        .col-md-3
-          = f.label I18n.t('self-accredited-status.terms.title')
-        .col-md-9
-          .row
-            = I18n.t('self-accredited-status.terms.info')
-          .row
-            = f.check_box :term_startup_fail
-            = I18n.t('self-accredited-status.terms.startup_fail')
-          .row
-            = f.check_box :term_responsible
-            = I18n.t('self-accredited-status.terms.responsible')
-          .row
-            = f.check_box :term_av_permission
-            = I18n.t('self-accredited-status.terms.av_permission')
-          .row
-            = f.check_box :term_tos
-            = I18n.t('self-accredited-status.terms.tos')
-
-      .form-group
-        .col-md4.col-md-offset-3
-          = submit_tag I18n.t('self-accredited-status.submit'), :class => "btn btn-default btn-success"
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'investors/side_navigation', :active => 'self_accredited_status'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Accredited Investor Certification
+          
+          = I18n.t('self-accredited-status.info').html_safe
+          %hr
+          = form_for @self_accredited_status, :url => user_investor_self_accredited_status_path(@user), :html => {:id => 'self-accredited-status-form', :class => 'form-horizontal'} do |f|
+            - unless @self_accredited_status.errors.empty?
+              .error_messages
+              %h2= I18n.t('self-accredited-status.input-warning')
+        
+            %fieldset
+              = f.hidden_field :investor_id
+              .form-group
+                .col-md-3
+                  = f.label I18n.t('self-accredited-status.financial-status.title')
+                .col-md-9
+                  .row
+                    = f.radio_button :financial_status, 1
+                    = I18n.t('self-accredited-status.financial-status.status-1')
+                  .row
+                    = f.radio_button :financial_status, 2
+                    = I18n.t('self-accredited-status.financial-status.status-2')
+                  .row
+                    = f.radio_button :financial_status, 3
+                    = I18n.t('self-accredited-status.financial-status.status-3')
+                  .row
+                    = f.radio_button :financial_status, 4
+                    = I18n.t('self-accredited-status.financial-status.status-4')
+            .form-group
+              .col-md-3
+                = f.label I18n.t('self-accredited-status.terms.title')
+              .col-md-9
+                .row
+                  = I18n.t('self-accredited-status.terms.info')
+                .row
+                  = f.check_box :term_startup_fail
+                  = I18n.t('self-accredited-status.terms.startup_fail')
+                .row
+                  = f.check_box :term_responsible
+                  = I18n.t('self-accredited-status.terms.responsible')
+                .row
+                  = f.check_box :term_av_permission
+                  = I18n.t('self-accredited-status.terms.av_permission')
+                .row
+                  = f.check_box :term_tos
+                  = I18n.t('self-accredited-status.terms.tos')
+      
+            .form-group
+              .col-md4.col-md-offset-3
+                = submit_tag I18n.t('self-accredited-status.submit'), :class => "btn btn-primary"

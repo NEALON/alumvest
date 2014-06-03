@@ -1,21 +1,36 @@
-= content_for :header_1 do
-  #title
-
-- if @user.investor.present?
-  = render 'investors/side_navigation', :active => 'bank_account'
-- else
-  = render 'users/side_navigation', :active => @active
-
-#information.dashboard
-  %h1
-    Link your Bank Account
-  = form_for @bank_account, :url => user_bank_account_path(@user), :html => {:id => 'issuer_bank_account_form', :class => 'form-horizontal well'} do |f|
-    = render 'shared/errors', :entity => @bank_account
-    = f.hidden_field :user_id
-    %fieldset
-      - with_options :form => f do |op|
-        = op.render_cell 'tb/form/text', :display, :field => :bank_account_holder
-        = op.render_cell 'tb/form/select', :display, :field => :bank_account_type, :values => ["CHECKING", "SAVING"]
-        = op.render_cell 'tb/form/text', :display, :field => :bank_account_routing
-        = op.render_cell 'tb/form/text', :display, :field => :bank_account_number
-      = render_cell 'tb/form/submit_button', :display, :label => 'Save'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        - if @user.investor.present?
+          = render 'investors/side_navigation', :active => 'bank_account'
+        - else
+          = render 'users/side_navigation', :active => @active
+      
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top.no-marg-bottom Link your Bank Account
+          %p.lead In order to make your investments, you may choose to link your bank account in advance. Alternatively, you can electronically (ACH) transfer your funds at the time you choose to invest.
+          
+          .row
+            .col-lg-10
+              = simple_form_for @bank_account, url: user_bank_account_path(@user), :wrapper => :vertical_form_with_icon, validate: true do |f|
+                = render 'shared/error_notification', :errors => f.error_notification   
+                = f.hidden_field :user_id
+                = f.input :bank_account_holder, :label => 'Name on Account', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                = f.input :bank_account_routing, :label => 'Routing Number', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                .row
+                  .col-sm-6
+                    = f.input :bank_account_number, :label => 'Account Number', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6 
+                    .form-group
+                      %label.control-label Confirm Account
+                      .has-feedback
+                        %input{:type => 'text', :class => 'form-control'}
+                        %i.glyphicon.glyphicon-ok.form-control-feedback
+                = f.input :bank_account_type, :as => :radio_buttons, :label => false, :collection => ["Checking", "Savings"], :checked => ["Checking"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
+                .form-action
+                  = f.submit 'Link Bank Account', :class => 'btn btn-primary btn-lg'
+              

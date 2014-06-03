@@ -4,15 +4,15 @@ class BankAccountsController < ApplicationController
     @user = Alumvest::UserBase.find_by_id(params[:user_id])
     @active = 'bank_account'
 
-    if @user.profile_complete?
+    #if @user.profile_complete?
       @bank_account = Bancbox::BankAccount.new(
           :user => @user,
           :bank_account_holder => current_user.name,
       )
       # authorize! :manage, @bank_account
-    else
-      render 'show_profile_incomplete'
-    end
+    #else
+      #render 'show_profile_incomplete'
+    #end
   end
 
   def create
