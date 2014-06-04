@@ -36,3 +36,7 @@
       = link_to edit_user_bank_account_path(@user) do
         %i.fa.fa-usd.fa-fw 
         %span.hidden-xs Bank Account
+    %li{:class => "#{'active' if active == 'investor_newsfeed'}"}
+      = link_to user_investor_events_path(@user) do
+        %i.fa.fa-rss-square.fa-fw 
+        %span.hidden-xs Investor Newsfeed

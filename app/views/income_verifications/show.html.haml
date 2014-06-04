@@ -1,26 +1,62 @@
-= content_for :header_1 do
-  #title
-
-= render 'investors/side_navigation', :active => 'income_verification'
-
-#information
-  - unless @income_verification.submitted?
-    %table
-      %tr
-        %td
-          = button_to 'Edit', edit_user_investor_income_verification_path(@user), :class => 'btn btn-default btn-xs', :method => :get
-        %td
-          = button_to 'Submit to Veri-Tax', submit_to_veritax_user_investor_income_verification_path(@user), :class => 'btn btn-default btn-xs', :method => :put
-
-  = render 'shared/property_row', :header => 'First name', :value => @income_verification.first_name
-  = render 'shared/property_row', :header => 'Last name', :value => @income_verification.last_name
-  = render 'shared/property_row', :header => 'SSN', :value => @income_verification.ssn
-  = render 'shared/property_row', :header => 'Email', :value => @income_verification.email
-  = render 'shared/property_row', :header => 'Address', :value => @income_verification.address
-  = render 'shared/property_row', :header => 'City', :value => @income_verification.city
-  = render 'shared/property_row', :header => 'State', :value => @income_verification.state
-  = render 'shared/property_row', :header => 'Zip code', :value => @income_verification.zip_code
-  = render 'shared/property_row', :header => 'Previous address', :value => @income_verification.previous_address
-  = render 'shared/property_row', :header => 'Previous city', :value => @income_verification.previous_city
-  = render 'shared/property_row', :header => 'Previous state', :value => @income_verification.previous_state
-  = render 'shared/property_row', :header => 'Previous zip', :value => @income_verification.previous_zip
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'investors/side_navigation', :active => 'income_verification'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top.no-marg-bottom Investor Certification
+          %p= I18n.t('veritax-help-1').html_safe
+          %p= I18n.t('veritax-help-2').html_safe
+          
+          %hr
+          
+          = simple_form_for @income_verification, url: user_investor_income_verification_path(@user), :wrapper => :vertical_form_with_icon, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification  
+            
+            = f.hidden_field :investor_id
+            
+            .row
+              .col-lg-10
+                .row
+                  .col-sm-6
+                    = f.input :first_name, disabled: true, :label => 'First Name', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :last_name, disabled: true, :label => 'Last Name', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                .row
+                  .col-sm-6
+                    = f.input :ssn, disabled: true, :label => 'SSN', :placeholder => "XXX-XX-XXXX", :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :email, disabled: true, :label => 'Email', :hint => I18n.t('veritax-help-email').html_safe, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            
+            
+            = f.input :address, disabled: true, :label => 'Address', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            .row
+              .col-sm-9
+                .row
+                  .col-sm-6
+                    = f.input :city, disabled: true, :label => 'City', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :state, disabled: true, :label => 'State', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+              .col-sm-3
+                = f.input :zip_code, disabled: true, :label => 'ZIP', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            
+            = f.input :previous_address, disabled: true, :label => 'Previous Address', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            .row
+              .col-sm-9
+                .row
+                  .col-sm-6
+                    = f.input :previous_city, disabled: true, :label => 'Previous City', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :previous_state, disabled: true, :label => 'Previous State', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+              .col-sm-3
+                = f.input :previous_zip, disabled: true, :label => 'Previous ZIP', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+          
+          .form-action
+            = simple_form_for @user, url: submit_to_veritax_user_investor_income_verification_path(@user), :method => :put do |f|
+              .btn-toolbar
+                = f.button :button, 'Submit to Veri-Tax', :class => 'btn-success btn-lg'
+                = link_to 'Edit', edit_user_investor_income_verification_path(@user), :class => 'btn btn-link btn-lg'
+            

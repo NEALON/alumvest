@@ -1,17 +1,20 @@
-= content_for :header_1 do
-  #title
-
-= render 'investors/side_navigation', :active => 'investor_newsfeed'
-
-#information
-  %h4
-    Your Investor Newsfeed
-  %p
-    Recent activity for your account and investments.
-  %hr
-    - unless @events.blank?
-      - @events.each do |e|
-        = render :partial => e.to_partial_path, :locals => {:event => e}
-    - else
-      %p
-        There are no events to review here.
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'investors/side_navigation', :active => 'investor_newsfeed'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top.no-marg-bottom Your Investor Newsfeed
+          %p Recent activity for your account and investments.
+          
+          %hr
+          
+          - unless @events.blank?
+            - @events.each do |e|
+              = render :partial => e.to_partial_path, :locals => {:event => e}
+          - else
+            %p
+              %i There are no events to review here.

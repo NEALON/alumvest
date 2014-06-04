@@ -1,4 +1,6 @@
-%p
-  = "An investment of #{number_to_currency(event.investment.amount)} was funded for "
-  = link_to event.investment.campaign.company.campaign_title, '#'
-  = "#{time_ago_in_words(event.created_at)} ago"
+.media.event
+  %code.pull-right.nowrap #{time_ago_in_words(event.created_at)} ago
+  .media-body
+    = "An investment of #{number_to_currency(event.investment.amount)} was funded for "
+    = link_to event.investment.campaign.company.campaign_title, '#'
+    = "."

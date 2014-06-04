@@ -1,31 +1,61 @@
-= content_for :header_1 do
-  #title
-
-= render 'investors/side_navigation', :active => 'income_verification'
-
-#information
-  = form_for @income_verification, :url => user_investor_income_verification_path(@user), :html => {:id => 'income_verification_form', :class => 'form-horizontal editing-form well'} do |f|
-    = render 'shared/errors', :entity => @income_verification
-
-    %fieldset
-      = f.hidden_field :investor_id
-
-      - with_options :form => f do |op|
-        = op.render_cell 'tb/form/subhead', :display, :label => 'Investor Certification'
-        = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-1').html_safe
-        = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-2').html_safe
-        = op.render_cell 'tb/form/text', :display, :field => :first_name
-        = op.render_cell 'tb/form/text', :display, :field => :last_name
-        = op.render_cell 'tb/form/text', :display, :field => :ssn, :label => 'SSN', :placeholder => "XXX-XX-XXXX"
-        = op.render_cell 'tb/form/helptext', :display, :text => I18n.t('veritax-help-email').html_safe
-        = op.render_cell 'tb/form/text', :display, :field => :email
-        = op.render_cell 'tb/form/text', :display, :field => :address
-        = op.render_cell 'tb/form/text', :display, :field => :city
-        = op.render_cell 'tb/form/text', :display, :field => :state
-        = op.render_cell 'tb/form/text', :display, :field => :zip_code
-        = op.render_cell 'tb/form/text', :display, :field => :previous_address
-        = op.render_cell 'tb/form/text', :display, :field => :previous_city
-        = op.render_cell 'tb/form/text', :display, :field => :previous_state
-        = op.render_cell 'tb/form/text', :display, :field => :previous_zip
-
-      = render_cell 'tb/form/submit_button', :display, :label => 'Review and submit'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'investors/side_navigation', :active => 'income_verification'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top.no-marg-bottom Investor Certification
+          %p= I18n.t('veritax-help-1').html_safe
+          %p= I18n.t('veritax-help-2').html_safe
+          
+          %hr
+          
+          = simple_form_for @income_verification, url: user_investor_income_verification_path(@user), :wrapper => :vertical_form_with_icon, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification  
+            
+            = f.hidden_field :investor_id
+            
+            .row
+              .col-lg-10
+                .row
+                  .col-sm-6
+                    = f.input :first_name, :label => 'First Name', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :last_name, :label => 'Last Name', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                .row
+                  .col-sm-6
+                    = f.input :ssn, :label => 'SSN', :placeholder => "XXX-XX-XXXX", :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :email, :label => 'Email', :hint => I18n.t('veritax-help-email').html_safe, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            
+            
+            = f.input :address, :label => 'Address', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            .row
+              .col-sm-9
+                .row
+                  .col-sm-6
+                    = f.input :city, :label => 'City', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :state, :label => 'State', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+              .col-sm-3
+                = f.input :zip_code, :label => 'ZIP', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            
+            = f.input :previous_address, :label => 'Previous Address', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            .row
+              .col-sm-9
+                .row
+                  .col-sm-6
+                    = f.input :previous_city, :label => 'Previous City', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .col-sm-6
+                    = f.input :previous_state, :label => 'Previous State', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+              .col-sm-3
+                = f.input :previous_zip, :label => 'Previous ZIP', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            
+            .form-action
+              = f.button :button, :class => 'btn-primary btn-lg' do
+                %span.hidden-xs Review and submit
+                %span.hidden-sm.hidden-md.hidden-lg Submit
+         

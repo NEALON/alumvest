@@ -1,4 +1,6 @@
-%p
-  = 'Your '
-  = link_to 'income verification request', user_investor_income_verification_path(event.investor.user)
-  = " was marked as canceled by Veri-Tax #{time_ago_in_words(event.created_at)} ago."
+.media.event
+  %code.pull-right.nowrap #{time_ago_in_words(event.created_at)} ago
+  .media-body
+    = 'Your '
+    = link_to 'income verification request', user_investor_income_verification_path(event.investor.user)
+    = " was marked as canceled by Veri-Tax."

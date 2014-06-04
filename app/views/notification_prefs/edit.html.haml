@@ -1,33 +1,41 @@
-= content_for :header_1 do
-  #title
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'investors/side_navigation', :active => 'notification_prefs'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Notify
+          
+          = simple_form_for @user, :url => user_notification_prefs_path(@user), html: {class: 'form-horizontal self-accredited-fr'}, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification
+            
+            .panel.panel-default.no-borders
+              .panel-heading
+                .text-default Social & Investment Activity & Updates
+              .panel-body
+                .form-group
+                  %label.col-sm-3.control-label Email me when
+                  .col-sm-9
+                    = f.input :direct_message_pref, :label => 'I am sent a direct message', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :comment_reply_pref, :label => 'Someone replies to my comment or question', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :update_pref, :label => 'A company or fund I follow posts an update', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :funding_milestone_pref, :label => 'A company or fund I follow hits a funding milestone', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :profile_update_pref, :label => 'A company or fund I follow updates their profile', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :answer_pref, :label => 'A company or fund I follow answers a question', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+            
+            .panel.panel-default.no-borders
+              .panel-heading
+                .text-default AlumVest Activity & Updatest
+              .panel-body
+                .form-group
+                  %label.col-sm-3.control-label Email me with
+                  .col-sm-9        
+                    = f.input :alumvest_update_pref, :label => 'Important updates about AlumVest', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :featured_startup_pref, :label => 'Featured startups (no more than twice a week)', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                    = f.input :highlighted_update_pref, :label => 'Highlighted updates from trending startups (no more than every 2 weeks)', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                .form-action
+                  = f.submit 'Save', :class => 'btn btn-primary btn-lg'
 
-= render 'investors/side_navigation', :active => 'notification_prefs'
-
-#information.dashboard
-  %h1
-    Notifications
-  = form_for @user, :url => user_notification_prefs_path(@user), :html => {:id => 'user_notification_prefs_form', :class => 'form-horizontal editing-form well'} do |f|
-    = render 'shared/errors', :entity => @user
-
-    %fieldset
-      - with_options :form => f do |op|
-        %h2
-          Social & Investment Activity & Updates
-        %h3
-          Email me when
-        = op.render_cell 'tb/form/checkbox', :display, :field => :direct_message_pref,      :label => 'I am sent a direct message'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :comment_reply_pref,       :label => 'Someone replies to my comment or question'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :update_pref,              :label => 'A company or fund I follow posts an update'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :funding_milestone_pref,   :label => 'A company or fund I follow hits a funding milestone'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :profile_update_pref,      :label => 'A company or fund I follow updates their profile'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :answer_pref,              :label => 'A company or fund I follow answers a question'
-        %h2
-          Alumvest Activity & Updates
-        %h3
-          Email me with
-
-        = op.render_cell 'tb/form/checkbox', :display, :field => :alumvest_update_pref,     :label => 'Important updates about Alumvest'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :featured_startup_pref,    :label => 'Featured startups (no more than twice a week)'
-        = op.render_cell 'tb/form/checkbox', :display, :field => :highlighted_update_pref,  :label => 'Highlighted updates from trending startups (no more than every 2 weeks)'
-
-      = render_cell 'tb/form/submit_button', :display, :label => 'Save'

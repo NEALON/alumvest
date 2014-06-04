@@ -3,11 +3,11 @@
 
 en:
   hello: "Hello world"
-  veritax-help-1: 'We use <a href="http://www.veri-tax.com/">Veri-tax</a> as an income verification service. Please provide the <b>address that you used for income tax filing</b> purposes below. Also include a previous filing address, if applicable during the last 3 years.'
+  veritax-help-1: 'We use <a href="http://www.veri-tax.com/" target="_blank">Veri-tax</a> as an income verification service. Please provide the <b>address that you used for income tax filing</b> purposes below. Also include a previous filing address, if applicable during the last 3 years.'
   veritax-help-2: 'Please note that <em>the data that you enter here will not replace the profile data that you have already entered</em> in the Alumvest system. This information will be used for income verification services, only.'
-  veritax-help-email: 'You will be emailed an <b>IRS Form 4506-T</b> to complete and e-sign. Tell us which email address to use for that.'
+  veritax-help-email: 'You will be emailed an <strong class="nowrap">IRS Form 4506-T</strong> to complete and e-sign. Tell us which email address to use for that.'
   self-accredited-status:
-    info: 'Below, we will ask you to <b>self-verify</b> that you are an accredited investor. Before you make your investment, we will also ask you to <b>officially verify</b> your accredited investor status through one of our thrid-party service providers.'
+    info: 'Starting Sept 2013, SEC regulations require us to take "reasonable steps" to verify that  investors are accredited. Please click on the button below to officially verify  your accredited investor status through one of our 3rd party service providers.  We will contact you if we need more information.'
     financial-status:
       title: 'Financial Status'
       status-1: 'My net worth is over $1 million, excluding my home.'
