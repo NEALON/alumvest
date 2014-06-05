@@ -53,9 +53,11 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 }
 
 // Panel styles
-.panel { @include box-shadow(none); }
+.panel { @include box-shadow(none); margin-bottom: 29px; }
 
 .panel-heading { font: {weight: bold; size: 15px;} }
+
+.panel-body { font-size: 13px; }
 
 .panel-body .form-horizontal .control-label, .form-horizontal .panel-body .control-label { text-align: left; }
 
@@ -99,6 +101,9 @@ h4, .h4 {
 @include bg-variant('.bg-default', #f5f5f5);
 
 @include text-emphasis-variant('.text-default', $text-color);
+@include text-emphasis-variant('.text-info', $blue-dark);
+
+hr { border-top-color: #e7e8e8; }
 
 
 /* ==========================================================================

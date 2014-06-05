@@ -7,8 +7,9 @@ $black          : #000000;
 $blue           : #3588e0;
 $blue-light     : #4f84bf;
 $blue-lighten   : #88baf0;
+$blue-dark      : #19adea;
 $green          : #7bb81a;
-$green-dark     : #55a137;
+$green-dark     : #6bb042;
 
 $facebook-blue  : #3b5998;
 $twitter-blue   : #00aced;
@@ -721,7 +722,7 @@ $list-group-link-heading-color: #333 !default;
 //##
 
 $panel-bg:                    #fff !default;
-$panel-body-padding:          7px 18px;
+$panel-body-padding:          18px;
 $panel-heading-padding:       10px 18px;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         0;
@@ -730,7 +731,7 @@ $panel-border-radius:         0;
 $panel-inner-border:          #ddd !default;
 $panel-footer-bg:             #f5f5f5 !default;
 
-$panel-default-text:          #19adea;
+$panel-default-text:          $blue-dark;
 $panel-default-border:        #f5f5f5;
 $panel-default-heading-bg:    #f5f5f5;
 
