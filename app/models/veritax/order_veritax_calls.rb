@@ -35,7 +35,8 @@ module Veritax::OrderVeritaxCalls
           when 'Canceled'
             cancel!
           else
-            raise "Unhandled Veritax order status: #{vt_status}"
+          "Current status, #{vt_status}" 
+            #raise "Unhandled Veritax order status: #{vt_status}"
         end
       else
         raise "Unhandled condition encountered retrieving order info: #{response.inspect}"
