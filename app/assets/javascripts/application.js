@@ -21,3 +21,8 @@
 //= require cocoon
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function() {
+  // Init Tooltips
+  $('[data-toggle="tooltip"]').tooltip();
+});

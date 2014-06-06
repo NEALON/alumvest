@@ -7,212 +7,206 @@
         .dashboard-content
           = render 'layouts/flash', :flash => flash
           
-          %h1.text-primary.no-marg-top Dashboard
+          %h1.text-primary.no-marg-top.no-marg-bottom Dashboard
           
-          .user-head-info
+          %section.user-head-info
             .media
               .user-avatar.pull-left
                 - if !@investor.photo_url.blank?
                   = image_tag(@investor.photo_url + "/convert?w=92&h=92", :class => 'img-thumbnail')
                 - else
-                  = image_tag("noavatar.gif", :class => 'img-thumbnail')
-                
+                  = image_tag("noavatar.gif", :class => 'img-thumbnail')        
               .media-body
                 .top-info
                   .row
-                    .col-md-7
+                    .col-lg-8
                       %h3.name
                         = @user.full_name
                         
                         - unless @investor.city.nil? || @investor.city.empty?
+                          %span.separator
                           %small.city
                             %i.fa.fa-globe
                             = @investor.city
                       .interested-in
-                        %h5 Interested in: 
-                        %ul.list-unstyled
-                          %li tech
-                          %li mobile
-                          %li healthcare
-                          %li tech
-                          %li mobile
-                          %li healthcare
-                          %li tech
-                          %li mobile
-                          %li healthcare
-                          %li tech
-                          %li mobile
-                          %li healthcare
-                          %li tech
-                          %li mobile
-                          %li healthcare
-                    .col-md-5
+                        .media
+                          %h6.pull-left Interested in: 
+                          .media-body
+                            %ul.list-inline
+                              %li tech
+                              %li mobile
+                              %li healthcare
+                              %li tech
+                              %li mobile
+                              %li healthcare
+                              %li tech
+                              %li mobile
+                              %li healthcare
+                              %li tech
+                              %li mobile
+                              %li healthcare
+                              %li tech
+                              %li mobile
+                              %li healthcare
+                    .col-lg-4.invite-friends
                       = link_to 'Invite Friends', '#', :class => 'btn btn-success btn-sm'
                 .bottom-info
+                  %hr
                   .education-list
-                    %ul.list-unstyled
+                    %ul.list-inline
                       %li
-                        %i.fa.fa-hear
+                        %i.fa.fa-th.fa-fw
                         Harward University
                       %li
-                        %i.fa.fa-hear
+                        %i.fa.fa-th.fa-fw
                         Wharton University
                       %li
-                        %i.fa.fa-hear
+                        %i.fa.fa-th.fa-fw
                         Columbia University
                       %li
-                        %i.fa.fa-hear
-                        Harward University
+                        %i.fa.fa-th.fa-fw
+                        Troy University
                       %li
-                        %i.fa.fa-hear
-                        Wharton University
+                        %i.fa.fa-th.fa-fw
+                        Northern Arizona University
                       %li
-                        %i.fa.fa-hear
-                        Columbia University
+                        %i.fa.fa-th.fa-fw
+                        Bangor University
                       %li
-                        %i.fa.fa-hear
-                        Harward University
+                        %i.fa.fa-th.fa-fw
+                        BPP University
                       %li
-                        %i.fa.fa-hear
-                        Wharton University
+                        %i.fa.fa-th.fa-fw
+                        Falmouth University
                       %li
-                        %i.fa.fa-hear
-                        Columbia University
+                        %i.fa.fa-th.fa-fw
+                        School of Advanced Study
+                        
+          / END .user-head-info
           
           %section.following-companies-unit              
             %h4.text-info Companies I'm following
             %hr.no-marg-top
-            %ul.list-unstyled
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
-              %li
-                .btn.btn-company
-                  Company Name
-                  %i.fa.fa-times
+            %ul.list-inline
+              - if @user.follows.empty?
+                %li 
+                  %i You are not yet following
+              - else
+                - @user.follows.each do |follow|
+                  - campaign = follow.campaign
+                  %li
+                    = link_to display_campaign_company_path(campaign), :class => 'btn btn-company' do
+                      = "#{campaign.company.company_name}"
+                      %i.fa.fa-times-circle.fa-fw{:data => {:toggle => "tooltip", :placement => "right"}, :title => 'Unfollow'}
           
-          %section.panel.panel-default
-            .panel-heading My Investment Amount
-            .panel-body
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          / END .following-companies-unit 
           
-          %section.panel.panel-default
-            .panel-heading My School Updates
+          %section.panel.panel-default.panel-table
+            .panel-heading 
+              %h4.panel-title My Investment Amount
             .panel-body
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              .table-responsive
+                %table.table.table-bordered.table-hover.bold
+                  %thead
+                    %tr
+                      %th.col-sm-1 
+                        Investment
+                        %br
+                        Date
+                      %th.col-sm-2
+                        @
+                        %br
+                        Founders
+                      %th.col-sm-3 
+                        Founders
+                        %br
+                        Schools
+                      %th.col-sm-2  
+                        %span.nowrap Pre-financing
+                        %br
+                        Valuation
+                      %th.col-sm-2 
+                        Lead
+                        %br
+                        Investors
+                      %th.col-sm-2 
+                        Recent
+                        %br
+                        Activities
+                  %tbody
+                    %tr
+                      %td 21/04/14
+                      %td
+                        %ul.list-inline.no-marg
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                      %td
+                        %p Michigan University
+                        %p Wharton University
+                      %td $ 25,22,588
+                      %td
+                        %ul.list-inline.no-marg
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                      %td Martin invested $50k.
+                    %tr
+                      %td 21/04/14
+                      %td
+                        %ul.list-inline.no-marg
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                      %td 
+                        %p Michigan University
+                        %p Wharton University
+                      %td $ 25,22,588
+                      %td
+                        %ul.list-inline.no-marg
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                      %td Martin invested $50k.
 
+          / END My Investment Amount 
+            
           %section.panel.panel-default
-            .panel-heading My Angel, VC & Other Updates
+            .panel-heading 
+              %h4.panel-title My School Updates
             .panel-body
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              .text-right
+                = link_to '#', :class => 'bold inverse' do
+                  Next Update
+                  %i.fa.fa-angle-right
 
+          / END My School Updates
+            
           %section.panel.panel-default
-            .panel-heading Please Tell Us About Your Investment Preferences
+            .panel-heading 
+              %h4.panel-title My Angel, VC & Other Updates
             .panel-body
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          
-          -#
-            .dashboard.investor-dashboard
-            
-              .follows
-                %h4 Companies I'm following
-                %hr
-                %ul
-                  - @user.follows.each do |follow|
-                    - campaign = follow.campaign
-                    %li
-                      = link_to campaign.company.company_name, display_campaign_company_path(campaign)
-            
-              .school-update.block
-                .block-header
-                  My School Updates
-                .block-body
-                  There is no update
-            
-              .vc-updates.block
-                .block-header
-                  Angel, VC's and More Updates
-                .block-body
-                  There is no update
-            
-              .my-events.block
-                .block-header
-                  My Events
-                .block-body
-                  - unless @events.blank?
-                    - @events.each do |e|
-                      = render partial:  e.to_partial_path, :locals => {:event => e}
-                  - else
-                    %p
-                      There are no events to review here.
-            
-              .my-investments.block
-                .block-header
-                  My Investments
-                .block-body
-                  = #TODO insert real data
-                  %table.table
-                    %tbody
-                      %tr
-                        %td
-                          Investment Date
-                        %td
-                          Founder Schools
-                        %td
-                          Pre-financing Valuation
-                        %td
-                          Lead Investors
-                        %td
-                          Recent Activities
-                      %tr
-                        %td
-                          2/14/13
-                        %td
-                          MIT, Columbia University
-                        %td
-                          $100,000
-                        %td
-                          Zial Faiosu
-                        %td
-                          Martin invested $50k.
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              .text-right
+                = link_to '#', :class => 'bold inverse' do
+                  Next Update
+                  %i.fa.fa-angle-right
+
+          / END My Angel, VC & Other Updates
+                  
+          %section.panel.panel-default
+            .panel-heading 
+              %h4.panel-title
+                %span.hidden-sm.hidden-xs Please Tell Us About 
+                Your Investment Preferences
+            .panel-body
+              = simple_form_for :test, :url => '', :wrapper => :vertical_form, validate: true do |f|
+                .row
+                  .col-sm-6
+                    = f.input :schools, :as => :text, :label => 'Schools', :placeholder => 'Please Describe here'
+                    = f.input :sectors, :as => :text, :label => 'Sectors', :placeholder => 'Please Describe here'
+                    = f.input :avg, :as => :text, :label => ('<span class="hidden-sm hidden-xs">Your Avg,</span> Size of Investment').html_safe, :placeholder => 'Please Describe here'
+                  .col-sm-6
+                    = f.input :location, :as => :text, :label => 'Location', :placeholder => 'Please Describe here'
+                    = f.input :type_security, :as => :text, :label => 'Type of Security', :placeholder => 'Please Describe here'
+                    = f.input :other_investment, :as => :text, :label => ('Other Investment <span class="hidden-sm hidden-xs">Preferences</span>').html_safe, :placeholder => 'Please Describe here'
+                = f.button :submit, 'Save', :class => 'btn-primary btn-lg'
+
+          / END Please Tell Us About Your Investment Preferences

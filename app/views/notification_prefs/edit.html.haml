@@ -14,9 +14,9 @@
             
             .panel.panel-default.no-borders
               .panel-heading
-                .text-default Social & Investment Activity & Updates
+                %h3.panel-title.text-default Social & Investment Activity & Updates
               .panel-body
-                .form-group
+                .form-group.no-marg-bottom
                   %label.col-sm-3.control-label Email me when
                   .col-sm-9
                     = f.input :direct_message_pref, :label => 'I am sent a direct message', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
@@ -28,9 +28,9 @@
             
             .panel.panel-default.no-borders
               .panel-heading
-                .text-default AlumVest Activity & Updatest
+                %h3.panel-title.text-default AlumVest Activity & Updatest
               .panel-body
-                .form-group
+                .form-group.no-marg-bottom
                   %label.col-sm-3.control-label Email me with
                   .col-sm-9        
                     = f.input :alumvest_update_pref, :label => 'Important updates about AlumVest', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}

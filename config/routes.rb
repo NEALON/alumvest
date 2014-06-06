@@ -1,4 +1,6 @@
 Av::Application.routes.draw do
+  # Routes for Static pages
+  get ':action' => 'static#:action'
 
   get 'reviews/accept'
   get 'reviews/reject'

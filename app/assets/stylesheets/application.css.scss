@@ -39,8 +39,8 @@ a.inverse, .inverse a { color: $link-hover-color;
 }
 
 // Set transitions
-a, button, .btn, .form-control, .form-control-feedback { @include transition(#{all .3s}); 
-  &:hover, &:focus { @include transition(#{all .08s}); }
+a, button, .btn, .form-control, .form-control-feedback { @include transition(box-shadow .3s, color .3s, background .3s, opacity .3s, border .3s, width .3s, padding .3s, margin .3s); 
+  &:hover, &:focus { @include transition(box-shadow .08s, color .08s, background .08s, opacity .08s, border .08s, width .08s, padding .08s, margin .08s); }
 }
 
 // Flex Video lets browsers automatically scale video objects in your webpages
@@ -55,11 +55,30 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 // Panel styles
 .panel { @include box-shadow(none); margin-bottom: 29px; }
 
-.panel-heading { font: {weight: bold; size: 15px;} }
+.panel-heading, .panel-title { font: {family: $font-family-sans-serif; weight: bold; size: 15px;} }
 
 .panel-body { font-size: 13px; }
 
 .panel-body .form-horizontal .control-label, .form-horizontal .panel-body .control-label { text-align: left; }
+
+.panel-table {
+  .panel-body { padding: 0; }
+  
+  .table-bordered { border: 0 none; margin: 0;
+    > thead, > tbody, > tfoot {
+      > tr {
+        td, th { border-width: 1px 0 0 1px; 
+          &:first-child { border-left: 0 none; }
+        }
+      }
+    }
+  }
+  
+  .table-responsive { border: 0 none; margin: {right: -1px; bottom: 0;} }
+}
+
+// Tooltip styles
+.tooltip { font-size: 11px; }
 
 
 /* ==========================================================================
@@ -68,7 +87,7 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(#{a
 p { margin-bottom: 16px; }
 
 h1, .h1 { line-height: 1.4; }
-h3, .h3, h4, .h4 { font: {family: $font-family-sans-serif; weight: bold;} }
+h3, .h3, h4, .h4, h6, .h6 { font: {family: $font-family-sans-serif; weight: bold;} }
 h4, .h4 {
   &.bg-default, &.bg-primary, &.bg-success, &.bg-info, &.bg-warning, &.bg-danger { padding: 12px 22px; }
 }
@@ -103,7 +122,7 @@ h4, .h4 {
 @include text-emphasis-variant('.text-default', $text-color);
 @include text-emphasis-variant('.text-info', $blue-dark);
 
-hr { border-top-color: #e7e8e8; }
+hr { border-top-color: $gray-lighten; }
 
 
 /* ==========================================================================
@@ -113,7 +132,18 @@ hr { border-top-color: #e7e8e8; }
 // Alternate buttons
 // --------------------------------------------------
 
-.btn { font-family: $font-family-open-sans; padding: {left: 30px; right: 30px;} text-shadow: none; }
+.btn { font-family: $font-family-open-sans; padding: {left: 30px; right: 30px;} text-shadow: none; 
+  &.btn-sm, &.btn-xs { padding: {left: 19px; right: 19px;} }
+  
+  // Btn company
+  &.btn-company { background: mix(#f9f9f9, #ededed); @include gradient-vertical(#f9f9f9, #ededed); border: 0 none; border-radius: 100px; @include box-shadow(0 1px 1px rgba($black, .25)); color: $blue-dark; font: {family: $font-family-sans-serif; size: 12px; weight: bold;} margin-bottom: 18px; padding: 5px 11px !important; @include transition(none); 
+    &:hover, &:focus { background: none $blue; color: $white; 
+      .fa { color: $white; text-shadow: 1px 1px lighten($black, 50%); }
+    }
+    
+    .fa { color: #BEBEBE; font-size: 15px; left: 4px; position: relative; text-shadow: 1px 1px $white; top: 1px; }
+  }
+}
 
 .btn-link {
   &:hover, &:focus { text-decoration: none; }
@@ -240,6 +270,29 @@ textarea { resize: vertical; }
 
 
 /* ==========================================================================
+   Table Styles
+   ========================================================================== */
+.table { font-size: 12px; 
+  th { color: #0073a3; }
+  td { color: #737373; }
+  
+  > thead, > tbody, > tfoot {
+    > tr {
+      td, th { line-height: 1.2; }
+    }
+  }
+  
+  thead th { font: {size: 13px; weight: bold;} }
+  
+  p { margin-bottom: 6px; }
+  
+  .marg-bottom { margin-bottom: 6px !important; }
+  
+  .list-inline > li { padding-right: 0; }
+}
+
+
+/* ==========================================================================
    Navs Styles
    ========================================================================== */
 .nav { font-family: $font-family-serif;
@@ -311,7 +364,7 @@ textarea { resize: vertical; }
   
     .form-control, .form-control-feedback { background: darken($white, 5%); border-radius: 100px; color: $gray-dark; }
     
-    .form-control { border-color: darken($white, 5%); @include placeholder($gray-dark);
+    .form-control { border-color: darken($white, 5%); font-size: 13px; @include placeholder($gray-dark);
       &:focus { background: $white; border-color: $input-border-focus !important; color: $blue-light;
         + .form-control-feedback { background: $input-border-focus; color: $white;
           &:hover, &:focus { background: darken($input-border-focus, 10%); color: $white; }
@@ -466,29 +519,72 @@ textarea { resize: vertical; }
 /**
  * User profile styles
  */
-.user-head-info { font-size: 12px; margin-bottom: 31px;
-  .user-avatar { max-width: 100%; width: 75px; }
-  
-  .name { margin: {top: -1px; bottom: 3px;} }
+.user-head-info { font-size: 12px; margin: {top: 19px; bottom: 31px;}  
+  .name { margin: {top: -1px; bottom: 3px;} 
+    .separator { background: #ccc; display: inline-block; height: 16px; margin: 0 8px; width: 1px; }
+    .city { position: relative; top: -2px; }
+  }
   
   .invests { font: {family: $font-family-serif; size: 35px; weight: 300;} margin-bottom: 4px; 
     .count-invests { color: $blue; font: {size: 35px; weight: 300;} }
     sup { font: {family: $font-family-sans-serif; size: 13px; weight: bold;} left: -0.3em; top: -1.2em; }
   }
   
-  .list-inline { margin: 0;
+  .description { margin: 0;
     .fa { font-size: 15px; margin-right: 2px; position: relative; top: 1px; }
     > li { display: block; line-height: 1.1; margin: 0 0 10px; padding: 0; }
   }
   
-  @media (min-width: $screen-sm) { font: {size: 13px; weight: bold;} 
-    .user-avatar { width: auto; }
-    
+  .city { color: $text-color;
+    .fa { font-size: 15px; margin-right: 2px; position: relative; top: 1px; }
+  }
+  
+  .invite-friends { margin-top: 15px; 
+    @media (min-width: $screen-lg) { margin-top: 0; text-align: right; }
+  }
+  
+  .bottom-info { margin-bottom: 23px;
+    hr { margin: {top: 17px; bottom: 17px;} }
+  }
+  
+  @media (min-width: $screen-sm) { font: {size: 13px; weight: bold;}     
     .name { margin: {top: 0; bottom: ($line-height-computed / 2);} }
     
-    .list-inline {
+    .city { font: {size: 13px; weight: bold;} }
+    
+    .description {
       > li { display: inline; line-height: inherit; margin: 0 23px 0 0; }
     }
+  }
+  
+  @media (max-width: $screen-xs) {
+    .user-avatar { float: none !important; margin-bottom: 10px; }
+  }
+  
+  @media (min-width: $screen-sm) {
+    .user-avatar { margin-right: 20px; }
+  }
+}
+
+// Interested In
+.interested-in { margin-top: -5px;
+  h6 { line-height: inherit; margin: 0 5px 0 0 !important; }
+
+  .list-inline { margin: 0;
+    > li { display: inline; margin: 0; padding: 0; text-transform: lowercase;
+      + li:before { content: ", "; margin-left: -1px; }
+    }
+  }
+  
+  @media (max-width: $screen-sm) { margin-top: 9px;
+    h6 { float: none !important; margin-right: 0; }
+  }
+}
+
+// Education List
+.education-list { line-height: 1.7;
+  .list-inline > li { margin-right: 6px; white-space: nowrap;
+    .fa { color: #5b8cc3; font: {size: 10px; weight: normal;} top: 0; }
   }
 }
 
@@ -512,6 +608,13 @@ textarea { resize: vertical; }
     
     + .event { border-top: 0 none; padding-top: 0; }
   }
+}
+
+/**
+ * Following Unit
+ */
+.following-companies-unit { margin-bottom: 44px;
+  .list-inline > li { margin-right: 6px; }
 }
 
 
