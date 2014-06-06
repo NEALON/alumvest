@@ -55,7 +55,19 @@ class AdminsController < ApplicationController
 
     redirect_to income_verification_events_user_admin_path(current_user)
   end
+  def completed_order
+    order = Veritax::OrderBase.find(params[:veritax_order_id])
+    status = order.get_order_info!
+    redirect_to income_verification_events_user_admin_path(current_user),:flash => {:success => status}
+  end
 
+  def cancel_order
+    order = Veritax::OrderBase.find(params[:veritax_order_id])
+     status = order.get_order_info!
+    redirect_to income_verification_events_user_admin_path(current_user),:flash => {:success => status}
+  end
+  
+  
   def income_verification_transcript
     order = Veritax::OrderBase.find(params[:veritax_order_id])
     send_data Base64.decode64(order.vt_transcript), :filename => 'transcript.pdf', :type => 'application/pdf'

@@ -108,6 +108,8 @@ Av::Application.routes.draw do
       get :income_verification_events
       get :campaign_events
       get :investor_signings
+      get :completed_order
+      get :cancel_order
       get :simulate_completed_order
       get :simulate_canceled_order
       get :income_verification_transcript

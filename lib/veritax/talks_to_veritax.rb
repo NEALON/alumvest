@@ -9,8 +9,8 @@ class Veritax::TalksToVeritax
 
   if Rails.env.production?
     ENDPOINT_IN_USE = PRODUCTION_ENDPOINT
-    LOGIN = 'sablovatskiy'
-    PASSWORD = 'alumvest2014'
+    LOGIN = 'AlumVest'
+    PASSWORD = 'Awesometeam!'
   else
     ENDPOINT_IN_USE = CERT_ENDPOINT
     LOGIN = 'AlumVest_WS'
