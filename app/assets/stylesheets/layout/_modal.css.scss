@@ -1,0 +1,9 @@
+.modal-title {
+  color: lighten($black, 70%);
+  text-align: right;
+  
+  .logo {
+    position: relative;
+    top: -2px;
+  }
+}

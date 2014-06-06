@@ -27,7 +27,7 @@
     .root
       = render 'layouts/header'
       
-      .wrapper-content
+      .wrapper-content{:class => content_for?(:wrapper_classes) ? "#{yield(:wrapper_classes)}" : ""}
         - if content_for? :header_1
           .container
             = yield :header_1

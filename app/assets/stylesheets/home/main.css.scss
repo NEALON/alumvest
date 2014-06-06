@@ -2,39 +2,109 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#cover.row{
-	margin: 0;
+.masthead {
+  background: image-url('home/pretty.jpg') left top no-repeat darken($white, 20%);
+  
+  @media (min-width: $screen-sm-min) {
+    background: {size: cover; position: center top;}
+    min-height: 600px;
+  }
+
+  > .inner {
+    padding: 30px 0;
+    
+    @media (min-width: $screen-sm-min) {
+      padding: 60px 0;
+    }
+  }
+  
+  .left-info { text-align: center;
+    @media (min-width: $screen-sm-min) {
+      margin-top: 40px;
+      width: 40%;
+    }
+    
+    .triangle-img { 
+      margin-bottom: 60px;
+      
+      > img {
+        left: 6px;
+        margin: 0 auto;
+        position: relative; 
+      }
+    }
+    
+    .btn {
+      max-width: 100%;
+      width: 250px;
+      
+      .fa {
+        display: inline;
+        font-size: 32px;
+        line-height: 0;
+        margin-right: 10px;
+        position: relative;
+        text-shadow: 0px -1px 1px rgba($black, .7);
+        top: 5px;
+      }
+    }
+  }
 }
 
-#cover.jumbotron{
-	margin-top: -30px;
-	
-	@media (min-width: $screen-sm) { margin-top: -69px; }
+.horizontal-separator {  
+  border-top: 1px solid #e5e5e5;
+  color: $black;  
+  font: {size: 16px; weight: 400; style: italic;}
+  margin: 30px -8px 15px;
+  text-align: center;
+  
+  > .inner {
+    background-color: $white;
+    display: inline-block;
+    padding: 0 20px;
+    position: relative;
+    top: -13px;
+    z-index: 1;
+  }
 }
 
-#cover{
-	padding: 0;
-	min-height: 600px;
-	background: image-url('home/pretty.jpg') repeat;
-	background-size: cover;
-	background-repeat: no-repeat;
-	overflow: hidden;
-
-	.container{
-		width: 960px;
-		margin: auto auto;
-		background-color: rgba(0, 0, 0, 0.4);
-		color: #ffffff;
-		position: relative;
-		top: 70px;
-		line-height: 1.3em;
-
-		h2{
-			font-family: 'Tinos', Georgia, serif;
-			font-weight: 700;
-		}
-	}
+.video-trailer-wrapper {
+  background: $black;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56%;
+  position: relative;
+  
+  video, iframe {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .overlay-bg {
+    background: image-url('home/video-bg.jpg') center center;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    @include opacity(.5);
+    position: absolute;
+    top: 0;
+    @include transition(all .3s);
+    width: 100%;
+    z-index: 2;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    padding-top: 37%;
+    
+    video, iframe {
+      top: -15%;
+    }
+  }
 }
+
+.no-video .video-trailer-wrapper { display: none; }
 
 #active{
 	.campaign-group-title{
@@ -274,4 +344,26 @@
 	display: block;
 	min-height: 120px;
 	margin: 0;
+}
+
+/**
+ * Featured on Home page
+ */
+
+.wrapper-featured {
+  background: #47c9af;
+  text-align: center;
+  padding: {top: 10px; bottom: 5px;}
+  
+  h4 { margin-bottom: 15px; }
+  
+  .item { margin-bottom: 25px; 
+    img { margin: {left: auto; right: auto;} }
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    //text-align: left;
+    
+    //.item img { margin: {left: 0; right: 0;} }
+  }
 }
