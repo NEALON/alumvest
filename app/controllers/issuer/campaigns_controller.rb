@@ -4,7 +4,6 @@ class Issuer::CampaignsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @issuer = @user.issuer
     @campaign = @issuer.campaign
-    render :layout =>'issuers'
   end
 
   def create
