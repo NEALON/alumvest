@@ -430,9 +430,7 @@ textarea { resize: vertical; }
   .dashboard-content { background: $white; @include box-shadow(-8px 0 10px -7px rgba($black, .1)); @include clearfix; min-height: 792px; padding: 13px 15px 80px; 
     h1 { margin-bottom: 25px; }
     
-    @media (min-width: $screen-sm) { padding: 18px 37px 170px; 
-      h1 { margin-bottom: 39px; }
-    }
+    @media (min-width: $screen-sm) { padding: 18px 37px 170px; }
   }
   
   // Dashboard Navigation (left info)
@@ -525,7 +523,7 @@ textarea { resize: vertical; }
 /**
  * User profile styles
  */
-.user-head-info { font-size: 12px; margin: {top: 19px; bottom: 31px;}  
+.user-head-info { font-size: 12px; margin-bottom: 31px;  
   .name { margin: {top: -1px; bottom: 3px;} 
     .separator { background: #ccc; display: inline-block; height: 16px; margin: 0 8px; width: 1px; }
     .city { position: relative; top: -2px; }
@@ -621,6 +619,56 @@ textarea { resize: vertical; }
  */
 .following-companies-unit { margin-bottom: 44px;
   .list-inline > li { margin-right: 6px; }
+}
+
+/**
+ * Social Networks
+ */
+.social-networks-unit {
+  .social-item { background: darken($white, 40%); color: $white; display: block; font: {size: 15px; weight: bold;} margin-bottom: 30px; 
+    a { color: $white; }
+    
+    .social-icon { background: darken($white, 50%); font-size: 19px; line-height: 39px; margin: 0; text-align: center; @include transition(all .3s); width: 39px; }
+    
+    .social-body { padding: 9px 19px 9px 12px; }
+  
+    // Facebook
+    &.facebook { background: $facebook-blue; 
+      .social-icon { background: darken($facebook-blue, 10%); }
+    }
+    
+    // Twitter
+    &.twitter { background: $twitter-blue; 
+      .social-icon { background: darken($twitter-blue, 10%); }
+    }
+    
+    // LinkedIn
+    &.linkedin { background: $linkedin-blue; 
+      .social-icon { background: darken($linkedin-blue, 10%); }
+    }
+  }
+  
+  a.social-item {
+    &:hover, &:focus {
+      .social-icon { background: darken($white, 60%); @include transition(all .08s); }
+      .social-body:after { width: 100%; }
+      
+      // Facebook
+      &.facebook { background: darken($facebook-blue, 10%);
+        .social-icon { background: darken($facebook-blue, 20%); }
+      }
+      
+      // Facebook
+      &.twitter { background: darken($twitter-blue, 10%);
+        .social-icon { background: darken($twitter-blue, 20%); }
+      }
+      
+      // Facebook
+      &.linkedin { background: darken($linkedin-blue, 10%);
+        .social-icon { background: darken($linkedin-blue, 20%); }
+      }
+    }
+  }
 }
 
 
