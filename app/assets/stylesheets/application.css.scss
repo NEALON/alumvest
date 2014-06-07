@@ -241,12 +241,18 @@ label { font: {size: 17px; weight: normal;} }
     .control-label { padding-top: ($padding-base-vertical + 1) - 2; }
   }
   
-  .form-control-static {
+  .help-inline {
     font-size: 12px;
     padding-top: ($padding-base-vertical + 2);
     padding-bottom: ($padding-base-vertical + 2);
   }
 }
+
+.form-control-static { color: $blue-muted; font-weight: bold; 
+  &.blank { color: $gray-light; font-weight: normal; }
+}
+
+.help-inline { @extend .form-control-static; color: $text-color; font-weight: normal; }
 
 .form-group { margin-bottom: 19px; }
 
@@ -584,7 +590,7 @@ textarea { resize: vertical; }
 // Education List
 .education-list { line-height: 1.7;
   .list-inline > li { margin-right: 6px; white-space: nowrap;
-    .fa { color: #5b8cc3; font: {size: 10px; weight: normal;} top: 0; }
+    .fa { color: $blue-muted; font: {size: 10px; weight: normal;} top: 0; }
   }
 }
 

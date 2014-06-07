@@ -1,27 +1,38 @@
-= content_for :header_1 do
-  #title
-
-- if @user.investor.present?
-  = render 'investors/side_navigation', :active =>  @active
-- else
-  = render 'users/side_navigation', :active => @active
-
-#information
-  = render 'shared/property_row', :header => 'First Name', :value => @user.first_name
-  = render 'shared/property_row', :header => 'Middle Name', :value => @user.middle_name
-  = render 'shared/property_row', :header => 'Last Name', :value => @user.last_name
-  = render 'shared/property_row', :header => 'Gender', :value => @user.gender
-  = render 'shared/property_row', :header => 'Date of Birth', :value => @user.date_of_birth
-  = render 'shared/property_row', :header => 'SSN', :value => @user.ssn
-  = render 'shared/property_row', :header => 'Mobile Phone', :value => @user.mobile_phone
-  = render 'shared/property_row', :header => 'Home Phone', :value => @user.home_phone
-  = render 'shared/property_row', :header => 'Address 1', :value => @user.address_1
-  = render 'shared/property_row', :header => 'Address 2', :value => @user.address_2
-  = render 'shared/property_row', :header => 'City', :value => @user.city
-  = render 'shared/property_row', :header => 'State', :value => @user.state
-  = render 'shared/property_row', :header => 'Zip', :value => @user.zipcode
-  = render 'shared/property_row', :header => 'Email', :value => @user.email
-  = render 'shared/property_row', :header => 'Facebook', :value => @user.facebook
-  = render 'shared/property_row', :header => 'LinkedIn', :value => @user.linkedin
-  = render 'shared/property_row', :header => 'Personal Statement', :value => (raw @user.personal_statement)
-  = button_to 'Edit', edit_user_path(@user), :class => 'btn btn-default btn-xs', :method => :get
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        - if @user.investor.present?
+          = render 'investors/side_navigation', :active =>  @active
+        - else
+          = render 'users/side_navigation', :active => @active
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Account Info
+          
+          = simple_form_for @user, :url => '', :wrapper => :vertical_form, :html => {:class => 'form-vertical full-account-info-fr'}, validate: true do |f|
+            .row
+              .col-sm-6
+                = f.input :first_name, :label => 'First Name', :as => :display
+                = f.input :middle_name, :label => 'Middle Name', :as => :display
+                = f.input :last_name, :label => 'Last Name', :as => :display
+                = f.input :gender, :label => 'Gender', :as => :display
+                = f.input :date_of_birth, :label => 'Date of Birth', :as => :display
+                = f.input :ssn, :label => 'SSN', :as => :display
+                = f.input :mobile_phone, :label => 'Mobile Phone', :as => :display
+                = f.input :home_phone, :label => 'Home Phone', :as => :display
+                = f.input :address_1, :label => 'Address 1', :as => :display     
+              .col-sm-6
+                = f.input :address_2, :label => 'Address 2', :as => :display     
+                = f.input :city, :label => 'City', :as => :display     
+                = f.input :state, :label => 'State', :as => :display     
+                = f.input :zipcode, :label => 'Zip', :as => :display     
+                = f.input :email, :label => 'Email', :as => :display     
+                = f.input :facebook, :label => 'Facebook', :as => :display     
+                = f.input :linkedin, :label => 'LinkedIn', :as => :display     
+                = f.input :personal_statement, :label => 'Personal Statement', :as => :display    
+            
+            .form-action
+              =link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary btn-lg'

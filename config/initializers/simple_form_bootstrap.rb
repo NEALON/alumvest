@@ -95,7 +95,7 @@ SimpleForm.setup do |config|
     end
   
     b.wrapper tag: 'div', class: 'col-sm-4' do |ba|
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'form-control-static' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-inline' }
     end
   end
 
