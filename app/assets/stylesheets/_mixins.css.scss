@@ -60,3 +60,15 @@
     background-color: invert($color);
   }
 }
+
+// Typography
+
+// [converter] $parent hack
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+  a#{$parent}:hover {
+    color: darken($color, 10%) !important;
+  }
+}

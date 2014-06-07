@@ -1,2 +1,18 @@
-= content_for :sidebar_left do
-  %ul.nav.nav-stacked
+%nav.dashboard-nav
+  %ul.nav.nav-pills.nav-stacked
+    %li{:class => "#{'active' if active == 'investor_dashboard'}"}
+      = link_to dashboard_user_investor_path(@user) do
+        %i.fa.fa-align-right.fa-rotate-90.fa-fw 
+        %span.hidden-xs Dashboard
+    %li{:class => "#{'active' if active == 'investor_profile'}"}
+      = link_to edit_user_investor_path(@user) do
+        %i.fa.fa-user.fa-fw 
+        %span.hidden-xs Profile
+    %li{:class => "#{'active' if active == 'basic_info'}"}
+      = link_to edit_user_account_info_path(@user) do
+        %i.fa.fa-info-circle.fa-fw
+        %span.hidden-xs Account Info
+    %li{:class => "#{'active' if active == 'settings_info'}"}
+      = link_to edit_user_settings_path(@user) do
+        %i.fa.fa-key.fa-fw 
+        %span.hidden-xs Password

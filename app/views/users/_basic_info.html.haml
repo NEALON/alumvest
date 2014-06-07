@@ -1,29 +1,46 @@
-= form_for @user, :url => user_path(@user), :html => {:id => 'user_basic_information_form', :class => 'form-horizontal editing-form well'} do |f|
-  = render 'shared/errors', :entity => @user
+= simple_form_for @user, :url => user_path(@user), :html => {:class => 'full-info-fr form-horizontal'}, :wrapper => :horizontal_form_with_inline_help, :validate => true do |f|
+  = render 'shared/error_notification', :errors => f.error_notification 
+  
+   
+  .panel.panel-default.no-borders
+    .panel-heading
+      %h3.panel-title.text-default Basic Info
+    .panel-body  
+      .basic-info
+        .form-group
+          %label.col-sm-3.control-label Photo
+          .col-sm-5
+            = f.filepicker_field :avatar_url, 'default', :html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"
+      
+        = f.input :first_name, :label => 'First Name'
+        = f.input :middle_name, :label => 'Middle Name'
+        = f.input :last_name, :label => 'Last Name'
+        = f.input :email, :hint => 'Email will not be public.'
+        = f.input :gender, :as => :select, :collection => ["Male", "Female"]
+        = f.input :mobile_phone, :label => 'Mobile Phone'
+        = f.input :home_phone, :label => 'Home Phone'
+        = f.input :address_1
+        = f.input :address_2
+        = f.input :city
+        = f.input :state
+        = f.input :zipcode, :label => 'Postal Code'
+        = f.input :facebook, :placeholder => 'http://www.facebook.com/user_name'
+        = f.input :linkedin, :label => 'LinkedIn', :placeholder => 'http://www.linkedin.com/in/user_name'
+        .wrapper-about-me
+          = f.input :personal_statement, :label => 'About me', :class => 'wrapper-statement', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}, :wrapper => :horizontal_form
+  
+  .panel.panel-default.no-borders
+    .panel-heading
+      %h3.panel-title.text-default Education Info
+    .panel-body  
+      #educations
+        = f.simple_fields_for :educations do |education|  
+          = render 'education_fields', :f => education
+        .wrapper-btn.text-center
+          = link_to_add_association(('<i class="fa fa-plus"></i> Add Education').html_safe, f, :educations)
+  
+  %hr
+  
+  .form-action  
+    = f.submit 'Save', :class => 'btn btn-primary btn-lg'
 
-  %fieldset
-    - with_options :form => f do |op|
-      = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
-      = op.render_cell 'tb/form/text', :display, :field => :first_name
-      = op.render_cell 'tb/form/text', :display, :field => :middle_name
-      = op.render_cell 'tb/form/text', :display, :field => :last_name
-      = op.render_cell 'tb/form/select', :display, :form => f, :field => :gender, :values => ["Male", "Female"]
-      = op.render_cell 'tb/form/text', :display, :field => :mobile_phone
-      = op.render_cell 'tb/form/text', :display, :field => :home_phone
-      = op.render_cell 'tb/form/text', :display, :field => :address_1
-      = op.render_cell 'tb/form/text', :display, :field => :address_2
-      = op.render_cell 'tb/form/text', :display, :field => :city
-      = op.render_cell 'tb/form/text', :display, :field => :state
-      = op.render_cell 'tb/form/text', :display, :field => :zipcode
-      = op.render_cell 'tb/form/text', :display, :field => :email
-      = op.render_cell 'tb/form/text', :display, :field => :facebook, :placeholder => "http://www.facebook.com/user_name"
-      = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => "http://www.linkedin.com/in/user_name"
-      = op.render_cell 'tb/form/richtext', :display, :field => :personal_statement
-
-      = op.render_cell 'tb/form/subhead', :display, :label => "Education"
-    #educations
-      = f.fields_for :educations do |e|
-        = render 'education_fields', :f => e
-      .links.col-md-8.col-md-offset-4
-        = link_to_add_association 'Add Education', f, :educations
-    = render_cell 'tb/form/submit_button', :display

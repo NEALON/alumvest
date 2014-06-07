@@ -14,14 +14,19 @@
             .social-networks-unit
               %ul.list-unstyled
                 %li
-                  = link_to '#', :class => 'social-item facebook' do
+                  .social-item.facebook
                     .media
                       .social-icon.pull-left
                         %i.fa.fa-facebook
                       .social-body.media-body
                         .row
-                          .col-sm-6
-                            .link-social Connect with Facebook
+                          .col-sm-10.col-lg-8
+                            .link-social 
+                              https://www.facebook.com/username
+                          .col-sm-2.col-lg-4
+                            .make-public
+                              = f.input :show_facebook, :label => ('<span class="hidden-md hidden-sm">Show on profile</span><span class="hidden-xs hidden-lg nowrap">Public</span>').html_safe, :as => :boolean, :wrapper => :vertical_boolean
+                            
                 %li
                   = link_to '#', :class => 'social-item twitter' do
                     .media
@@ -29,17 +34,21 @@
                         %i.fa.fa-twitter
                       .social-body.media-body
                         .row
-                          .col-sm-6
+                          .col-sm-8
                             .link-social Connect with Twitter
                 %li
-                  = link_to '#', :class => 'social-item linkedin' do
+                  .social-item.linkedin
                     .media
                       .social-icon.pull-left
                         %i.fa.fa-linkedin
                       .social-body.media-body
                         .row
-                          .col-sm-6
-                            .link-social Connect with LinkedIn
+                          .col-sm-10.col-lg-8
+                            .link-social
+                              http://www.linkedin.com/pub/username
+                          .col-sm-2.col-lg-4
+                            .make-public
+                              = f.input :show_linkedin, :label => ('<span class="hidden-md hidden-sm">Show on profile</span><span class="hidden-xs hidden-lg nowrap">Public</span>').html_safe, :as => :boolean, :wrapper => :vertical_boolean
                 / END .social-item                  
             / END .social-networks-unit    
                          

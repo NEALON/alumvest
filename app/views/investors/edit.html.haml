@@ -40,6 +40,10 @@
                     Member since October 2013
                     
           / END .user-head-info
+          
+          %h6.bg-default 
+            Has nothing to say yet!
+            %i.fa.fa-comment.pull-right
                   
           = simple_form_for @investor, url: user_investor_path(@user), html: {class: 'user-info-fr'}, validate: true do |f|
             = render 'shared/error_notification', :errors => f.error_notification              

@@ -87,9 +87,15 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 p { margin-bottom: 16px; }
 
 h1, .h1 { line-height: 1.4; }
+
 h3, .h3, h4, .h4, h6, .h6 { font: {family: $font-family-sans-serif; weight: bold;} }
+
 h4, .h4 {
   &.bg-default, &.bg-primary, &.bg-success, &.bg-info, &.bg-warning, &.bg-danger { padding: 12px 22px; }
+}
+
+h6, .h6 {
+  &.bg-default, &.bg-primary, &.bg-success, &.bg-info, &.bg-warning, &.bg-danger { margin-bottom: 29px; padding: 12px 14px; }
 }
 
 @media (min-width: $screen-sm) {
@@ -121,6 +127,10 @@ h4, .h4 {
 
 @include text-emphasis-variant('.text-default', $text-color);
 @include text-emphasis-variant('.text-info', $blue-dark);
+@include text-emphasis-variant('.text-primary', $brand-primary);
+@include text-emphasis-variant('.text-success', $state-success-text);
+@include text-emphasis-variant('.text-warning', $state-warning-text);
+@include text-emphasis-variant('.text-danger', $state-danger-text);
 
 hr { border-top-color: $gray-lighten; }
 
@@ -206,6 +216,9 @@ hr { border-top-color: $gray-lighten; }
 .btn-xl { @extend .btn-lg;
   @media (min-width: $screen-lg) { font-size: 26px; padding: {top: $padding-xl-vertical; bottom: $padding-xl-vertical;} }
 }
+
+// Wrapper button
+.wrapper-btn > a { @extend .btn; @extend .btn-sm; @extend .btn-default; }
 
 
 /* ==========================================================================
@@ -475,6 +488,25 @@ textarea { resize: vertical; }
   }
 }
 
+.full-info-fr {
+  @media (min-width: $screen-sm) {
+    .basic-info {
+      .control-label { white-space: nowrap; width: 127px; }
+      
+      .wrapper-about-me {
+        .control-label { float: left; white-space: nowrap; width: 127px; 
+          + [class^="col-"], [class*=" col-"] { float: none; margin-left: 127px; width: auto; }
+        }
+      }
+    }
+  }
+}
+
+// Remove Association Btn
+.wrapper-remove-association { margin-top: -5px; }
+
+.nested-fields { border-bottom: 1px dashed $gray-lighten; margin-bottom: 20px; }
+
 // Profile Privacy Form
 .profile-privacy-fr {
   @media (min-width: $screen-sm) {
@@ -625,47 +657,64 @@ textarea { resize: vertical; }
  * Social Networks
  */
 .social-networks-unit {
-  .social-item { background: darken($white, 40%); color: $white; display: block; font: {size: 15px; weight: bold;} margin-bottom: 30px; 
+  .social-item { background: darken($white, 40%); color: $white; display: block; font-size: 13px; margin-bottom: 30px; position: relative; z-index: 1;
     a { color: $white; }
     
     .social-icon { background: darken($white, 50%); font-size: 19px; line-height: 39px; margin: 0; text-align: center; @include transition(all .3s); width: 39px; }
     
-    .social-body { padding: 9px 19px 9px 12px; }
+    .social-body { padding: 11px 12px; word-break: break-all; 
+      .make-public {
+        .form-group { margin-bottom: 0; 
+          .checkbox { margin: 10px 0 0 0; 
+            label { font-size: 10px; line-height: 19px; }
+            
+            @media (min-width: $screen-sm) { float: right; margin: 0;
+              label { font: {size: 13px; weight: bold;} }
+            }
+          }
+        }
+      }
+    }
+    
+    &:after { background: darken($white, 50%); content: ''; display: block; height: 100%; left: 0; position: absolute; top: 0; @include transition(all .3s); width: 39px; z-index: -1; }
   
     // Facebook
     &.facebook { background: $facebook-blue; 
-      .social-icon { background: darken($facebook-blue, 10%); }
+      .social-icon, &:after { background: darken($facebook-blue, 10%); }
     }
     
     // Twitter
     &.twitter { background: $twitter-blue; 
-      .social-icon { background: darken($twitter-blue, 10%); }
+      .social-icon, &:after { background: darken($twitter-blue, 10%); }
     }
     
     // LinkedIn
     &.linkedin { background: $linkedin-blue; 
-      .social-icon { background: darken($linkedin-blue, 10%); }
+      .social-icon, &:after { background: darken($linkedin-blue, 10%); }
+    }
+    
+    @media (min-width: $screen-sm) { font: {size: 15px; weight: bold;} line-height: 21px; 
+      .social-body { padding: 9px 12px; }
     }
   }
   
   a.social-item {
     &:hover, &:focus {
-      .social-icon { background: darken($white, 60%); @include transition(all .08s); }
-      .social-body:after { width: 100%; }
+      .social-icon, &:after { background: darken($white, 60%); @include transition(all .08s); }
       
       // Facebook
       &.facebook { background: darken($facebook-blue, 10%);
-        .social-icon { background: darken($facebook-blue, 20%); }
+        .social-icon, &:after { background: darken($facebook-blue, 20%); }
       }
       
       // Facebook
       &.twitter { background: darken($twitter-blue, 10%);
-        .social-icon { background: darken($twitter-blue, 20%); }
+        .social-icon, &:after { background: darken($twitter-blue, 20%); }
       }
       
       // Facebook
       &.linkedin { background: darken($linkedin-blue, 10%);
-        .social-icon { background: darken($linkedin-blue, 20%); }
+        .social-icon, &:after { background: darken($linkedin-blue, 20%); }
       }
     }
   }
@@ -741,8 +790,12 @@ textarea { resize: vertical; }
 .marg-right { margin-right: 15px !important; }
 .marg-left { margin-left: 15px !important; }
 
+.marg-top-lg { margin-top: 44px !important; }
+
 .no-pad-top { padding-top: 0 !important; }
 .no-pad-bottom { padding-bottom: 0 !important; }
+.no-pad-left { padding-left: 0 !important; }
+.no-pad-right { padding-right: 0 !important; }
 
 .no-borders { border: 0 none !important; }
 
