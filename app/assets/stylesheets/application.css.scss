@@ -1,21 +1,24 @@
-/*!
- * Project: Alumvest
- * Date: 05302014
- * 
- * Author: Eugene Tsurcan 
- * Front End Developer 
- * [http://www.linkedin.com/in/eugenetsurcan] 
- *  
- */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+*/
 
 // Core variables and mixins
 @import "variables";
 @import "mixins";
 
 // Vendor libraries
-@import "bootstrap.scss";
+@import "bootstrap";
+@import "font-awesome";
 
-@import "font-awesome.scss";
 
 // Import Fonts
 @import url(//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic,700,700italic|Roboto:700,700italic,400,400italic|Open+Sans:400italic,400);
@@ -88,6 +91,8 @@ p { margin-bottom: 16px; }
 
 h1, .h1 { line-height: 1.4; }
 
+.h2 .glyphicon { font-size: 19px; margin-right: 5px; }
+
 h3, .h3, h4, .h4, h6, .h6 { font: {family: $font-family-sans-serif; weight: bold;} }
 
 h4, .h4 {
@@ -99,10 +104,10 @@ h6, .h6 {
 }
 
 @media (min-width: $screen-sm) {
-  h1, .h1 { font-size: $font-size-h1-lg; }
-  h2, .h2 { font-size: $font-size-h2-lg; }
-  h3, .h3 { font-size: $font-size-h3-lg; }
-  h4, .h4 { font-size: $font-size-h4-lg; }
+  h1 { font-size: $font-size-h1-lg; }
+  h2 { font-size: $font-size-h2-lg; }
+  h3 { font-size: $font-size-h3-lg; }
+  h4 { font-size: $font-size-h4-lg; }
 }
 
 .separator-line { overflow: hidden; text-align: center; 
@@ -513,6 +518,7 @@ textarea { resize: vertical; }
     .control-label { float: left; white-space: nowrap; width: 85px; 
       + [class^="col-"], [class*=" col-"] { float: none; margin-left: 85px; width: auto; }
     }
+    .form-action > * { margin-left: 85px; }
   }
 }
 
@@ -566,13 +572,15 @@ textarea { resize: vertical; }
     sup { font: {family: $font-family-sans-serif; size: 13px; weight: bold;} left: -0.3em; top: -1.2em; }
   }
   
-  .description { margin: 0;
-    .fa { font-size: 15px; margin-right: 2px; position: relative; top: 1px; }
+  .description { margin-top: 15px;
+    .fa { font-size: 15px; }
     > li { display: block; line-height: 1.1; margin: 0 0 10px; padding: 0; }
+    
+    &.list-inline { margin: 0; }
   }
   
   .city { color: $text-color;
-    .fa { font-size: 15px; margin-right: 2px; position: relative; top: 1px; }
+    .fa { font-size: 15px; }
   }
   
   .invite-friends { margin-top: 15px; 
@@ -583,13 +591,38 @@ textarea { resize: vertical; }
     hr { margin: {top: 17px; bottom: 17px;} }
   }
   
+  .list-soc { font-size: 11px; margin-top: 20px;
+    > ul { @include clearfix; 
+      > li { float: left; 
+        a { color: $gray-dark; }      
+        + li { margin-left: 1px; }
+        
+        &.soc-twitter a {
+          &:hover, &:focus { color: $twitter-blue; }
+        }
+        
+        &.soc-facebook a {
+          &:hover, &:focus { color: $facebook-blue; }
+        }
+        
+        &.soc-linkedin a {
+          &:hover, &:focus { color: $linkedin-blue; }
+        } 
+      }
+    }
+    
+    @media (min-width: $screen-sm) { float: right; margin-top: 0; }
+  }
+  
   @media (min-width: $screen-sm) { font: {size: 13px; weight: bold;}     
     .name { margin: {top: 0; bottom: ($line-height-computed / 2);} }
     
     .city { font: {size: 13px; weight: bold;} }
     
-    .description {
-      > li { display: inline; line-height: inherit; margin: 0 23px 0 0; }
+    .description { margin-top: 0;
+      &.list-inline {
+        > li { display: inline; line-height: inherit; margin: 0 23px 0 0; }
+      }
     }
   }
   

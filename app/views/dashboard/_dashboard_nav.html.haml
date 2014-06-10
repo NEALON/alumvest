@@ -1,0 +1,86 @@
+%nav.dashboard-nav
+  %ul.nav.nav-pills.nav-stacked
+    - if @user.investor.present?
+      %li{:class => "#{'active' if active == 'investor_dashboard'}"}
+        = link_to dashboard_user_investor_path(@user) do
+          %i.fa.fa-align-right.fa-rotate-90.fa-fw 
+          %span.hidden-xs Dashboard
+      %li{:class => "#{'active' if active == 'investor_profile'}"}
+        = link_to edit_user_investor_path(@user) do
+          %i.fa.fa-user.fa-fw 
+          %span.hidden-xs Profile & Privacy
+      %li{:class => "#{'active' if active == 'basic_info'}"}
+        = link_to edit_user_account_info_path(@user) do
+          %i.fa.fa-info-circle.fa-fw
+          %span.hidden-xs Account Info
+      %li{:class => "#{'active' if active == 'settings_info'}"}
+        = link_to edit_user_settings_path(@user) do
+          %i.fa.fa-key.fa-fw 
+          %span.hidden-xs Password
+      %li{:class => "#{'active' if active == 'notification_prefs'}"}
+        = link_to edit_user_notification_prefs_path(@user) do
+          %i.fa.fa-exclamation-triangle.fa-fw 
+          %span.hidden-xs Notifications
+      %li{:class => "#{'active' if active == 'social_networks'}"}
+        = link_to '/socials' do
+          %i.fa.fa-heart.fa-fw 
+          %span.hidden-xs Social Networks
+      - if active == 'self_accredited_status'
+        %li{:class => "#{'active'}"}
+          = link_to new_user_investor_self_accredited_status_path(current_user) do
+            %i.fa.fa-file-text.fa-fw
+            %span.hidden-xs Accredited Investor <span class="hidden-md">Certification</span>
+      - else    
+        %li{:class => "#{'active' if active == 'income_verification'}"}
+          = raw(income_verification_link('Investor Certification'))        
+      %li{:class => "#{'active' if active == 'bank_account'}"}
+        = link_to edit_user_bank_account_path(@user) do
+          %i.fa.fa-usd.fa-fw 
+          %span.hidden-xs Bank Account
+      %li{:class => "#{'active' if active == 'investor_newsfeed'}"}
+        = link_to user_investor_events_path(@user) do
+          %i.fa.fa-rss-square.fa-fw 
+          %span.hidden-xs Investor Newsfeed
+    - else
+      %li{:class => "#{'active' if active == 'issuer_profile'}"}
+        = link_to user_issuer_path(@user) do
+          %i.fa.fa-align-right.fa-rotate-90.fa-fw 
+          %span.hidden-xs Founder Dashboard
+      %li{:class => "#{'active' if active == 'user_profile'}"}
+        = link_to '/profile' do
+          %i.fa.fa-user.fa-fw 
+          %span.hidden-xs Profile
+      %li{:class => "#{'active' if active == 'basic_info'}"}
+        = link_to edit_user_account_info_path(@user) do
+          %i.fa.fa-info-circle.fa-fw
+          %span.hidden-xs Account Info
+      %li{:class => "#{'active' if active == 'settings_info'}"}
+        = link_to edit_user_settings_path(@user) do
+          %i.fa.fa-key.fa-fw 
+          %span.hidden-xs Password
+      %li{:class => "#{'active' if active == 'issuer_campaign'}"}
+        = link_to user_issuer_campaign_path(@user) do
+          %i.fa.fa-building.fa-fw 
+          %span.hidden-xs Campaign
+      %li{:class => "#{'active' if active == 'issuer_campaign_investments'}"}
+        = link_to user_issuer_campaign_investments_path(@user) do
+          %i.fa.fa-credit-card.fa-fw
+          %span.hidden-xs Investments
+      %li{:class => "#{'active' if active == 'issuer_signings'}"}
+        = link_to user_issuer_signings_path(@user) do
+          %i.fa.fa-folder-open.fa-fw
+          %span.hidden-xs Documents
+      %li{:class => "#{'active' if active == 'bank_account'}"}
+        - if @user.bank_account.nil?
+          = link_to new_user_bank_account_path(@user) do
+            %i.fa.fa-usd.fa-fw 
+            %span.hidden-xs Bank Account
+        - else
+          = link_to user_bank_account_path(@user, @user.bank_account) do
+            %i.fa.fa-usd.fa-fw 
+            %span.hidden-xs Bank Account
+      %li{:class => "#{'active' if active == 'issuer_newsfeed'}"}
+        = link_to user_issuer_events_path(@user) do
+          %i.fa.fa-rss-square.fa-fw 
+          %span.hidden-xs Issuer Newsfeed
+      

@@ -3,6 +3,14 @@ class StaticController < ApplicationController
     @user = current_user
   end
   
+  def founder_dashboard
+    @user = current_user
+  end
+  
+  def profile
+    @user = current_user
+  end
+  
   def current_user
     @current_user ||= begin
       if session[:user_id]

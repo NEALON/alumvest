@@ -2,11 +2,7 @@
   %section.wrapper-dashboard
     .row
       .col-xs-2.col-md-3.col-lg-4
-        - if @user.investor.present?
-          = render 'investors/side_navigation', :active => 'bank_account'
-        - else
-          = render 'users/side_navigation', :active => @active
-      
+        = render 'dashboard/dashboard_nav', :active => 'bank_account'      
       .col-xs-10.col-md-9.col-lg-8.pull-right
         .dashboard-content
           = render 'layouts/flash', :flash => flash

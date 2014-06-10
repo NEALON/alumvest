@@ -1,0 +1,67 @@
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'user_profile'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %section.user-head-info
+            .media
+              .user-avatar.pull-left
+                - if !@user.avatar_url.blank?
+                  = image_tag(@user.avatar_url + "/convert?w=92&h=92", :class => 'img-thumbnail')
+                - else
+                  = image_tag("noavatar.gif", :class => 'img-thumbnail')
+                  
+              .media-body
+                .row
+                  .col-sm-9
+                    %h3.name
+                      = @user.full_name
+                    %ul.description.list-unstyled
+                      %li 
+                        %i.fa.fa-map-marker.fa-fw
+                        Newyork, United States
+                      %li
+                        %i.fa.fa-globe.fa-fw
+                        Wharton University
+                      %li
+                        %i.fa.fa-user.fa-fw
+                        Member since March 2014
+                  .col-sm-3
+                    .list-soc
+                      %ul.list-unstyled
+                        %li.soc-twitter
+                          = link_to 'https://twitter.com/AlumVest', :target => "_blank", :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => 'Twitter' do 
+                            %span.fa-stack
+                              %i.fa.fa-circle.fa-stack-2x
+                              %i.fa.fa-twitter.fa-stack-1x.fa-inverse
+                        %li.soc-facebook
+                          = link_to 'https://www.facebook.com/AlumVest', :target => "_blank", :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => 'Facebook' do
+                            %span.fa-stack
+                              %i.fa.fa-circle.fa-stack-2x
+                              %i.fa.fa-facebook.fa-stack-1x.fa-inverse
+                        %li.soc-linkedin
+                          = link_to 'http://www.linkedin.com/company/AlumVest', :target => "_blank", :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => 'LinkedIn' do
+                            %span.fa-stack
+                              %i.fa.fa-circle.fa-stack-2x
+                              %i.fa.fa-linkedin.fa-stack-1x.fa-inverse
+                    
+          / END .user-head-info
+          
+          %h6.bg-default 
+            Has nothing to say yet!
+            %i.fa.fa-comment.pull-right
+            
+          = simple_form_for :test, :url => '', :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :validate => true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification      
+            
+            .profile-privacy-fr
+              = f.input :tagline, :placeholder => 'About you.. in a couple of words....', :as => :text, input_html: {:rows => 3}
+              = f.input :website, :placeholder => 'www//...'
+              = f.input :bio, :placeholder => '"Your summary bio as you would like for others to see it"', :as => :string
+              
+              .form-action
+                = f.submit 'Save', :class => 'btn btn-primary btn-lg'

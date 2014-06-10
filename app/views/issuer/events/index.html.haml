@@ -1,13 +1,21 @@
-= render 'issuers/side_navigation', :active => 'issuer_newsfeed'
-
-#information
-  %h4
-    Your Issuer Newsfeed
-  %p
-    Recent activity related to you and your campaign.
-  %hr
-    - unless @events.blank?
-      = render @events
-    - else
-      %p
-        There are currently no newsfeed events to view.
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'issuer_newsfeed'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top.no-marg-bottom 
+            %span.hidden-xs Your 
+            Issuer Newsfeed
+          %p Recent activity related to you and your campaign.
+          
+          %hr
+          
+          - unless @events.blank?
+            = render @events
+          - else
+            %p
+              %i There are currently no newsfeed events to view.

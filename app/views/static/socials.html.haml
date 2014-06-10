@@ -2,7 +2,7 @@
   %section.wrapper-dashboard
     .row
       .col-xs-2.col-md-3.col-lg-4
-        = render 'investors/side_navigation', :active => 'social_networks'
+        = render 'dashboard/dashboard_nav', :active => 'social_networks'
       .col-xs-10.col-md-9.col-lg-8.pull-right
         .dashboard-content
           = render 'layouts/flash', :flash => flash
@@ -10,7 +10,6 @@
           %h1.text-primary.no-marg-top Social Networks 
           
           = simple_form_for :socials, :url => '', :wrapper => :vertical_form, validate: true do |f|
-            
             .social-networks-unit
               %ul.list-unstyled
                 %li

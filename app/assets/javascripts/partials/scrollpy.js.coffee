@@ -29,4 +29,8 @@ $ ->
         # $('#company-nav').removeClass('container')
 
   $(window).load () ->
-    window.navTop = $('.vertical-spacer-1-em').offset().top - parseFloat($('.vertical-spacer-1-em').css('margin-top').replace(/auto/, 0))
+    if $('.vertical-spacer-1-em').length
+      window.navTop = $('.vertical-spacer-1-em').offset().top - parseFloat($('.vertical-spacer-1-em').css('margin-top').replace(/auto/, 0))
+    else
+      window.navTop = 0
+      

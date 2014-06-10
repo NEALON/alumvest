@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.1.1'
 
 gem 'rake',  '10.3.1'
@@ -50,7 +50,7 @@ gem 'omniauth-linkedin', '~> 0.1'
 gem 'underscore-rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.1.1' #, {:git=>'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch=>'3'}
-gem 'font-awesome-sass'
+gem 'font-awesome-sass' # The iconic font designed for Bootstrap
 gem 'modernizr-rails'
 gem 'simple_form', '~> 3.1.0.rc1'
 #gem 'country_select', '~> 1.3.1'
@@ -77,7 +77,7 @@ gem 'faker', :git => 'git://github.com/interskh/faker'
 gem 'faker-medical', '~> 0.5.0'
 
 gem 'cancan', '~> 1.6'
-gem 'rails_admin', :git => 'git://github.com/jcoleman/rails_admin', :branch => 'vendorize-bootstrap-2'
+gem 'rails_admin', '~> 0.6.2'
 gem 'protected_attributes' # rails 4 removed attr_accessible
 
 gem 'docusign_rest', '~> 0.1', :git => 'git://github.com/mikepence/docusign_rest.git'

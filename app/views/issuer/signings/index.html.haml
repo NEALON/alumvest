@@ -1,13 +1,17 @@
-= render 'issuers/side_navigation', :active => 'issuer_newsfeed'
-
-#information
-  %h4
-    Your Documents
-  %hr
-    - unless @signings.empty?
-      - @signgings.each do |s|
-
-        = render :partial => 'issuer/signings/signing', :signing => s
-    - else
-      %p
-        There are no signings here right now.
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'issuer_signings'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Your Documents
+          
+          - unless @signings.empty?
+            - @signgings.each do |s|
+              = render :partial => 'issuer/signings/signing', :signing => s
+          - else
+            %p
+              %i There are no signings here right now.

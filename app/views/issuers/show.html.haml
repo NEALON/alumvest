@@ -1,8 +1,60 @@
-= render 'side_navigation', :active => 'issuer_profile'
-
-#information
-  %h4
-    Your Issuer Dashboard
-  %hr
-  %p
-    There is nothing here yet, but this will give you a high level summary of activity around your campaign.
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'issuer_profile'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %section.user-head-info
+            .media
+              .user-avatar.pull-left
+                - if !@user.avatar_url.blank?
+                  = image_tag(@user.avatar_url + "/convert?w=92&h=92", :class => 'img-thumbnail')
+                - else
+                  = image_tag("noavatar.gif", :class => 'img-thumbnail')
+                  
+              .media-body
+                .top-info
+                  .row
+                    .col-lg-8
+                      %h3.name
+                        = @user.full_name
+                      %ul.description.list-unstyled
+                        %li
+                          %i.fa.fa-globe.fa-fw
+                          Wharton University
+                    .col-lg-4
+                      .list-soc
+                        %ul.list-unstyled
+                          %li.soc-twitter
+                            = link_to 'https://twitter.com/AlumVest', :target => "_blank", :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => 'Twitter' do 
+                              %span.fa-stack
+                                %i.fa.fa-circle.fa-stack-2x
+                                %i.fa.fa-twitter.fa-stack-1x.fa-inverse
+                          %li.soc-facebook
+                            = link_to 'https://www.facebook.com/AlumVest', :target => "_blank", :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => 'Facebook' do
+                              %span.fa-stack
+                                %i.fa.fa-circle.fa-stack-2x
+                                %i.fa.fa-facebook.fa-stack-1x.fa-inverse
+                          %li.soc-linkedin
+                            = link_to 'http://www.linkedin.com/company/AlumVest', :target => "_blank", :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => 'LinkedIn' do
+                              %span.fa-stack
+                                %i.fa.fa-circle.fa-stack-2x
+                                %i.fa.fa-linkedin.fa-stack-1x.fa-inverse
+                .bottom-info.no-marg-bottom
+                  %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.          
+          / END .user-head-info
+          
+          %h3.h2.text-primary 
+            %i.glyphicon.glyphicon-stats.fa-fw
+            My Stats
+          
+          %h3.h2.text-primary 
+            %i.glyphicon.glyphicon-heart.fa-fw
+            My Companies
+          
+          %h3.h2.text-primary 
+            %i.glyphicon.glyphicon-refresh.fa-fw
+            My Updates

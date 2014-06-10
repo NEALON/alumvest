@@ -1,19 +1,26 @@
-= render 'issuers/side_navigation', :active => 'issuer_campaign_investments'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'issuer_campaign_investments'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Investments
 
-#information
-  %p
-    %table.table
-      %thead
-        %tr
-          %th
-            Investor
-          %th
-            Amount
-          %th
-            Status
-          %th
-            Created
-
-      %tbody
-        - @investments.each do |i|
-          = render :partial => 'investment', :locals => {:investment => i}
+          %table.table
+            %thead
+              %tr
+                %th
+                  Investor
+                %th
+                  Amount
+                %th
+                  Status
+                %th
+                  Created
+      
+            %tbody
+              - @investments.each do |i|
+                = render :partial => 'investment', :locals => {:investment => i}
