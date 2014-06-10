@@ -47,7 +47,7 @@
           
           %hr
           
-          = simple_form_for @self_accredited_status, :url => user_investor_self_accredited_status_path(@user), html: {class: 'form-horizontal self-accredited-fr'}, validate: true do |f|
+          = simple_form_for @self_accredited_status, :url => user_investor_self_accredited_status_path(@user), html: {id: 'self-accredited-status-form', class: 'form-horizontal self-accredited-fr'} do |f|
             = render 'shared/error_notification', :errors => f.error_notification   
             
             = f.hidden_field :investor_id

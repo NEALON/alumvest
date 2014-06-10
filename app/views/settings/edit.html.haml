@@ -9,7 +9,7 @@
           
           %h1.text-primary.no-marg-top Change your password
           
-          = simple_form_for @user, :url => user_settings_path(@user), html: {class: 'form-horizontal change-password-fr'}, wrapper: :horizontal_form_with_inline_help, validate: true do |f|
+          = simple_form_for @user, :url => user_settings_path(@user), html: {id: 'user_settings_form', class: 'form-horizontal change-password-fr'}, wrapper: :horizontal_form_with_inline_help, validate: true do |f|
             = render 'shared/error_notification', :errors => f.error_notification
             
             = f.input :password, :label => 'New Password'

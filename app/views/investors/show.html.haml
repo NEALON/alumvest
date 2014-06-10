@@ -1,38 +1,94 @@
-= content_for :header_1 do
-  #title
-
-= render 'side_navigation', :active => 'investor_profile'
-
-#information.dashboard
-  %h1= 'Profile & Privacy'
-
-  -#t.string   "tagline"
-  -#t.string   "website"
-  -#t.text     "bio"
-  -#t.string   "city"
-  -#t.string   "state"
-  -#t.string   "zip"
-  -#t.string   "photo_url"
-  -#t.boolean  "hide_investments"
-  -#t.boolean  "hide_investor_status"
-  -#t.string   "legal_name"
-  -#t.string   "legal_address"
-  -#t.string   "legal_city"
-  -#t.string   "legal_state"
-  -#t.string   "legal_postal_code"
-  -#t.string   "legal_country"
-
-  = render 'shared/property_row', :header => 'SSN', :value => @investor.ssn
-  = render 'shared/property_row', :header => 'Marital Status', :value => @investor.marital_status
-  = render 'shared/property_row', :header => 'Financial Info', :value => @investor.financial_info
-  = render 'shared/property_row', :header => 'Spending Habits', :value => @investor.spending_habits
-  = render 'shared/property_row', :header => 'Income', :value => @investor.income
-  = render 'shared/property_row', :header => 'Income Type', :value => @investor.income_type
-  = render 'shared/property_row', :header => 'Net Worth', :value => @investor.net_worth
-  = render 'shared/property_row', :header => 'Investor Representations', :value => @investor.investor_representations
-  = render 'shared/property_row', :header => 'Company', :value => @investor.company
-  = render 'shared/property_row', :header => 'Job Title', :value => @investor.job_title
-  = render 'shared/property_row', :header => 'Experience', :value => @investor.experience
-  = render 'shared/property_row', :header => 'Expertise', :value => @investor.expertise
-  = render 'shared/property_row', :header => 'Personal Message', :value => (raw @investor.personal_message)
-  = button_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-default btn-xs', :method => :get
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'investor_profile'      
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Profile & Privacy
+          
+          %section.user-head-info
+            .media
+              .user-avatar.pull-left
+                -#
+                  - if @user.avatar.blank?
+                    = image_tag @user.avatar(:thumb)
+                    
+                  - else
+                    %img{:src => "http://placehold.it/92x92"}
+              
+                - if !@investor.photo_url.blank?
+                  = image_tag(@investor.photo_url + "/convert?w=92&h=92", :class => 'img-thumbnail')
+                - else
+                  = image_tag("noavatar.gif", :class => 'img-thumbnail')
+                  
+              .media-body
+                %h3.name
+                  = @user.full_name
+                .invests
+                  %span.count-invests 21
+                  %sup Invests
+                %ul.description.list-inline
+                  - unless @investor.city.nil? || @investor.city.empty?
+                    %li
+                      %i.fa.fa-globe
+                      = @investor.city
+                  %li
+                    Member since October 2013
+                    
+          / END .user-head-info
+          
+          %h6.bg-default 
+            Has nothing to say yet!
+            %i.fa.fa-comment.pull-right
+                  
+          = simple_form_for @investor, url: user_investor_path(@user), html: {id: 'investor_profile_form', class: 'user-info-fr'}, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification              
+            = f.hidden_field :user_id
+            
+            .form-horizontal.profile-privacy-fr
+              = f.input :tagline, :disabled => true, :placeholder => 'About you.. in a couple of words....', :as => :text, input_html: {:rows => 3}, :wrapper => :horizontal_form
+              = f.input :website, :disabled => true, :placeholder => 'www//...', :wrapper => :horizontal_form
+              = f.input :bio, :disabled => true, :placeholder => '"Your summary bio as you would like for others to see it"', :as => :string, :wrapper => :horizontal_form
+              .form-group.no-marg-bottom
+                %label.col-sm-3.control-label Address
+                .col-sm-9
+                  .row
+                    .col-sm-5
+                      = f.input :city, :disabled => true, :label => false, :wrapper => false, :placeholder => 'City', input_html: {:class => 'marg-bottom'}
+                    .col-sm-4
+                      = f.input :state, :disabled => true, :label => false, :wrapper => false, :placeholder => 'State', input_html: {:class => 'marg-bottom'}
+                    .col-sm-3
+                      = f.input :zip, :disabled => true, :label => false, :wrapper => false, :placeholder => 'Zip', input_html: {:class => 'marg-bottom'}
+              .form-group
+                %label.col-sm-3.control-label Privacy
+                .col-sm-9
+                  = f.input :hide_investments, :disabled => true, :label => 'Hide my investments on AlumVest', :wrapper => :horizontal_boolean_row, wrapper_html: {:class => 'no-marg-bottom'}
+                  = f.input :hide_investor_status, :disabled => true, :label => 'Hide my investor status except to founders of companies I invest in', :wrapper => :horizontal_boolean_row
+              
+            %hr
+            
+            %h2.h1.text-primary.no-marg-top Legal Name & Address
+            %p.lead This Information is required for securities to be issued to you. It will be provided to startups or funds you invest in.
+            
+            .form-vertical.marg-top
+              .row
+                .col-lg-10
+                  = f.input :legal_name, :disabled => true, :label => 'Legal Name', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  = f.input :legal_address, :disabled => true, :label => 'Address', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .row
+                    .col-sm-6
+                      = f.input :legal_city, :disabled => true, :label => 'City', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                    .col-sm-6
+                      = f.input :legal_state, :disabled => true, :label => 'State', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                  .row
+                    .col-sm-6
+                      = f.input :legal_postal_code, :disabled => true, :label => 'Postal Code', :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                    .col-sm-6
+                      = f.input :legal_country, :disabled => true, :label => 'Country', :as => :string, :wrapper => :vertical_form_with_icon, :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                    
+            .form-action
+              %p.small If you don't have a US address, you can leave <strong>State</strong> blank.
+              = link_to 'Edit', edit_user_investor_path(@user), :class => 'btn btn-primary btn-lg'

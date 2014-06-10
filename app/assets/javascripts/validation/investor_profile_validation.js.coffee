@@ -56,6 +56,5 @@ $(document).ready ->
       required: "Please type in your experience"
     "alumvest_investor_base[expertise]":
       required: "Please type in your expertise"
-
-  $('#investor_profile_form .btn.btn-success').click (event) ->
-    $('#investor_profile_form').validate({rules, messages})
+  
+  $('#investor_profile_form').validate({rules, messages})

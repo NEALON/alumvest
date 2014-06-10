@@ -13,7 +13,7 @@
           
           %hr
           
-          = simple_form_for @income_verification, url: user_investor_income_verification_path(@user), :wrapper => :vertical_form_with_icon, validate: true do |f|
+          = simple_form_for @income_verification, url: user_investor_income_verification_path(@user), :html => {:id => 'income_verification_form'}, :wrapper => :vertical_form_with_icon, validate: true do |f|
             = render 'shared/error_notification', :errors => f.error_notification  
             
             = f.hidden_field :investor_id

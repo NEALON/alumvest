@@ -80,6 +80,15 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   .table-responsive { border: 0 none; margin: {right: -1px; bottom: 0;} }
 }
 
+// Well styles
+.well { border-radius: 0; @include box-shadow(none); padding: 17px 20px;
+  .well-heading {
+    h5, .h5 { font: {size: 15px; family: $font-family-serif; weight: normal;} margin-bottom: 14px; 
+      @media (min-width: $screen-sm) { font-size: 17px; }
+    }
+  }
+}
+
 // Tooltip styles
 .tooltip { font-size: 11px; }
 
@@ -138,6 +147,14 @@ h6, .h6 {
 @include text-emphasis-variant('.text-danger', $state-danger-text);
 
 hr { border-top-color: $gray-lighten; }
+
+// Description List
+dl { font-size: 13px; 
+  > dt:first-child { border-top: 0 none; padding-top: 0; }
+}
+dt { border-top: 1px solid #f2f2f2; color: #383838; font-weight: normal; margin-bottom: 9px; padding-top: 18px; }
+dd { color: #2e2e2e; font-weight: bold; margin-bottom: 15px; }
+dt, dd { line-height: 1.1; }
 
 
 /* ==========================================================================
@@ -313,6 +330,18 @@ textarea { resize: vertical; }
   .marg-bottom { margin-bottom: 6px !important; }
   
   .list-inline > li { padding-right: 0; }
+  
+  &.table-lg {
+    > thead, > tbody, > tfoot {
+      > tr {
+        td, th {
+          @media (min-width: $screen-lg) { padding: 20px 24px; }
+        }
+      }
+    }
+    
+    @media (min-width: $screen-sm) { font-size: 16px; }
+  }
 }
 
 
@@ -753,6 +782,41 @@ textarea { resize: vertical; }
   }
 }
 
+/**
+ * Company Item  
+ */
+.company-item { border-bottom: 1px solid #cdcdcd; margin: 0 auto; max-width: 100%; width: 320px; 
+  > .company-body { font-size: 13px; margin-bottom: 2px; padding: 9px; 
+    .title { margin-bottom: 30px;
+      h4 { font-family: $font-family-serif; margin: 0;
+        @media (min-width: $screen-sm) { font-size: 16px; }
+        
+        a {
+          &:hover, &:focus { color: $gray-darker; }
+        }
+      }
+      
+      .by-name { color: $gray-darker; font: {size: 12px; weight: bold;} margin-top: -1px;
+        a { color: $gray-darker; 
+          &:hover, &:focus { color: $link-color; }
+        }
+      } 
+    }
+    
+    figcaption { min-height: 188px; padding: 34px 16px 8px; }
+  }
+  
+  > .company-footer { padding: 9px; }
+  
+  > .company-body, > .company-footer { border: 1px solid #e8e8e8; }
+
+  @media (min-width: $screen-xs) { margin: {left: 0; right: 0;} }
+}
+
+.read-more { color: $text-color; 
+  &:hover, &:focus { color: $link-color; }
+}
+
 
 /* ==========================================================================
    Footer Styles
@@ -824,6 +888,7 @@ textarea { resize: vertical; }
 .marg-left { margin-left: 15px !important; }
 
 .marg-top-lg { margin-top: 44px !important; }
+.marg-bottom-lg { margin-top: 44px !important; }
 
 .no-pad-top { padding-top: 0 !important; }
 .no-pad-bottom { padding-bottom: 0 !important; }

@@ -32,9 +32,10 @@ $.validator.setDefaults({
   errorElement: 'p',
   errorClass: 'help-block small',
   errorPlacement: function(error, element) {
-    if(element.parent('.input-group').length) {
+    if(element.parent('.input-group').length || element.parent('.boolean').length) {
       error.insertAfter(element.parent());
-    } else {
+    } 
+    else {
       error.insertAfter(element);
     }
   }
@@ -43,4 +44,7 @@ $.validator.setDefaults({
 $(document).ready(function() {
   // Init Tooltips
   $('[data-toggle="tooltip"]').tooltip();
+  
+  // Init Knob (Progressbar for company items)
+  $('[data-toggle="knob"]').knob();
 });

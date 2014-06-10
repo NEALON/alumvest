@@ -18,14 +18,14 @@
               .media-body
                 .top-info
                   .row
-                    .col-lg-8
+                    .col-sm-9
                       %h3.name
                         = @user.full_name
                       %ul.description.list-unstyled
                         %li
                           %i.fa.fa-globe.fa-fw
                           Wharton University
-                    .col-lg-4
+                    .col-sm-3
                       .list-soc
                         %ul.list-unstyled
                           %li.soc-twitter
@@ -47,14 +47,130 @@
                   %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.          
           / END .user-head-info
           
-          %h3.h2.text-primary 
-            %i.glyphicon.glyphicon-stats.fa-fw
-            My Stats
+          %section
+            %h3.h2.text-primary.marg-bottom.marg-bottom-lg 
+              %i.glyphicon.glyphicon-stats.fa-fw
+              My Stats
+            
+            .table-responsive  
+              %table.table.table-bordered.table-lg
+                %tbody
+                  %tr
+                    %td Project A - (80%)
+                    %td $150,000 – 15% of equity fulfilled
+                  %tr
+                    %td Project C - (10%)
+                    %td $20,000 – 6% of equity fulfilled
+            
+          / END %section
           
-          %h3.h2.text-primary 
-            %i.glyphicon.glyphicon-heart.fa-fw
-            My Companies
+          %section
+            %h3.h2.text-primary.marg-bottom.marg-bottom-lg  
+              %i.glyphicon.glyphicon-heart.fa-fw
+              My Companies
+            
+            .row
+              .col-sm-6
+                .company-item
+                  .company-body
+                    %figure
+                      .image
+                        = link_to '#' do
+                          = image_tag("companies/company-1.jpg", :class => 'img-responsive', :title => 'Mobile app Generator')
+                      %figcaption
+                        .title
+                          %h4.upper 
+                            = link_to 'Mobile app Generator', '#'
+                          .by-name 
+                            by 
+                            = link_to 'Columbia University', '#'
+                        %p 
+                          This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit 
+                          = link_to '[ ..... ]', '#', :class => 'read-more nowrap', :title => 'read more', :data => {:toggle => "tooltip", :placement => "right", :container => 'body'}
+                  .company-footer
+                    .media
+                      .pull-left
+                        %input{:type => "text", :value => "75", :data => {:toggle => 'knob', :width => '56', :height => '56', :linecap => 'round', :readOnly => 'true', :fgColor => "#2c6291", :bgColor => "#4d9fe7", :displayPrevious => 'true', :thickness => '0.25'}}
+                      .media-body
+                        .row
+                          .col-sm-4
+                            %h6 Goal
+                            %p $25000
+                          .separator
+                          .col-sm-4
+                            %h6 Raised
+                            %p $15000
+                          .separator
+                          .col-sm-4
+                            %h6 Funders
+                            %p 250
+                / END .company-item
+                
+              .col-sm-6
+                .company-item
+                  .company-body
+                    %figure
+                      .image
+                        = link_to '#' do
+                          = image_tag("companies/company-2.jpg", :class => 'img-responsive', :title => 'Lighting Fx')
+                      %figcaption
+                        .title
+                          %h4.upper 
+                            = link_to 'Lighting Fx', '#'
+                          .by-name 
+                            by 
+                            = link_to 'Harward University', '#'
+                        %p 
+                          Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit 
+                          = link_to '[ ..... ]', '#', :class => 'read-more nowrap', :title => 'read more', :data => {:toggle => "tooltip", :placement => "right", :container => 'body'}
+                  .company-footer
+                    .media
+                      .pull-left
+                        1
+                      .media-body
+                        .row
+                          .col-sm-4
+                            %h6 Goal
+                            %p $25000
+                          .separator
+                          .col-sm-4
+                            %h6 Raised
+                            %p $15000
+                          .separator
+                          .col-sm-4
+                            %h6 Funders
+                            %p 250
+                / END .company-item
+            
+          / END %section
           
-          %h3.h2.text-primary 
-            %i.glyphicon.glyphicon-refresh.fa-fw
-            My Updates
+          %section
+            %h3.h2.text-primary.marg-bottom.marg-bottom-lg  
+              %i.glyphicon.glyphicon-refresh.fa-fw
+              My Updates
+            
+            .row
+              .col-sm-6
+                .well
+                  .well-heading
+                    %h5.no-marg-top.text-info Recent Updates
+                  %dl
+                    %dt 12/11/2013
+                    %dd John Q. invested $50,000 in project A for 5% equity.
+                    %dt 12/11/2013
+                    %dd John Q. invested $50,000 in project A for 5% equity.
+                    %dt 12/11/2013
+                    %dd John Q. invested $50,000 in project A for 5% equity.
+              .col-sm-6
+                .well
+                  .well-heading
+                    %h5.no-marg-top.text-info Attention Required
+                  %dl
+                    %dt 12/11/2013
+                    %dd John Q. invested $50,000 in project A for 5% equity.
+                    %dt 12/11/2013
+                    %dd John Q. invested $50,000 in project A for 5% equity.
+                    %dt 12/11/2013
+                    %dd John Q. invested $50,000 in project A for 5% equity.
+                    
+          / END %section

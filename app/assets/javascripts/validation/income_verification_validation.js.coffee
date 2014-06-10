@@ -42,6 +42,5 @@ $(document).ready ->
       required: "Please type in the state."
     "veritax_order_base[zip_code]":
       required: "Please type in your zip code"
-
-  $('#income_verification_form .btn.btn-success').click (event) ->
-    $('#income_verification_form').validate({rules, messages})
+  
+  $('#income_verification_form').validate({rules, messages})

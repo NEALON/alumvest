@@ -44,7 +44,7 @@
             Has nothing to say yet!
             %i.fa.fa-comment.pull-right
                   
-          = simple_form_for @investor, url: user_investor_path(@user), html: {class: 'user-info-fr'}, validate: true do |f|
+          = simple_form_for @investor, url: user_investor_path(@user), html: {id: 'investor_profile_form', class: 'user-info-fr'}, validate: true do |f|
             = render 'shared/error_notification', :errors => f.error_notification              
             = f.hidden_field :user_id
             
