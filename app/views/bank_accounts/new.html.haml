@@ -15,7 +15,7 @@
           
           .row
             .col-lg-10
-              = simple_form_for @bank_account, url: user_bank_account_path(@user), :wrapper => :vertical_form_with_icon, validate: true do |f|
+              = simple_form_for @bank_account, url: user_bank_account_path(@user), :html => {:id => 'issuer_bank_account_form'}, :wrapper => :vertical_form_with_icon, validate: true do |f|
                 = render 'shared/error_notification', :errors => f.error_notification   
                 = f.hidden_field :user_id
                 = f.input :bank_account_holder, :label => 'Name on Account', :icon => 'glyphicon glyphicon-ok form-control-feedback'

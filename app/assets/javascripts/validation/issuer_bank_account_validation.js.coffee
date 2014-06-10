@@ -23,5 +23,4 @@ $(document).ready ->
       required: "Please type in your bank account number."
       digits: "Please provide a valid bank account number."
 
-  $('#issuer_bank_account_form .btn.btn-success').click (event) ->
-    $('#issuer_bank_account_form').validate({rules, messages})
+  $('#issuer_bank_account_form').validate({rules, messages})

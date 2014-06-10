@@ -84,5 +84,4 @@ $(document).ready () ->
       required: "Please enter zip code."
       zipcodeUS: "Must be a valid US ZIP code"
 
-  $('#user_basic_information_form .btn.btn-success').click (event) ->
-    $('#user_basic_information_form').validate({rules, messages})
+  $('#user_basic_information_form').validate({rules, messages})

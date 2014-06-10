@@ -15,5 +15,4 @@ $(document).ready () ->
       required: "Please confirm password."
       equalTo: "Please enter the same password again."
 
-  $('#user_settings_form .btn').click (event) ->
-    $('#user_settings_form').validate({rules, messages})
+  $('#user_settings_form').validate({rules, messages})

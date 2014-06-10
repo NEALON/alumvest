@@ -1,7 +1,6 @@
-= simple_form_for @user, :url => user_path(@user), :html => {:class => 'full-info-fr form-horizontal'}, :wrapper => :horizontal_form_with_inline_help, :validate => true do |f|
+= simple_form_for @user, :url => user_path(@user), :html => {:id => 'user_basic_information_form', :class => 'full-info-fr form-horizontal'}, :wrapper => :horizontal_form_with_inline_help do |f|
   = render 'shared/error_notification', :errors => f.error_notification 
-  
-   
+
   .panel.panel-default.no-borders
     .panel-heading
       %h3.panel-title.text-default Basic Info
