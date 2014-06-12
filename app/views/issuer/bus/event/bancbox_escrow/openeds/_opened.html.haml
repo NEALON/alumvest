@@ -1,4 +1,6 @@
-%p
-  = "The Bancbox escrow account was approved and opened for "
-  = link_to opened.campaign.company.campaign_title, display_campaign_company_path(opened.campaign)
-  = "#{time_ago_in_words(opened.created_at)} ago."
+.media.event
+  %code.pull-right.nowrap #{time_ago_in_words(opened.created_at)} ago
+  .media-body
+    = "The Bancbox escrow account was approved and opened for "
+    = link_to opened.campaign.company.campaign_title, display_campaign_company_path(opened.campaign)
+    = "."

@@ -8,19 +8,26 @@
           = render 'layouts/flash', :flash => flash
           
           %h1.text-primary.no-marg-top Investments
-
-          %table.table
-            %thead
-              %tr
-                %th
-                  Investor
-                %th
-                  Amount
-                %th
-                  Status
-                %th
-                  Created
-      
-            %tbody
-              - @investments.each do |i|
-                = render :partial => 'investment', :locals => {:investment => i}
+          
+          - unless @investments.empty?
+            .table-responsive
+              %table.table.table-bordered
+                %thead
+                  %tr
+                    %th
+                      Investor
+                    %th
+                      Amount
+                    %th
+                      Status
+                    %th
+                      Created
+          
+                %tbody
+                  - @investments.each do |i|
+                    = render :partial => 'investment', :locals => {:investment => i}
+          - else
+            %p
+              %i There are no investments here right now.
+          
+          

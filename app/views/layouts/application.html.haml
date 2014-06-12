@@ -27,6 +27,11 @@
     .root
       = render 'layouts/header'
       
+      - if content_for? :masthead_blue
+        %section.masthead-blue
+          .container
+            = yield :masthead_blue
+      
       .wrapper-content{:class => content_for?(:wrapper_classes) ? "#{yield(:wrapper_classes)}" : ""}
         - if content_for? :header_1
           .container

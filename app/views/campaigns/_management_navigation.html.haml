@@ -1,35 +1,75 @@
-= content_for :sidebar_left do
+%nav.dashboard-nav
   %ul.nav.nav-pills.nav-stacked
     %li{:class => "#{'active' if active == :company}"}
       - unless entity = campaign.company
-        = link_to('Company', new_campaign_company_path(campaign))
+        = link_to new_campaign_company_path(campaign) do
+          %i.fa.fa-building.fa-fw 
+          %span.hidden-xs Campaign
       - else
-        = link_to('Company', campaign_company_path(campaign))
+        = link_to campaign_company_path(campaign) do
+          %i.fa.fa-building.fa-fw 
+          %span.hidden-xs Campaign
     %li{:class => "#{'active' if active == :people}"}
       - unless entity = campaign.team
-        = link_to('Team', new_campaign_team_path(campaign))
+        = link_to new_campaign_team_path(campaign) do
+          %i.fa.fa-users.fa-fw 
+          %span.hidden-xs Team
       - else
-        = link_to('Team', campaign_team_path(campaign))
+        = link_to campaign_team_path(campaign) do
+          %i.fa.fa-users.fa-fw 
+          %span.hidden-xs Team
     %li{:class => "#{'active' if active == :funding}"}
       - unless entity = campaign.investment_term
-        = link_to('Investment Terms', new_campaign_investment_term_path(campaign))
+        = link_to new_campaign_investment_term_path(campaign) do
+          %i.fa.fa-gavel.fa-fw 
+          %span.hidden-xs Investment Terms
       - else
-        = link_to('Investment Terms', campaign_investment_term_path(campaign))
+        = link_to campaign_investment_term_path(campaign) do
+          %i.fa.fa-gavel.fa-fw 
+          %span.hidden-xs Investment Terms
     %li{:class => "#{'active' if active == :updates}"}
-      = link_to('Updates', campaign_company_updates_path(campaign))
+      = link_to campaign_company_updates_path(campaign) do
+        %i.fa.fa-refresh.fa-fw 
+        %span.hidden-xs Updates
     %li{:class => "#{'active' if active == :jobs}"}
-      = link_to('Jobs', campaign_company_jobs_path(campaign))
+      = link_to campaign_company_jobs_path(campaign) do
+        %i.fa.fa-suitcase.fa-fw 
+        %span.hidden-xs Jobs
+      
 
-= content_for :header_1 do
-  .container.campaign-company-header
-    %h4
-      = campaign.company.try(:company_name) || 'New company'
-
-    %p
-      You can fill in whatever information you have for each section, not including Updates, and save your work. When you are ready, push the "Check for completeness" button for each section, to see what mandatory information you may be missing.
-    - if campaign.can_publish?
+-#
+  = content_for :sidebar_left do
+    %ul.nav.nav-pills.nav-stacked
+      %li{:class => "#{'active' if active == :company}"}
+        - unless entity = campaign.company
+          = link_to('Company', new_campaign_company_path(campaign))
+        - else
+          = link_to('Company', campaign_company_path(campaign))
+      %li{:class => "#{'active' if active == :people}"}
+        - unless entity = campaign.team
+          = link_to('Team', new_campaign_team_path(campaign))
+        - else
+          = link_to('Team', campaign_team_path(campaign))
+      %li{:class => "#{'active' if active == :funding}"}
+        - unless entity = campaign.investment_term
+          = link_to('Investment Terms', new_campaign_investment_term_path(campaign))
+        - else
+          = link_to('Investment Terms', campaign_investment_term_path(campaign))
+      %li{:class => "#{'active' if active == :updates}"}
+        = link_to('Updates', campaign_company_updates_path(campaign))
+      %li{:class => "#{'active' if active == :jobs}"}
+        = link_to('Jobs', campaign_company_jobs_path(campaign))
+  
+  = content_for :header_1 do
+    .container.campaign-company-header
+      %h4
+        = campaign.company.try(:company_name) || 'New company'
+  
       %p
-        Now that you have completed the Company, Team, and Investment Terms sections, you are ready to pubish your company profile for review by our site administrators. Your company information will not be editable while it is under review.
-      %p
-        = link_to('Publish', campaign_publish_path(campaign), :method => :post, :class => 'btn btn-default btn-xs')
-    %hr
+        You can fill in whatever information you have for each section, not including Updates, and save your work. When you are ready, push the "Check for completeness" button for each section, to see what mandatory information you may be missing.
+      - if campaign.can_publish?
+        %p
+          Now that you have completed the Company, Team, and Investment Terms sections, you are ready to pubish your company profile for review by our site administrators. Your company information will not be editable while it is under review.
+        %p
+          = link_to('Publish', campaign_publish_path(campaign), :method => :post, :class => 'btn btn-default btn-xs')
+      %hr

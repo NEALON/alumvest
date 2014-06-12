@@ -453,6 +453,11 @@ textarea { resize: vertical; }
 }
 
 .no-boxshadow .header { border-bottom: 1px solid darken($white, 10%); }
+
+/**
+ * Masthead Blue  
+ */
+.masthead-blue { background: #259aed; color: $white; margin-bottom: -59px; padding: 46px 0 95px; text-align: center; }
   
 
 /* ==========================================================================
@@ -785,15 +790,17 @@ textarea { resize: vertical; }
 /**
  * Company Item  
  */
-.company-item { border-bottom: 1px solid #cdcdcd; margin: 0 auto; max-width: 100%; width: 320px; 
+.company-item { border-bottom: 1px solid #cdcdcd; margin: 0 auto 30px; max-width: 100%; width: 320px; 
   > .company-body { font-size: 13px; margin-bottom: 2px; padding: 9px; 
     .title { margin-bottom: 30px;
-      h4 { font-family: $font-family-serif; margin: 0;
+      h4 { font: {family: $font-family-serif; size: 12px;} margin: 0;
         @media (min-width: $screen-sm) { font-size: 16px; }
         
         a {
           &:hover, &:focus { color: $gray-darker; }
         }
+        
+        @media (min-width: $screen-xs) { font-size: 16px; }
       }
       
       .by-name { color: $gray-darker; font: {size: 12px; weight: bold;} margin-top: -1px;
@@ -803,14 +810,51 @@ textarea { resize: vertical; }
       } 
     }
     
-    figcaption { min-height: 188px; padding: 34px 16px 8px; }
+    figcaption { min-height: 180px; padding: 20px 5px 1px; 
+      @media (min-width: $screen-xs) { min-height: 188px; font-size: 34px 16px 8px; }
+    }
   }
   
-  > .company-footer { padding: 9px; }
+  > .company-footer { font-size: 13px; padding: 9px; text-align: center;
+    .inner { background: #f7f7f7; border-radius: 100px 0 0 100px; overflow: visible; 
+      h6 { margin: {bottom: 4px; top: 12px;} }
+      p { margin-bottom: 10px; }  
+      h6, p { font-size: 11px; }  
+      
+      [class^="col-"], [class*=" col-"] { padding: {left: 3px; right: 3px;} }  
+      
+      > .pull-left { margin-right: 0; }
+      
+      > .media-body {
+        .separator { background: #dfdfdf; @include box-shadow(1px 0 0 0 $white); float: left; height: 56px; margin-left: -1px; width: 1px; }
+        .row { margin: {left: 0; right: 0;} }
+      }
+      
+      @media (min-width: $screen-md) {
+        h6, p { font-size: 13px; }
+        h6 { margin-top: 10px; }
+      }
+    }
+    
+    .wrapper-rate { background: #e6e6e6; border-radius: 100px; margin: {top: -3px; bottom: -3px;} padding: 3px; 
+      > * { background: #f7f7f7; border-radius: 100px; display: block !important; }
+      
+      @media (max-width: $screen-xs) { margin: {top: 5px; bottom: 0;}
+        > * {
+          &, > canvas { height: 40px !important; width: 40px !important; }
+          > input { margin: {top: 11px !important; left: -36px !important;} }
+        }
+      }
+    }
+  }
   
   > .company-body, > .company-footer { border: 1px solid #e8e8e8; }
 
   @media (min-width: $screen-xs) { margin: {left: 0; right: 0;} }
+}
+
+.no-canvas .company-item {
+  > .company-footer .inner > .pull-left { display: none; }
 }
 
 .read-more { color: $text-color; 
@@ -888,7 +932,7 @@ textarea { resize: vertical; }
 .marg-left { margin-left: 15px !important; }
 
 .marg-top-lg { margin-top: 44px !important; }
-.marg-bottom-lg { margin-top: 44px !important; }
+.marg-bottom-lg { margin-bottom: 44px !important; }
 
 .no-pad-top { padding-top: 0 !important; }
 .no-pad-bottom { padding-bottom: 0 !important; }

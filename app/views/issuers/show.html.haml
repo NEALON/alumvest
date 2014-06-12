@@ -88,26 +88,27 @@
                           This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit 
                           = link_to '[ ..... ]', '#', :class => 'read-more nowrap', :title => 'read more', :data => {:toggle => "tooltip", :placement => "right", :container => 'body'}
                   .company-footer
-                    .media
+                    .inner.media
                       .pull-left
-                        %input{:type => "text", :value => "75", :data => {:toggle => 'knob', :width => '56', :height => '56', :linecap => 'round', :readOnly => 'true', :fgColor => "#2c6291", :bgColor => "#4d9fe7", :displayPrevious => 'true', :thickness => '0.25'}}
+                        .wrapper-rate
+                          %input{:type => "text", :value => "75", :data => {:toggle => 'knob', :width => '56', :height => '56', :linecap => 'round', :readOnly => 'true', :fgColor => "#2c6291", :bgColor => "#4d9fe7", :displayPrevious => 'true', :thickness => '0.25', :skin => 'tron', :displayPrevious => 'true'}}
                       .media-body
                         .row
-                          .col-sm-4
-                            %h6 Goal
+                          .col-xs-4
+                            %h6.text-info Goal
                             %p $25000
                           .separator
-                          .col-sm-4
-                            %h6 Raised
+                          .col-xs-4
+                            %h6.text-info Raised
                             %p $15000
                           .separator
-                          .col-sm-4
-                            %h6 Funders
+                          .col-xs-4
+                            %h6.text-info Funders
                             %p 250
                 / END .company-item
                 
               .col-sm-6
-                .company-item
+                .company-item.no-marg-bottom
                   .company-body
                     %figure
                       .image
@@ -121,24 +122,25 @@
                             by 
                             = link_to 'Harward University', '#'
                         %p 
-                          Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit 
+                          This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit 
                           = link_to '[ ..... ]', '#', :class => 'read-more nowrap', :title => 'read more', :data => {:toggle => "tooltip", :placement => "right", :container => 'body'}
                   .company-footer
-                    .media
+                    .inner.media
                       .pull-left
-                        1
+                        .wrapper-rate
+                          %input{:type => "text", :value => "37", :data => {:toggle => 'knob', :width => '56', :height => '56', :linecap => 'round', :readOnly => 'true', :fgColor => "#2c6291", :bgColor => "#4d9fe7", :displayPrevious => 'true', :thickness => '0.25', :skin => 'tron', :displayPrevious => 'true'}}
                       .media-body
                         .row
-                          .col-sm-4
-                            %h6 Goal
+                          .col-xs-4
+                            %h6.text-info Goal
                             %p $25000
                           .separator
-                          .col-sm-4
-                            %h6 Raised
+                          .col-xs-4
+                            %h6.text-info Raised
                             %p $15000
                           .separator
-                          .col-sm-4
-                            %h6 Funders
+                          .col-xs-4
+                            %h6.text-info Funders
                             %p 250
                 / END .company-item
             

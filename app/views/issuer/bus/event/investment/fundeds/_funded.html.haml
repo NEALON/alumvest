@@ -1,4 +1,6 @@
-%p
-  = link_to "An investment of #{number_to_currency(funded.investment.amount)}", user_issuer_campaign_investments_path(funded.campaign.issuer.user)
-  was funded for
-  = link_to funded.campaign.company.campaign_title, display_campaign_company_path(funded.campaign)
+.media.event
+  %code.pull-right.nowrap 1 day ago
+  .media-body
+    = link_to "An investment of #{number_to_currency(funded.investment.amount)}", user_issuer_campaign_investments_path(funded.campaign.issuer.user)
+    was funded for
+    = link_to funded.campaign.company.campaign_title, display_campaign_company_path(funded.campaign)

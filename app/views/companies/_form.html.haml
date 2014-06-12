@@ -1,32 +1,106 @@
-= form_for [@campaign, @company], :url => campaign_company_path(@campaign), :html => {:class => 'form-horizontal well'} do |f|
+= simple_form_for [@campaign, @company], :url => campaign_company_path(@campaign), :wrapper => :vertical_form_with_icon, :validate => true do |f|
+  = render 'shared/error_notification', :errors => f.error_notification 
+  
+  .row
+    .col-sm-7
+      = f.input :company_name, :label => 'Company Name', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+  .row
+    .col-sm-7
+      = f.input :campaign_title, :label => 'Company Title', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+    .col-sm-5
+      = f.input :company_url, :label => 'Company URL', :placeholder => 'www//...', :icon => 'glyphicon glyphicon-ok form-control-feedback'    
+  = f.input :short_description, :label => 'Short Description', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+  = f.input :company_highlights, :label => 'Company Highlights', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}, :wrapper => :vertical_form
+  = f.input :company_details, :label => 'Company Details', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}, :wrapper => :vertical_form
+  
+  .row
+    .col-sm-4
+      = f.input :founded_on_year, :label => 'Founded on Year', :collection => 1990..Date.today.year, :wrapper => :vertical_form 
+    .col-sm-4
+      = f.input :ownership_structure, :label => 'Ownership Structure', :collection => ownership_structures, :wrapper => :vertical_form 
+    .col-sm-4
+      = f.input :category_id, :label => 'Category', :collection => Alumvest::CategoryBase.for_select, :wrapper => :vertical_form 
+  
+  %hr
+  
+  = f.input :address_1, :label => 'Address 1', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+  = f.input :address_2, :label => 'Address 2', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+  .row
+    .col-sm-6
+      = f.input :city, :label => 'City', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+    .col-sm-6
+      = f.input :state, :label => 'State', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+  .row
+    .col-sm-6
+      = f.input :zip, :label => 'Postal Code', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+    .col-sm-6
+      = f.input :phone, :label => 'Phone', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+  
+  %hr
+  
+  .form-horizontal
+    .form-group
+      %label.col-sm-3.control-label Logotype
+      .col-sm-5
+        = f.filepicker_field :logo_url, 'default', :html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"
+    .form-group
+      %label.col-sm-3.control-label Home Image
+      .col-sm-5
+        = f.filepicker_field :home_photo_url, 'default', :html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"
+    .form-group
+      %label.col-sm-3.control-label Placard Image
+      .col-sm-5
+        = f.filepicker_field :photo_url, 'default', :html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"
+    .form-group
+      %label.col-sm-3.control-label Banner Image
+      .col-sm-5
+        = f.filepicker_field :banner_photo_url, 'default', :html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"
+  
+  %hr
+  
+  = f.input :faq, :label => 'FAQ', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}, :wrapper => :vertical_form
+  
+  .row
+    .col-sm-6
+      = f.input :video_url, :placeholder => '//www.youtube.com/embed/ynwaZZZz6GA', :label => 'Video URL', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+    .col-sm-6
+      = f.input :slideshare_url, :label => 'Slideshare URL', :icon => 'glyphicon glyphicon-ok form-control-feedback'   
+  
+  %hr
+  
+  .form-action
+    = f.submit 'Save', :class => 'btn btn-primary btn-lg'
 
-  = render 'shared/errors', :entity => @company
-
-  %fieldset
-    = f.hidden_field :campaign_id
-
-    - with_options :form => f do |op|
-      = op.render_cell 'tb/form/filepicker', :display, :field => :logo_url, :label => 'Logo'
-      = op.render_cell 'tb/form/text', :display, :field => :company_name
-      = op.render_cell 'tb/form/text', :display, :field => :short_description
-      = op.render_cell 'tb/form/text', :display, :field => :company_url
-      = op.render_cell 'tb/form/text', :display, :field => :campaign_title
-      = op.render_cell 'tb/form/richtext', :display, :field => :company_highlights
-      = op.render_cell 'tb/form/richtext', :display, :field => :company_details
-      = op.render_cell 'tb/form/select', :display, :field =>  :founded_on_year, :values => Array(1990..Date.today.year)
-      = op.render_cell 'tb/form/select', :display, :field =>  :ownership_structure, :values => ownership_structures
-      = op.render_cell 'tb/form/select', :display, :field =>  :category_id, :values => Alumvest::CategoryBase.for_select
-      = op.render_cell 'tb/form/text', :display, :field => :address_1
-      = op.render_cell 'tb/form/text', :display, :field => :address_2
-      = op.render_cell 'tb/form/text', :display, :field => :city
-      = op.render_cell 'tb/form/text', :display, :field => :state
-      = op.render_cell 'tb/form/text', :display, :field => :zip
-      = op.render_cell 'tb/form/text', :display, :field => :phone
-      = op.render_cell 'tb/form/richtext', :display, :field =>  :faq
-      = op.render_cell 'tb/form/text', :display, :field => :video_url, :placeholder => '//www.youtube.com/embed/ynwaZZZz6GA'
-      = op.render_cell 'tb/form/text', :display, :field => :slideshare_url
-      = op.render_cell 'tb/form/filepicker', :display, :field => :home_photo_url, :label => 'Campaign Home Image'
-      = op.render_cell 'tb/form/filepicker', :display, :field => :photo_url, :label => 'Campaign Placard Image'
-      = op.render_cell 'tb/form/filepicker', :display, :field => :banner_photo_url, :label => 'Campaign Banner Image'
-
-    = render_cell 'tb/form/submit_button', :display
+-#   
+  = form_for [@campaign, @company], :url => campaign_company_path(@campaign), :html => {:class => 'form-horizontal'} do |f|
+  
+    = render 'shared/errors', :entity => @company
+  
+    %fieldset
+      = f.hidden_field :campaign_id
+  
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/filepicker', :display, :field => :logo_url, :label => 'Logo'
+        = op.render_cell 'tb/form/text', :display, :field => :company_name
+        = op.render_cell 'tb/form/text', :display, :field => :short_description
+        = op.render_cell 'tb/form/text', :display, :field => :company_url
+        = op.render_cell 'tb/form/text', :display, :field => :campaign_title
+        = op.render_cell 'tb/form/richtext', :display, :field => :company_highlights
+        = op.render_cell 'tb/form/richtext', :display, :field => :company_details
+        = op.render_cell 'tb/form/select', :display, :field =>  :founded_on_year, :values => Array(1990..Date.today.year)
+        = op.render_cell 'tb/form/select', :display, :field =>  :ownership_structure, :values => ownership_structures
+        = op.render_cell 'tb/form/select', :display, :field =>  :category_id, :values => Alumvest::CategoryBase.for_select
+        = op.render_cell 'tb/form/text', :display, :field => :address_1
+        = op.render_cell 'tb/form/text', :display, :field => :address_2
+        = op.render_cell 'tb/form/text', :display, :field => :city
+        = op.render_cell 'tb/form/text', :display, :field => :state
+        = op.render_cell 'tb/form/text', :display, :field => :zip
+        = op.render_cell 'tb/form/text', :display, :field => :phone
+        = op.render_cell 'tb/form/richtext', :display, :field =>  :faq
+        = op.render_cell 'tb/form/text', :display, :field => :video_url, :placeholder => '//www.youtube.com/embed/ynwaZZZz6GA'
+        = op.render_cell 'tb/form/text', :display, :field => :slideshare_url
+        = op.render_cell 'tb/form/filepicker', :display, :field => :home_photo_url, :label => 'Campaign Home Image'
+        = op.render_cell 'tb/form/filepicker', :display, :field => :photo_url, :label => 'Campaign Placard Image'
+        = op.render_cell 'tb/form/filepicker', :display, :field => :banner_photo_url, :label => 'Campaign Banner Image'
+  
+      = render_cell 'tb/form/submit_button', :display

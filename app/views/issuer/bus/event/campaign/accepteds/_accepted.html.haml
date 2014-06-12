@@ -1,2 +1,4 @@
-%p
-  = "Your campaign was accepted #{time_ago_in_words(accepted.created_at)} ago."
+.media.event
+  %code.pull-right.nowrap #{time_ago_in_words(accepted.created_at)} ago
+  .media-body
+    = "Your campaign was accepted."

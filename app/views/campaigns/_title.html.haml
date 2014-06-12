@@ -1,0 +1,20 @@
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  %h2.no-marg-top.no-marg-bottom= campaign.company.try(:company_name) || 'New company' 
+  
+  .row
+    .col-xs-11.col-centered
+      %hr
+  
+  .row
+    .col-xs-10.col-centered
+      - if campaign.can_publish?
+        %p.small
+          Now that you have completed the Company, Team, and Investment Terms sections, you are ready to pubish your company profile for review by our site administrators. Your company information will not be editable while it is under review.
+        %p.no-marg-bottom
+          = link_to('Publish', campaign_publish_path(campaign), :method => :post, :class => 'btn btn-transparent')
+      - else
+        %p.small.no-marg-bottom You can fill in whatever information you have for each section, not including Updates, and save your work. When you are ready, push the "Check for completeness" button for each section, to see what mandatory information you may be missing.
+
+%h1.text-primary.no-marg-top= title
