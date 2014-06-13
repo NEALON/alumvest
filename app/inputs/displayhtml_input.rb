@@ -1,7 +1,7 @@
-class DisplayInput < SimpleForm::Inputs::Base
+class DisplayhtmlInput < SimpleForm::Inputs::Base
   def input
     # label code from https://github.com/plataformatec/simple_form/blob/master/lib/simple_form/components/labels.rb#28
-    template.content_tag(:div, object.send(attribute_name).blank? ? 'blank' : object.send(attribute_name), :class => object.send(attribute_name).blank? ? 'blank form-control-static' : 'form-control-static')
+    template.content_tag(:div, object.send(attribute_name).blank? ? 'blank' : (object.send(attribute_name)).html_safe, :class => object.send(attribute_name).blank? ? 'blank form-control-static' : '')
   end
 
   def additional_classes

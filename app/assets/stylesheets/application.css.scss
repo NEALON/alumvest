@@ -29,6 +29,8 @@
    ========================================================================== */
 .root { background: darken($white, 5%); }
 
+img, .img-responsive { @extend .img-responsive; height: auto !important; }
+
 a {
   &, &:hover, &:focus { text-decoration: none; }
 }
@@ -283,7 +285,7 @@ label { font: {size: 17px; weight: normal;} }
   }
 }
 
-.form-control-static { color: $blue-muted; font-weight: bold; 
+.form-control-static { color: $blue-dark; font: {weight: bold; size: $font-size-base;}
   &.blank { color: $gray-light; font-weight: normal; }
 }
 

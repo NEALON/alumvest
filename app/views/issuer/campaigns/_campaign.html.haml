@@ -1,10 +1,14 @@
-%span #{@campaign.company.try(:campaign_title) || 'Untitled campaign'}
-%span.campaign-live #{@campaign.status}
-
-- if @campaign.company
-  = link_to 'Edit', edit_campaign_company_path(@campaign)
-  %span
-    = '|'
-  = link_to 'Display', display_campaign_company_path(@campaign)
-- else
-  = link_to 'Edit', new_campaign_company_path(@campaign)
+.media.event
+  %code.pull-right.nowrap #{@campaign.status}
+  .media-body
+    %h4.no-marg-top 
+      #{@campaign.company.try(:campaign_title) || 'Untitled campaign'}
+      
+      %small
+        - if @campaign.company
+          = link_to 'Edit', edit_campaign_company_path(@campaign)
+          %span
+            = '|'
+          = link_to 'Display', display_campaign_company_path(@campaign)
+        - else
+          = link_to 'Edit', new_campaign_company_path(@campaign)

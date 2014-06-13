@@ -1,54 +1,145 @@
-= render 'campaigns/management_navigation', :active => :company, :campaign => @campaign
-
-%p.row
-  .col-xs-12.col-md-4
-  .col-xs-12.col-md-8
-    = render_cell 'tb/mini_link_button', :display, :label => 'Edit Company', :link => edit_campaign_company_path(@campaign) unless @campaign.published?
-    - if @company.draft?
-      = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_company_path(@campaign)
-    = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_company_path(@campaign), :new_page => (not Rails.env.test?)
-
-.panel
-  %p
-
-  = render 'shared/property_row', :header => 'Company name', :value => @company.company_name
-  = render 'shared/property_row', :header => 'Logo', :value => (image_tag @company.logo(:w =>32, :h =>32) unless @company.logo.blank?)
-  = render 'shared/property_row', :header => 'Short Description', :value => @company.short_description
-
-  = render 'shared/property_row', :header => 'Website', :value => @company.company_url
-  = render 'shared/property_row', :header => 'Campaign Title', :value => @company.campaign_title
-  = render 'shared/property_row', :header => 'Company Highlights', :value => (raw @company.company_highlights)
-  = render 'shared/property_row', :header => 'Company Details', :value => (raw @company.company_details)
-  = render 'shared/property_row', :header => 'Founded', :value => @company.founded_on_year
-  = render 'shared/property_row', :header => 'Structure', :value => @company.ownership_structure
-  = render 'shared/property_row', :header => 'Category', :value => @company.category.try(:name)
-  = render 'shared/property_row', :header => 'Address', :value => @company.address_1
-  = render 'shared/property_row', :header => '', :value => @company.address_2
-  = render 'shared/property_row', :header => '', :value => "#{@company.city} #{@company.state} #{@company.zip}"
-  = render 'shared/property_row', :header => 'Phone', :value => @company.phone
-  = render 'shared/property_row', :header => 'faq', :value => (raw @company.faq)
-  - if @company.video_url.present?
-    .row.form-row
-      .col-xs-4.col-md-4.form-label
-        %b.pull-right
-          Video
-      .col-xs-8.col-md-8.form-value#video
-        = render 'shared/youtube', :video_url => @company.video_url, :width => 590, :height => 400
-  - if @company.slideshare_url.present?
-    .row.form-row
-      .col-xs-4.col-md-4.form-label
-        %b.pull-right
-          Slideshare
-      .col-xs-8.col-md-8.form-value#video
-        = render 'shared/slideshare', :slideshare_embed_url => @company.slideshare_embed_url, :width => 597, :height => 486
-  - if @company.home_photo_url.present?
-    .row.form-row
-      .col-xs-4.col-md-4.form-label
-        %b.pull-right
-          Home Image
-      .col-xs-8.col-md-8.form-value#video
-        = image_tag @company.home_photo_display
-
-  = render 'shared/property_row', :header => 'Photo', :value => (image_tag @company.photo(:w => 64, :h => 64) unless @company.photo.blank?)
-  = render 'shared/property_row', :header => 'Banner Photo', :value => (image_tag @company.banner_photo(:w => 64, :h => 64) unless @company.photo.blank?)
-  %br
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'campaigns/management_navigation', :active => :company, :campaign => @campaign
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          = render 'campaigns/title', :active => :company, :campaign => @campaign, :title => 'Campaign'
+          
+          = simple_form_for [@campaign, @company], :url => campaign_company_path(@campaign), :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, validate: true do |f|
+            .row
+              .col-sm-6
+                = f.input :company_name, :label => 'Company Name', :as => :display
+              .col-sm-6
+                = f.input :campaign_title, :label => 'Company Title', :as => :display
+            .row
+              .col-sm-6
+                = f.input :company_url, :label => 'Company URL', :as => :display
+              .col-sm-6
+                = f.input :short_description, :label => 'Short Description', :as => :display
+            
+            .form-group    
+              .panel.panel-default.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title Company Highlights
+                .panel-body
+                  = f.input :company_highlights, :label => false, :as => :displayhtml
+                
+            .form-group    
+              .panel.panel-default.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title Company Details
+                .panel-body
+                  = f.input :company_details, :label => false, :as => :displayhtml
+                
+            .row
+              .col-sm-6
+                = f.input :founded_on_year, :label => 'Founded on Year', :as => :display
+              .col-sm-6
+                = f.input :ownership_structure, :label => 'Ownership Structure', :as => :display
+            .row
+              .col-sm-6
+                .form-group
+                  %label.control-label Category
+                  %div{:class => @company.category.try(:name).blank? ? 'blank form-control-static' : 'form-control-static'}
+                    - if @company.category.try(:name).blank?
+                      blank
+                    - else
+                      = @company.category.try(:name)
+                
+            %hr
+            
+            .row
+              .col-sm-6
+                = f.input :address_1, :label => 'Address 1', :as => :display
+              .col-sm-6
+                = f.input :address_2, :label => 'Address 2', :as => :display            
+            .row
+              .col-sm-6
+                = f.input :city, :label => 'City', :as => :display
+              .col-sm-6
+                = f.input :state, :label => 'State', :as => :display
+            .row
+              .col-sm-6
+                = f.input :zip, :label => 'Postal Code', :as => :display
+              .col-sm-6
+                = f.input :phone, :label => 'Phone', :as => :display
+            
+            %hr
+            
+            .form-group    
+              .panel.panel-default.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title FAQ
+                .panel-body
+                  = f.input :faq, :label => false, :as => :displayhtml
+                
+            .form-group    
+              %label.control-label Video
+              - if @company.video_url.present?
+                .flex-video.widescreen.vimeo
+                  = render 'shared/youtube', :video_url => @company.video_url, :width => 800, :height => 500
+              - else
+                .form-control-static.blank
+                  blank
+            
+            .form-group    
+              %label.control-label Slideshare
+              - if @company.slideshare_url.present?
+                .flex-video.widescreen.vimeo
+                  = render 'shared/slideshare', :slideshare_embed_url => @company.slideshare_embed_url, :width => 800, :height => 500
+              - else
+                .form-control-static.blank
+                  blank
+                  
+            %hr
+            
+            .form-group    
+              %label.control-label Logotype
+              - unless @company.logo.blank?
+                .form-control-static
+                  = image_tag(@company.logo(:w =>32, :h =>32))
+              - else
+                .form-control-static.blank
+                  blank
+                  
+            .form-group    
+              %label.control-label Home Image
+              - if @company.home_photo_url.present?
+                .form-control-static
+                  = image_tag(@company.home_photo_display)
+              - else
+                .form-control-static.blank
+                  blank
+            
+            .form-group    
+              %label.control-label Placard Image
+              - unless @company.photo.blank?
+                .form-control-static
+                  = image_tag(@company.photo(:w => 64, :h => 64))
+              - else
+                .form-control-static.blank
+                  blank
+                  
+            .form-group    
+              %label.control-label Banner Image
+              - unless @company.banner_photo.blank?
+                .form-control-static
+                  = image_tag(@company.banner_photo(:w => 64, :h => 64))
+              - else
+                .form-control-static.blank
+                  blank
+                  
+            %hr
+            
+            .form-action
+              .btn-toolbar
+                - if @company.draft?
+                  = link_to 'Complete', check_for_completeness_campaign_company_path(@campaign), :class => 'btn btn-success btn-lg'
+                = link_to 'Preview', preview_campaign_company_path(@campaign), :class => 'btn btn-default btn-lg', :target => (not Rails.env.test?) ? '_blank' : ''
+                - unless @campaign.published?
+                  = link_to 'Edit', edit_campaign_company_path(@campaign), :class => 'btn btn-link btn-lg' 
+           
