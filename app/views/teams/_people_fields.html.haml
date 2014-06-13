@@ -1,24 +1,53 @@
-%fieldset                    
-  - with_options :form => f do |op|
-    = op.render_cell 'tb/form/text', :display, :field => :first_name
-    = op.render_cell 'tb/form/text', :display, :field => :last_name
-    = op.render_cell 'tb/form/text', :display, :field => :title
-    = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
-    = op.render_cell 'tb/form/text', :display, :field => :facebook, :placeholder => 'facebook_id'
-    = op.render_cell 'tb/form/text', :display, :field => :twitter, :placeholder => 'twitter_id'
-    = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => 'linkedin_id'
-    = op.render_cell 'tb/form/richtext', :display, :field => :introduction
-    = op.render_cell 'tb/form/text', :display, :field => :video_url
-  %hr
-
-  .form-group
-    .col-md-8.col-md-offset-4
-      %h4 Education
-      #educations
-        = f.fields_for :educations do |e|
-          = render 'education_fields', :f => e
-        .links
-          = link_to_add_association 'Add Education', f, :educations
-
-      = link_to_remove_association 'Remove this person', f, :class => 'btn btn-default btn-xs'
-      %hr
+.nested-fields.no-borders
+  .panel.panel-primary.marg-bottom
+    .panel-heading
+      = link_to_remove_association(('<i class="fa fa-times-circle"></i>').html_safe, f, {:class => 'close', :data => {:toggle => 'tooltip'}, :title => 'Remove this person'})
+      %h3.panel-title Person Info
+    .panel-body  
+      .form-horizontal
+        = f.input :first_name, :label => 'First Name', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :last_name, :label => 'Last Name', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :title, :label => 'Title', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :avatar_url, :as => :filepicker_image, :label => 'Avatar', :wrapper => :horizontal_form_with_inline_help, :input_html => {:html_options => {:class => 'btn btn-default btn-block'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"}
+        = f.input :facebook, :label => 'Facebook ID', :placeholder => 'facebook_id', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :twitter, :label => 'Twitter ID', :placeholder => 'twitter_id', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :linkedin, :label => 'LinkedIn ID', :placeholder => 'linkedin_id', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+          
+      = f.input :introduction, :label => 'Introduction', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}
+        
+      .panel.panel-default.marg-bottom.no-borders
+        .panel-heading
+          %h3.panel-title.text-default Education
+        .panel-body  
+          .form-horizontal
+            #educations
+              = f.simple_fields_for :educations do |education|  
+                = render 'education_fields', :f => education
+              .wrapper-btn.text-center
+                = link_to_add_association(('<i class="fa fa-plus"></i> Add Education').html_safe, f, :educations)
+   
+-#
+  %fieldset                    
+    - with_options :form => f do |op|
+      = op.render_cell 'tb/form/text', :display, :field => :first_name
+      = op.render_cell 'tb/form/text', :display, :field => :last_name
+      = op.render_cell 'tb/form/text', :display, :field => :title
+      = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
+      = op.render_cell 'tb/form/text', :display, :field => :facebook, :placeholder => 'facebook_id'
+      = op.render_cell 'tb/form/text', :display, :field => :twitter, :placeholder => 'twitter_id'
+      = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => 'linkedin_id'
+      = op.render_cell 'tb/form/richtext', :display, :field => :introduction
+      = op.render_cell 'tb/form/text', :display, :field => :video_url
+    %hr
+  
+    .form-group
+      .col-md-8.col-md-offset-4
+        %h4 Education
+        #educations
+          = f.fields_for :educations do |e|
+            = render 'education_fields', :f => e
+          .links
+            = link_to_add_association 'Add Education', f, :educations
+  
+        = link_to_remove_association 'Remove this person', f, :class => 'btn btn-default btn-xs'
+        %hr

@@ -1,8 +1,13 @@
-= render_cell "tb/form/subhead", :display, :label => title
+%hr
 
-= f.fields_for grouping do |member|
-  = render 'people_fields', {:f => member}
-
-  .form-group
-    .col-md-8.col-md-offset-4
-      = link_to_add_association 'Add another person', f, grouping, :partial => 'people_fields', :force_non_association_create => true, :class => 'btn btn-default btn-xs'
+.panel.panel-default.marg-top
+  .panel-heading
+    %h3.panel-title.text-default= title
+  .panel-body  
+    #grouping
+      = f.simple_fields_for grouping do |member| 
+        = render 'people_fields', {:f => member}
+      
+      .text-center
+        = link_to_add_association(('<i class="fa fa-plus"></i> Add Person').html_safe, f, grouping, :partial => 'people_fields', :force_non_association_create => true, :class => 'btn btn-primary')
+  

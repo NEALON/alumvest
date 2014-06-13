@@ -1,9 +1,14 @@
-= form_for [@company, @team], :url => campaign_team_path(@campaign), :html => {:class => 'form-horizontal well'}  do |f|
-
-  = render 'shared/errors', :entity => @team
-
-  %fieldset
-    = f.hidden_field :campaign_id
-    = render_cell 'tb/form/richtext', :display, :form => f, :field => :team_highlights
-    = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f
-    = render_cell 'tb/form/submit_button', :display
+= simple_form_for [@company, @team], :url => campaign_team_path(@campaign), :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, :validate => true do |f|
+  = render 'shared/error_notification', :errors => f.error_notification
+  
+  = f.hidden_field :campaign_id
+  
+  = f.input :team_highlights, :label => 'Team Highlights', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}
+  
+  = render 'people', :title => 'Team Members', :grouping => :team_members, :add_title => 'Add Team Member', :f => f
+  
+  %hr
+  
+  .form-action
+    = f.submit 'Save', :class => 'btn btn-success btn-lg'
+  

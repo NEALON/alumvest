@@ -58,7 +58,15 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 }
 
 // Panel styles
-.panel { @include box-shadow(none); margin-bottom: 29px; }
+.panel { @include box-shadow(none); margin-bottom: 29px; 
+  .panel-heading .close { font-size: 17px; @include opacity(.8); 
+    &:hover, &:focus { @include opacity(1); }
+  }
+
+  &.panel-primary {
+    .panel-heading .close { color: $white; text-shadow: 0px 1px rgba($black,.3); }
+  }  
+}
 
 .panel-heading, .panel-title { font: {family: $font-family-sans-serif; weight: bold; size: 15px;} }
 
@@ -546,7 +554,7 @@ textarea { resize: vertical; }
 // Remove Association Btn
 .wrapper-remove-association { margin-top: -5px; }
 
-.nested-fields { border-bottom: 1px dashed $gray-lighten; margin-bottom: 20px; }
+.nested-fields { border-bottom: 1px dashed darken($gray-lighten, 10%); margin-bottom: 20px; }
 
 // Profile Privacy Form
 .profile-privacy-fr {

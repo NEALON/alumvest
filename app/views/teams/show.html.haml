@@ -1,21 +1,65 @@
-= render 'campaigns/management_navigation', :active => :people, :campaign => @campaign
-
-%p
-  = render_cell 'tb/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign) unless @campaign.published?
-  - if @team.draft?
-    = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
-  = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_team_path(@campaign), :new_page => (not Rails.env.test?)
-
-.panel
-  %p
-
-  = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
-
-  %p
-    - if @team.team_members.length > 0
-      %h4.sub-title Team members
-    - @team.team_members.each do |p|
-      = p.full_name
-      = p.title
-      = render 'shared/youtube', :video_url => p.video_url, :width => 590, :height => 400
-      %br
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'campaigns/management_navigation', :active => :people, :campaign => @campaign
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          = render 'campaigns/title', :active => :company, :campaign => @campaign, :title => 'Team'
+          
+          = simple_form_for [@company, @team], :url => campaign_team_path(@campaign), :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, :validate => true do |f|
+            .form-group    
+              .panel.panel-default.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title.text-default Team Highlights
+                .panel-body
+                  = f.input :team_highlights, :label => false, :as => :displayhtml
+                  
+            .form-group    
+              .panel.panel-default.panel-table.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title.text-default Team Members
+                .panel-body
+                  - unless @team.team_members.empty?
+                    .table-responsive
+                      %table.table.table-bordered.table-hover.bold
+                        %thead 
+                          %tr
+                            %th.col-sm-1 Photo
+                            %th.col-sm-3 Full Name
+                            %th.col-sm-8 Title
+                        %tbody
+                          - @team.team_members.each do |p|
+                            %tr
+                              %td
+                                - if !p.avatar_url.blank?
+                                  = image_tag(p.avatar_url + "/convert?w=34&h=34")
+                                - else
+                                  = image_tag("noavatar.gif", :height => 34, :width => 34) 
+                              %td= p.full_name
+                              %td= p.title
+                  - else
+                    %p
+                      %i There are no investments here right now.
+          
+          %p
+            = render_cell 'tb/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign) unless @campaign.published?
+            - if @team.draft?
+              = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
+            = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_team_path(@campaign), :new_page => (not Rails.env.test?)
+          
+          .panel
+            %p
+          
+            = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
+          
+            %p
+              - if @team.team_members.length > 0
+                %h4.sub-title Team members
+              - @team.team_members.each do |p|
+                = p.full_name
+                = p.title
+                = render 'shared/youtube', :video_url => p.video_url, :width => 590, :height => 400
+                %br

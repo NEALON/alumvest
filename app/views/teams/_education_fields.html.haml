@@ -1,6 +1,7 @@
-%fieldset.nested-fields
-  = render_cell 'tb/form/text', :display, :form => f, :field => :school
-  = render_cell 'tb/form/select', :display, :form => f, :field => :degree, :values => ["", "Undergraduate", "Masters", "PhD", "MBA or other Graduate Business Degree", "JD or other Graduate Law Degree", "MD or other Graduate Medical Degree", "Other Professional Degree", "Other Degrees", "Non-Degree Work"]
-  = link_to_remove_association 'Remove', f
-
-
+.nested-fields
+  = f.input :school, :wrapper => :horizontal_form
+  = f.input :degree, :as => :select, :wrapper => :horizontal_form, :class => 'no-marg-bottom', :collection => ["Undergraduate", "Masters", "PhD", "MBA or other Graduate Business Degree", "JD or other Graduate Law Degree", "MD or other Graduate Medical Degree", "Other Professional Degree", "Other Degrees", "Non-Degree Work"]
+  .row
+    .col-sm-5.col-sm-offset-3
+      .wrapper-remove-association
+        = link_to_remove_association(('<i class="fa fa-times-circle"></i> Remove').html_safe, f, {:class => 'btn btn-link btn-sm marg-bottom no-pad-left no-pad-right text-danger'})

@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
     @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @team = Alumvest::TeamBase.new(:campaign => @campaign)
-    @team.team_members.build
+    #@team.team_members.build
   end
 
   def create
@@ -22,7 +22,7 @@ class TeamsController < ApplicationController
 
   def edit
     authorize! :manage, @campaign
-    @team.team_members.build if @team.team_members.blank?
+    #@team.team_members.build if @team.team_members.blank?
     render :new
   end
 

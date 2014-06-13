@@ -1,8 +1,8 @@
 .media.event
   %code.pull-right.nowrap #{@campaign.status}
   .media-body
-    %h4.no-marg-top 
-      #{@campaign.company.try(:campaign_title) || 'Untitled campaign'}
+    %h4.no-marg-top     
+      #{@campaign.company.try(:company_name) || 'Unnamed campaign'}
       
       %small
         - if @campaign.company

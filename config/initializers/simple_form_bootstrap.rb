@@ -84,6 +84,19 @@ SimpleForm.setup do |config|
     end
   end
   
+  config.wrappers :horizontal_form_with_icon, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'col-sm-3 control-label'
+    
+    b.wrapper tag: 'div', class: 'col-sm-9 has-feedback' do |ba|
+      ba.use :input, class: 'form-control'
+      ba.use :icon
+      ba.use :error, wrap_with: { tag: 'span', class: 'help-block small' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block small' }
+    end
+  end
+  
   config.wrappers :horizontal_form_with_inline_help, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder

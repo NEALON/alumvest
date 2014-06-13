@@ -10,8 +10,10 @@
           = render 'campaigns/title', :active => :company, :campaign => @campaign, :title => 'Team'
           
           = render 'form'
-
-:javascript
-  $('#main-content').on('cocoon:after-insert', function(e, insertedItem) {
-    insertedItem.children().find('.ckeditor').ckeditor()
-  });
+          
+- content_for :scripts do
+  :javascript
+    $('body').on('cocoon:after-insert', function(e, insertedItem) {
+      insertedItem.children().find('.ckeditor').ckeditor()
+      insertedItem.children().find('[data-toggle="tooltip"]').tooltip();
+    });
