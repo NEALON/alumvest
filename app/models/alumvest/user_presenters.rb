@@ -23,5 +23,9 @@ module Alumvest::UserPresenters
     def schools
       educations.map{|e| e.school}.join(', ')
     end
+    
+    def schools_array
+      educations.map{|e| e.school}
+    end
   end
 end

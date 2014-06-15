@@ -23,11 +23,11 @@
                       %h3.name
                         = @user.full_name
                         
-                        - unless @investor.city.nil? || @investor.city.empty?
+                        - unless @user.city.nil? || @user.city.empty?
                           %span.separator
                           %small.city
                             %i.fa.fa-globe
-                            = @investor.city
+                            = @user.city
                       .interested-in
                         .media
                           %h6.pull-left Interested in: 
@@ -50,37 +50,17 @@
                               %li healthcare
                     .col-lg-4.invite-friends
                       = link_to 'Invite Friends', '#', :class => 'btn btn-success btn-sm'
-                .bottom-info
-                  %hr
-                  .education-list
-                    %ul.list-inline
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Harward University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Wharton University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Columbia University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Troy University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Northern Arizona University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Bangor University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        BPP University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        Falmouth University
-                      %li
-                        %i.fa.fa-th.fa-fw
-                        School of Advanced Study
+                  / END .top-info
+                  
+                  - unless @user.schools_array.empty?
+                    .bottom-info
+                      %hr
+                      .education-list
+                        %ul.list-inline
+                          - @user.schools_array.each do |school|
+                            %li
+                              %i.fa.fa-th.fa-fw
+                              = school
                         
           / END .user-head-info
           
