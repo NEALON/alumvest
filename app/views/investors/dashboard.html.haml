@@ -36,18 +36,6 @@
                               %li tech
                               %li mobile
                               %li healthcare
-                              %li tech
-                              %li mobile
-                              %li healthcare
-                              %li tech
-                              %li mobile
-                              %li healthcare
-                              %li tech
-                              %li mobile
-                              %li healthcare
-                              %li tech
-                              %li mobile
-                              %li healthcare
                     .col-lg-4.invite-friends
                       = link_to 'Invite Friends', '#', :class => 'btn btn-success btn-sm'
                   / END .top-info
@@ -81,69 +69,101 @@
           
           / END .following-companies-unit 
           
-          %section.panel.panel-default.panel-table
+          %section.panel.panel-default{:class => @user.investor.investments.blank? ? '' : 'panel-table'}
             .panel-heading 
               %h4.panel-title My Investment Amount
             .panel-body
-              .table-responsive
-                %table.table.table-bordered.table-hover.bold
-                  %thead
-                    %tr
-                      %th.col-sm-1 
-                        Investment
-                        %br
-                        Date
-                      %th.col-sm-2
-                        @
-                        %br
-                        Founders
-                      %th.col-sm-3 
-                        Founders
-                        %br
-                        Schools
-                      %th.col-sm-2  
-                        %span.nowrap Pre-financing
-                        %br
-                        Valuation
-                      %th.col-sm-2 
-                        Lead
-                        %br
-                        Investors
-                      %th.col-sm-2 
-                        Recent
-                        %br
-                        Activities
-                  %tbody
-                    %tr
-                      %td 21/04/14
-                      %td
-                        %ul.list-inline.no-marg
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                      %td
-                        %p Michigan University
-                        %p Wharton University
-                      %td $ 25,22,588
-                      %td
-                        %ul.list-inline.no-marg
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                      %td Martin invested $50k.
-                    %tr
-                      %td 21/04/14
-                      %td
-                        %ul.list-inline.no-marg
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                      %td 
-                        %p Michigan University
-                        %p Wharton University
-                      %td $ 25,22,588
-                      %td
-                        %ul.list-inline.no-marg
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                          %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
-                      %td Martin invested $50k.
+              - unless @user.investor.investments.blank?
+                .table-responsive
+                  %table.table.table-bordered.table-hover.bold
+                    %thead
+                      %tr
+                        %th.col-sm-2 
+                          Investment
+                          %br
+                          Date
+                        %th.col-sm-3
+                          Campaign
+                          %br
+                          Name
+                        %th.col-sm-2  
+                          %span.nowrap Pre-financing
+                          %br
+                          Valuation
+                        %th.col-sm-2 
+                          Amount
+                          %br
+                          Invested
+                        %th.col-sm-3 
+                          Recent
+                          %br
+                          Activities
+                    %tbody
+                      - @user.investor.investments.each do |i|
+                        = render :partial => 'investment', :locals => {:investment => i}
+              - else
+                %i There is no update 
+              
+              -#  
+                .table-responsive
+                  %table.table.table-bordered.table-hover.bold
+                    %thead
+                      %tr
+                        %th.col-sm-1 
+                          Investment
+                          %br
+                          Date
+                        %th.col-sm-2
+                          @
+                          %br
+                          Founders
+                        %th.col-sm-3 
+                          Founders
+                          %br
+                          Schools
+                        %th.col-sm-2  
+                          %span.nowrap Pre-financing
+                          %br
+                          Valuation
+                        %th.col-sm-2 
+                          Lead
+                          %br
+                          Investors
+                        %th.col-sm-2 
+                          Recent
+                          %br
+                          Activities
+                    %tbody
+                      %tr
+                        %td 21/04/14
+                        %td
+                          %ul.list-inline.no-marg
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                        %td
+                          %p Michigan University
+                          %p Wharton University
+                        %td $ 25,22,588
+                        %td
+                          %ul.list-inline.no-marg
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                        %td Martin invested $50k.
+                      %tr
+                        %td 21/04/14
+                        %td
+                          %ul.list-inline.no-marg
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                        %td 
+                          %p Michigan University
+                          %p Wharton University
+                        %td $ 25,22,588
+                        %td
+                          %ul.list-inline.no-marg
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                            %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+                        %td Martin invested $50k.
 
           / END My Investment Amount 
             
@@ -151,11 +171,13 @@
             .panel-heading 
               %h4.panel-title My School Updates
             .panel-body
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-              .text-right
-                = link_to '#', :class => 'bold inverse' do
-                  Next Update
-                  %i.fa.fa-angle-right
+              %i There is no update
+              -#
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                .text-right
+                  = link_to '#', :class => 'bold inverse' do
+                    Next Update
+                    %i.fa.fa-angle-right
 
           / END My School Updates
             
@@ -163,11 +185,13 @@
             .panel-heading 
               %h4.panel-title My Angel, VC & Other Updates
             .panel-body
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-              .text-right
-                = link_to '#', :class => 'bold inverse' do
-                  Next Update
-                  %i.fa.fa-angle-right
+              %i There is no update
+              -#
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                .text-right
+                  = link_to '#', :class => 'bold inverse' do
+                    Next Update
+                    %i.fa.fa-angle-right
 
           / END My Angel, VC & Other Updates
                   
@@ -189,4 +213,3 @@
                     = f.input :other_investment, :as => :text, :label => ('Other Investment <span class="hidden-sm hidden-xs">Preferences</span>').html_safe, :placeholder => 'Please Describe here'
                 = f.button :submit, 'Save', :class => 'btn-primary btn-lg'
 
-          / END Please Tell Us About Your Investment Preferences

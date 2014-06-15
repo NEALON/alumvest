@@ -1,0 +1,13 @@
+%tr
+  %td
+    = investment.created_at
+  %td
+    = investment.campaign.company.company_name
+  %td
+    NA
+  %td
+    = number_to_currency(investment.amount)
+  %td
+    = "#{investment.campaign.recent_investment.investor.user.first_name} #{investment.campaign.recent_investment.investor.user.last_name} invested $#{investment.campaign.recent_investment.amount}"  
+    
+

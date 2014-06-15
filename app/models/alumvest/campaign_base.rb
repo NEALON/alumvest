@@ -47,4 +47,8 @@ class Alumvest::CampaignBase < ActiveRecord::Base
   def cancel_escrow
     bancbox_escrow.cancel!
   end
+  
+  def recent_investment
+    investments.order('created_at DESC').first
+  end
 end
