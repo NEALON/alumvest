@@ -1,2 +1,19 @@
-= render 'campaigns/management_navigation', :active => :funding, :campaign => @campaign
-= render 'form'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'campaigns/management_navigation', :active => :funding, :campaign => @campaign
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          = render 'campaigns/title', :active => :company, :campaign => @campaign, :title => 'Investment Terms'
+          
+          = render 'form'
+          
+- content_for :scripts do
+  :javascript
+    $('body').on('cocoon:after-insert', function(e, insertedItem) {
+      insertedItem.children().find('.ckeditor').ckeditor()
+      insertedItem.children().find('[data-toggle="tooltip"]').tooltip();
+    });

@@ -58,7 +58,7 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 }
 
 // Panel styles
-.panel { @include box-shadow(none); margin-bottom: 29px; 
+.panel { @include box-shadow(none); margin-bottom: 29px; overflow: hidden;
   .panel-heading .close { font-size: 17px; @include opacity(.8); 
     &:hover, &:focus { @include opacity(1); }
   }
@@ -70,7 +70,11 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 
 .panel-heading, .panel-title { font: {family: $font-family-sans-serif; weight: bold; size: 15px;} }
 
-.panel-body { font-size: 13px; }
+.panel-body { font-size: 13px; padding: 10px; 
+  @media (min-width: $screen-xs) {
+    padding: $panel-body-padding;
+  }
+}
 
 .panel-body .form-horizontal .control-label, .form-horizontal .panel-body .control-label { text-align: left; }
 
@@ -175,7 +179,9 @@ dt, dd { line-height: 1.1; }
 // --------------------------------------------------
 
 .btn { font-family: $font-family-open-sans; padding: {left: 30px; right: 30px;} text-shadow: none; 
-  &.btn-sm, &.btn-xs { padding: {left: 19px; right: 19px;} }
+  &.btn-sm { padding: {left: 19px; right: 19px;} }
+  
+  &.btn-xs { padding: {left: 10px; right: 10px;} }
   
   // Btn company
   &.btn-company { background: mix(#f9f9f9, #ededed); @include gradient-vertical(#f9f9f9, #ededed); border: 0 none; border-radius: 100px; @include box-shadow(0 1px 1px rgba($black, .25)); color: $blue-dark; font: {family: $font-family-sans-serif; size: 12px; weight: bold;} margin-bottom: 18px; padding: 5px 11px !important; @include transition(none); 
@@ -489,7 +495,7 @@ textarea { resize: vertical; }
  */ 
 .wrapper-dashboard { background: #f7f7f7; border: 2px solid $white; border-radius: 4px; @include box-shadow(0 0px 8px rgba($black, .1));
   // Dashboard Content (right info)
-  .dashboard-content { background: $white; @include box-shadow(-8px 0 10px -7px rgba($black, .1)); @include clearfix; min-height: 792px; padding: 13px 15px 80px; 
+  .dashboard-content { background: $white; @include box-shadow(-8px 0 10px -7px rgba($black, .1)); @include clearfix; min-height: 792px; padding: 13px 12px 80px; 
     h1 { margin-bottom: 25px; }
     
     @media (min-width: $screen-sm) { padding: 18px 37px 170px; }
@@ -563,6 +569,16 @@ textarea { resize: vertical; }
       + [class^="col-"], [class*=" col-"] { float: none; margin-left: 85px; width: auto; }
     }
     .form-action > * { margin-left: 85px; }
+  }
+}
+
+// Profile Privacy Form
+.investment-terms-fr {
+  @media (min-width: $screen-sm) {
+    .control-label { float: left; /*text-align: left;*/ white-space: nowrap; width: 223px; 
+      + [class^="col-"], [class*=" col-"] { float: none; margin-left: 223px; width: auto; }
+    }
+    .form-action > * { margin-left: 223px; }
   }
 }
 

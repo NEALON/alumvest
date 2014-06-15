@@ -6,8 +6,8 @@ class InvestmentTermsController < ApplicationController
     @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     authorize! :manage, @campaign
     @investment_term = Alumvest::InvestmentTermBase.new(:campaign => @campaign)
-    @investment_term.subscription_docs.build
-    @investment_term.other_docs.build
+    #@investment_term.subscription_docs.build
+    #@investment_term.other_docs.build
   end
 
   def create
@@ -22,8 +22,8 @@ class InvestmentTermsController < ApplicationController
   end
 
   def edit
-    @investment_term.subscription_docs.build if @investment_term.subscription_docs.blank?
-    @investment_term.other_docs.build if @investment_term.other_docs.blank?
+    #@investment_term.subscription_docs.build if @investment_term.subscription_docs.blank?
+    #@investment_term.other_docs.build if @investment_term.other_docs.blank?
 
     render :new
   end
@@ -41,8 +41,8 @@ class InvestmentTermsController < ApplicationController
     if @investment_term.make_ready_for_review
       redirect_to campaign_investment_term_path(@investment_term.campaign), :flash => {:success => 'Campaign investment terms are complete.' }
     else
-      @investment_term.subscription_docs.build if @investment_term.subscription_docs.blank?
-      @investment_term.other_docs.build if @investment_term.other_docs.blank?
+      #@investment_term.subscription_docs.build if @investment_term.subscription_docs.blank?
+      #@investment_term.other_docs.build if @investment_term.other_docs.blank?
       render :new, :flash => {:warning => 'Correct the data to make this complete.'}
     end
   end

@@ -1,24 +1,68 @@
-= form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign), :html => {:class => 'form-horizontal well'} do |f|
+= simple_form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign), :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, :validate => true do |f|
+  = render 'shared/error_notification', :errors => f.error_notification
+  
+  = f.hidden_field :campaign_id
+  
+  .form-horizontal.investment-terms-fr
+    .row
+      .col-lg-9
+        = f.input :fundraising_amount, :as => :string, :label => 'Fundraising Amount', :icon => 'glyphicon glyphicon-usd form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :min_investment, :as => :string, :label => 'Min Investment', :icon => 'glyphicon glyphicon-usd form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :max_investment, :as => :string, :label => 'Max Investment', :icon => 'glyphicon glyphicon-usd form-control-feedback', :wrapper => :horizontal_form_with_icon
+    .row
+      .col-lg-6
+        = f.input :campaign_length, :label => 'Campaign Length (days)', :collection => ['30', '60', '90', '120'], :wrapper => :horizontal_form, include_blank: false
+    = f.input :equity_type, :label => 'Convertible Note or Equity', :collection => ['Convertible Note', 'Equity', 'Convertible Equity'], :wrapper => :horizontal_form, include_blank: false
+    = f.input :funds_retained, :label => 'Funds Retained', :collection => ['All-or-nothing', 'Any'], :wrapper => :horizontal_form, include_blank: false
+    = f.input :fees_paid_by, :label => 'Fees Paid by', :collection => ['Investor', 'Issuer'], :wrapper => :horizontal_form, include_blank: false
+  
+  %hr
+    
+  = f.input :elevator_pitch, :label => 'Elevator Pitch', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}
+  = f.input :investment_details, :label => 'Investment Details', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}
 
-  = render 'shared/errors', :entity => @investment_term
+  %hr
+  
+  .form-horizontal.investment-terms-fr
+    .row
+      .col-lg-8
+        = f.input :business_plan_url, :as => :filepicker_image, :label => 'Business Plan', :wrapper => :horizontal_form, :input_html => {:html_options => {:class => 'btn btn-default btn-block', 'data-extensions' => '.pdf,.xls,.doc,.docx,.ppt'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"}
+        = f.input :financial_statement_url, :as => :filepicker_image, :label => 'Financial Statement', :wrapper => :horizontal_form, :input_html => {:html_options => {:class => 'btn btn-default btn-block', 'data-extensions' => '.pdf,.xls,.doc,.docx,.ppt'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"}
+        = f.input :term_sheet_url, :as => :filepicker_image, :label => 'Term Sheet', :wrapper => :horizontal_form, :input_html => {:html_options => {:class => 'btn btn-default btn-block', 'data-extensions' => '.pdf,.xls,.doc,.docx,.ppt'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"}
 
-  %fieldset
-    = f.hidden_field :campaign_id
-    - with_options :form => f do |op|
-      = op.render_cell 'tb/form/text', :display, :field => :fundraising_amount
-      = op.render_cell 'tb/form/text', :display, :field => :min_investment
-      = op.render_cell 'tb/form/text', :display, :field => :max_investment
-      = op.render_cell 'tb/form/select', :display, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
-      = op.render_cell 'tb/form/select', :display, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity', 'Convertible Equity']
-      = op.render_cell 'tb/form/select', :display, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
-      = op.render_cell 'tb/form/select', :display, :field => :fees_paid_by, :values => ['Investor', 'Issuer']
-      = op.render_cell 'tb/form/richtext', :display, :field =>  :elevator_pitch
-      = op.render_cell 'tb/form/richtext', :display, :field =>  :investment_details
-      = op.render_cell 'tb/form/filepicker', :display, :field => :business_plan_url, :label => "Business plan", :type => "doc"
-      = op.render_cell 'tb/form/filepicker', :display, :field => :financial_statement_url, :label => "Financial statement", :type => "doc"
-      = op.render_cell 'tb/form/filepicker', :display, :field => :term_sheet_url, :label => "Term sheet", :type => "doc"
+  %hr.no-marg-top
+  
+  = render 'documents', :title => 'Subscription Documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
+  = render 'documents', :title => 'Others Documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f
+  
+  %hr
+  
+  .form-action
+    = f.submit 'Save', :class => 'btn btn-success btn-lg'
 
-    = render 'documents', :title => 'Subscription documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
-    = render 'documents', :title => 'Others documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f
 
-    = render_cell 'tb/form/submit_button', :display
+-#    
+  = form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign), :html => {:class => 'form-horizontal well'} do |f|
+  
+    = render 'shared/errors', :entity => @investment_term
+  
+    %fieldset
+      = f.hidden_field :campaign_id
+      - with_options :form => f do |op|
+        = op.render_cell 'tb/form/text', :display, :field => :fundraising_amount
+        = op.render_cell 'tb/form/text', :display, :field => :min_investment
+        = op.render_cell 'tb/form/text', :display, :field => :max_investment
+        = op.render_cell 'tb/form/select', :display, :field => :campaign_length, :label => 'Campaign length (days)', :values => ['30', '60', '90', '120']
+        = op.render_cell 'tb/form/select', :display, :field => :equity_type, :label => 'Convertible Note or Equity', :values => ['Convertible Note', 'Equity', 'Convertible Equity']
+        = op.render_cell 'tb/form/select', :display, :field =>  :funds_retained, :values => ['All-or-nothing', 'Any']
+        = op.render_cell 'tb/form/select', :display, :field => :fees_paid_by, :values => ['Investor', 'Issuer']
+        = op.render_cell 'tb/form/richtext', :display, :field =>  :elevator_pitch
+        = op.render_cell 'tb/form/richtext', :display, :field =>  :investment_details
+        = op.render_cell 'tb/form/filepicker', :display, :field => :business_plan_url, :label => "Business plan", :type => "doc"
+        = op.render_cell 'tb/form/filepicker', :display, :field => :financial_statement_url, :label => "Financial statement", :type => "doc"
+        = op.render_cell 'tb/form/filepicker', :display, :field => :term_sheet_url, :label => "Term sheet", :type => "doc"
+  
+      -#= render 'documents', :title => 'Subscription documents', :grouping => :subscription_docs, :add_title => 'Add Document', :f => f
+      = render 'documents', :title => 'Others documents', :grouping => :other_docs, :add_title => 'Add Document', :f => f
+  
+      = render_cell 'tb/form/submit_button', :display

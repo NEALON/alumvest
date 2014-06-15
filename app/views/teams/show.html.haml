@@ -18,7 +18,7 @@
                   = f.input :team_highlights, :label => false, :as => :displayhtml
                   
             .form-group    
-              .panel.panel-default.panel-table.no-marg-bottom
+              .panel.panel-default.no-marg-bottom{:class => @team.team_members.empty? ? '' : 'panel-table'}
                 .panel-heading 
                   %h4.panel-title.text-default Team Members
                 .panel-body
@@ -41,25 +41,25 @@
                               %td= p.full_name
                               %td= p.title
                   - else
-                    %p
-                      %i There are no investments here right now.
+                    %i There are no investments here right now.
+                      
+            %hr
+            
+            .form-action
+              .btn-toolbar.hidden-xs
+                - if @team.draft?
+                  = link_to 'Complete', check_for_completeness_campaign_team_path(@campaign), :class => 'btn btn-success btn-lg'
+                = link_to 'Preview', preview_campaign_team_path(@campaign), :class => 'btn btn-default btn-lg', :target => (not Rails.env.test?) ? '_blank' : ''
+                - unless @campaign.published?
+                  = link_to 'Edit', edit_campaign_team_path(@campaign), :class => 'btn btn-link btn-lg' 
+              .btn-toolbar.hidden-sm.hidden-md.hidden-lg
+                - if @team.draft?
+                  = link_to 'Complete', check_for_completeness_campaign_team_path(@campaign), :class => 'btn btn-success btn-xs'
+                = link_to preview_campaign_team_path(@campaign), :class => 'btn btn-default btn-xs', :target => (not Rails.env.test?) ? '_blank' : '' do
+                  - if @team.draft?
+                    %i.fa.fa-eye
+                  - else
+                    Preview
+                - unless @campaign.published?
+                  = link_to 'Edit', edit_campaign_team_path(@campaign), :class => 'btn btn-link btn-xs' 
           
-          %p
-            = render_cell 'tb/mini_link_button', :display, :label => 'Edit Team', :link => edit_campaign_team_path(@campaign) unless @campaign.published?
-            - if @team.draft?
-              = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_team_path(@campaign)
-            = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_team_path(@campaign), :new_page => (not Rails.env.test?)
-          
-          .panel
-            %p
-          
-            = render 'shared/property_row', :header => 'Team Highlights', :value => (raw @team.team_highlights)
-          
-            %p
-              - if @team.team_members.length > 0
-                %h4.sub-title Team members
-              - @team.team_members.each do |p|
-                = p.full_name
-                = p.title
-                = render 'shared/youtube', :video_url => p.video_url, :width => 590, :height => 400
-                %br

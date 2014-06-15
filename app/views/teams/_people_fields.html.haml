@@ -26,28 +26,3 @@
               .wrapper-btn.text-center
                 = link_to_add_association(('<i class="fa fa-plus"></i> Add Education').html_safe, f, :educations)
    
--#
-  %fieldset                    
-    - with_options :form => f do |op|
-      = op.render_cell 'tb/form/text', :display, :field => :first_name
-      = op.render_cell 'tb/form/text', :display, :field => :last_name
-      = op.render_cell 'tb/form/text', :display, :field => :title
-      = op.render_cell 'tb/form/filepicker', :display, :field => :avatar_url, :label => "Avatar"
-      = op.render_cell 'tb/form/text', :display, :field => :facebook, :placeholder => 'facebook_id'
-      = op.render_cell 'tb/form/text', :display, :field => :twitter, :placeholder => 'twitter_id'
-      = op.render_cell 'tb/form/text', :display, :field => :linkedin, :placeholder => 'linkedin_id'
-      = op.render_cell 'tb/form/richtext', :display, :field => :introduction
-      = op.render_cell 'tb/form/text', :display, :field => :video_url
-    %hr
-  
-    .form-group
-      .col-md-8.col-md-offset-4
-        %h4 Education
-        #educations
-          = f.fields_for :educations do |e|
-            = render 'education_fields', :f => e
-          .links
-            = link_to_add_association 'Add Education', f, :educations
-  
-        = link_to_remove_association 'Remove this person', f, :class => 'btn btn-default btn-xs'
-        %hr

@@ -1,52 +1,166 @@
-= render 'campaigns/management_navigation', :active => :funding, :campaign => @campaign
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'campaigns/management_navigation', :active => :funding, :campaign => @campaign
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          = render 'campaigns/title', :active => :funding, :campaign => @campaign, :title => 'Investment Terms'
+          
+          = simple_form_for [@campaign, @investment_term], :url => campaign_investment_term_path(@campaign), :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, :validate => true do |f|
+            .form-horizontal.investment-terms-fr
+              = f.input :fundraising_amount, :label => 'Fundraising Amount', :as => :displaycurrency, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+              = f.input :min_investment, :label => 'Min Investment', :as => :displaycurrency, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+              = f.input :max_investment, :label => 'Max Investment', :as => :displaycurrency, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+              = f.input :campaign_length, :label => 'Campaign Length (days)', :as => :display, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+              = f.input :equity_type, :label => 'Convertible Note or Equity', :as => :display, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+              = f.input :funds_retained, :label => 'Funds Retained', :as => :display, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+              = f.input :fees_paid_by, :label => 'Fees Paid by', :as => :display, :wrapper => :horizontal_form, :wrapper_html => {:class => 'no-marg-bottom'}
+          
+            %hr
+            
+            .form-group    
+              .panel.panel-default.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title.text-default Elevator Pitch
+                .panel-body
+                  = f.input :elevator_pitch, :label => false, :as => :displayhtml
+                  
+            .form-group    
+              .panel.panel-default.no-marg-bottom
+                .panel-heading 
+                  %h4.panel-title.text-default Investment Details
+                .panel-body
+                  = f.input :investment_details, :label => false, :as => :displayhtml
+                  
+            %hr
+            
+            .form-horizontal.investment-terms-fr
+              .form-group.no-marg-bottom    
+                %label.control-label.col-sm-3 Business Plan
+                .col-sm-9
+                  - unless @investment_term.business_plan_url.blank?
+                    .form-control-static
+                      = link_to @investment_term.business_plan_url, :target => (not Rails.env.test?) ? '_blank' : '' do
+                        %i.fa.fa-file-text-o.fa-fw
+                        business_plan
+                  - else
+                    .form-control-static.blank
+                      blank
+                    
+              .form-group.no-marg-bottom    
+                %label.control-label.col-sm-3 Financial Statement
+                .col-sm-9
+                  - unless @investment_term.financial_statement_url.blank?
+                    .form-control-static
+                      = link_to @investment_term.financial_statement_url, :target => (not Rails.env.test?) ? '_blank' : '' do
+                        %i.fa.fa-file-text-o.fa-fw
+                        financial_statement
+                  - else
+                    .form-control-static.blank
+                      blank
+                    
+              .form-group.no-marg-bottom    
+                %label.control-label.col-sm-3 Term Sheet
+                .col-sm-9
+                  - unless @investment_term.term_sheet_url.blank?
+                    .form-control-static
+                      = link_to @investment_term.term_sheet_url, :target => (not Rails.env.test?) ? '_blank' : '' do
+                        %i.fa.fa-file-text-o.fa-fw
+                        term_sheet
+                  - else
+                    .form-control-static.blank
+                      blank
+                         
+            %hr
+              
+            .form-group    
+              .panel.panel-default.no-marg-bottom{:class => @investment_term.subscription_docs.empty? ? '' : 'panel-table'}
+                .panel-heading 
+                  %h4.panel-title.text-default Subscription Documents
+                .panel-body
+                  - unless @investment_term.subscription_docs.empty?
+                    .table-responsive
+                      %table.table.table-bordered.table-hover.bold
+                        %thead 
+                          %tr
+                            %th.col-sm-6 File
+                            %th.col-sm-3.text-center Signature required
+                            %th.col-sm-3.text-center Distribute at closing
+                        %tbody
+                          - @investment_term.subscription_docs.each do |doc|
+                            %tr
+                              %td
+                                - unless doc.file_url.empty?
+                                  = link_to doc.name, doc.file_url, :target => (not Rails.env.test?) ? '_blank' : ''
+                                - else
+                                  = doc.name
+                              %td.text-center
+                                - if doc.signature_required
+                                  yes
+                                - else
+                                  no
+                              %td.text-center
+                                - if doc.distribute_at_closing
+                                  yes
+                                - else
+                                  no
+                  - else
+                    %i There are no documents here right now.    
+                    
+            .form-group    
+              .panel.panel-default.no-marg-bottom{:class => @investment_term.other_docs.empty? ? '' : 'panel-table'}
+                .panel-heading 
+                  %h4.panel-title.text-default Others Documents
+                .panel-body
+                  - unless @investment_term.other_docs.empty?
+                    .table-responsive
+                      %table.table.table-bordered.table-hover.bold
+                        %thead 
+                          %tr
+                            %th.col-sm-6 File
+                            %th.col-sm-3.text-center Signature required
+                            %th.col-sm-3.text-center Distribute at closing
+                        %tbody
+                          - @investment_term.other_docs.each do |doc|                            
+                            %tr
+                              %td
+                                - unless doc.file_url.empty?
+                                  = link_to doc.name, doc.file_url, :target => (not Rails.env.test?) ? '_blank' : ''
+                                - else
+                                  = doc.name
+                              %td.text-center
+                                - if doc.signature_required
+                                  yes
+                                - else
+                                  no
+                              %td.text-center
+                                - if doc.distribute_at_closing
+                                  yes
+                                - else
+                                  no
+                  - else
+                    %i There are no documents here right now.          
+            
+            %hr
+            
+            .form-action
+              .btn-toolbar.hidden-xs
+                - if @investment_term.draft?
+                  = link_to 'Complete', check_for_completeness_campaign_investment_term_path(@campaign), :class => 'btn btn-success btn-lg'
+                = link_to 'Preview', preview_campaign_investment_term_path(@campaign), :class => 'btn btn-default btn-lg', :target => (not Rails.env.test?) ? '_blank' : ''
+                - unless @campaign.published?
+                  = link_to 'Edit', edit_campaign_investment_term_path(@campaign), :class => 'btn btn-link btn-lg' 
+              .btn-toolbar.hidden-sm.hidden-md.hidden-lg
+                - if @investment_term.draft?
+                  = link_to 'Complete', check_for_completeness_campaign_investment_term_path(@campaign), :class => 'btn btn-success btn-xs'
+                = link_to preview_campaign_investment_term_path(@campaign), :class => 'btn btn-default btn-xs', :target => (not Rails.env.test?) ? '_blank' : '' do
+                  - if @investment_term.draft?
+                    %i.fa.fa-eye
+                  - else
+                    Preview
+                - unless @campaign.published?
+                  = link_to 'Edit', edit_campaign_investment_term_path(@campaign), :class => 'btn btn-link btn-xs' 
 
-%p
-  = render_cell 'tb/mini_link_button', :display, :label => 'Edit Investment Terms', :link => edit_campaign_investment_term_path(@campaign) unless @campaign.published?
-  - if @investment_term.draft?
-    = render_cell 'tb/mini_link_button', :display, :label => 'Check for completeness', :link => check_for_completeness_campaign_investment_term_path(@campaign)
-  = render_cell 'tb/mini_link_button', :display, :label => 'Preview', :link => preview_campaign_investment_term_path(@campaign), :new_page => (not Rails.env.test?)
-
-.panel
-  %p
-
-  = render 'shared/property_row', :header => 'Fundraising Amount', :value => (number_to_currency @investment_term.fundraising_amount)
-  = render 'shared/property_row', :header => 'Campaign length (days)', :value => @investment_term.campaign_length
-  = render 'shared/property_row', :header => 'Convertible Note or Equity', :value => @investment_term.equity_type
-  = render 'shared/property_row', :header => 'Funds Retained', :value => @investment_term.funds_retained
-  = render 'shared/property_row', :header => 'Fees Paid By', :value => @investment_term.fees_paid_by
-  = render 'shared/property_row', :header => 'Elevator Pitch', :value => (raw @investment_term.elevator_pitch)
-  = render 'shared/property_row', :header => 'Investment Details', :value => (raw @investment_term.investment_details)
-
-  .row.form-row
-    .col-xs-4.col-md-4.form-label
-      %b.pull-right
-        Business plan
-    .col-xs-8.col-md-8.form-value
-      = link_to_unless @investment_term.business_plan_url.blank?, 'Business plan', @investment_term.business_plan_url
-  .row.form-row
-    .col-xs-4.col-md-4.form-label
-      %b.pull-right
-        Financial statement
-    .col-xs-8.col-md-8.form-value
-      = link_to_unless @investment_term.financial_statement_url.blank?, 'Financial statement', @investment_term.financial_statement_url
-  .row.form-row
-    .col-xs-4.col-md-4.form-label
-      %b.pull-right
-        Term sheet
-    .col-xs-8.col-md-8.form-value
-      = link_to_unless @investment_term.term_sheet_url.blank?, 'Term sheet', @investment_term.term_sheet_url
-
-  - @investment_term.subscription_docs.each do |doc|
-    .row.form-row
-      .col-xs-4.col-md-4.form-label
-        %b.pull-right
-          doc.name
-      .col-xs-8.col-md-8.form-value
-        = link_to doc.name, doc.file_url
-  - @investment_term.other_docs.each do |doc|
-    .row.form-row
-      .col-xs-4.col-md-4.form-label
-        %b.pull-right
-          doc.name
-      .col-xs-8.col-md-8.form-value
-        = link_to doc.name, doc.file_url

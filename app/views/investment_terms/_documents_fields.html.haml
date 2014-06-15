@@ -1,12 +1,11 @@
-%fieldset
-  - with_options :form => f do |op|
-    = op.render_cell 'tb/form/text', :display, :field => :name
-    = op.render_cell 'tb/form/filepicker', :display, :field => :file_url, :label => "File", :type => "doc"
-    = op.render_cell 'tb/form/checkbox', :display, :field => :signature_required, :label => 'Signature required'
-    = op.render_cell 'tb/form/checkbox', :display, :field => :distribute_at_closing, :label => 'Distribute at closing'
-
-  .form-group
-    .col-md-8.col-md-offset-4
-      = link_to_remove_association 'Remove this file', f, :class => 'btn btn-default btn-xs'
-
-      %hr
+.nested-fields.no-borders
+  .panel.panel-primary.marg-bottom
+    .panel-heading
+      = link_to_remove_association(('<i class="fa fa-times-circle"></i>').html_safe, f, {:class => 'close', :data => {:toggle => 'tooltip'}, :title => 'Remove this document'})
+      %h3.panel-title Document Info
+    .panel-body  
+      .form-horizontal
+        = f.input :name, :label => 'Name', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :horizontal_form_with_icon
+        = f.input :file_url, :as => :filepicker_image, :label => 'File', :wrapper => :horizontal_form_with_inline_help, :input_html => {:html_options => {:class => 'btn btn-default btn-block', 'data-extensions' => '.pdf,.xls,.doc,.docx,.ppt'}, :pick_button_html => 'Choose A File...', :delete_button_html => "Remove"}
+        = f.input :signature_required, :as => :boolean, :label => 'Signature required', :wrapper => :horizontal_boolean
+        = f.input :distribute_at_closing, :as => :boolean, :label => 'Distribute at closing', :wrapper => :horizontal_boolean
