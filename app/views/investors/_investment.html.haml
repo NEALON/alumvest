@@ -2,10 +2,7 @@
   %td
     = investment.created_at
   %td
-  - unless investment.campaign.issuer.user.educations.blank?
-    = investment.campaign.issuer.user.educations[0].school
-  - else
-    %p
+    = investment.campaign.company.company_name
   %td
     %p
       NA
