@@ -1,2 +1,12 @@
-= render 'campaigns/management_navigation', :active => :updates, :campaign => @campaign
-= render 'form', :active => :new
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'campaigns/management_navigation', :active => :updates, :campaign => @campaign
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          = render 'campaigns/title', :active => :updates, :campaign => @campaign, :title => 'Updates'
+          
+          = render 'form', :active => :new

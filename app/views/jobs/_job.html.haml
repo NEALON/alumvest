@@ -1,9 +1,25 @@
-%hr/
-= render 'shared/property_row', :header => 'Title', :value => job.title
-= render 'shared/property_row', :header => 'Description', :value => (raw job.description)
-= render 'shared/property_row', :header => 'Contact', :value => job.contact
+%hr
 
-.row.pull-right
-  = "Last updated #{time_ago_in_words(job.updated_at)} ago."
-  = link_to '[Edit]', edit_campaign_company_job_path(job.company.campaign, job)
-  = link_to '[Delete]', campaign_company_job_path(@campaign, job), :method => :delete
+.panel.panel-default.marg-bottom
+  .panel-heading
+    = link_to campaign_company_job_path(@campaign, job), :method => :delete, :class => 'close', :data => {:toggle => 'tooltip'}, :title => 'Remove this job' do
+      %i.fa.fa-times-circle
+    %h3.panel-title 
+      Job ##{(job_counter + 1)}
+      %small.bold.text-default.hidden-xs (Last updated #{time_ago_in_words(job.updated_at)} ago)
+  .panel-body
+    = simple_form_for job, :url => '', :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, validate: true do |f|
+      .row
+        .col-sm-6
+          = f.input :title, :label => 'Title', :as => :display
+        .col-sm-6
+          = f.input :contact, :label => 'Contact', :as => :display
+      .form-group    
+        .panel.panel-default.no-marg-bottom
+          .panel-heading 
+            %h4.panel-title.text-default Description
+          .panel-body
+            = f.input :description, :label => false, :as => :displayhtml
+  .panel-footer
+    .btn-toolbar
+      = link_to 'Edit', edit_campaign_company_job_path(job.company.campaign, job), :class => 'btn btn-primary'

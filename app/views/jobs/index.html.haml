@@ -1,6 +1,17 @@
-= render 'campaigns/management_navigation', :active => :jobs, :campaign => @campaign
-- if @company
-  = render "form", :active => :new
-  = render :partial => 'jobs/job', :collection =>  @jobs
-- else
-  %p You have to fill in the company data before posting jobs.
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'campaigns/management_navigation', :active => :jobs, :campaign => @campaign
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          = render 'campaigns/title', :active => :jobs, :campaign => @campaign, :title => 'Jobs'
+          
+          - if @company
+            = render "form", :active => :new
+            = render :partial => 'jobs/job', :collection => @jobs
+          - else
+            %p
+              %i You have to fill in the company data before posting jobs.

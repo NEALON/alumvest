@@ -1,21 +1,22 @@
-= render 'shared/errors', :entity => @update
-
 - if active == :new
   - url = campaign_company_updates_path(@campaign, @update)
 - else
   - url = campaign_company_update_path(@campaign, @update)
 
-= form_for [@campaign, @update], :url => url, :html => {:class => 'form-horizontal well'} do |f|
-
-  = render 'shared/errors', :entity => @update
-
-  %fieldset
-    = f.hidden_field :company_id
-
-    - with_options :form => f do |op|
-      = op.render_cell 'tb/form/text', :display, :field => :subject
-      = op.render_cell 'tb/form/richtext', :display, :field => :details
-      = op.render_cell 'tb/form/radiobutton', :display, :field => :visibility, :values => ["Everyone", "Accredited Investors", "My Investors", "Just Me"]
-      = op.render_cell 'tb/form/text', :display, :field => :video_url
-
-    = render_cell 'tb/form/submit_button', :display
+= simple_form_for [@campaign, @update], :url => url, :wrapper => :vertical_form, :html => {:class => 'form-vertical'}, :validate => true do |f|
+  = render 'shared/error_notification', :errors => f.error_notification
+  
+  = f.hidden_field :company_id
+  
+  .row
+    .col-sm-7
+      = f.input :subject, :label => 'Subject', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :vertical_form_with_icon
+  = f.input :details, :label => 'Details', :as => :text, :input_html => {:rows => 3, :class => 'ckeditor'}, :wrapper => :vertical_form
+  .row
+    .col-sm-7
+      = f.input :video_url, :label => 'Video URL', :icon => 'glyphicon glyphicon-ok form-control-feedback', :wrapper => :vertical_form_with_icon
+    .col-sm-5
+      = f.input :visibility, :label => 'Visible To', :collection => ["Everyone", "Accredited Investors", "My Investors", "Just Me"], include_blank: false
+  
+  .form-action.marg-bottom-lg
+    = f.submit 'Save', :class => 'btn btn-primary btn-lg'
