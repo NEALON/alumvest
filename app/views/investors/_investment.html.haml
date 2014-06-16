@@ -1,0 +1,17 @@
+%tr
+  %td
+    = investment.created_at
+  %td
+  - unless investment.campaign.issuer.user.educations.blank?
+    = investment.campaign.issuer.user.educations[0].school
+  - else
+    %p
+  %td
+    %p
+      NA
+  %td
+    = number_to_currency(investment.amount)
+  %td
+    = "#{investment.campaign.recent_investment.investor.user.first_name} #{investment.campaign.recent_investment.investor.user.last_name} invested $#{investment.campaign.recent_investment.amount}"  
+    
+
