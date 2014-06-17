@@ -56,28 +56,19 @@
     .block-header
       My Investments
     .block-body
-      = #TODO insert real data
-      %table.table
-        %tbody
-          %tr
-            %td
-              Investment Date
-            %td
-              Founder Schools
-            %td
-              Pre-financing Valuation
-            %td
-              Lead Investors
-            %td
-              Recent Activities
-          %tr
-            %td
-              2/14/13
-            %td
-              MIT, Columbia University
-            %td
-              $100,000
-            %td
-              Zial Faiosu
-            %td
-              Martin invested $50k.
+      - unless  @user.investor.investments.blank?
+        %table.table
+          %tbody
+            %tr
+              %td
+                Investment Date
+              %td
+                Campaign Name
+              %td
+                Pre-financing Valuation
+              %td
+                Amount Invested
+              %td
+                Recent Activities
+            - @user.investor.investments.each do |i|
+              = render :partial => 'investment', :locals => {:investment => i}
