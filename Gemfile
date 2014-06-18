@@ -53,6 +53,7 @@ gem 'bootstrap-sass', '~> 3.1.1' #, {:git=>'git://github.com/thomas-mcdonald/boo
 gem 'font-awesome-sass' # The iconic font designed for Bootstrap
 gem 'modernizr-rails'
 gem 'simple_form', '~> 3.1.0.rc1'
+gem 'bootstrap-datepicker-rails'
 #gem 'country_select', '~> 1.3.1'
 gem 'coffee-rails', '~> 4.0'
 gem 'haml-rails', '~> 0.4'

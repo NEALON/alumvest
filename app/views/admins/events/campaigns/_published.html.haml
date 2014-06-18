@@ -1,8 +1,9 @@
 %td
   A campaign was published for review
-%td
+%td{:colspan => campaign.published? ? '2' : '3'}
   = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
-%td
-  - if campaign.published?
-    = link_to 'Accept',  accept_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'
-    = link_to 'Reject', reject_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-default btn-xs'
+
+- if campaign.published?
+  %td.nowrap
+    = link_to 'Accept',  accept_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-success btn-xs'
+    = link_to 'Reject', reject_user_admin_campaign_review_path(current_user, campaign), :method => :post, :class => 'btn btn-danger btn-xs'

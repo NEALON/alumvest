@@ -1,4 +1,13 @@
-= render "side_navigation", :active => 'admin_dashboard'
-
-#information
-  (nothing here yet)
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'admin_dashboard'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Dashboard
+          
+          %p
+            %i (nothing here yet)

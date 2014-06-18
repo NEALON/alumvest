@@ -20,6 +20,7 @@
 //= require ckeditor-jquery
 //= require cocoon
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 
 $.validator.setDefaults({

@@ -1,15 +1,11 @@
 %footer.footer
   .container
     - unless content_for?(:without_navigation) || (yield :without_navigation) == true
-      .row
-        .col-md-8
-          = render 'layouts/footer_navigation'
-        .col-md-4
-          = render 'shared/follows'
-    .copyright
-      .row
-        .col-sm-6.left-info.marg-bottom
-          %i All rights reserved by, AlumVest.com
-        .col-sm-6.right-info.marg-bottom
-          = link_to :root do
-            = image_tag("logo-footer.jpg", :alt => 'AlumVest', :title => 'AlumVest')
+      .top-info
+        .row
+          .col-md-8
+            = render 'layouts/footer_navigation'
+          .col-md-4
+            = render 'shared/follows'
+            
+    = render :partial => 'layouts/copyright' 

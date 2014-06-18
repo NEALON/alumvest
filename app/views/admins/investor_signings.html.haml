@@ -1,24 +1,32 @@
-= render 'side_navigation', :active => 'admin_investor_signings'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'admin_investor_signings'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Investor Signings
 
-#information
-  - if @investor_signings.blank?
-    No data present.
-  - else
-    %table.table
-
-    %table.table
-      %thead
-        %tr
-          %th
-            Campaign
-          %th
-            Investment
-          %th
-            Document
-          %th
-            Action
-
-      %tbody
-      - @investor_signings.each do |s|
-        %tr
-          = render :partial => s.to_admin_partial_path, :locals => {:signing => s}
+          #information
+            - if @investor_signings.blank?
+              %p
+                %i No data present.
+            - else
+              .table-responsive
+                %table.table.table-striped.table-bordered
+                  %thead
+                    %tr
+                      %th
+                        Campaign
+                      %th
+                        Investment
+                      %th
+                        Document
+                      %th
+                        Action
+                  %tbody
+                  - @investor_signings.each do |s|
+                    %tr
+                      = render :partial => s.to_admin_partial_path, :locals => {:signing => s}

@@ -8,7 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require font-awesome
+ *= require bootstrap-datepicker3
 */
 
 // Core variables and mixins
@@ -27,6 +27,8 @@
 /* ==========================================================================
    Base
    ========================================================================== */
+html { height: 100%; }
+
 .root { background: darken($white, 5%); }
 
 img, .img-responsive { @extend .img-responsive; height: auto !important; }
@@ -187,7 +189,7 @@ dt, dd { line-height: 1.1; }
 .btn { font-family: $font-family-open-sans; padding: {left: 30px; right: 30px;} text-shadow: none; 
   &.btn-sm { padding: {left: 19px; right: 19px;} }
   
-  &.btn-xs { padding: {left: 10px; right: 10px;} }
+  &.btn-xs { font-size: $font-size-base - 2px; padding: {left: 10px; right: 10px;} }
   
   // Btn company
   &.btn-company { background: mix(#f9f9f9, #ededed); @include gradient-vertical(#f9f9f9, #ededed); border: 0 none; border-radius: 100px; @include box-shadow(0 1px 1px rgba($black, .25)); color: $blue-dark; font: {family: $font-family-sans-serif; size: 12px; weight: bold;} margin-bottom: 18px; padding: 5px 11px !important; @include transition(none); 
@@ -276,7 +278,7 @@ dt, dd { line-height: 1.1; }
 // Form control feedback states
 .has-feedback {
   .form-control { border-radius: 0 100px 100px 0; 
-    &:focus + .form-control-feedback { background: $input-border-focus; }
+    &:focus + .form-control-feedback, &:focus + * + .form-control-feedback { background: $input-border-focus; }
   }
   
   .form-control-feedback { background: $input-border; border-radius: 100px; color: $white; font-size: 13px; top: 0; }
@@ -330,6 +332,9 @@ textarea { resize: vertical; }
 @media (min-width: $screen-sm) {
   .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline { margin-left: 62px; }
 }
+
+// Datepicker Dropdown
+.datepicker.dropdown-menu { padding: 4px; } 
 
 
 /* ==========================================================================
@@ -428,7 +433,7 @@ textarea { resize: vertical; }
         &:hover, &:focus { color: $navbar-default-link-color; }
       }
       
-      &.open > a { color: $white; }
+      &.open > a, &.active > a { color: $white; }
     }
   }
   
@@ -490,7 +495,7 @@ textarea { resize: vertical; }
  * Wrapper Content
  */ 
 .wrapper-content { padding: {top: 30px; bottom: 60px;} 
-  @media (min-width: $screen-sm) { min-height: 500px; padding: {top: 69px; bottom: 140px;} }
+  @media (min-width: $screen-sm) { min-height: 300px; padding: {top: 69px; bottom: 140px;} }
 }
 
 // Catchall baseclass
@@ -585,6 +590,16 @@ textarea { resize: vertical; }
       + [class^="col-"], [class*=" col-"] { float: none; margin-left: 223px; width: auto; }
     }
     .form-action > * { margin-left: 223px; }
+  }
+}
+
+// Escrow Account Form
+.escrow-account-fr {
+  @media (min-width: $screen-sm) {
+    .control-label { float: left; /*text-align: left;*/ white-space: nowrap; width: 191px; 
+      + [class^="col-"], [class*=" col-"] { float: none; margin-left: 191px; width: auto; }
+    }
+    .form-action > * { margin-left: 191px; }
   }
 }
 
@@ -893,11 +908,46 @@ textarea { resize: vertical; }
   &:hover, &:focus { color: $link-color; }
 }
 
+/**
+ * Authorization Unit
+ */
+.wrapper-authorization { background: $black; padding: {top: 175px; bottom: 245px;} 
+  
+}
+
+/**
+ * How It Works Contents
+ */
+.how-it-works-pages { background: $black; height: 100%;
+  > .page-content { background: {size: cover; attachment: fixed; position-x: center !important;} height: 100%; 
+    &:first-child { margin-top: -$navbar-height; padding-top: $navbar-height; }
+    &.last { margin-bottom: -$footer-height-sm; padding-bottom: $footer-height-sm; }
+  }
+  
+  &.sturtups {
+    .bg-step-1 { background-image: image-url("how-it-works/sturtups/01-step-bg.jpg"); }
+    .bg-step-2 { background-image: image-url("how-it-works/sturtups/02-step-bg.jpg"); }
+    .bg-step-3 { background-image: image-url("how-it-works/sturtups/03-step-bg.jpg"); }
+    .bg-step-4 { background-image: image-url("how-it-works/sturtups/04-step-bg.jpg"); }
+    .bg-step-5 { background-image: image-url("how-it-works/sturtups/05-step-bg.jpg"); }
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .how-it-works-body { height: 100%; @include sticky-footer($footer-height-sm);    
+    .root { height: 100% !important; }    
+    .wrapper-content { height: 100%; margin: {top: 0; bottom: 0;} padding: {top: 0; bottom: 0;} }    
+    .footer { @include box-shadow(0 -2px 5px rgba($black, .1)); }
+  }  
+}
+
 
 /* ==========================================================================
    Footer Styles
    ========================================================================== */
-.footer { background: $white; font: {family: $font-family-open-sans; size: 12px;} padding: 47px 0 0;
+.footer { background: $white; font: {family: $font-family-open-sans; size: 12px;}
+  .top-info { border-bottom: 1px solid #f2f2f2; padding: 47px 0 5px; }
+  
   // Navigation Footer
   .nav-footer { border-bottom: 1px solid #f2f2f2; color: $gray-darker; margin-bottom: 20px; text: {align: center; transform: uppercase;}
     a { color: $gray-darker; text-decoration: none;
@@ -939,9 +989,13 @@ textarea { resize: vertical; }
   }
   
   // Copyright
-  .copyright { border-top: 1px solid #f2f2f2; color: #ababab; margin-top: 5px; padding-top: 11px;
-    .left-info { margin-top: 10px; text-align: center; }
-    .right-info { text-align: center; }
+  .copyright { color: #ababab; padding-top: 11px;
+    .left-info, .right-info { margin-bottom: 10px; }
+  
+    .left-info { margin-top: 8px; text-align: center; }
+    .right-info { text-align: center; 
+      img { display: inline; }
+    }
     
     @media (min-width: $screen-sm) {
       .left-info { text-align: left; }

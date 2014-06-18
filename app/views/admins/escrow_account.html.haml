@@ -1,19 +1,30 @@
-= render 'side_navigation', :active => 'admin_escrow_account'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'admin_escrow_account'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top.no-marg-bottom 
+            Escrow Account
+            %small
+              for "#{@campaign.company.campaign_title}"
+          %p.lead The Bancbox API supports only changing one of these values at a time.
+          
+          %hr
+         
+          = simple_form_for @escrow_account, :url => update_escrow_account_user_admin_path(@user, :escrow_account_id => @escrow_account.id), :method => :put, :html => {:class => 'form-horizontal escrow-account-fr'}, :wrapper => :horizontal_form_with_icon, validate: true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification
+            
+            .row
+              .col-sm-8
+                = f.input :close_date, :as => :string, :label => 'Close Date', :input_html => {"data-behaviour" => "datepicker"}, :icon => 'glyphicon glyphicon-calendar form-control-feedback'
+                = f.input :funding_goal, :label => 'Funding Goal', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+                = f.input :over_funding_amount, :label => 'Over Funding Amount', :icon => 'glyphicon glyphicon-ok form-control-feedback'
+            
+            .form-action
+              = f.submit 'Save', :class => 'btn btn-primary btn-lg'
+          
 
-#information
-  %h3= "Escrow account for '#{@campaign.company.campaign_title}'"
-  %hr
-  %p
-    %em
-      The Bancbox API supports only changing one of these values at a time.
-  = form_for @escrow_account, :url =>  update_escrow_account_user_admin_path(@user, :escrow_account_id => @escrow_account.id), :method => :put, :html => {:class => 'form-horizontal well'} do |f|
-
-    = render 'shared/errors', :entity => @bancbox_identity_verification
-
-    %fieldset
-      - with_options :form => f do |op|
-        = op.render_cell 'tb/form/dateselect', :display, :field => :close_date
-        = op.render_cell 'tb/form/text', :display, :field => :funding_goal
-        = op.render_cell 'tb/form/text', :display, :field => :over_funding_amount
-
-      = render_cell 'tb/form/submit_button', :display

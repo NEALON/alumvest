@@ -1,0 +1,23 @@
+- content_for :body_classes, 'how-it-works-body'
+- content_for :without_footer, true
+
+.how-it-works-pages.sturtups
+  %section.page-content.bg-step-1{"data-stellar" => {"background-ratio" => "0.5", "vertical-offset" => "60"}}
+    Content 1
+  %section.page-content.bg-step-2{"data-stellar" => {"background-ratio" => "0.5"}}
+    Content 2
+  %section.page-content.bg-step-3{"data-stellar" => {"background-ratio" => "0.5"}}
+    Content 3
+  %section.page-content.bg-step-4{"data-stellar" => {"background-ratio" => "0.5"}}
+    Content 4
+  %section.page-content.last.bg-step-5{"data-stellar" => {"background-ratio" => "0.5"}}
+    Content 5
+  
+  .footer
+    .container  
+      = render :partial => 'layouts/copyright'
+
+- content_for :scripts do
+  :javascript
+    $.stellar({
+    });

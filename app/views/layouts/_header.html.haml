@@ -38,6 +38,11 @@
           - else
             %li.inverse= link_to('Signup', '#signup-modal', :class => '', 'data-toggle' => 'modal')
             %li.inverse= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')             
-  
+            
+            -#
+              %li.inverse{:class => content_for?(:header_active) ? (yield(:header_active) == 'signup' ? 'active' : '') : ''}
+                = link_to 'Signup', '/signup'
+              %li.inverse{:class => content_for?(:header_active) ? (yield(:header_active) == 'login' ? 'active' : '') : ''}
+                = link_to 'Login', '/login'  
 / END .header
   

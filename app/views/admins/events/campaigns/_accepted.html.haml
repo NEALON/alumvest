@@ -1,7 +1,8 @@
 %td
   A campaign was accepted
-%td
+%td{:colspan => (campaign.accepted? and campaign.bancbox_escrow.blank?) ? '2' : '3'}
   = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
-%td
-  - if campaign.accepted? and campaign.bancbox_escrow.blank?
-    = link_to 'Create an Escrow Account', campaign_bancbox_escrow_path(campaign), :method => :post, :class => 'btn btn-default btn-xs'
+  
+- if campaign.accepted? and campaign.bancbox_escrow.blank?
+  %td
+    = link_to 'Create an Escrow Account', campaign_bancbox_escrow_path(campaign), :method => :post, :class => 'btn btn-primary btn-xs'

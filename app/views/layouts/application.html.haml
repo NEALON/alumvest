@@ -22,7 +22,7 @@
     - unless Rails.env.test?
       /[if lt IE 9]
         %script{:src => "//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
-  %body
+  %body{:class => content_for?(:body_classes) ? "#{yield(:body_classes)}" : ""}
     
     .root
       = render 'layouts/header'
@@ -65,13 +65,15 @@
         
       / END .wrapper-content
       
-      = render :partial => 'shared/what_next'
+      - unless content_for? :without_footer
+        = render :partial => 'shared/what_next'        
+        = render :partial => 'shared/featured'
       
-      = render :partial => 'shared/featured'
-      
+      .root-footer
     / END .root
     
-    = render :partial => 'layouts/footer'
+    - unless content_for? :without_footer
+      = render :partial => 'layouts/footer'
   
     / Modals 
     - unless current_user

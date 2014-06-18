@@ -1,10 +1,21 @@
-= render 'side_navigation', :active => 'admin_income_verification_events'
-
-#information
-  %table.table
-    - if @events.blank?
-      No data present.
-    - else
-      - @events.each do |event|
-        %tr
-          = render :partial => event.to_admin_partial_path, :locals => {:event => event, :investor => event.investor}
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'admin_income_verification_events'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top Income Verification Events
+          
+          - if @events.blank?
+            %p
+              %i No data present.
+          - else
+            .table-responsive
+              %table.table.table-striped
+                %tbody
+                  - @events.each do |event|
+                    %tr
+                      = render :partial => event.to_admin_partial_path, :locals => {:event => event, :investor => event.investor}

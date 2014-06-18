@@ -1,47 +1,57 @@
-= render 'side_navigation', :active => 'admin_investments'
+.container
+  %section.wrapper-dashboard
+    .row
+      .col-xs-2.col-md-3.col-lg-4
+        = render 'dashboard/dashboard_nav', :active => 'admin_investments'
+      .col-xs-10.col-md-9.col-lg-8.pull-right
+        .dashboard-content
+          = render 'layouts/flash', :flash => flash
+          
+          %h1.text-primary.no-marg-top 
+            Bancbox Investments
+            %small for "#{@investor.user.full_name}"
+          
+          - if @investments.blank?
+            %p
+              %i No data present.
+          - else
+            .table-responsive
+              %table.table.table-striped
+                %thead
+                  %tr
+                    %th
+                      Campaign
+                    %th
+                      Investment Date
+                    %th
+                      Amount
+                    %th
+                      Refunded?
+                    %th
+                      Platform fee refunded?
+                    %th
+                      Reversed?
+                    %th
+                      Reversible?
+                %tbdoy
+                  - @investments.each do |i|
+                    %tr
+                      %td
+                        = i.project
+                      %td
+                        = "#{time_ago_in_words(i.investment_date)} ago"
+                      %td
+                        = number_to_currency(i.amount)
+                      %td
+                        = i.is_refunded
+                      %td
+                        = i.is_cfp_fee_refunded
+                      %td
+                        = i.is_reversed
+                      %td
+                        = i.can_reverse
+          
+                  -#- @events.each do |event|
+                    %tr
+                      = render :partial => event.to_admin_partial_path, :locals => {:event => event, :campaign => event.campaign}
 
-#information
-  %h3= "Bancbox Investments for '#{@investor.user.full_name}'"
-  %table.table
-    - if @investments.blank?
-      No data present.
-    - else
-      %thead
-        %tr
-          %th
-            Campaign
-          %th
-            Investment Date
-          %th
-            Amount
-          %th
-            Refunded?
-          %th
-            Platform fee refunded?
-          %th
-            Reversed?
-          %th
-            Reversible?
-
-      %tbdoy
-      - @investments.each do |i|
-        %tr
-          %td
-            = i.project
-          %td
-            = "#{time_ago_in_words(i.investment_date)} ago"
-          %td
-            = number_to_currency(i.amount)
-          %td
-            = i.is_refunded
-          %td
-            = i.is_cfp_fee_refunded
-          %td
-            = i.is_reversed
-          %td
-            = i.can_reverse
-
-
-      -#- @events.each do |event|
-        %tr
-          = render :partial => event.to_admin_partial_path, :locals => {:event => event, :campaign => event.campaign}

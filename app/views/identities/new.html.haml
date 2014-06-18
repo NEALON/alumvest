@@ -1,0 +1,49 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      %p.vertical-spacer-1-em
+      %h3 Create an Account
+      = link_to "Login", "/sessions/new"
+      or create an account below.
+  %form.form-horizontal.well{action: "/auth/identity/register", method: "post"}
+    %fieldset
+      - if @identity && @identity.errors.any?
+        .error_messages
+          %h2
+            = pluralize(@identity.errors.count, "error")
+            prohibited this account from being saved:
+          %ul
+            - @identity.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = label_tag :first_name, nil, :class => "col-md-4 control-label"
+        .col-md-4
+          = text_field_tag :first_name, @identity.try(:first_name), :class => "form-control input-md"
+      .form-group
+        = label_tag :last_name, nil, :class => "col-md-4 control-label"
+        .col-md-4
+          = text_field_tag :last_name, @identity.try(:last_name), :class => "form-control input-md"
+      .form-group
+        = label_tag :email, nil, :class => "col-md-4 control-label"
+        .col-md-4
+          = text_field_tag :email, @identity.try(:email), :class => "form-control input-md"
+      .form-group
+        = label_tag :password, nil, :class => "col-md-4 control-label"
+        .col-md-4
+          = password_field_tag :password, @identity.try(:password), :class => "form-control input-md"
+      .form-group
+        = label_tag :password_confirmation, nil, :class => "col-md-4 control-label"
+        .col-md-4
+          = password_field_tag :password_confirmation, @identity.try(:password_confirmation), :class => "form-control input-md"
+      .form-group
+        %label.col-md-4.control-label{for: "radios"} I am
+        .col-md-4
+          %label.radio-inline{for: "description"}
+            %input#investor{checked: "checked", name: "description", type: "radio", value: "Investor"}/
+            an investor
+          %label.radio-inline{for: "description"}
+            %input#issuer{name: "description", type: "radio", value: "Issuer"}/
+            an equity issuer
+      .form-group
+        .col-md-4.col-md-offset-4
+          %button#singlebutton.btn.btn-primary.btn-success{name: "commit", type: "submit"} Register

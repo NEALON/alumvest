@@ -1,0 +1,10 @@
+- content_for :wrapper_classes, 'no-pad-top no-pad-bottom'
+- content_for :header_active, 'login'
+
+%section.wrapper-authorization
+  .container
+    = render "layouts/login_email"
+    .horizontal-separator
+      .inner or
+    = render "layouts/auth_facebook_linkedin"
+/ END .wrapper-authorization
