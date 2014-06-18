@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
+toggleVolume = ->
+  babsonVideo = $("#babson-video video")
+  
+  if babsonVideo.length
+    if Object::toString.call(babsonVideo[0].play) is "[object Function]"       
+      babsonVideo[0].muted = !babsonVideo[0].muted
+      
+  
 toggleVideo = ->
   body = $("body")
   babsonVideo = $("#babson-video video")
@@ -29,7 +37,6 @@ window['endBabsonVideo'] = ->
   if babsonVideo.length
     if Object::toString.call(babsonVideo[0].play) is "[object Function]"
       babsonVideo[0].play()
-      babsonVideo[0].muted = true
       babsonVideo[0].loop = true
 
 $(document).ready ->
@@ -38,4 +45,10 @@ $(document).ready ->
   
   $("#home-video").on "show.bs.modal", (e) ->
     toggleVideo()
+    
+  $("body").on "click", '#babson-video .toggle-volume', (e) ->
+    e.preventDefault()
+    
+    $(this).toggleClass 'active'
+    toggleVolume()
     

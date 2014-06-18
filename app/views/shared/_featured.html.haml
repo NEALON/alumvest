@@ -3,15 +3,19 @@
     %h2 Featured in 
     .wrapper-logos
       .row
-        .col-xs-5.col-xs-offset-1.col-sm-3.col-sm-offset-0.marg-bottom
-          = link_to '#', :target => "_blank", :class => 'wrap-img' do
-            = image_tag("featured/img-1.png", :class => 'img-responsive', :height => 48, :title => "Mashable", :alt => "Mashable")
-        .col-xs-5.col-xs-offset-1.col-sm-3.col-sm-offset-0.marg-bottom
-          = link_to '#', :target => "_blank", :class => 'wrap-img' do
-            = image_tag("featured/img-2.png", :class => 'img-responsive', :height => 48, :title => "Forbes", :alt => "Forbes")
-        .col-xs-5.col-xs-offset-1.col-sm-3.col-sm-offset-0.marg-bottom
-          = link_to '#', :target => "_blank", :class => 'wrap-img' do
-            = image_tag("featured/img-3.png", :class => 'img-responsive', :height => 48, :title => "Bloomberg Businessweek", :alt => "Bloomberg Businessweek")
-        .col-xs-5.col-xs-offset-1.col-sm-3.col-sm-offset-0.marg-bottom
-          = link_to '#', :target => "_blank", :class => 'wrap-img' do
-            = image_tag("featured/img-4.png", :class => 'img-responsive', :height => 48, :title => "Betabeat", :alt => "Betabeat")
+        .col-xs-6.col-sm-3.marg-bottom
+          .wrap-img
+            = link_to 'http://crowdfundbeat.com/livecrowdfundtv-devinthorpe-alumvest/', :target => "_blank" do
+              = image_tag("featured/new-img-1.png", :class => 'img-responsive', :height => 48, :title => "CrowdFundBeat", :alt => "CrowdFundBeat")
+        .col-xs-6.col-sm-3.marg-bottom
+          .wrap-img.logo-sm
+            = link_to 'http://beacon.wharton.upenn.edu/entrepreneurship/2013/03/2013-wharton-venture-award-winners-announced/', :target => "_blank" do
+              = image_tag("featured/new-img-2.png", :class => 'img-responsive', :height => 48, :title => "Wharton", :alt => "Wharton")
+        .col-xs-6.col-sm-3.marg-bottom
+          .wrap-img.logo-sm
+            = link_to '#', :target => "_blank" do
+              = image_tag("featured/new-img-4.png", :class => 'img-responsive', :height => 48, :title => "HBS", :alt => "HBS")
+        .col-xs-6.col-sm-3.marg-bottom
+          .wrap-img
+            = link_to 'http://www.vilcap.com/portfolio2/alumvest', :target => "_blank" do
+              = image_tag("featured/new-img-3.png", :class => 'img-responsive', :height => 48, :title => "VillageCapital", :alt => "VillageCapital")

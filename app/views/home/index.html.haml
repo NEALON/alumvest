@@ -73,32 +73,15 @@
             = render "campaigns/placard", :campaign => campaign
 
 #babson-video.video-trailer-wrapper
+  = link_to '#', :class => 'toggle-volume' do
+    %span.mute{:data => {:toggle => "tooltip", :placement => 'left', :container => 'body'}, :title => 'Unmute'}
+      %i.fa.fa-volume-off.fa-fw
+      %i.fa.fa-times
+    %span.unmute{:data => {:toggle => "tooltip", :placement => 'left', :container => 'body'}, :title => 'Mute'}
+      %i.fa.fa-volume-up.fa-fw
+    
   - unless Rails.env.test?
-    %video{:autoplay => 'autoplay', :onended => "window['endBabsonVideo']()"}
+    %video{:autoplay => 'autoplay', :onended => "window['endBabsonVideo']()", :muted => true}
       %source{:src => video_path('alumvest.mp4'), :type => "video/mp4"}
     .overlay-bg
 
-#how-it-works.row
-  .col-md-12
-    .jumbotron
-      .container
-        %h2.text-center Invest In Someone Like You
-        %p.text-center
-          %em
-            Interested to learn more about Alumvest?
-        .text-center
-          = link_to('See How It Works', '/about/how-it-works', :class => "btn btn-info btn-large marg-bottom")
-          = link_to('Sign Up Now', '#signup-modal', 'data-toggle' => 'modal', :class => "btn btn-primary btn-large marg-bottom")
-
-.wrapper-featured
-  .container  
-    %h4 Featured In
-    .row
-      .col-sm-5.col-sm-offset-1
-        .item
-          = link_to 'http://crowdfundbeat.com/livecrowdfundtv-devinthorpe-alumvest/', :title => 'CrowdFundBeat', :target => '_blank' do
-            = image_tag("feature_logo/crowdfundbeats.png", :height => 45, :class => 'img-responsive')
-      .col-sm-5
-        .item
-          = link_to 'http://www.vilcap.com/portfolio2/alumvest', :title => 'VillageCapital', :target => '_blank' do
-            = image_tag("feature_logo/villagecapitals.png", :height => 45, :class => 'img-responsive')

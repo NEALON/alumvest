@@ -211,7 +211,7 @@ dt, dd { line-height: 1.1; }
   .btn-sm { padding: {top: ($padding-small-vertical + 1); bottom: ($padding-small-vertical + 1);} }
   .btn-xs { padding: {top: ($padding-xs-vertical + 1); bottom: ($padding-xs-vertical + 1);} }
   .btn-xl {
-    @media (min-width: $screen-lg) { font-size: 26px; padding: {top: ($padding-xl-vertical + 1); bottom: ($padding-xl-vertical + 1);} }
+    @media (min-width: $screen-md) { font-size: 26px; padding: {top: ($padding-xl-vertical + 1); bottom: ($padding-xl-vertical + 1);} }
   }
   
   .btn-default { border-width: 1px; padding: {top: $padding-base-vertical; bottom: $padding-base-vertical;}
@@ -632,9 +632,16 @@ textarea { resize: vertical; }
  * Featured Unit
  */
 .featured-unit { background: #f6f6f6; color: $black; padding: 31px 0 40px; text-align: center; 
-  .wrapper-logos { margin-top: 45px;
-    .wrap-img { display: block; height: 0; overflow: hidden; position: relative; padding-bottom: 19%;      
-      img { height: 100%; left: 0; position: absolute; top: 0; }
+  .wrapper-logos { margin-top: 15px;
+    .wrap-img { display: table; height: 90px; width: 100%;
+      > a { display: table-cell; vertical-align: middle; }
+    }
+    
+    img { margin: 0 auto; }
+    
+    @media (min-width: $screen-sm) { margin-top: 35px;
+      img { margin: 0; }
+      .logo-sm img { margin: 0 auto; }
     }
   }
 }
