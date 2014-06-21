@@ -3,6 +3,29 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
+// Mixin for generating new styles
+@mixin btn-styles($btn-color: #555) {
+  @include gradient-vertical($start-color: $btn-color, $end-color: darken($btn-color, 12%));
+  @include reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+  background-repeat: repeat-x;
+  border-color: darken($btn-color, 14%);
+  @include transition(none);
+
+  &:hover,
+  &:focus  {
+    background-color: darken($btn-color, 12%);
+    background-position: 0 -15px;
+    @include transition(none);
+  }
+
+  &:active,
+  &.active {
+    background-color: darken($btn-color, 12%);
+    border-color: darken($btn-color, 14%);
+    @include transition(none);
+  }
+}
+
 @mixin button-variant-hover($color, $background, $border) {
   &:hover,
   &:focus,

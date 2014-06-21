@@ -36,8 +36,8 @@
                 %li= link_to 'Settings', user_path(current_user.id)
                 %li= link_to 'Sign out', logout_path, :method => :delete
           - else
-            %li.inverse= link_to('Signup', '#signup-modal', :class => '', 'data-toggle' => 'modal')
-            %li.inverse= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')             
+            %li.inverse#signup-nav= link_to('Signup', '#signup-modal', :class => '', 'data-toggle' => 'modal')
+            %li.inverse#login-nav= link_to('Login', '#login-modal', :class => '', 'data-toggle' => 'modal')             
             
             -#
               %li.inverse{:class => content_for?(:header_active) ? (yield(:header_active) == 'signup' ? 'active' : '') : ''}

@@ -11,6 +11,5 @@ $(document).ready () ->
       required: "Please enter email."
     password:
       required: "Please enter password."
-
-  $('#login_form #singlebutton').click (event) ->
-    $('#login_form').validate({rules, messages})
+  
+  $('#login_form').validate({rules, messages})

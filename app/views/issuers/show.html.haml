@@ -156,13 +156,13 @@
                 .well
                   .well-heading
                     %h5.no-marg-top.text-info Recent Updates
-                  %dl
-                    %dt 12/11/2013
-                    %dd John Q. invested $50,000 in project A for 5% equity.
-                    %dt 12/11/2013
-                    %dd John Q. invested $50,000 in project A for 5% equity.
-                    %dt 12/11/2013
-                    %dd John Q. invested $50,000 in project A for 5% equity.
+                  - if (defined? @campaign.investments) && !@campaign.investments.empty?
+                    %dl
+                      - @campaign.investments.each do |i|
+                        = render :partial => 'investment', :locals => {:investment => i}
+                  - else
+                    %p
+                      %i There are no investments here right now.
               .col-sm-6
                 .well
                   .well-heading

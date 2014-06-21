@@ -1,0 +1,2 @@
+%dt #{investment.created_at.strftime("%m/%d/%Y")}
+%dd #{investment.investor.user.full_name} invested #{number_to_currency(investment.amount)} in project #{investment.campaign.company.company_name}.

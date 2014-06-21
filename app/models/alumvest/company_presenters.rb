@@ -10,7 +10,7 @@ module Alumvest::CompanyPresenters
   included do
 
     def photo_for_card_display
-      photo(:w => 218, :h => 110, :fit => "crop").try(:sub, /https:/, "http:")
+      photo(:w => 300, :h => 160, :fit => "crop").try(:sub, /https:/, "http:")
     end
 
     def banner_for_campaign_home_display

@@ -1,28 +1,37 @@
-.col-md-4.columns.panel.outline
-  = link_to display_campaign_company_path(campaign) do
-    = image_tag campaign.company.photo_for_card_display, :class => "img-campaign"
+.company-item
+  .company-body
+    %figure
+      .image
+        = link_to display_campaign_company_path(campaign) do
+          = image_tag(campaign.company.photo_for_card_display, :class => 'img-responsive', :title => campaign.company.campaign_title)
+      %figcaption
+        .title
+          %h4.upper 
+            = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
+          .by-name 
+            by 
+            = link_to 'Columbia University', '#'
+        %p 
+          = campaign.company.short_description
+          = link_to '[ ..... ]', display_campaign_company_path(campaign), :class => 'read-more nowrap', :title => 'read more', :data => {:toggle => "tooltip", :placement => "right", :container => 'body'}
+  .company-footer
+    .inner.media
+      .pull-left
+        .wrapper-rate
+          - progress = (campaign.raised / campaign.investment_term.fundraising_amount * 100)
+          %input{:type => "text", :title => 'Rating', :value => (progress > 100) ? '100' : progress, :data => {:toggle => 'knob', :width => '56', :height => '56', :linecap => 'round', :readOnly => 'true', :fgColor => "#2c6291", :bgColor => "#4d9fe7", :displayPrevious => 'true', :thickness => '0.25', :skin => 'tron', :displayPrevious => 'true'}}
+      .media-body
+        .row
+          .col-xs-4
+            %h6.text-info Goal
+            %p= number_to_currency (campaign.investment_term.fundraising_amount)
+          .separator
+          .col-xs-4
+            %h6.text-info Raised
+            %p= number_to_currency (campaign.raised)
+          .separator
+          .col-xs-4
+            %h6.text-info Funders
+            %p= campaign.investments.finalized.count
+/ END .company-item
 
-  .company-title
-    %h4
-      = link_to campaign.company.campaign_title, display_campaign_company_path(campaign)
-  .company-short-description
-    %p
-      = campaign.company.short_description
-  .company-goal
-    .row
-      .campaign-cell-number.col-md-4.col-xs-4
-        = number_to_currency (investment_sum = campaign.raised)
-      .campaign-cell-number.col-md-4.col-xs-4
-        = number_to_currency (fundraising_amount = campaign.investment_term.fundraising_amount)
-      .campaign-cell-number.col-md-4.col-xs-4
-        = campaign.investments.finalized.count
-      .campaign-cell-title.col-md-4.col-xs-4
-        Raised
-      .campaign-cell-title.col-md-4.col-xs-4
-        Goal
-      .campaign-cell-title.col-md-4.col-xs-4
-        Investors
-
-
-    .progress.active
-      .progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{ (investment_sum == 0) ? '1' : (investment_sum / fundraising_amount * 100)}%"}

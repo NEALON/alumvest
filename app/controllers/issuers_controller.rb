@@ -21,6 +21,7 @@ class IssuersController < ApplicationController
   def show
     @user = Alumvest::UserBase.find(params[:user_id])
     @issuer = @user.issuer || Alumvest::IssuerBase.new(:user => @user)
+    @campaign = @issuer.campaign
     authorize! :read, @issuer
   end
 end

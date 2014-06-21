@@ -266,6 +266,64 @@ dt, dd { line-height: 1.1; }
 // Wrapper button
 .wrapper-btn > a { @extend .btn; @extend .btn-sm; @extend .btn-default; }
 
+// Button Middle Size (in Modals)
+.btn-md, .boxshadow .btn-md { border: {width: 1px; style: solid; radius: $border-radius-base;} font: {weight: bold; family: $font-family-sans-serif; size: 14px;} line-height: 20px; padding: 10px 27px; 
+  &.btn-link { font-size: 12px; }
+  &.btn-social { font-size: 12px; }
+}
+
+// Button Blue with gradient
+.btn-blue { @include box-shadow(inset 0 1px 0 0 rgba(255,255,255,0.4)); @include btn-styles(#4091e3); 
+  &, &:hover, &:focus, &:active, &.active { color: $white; }
+}
+
+// Button Socials (Facebook, LinkedIn)
+.btn-linkedin, .btn-facebook, .boxshadow .btn-linkedin, .boxshadow .btn-facebook { margin: {left: auto; right: auto;} max-width: 198px; padding: {left: 8px; right: 8px;} text-align: left;
+  .fa { font-size: 28px; float: left; margin: {right: 11px; bottom: -15px;} position: relative; text-shadow: 0 1px 0 $black; top: -2px; }
+} 
+
+.btn-linkedin, .boxshadow .btn-linkedin { @include box-shadow(inset 0 1px 0 0 rgba(255,255,255,0.4)); @include button-variant($white, #1f80c6, #105887); font-size: 12px; text-shadow: -1px -1px rgba($black, .5); }
+
+.btn-facebook, .boxshadow .btn-facebook { @include box-shadow(inset 0 1px 0 0 rgba(255,255,255,0.4)); @include button-variant($white, #5584c8, #394e7e); font-size: 12px; text-shadow: -1px -1px rgba($black, .5); }
+
+
+/* ==========================================================================
+   Modal Styles
+   ========================================================================== */
+.modal-title { color: $white; font: {family: $font-family-serif; weight: 300; size: 22px;} text: {align: center; shadow: -1px -1px rgba($black, .4);} 
+  @media (min-width: $screen-xs) { font-size: 31px; }
+}
+
+.modal-header {
+  .close { color: $white; font-size: 21px; @include opacity(.8); position: absolute; right: 7px; top: 7px; text-shadow: -1px -1px rgba($black, .4); 
+    &:hover, &:focus { @include opacity(1); }
+  }
+
+  @media (min-width: $screen-xs) { padding: 0 0 26px; }
+}
+
+.modal-content { @include box-shadow(0 0 0 4px rgba($black, .1)); padding: 30px 5px 5px; 
+  @media (min-width: $screen-xs) { padding: 22px 30px 30px; }
+}
+
+.modal-body { background: $white; border-radius: 2px; @include box-shadow(0 0 5px 1px rgba($black, .25)); 
+  label { color: #1a83c4; font: {size: 14px; weight: bold;} margin-bottom: 11px; }
+  .form-group { margin-bottom: 21px; }
+  .form-action { margin-top: 33px; }
+  
+  @media (min-width: $screen-xs) { padding: 26px 30px 31px; }
+}
+
+.modal-backdrop { background: {image: image-url("modal-backdrop-bg.png"); position: center center; repeat: repeat;} }
+ 
+// Login Via Socials
+.login-via-soc { @include clearfix; margin-top: 32px; 
+  @media (min-width: $screen-sm) {
+    .btn-linkedin { float: left; }
+    .btn-facebook { float: right; }
+  }
+}
+
 
 /* ==========================================================================
    Form Styles
@@ -334,7 +392,10 @@ textarea { resize: vertical; }
 }
 
 // Datepicker Dropdown
-.datepicker.dropdown-menu { padding: 4px; } 
+.datepicker.dropdown-menu { padding: 4px; }
+
+// Input Large
+@include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large - 4px, $line-height-large, $border-radius-large); 
 
 
 /* ==========================================================================
@@ -845,7 +906,7 @@ textarea { resize: vertical; }
  * Company Item  
  */
 .company-item { border-bottom: 1px solid #cdcdcd; margin: 0 auto 30px; max-width: 100%; width: 320px; 
-  > .company-body { font-size: 13px; margin-bottom: 2px; padding: 9px; 
+  > .company-body { background: $white; font-size: 13px; margin-bottom: 2px; padding: 9px; 
     .title { margin-bottom: 30px;
       h4 { font: {family: $font-family-serif; size: 12px;} margin: 0;
         @media (min-width: $screen-sm) { font-size: 16px; }
@@ -869,7 +930,7 @@ textarea { resize: vertical; }
     }
   }
   
-  > .company-footer { font-size: 13px; padding: 9px; text-align: center;
+  > .company-footer { background: $white; font-size: 13px; padding: 9px; text-align: center;
     .inner { background: #f7f7f7; border-radius: 100px 0 0 100px; overflow: visible; 
       h6 { margin: {bottom: 4px; top: 12px;} }
       p { margin-bottom: 10px; }  
@@ -891,6 +952,7 @@ textarea { resize: vertical; }
     }
     
     .wrapper-rate { background: #e6e6e6; border-radius: 100px; margin: {top: -3px; bottom: -3px;} padding: 3px; 
+      > input { display: none !important; }
       > * { background: #f7f7f7; border-radius: 100px; display: block !important; }
       
       @media (max-width: $screen-xs) { margin: {top: 5px; bottom: 0;}
@@ -904,12 +966,14 @@ textarea { resize: vertical; }
   
   > .company-body, > .company-footer { border: 1px solid #e8e8e8; }
 
-  @media (min-width: $screen-xs) { margin: {left: 0; right: 0;} }
+  @media (min-width: $screen-sm) { margin: {left: 0; right: 0;} }
 }
 
 .no-canvas .company-item {
   > .company-footer .inner > .pull-left { display: none; }
 }
+
+.dashboard-content .company-item { margin: {left: 0; right: 0;} }
 
 .read-more { color: $text-color; 
   &:hover, &:focus { color: $link-color; }
@@ -1047,6 +1111,8 @@ textarea { resize: vertical; }
 .nowrap { white-space: nowrap !important; }
 
 .col-centered { float: none; margin: 0 auto; }
+
+.placeholder .to-support-placeholder { display: none; }
 
 
 

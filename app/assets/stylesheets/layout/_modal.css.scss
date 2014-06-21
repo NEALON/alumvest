@@ -1,3 +1,4 @@
+/*
 .modal-title {
   color: lighten($black, 70%);
   text-align: right;
@@ -7,3 +8,17 @@
     top: -2px;
   }
 }
+
+.modal .close {
+  color: white;
+  @include opacity(.8);
+  font-size: 30px;
+  position: absolute;
+  top: 4px;
+  right: 11px;
+  
+  &:hover, &:focus { @include opacity(1); }
+}
+
+.modal .modal-dialog { margin-top: 40px; }
+*/

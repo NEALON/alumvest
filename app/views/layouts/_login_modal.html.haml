@@ -1,21 +1,42 @@
 .modal.fade#login-modal
-  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
   .modal-dialog.modal-sm
     .modal-content
       .modal-header
+        = link_to '#', :class => "close", :data => {:dismiss => "modal", :toggle => "tooltip", :placement => "auto right", :container => 'body'}, "aria-hidden" => "true", :title => 'Close' do
+          %i.fa.fa-times
         %h4.modal-title 
-          .logo.pull-left
-            %img{:src => image_path('logotype.png'), :alt => 'Alumvest', :width => 120}
-          Sign In
+          Sign In with Alumvest
+        .login-via-soc
+          .row
+            .col-xs-6
+              = link_to '/auth/linkedin', :class =>"btn btn-linkedin btn-md btn-block marg-bottom" do
+                %i.fa.fa-linkedin-square.fa-fw
+                %span.hidden-xs Connect with
+                LinkedIn
+            .col-xs-6
+              = link_to '/auth/facebook', :class =>"btn btn-facebook btn-md btn-block marg-bottom" do
+                %i.fa.fa-facebook-square.fa-fw
+                %span.hidden-xs Connect with
+                Facebook
+        / .login-via-soc
+
       .modal-body
-        = render "layouts/login_email"
-        .horizontal-separator
-          .inner or
-        = render "layouts/auth_facebook_linkedin"
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"}
-          %i.fa.fa-angle-double-left
-          Back to page
+        = simple_form_for :identity, :url => '/auth/identity/callback', :wrapper => :vertical_form, :html => {:id => 'login_form'}, :validate => true do |f|
+          = render 'shared/error_notification', :errors => f.error_notification
+          
+          = f.input :email, :label => 'Email', :input_html => {:name => 'auth_key', :class => 'input-lg'}
+          = f.input :password, :label => 'Password', :input_html => {:name => 'password', :class => 'input-lg'}
+          
+          .form-action
+            .row
+              .col-sm-6
+                = f.submit 'Login', :class => 'btn btn-blue btn-md pull-left'
+              .col-sm-6
+                = link_to '#', :class => 'btn btn-link btn-md no-pad-left no-pad-right inverse pull-right' do
+                  Forgot 
+                  %span.hidden-xs your 
+                  password?
+            
     /.modal-content
   /.modal-dialog
 /.modal

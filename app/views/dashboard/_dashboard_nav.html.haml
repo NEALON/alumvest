@@ -101,10 +101,11 @@
           = link_to user_issuer_campaign_path(@user) do
             %i.fa.fa-building.fa-fw 
             %span.hidden-xs Campaign
-        %li{:class => "#{'active' if active == 'issuer_campaign_investments'}"}
-          = link_to user_issuer_campaign_investments_path(@user) do
-            %i.fa.fa-credit-card.fa-fw
-            %span.hidden-xs Investments
+        - if active == 'issuer_campaign_investments'
+          %li{:class => "#{'active' if active == 'issuer_campaign_investments'}"}
+            = link_to user_issuer_campaign_investments_path(@user) do
+              %i.fa.fa-credit-card.fa-fw
+              %span.hidden-xs Investments
         %li{:class => "#{'active' if active == 'issuer_signings'}"}
           = link_to user_issuer_signings_path(@user) do
             %i.fa.fa-folder-open.fa-fw
@@ -118,8 +119,9 @@
             = link_to user_bank_account_path(@user, @user.bank_account) do
               %i.fa.fa-usd.fa-fw 
               %span.hidden-xs Bank Account
-        %li{:class => "#{'active' if active == 'issuer_newsfeed'}"}
-          = link_to user_issuer_events_path(@user) do
-            %i.fa.fa-rss-square.fa-fw 
-            %span.hidden-xs Issuer Newsfeed
+        - if active == 'issuer_newsfeed'
+          %li{:class => "#{'active' if active == 'issuer_newsfeed'}"}
+            = link_to user_issuer_events_path(@user) do
+              %i.fa.fa-rss-square.fa-fw 
+              %span.hidden-xs Issuer Newsfeed
       

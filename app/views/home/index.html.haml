@@ -13,13 +13,12 @@
 /.masthead
           
 .modal.fade#home-video
-  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
   .modal-dialog.modal-lg
     .modal-content
       .modal-header
+        = link_to '#', :class => "close", :data => {:dismiss => "modal", :toggle => "tooltip", :placement => "auto right", :container => 'body'}, "aria-hidden" => "true", :title => 'Close' do
+          %i.fa.fa-times
         %h4.modal-title 
-          .logo.pull-left
-            %img{:src => image_path('logotype.png'), :alt => 'Alumvest', :width => 120}
           See Our Video
       .modal-body
         - unless Rails.env.test?
@@ -27,50 +26,49 @@
             <!-- Plugin for Vimeo -->
             <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
             %iframe#vimeo_player{:src => '//player.vimeo.com/video/75979909?api=1&player_id=vimeo_player&portrait=0&amp;color=34cb9e', :width => '100%', :height => '500', :frameborder => '0', :webkitallowfullscreen => 'true', :mozallowfullscreen => 'true', :allowfullscreen => 'true'}
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"}
-          %i.fa.fa-angle-double-left
-          Back to homepage
     /.modal-content
   /.modal-dialog
 /.modal
 
 - unless @reviewable_campaigns.blank?
-  #active
-    .campaign-group-title
-      .container
+  #active.marg-bottom
+    .container
+      .campaign-group-title
+        %h3.h1.text-primary
+          .row
+            .col-xs-9
+              Active Campaigns
+            .col-xs-3.text-right
+              %small.inverse
+                = link_to 'View All', '#'
+                
+        %hr.no-marg-top        
+        
+      .campaign-row-section
         .row
-          .col-md-4
-            %h3 Active Campaigns
-          .col-md-4.col-md-offset-4
-            %a
-              View All
-    .campaign-row-section
-      .container
-        .row.homepage-featured-campaigns
           - @reviewable_campaigns.each do |campaign|
-            = render "campaigns/placard", :campaign => campaign
-
-- unless @reviewable_campaigns.blank? or @live_campaigns.blank?
-  .container
-    %hr
+            .col-sm-6.col-md-4
+              = render "campaigns/placard", :campaign => campaign
 
 - unless @live_campaigns.blank?
-  #successful
-    .campaign-group-title
-      .container
+  #successful.marg-bottom-lg
+    .container
+      .campaign-group-title
+        %h3.h1.text-primary
+          .row
+            .col-xs-9
+              Live Campaigns
+            .col-xs-3.text-right
+              %small.inverse
+                = link_to 'View All', '#'
+          
+        %hr.no-marg-top
+  
+      .campaign-row-section
         .row
-          .col-md-4
-            %h3 Live Campaigns
-          .col-md-4.col-md-offset-4
-            %a
-              View All
-
-    .campaign-row-section
-      .container
-        .row.homepage-featured-campaigns
           - @live_campaigns.each do |campaign|
-            = render "campaigns/placard", :campaign => campaign
+            .col-sm-6.col-md-4
+              = render "campaigns/placard", :campaign => campaign
 
 #babson-video.video-trailer-wrapper
   = link_to '#', :class => 'toggle-volume' do

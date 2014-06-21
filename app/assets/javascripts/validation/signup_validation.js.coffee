@@ -31,6 +31,5 @@ $(document).ready () ->
       equalTo: "Please enter the same password again."
     description:
       required: "Please choose user type."
-
-  $('#signup_form #singlebutton').click (event) ->
-    $('#signup_form').validate({rules, messages})
+  
+  $('#signup_form').validate({rules, messages})

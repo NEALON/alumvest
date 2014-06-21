@@ -1,6 +1,6 @@
 module Alumvest
   class Identity < OmniAuth::Identity::Models::ActiveRecord
-    attr_accessible :first_name, :name, :last_name, :email, :password, :password_confirmation, :description
+    attr_accessible :first_name, :name, :last_name, :email, :password, :password_confirmation, :description, :school
 
     validates_presence_of :first_name
     validates_uniqueness_of :email
