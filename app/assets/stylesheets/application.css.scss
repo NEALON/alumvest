@@ -141,7 +141,7 @@ h6, .h6 {
   h4 { font-size: $font-size-h4-lg; }
 }
 
-.separator-line { overflow: hidden; text-align: center; 
+.separator-line { margin: {left: auto; right: auto;} overflow: hidden; position: relative; text-align: center; 
   > span { display: inline-block; padding: {left: 40px; right: 40px;} position: relative; 
     &:after, &:before { background: $white; content: ''; display: block; height: 1px; position: absolute; top: 50%; width: 300%; }
     &:after { margin-right: -18px; right: 100%; }
@@ -153,6 +153,19 @@ h6, .h6 {
     &:after { margin-right: -38px; }
     &:before { margin-left: -38px; }
   }
+  
+  &.separator-sm {
+    > span { padding: {left: 34px; right: 34px;} }
+  }
+  
+  .left-circle, .right-circle { background: $white; border-radius: 25px; border: 1px solid $white; height: 8px; margin-top: -4px; position: absolute; top: 50%; width: 8px; }
+  
+  .left-circle { margin-right: -8px; right: 100%; }
+  .right-circle { left: 100%; margin-left: -8px; }
+}
+
+.no-borderradius .separator-line { 
+  .left-circle, .right-circle { display: none; }
 }
 
 .lead { font: {size: 14px; weight: normal;}
@@ -273,12 +286,10 @@ dt, dd { line-height: 1.1; }
 }
 
 // Button Blue with gradient
-.btn-blue { @include box-shadow(inset 0 1px 0 0 rgba(255,255,255,0.4)); @include btn-styles(#4091e3); 
-  &, &:hover, &:focus, &:active, &.active { color: $white; }
-}
+.btn-blue { @include box-shadow(inset 0 1px 0 0 rgba(255,255,255,0.4)); @include button-variant($white, #1f80c6, #105887); @include btn-styles(#4091e3); }
 
 // Button Socials (Facebook, LinkedIn)
-.btn-linkedin, .btn-facebook, .boxshadow .btn-linkedin, .boxshadow .btn-facebook { margin: {left: auto; right: auto;} max-width: 198px; padding: {left: 8px; right: 8px;} text-align: left;
+.btn-linkedin, .btn-facebook, .boxshadow .btn-linkedin, .boxshadow .btn-facebook { font-family: $font-arial; margin: {left: auto; right: auto;} max-width: 198px; padding: {left: 8px; right: 8px;} text-align: left;
   .fa { font-size: 28px; float: left; margin: {right: 11px; bottom: -15px;} position: relative; text-shadow: 0 1px 0 $black; top: -2px; }
 } 
 
@@ -298,6 +309,10 @@ dt, dd { line-height: 1.1; }
   .close { color: $white; font-size: 21px; @include opacity(.8); position: absolute; right: 7px; top: 7px; text-shadow: -1px -1px rgba($black, .4); 
     &:hover, &:focus { @include opacity(1); }
   }
+  
+  .separator-line { color: $white; font: {size: 14px; weight: bold;} margin: {top: 11px; bottom: 8px;} max-width: 100px; 
+    .left-circle, .right-circle { background: $blue; }
+  }
 
   @media (min-width: $screen-xs) { padding: 0 0 26px; }
 }
@@ -305,6 +320,8 @@ dt, dd { line-height: 1.1; }
 .modal-content { @include box-shadow(0 0 0 4px rgba($black, .1)); padding: 30px 5px 5px; 
   @media (min-width: $screen-xs) { padding: 22px 30px 30px; }
 }
+
+.modal-dialog { position: relative; z-index: 3; }
 
 .modal-body { background: $white; border-radius: 2px; @include box-shadow(0 0 5px 1px rgba($black, .25)); 
   label { color: #1a83c4; font: {size: 14px; weight: bold;} margin-bottom: 11px; }
@@ -315,12 +332,62 @@ dt, dd { line-height: 1.1; }
 }
 
 .modal-backdrop { background: {image: image-url("modal-backdrop-bg.png"); position: center center; repeat: repeat;} }
+
+// Modal Block (width 100%)
+.modal-block { width: auto !important; }
  
 // Login Via Socials
 .login-via-soc { @include clearfix; margin-top: 32px; 
   @media (min-width: $screen-sm) {
     .btn-linkedin { float: left; }
     .btn-facebook { float: right; }
+  }
+}
+
+/**
+ * Modal Help
+ */
+.modal-help-content { background: #56664F; background: rgba(67, 89, 29, .5); border: 2px solid $white; border-radius: 4px; color: $white; margin: {left: 20px; right: 20px;} @include opacity(0); padding: 30px 24px 15px; position: relative; text-shadow: -1px -1px rgba($black, .4); @include translate(300px, 0); @include transition(all .3s);
+  .modal-title { font-size: 23px; line-height: 1.3; margin-bottom: 41px; text-align: center; }
+  
+  .modal-triangle { border: {left: 8px solid transparent; bottom: 16px solid $white; right: 8px solid transparent;} bottom: 100%; height: 0; left: 50%; margin-left: -8px; position: absolute; width: 0; 
+    &:after { border: {left: 6px solid transparent; bottom: 12px solid #56664F; right: 6px solid transparent;} content: ''; display: block; height: 0; left: 50%; margin-left: -6px; position: absolute; top: 4px; width: 0; }
+  }
+  
+  @media (min-width: $screen-sm) { margin: {left: 0; right: 0;} 
+    .modal-triangle { border: {top: 8px solid transparent; left: 16px solid $white; bottom: 8px solid transparent; right: 0 none;} bottom: auto; left: 100%; margin: {top: -8px; left: 0;} top: 50%; 
+      &:after { border: {top: 6px solid transparent; left: 12px solid #56664F; bottom: 6px solid transparent; right: 0 none;} left: auto; margin: {top: -6px; left: 0;} right: 4px; top: 50%; }
+    }
+    
+    .modal-title { text-align: left; }
+  }
+  
+  @media (min-width: $screen-md) { padding: 34px 34px 24px;
+    .modal-title { font-size: 27px; }
+  }
+  
+  @media (min-width: $screen-lg) {
+    .modal-title { font-size: 30px; }
+  }
+}
+
+.modal.in .modal-help-content { @include opacity(1); @include translate(0, 0); @include transition(all .3s .3s); }
+
+// Signup Help Modal
+.signup-help { margin: 30px auto 10px; max-width: 350px; text-align: center;
+  h5 { font-size: 21px; margin: {top: 2px; bottom: 25px;} }
+  .btn-linkedin, .btn-facebook { margin-bottom: 23px; }
+  
+  @media (min-width: $screen-sm) { margin: {top: 184px; right: 25px; left: 0;} max-width: none; text-align: left;
+    .btn-linkedin, .btn-facebook { margin: {left: 0; right: 0;} }
+  }
+  
+  @media (min-width: $screen-md) { margin-top: 211px;
+    h5 { font-size: 25px; }
+  }
+  
+  @media (min-width: $screen-lg) { margin: {top: 207px; right: 50px;} 
+    h5 { font-size: 28px; }
   }
 }
 

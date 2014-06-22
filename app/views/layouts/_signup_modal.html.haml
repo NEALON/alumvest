@@ -1,43 +1,67 @@
 .modal.fade#signup-modal.signup-modal
-  .modal-dialog.modal-sm
-    .modal-content
-      .modal-header
-        = link_to '#', :class => "close", :data => {:dismiss => "modal", :toggle => "tooltip", :placement => "auto right", :container => 'body'}, "aria-hidden" => "true", :title => 'Close' do
-          %i.fa.fa-times
-        %h4.modal-title 
-          Sign Up with Alumvest
-      .modal-body
-        = simple_form_for :identity, :url => '/auth/identity/register', :wrapper => :vertical_form, :html => {:id => 'signup_form'}, :validate => true do |f|
-          = render 'shared/error_notification', :errors => f.error_notification
-          
-          = f.input :first_name, :label => 'First Name', :placeholder => 'First Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'first_name', :class => 'input-lg'}
-          = f.input :last_name, :label => 'Last Name', :placeholder => 'Last Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'last_name', :class => 'input-lg'}
-          = f.input :email, :label => 'Email Address', :placeholder => 'Email Address', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'email', :class => 'input-lg'}
-          = f.input :password, :label => 'Password', :placeholder => 'Password', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:id => 'password', :name => 'password', :class => 'input-lg'}
-          = f.input :password_confirmation, :label => 'Password Confirmation', :placeholder => 'Password Confirmation', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'password_confirmation', :class => 'input-lg'}
-          
-          = f.input :school, :label => 'School Name', :placeholder => 'School Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'school', :class => 'input-lg'}
-          
-          -# Need to do as here:
-            #educations
-              = f.simple_fields_for :educations do |education|  
-                = render 'users/education_fields', :f => education
-              .wrapper-btn.text-center
-                = link_to_add_association(('<i class="fa fa-plus"></i> Add Education').html_safe, f, :educations)
+  .container
+    .row          
+      .col-sm-7.col-md-6.col-sm-push-5.col-md-push-6
+        .modal-dialog.modal-block
+          .modal-content
+            .modal-header
+              = link_to '#', :class => "close", :data => {:dismiss => "modal", :toggle => "tooltip", :placement => "auto right", :container => 'body'}, "aria-hidden" => "true", :title => 'Close' do
+                %i.fa.fa-times
+              %h4.modal-title 
+                Sign Up with Alumvest
+            .modal-body
+              = simple_form_for :identity, :url => '/auth/identity/register', :wrapper => :vertical_form, :html => {:id => 'signup_form'}, :validate => true do |f|
+                = render 'shared/error_notification', :errors => f.error_notification
                 
-          = f.input :description, :as => :radio_buttons, :label => false, :collection => ["Investor", "Issuer"], :checked => ["Investor"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes, :input_html => {:name => 'description'}
-          
-          .form-action
-            .row
-              .col-sm-6
-                = f.submit 'Signup', :class => 'btn btn-blue btn-md pull-left'
-              .col-sm-6
-                = link_to '#', :class => 'btn btn-link btn-md no-pad-left no-pad-right inverse pull-right' do
-                  %i.fa.fa-plus
-                  Add   
-                  %span.hidden-xs more 
-                  schools
-          
-    /.modal-content
-  /.modal-dialog
-/.modal
+                = f.input :first_name, :label => 'First Name', :placeholder => 'First Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'first_name', :class => 'input-lg'}
+                = f.input :last_name, :label => 'Last Name', :placeholder => 'Last Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'last_name', :class => 'input-lg'}
+                = f.input :email, :label => 'Email Address', :placeholder => 'Email Address', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'email', :class => 'input-lg'}
+                = f.input :password, :label => 'Password', :placeholder => 'Password', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:id => 'password', :name => 'password', :class => 'input-lg'}
+                = f.input :password_confirmation, :label => 'Password Confirmation', :placeholder => 'Password Confirmation', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'password_confirmation', :class => 'input-lg'}
+                
+                = f.input :school, :label => 'School Name', :placeholder => 'School Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'school', :class => 'input-lg'}
+                
+                -# Need to do as here:
+                  #educations
+                    = f.simple_fields_for :educations do |education|  
+                      = render 'users/education_fields', :f => education
+                    .wrapper-btn.text-center
+                      = link_to_add_association(('<i class="fa fa-plus"></i> Add Education').html_safe, f, :educations)
+                      
+                = f.input :description, :as => :radio_buttons, :label => false, :collection => ["Investor", "Issuer"], :checked => ["Investor"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes, :input_html => {:name => 'description'}
+                
+                .form-action
+                  .row
+                    .col-sm-6
+                      = f.submit 'Signup', :class => 'btn btn-blue btn-md pull-left'
+                    .col-sm-6
+                      = link_to '#', :class => 'btn btn-link btn-md no-pad-left no-pad-right inverse pull-right' do
+                        %i.fa.fa-plus
+                        Add   
+                        %span.hidden-xs more 
+                        schools
+                        
+        / .modal-dialog
+        
+      .col-sm-5.col-md-6.col-sm-pull-7.col-md-pull-6
+        .modal-help.signup-help
+          .modal-help-content
+            .modal-triangle
+            .modal-help-body
+              %h4.modal-title 
+                Get ready to Discover & Invest in your Alumni’s Startup
+              .row
+                .col-md-5
+                  %h5 Sign Up  w/
+                .col-md-7
+                  = link_to '/auth/linkedin', :class =>"btn btn-linkedin btn-md btn-block" do
+                    %i.fa.fa-linkedin-square.fa-fw
+                    %span.hidden-xs Connect with
+                    LinkedIn
+                  = link_to '/auth/facebook', :class =>"btn btn-facebook btn-md btn-block" do
+                    %i.fa.fa-facebook-square.fa-fw
+                    %span.hidden-xs Connect with
+                    Facebook
+    / .row
+  / .container       
+/ .modal

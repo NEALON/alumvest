@@ -79,6 +79,7 @@ $link-hover-color:      $gray;
 $font-family-open-sans:   'Open Sans', 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-sans-serif:  'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif:       'Lato', Georgia, "Times New Roman", Times, serif;
+$font-arial:              Arial, 'Roboto', "Helvetica Neue", Helvetica, sans-serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default; 
@@ -630,7 +631,7 @@ $modal-content-fallback-border-color:          $blue;
 //** Modal backdrop background color
 $modal-backdrop-bg:           mix($blue, $black);
 //** Modal backdrop opacity
-$modal-backdrop-opacity:      .4;
+$modal-backdrop-opacity:      .55;
 //** Modal header border color
 $modal-header-border-color:   transparent;
 //** Modal footer border color
