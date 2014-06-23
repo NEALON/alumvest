@@ -1,46 +1,50 @@
 $(document).ready(function() {
-  /*
-  $(this).scrollTop(0);
+  $('.how-it-works-body').imagesLoaded(function() {
+    setTimeout(function() {
+      window.toggleLoader(function() {
+        $(window).scrollTop(0);
+      });
+      $('.how-it-works-pages').addClass('ready');
+      $(window).scrollTop(0);
+    }, 300);
+  });
   
-  var durationNext = 3000;
-  var durationPrev = 500;
+  var durationNext = 2000;
+  var durationPrev = 1000;
   var currentPhase = 0;
   var totalSections = $('a.trigger').length;
   
   var navigateNext = function () {
     if (currentPhase < totalSections - 1 && !$('body').hasClass('scrolling')) {
-      phase[currentPhase].exit();
       currentPhase += 1;
-      phase[currentPhase].init();
       $('body').addClass('scrolling');
+      $('.how-it-works-pages .nav-pages.show').removeClass('show');
       $(window).scrollTo($('a#trigger' + currentPhase), {
         duration: durationNext,
         easing: 'easeOutQuart',
-        offset: -topViewportOffset,
         onAfter: function () {
           $('body').removeClass('scrolling');
-          phase[currentPhase].start();
+          $('a#trigger' + currentPhase).parents('.page-content').find('.nav-pages').addClass('show');
         }
       });
     }
   }
   var navigatePrev = function () {
     if (currentPhase > 0 && !$('body').hasClass('scrolling')) {
-      phase[currentPhase].init();
       currentPhase -= 1;
-      phase[currentPhase].init();
       $('body').addClass('scrolling');
+      $('.how-it-works-pages .nav-pages.show').removeClass('show');
       $(window).scrollTo($('a#trigger' + currentPhase), {
         duration: durationPrev,
         easing: 'easeOutQuart',
-        offset: -topViewportOffset,
         onAfter: function () {
           $('body').removeClass('scrolling');
-          phase[currentPhase].start();
+          $('a#trigger' + currentPhase).parents('.page-content').find('.nav-pages').addClass('show');
         }
       });
     }
   }
+  
   $(window).mousewheel(function (event, delta) {
     event.preventDefault();
     if (delta <= -1) {
@@ -49,6 +53,7 @@ $(document).ready(function() {
       navigatePrev();
     }
   });
+  
   $(document).keydown(function (e) {
     if (e.keyCode == 40 || e.keyCode == 39) {
       navigateNext();
@@ -67,15 +72,18 @@ $(document).ready(function() {
       e.preventDefault();
     }
   });
-  $('.navigation a.next').click(function (e) {
+  
+  $('.how-it-works-pages .nav-pages a.next').click(function (e) {
     e.preventDefault();
     navigateNext();
   });
-  $('.navigation a.prev').click(function (e) {
+  
+  $('.how-it-works-pages .nav-pages a.prev').click(function (e) {
     e.preventDefault();
     navigatePrev();
   });
-  $('.navigation a.bullet').click(function (e) {
+  
+  $('.how-it-works-pages .nav-pages a.bullet').click(function (e) {
     e.preventDefault();
     currentPhase = $(this).attr("rel") - 1;
     if (currentPhase == -1) {
@@ -84,5 +92,5 @@ $(document).ready(function() {
     } else {
       navigateNext();
     }
-  });*/
+  });
 });

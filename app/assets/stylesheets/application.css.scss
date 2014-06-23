@@ -531,7 +531,7 @@ textarea { resize: vertical; }
 /* ==========================================================================
    Header Styles
    ========================================================================== */
-.header { background: $white; @include box-shadow(0 2px 5px rgba($black, .1)); border: 0 none; font-weight: bold; text-transform: uppercase;
+.header { background: $white; @include box-shadow(0 2px 5px rgba($black, .1)); border: 0 none; font-weight: bold; position: relative; text-transform: uppercase; z-index: 5;
   @media (min-width: $screen-sm) { 
     & { font-size: 11px; }
     .dropdown-menu { font-size: 12px; }
@@ -1047,19 +1047,29 @@ textarea { resize: vertical; }
 }
 
 /**
- * Authorization Unit
- */
-.wrapper-authorization { background: $black; padding: {top: 175px; bottom: 245px;} 
-  
-}
-
-/**
  * How It Works Contents
  */
-.how-it-works-pages { background: $black; height: 100%;
-  > .page-content { background: {size: cover; attachment: fixed; position-x: center !important;} height: 100%; 
-    &:first-child { margin-top: -$navbar-height; padding-top: $navbar-height; }
+.how-it-works-pages { background: $black; color: $white; @include clearfix; height: 100%;
+  > .page-content { background: {size: cover; attachment: fixed; position-x: center !important;} clear: left; float: left; height: 100%; @include opacity(0); position: relative; width: 100%;
+    &:first-child { margin-top: -$navbar-height; padding-top: $navbar-height; 
+      .trigger { margin-top: -$navbar-height; }
+    }
+    
     &.last { margin-bottom: -$footer-height-sm; padding-bottom: $footer-height-sm; }
+    
+    .trigger { display: block; height: 1px; left: 0; position: absolute; top: 0; width: 1px; }
+  }
+  
+  h1 { font: {size: 39px; weight: 700;} line-height: 1.17; 
+    .media .pull-left { margin-right: 25px; 
+      .fa { font-size: 96px; }
+    }
+  }
+  
+  .inner-content { height: 100%; 
+    > .container { height: 100%; 
+      > div { height: 100%; position: relative; }
+    }
   }
   
   &.sturtups {
@@ -1069,14 +1079,104 @@ textarea { resize: vertical; }
     .bg-step-4 { background-image: image-url("how-it-works/sturtups/04-step-bg.jpg"); }
     .bg-step-5 { background-image: image-url("how-it-works/sturtups/05-step-bg.jpg"); }
   }
+  
+  &.ready > .page-content { @include opacity(1); @include transition(opacity .3s); }
+  
+  .nav-pages { @include opacity(0); @include translate(-15px, 0); @include transition(opacity .3s); width: 31px;
+    > ul > li { padding-top: 5px; position: relative; z-index: 3;
+      a { background: #3a3c40; border-radius: 100px; color: #a0a5af; display: block; font: {size: 13px; weight: bold;} height: 31px; line-height: 31px; text-align: center; @include transition(all .3s); width: 31px; 
+        .fa-chevron-down { position: relative; top: -1px; }
+        .fa-chevron-up { position: relative; top: -2px; }
+        
+        &:hover, &:focus { background: darken(#3a3c40, 10%); color: $white; }
+      }
+      
+      &:after { background: #3a3c40; content: ''; display: block; height: 100%; left: 50%; margin-left: -1px; position: absolute; top: 0; width: 1px; z-index: -1; }
+      
+      &.passed {
+        &:after { background: #7dac22; }
+        
+        a { background: #7dac22; color: $white; }
+      }
+      
+      &.current {
+        &:after { background: #259aed; }
+        
+        a { background: #259aed; color: $white; }
+      }
+      
+      &.prev { padding-bottom: 10px; }
+      &.next { padding-top: 15px; }
+      
+      &.next, &.prev, &.first {
+        &:after { display: none; }
+      }
+    }
+    
+    &.show { @include opacity(1); @include translate(0, 0); @include transition(all .5s); }
+  }
+  
+  &.sturtups {
+    .nav-pages { left: 20px; margin-top: -140px; position: absolute; top: 50%; }
+  }
+}
+
+// Apply Sturtup Content
+.apply-sturtup-content {
+  h1 { position: absolute; top: 0; left: 0; }
+  .apply { font-size: 119px; position: absolute; text-transform: uppercase; top: 15%; left: 0; }
 }
 
 @media (min-width: $screen-sm) {
-  .how-it-works-body { height: 100%; @include sticky-footer($footer-height-sm);    
+  .how-it-works-body { height: 100%; overflow: hidden; @include sticky-footer($footer-height-sm);    
     .root { height: 100% !important; }    
     .wrapper-content { height: 100%; margin: {top: 0; bottom: 0;} padding: {top: 0; bottom: 0;} }    
     .footer { @include box-shadow(0 -2px 5px rgba($black, .1)); }
   }  
+}
+
+/**
+ * Loader Corner
+ */
+.loader-open { @extend .modal-open; }
+
+.loader { display: none; height: 100%; left: 0; overflow: hidden; position: absolute; top: 0; width: 100%;
+  .loader-corner { background: #259aed; height: 300px; pointer-events: none; position: absolute; right: 0; top: 0; @include transition(all .3s); @include transform(#{translateX(100%) translateY(-100%) rotate(45deg)}); width: 300px; z-index: $zindex-modal;
+    &:before, &:after { border: 5px solid $white; border-radius: 50%; bottom: 30px; content: ''; display: block; left: 50%; position: absolute; }
+    
+    &:before { @include animation(rotation 3s linear infinite); border: {right-color: darken(#259aed, 10%); left-color: darken(#259aed, 10%);} height: 80px; margin-left: -40px; width: 80px; }
+    
+    &:after { @include animation(rotation 1s linear infinite); border: {top-color: darken(#259aed, 10%); bottom-color: darken(#259aed, 10%);} bottom: 50px; height: 40px; margin-left: -20px; width: 40px; }
+    
+    &.loading { @include transform(#{translateX(50%) translateY(-50%) rotate(45deg)}); }
+  }
+  
+  .loader-backdrop { @extend .modal-backdrop; background-image: none; }
+  
+  .loader-text { color: #259aed; left: 0; margin: -15px 0 0; @include opacity(0); position: absolute; text: {align: center; shadow: 1px 1px $black;} top: 50%; @include translate(-100px, 0); @include transition(all .3s); width: 100%; z-index: $zindex-modal; 
+    &.in { @include opacity(1); @include translate(0, 0); }
+  }
+  
+  &.in { display: block; }
+}
+
+@-webkit-keyframes rotation {
+  0%    { -webkit-transform: rotate(0deg); }
+  50%   { -webkit-transform: rotate(180deg); }
+  100%  { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes rotation {
+  0%    { transform: rotate(0deg); }
+  50%   { transform: rotate(180deg); }
+  100%  { transform: rotate(360deg); }
+}
+
+.no-cssanimations, .no-csstransforms, .no-csstransforms3d {
+  .loader {
+    .loader-corner { display: none; }
+    .loader-text { bottom: auto; left: 0; margin: -15px 0 0; text-align: center; top: 50%; width: 100%; }
+  }
 }
 
 

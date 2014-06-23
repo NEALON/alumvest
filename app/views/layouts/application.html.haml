@@ -72,6 +72,16 @@
       .root-footer
     / END .root
     
+    / Loader Indicator
+    - if content_for? :loader
+      = yield :loader
+    - else
+      #loader.loader.fade
+        %h2.loader-text.fade Loaging&hellip;
+        .loader-corner
+        .loader-backdrop.fade
+      
+    
     - unless content_for? :without_footer
       = render :partial => 'layouts/footer'
   

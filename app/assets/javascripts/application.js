@@ -13,6 +13,8 @@
 //= require underscore
 //= require jquery
 //= require jquery_ujs
+//= require jquery.mousewheel
+//= require jquery.easing
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require autoNumeric
@@ -21,6 +23,7 @@
 //= require cocoon
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require imagesloaded
 //= require_tree .
 
 $.validator.setDefaults({
