@@ -75,6 +75,7 @@ Av::Application.routes.draw do
   end
 
   resources :users do
+    patch :update_education
 
     resource :bank_account
     resource :settings

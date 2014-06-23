@@ -40,15 +40,25 @@
                       = link_to 'Invite Friends', '#', :class => 'btn btn-success btn-sm'
                   / END .top-info
                   
-                  - unless @user.schools_array.empty?
-                    .bottom-info
-                      %hr
-                      .education-list
-                        %ul.list-inline
+                  .bottom-info
+                    %hr
+                    
+                    .education-list
+                      %ul.list-inline
+                        - unless @user.schools_array.empty? || @user.schools_array[0].nil?
                           - @user.schools_array.each do |school|
                             %li
                               %i.fa.fa-th.fa-fw
                               = school
+                          %li
+                            = link_to '#education-modal', :class => '', 'data-toggle' => 'modal' do
+                              %i.fa.fa-pencil
+                              Edit
+                        - else
+                          %li
+                            = link_to '#education-modal', :class => '', 'data-toggle' => 'modal' do
+                              %i.fa.fa-plus
+                              Add Education
                         
           / END .user-head-info
           
@@ -164,7 +174,7 @@
                             %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
                             %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
                         %td Martin invested $50k.
-
+                        
           / END My Investment Amount 
             
           %section.panel.panel-default
@@ -213,3 +223,5 @@
                     = f.input :other_investment, :as => :text, :label => ('Other Investment <span class="hidden-sm hidden-xs">Preferences</span>').html_safe, :placeholder => 'Please Describe here'
                 = f.button :submit, 'Save', :class => 'btn-primary btn-lg'
 
+// Modal Edit Education
+= render 'users/education_modal'

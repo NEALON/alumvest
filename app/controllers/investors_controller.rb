@@ -26,6 +26,7 @@ class InvestorsController < ApplicationController
 
   def dashboard
     @user = Alumvest::UserBase.find(params[:user_id])
+    @user.educations.build if @user.educations.blank?
     @investor = @user.investor || Alumvest::InvestorBase.new(:user => @user)
     authorize! :read, @investor
   end

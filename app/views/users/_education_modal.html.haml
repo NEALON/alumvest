@@ -1,0 +1,24 @@
+#education-modal.modal.fade
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        = link_to '#', :class => "close", :data => {:dismiss => "modal", :toggle => "tooltip", :placement => "auto right", :container => 'body'}, "aria-hidden" => "true", :title => 'Close' do
+          %i.fa.fa-times
+        %h4.modal-title 
+          Education
+      .modal-body
+        = simple_form_for @user, :url => user_update_education_path(@user), :html => {:id => 'user_basic_information_form', :class => 'form-vertical'} do |f|
+          = render 'shared/error_notification', :errors => f.error_notification 
+          
+          #educations
+            = f.simple_fields_for :educations do |education|  
+              = render 'users/education_fields_vertical', :f => education
+              
+          .form-action
+            .row
+              .col-sm-6
+                = f.submit 'Save', :class => 'btn btn-primary btn-md pull-left'
+              .col-sm-6
+                = link_to_add_association(('<i class="fa fa-plus"></i> Add education').html_safe, f, :educations, :partial => 'users/education_fields_vertical', :class => 'btn btn-link btn-md no-pad-left no-pad-right inverse pull-right', "data-association-insertion-node" => '#educations', "data-association-insertion-method" => 'after')
+            
+          
