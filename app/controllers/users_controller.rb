@@ -20,4 +20,15 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+
+  def update_education
+    @user = Alumvest::UserBase.find_by_id(params[:user_id])
+    authorize! :manage, @user
+    @user.update_attributes(params[:alumvest_user_base])
+    if @user.is_investor?
+      redirect_to dashboard_user_investor_path(@user)
+    elsif @user.is_issuer?
+      redirect_to dashboard_user_issuer_path(@user)
+    end
+  end
 end

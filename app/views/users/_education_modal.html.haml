@@ -1,0 +1,16 @@
+#education-modal.modal.fade
+  .modal-dialog.modal-large
+    .modal-content
+      .modal-header
+        / %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
+        /   %span.glyphicon.glyphicon-remove
+      .modal-body.modal-row.row
+        .col-md-12
+          = form_for @user, :url => user_update_education_path(@user), :html => {:id => 'user_basic_information_form', :class => 'form-horizontal editing-form well'} do |f|
+            %fieldset
+            - with_options :form => f do |op|
+              = f.fields_for :educations do |e|
+                = render 'users/education_fields', :f => e
+              .links.col-md-8.col-md-offset-4
+                = link_to_add_association 'Add Education', f, :educations, :partial => 'users/education_fields'
+            = render_cell 'tb/form/submit_button', :display

@@ -1,6 +1,7 @@
 = content_for :header_1 do
   #title
 
+= render 'users/education_modal'
 = render 'side_navigation', :active => 'investor_dashboard'
 
 .dashboard.investor-dashboard
@@ -19,6 +20,7 @@
     %hr
     .user-profile-schools
       = @user.schools
+      %li= link_to('edit', '#education-modal', :class => '', 'data-toggle' => 'modal')
 
   .follows
     %h4 Companies I'm following
