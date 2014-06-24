@@ -2,7 +2,7 @@
 - content_for :without_footer, true
 
 .how-it-works-pages.sturtups
-  %section.page-content.bg-step-1{"data-stellar-background-ratio" => "0.5", "data-stellar-vertical-offset" => "60"}
+  %section.page-content.first.bg-step-1{"data-stellar-background-ratio" => "0.5", "data-stellar-vertical-offset" => "60"}
     = link_to '', '', :class => 'trigger', :name => 'a0', :id => 'trigger0'
 
     .nav-steps.show
@@ -70,7 +70,7 @@
         .clearfix
         
           .review-sturtup-content
-            .h1.fade{"data-stellar-ratio" => "0.9"}
+            .h1.fade{"data-stellar-ratio" => "1.2"}
               .media
                 .pull-left
                   %i.fa.fa-file-text-o
@@ -78,7 +78,7 @@
                   We Will Review
                   %br
                   Your Funding Application
-            .well.well-blue.round.text-justify.fade{"data-stellar-ratio" => "1.5"} 
+            .well.well-blue.round.text-justify.fade{"data-stellar-ratio" => "1.7"} 
               %p Our Startup Funding Panel will review your application and respond to you with any follow-up questions offline. Once we have fully review your application, our Investment Panel will determine whether the AlumVest community is the best place for you to crowdfund. See more in our FAQs.
     / END .inner-content
     
@@ -150,59 +150,92 @@
   %section.page-content.bg-step-4{"data-stellar" => {"background-ratio" => "0.5"}}
     = link_to '', '', :class => 'trigger', :name => 'a3', :id => 'trigger3'
     
-    %nav.nav-pages
-      %ul.list-unstyled
-        %li.prev
-          = link_to '#trigger0', :class => 'prev' do
-            %i.fa.fa-angle-double-up
-        %li.passed.first= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Apply'
-        %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review'
-        %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Join & Raise Funds'
-        %li.current= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Manage'
-        %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Crowd Source & Find'
-        %li.next
-          = link_to '#trigger0', :class => 'next' do
-            %i.fa.fa-angle-double-down
-    
-    .inner-content.apply-sturtup-content{"data-stellar-offset-parent" => "true"}
+    .nav-steps
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '#', :class => 'active'
+          .col-sm-4
+            = link_to 'Investors', '#'
+          .col-sm-4
+            = link_to 'Process', '#'
+    / END .nav-steps
+          
+    .inner-content{"data-stellar-offset-parent" => "true"} 
       .container
         .clearfix
-          %h1.fade{"data-stellar-ratio" => "1.2"}
-            .media
-              .pull-left
-                %i.fa.fa-check-circle
-              .media-body
-                Using AlumVest to fund and grow your startup is easy! Below is how our rewards-based fundraising works.
-          %h2.fade.apply{"data-stellar-ratio" => "3.6"} Apply
-      
-    / END .apply-sturtup-content
+        
+          .manage-sturtup-content
+            .top-info.fade{"data-stellar-ratio" => "1.2"}
+              %div
+                .h1
+                  .media
+                    .pull-left
+                      %i.fa.fa-cogs
+                    .media-body
+                      Manage Your Funding Profile & Raise Funds (Publicly or Privately)
+            .bottom-info.fade{"data-stellar-ratio" => "1.7"}
+              %div
+                %p.no-marg-bottom Our awesome design team helps you create an awesome Company profile page. You can use our standard investment documents or we can work with your legal team or recommend a 3rd party trusted law firm to structure your offering. For now, funds are raised from accredited investors and eventually in Q2 2014 from the general public.
+    / END .inner-content
+    
+    .container
+      %nav.nav-pages
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.passed.first= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Apply'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Join & Raise Funds'
+          %li.current= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Manage'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Crowd Source & Find'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
     
   %section.page-content.last.bg-step-5{"data-stellar" => {"background-ratio" => "0.5"}}
     = link_to '', '', :class => 'trigger', :name => 'a4', :id => 'trigger4'
     
-    %nav.nav-pages
-      %ul.list-unstyled
-        %li.prev
-          = link_to '#trigger0', :class => 'prev' do
-            %i.fa.fa-angle-double-up
-        %li.passed.first= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Apply'
-        %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review'
-        %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Join & Raise Funds'
-        %li.passed= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Manage'
-        %li.current= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Crowd Source & Find'
-  
-    .inner-content.apply-sturtup-content{"data-stellar-offset-parent" => "true"}
+    .nav-steps
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '#', :class => 'active'
+          .col-sm-4
+            = link_to 'Investors', '#'
+          .col-sm-4
+            = link_to 'Process', '#'
+    / END .nav-steps
+          
+    .inner-content{"data-stellar-offset-parent" => "true"} 
       .container
         .clearfix
-          %h1.fade{"data-stellar-ratio" => "1.2"}
-            .media
-              .pull-left
-                %i.fa.fa-check-circle
-              .media-body
-                Using AlumVest to fund and grow your startup is easy! Below is how our rewards-based fundraising works.
-          %h2.fade.apply{"data-stellar-ratio" => "3.6"} Apply
-      
-    / END .apply-sturtup-content
+        
+          .find-sturtup-content
+            .h1.fade{"data-stellar-ratio" => "1.2"} Crowdsource! Find Investors, Talent & Supporters
+            .well.well-green.fade{"data-stellar-ratio" => "1.7"}
+              %i.fa.fa-search
+              %p.no-marg-bottom AlumVest’s alumni communities can provide other support besides money. We encourage alumni (but do not require) to offer any sort of assistance to Companies that they think may help. Alumni are especially motivated via their school affiliation to help and provide mentoring, feedback, professional advice or a valuable introduction to someone the Company would love to meet. Angel and crowdfunding investors become the Company's biggest advocates!
+    / END .inner-content
+    
+    .container
+      %nav.nav-pages
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.passed.first= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Apply'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Join & Raise Funds'
+          %li.passed= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Manage'
+          %li.current= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Crowd Source & Find'
+      / END .nav-pages
+        
+  / END .page-content
   
   .footer
     .container  
@@ -218,12 +251,13 @@
 - content_for :scripts do
   :javascript
     $.stellar({
+      positionProperty: 'transform',
       responsive: true,
       hideDistantElements: true,
       hideElement: function($elem) { 
         $elem.removeClass('in');
       },
       showElement: function($elem) { 
-        $elem.addClass('in');  
+        $elem.addClass('in'); 
       }
     });
