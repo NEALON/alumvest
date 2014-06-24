@@ -96,6 +96,14 @@
   }
 }
 
+// Converts pixels to EMs with Sass
+$browser-context: 16; // Default
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em
+}
+
+
 // Based on a [blog post by Ryan Fait](http://ryanfait.com/resources/footer-stick-to-bottom-of-page/).
 //
 // Must be mixed into the top level of your stylesheet.

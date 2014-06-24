@@ -21,12 +21,14 @@ $(document).ready(function() {
         currentPhase += 1;
         $('body').addClass('scrolling');
         $('.how-it-works-pages .nav-pages.show').removeClass('show');
+        $('.how-it-works-pages .nav-steps.show').removeClass('show');
         $(window).scrollTo($('a#trigger' + currentPhase), {
           duration: durationNext,
           easing: 'easeOutQuart',
           onAfter: function () {
             $('body').removeClass('scrolling');
             $('a#trigger' + currentPhase).parents('.page-content').find('.nav-pages').addClass('show');
+            $('a#trigger' + currentPhase).parents('.page-content').find('.nav-steps').addClass('show');
           }
         });
       }
@@ -36,12 +38,14 @@ $(document).ready(function() {
         currentPhase -= 1;
         $('body').addClass('scrolling');
         $('.how-it-works-pages .nav-pages.show').removeClass('show');
+        $('.how-it-works-pages .nav-steps.show').removeClass('show');
         $(window).scrollTo($('a#trigger' + currentPhase), {
           duration: durationPrev,
           easing: 'easeOutQuart',
           onAfter: function () {
             $('body').removeClass('scrolling');
             $('a#trigger' + currentPhase).parents('.page-content').find('.nav-pages').addClass('show');
+            $('a#trigger' + currentPhase).parents('.page-content').find('.nav-steps').addClass('show');
           }
         });
       }

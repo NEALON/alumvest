@@ -109,6 +109,9 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
       @media (min-width: $screen-sm) { font-size: 17px; }
     }
   }
+  
+  &.well-green { background: $green; border-color: $green; color: $white; }
+  &.well-blue { background: $blue-darken; border-color: $blue-darken; color: $white; }
 }
 
 // Tooltip styles
@@ -1050,7 +1053,7 @@ textarea { resize: vertical; }
  * How It Works Contents
  */
 .how-it-works-pages { background: $black; color: $white; @include clearfix; height: 100%;
-  > .page-content { background: {size: cover; attachment: fixed; position-x: center !important;} clear: left; float: left; height: 100%; @include opacity(0); position: relative; width: 100%;
+  > .page-content { background: {size: cover; attachment: fixed; position-x: center !important;} clear: left; float: left; font-size: em(16, 14); height: 100%; overflow: hidden; @include opacity(0); position: relative; width: 100%;
     &:first-child { margin-top: -$navbar-height; padding-top: $navbar-height; 
       .trigger { margin-top: -$navbar-height; }
     }
@@ -1060,10 +1063,18 @@ textarea { resize: vertical; }
     .trigger { display: block; height: 1px; left: 0; position: absolute; top: 0; width: 1px; }
   }
   
-  h1 { font: {size: 39px; weight: 700;} line-height: 1.17; 
+  h1, .h1 { font: {size: em(39); weight: 700;} line-height: 1.17; 
     .media .pull-left { margin-right: 25px; 
-      .fa { font-size: 96px; }
+      .fa { font-size: em(96, 39); }
+      .glyphicon { font-size: em(82, 39); }
     }
+  }
+  
+  .well { padding: em(15) em(28); }
+  
+  .fade { position: relative; @include transition(none); 
+    &.in { @include transition(opacity 2s); }
+    &.static { position: static; }
   }
   
   .inner-content { height: 100%; 
@@ -1072,16 +1083,30 @@ textarea { resize: vertical; }
     }
   }
   
-  &.sturtups {
-    .bg-step-1 { background-image: image-url("how-it-works/sturtups/01-step-bg.jpg"); }
-    .bg-step-2 { background-image: image-url("how-it-works/sturtups/02-step-bg.jpg"); }
-    .bg-step-3 { background-image: image-url("how-it-works/sturtups/03-step-bg.jpg"); }
-    .bg-step-4 { background-image: image-url("how-it-works/sturtups/04-step-bg.jpg"); }
-    .bg-step-5 { background-image: image-url("how-it-works/sturtups/05-step-bg.jpg"); }
-  }
-  
   &.ready > .page-content { @include opacity(1); @include transition(opacity .3s); }
   
+  // Navigations Steps
+  .nav-steps { @include opacity(0); position: absolute; bottom: 0; @include translate(0, 15px); @include transition(opacity .3s); width: 100%; z-index: 5;
+    a { background: #3a3c40; color: #a0a5af; display: block; font: {size: em(19); family: $font-family-serif; weight: 700;} line-height: em(46, 19); margin: 0 em(30, 19) 15px; position: relative; text: {align: center; transform: uppercase;} @include transition(none); 
+      &:focus, &:hover { background: darken(#3a3c40, 10%); color: $white; 
+        &:after { border-top-color: darken(#3a3c40, 10%); }
+        &:before { border-bottom-color: darken(#3a3c40, 10%); }
+      }
+      
+      &.active { background: #259aed; color: $white; 
+        &:after { border-top-color: #259aed; }
+        &:before { border-bottom-color: #259aed; }
+      }
+      
+      &:after, &:before { content: ''; height: 0; position: absolute; top: 0; width: 0; }
+      &:after { border: {top: em(46, 19) solid #3a3c40; right: em(46, 19) solid transparent;} left: 100%; }
+      &:before { border: {bottom: em(46, 19) solid #3a3c40; left: em(46, 19) solid transparent;} right: 100%; }
+    }
+    
+    &.show { @include opacity(1); @include translate(0, 0); @include transition(all .5s); }
+  }
+  
+  // Navigation Pages
   .nav-pages { @include opacity(0); @include translate(-15px, 0); @include transition(opacity .3s); width: 31px;
     > ul > li { padding-top: 5px; position: relative; z-index: 3;
       a { background: #3a3c40; border-radius: 100px; color: #a0a5af; display: block; font: {size: 13px; weight: bold;} height: 31px; line-height: 31px; text-align: center; @include transition(all .3s); width: 31px; 
@@ -1094,9 +1119,9 @@ textarea { resize: vertical; }
       &:after { background: #3a3c40; content: ''; display: block; height: 100%; left: 50%; margin-left: -1px; position: absolute; top: 0; width: 1px; z-index: -1; }
       
       &.passed {
-        &:after { background: #7dac22; }
+        &:after { background: $green; }
         
-        a { background: #7dac22; color: $white; }
+        a { background: $green; color: $white; }
       }
       
       &.current {
@@ -1116,15 +1141,55 @@ textarea { resize: vertical; }
     &.show { @include opacity(1); @include translate(0, 0); @include transition(all .5s); }
   }
   
+  // Sturtups Backgrounds
   &.sturtups {
     .nav-pages { left: 20px; margin-top: -140px; position: absolute; top: 50%; }
+    
+    .bg-step-1 { background-image: image-url("how-it-works/sturtups/01-step-bg.jpg"); }
+    .bg-step-2 { background-image: image-url("how-it-works/sturtups/02-step-bg.jpg"); }
+    .bg-step-3 { background-image: image-url("how-it-works/sturtups/03-step-bg.jpg"); }
+    .bg-step-4 { background-image: image-url("how-it-works/sturtups/04-step-bg.jpg"); }
+    .bg-step-5 { background-image: image-url("how-it-works/sturtups/05-step-bg.jpg"); }
   }
 }
 
 // Apply Sturtup Content
-.apply-sturtup-content {
-  h1 { position: absolute; top: 0; left: 0; }
-  .apply { font-size: 119px; position: absolute; text-transform: uppercase; top: 15%; left: 0; }
+.inner-content {
+  .apply-sturtup-content { left: 0; position: absolute; top: 10%; width: 100%;
+    .h1 { @include opacity(0); position: relative; top: em(-30); }
+    .apply { font-size: em(119); line-height: 1.0; margin: 0 em(-55, 119) 0 0; text-transform: uppercase; }
+    .description { border-left: em(13) solid $white; margin: em(70) 0 em(40) em(11); position: relative;
+      > .fa-check-circle { font-size: em(30); left: em(-20, 30); margin-top: em(-4, 30); position: absolute; top: 100%; }
+    }
+    .media { margin-top: em(-8); @include opacity(0); }
+  }
+
+  &.in .apply-sturtup-content {
+    .h1 { @include opacity(1); top: 0; @include transition(all 1.3s .3s); }
+    .media {  @include opacity(1); @include transition(all .7s .7s); } 
+    .description { padding-top: em(58); @include transition(all .7s 1.7s);  }
+  }
+}
+
+// Review Sturtup Content
+.inner-content {
+  .review-sturtup-content {
+    .h1 { left: 0; margin: 0 0 0 em(170, 39); position: absolute; top: 10%; }
+    .well { margin-top: em(100); padding: em(25) em(30); position: absolute; right: 0; top: 10%; width: em(324); }
+  }
+} 
+
+// Join & Raise Funds
+.inner-content {
+  .raisefunds-sturtup-content { left: 0; padding-left: em(280); position: absolute; top: 10%; width: 100%;
+    .h1 { border-radius: 3px 3px 0 3px; padding: em(20, 39) em(27, 39) em(20, 39) em(17, 39); margin: 0; }
+    .description { border-radius: 0 0 3px 3px; color: $white; margin-left: em(230); padding: 0 em(27) em(25) em(33); }
+  }
+  
+  &.in .raisefunds-sturtup-content {
+    .h1 { background: $green; @include transition(all 2s 1s); }
+    .description { background: $green; @include transition(all 2s 1s);  }
+  }
 }
 
 @media (min-width: $screen-sm) {
@@ -1141,19 +1206,19 @@ textarea { resize: vertical; }
 .loader-open { @extend .modal-open; }
 
 .loader { display: none; height: 100%; left: 0; overflow: hidden; position: absolute; top: 0; width: 100%;
-  .loader-corner { background: #259aed; height: 300px; pointer-events: none; position: absolute; right: 0; top: 0; @include transition(all .3s); @include transform(#{translateX(100%) translateY(-100%) rotate(45deg)}); width: 300px; z-index: $zindex-modal;
+  .loader-corner { background: $blue-darken; height: 300px; pointer-events: none; position: absolute; right: 0; top: 0; @include transition(all .3s); @include transform(#{translateX(100%) translateY(-100%) rotate(45deg)}); width: 300px; z-index: $zindex-modal;
     &:before, &:after { border: 5px solid $white; border-radius: 50%; bottom: 30px; content: ''; display: block; left: 50%; position: absolute; }
     
-    &:before { @include animation(rotation 3s linear infinite); border: {right-color: darken(#259aed, 10%); left-color: darken(#259aed, 10%);} height: 80px; margin-left: -40px; width: 80px; }
+    &:before { @include animation(rotation 3s linear infinite); border: {right-color: darken($blue-darken, 10%); left-color: darken($blue-darken, 10%);} height: 80px; margin-left: -40px; width: 80px; }
     
-    &:after { @include animation(rotation 1s linear infinite); border: {top-color: darken(#259aed, 10%); bottom-color: darken(#259aed, 10%);} bottom: 50px; height: 40px; margin-left: -20px; width: 40px; }
+    &:after { @include animation(rotation 1s linear infinite); border: {top-color: darken($blue-darken, 10%); bottom-color: darken($blue-darken, 10%);} bottom: 50px; height: 40px; margin-left: -20px; width: 40px; }
     
     &.loading { @include transform(#{translateX(50%) translateY(-50%) rotate(45deg)}); }
   }
   
   .loader-backdrop { @extend .modal-backdrop; background-image: none; }
   
-  .loader-text { color: #259aed; left: 0; margin: -15px 0 0; @include opacity(0); position: absolute; text: {align: center; shadow: 1px 1px $black;} top: 50%; @include translate(-100px, 0); @include transition(all .3s); width: 100%; z-index: $zindex-modal; 
+  .loader-text { color: $blue-darken; left: 0; margin: -15px 0 0; @include opacity(0); position: absolute; text: {align: center; shadow: 1px 1px $black;} top: 50%; @include translate(-100px, 0); @include transition(all .3s); width: 100%; z-index: $zindex-modal; 
     &.in { @include opacity(1); @include translate(0, 0); }
   }
   
@@ -1280,6 +1345,8 @@ textarea { resize: vertical; }
 .col-centered { float: none; margin: 0 auto; }
 
 .placeholder .to-support-placeholder { display: none; }
+
+.round { border-radius: 3px; }
 
 
 
