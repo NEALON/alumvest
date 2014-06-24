@@ -9,14 +9,14 @@
       .container
         .row
           .col-sm-4
-            = link_to 'Startups', '#', :class => 'active'
+            = link_to 'Startups', '/how-it-works', :class => 'active'
           .col-sm-4
-            = link_to 'Investors', '#'
+            = link_to 'Investors', '/how-it-works-investors'
           .col-sm-4
-            = link_to 'Process', '#'
+            = link_to 'Process', '/how-it-works-process'
     / END .nav-steps
           
-    .inner-content.fade.static{"data-stellar-offset-parent" => "true", "data-stellar-ratio" => "1"}
+    .inner-content.fade{"data-stellar-offset-parent" => "true", "data-stellar-ratio" => "1"}
       .container
         .clearfix
         
@@ -58,11 +58,11 @@
       .container
         .row
           .col-sm-4
-            = link_to 'Startups', '#', :class => 'active'
+            = link_to 'Startups', '/how-it-works', :class => 'active'
           .col-sm-4
-            = link_to 'Investors', '#'
+            = link_to 'Investors', '/how-it-works-investors'
           .col-sm-4
-            = link_to 'Process', '#'
+            = link_to 'Process', '/how-it-works-process'
     / END .nav-steps
           
     .inner-content{"data-stellar-offset-parent" => "true"}
@@ -78,7 +78,7 @@
                   We Will Review
                   %br
                   Your Funding Application
-            .well.well-blue.round.text-justify.fade{"data-stellar-ratio" => "1.7"} 
+            .well.well-blue.round.text-justify.fade{"data-stellar-ratio" => "2.5"} 
               %p Our Startup Funding Panel will review your application and respond to you with any follow-up questions offline. Once we have fully review your application, our Investment Panel will determine whether the AlumVest community is the best place for you to crowdfund. See more in our FAQs.
     / END .inner-content
     
@@ -107,11 +107,11 @@
       .container
         .row
           .col-sm-4
-            = link_to 'Startups', '#', :class => 'active'
+            = link_to 'Startups', '/how-it-works', :class => 'active'
           .col-sm-4
-            = link_to 'Investors', '#'
+            = link_to 'Investors', '/how-it-works-investors'
           .col-sm-4
-            = link_to 'Process', '#'
+            = link_to 'Process', '/how-it-works-process'
     / END .nav-steps
           
     .inner-content.fade{"data-stellar-offset-parent" => "true", "data-stellar-ratio" => "1.5"}
@@ -154,11 +154,11 @@
       .container
         .row
           .col-sm-4
-            = link_to 'Startups', '#', :class => 'active'
+            = link_to 'Startups', '/how-it-works', :class => 'active'
           .col-sm-4
-            = link_to 'Investors', '#'
+            = link_to 'Investors', '/how-it-works-investors'
           .col-sm-4
-            = link_to 'Process', '#'
+            = link_to 'Process', '/how-it-works-process'
     / END .nav-steps
           
     .inner-content{"data-stellar-offset-parent" => "true"} 
@@ -204,11 +204,11 @@
       .container
         .row
           .col-sm-4
-            = link_to 'Startups', '#', :class => 'active'
+            = link_to 'Startups', '/how-it-works', :class => 'active'
           .col-sm-4
-            = link_to 'Investors', '#'
+            = link_to 'Investors', '/how-it-works-investors'
           .col-sm-4
-            = link_to 'Process', '#'
+            = link_to 'Process', '/how-it-works-process'
     / END .nav-steps
           
     .inner-content{"data-stellar-offset-parent" => "true"} 
@@ -251,7 +251,9 @@
 - content_for :scripts do
   :javascript
     $.stellar({
-      positionProperty: 'transform',
+      horizontalScrolling: false,
+      verticalScrolling: true,
+      positionProperty: 'position',
       responsive: true,
       hideDistantElements: true,
       hideElement: function($elem) { 

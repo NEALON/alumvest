@@ -3,6 +3,10 @@ $(document).ready(function() {
     $('.how-it-works-body').imagesLoaded(function() {
       setTimeout(function() {
         window.toggleLoader(function() {
+          setTimeout(function() {
+            $(window).scrollTop(0);  
+          }, 100);
+          
           $(window).scrollTop(0);
           $('.how-it-works-pages').addClass('ready');
         });
@@ -11,7 +15,7 @@ $(document).ready(function() {
       }, 300);
     });
      
-    var durationNext = 2000;
+    var durationNext = 3000;
     var durationPrev = 1000;
     var currentPhase = 0;
     var totalSections = $('a.trigger').length;

@@ -1067,30 +1067,33 @@ textarea { resize: vertical; }
     .trigger { display: block; height: 1px; left: 0; position: absolute; top: 0; width: 1px; }
   }
   
-  h1, .h1 { font: {size: em(39); weight: 700;} line-height: 1.17; 
+  h1, .h1 { font: {size: em(39); weight: 700;} line-height: 1.17; margin-bottom: em(21, 39);
     .media .pull-left { margin-right: 25px; 
       .fa { font-size: em(96, 39); }
       .glyphicon { font-size: em(82, 39); }
     }
   }
   
-  .well { padding: em(15) em(28); }
+  .well { padding: em(15) em(28); 
+    ol, ul { font: {family: $font-family-serif; weight: bold;} line-height: 1.1; margin-left: em(-21); 
+      li + li { margin-top: em(15); }
+    }
+  }
   
-  .fade { position: relative; @include transition(none); 
+  .fade { @include transition(none); 
     &.in { @include transition(opacity 2s); }
-    &.static { position: static; }
   }
   
   .inner-content { height: 100%; 
     > .container { height: 100%; 
-      > div { height: 100%; position: relative; }
+      > div { height: 100%; position: relative; z-index: 5; }
     }
   }
   
   &.ready > .page-content { @include opacity(1); @include transition(opacity .3s); }
   
   // Navigations Steps
-  .nav-steps { @include opacity(0); position: absolute; bottom: 0; @include translate(0, 15px); @include transition(opacity .3s); width: 100%; z-index: 5;
+  .nav-steps { @include opacity(0); position: absolute; bottom: 0; @include translate(0, 15px); @include transition(opacity .3s); width: 100%; z-index: 7;
     a { background: #3a3c40; color: #a0a5af; display: block; font: {size: em(19); family: $font-family-serif; weight: 700;} line-height: em(46, 19); margin: 0 em(30, 19) 15px; position: relative; text: {align: center; transform: uppercase;} @include transition(none); 
       &:focus, &:hover { background: darken(#3a3c40, 10%); color: $white; 
         &:after { border-top-color: darken(#3a3c40, 10%); }
@@ -1111,11 +1114,11 @@ textarea { resize: vertical; }
   }
   
   // Navigation Pages
-  .nav-pages { @include opacity(0); @include translate(-15px, 0); @include transition(opacity .3s); width: 31px;
-    > ul > li { padding-top: 5px; position: relative; z-index: 3;
-      a { background: #3a3c40; border-radius: 100px; color: #a0a5af; display: block; font: {size: 13px; weight: bold;} height: 31px; line-height: 31px; text-align: center; @include transition(all .3s); width: 31px; 
-        .fa-chevron-down { position: relative; top: -1px; }
-        .fa-chevron-up { position: relative; top: -2px; }
+  .nav-pages { @include opacity(0); @include translate(-15px, 0); @include transition(opacity .3s); width: em(31); z-index: 7;
+    > ul > li { padding-top: em(5); position: relative; z-index: 3;
+      a { background: #3a3c40; border-radius: 100px; color: #a0a5af; display: block; font: {size: em(13); weight: bold;} height: em(31, 13); line-height: em(31, 13); text-align: center; @include transition(all .3s); width: em(31, 13); 
+        .fa-chevron-down { position: relative; top: em(-1, 13); }
+        .fa-chevron-up { position: relative; top: em(-2, 13); }
         
         &:hover, &:focus { background: darken(#3a3c40, 10%); color: $white; }
       }
@@ -1134,8 +1137,8 @@ textarea { resize: vertical; }
         a { background: #259aed; color: $white; }
       }
       
-      &.prev { padding-bottom: 10px; }
-      &.next { padding-top: 15px; }
+      &.prev { padding-bottom: em(10); }
+      &.next { padding-top: em(15); }
       
       &.next, &.prev, &.first {
         &:after { display: none; }
@@ -1153,8 +1156,6 @@ textarea { resize: vertical; }
       &.first {
         .nav-pages { margin-top: (-140px + $navbar-height); } 
       }
-      
-      &.last {  }
     }
     
     .bg-step-1 { background-image: image-url("how-it-works/sturtups/01-step-bg.jpg"); }
@@ -1162,6 +1163,41 @@ textarea { resize: vertical; }
     .bg-step-3 { background-image: image-url("how-it-works/sturtups/03-step-bg.jpg"); }
     .bg-step-4 { background-image: image-url("how-it-works/sturtups/04-step-bg.jpg"); }
     .bg-step-5 { background-image: image-url("how-it-works/sturtups/05-step-bg.jpg"); }
+  }
+  
+  // Investors
+  &.investors {
+    .nav-pages { left: 20px; margin-top: -158px; position: absolute; top: 40%; }
+    
+    > .page-content { background: #eaec6a; @include transition(background-color 3s .3s);
+      &.first {
+        .nav-pages { margin-top: (-158px + $navbar-height); } 
+      }
+      
+      .bg-blue { background: #eaec6a; height: 100%; left: 0; position: absolute; top: 0; @include transition(background-color 2s); width: 100%; 
+        &.in { background: #7bbaf4; }
+      }
+      
+      .bg-building-front { background: image-url("how-it-works/investors/building-zindex-3.png") top center repeat-x transparent; bottom: 0; left: 0; padding-top: 105px; position: absolute; width: 100%;
+        > div { background: #f0f1f1; height: em(100); }
+      }
+      
+      .bg-building-middle { background: image-url("how-it-works/investors/building-zindex-2.png") top right repeat-x transparent; bottom: 0; left: 0; padding-top: 145px; position: absolute; width: 100%; 
+        > div { background: #d1d2d3; height: em(130); }
+      }
+      
+      .bg-building-back { background: image-url("how-it-works/investors/building-zindex-1.png") top left repeat-x transparent; bottom: 0; left: 0; padding-top: 145px; position: absolute; width: 100%; 
+        > div { background: #a7a9ac; height: em(160); }
+      }
+      
+      &.last {
+        .bg-building-front > div, .bg-building-middle > div, .bg-building-back > div { @include box-sizing(initial); padding-bottom: $footer-height-sm; }
+      }
+    }
+    
+    .nav-steps { @include translate(0, -50%);
+      &.show { @include translate(0, 0); }
+    }
   }
 }
 
@@ -1171,6 +1207,11 @@ textarea { resize: vertical; }
     .fade { @include opacity(1); }
   } 
 }
+
+
+/**
+ * Sturtup Pages
+ */
 
 // Apply Sturtup Content (Step 1)
 .inner-content {
@@ -1192,12 +1233,12 @@ textarea { resize: vertical; }
 
 // Review Sturtup Content (Step 2)
 .inner-content {
-  .review-sturtup-content {
+  .review-sturtup-content { position: relative;
     .h1 { left: 0; margin: 0; position: absolute; top: 10%; 
       &.in { left: em(170, 39); @include transition(opacity 1.5s, left .7s 1s); }
     }
-    .well { margin-top: em(100); padding: em(25) em(30); position: absolute; right: 50%; top: 10%; width: em(324);       
-      &.in { right: 0; @include transition(opacity .7s 1s, right .7s 1s); }
+    .well { margin: {top: em(100);} padding: em(25) em(30); position: absolute; right: 50%; top: 10%; width: em(324);       
+      &.in { right: 0; @include transition(opacity .7s .7s, right .7s .7s); }
     }
   }
 } 
@@ -1227,7 +1268,7 @@ textarea { resize: vertical; }
         &:before { border: {bottom: em(146) solid $blue-darken; right: em(42) solid transparent;} left: 100%; }
       }
       
-      &.in > div { left: 0; @include transition(all .7s 1s); }
+      &.in > div { left: 0; @include transition(left .7s 1s, opacity .7s 1s); }
     }
     
     .bottom-info { height: em(146); margin-top: em(151); position: absolute; right: 0; top: 10%; width: em(844); 
@@ -1237,19 +1278,44 @@ textarea { resize: vertical; }
         &:before { border: {bottom: em(146) solid $blue-darken; left: em(42) solid transparent;} right: 100%; }
       }
       
-      &.in > div { left: 0; @include transition(all .7s 1s); }
+      &.in > div { left: 0; @include transition(left .7s 1s, opacity .7s 1s); }
     }
   }
 }
 
 // Crowd Source & Find (Step 5)
 .inner-content {  
-  .find-sturtup-content { left: 0; position: absolute; top: 8%; width: 100%;
-    .h1 { margin: {left: em(110, 39); bottom: em(25, 39); top: 0;} max-width: 100%; width: em(600, 39); }
-    .well { margin-left: em(50); max-width: 100%; padding: em(20) em(35); position: relative; width: em(540); 
+  .find-sturtup-content {
+    .h1 { left: 0; margin: {left: em(110, 39); bottom: 0; top: 0;} max-width: 100%; position: absolute; top: 8%; width: em(600, 39); }
+    .well { left: 0; margin: {left: em(50); top: em(105);} max-width: 100%; padding: em(20) em(35); position: absolute; top: 8%; width: em(540); 
       .fa-search { background: $green; border-radius: 100px; font-size: em(43); height: em(85, 43); left: 0; line-height: em(85, 43); margin: {left: em(-58, 43); top: em(-64, 43);} @include opacity(0); position: absolute; @include scale(0, 0); text-align: center; top: 0; width: em(85, 43); }
     
       &.in .fa-search { @include opacity(1); @include scale(1, 1); @include transition(all .7s 1s); }
+    }
+  }
+}
+
+/**
+ * Investors Pages
+ */
+
+// Sign Up Investor Content (Step 1)
+.inner-content {
+  .signup-investors-content { 
+    .wrapper-img { bottom: em(85); left: 0; max-width: em(199); position: absolute; }
+    
+    .media, .media-body { overflow: visible; }
+    
+    .media-body { margin-right: 0; position: absolute; right: 0; top: 8%; width: em(690); 
+      .h1 { @include translate(0, 100px); }
+      .well { @include translate(0, 200px); }
+      p { @include translate(0, 300px);  }
+      
+      &.in {
+        .h1 { @include translate(0, 0); @include transition(all .8s); }
+        .well { @include translate(0, 0); @include transition(all 1.1s); }
+        p { @include translate(0, 0); @include transition(all 1.5s); }
+      }
     }
   }
 }
@@ -1311,7 +1377,7 @@ textarea { resize: vertical; }
 /* ==========================================================================
    Footer Styles
    ========================================================================== */
-.footer { background: $white; font: {family: $font-family-open-sans; size: 12px;}
+.footer { background: $white; font: {family: $font-family-open-sans; size: 12px;} position: relative; z-index: 3;
   .top-info { border-bottom: 1px solid #f2f2f2; padding: 47px 0 5px; }
   
   // Navigation Footer
