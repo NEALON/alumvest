@@ -42,4 +42,13 @@
   
   .form-action  
     = f.submit 'Save', :class => 'btn btn-primary btn-lg'
+    
+- content_for :scripts do
+  :javascript    
+    $('body').on('cocoon:after-insert', function(e, insertedItem) {
+      insertedItem.children().find('input.in-school').typeahead({
+        name: 'Schools',
+        prefetch: "/data/schools-list.json"
+      });
+    });
 

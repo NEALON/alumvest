@@ -24,6 +24,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require imagesloaded
+//= require bootstrap-typeahead-rails
 //= require_tree .
 
 $.validator.setDefaults({
@@ -51,4 +52,11 @@ $(document).ready(function() {
   
   // Init Knob (Progressbar for company items)
   $('[data-toggle="knob"]').knob();
+  
+  // Init Typeahead
+  $("input.in-school").typeahead({
+    name: 'Schools',
+    prefetch: "/data/schools-list.json"
+  });
+  
 });

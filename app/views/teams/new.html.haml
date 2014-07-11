@@ -16,4 +16,8 @@
     $('body').on('cocoon:after-insert', function(e, insertedItem) {
       insertedItem.children().find('.ckeditor').ckeditor()
       insertedItem.children().find('[data-toggle="tooltip"]').tooltip();
+      insertedItem.children().find('input.in-school').typeahead({
+        name: 'Schools',
+        prefetch: "/data/schools-list.json"
+      });
     });

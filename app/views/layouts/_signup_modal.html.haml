@@ -19,7 +19,7 @@
                 = f.input :password, :label => 'Password', :placeholder => 'Password', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:id => 'password', :name => 'password', :class => 'input-lg'}
                 = f.input :password_confirmation, :label => 'Password Confirmation', :placeholder => 'Password Confirmation', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'password_confirmation', :class => 'input-lg'}
                 
-                = f.input :school, :label => 'School Name', :placeholder => 'School Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'school', :class => 'input-lg'}
+                = f.input :school, :wrapper_html => {:class => 'tt-lg'}, :label => 'School Name', :placeholder => 'School Name', :label_html => {:class => 'to-support-placeholder'}, :input_html => {:name => 'school', :class => 'input-lg in-school'}
                 
                 -# Need to do as here:
                   #educations

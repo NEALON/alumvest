@@ -2,9 +2,18 @@
   %td
     = investment.created_at.strftime("%m/%d/%Y")
   %td
+    %ul.list-inline.no-marg
+      %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+      %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+  %td
+    %p Michigan University
+    %p Wharton University
+  %td
     = investment.campaign.company.company_name
   %td
-    NA
+    %ul.list-inline.no-marg
+      %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
+      %li.marg-bottom= image_tag("noavatar.gif", :width => 34, :height => 34)
   %td
     = number_to_currency(investment.amount)
   %td

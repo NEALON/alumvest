@@ -22,3 +22,11 @@
                 = link_to_add_association(('<i class="fa fa-plus"></i> Add education').html_safe, f, :educations, :partial => 'users/education_fields_vertical', :class => 'btn btn-link btn-md no-pad-left no-pad-right inverse pull-right', "data-association-insertion-node" => '#educations', "data-association-insertion-method" => 'after')
             
           
+- content_for :scripts do
+  :javascript    
+    $('body').on('cocoon:after-insert', function(e, insertedItem) {
+      insertedItem.children().find('input.in-school').typeahead({
+        name: 'Schools',
+        prefetch: "/data/schools-list.json"
+      });
+    });

@@ -1,5 +1,5 @@
 .nested-fields
-  = f.input :school
+  = f.input :school, :input_html => {:class => 'in-school'}
   = f.input :degree, :as => :select, :class => 'no-marg-bottom', :collection => ["Undergraduate", "Masters", "PhD", "MBA or other Graduate Business Degree", "JD or other Graduate Law Degree", "MD or other Graduate Medical Degree", "Other Professional Degree", "Other Degrees", "Non-Degree Work"]
   
   .wrapper-remove-association

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Nerian/bootstrap-typeahead-rails.git
+  revision: b1fb982a6eca4bcb2ab61d0378283ad82a133c6c
+  specs:
+    bootstrap-typeahead-rails (0.9.3.3)
+      railties (>= 3.0)
+
+GIT
   remote: git://github.com/amro/gibbon.git
   revision: 79cac9777835f89362ebbedbdb6d3de28c9ef7a7
   specs:
@@ -390,6 +397,7 @@ DEPENDENCIES
   binding_of_caller (~> 0.7)
   bootstrap-datepicker-rails
   bootstrap-sass (~> 3.1.1)
+  bootstrap-typeahead-rails!
   byebug (~> 2.3)
   cancan (~> 1.6)
   capybara (~> 2.1)

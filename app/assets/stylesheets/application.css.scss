@@ -18,6 +18,7 @@
 // Vendor libraries
 @import "bootstrap";
 @import "font-awesome";
+@import "typeahead";
 
 
 // Import Fonts
@@ -872,7 +873,7 @@ textarea { resize: vertical; }
 // Education List
 .education-list { line-height: 1.7;
   .list-inline > li { margin-right: 6px; white-space: nowrap;
-    .fa { color: $blue-muted; font: {size: 10px; weight: normal;} top: 0; }
+    .fa { font: {size: 10px; weight: normal;} top: 0; }
   }
 }
 
@@ -1190,6 +1191,10 @@ textarea { resize: vertical; }
         > div { background: #a7a9ac; height: em(160); }
       }
       
+      .bg-building-front, .bg-building-middle, .bg-building-back {
+        &.overlay { z-index: 5; }
+      }
+      
       &.last {
         .bg-building-front > div, .bg-building-middle > div, .bg-building-back > div { @include box-sizing(initial); padding-bottom: $footer-height-sm; }
       }
@@ -1306,7 +1311,7 @@ textarea { resize: vertical; }
     
     .media, .media-body { overflow: visible; }
     
-    .media-body { margin-right: 0; position: absolute; right: 0; top: 8%; width: em(690); 
+    .media-body { position: absolute; right: 7%; top: 8%; width: em(690); 
       .h1 { @include translate(0, 100px); }
       .well { @include translate(0, 200px); }
       p { @include translate(0, 300px);  }
@@ -1317,6 +1322,69 @@ textarea { resize: vertical; }
         p { @include translate(0, 0); @include transition(all 1.5s); }
       }
     }
+  }
+}
+
+// Browse Investor Content (Step 2)
+.inner-content {
+  .browse-investors-content { 
+    .wrapper-img { bottom: em(140); right: 0; max-width: em(252); position: absolute; }
+    
+    .media, .media-body { overflow: visible; }
+    
+    .media-body { position: absolute; left: 0; top: 12%; width: em(725); 
+      .h1 { @include translate(0, 100px); }
+      p { @include translate(0, 300px);  }
+      
+      &.in {
+        .h1 { @include translate(0, 0); @include transition(all .8s); }
+        p { @include translate(0, 0); @include transition(all 1.5s); }
+      }
+    }
+  }
+}
+
+// Get Exclusive Investor Content (Step 3)
+.inner-content {
+  .get-exclusive-investors-content { 
+    .wrapper-img { max-width: em(277); }
+    .media-body { right: 0; top: 14%; width: em(760); }
+  }
+}
+
+// Get Exclusive Investor Content (Step 4)
+.inner-content {
+  .wisdom-investors-content { 
+    .wrapper-img { max-width: em(182); }
+    .media-body { right: 0; top: 14%; width: em(760); }
+  }
+}
+
+// Browse Investor Content (Step 5)
+.inner-content {
+  .review-investors-content { 
+    .wrapper-img { bottom: em(85); right: 0; max-width: em(264); position: absolute; }
+    
+    .media, .media-body { overflow: visible; }
+    
+    .media-body { position: absolute; left: 0; top: 14%; width: em(710); 
+      .h1 { @include translate(0, 100px); }
+      p { @include translate(0, 300px);  }
+      
+      &.in {
+        .h1 { @include translate(0, 0); @include transition(all .8s); }
+        p { @include translate(0, 0); @include transition(all 1.5s); }
+      }
+    }
+  }
+}
+
+
+// Alumni Communities Investor Content (Step 6)
+.inner-content {
+  .communities-investors-content { 
+    .wrapper-img { max-width: em(269); }
+    .media-body { right: 7%; top: 14%; width: em(710); }
   }
 }
     

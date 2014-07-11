@@ -1,5 +1,5 @@
 .nested-fields
-  = f.input :school, :wrapper => :horizontal_form
+  = f.input :school, :input_html => {:class => 'in-school'}, :wrapper => :horizontal_form
   = f.input :degree, :as => :select, :wrapper => :horizontal_form, :class => 'no-marg-bottom', :collection => ["Undergraduate", "Masters", "PhD", "MBA or other Graduate Business Degree", "JD or other Graduate Law Degree", "MD or other Graduate Medical Degree", "Other Professional Degree", "Other Degrees", "Non-Degree Work"]
   .row
     .col-sm-5.col-sm-offset-3

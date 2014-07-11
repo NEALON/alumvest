@@ -15,7 +15,7 @@ $(document).ready(function() {
       }, 300);
     });
      
-    var durationNext = 3000;
+    var durationNext = 2000;
     var durationPrev = 1000;
     var currentPhase = 0;
     var totalSections = $('a.trigger').length;
