@@ -1,4 +1,3 @@
-.media.event
-  %code.pull-right.nowrap #{time_ago_in_words(published.created_at)} ago
-  .media-body
-    = "You successfully published a campaign for admin review."
+%dt #{time_ago_in_words(published.created_at)} ago
+%dd 
+  = "You successfully published a campaign for admin review."

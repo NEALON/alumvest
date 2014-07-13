@@ -1,43 +1,52 @@
-= render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  .page-header
+    %h1 Chose Your Investment Amount
 
-#information.well
-  = form_for @investment, :url => campaign_investments_path(@campaign), :html => {:class => 'form-horizontal editing-form well'} do |f|
-    = render 'shared/errors', :entity => @investment
-    = render_cell 'tb/form/subhead', :display, :label => 'Investment Amount'
-    = f.hidden_field :campaign_id
-    = f.hidden_field :investor_id
-    = hidden_field 'company', 'valuation', :value => '1000000'
-    = hidden_field 'equity', 'percentage', :value => '10'
+.container
+  %section.wrapper-page
+    .page-heading
+      = render 'companies/heading'
+    .page-body
+      %p.text-center.text-green.marg-bottom-lg
+        = "Minimum and maximum investment values are #{number_to_currency(@campaign.investment_term.min_investment)} and #{number_to_currency(@campaign.investment_term.max_investment)}"
+      
+      = simple_form_for @investment, :url => campaign_investments_path(@campaign), :wrapper => :vertical_form, :validate => true do |f|
+        = render 'shared/error_notification', :errors => f.error_notification
+        
+        .row
+          .col-sm-4.col-sm-offset-4
+            = f.hidden_field :campaign_id
+            = f.hidden_field :investor_id
+            = hidden_field 'company', 'valuation', :value => @campaign.investment_term.max_investment
+            = hidden_field 'equity', 'percentage', :value => '10'
+            
+            = f.input :amount, :as => :string, :label => 'Amount (in U.S. dollars)', :placeholder => "#{@campaign.investment_term.max_investment}", :input_html => {:id => 'alumvest_investment_base_amount'}
+            
+            %p.help-block.small#investment-equity-percentage
+              This investment is 0% of the total company valuation, and 0% of this raise.
+  
+        .form-action.text-center.marg-top-lg
+          = f.submit 'Proceed with Investment Process', :class => 'btn btn-primary btn-lg'
+          
+        - content_for :scripts do
+          :javascript
+            $("#alumvest_investment_base_amount").keydown(function () {
+                  
+                var company_value = $('#company_valuation').val();
+                var equity_percentage = $('#equity_percentage').val();
+                var equity_value = company_value * equity_percentage * .01;
+                var investment_amount = $('#alumvest_investment_base_amount').val();
+                var investment_percent = investment_amount / company_value * 100;
+                var raise_percent = investment_amount / equity_value * 100;
+        
+                $("#investment-equity-percentage").text(
+                    ["This investment is ",
+                        investment_percent,
+                        "% of the total company valuation, and ",
+                        raise_percent,
+                        "% of this raise."].join(''));
+        
+            });
 
-    %fieldset
-      = render_cell 'tb/form/helptext', :display, :text => "Minimum and maximum investment values are #{number_to_currency(@campaign.investment_term.min_investment)} and #{number_to_currency(@campaign.investment_term.max_investment)}"
-      = render_cell 'tb/form/text', :display, :label => 'Amount (in U.S. dollars)', :form => f, :field => :amount, :placeholder => "#{@campaign.investment_term.max_investment}"
-      = render_cell 'tb/form/updating_helptext', :display, :text => "", :id => 'investment-equity-percentage'
-
-      :javascript
-        $("#alumvest_investment_base_amount").keydown(function () {
-
-            var company_value = $('#company_valuation').val();
-            var equity_percentage = $('#equity_percentage').val();
-            var equity_value = company_value * equity_percentage * .01;
-            var investment_amount = $('#alumvest_investment_base_amount').val();
-            var investment_percent = investment_amount / company_value * 100;
-            var raise_percent = investment_amount / equity_value * 100;
-
-            $("#investment-equity-percentage").text(
-                ["This investment is ",
-                    investment_percent,
-                    "% of the total company valuation, and ",
-                    raise_percent,
-                    "% of this raise."].join(''));
-
-            //console.log([
-            //    "company value: ", company_value.toString(),
-            //    "\nequity percentage: ", equity_percentage.toString(),
-            //    "\nequity value: ", equity_value.toString(),
-            //    "\ninvestment amount: ", investment_amount.toString()
-            //].join(''));
-
-        });
-
-      = render_cell 'tb/form/submit_button', :display, :label => 'Save'

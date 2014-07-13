@@ -15,7 +15,8 @@
           %hr
           
           - unless @events.blank?
-            = render @events
+            %dl
+              = render @events
           - else
             %p
               %i There are currently no newsfeed events to view.

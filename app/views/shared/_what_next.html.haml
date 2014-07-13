@@ -3,15 +3,22 @@
     %h2.separator-line
       %span What Next ? know More about us
     .row
-      .col-sm-5.col-sm-offset-1
-        .row
-          .col-sm-12.col-md-10.col-xs-10.col-xs-offset-1.col-sm-offset-0
-            = link_to '/about/how-it-works', :class => 'btn btn-primary btn-block btn-xl upper marg-bottom' do
-              See How It Works
-      .col-sm-5
-        .row
-          .col-sm-12.col-md-10.col-md-offset-2.col-xs-10.col-xs-offset-1.col-sm-offset-0
-            = link_to '#signup-modal', :class => 'btn btn-success btn-block btn-xl upper marg-bottom', 'data-toggle' => 'modal' do
-              Sign Up Now
+      - unless current_user
+        .col-sm-5.col-sm-offset-1
+          .row
+            .col-md-10.col-md-offset-0.col-xs-10.col-xs-offset-1
+              = link_to '/about/how-it-works', :class => 'btn btn-primary btn-block btn-xl upper marg-bottom' do
+                See How It Works
+        .col-sm-5
+          .row
+            .col-md-10.col-md-offset-2.col-xs-10.col-xs-offset-1
+              = link_to '#signup-modal', :class => 'btn btn-success btn-block btn-xl upper marg-bottom', 'data-toggle' => 'modal' do
+                Sign Up Now
+      - else
+        .col-sm-10.col-sm-offset-1
+          .row
+            .col-md-6.col-md-offset-3.col-xs-10.col-xs-offset-1
+              = link_to '/about/how-it-works', :class => 'btn btn-primary btn-block btn-xl upper marg-bottom' do
+                See How It Works
       
 / END .what-next-unit

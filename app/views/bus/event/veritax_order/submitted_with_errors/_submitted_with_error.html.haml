@@ -1,6 +1,5 @@
-.media.event
-  %code.pull-right.nowrap #{time_ago_in_words(event.created_at)} ago
-  .media-body
-    = 'You encountered an error when you submitted an '
-    = link_to 'income verification request', user_investor_income_verification_path(event.investor.user)
-    = "to Veri-Tax."
+%dt #{time_ago_in_words(event.created_at)} ago
+%dd 
+  = 'You encountered an error when you submitted an '
+  = link_to 'income verification request', user_investor_income_verification_path(event.investor.user)
+  = "to Veri-Tax."

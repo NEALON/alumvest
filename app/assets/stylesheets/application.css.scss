@@ -192,7 +192,11 @@ dl { font-size: 13px;
   > dt:first-child { border-top: 0 none; padding-top: 0; }
 }
 dt { border-top: 1px solid #f2f2f2; color: #383838; font-weight: normal; margin-bottom: 9px; padding-top: 18px; }
-dd { color: #2e2e2e; font-weight: bold; margin-bottom: 15px; }
+dd { color: #2e2e2e; font-weight: bold; margin-bottom: 15px; 
+  a { color: #2e2e2e; 
+    &:hover, &:focus { color: $link-color; }
+  }
+}
 dt, dd { line-height: 1.1; }
 
 
@@ -616,7 +620,14 @@ textarea { resize: vertical; }
 /**
  * Masthead Blue  
  */
-.masthead-blue { background: #259aed; color: $white; margin-bottom: -59px; padding: 46px 0 95px; text-align: center; }
+.masthead-blue { background: #259aed; color: $white; margin-bottom: -59px; padding: 46px 0 95px; text-align: center; 
+  .page-header { background: #474946; border-radius: 3px; border: 0 none; color: $white; display: inline-block; margin: 0; padding: 18px 49px; text-transform: uppercase; text-shadow: -1px -1px 1px darken(#474946, 10%); 
+    h1 { font: {size: 16px; family: $font-family-open-sans; weight: normal;} margin: 0; 
+      @media (min-width: $screen-xs) { font-size: 20px; }
+      @media (min-width: $screen-md) { font-size: 26px; }
+    }
+  }
+}
   
 
 /* ==========================================================================
@@ -676,6 +687,29 @@ textarea { resize: vertical; }
 .no-boxshadow .wrapper-dashboard {
   .dashboard-content { border-left: 1px solid $gray-lighter; }
   .dashboard-nav { margin-right: (-$grid-gutter-width - 1); }
+}
+
+/**
+ * Wrapper Page
+ */
+.wrapper-page { background: $white; border: 1px solid #d5d5d5; font-size: 15px; margin-bottom: 27px; padding: 2px 2px 30px; 
+  a { color: #3b9021; font-weight: bold; text-decoration: underline; 
+    &:hover, &:focus { color: $link-color; text-decoration: none; }
+  }
+
+  .page-heading { background: #f7f7f7; color: #3b9021; font-size: 13px; margin-bottom: 10px; padding: 18px 20px; @include clearfix;
+    h3 { font-weight: normal; }
+  
+    .media > .pull-left { margin-right: 24px; }
+    
+    hr { background: #e1e2e4; border-bottom: 1px solid $white; margin: 10px 0; } 
+  }
+  
+  .page-body { margin-top: 22px; padding: 0 22px; 
+    hr { margin: {left: -24px; right: -24px;} }
+  }
+  
+  .text-green { color: #2e891a; }
 }
 
 // Account Info Form

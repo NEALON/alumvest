@@ -1,6 +1,5 @@
-.media.event
-  %code.pull-right.nowrap #{time_ago_in_words(went_live.created_at)} ago
-  .media-body
-    = "Congratulations, your campaign "
-    = link_to went_live.campaign.company.campaign_title, display_campaign_company_path(went_live.campaign)
-    = " went live."
+%dt #{time_ago_in_words(went_live.created_at)} ago
+%dd 
+  = "Congratulations, your campaign "
+  = link_to went_live.campaign.company.campaign_title, display_campaign_company_path(went_live.campaign)
+  = " went live."

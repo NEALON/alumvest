@@ -212,6 +212,19 @@
                     %i.fa.fa-angle-right
 
           / END My Angel, VC & Other Updates
+          
+          %section.panel.panel-default
+            .panel-heading 
+              %h4.panel-title My Events
+            .panel-body
+              - unless @events.blank?
+                %dl
+                  - @events.each do |e|
+                    = render partial:  e.to_partial_path, :locals => {:event => e}
+              - else
+                %i There is no update
+
+          / END My Angel, VC & Other Updates
                   
           %section.panel.panel-default
             .panel-heading 

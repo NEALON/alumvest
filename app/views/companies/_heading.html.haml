@@ -1,11 +1,13 @@
-.company-summary.company-block
-  %h2= @company.campaign_title
-
-  %table.table
-    %tr
-      %td.company-logo-side
-        = image_tag @company.logo(:w => 100, :h => 100) unless @company.logo.blank?
-      %td
-        %h3= @company.company_name
-        %p.short-description= @company.short_description
-        %p.company-short-info= "Founded #{(@company.founded_on_year)}"
+.company-heading
+  .media
+    .pull-left
+      = image_tag @company.logo(:w => 100, :h => 100) unless @company.logo.blank?
+    .media-body
+      %h3.text-primary.no-marg-top.no-marg-bottom
+        = @company.company_name
+      %hr
+      %h4= @company.campaign_title
+      %p= @company.short_description
+      %p.no-marg-bottom
+        %i= "@Founded #{(@company.founded_on_year)}"
+        

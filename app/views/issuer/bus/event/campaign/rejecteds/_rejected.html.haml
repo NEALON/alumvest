@@ -1,4 +1,3 @@
-.media.event
-  %code.pull-right.nowrap #{time_ago_in_words(rejected.created_at)} ago
-  .media-body
-    = "Your campaign was rejected."
+%dt #{time_ago_in_words(rejected.created_at)} ago
+%dd 
+  = "Your campaign was rejected."

@@ -15,8 +15,9 @@
           %hr
           
           - unless @events.blank?
-            - @events.each do |e|
-              = render :partial => e.to_partial_path, :locals => {:event => e}
+            %dl
+              - @events.each do |e|
+                = render :partial => e.to_partial_path, :locals => {:event => e}
           - else
             %p
               %i There are no events to review here.

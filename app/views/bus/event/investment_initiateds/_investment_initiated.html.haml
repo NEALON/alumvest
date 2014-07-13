@@ -1,6 +1,5 @@
-.media.event
-  %code.pull-right.nowrap #{time_ago_in_words(event.created_at)} ago
-  .media-body
-    = 'You started an investment in '
-    = link_to event.investment.campaign.company.campaign_title, '#'
-    = "."
+%dt #{time_ago_in_words(event.created_at)} ago
+%dd 
+  = 'You started an investment in '
+  = link_to event.investment.campaign.company.campaign_title, '#'
+  = "."

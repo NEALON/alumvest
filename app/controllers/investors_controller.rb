@@ -28,6 +28,7 @@ class InvestorsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @user.educations.build if @user.educations.blank?
     @investor = @user.investor || Alumvest::InvestorBase.new(:user => @user)
+    @events = @investor.events.order('id DESC')
     authorize! :read, @investor
   end
 
