@@ -46,7 +46,7 @@
   }
 }
 
-@mixin button-variant-transparent($color) {
+@mixin button-variant-transparent($color, $color-text-hover: invert($color)) {
   color: $color;
   background-color: transparent;
   border-color: $color;
@@ -56,7 +56,7 @@
   &:active,
   &.active,
   .open > &.dropdown-toggle {
-    color: invert($color);
+    color: $color-text-hover;
     background-color: $color;
         border-color: $color;
   }
@@ -80,7 +80,7 @@
 
   .badge {
     color: $color;
-    background-color: invert($color);
+    background-color: $color-text-hover;
   }
 }
 

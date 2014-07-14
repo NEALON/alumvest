@@ -1,7 +1,119 @@
-= render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  .page-header
+    %h1 Finalize your Investment
 
-#information.well
-  %p
-    = button_to 'Edit', edit_campaign_investment_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :get
+.container
+  %section.wrapper-page
+    .page-heading
+      .media
+        .pull-left
+          = image_tag("payment-logo.gif")
+        .media-body
+          %h3.text-primary.no-marg-top.no-marg-bottom Thank your for Investing via AlumVest
+          %hr
+          %p 
+            In order to finalize your investment, please carefully complete 
+            %strong
+              %u each of the Steps 
+            outlined below. If we are unable to verify your status as an accredited investor in Step 1 (or otherwise), any funds that you have transferred into escrow pursuant to Step 2 may need to be returned back to you (net of applicable wire or transfer fees).
+          %p.no-marg-bottom Once the investment round is successfully funded and your investment is accepted, you will receive your copy of the fully executed investment documents. Thank you for using AlumVest!
+    .page-body
+      %h3.separator-line.text-primary.text-uppercase
+        %span Step 1
+        
+      .step-unit
+        .step-content
+          .step-header
+            .media
+              .pull-right
+                %i.fa.fa-check-circle
+              .media-body
+                %h4 Verify Your Accredited Investor Status
+          .step-body
+            .media
+              .pull-right.hidden-xs
+                = link_to 'Start', '#', :class => 'btn btn-primary btn-lg'
+              .media-body
+                %table
+                  %tr
+                    %td
+                      After clicking Start, you will be able to officially verify your Accredited Investor (“AI”) status via our official 3rd-party providers.
+                      %br
+                      Thank you for verifying. This will allow us to comply with the SEC’s new rules to take “reasonable steps” to verify that you are an AI.
+            .marg-top.hidden-sm.hidden-md.hidden-lg
+              = link_to 'Start', '#', :class => 'btn btn-primary btn-lg btn-block'
+          .step-footer
+            .status-text
+              Pending
+        
+      %h3.separator-line.text-primary.text-uppercase
+        %span Step 2
+        
+      .step-unit.complete-status
+        .step-content
+          .step-header
+            .media
+              .pull-right
+                %i.fa.fa-check-circle
+              .media-body
+                %h4 Choose your Investment Amount & Payment Method & transfer funds into escrow
+          .step-body
+            .media
+              .pull-right.hidden-xs
+                = link_to 'Complete', '#', :class => 'btn btn-success btn-lg'
+              .media-body
+                %table
+                  %tr
+                    %td
+                      After clicking Start, you will be able to input your desired Investment Amount, select the method of transferring your
+                      %br
+                      Investment Amount into a 3rd-party escrow account, and if so selected electronically transfer your Investment Amount into Escrow
+            .marg-top.hidden-sm.hidden-md.hidden-lg
+              = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block'
+          .step-footer
+            .status-text
+              Complete
+       
+      %h3.separator-line.text-primary.text-uppercase
+        %span Step 3
+        
+      .step-unit.no-marg-bottom
+        .step-content
+          .step-header
+            .media
+              .pull-right
+                %i.fa.fa-check-circle
+              .media-body
+                %h4 Sign your Investment Documents
+          .step-body
+            .media
+              .pull-right.hidden-xs
+                = link_to 'Start', '#', :class => 'btn btn-primary btn-lg'
+              .media-body
+                %table
+                  %tr
+                    %td
+                      After clicking Start, you will be able to electronically sign all of the required Investment Documents.
+            .marg-top.hidden-sm.hidden-md.hidden-lg
+              = link_to 'Start', '#', :class => 'btn btn-primary btn-lg btn-block'
+          .step-footer
+            .status-text
+              Pending
+        
+  .review-submit
+    .separator-line.separator-blue
+      %span
+        = link_to '#', :class => 'btn btn-transparent-blue btn-xl text-uppercase' do
+          %span.hidden-xs Review and 
+          submit
 
-    = render 'shared/property_row', :header => 'Amount', :value => number_to_currency(@investment.amount)
+-#
+  = render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
+  
+  #information.well
+    %p
+      = button_to 'Edit', edit_campaign_investment_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :get
+  
+      = render 'shared/property_row', :header => 'Amount', :value => number_to_currency(@investment.amount)
