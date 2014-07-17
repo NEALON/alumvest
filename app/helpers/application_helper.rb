@@ -52,6 +52,18 @@ module ApplicationHelper
       end
     end
   end
+  
+  def income_verification_link_simple(label)
+    if current_user.investor.income_verification.nil?      
+      link_to new_user_investor_income_verification_path(current_user) do
+        label
+      end
+    else
+      link_to user_investor_income_verification_path(current_user) do
+        label
+      end
+    end
+  end
 
   def income_verification_link(label)
     if current_user.investor.income_verification.nil?      

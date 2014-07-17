@@ -1102,7 +1102,13 @@ textarea { resize: vertical; }
     @media (min-width: $screen-sm) { padding: 0 22px; }
   }
   
-  .text-green { color: #2e891a; }
+  .text-green { color: #2e891a; 
+    a { color: #2e891a; text-decoration: underline; 
+      &:hover, &:focus { color: $link-color; text-decoration: none; }
+    }
+  }
+  
+  .lead { font-size: 17px; }
   
   @media (min-width: $screen-sm) { padding-bottom: 30px; }
 }

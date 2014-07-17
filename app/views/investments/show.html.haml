@@ -43,7 +43,7 @@
                       %br
                       Thank you for verifying. This will allow us to comply with the SEC’s new rules to take “reasonable steps” to verify that you are an AI.
             .marg-top.hidden-sm.hidden-md.hidden-lg
-              = link_to 'Start', '#', :class => 'btn btn-primary btn-lg btn-block'
+              = link_to 'Start', campaign_investment_investor_verification_path(@campaign, @investment), :class => 'btn btn-primary btn-lg btn-block'
           .step-footer
             .status-text
               Pending
@@ -58,7 +58,7 @@
               .pull-right
                 %i.fa.fa-check-circle
               .media-body
-                %h4 Choose your Investment Amount & Payment Method & transfer funds into escrow
+                %h4 Select Your Payment Method and Transfer Funds Into Escrow
           .step-body
             .media
               .pull-right.hidden-xs
@@ -67,9 +67,7 @@
                 %table
                   %tr
                     %td
-                      After clicking Start, you will be able to input your desired Investment Amount, select the method of transferring your
-                      %br
-                      Investment Amount into a 3rd-party escrow account, and if so selected electronically transfer your Investment Amount into Escrow
+                      After clicking Start, you will be able to select the method to transfer your Investment Amount into a 3rd party escrow.
             .marg-top.hidden-sm.hidden-md.hidden-lg
               = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block'
           .step-footer
@@ -101,14 +99,14 @@
           .step-footer
             .status-text
               Pending
-        
+      
   .review-submit
     .separator-line.separator-blue
       %span
-        = link_to '#', :class => 'btn btn-transparent-blue btn-xl text-uppercase' do
+        = link_to campaign_investment_submit_for_review_path(@campaign, @investment), :method => :put, :class => 'btn btn-transparent-blue btn-xl text-uppercase' do
           %span.hidden-xs Review and 
           submit
-
+          
 -#
   = render 'investments/navigation', :active => 'investment_amount', :campaign => @campaign
   
