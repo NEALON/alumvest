@@ -42,8 +42,17 @@
                       After clicking Start, you will be able to officially verify your Accredited Investor (“AI”) status via our official 3rd-party providers.
                       %br
                       Thank you for verifying. This will allow us to comply with the SEC’s new rules to take “reasonable steps” to verify that you are an AI.
+          - if @investment.investor.is_accredited?
+            .marg-top.hidden-sm.hidden-md.hidden-lg
+              = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block'
+          - unless @investment.investor.is_accredited? 
             .marg-top.hidden-sm.hidden-md.hidden-lg
               = link_to 'Start', campaign_investment_investor_verification_path(@campaign, @investment), :class => 'btn btn-primary btn-lg btn-block'
+        - if @investment.investor.is_accredited?
+          .step-footer
+            .status-text
+              Complete
+        - else
           .step-footer
             .status-text
               Pending
