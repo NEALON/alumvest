@@ -55,7 +55,7 @@
                 = f.input :previous_zip, disabled: true, :label => 'Previous ZIP', :icon => 'glyphicon glyphicon-ok form-control-feedback'
           
           .form-action
-            = simple_form_for @user, url: submit_to_veritax_user_investor_income_verification_path(@user), :method => :put do |f|
+            = simple_form_for @user, url: submit_to_veritax_user_investor_income_verification_path(@user,:redirect=>@redirect,:campaign_id=>@campaign_id,:investment_id=>@investment_id), :method => :put do |f|
               .btn-toolbar
                 = f.button :button, 'Submit to Veri-Tax', :class => 'btn-success btn-lg'
                 = link_to 'Edit', edit_user_investor_income_verification_path(@user), :class => 'btn btn-link btn-lg'

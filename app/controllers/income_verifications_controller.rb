@@ -46,14 +46,23 @@ class IncomeVerificationsController < ApplicationController
     load_income_verification
     @income_verification.create_via_veritax!
     if @income_verification.reload.submitted?
-      redirect_to user_investor_events_path(@user), :flash => {:success => "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}). Please check your inbox for your e-signable form and note the instructions regarding the document password."}
+      redirect = params[:redirect]
+        if  redirect == 'payment'
+         redirect_to campaign_investment_path( params[:campaign_id],params[:investment_id])
+        else
+          redirect_to user_investor_events_path(@user), :flash => {:success => "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}). Please check your inbox for your e-signable form and note the instructions regarding the document password."}
+        end
     else
       redirect_to edit_user_investor_income_verification_path(@user, @income_verification), :flash => {:warning => "An error was encounteredd while trying to process your order: #{@income_verification.vt_error})."}
     end
   end
 
   def show
+    puts params.inspect
     load_income_verification
+    @redirect = params[:redirect]
+    @campaign_id = params[:campaign_id]
+    @investment_id = params[:investment_id]
   end
 
   private

@@ -27,7 +27,6 @@ Av::Application.routes.draw do
   match '/about/contact', :to => 'content_page#contact', :via => [:get]
   match '/about/privacy', :to => 'content_page#privacy', :via => [:get]
   match '/about/how-it-works', :to => 'content_page#howItWorks', :via => [:get]
-
   resources :sessions
   resources :identities
 
@@ -88,6 +87,7 @@ Av::Application.routes.draw do
       resource :self_accredited_status
       resource :income_verification do
         put :submit_to_veritax
+        get :show
       end
     end
 
