@@ -71,7 +71,7 @@ class IncomeVerificationsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification =  @investor.income_verification
-    authorize! :manage, @income_verification
+    #authorize! :manage, @income_verification
   end
 end
 
