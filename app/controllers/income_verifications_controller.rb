@@ -71,6 +71,17 @@ class IncomeVerificationsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification =  @investor.income_verification
+    if  !@income_verification
+       @income_verification = Veritax::OrderBase.new(:investor => @investor,
+                                              :ssn => @user.ssn,
+                                              :first_name => @user.first_name,
+                                              :last_name => @user.last_name,
+                                              :address => @user.address,
+                                              :city => @user.city,
+                                              :state => @user.state,
+                                              :zip_code => @user.zipcode,
+                                              :email => @user.email)
+    end
     #authorize! :manage, @income_verification
   end
 end
