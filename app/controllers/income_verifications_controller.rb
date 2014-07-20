@@ -2,6 +2,9 @@ class IncomeVerificationsController < ApplicationController
 
   def new
     @user = Alumvest::UserBase.find(params[:user_id])
+    @redirect = params[:redirect]
+    @campaign_id = params[:campaign_id]
+    @investment_id = params[:investment_id]
     @investor = @user.investor
     @income_verification = Veritax::OrderBase.new(:investor => @investor,
                                               :ssn => @user.ssn,
@@ -12,7 +15,7 @@ class IncomeVerificationsController < ApplicationController
                                               :state => @user.state,
                                               :zip_code => @user.zipcode,
                                               :email => @user.email)
-    authorize! :manage, @income_verification
+    #authorize! :manage, @income_verification
   end
 
   def create
@@ -21,7 +24,12 @@ class IncomeVerificationsController < ApplicationController
     @income_verification = Veritax::OrderBase.create(params[:veritax_order_base])
     authorize! :manage, @income_verification
     if @income_verification.valid?
-      redirect_to user_investor_income_verification_path(@user), :flash => {:success => 'Your information was saved.'}
+      redirect = params[:redirect]
+        if  redirect == 'payment'
+         redirect_to campaign_investment_path( params[:campaign_id],params[:investment_id]),:flash => {:success => ''}
+        else
+         redirect_to user_investor_income_verification_path(@user), :flash => {:success => 'Accredited Investor status verification initiated.'}
+        end
     else
       render :action => :new
     end
@@ -46,12 +54,7 @@ class IncomeVerificationsController < ApplicationController
     load_income_verification
     @income_verification.create_via_veritax!
     if @income_verification.reload.submitted?
-      redirect = params[:redirect]
-        if  redirect == 'payment'
-         redirect_to campaign_investment_path( params[:campaign_id],params[:investment_id])
-        else
-          redirect_to user_investor_events_path(@user), :flash => {:success => "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}). Please check your inbox for your e-signable form and note the instructions regarding the document password."}
-        end
+        redirect_to user_investor_events_path(@user), :flash => {:success => "Your information was successfully submitted to Veri-Tax (Order id: #{@income_verification.vt_order_id}). Please check your inbox for your e-signable form and note the instructions regarding the document password."}
     else
       redirect_to edit_user_investor_income_verification_path(@user, @income_verification), :flash => {:warning => "An error was encounteredd while trying to process your order: #{@income_verification.vt_error})."}
     end
@@ -60,9 +63,6 @@ class IncomeVerificationsController < ApplicationController
   def show
     puts params.inspect
     load_income_verification
-    @redirect = params[:redirect]
-    @campaign_id = params[:campaign_id]
-    @investment_id = params[:investment_id]
   end
 
   private
@@ -71,18 +71,7 @@ class IncomeVerificationsController < ApplicationController
     @user = Alumvest::UserBase.find(params[:user_id])
     @investor = @user.investor
     @income_verification =  @investor.income_verification
-    if  !@income_verification
-       @income_verification = Veritax::OrderBase.new(:investor => @investor,
-                                              :ssn => @user.ssn,
-                                              :first_name => @user.first_name,
-                                              :last_name => @user.last_name,
-                                              :address => @user.address,
-                                              :city => @user.city,
-                                              :state => @user.state,
-                                              :zip_code => @user.zipcode,
-                                              :email => @user.email)
-    end
-    #authorize! :manage, @income_verification
+    authorize! :manage, @income_verification
   end
 end
 

@@ -50,14 +50,14 @@
             .step-body  
               .media
                 .pull-right.hidden-xs
-                  = link_to 'Start', user_investor_income_verification_path(@investment.investor.user,:campaign_id=>@campaign.id, :investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg'
+                  = link_to 'Start', new_user_investor_income_verification_path(@investment.investor.user,:campaign_id=>@campaign.id, :investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg'
                 .media-body
                   %table
                     %tr
                       %td
                         After clicking Start, you will be able to officially verify your Accredited Investor (“AI”) status via our official 3rd-party providers.
               .marg-top.hidden-sm.hidden-md.hidden-lg
-                = link_to 'Start', user_investor_income_verification_path(@investment.investor.user,:campaign_id=>@campaign.id, :investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg btn-block'
+                = link_to 'Start', new_user_investor_income_verification_path(@investment.investor.user,:campaign_id=>@campaign.id, :investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg btn-block'
             .step-footer
               .status-text
                 Pending
