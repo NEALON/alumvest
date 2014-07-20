@@ -87,7 +87,7 @@ Av::Application.routes.draw do
       resource :self_accredited_status
       resource :income_verification do
         put :submit_to_veritax
-        get :show
+        get :new
       end
     end
 
