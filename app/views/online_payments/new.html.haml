@@ -28,7 +28,8 @@
                 = check_box_tag :bank_account_terms
                 I have read and agree to the Terms of Service for the ACH transfers.            
           .form-action
-            = f.submit 'Create your bank account', :class => 'btn btn-primary btn-lg'
+            = f.button :button, :class => 'btn btn-primary btn-lg' do
+              Create <span class="hidden-xs">your</span> bank account
 
 
 -#

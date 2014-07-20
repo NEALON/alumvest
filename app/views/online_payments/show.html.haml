@@ -1,19 +1,62 @@
-= render 'investments/navigation', :active => 'payment', :campaign => @campaign
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  .page-header
+    %h1 Electronic ACH Setup
 
-#information.well
-  - if @payment.unfunded?
-    %table
-      %tr
-        %td= button_to 'Edit', edit_campaign_investment_online_payment_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :get
-        %td= button_to 'Initiate ACH Transfer', campaign_investment_online_payment_funding_xn_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :post
+.container
+  %section.wrapper-page
+    .page-heading
+      - if @payment.unfunded?  
+        %h3.text-center.text-primary.no-marg-bottom.no-marg-top You are identifying your account to fund your investment of #{number_to_currency(@investment.amount)}
+      - if @payment.funded?
+        %h3.text-center.text-primary.no-marg-bottom.no-marg-top You initiated an ACH transfer to fund your investment of #{number_to_currency(@investment.amount)}
+    .page-body
+      %p.text-green.text-justify.marg-bottom-lg In order to set up electronic payment,  we will need you to link your bank account. After you link your bank account, you will be able to electronically transfer your investment amount into a designated escrow account set-up specifically for the particular company in which you desire to invest. Please note that it takes approximately 3-5 business days for the funds to be transferred. Once you link your bank account, you willl be able to use this account for future electronic transfers on AlumVest. Please Note: ACH transactions have an associated fee per transaction.
+      
+      = simple_form_for @payment, :url => campaign_investment_online_payment_path(@campaign, @investment), :html => {:class => 'form-vertical'}, :wrapper => :vertical_form, :validate => true do |f|
+        = render 'shared/error_notification', :errors => f.error_notification
+        
+        .row
+          .col-sm-4.col-sm-offset-4
+            = f.hidden_field :investment_id
+            = f.input :bank_account_holder, :label => 'Bank', :disabled => true
+            = f.input :bank_account_routing, :label => 'Routing Number', :disabled => true
+            = f.input :bank_account_number, :label => 'Account Number', :disabled => true
+            = f.input :bank_account_nickname, :as => :fake, :label => 'Nickname For Account', :disabled => true
+            = f.input :bank_account_type, :as => :radio_buttons, :label => false, :disabled => true, :collection => ["Checking", "Savings"], :checked => ["Checking"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
+        
+        .text-center
+          .form-group
+            .checkbox
+              %label
+                = check_box_tag :bank_account_terms, 1, 1, :disabled => true
+                I have read and agree to the Terms of Service for the ACH transfers.  
+          - if @payment.unfunded?          
+            .form-action
+              .btn-toolbar
+                = link_to campaign_investment_online_payment_funding_xn_path(@campaign, @investment), :class => 'btn btn-success btn-lg', :method => :post do
+                  Initiate ACH <span class="hidden-xs">Transfer</span>
+                = link_to 'Edit', edit_campaign_investment_online_payment_path(@campaign, @investment), :class => 'btn btn-link btn-lg', :method => :get
+              
 
-  - if @payment.unfunded?
-    %p= render 'shared/property_row', :header => '', :value => "You are identifying your account to fund your investment of #{number_to_currency(@investment.amount)}"
-
-  - if @payment.funded?
-    %p= render 'shared/property_row', :header => '', :value => "You initiated an ACH transfer to fund your investment of #{number_to_currency(@investment.amount)}"
-
-  = render 'shared/property_row', :header => 'Bank account holder', :value => @payment.try(:bank_account_holder)
-  = render 'shared/property_row', :header => 'Bank account type', :value => @payment.try(:bank_account_type)
-  = render 'shared/property_row', :header => 'Bank account routing', :value => @payment.try(:bank_account_routing)
-  = render 'shared/property_row', :header => 'Bank account number', :value => @payment.try(:bank_account_number)
+-#
+  = render 'investments/navigation', :active => 'payment', :campaign => @campaign
+  
+  #information.well
+    - if @payment.unfunded?
+      %table
+        %tr
+          %td= button_to 'Edit', edit_campaign_investment_online_payment_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :get
+          %td= button_to 'Initiate ACH Transfer', campaign_investment_online_payment_funding_xn_path(@campaign, @investment), :class => 'btn btn-default btn-xs', :method => :post
+  
+    - if @payment.unfunded?
+      %p= render 'shared/property_row', :header => '', :value => "You are identifying your account to fund your investment of #{number_to_currency(@investment.amount)}"
+  
+    - if @payment.funded?
+      %p= render 'shared/property_row', :header => '', :value => "You initiated an ACH transfer to fund your investment of #{number_to_currency(@investment.amount)}"
+  
+    = render 'shared/property_row', :header => 'Bank account holder', :value => @payment.try(:bank_account_holder)
+    = render 'shared/property_row', :header => 'Bank account type', :value => @payment.try(:bank_account_type)
+    = render 'shared/property_row', :header => 'Bank account routing', :value => @payment.try(:bank_account_routing)
+    = render 'shared/property_row', :header => 'Bank account number', :value => @payment.try(:bank_account_number)
