@@ -430,7 +430,7 @@ dt, dd { line-height: 1.1; }
 
 .has-error {
   &.has-feedback, & {
-    .form-control-feedback, .form-control:focus + .form-control-feedback { background: $state-danger-text; }
+    .form-control-feedback, .form-control:focus + .form-control-feedback, .form-control:focus + * + .form-control-feedback { background: $state-danger-text; }
   }
 }
 
