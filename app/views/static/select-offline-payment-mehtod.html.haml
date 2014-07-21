@@ -1,0 +1,34 @@
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  .page-header
+    %h1 Offline Payment
+
+.container
+  %section.wrapper-page
+    .page-body.text-center
+      .row
+        .col-md-10.col-md-offset-1
+          %p.text-green
+            Please indicate below which offline method you would like to use to fund your investment
+            %br.hidden-md.hidden-sm.hidden-xs
+            amount into the designated escrow account.
+          .select-method-unit
+            .row
+              .col-sm-6
+                = link_to '#', :class => 'method-item left' do
+                  %span.title-method Payment by Wire
+                  I will be paying by wire transfer
+                  %br.hidden-md.hidden-sm.hidden-xs
+                  (US or international investors)
+              
+              .col-sm-12.hidden-sm.hidden-md.hidden-lg  
+                %h4.separator-line
+                  %span.text-primary or
+                          
+              .col-sm-6
+                = link_to '#', :class => 'method-item right' do
+                  %span.title-method Payment by Check
+                  I will be paying by check
+                  %br.hidden-md.hidden-sm.hidden-xs
+                  (US investors)

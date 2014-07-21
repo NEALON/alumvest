@@ -116,6 +116,7 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   
   &.well-green { background: $green; border-color: $green; color: $white; }
   &.well-blue { background: $blue-darken; border-color: $blue-darken; color: $white; }
+  &.well-gray { background: #f7f7f7; border-color: #f7f7f7; color: $gray-dark; }
 }
 
 // Tooltip styles
@@ -780,6 +781,29 @@ textarea { resize: vertical; }
   }
 }
 
+// Wire Transfer Instructions Form
+.wire-transfer-instructions-fr {
+  @media (min-width: $screen-sm) {
+    .control-label { float: left; white-space: nowrap; width: 170px; 
+      + [class^="col-"], [class*=" col-"] { float: none; margin-left: 170px; width: auto; }
+    }
+  }
+  
+  @media (min-width: $screen-lg) {
+    .control-label {
+      + [class^="col-"], [class*=" col-"] { margin-left: 220px; }
+    }
+  }
+}
+
+.check-delivery-instructions-fr {
+  @media (min-width: $screen-sm) {
+    .control-label { float: left; white-space: nowrap; width: 210px; 
+      + [class^="col-"], [class*=" col-"] { float: none; margin-left: 210px; width: auto; }
+    }
+  }
+}
+
 /**
  * Whant next Unit
  */
@@ -1104,6 +1128,18 @@ textarea { resize: vertical; }
     
     .marg-top-lg { margin-top: 34px !important; }
     .marg-bottom-lg { margin-bottom: 34px !important; }
+    
+    .well { margin-top: 12px; padding: 30px 15px; 
+      hr { margin: {left: -15px; right: -15px;} }
+      
+      &.well-gray {
+        hr { background: #e1e2e4; border-bottom: 1px solid $white; }
+      }
+      
+      @media (min-width: $screen-sm) { padding: 20px 42px; 
+        hr { margin: {left: -42px; right: -42px;} }
+      }
+    }
     
     @media (min-width: $screen-sm) { padding: 0 22px; }
   }

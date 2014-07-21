@@ -1,0 +1,33 @@
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  .page-header
+    %h1 Check Delivery Instructions
+
+.container
+  %section.wrapper-page
+    .page-body.text-center
+      %p.text-green
+        Below is the name of the Escrow Agent and its delivery address for  payments made via check, to be deposited into the designated 
+        %br.hidden-md.hidden-sm.hidden-xs
+        escrow account set-up specifically for this investment. Please make the check payable in the name of the Escrow Agent
+        %br.hidden-md.hidden-sm.hidden-xs
+        and send it to the address shown below.
+      
+      = simple_form_for :fake_check_delivery, :url => '', :html => {:class => 'form-horizontal check-delivery-instructions-fr'}, :wrapper => :horizontal_form, :validate => true do |f|
+        = render 'shared/error_notification', :errors => f.error_notification
+        
+        .row.text-left
+          .col-md-10.col-md-offset-1
+            .well
+              = f.input :escrow_agent_name, :label => "Escrow Agent's Name", :placeholder => '[BancBox Crowd]'
+              = f.input :escrow_agent_address, :as => :text, :label => "Escrow Agent's Address", :placeholder => '[to be completed]', :input_html => {:rows => '5'}
+              = f.input :reference, :as => :text, :label => "Reference", :placeholder => 'Please include name of startup/fund that you desire to invest in', :input_html => {:rows => '3'}
+              
+        .form-action.text-center
+          %p
+            = f.button :button, :class => 'btn btn-primary btn-lg' do
+              Mark Payment Made <span class="hidden-xs">by Check</span>
+          .small
+            If you have any questions, please email us at 
+            = link_to 'info@alumvest.com', 'mailto:info@alumvest.com' 

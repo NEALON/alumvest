@@ -1,0 +1,42 @@
+- content_for :masthead_blue do
+  - content_for :wrapper_classes, 'no-pad-top'
+  
+  .page-header
+    %h1 Wire Transfer Instructions 
+
+.container
+  %section.wrapper-page
+    .page-body.text-center
+      %p.text-green
+        Below are the wire transfer instructions applicable to the designated escrow account set-up specfically for this investment. 
+        %br
+        Please include your name & email in the reference for your wire transfer
+      
+      = simple_form_for :fake_wire_transfer, :url => '', :html => {:class => 'form-horizontal wire-transfer-instructions-fr'}, :wrapper => :horizontal_form, :validate => true do |f|
+        = render 'shared/error_notification', :errors => f.error_notification
+        
+        .row.text-left
+          .col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+            .well.well-gray
+              = f.input :bank, :label => 'Bank'
+              %hr
+              = f.input :bank_address, :label => 'Bank Address'
+              %hr
+              = f.input :routing_number, :label => 'Routing Number'
+              %hr
+              = f.input :benificiary, :label => 'Benificiary'
+              %hr
+              = f.input :benificiary_address, :label => 'Benificiary Address' 
+              %hr       
+              = f.input :account_number, :label => 'Account Number'
+              %hr
+              = f.input :swift_code, :label => 'Swift Code'  
+              %hr
+              = f.input :amount, :label => 'Amount', :wrapper_html => {:class => 'no-marg-bottom'}
+        .form-action.text-center
+          %p
+            = f.button :button, :class => 'btn btn-primary btn-lg' do
+              Mark Wire Transfer <span class="hidden-xs">as Sent</span>
+          .small
+            If you have any questions, please email us at 
+            = link_to 'info@alumvest.com', 'mailto:info@alumvest.com' 
