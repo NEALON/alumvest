@@ -18,17 +18,11 @@
             = f.input :bank_account_holder, :label => 'Bank'
             = f.input :bank_account_routing, :label => 'Routing Number'
             = f.input :bank_account_number, :label => 'Account Number'
-            = f.input :bank_account_nickname, :as => :fake, :label => 'Nickname For Account'
-            -#= f.input :nickname, :label => 'Nickname For Account'
+            = f.input :nickname, :label => 'Nickname For Account'
             = f.input :bank_account_type, :as => :radio_buttons, :label => false, :collection => ["Checking", "Savings"], :checked => ["Checking"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
         
-        .text-center
-          .form-group
-            .checkbox
-              %label
-                = check_box_tag :bank_account_terms
-                I have read and agree to the Terms of Service for the ACH transfers.       
-          -#= f.input :accept_terms, :label => 'I have read and agree to the Terms of Service for the ACH transfers.', :wrapper => :vertical_boolean
+        .text-center      
+          = f.input :accept_terms, :as => :boolean, :label => 'I have read and agree to the Terms of Service for the ACH transfers.', :wrapper => :vertical_boolean
                
           .form-action
             = f.button :button, :class => 'btn btn-primary btn-lg' do
