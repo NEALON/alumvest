@@ -12,6 +12,8 @@ class Alumvest::OnlinePaymentBase < ActiveRecord::Base
                   :bank_account_routing,
                   :bank_account_number,
                   :nickname
+                  
+  attr_accessor :accept_terms
 
   self.table_name = :online_payments
 
@@ -23,4 +25,6 @@ class Alumvest::OnlinePaymentBase < ActiveRecord::Base
           :foreign_key => 'payment_id'
 
   validates_presence_of [:bank_account_number, :bank_account_type, :bank_account_holder, :bank_account_routing]
+  
+  validates :accept_terms, :inclusion => {:in => [true]}
 end
