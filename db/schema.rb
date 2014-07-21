@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621171758) do
+ActiveRecord::Schema.define(version: 20140721022612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -404,6 +404,7 @@ ActiveRecord::Schema.define(version: 20140621171758) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "nickname"
   end
 
   create_table "people", force: true do |t|
@@ -435,6 +436,26 @@ ActiveRecord::Schema.define(version: 20140621171758) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+
+  create_table "real_estate_campaigns", force: true do |t|
+    t.integer  "campaign_id"
+    t.string   "property_type"
+    t.string   "project_type"
+    t.string   "occupancy"
+    t.string   "development_phase"
+    t.text     "key_investment_points"
+    t.text     "key_deal_points"
+    t.text     "property_summary"
+    t.text     "location_summary"
+    t.text     "news"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reviews", force: true do |t|
     t.string   "result"

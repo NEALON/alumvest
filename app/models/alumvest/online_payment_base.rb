@@ -10,7 +10,8 @@ class Alumvest::OnlinePaymentBase < ActiveRecord::Base
                   :bank_account_holder,
                   :bank_account_type,
                   :bank_account_routing,
-                  :bank_account_number
+                  :bank_account_number,
+                  :nickname
 
   self.table_name = :online_payments
 
