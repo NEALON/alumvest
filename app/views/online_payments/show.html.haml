@@ -23,15 +23,12 @@
             = f.input :bank_account_holder, :label => 'Bank', :disabled => true
             = f.input :bank_account_routing, :label => 'Routing Number', :disabled => true
             = f.input :bank_account_number, :label => 'Account Number', :disabled => true
-            = f.input :bank_account_nickname, :as => :fake, :label => 'Nickname For Account', :disabled => true
-            = f.input :bank_account_type, :as => :radio_buttons, :label => false, :disabled => true, :collection => ["Checking", "Savings"], :checked => ["Checking"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
+            = f.input :nickname, :label => 'Nickname For Account', :disabled => true
+            = f.input :bank_account_type, :as => :radio_buttons, :label => false, :disabled => true, :collection => ["Checking", "Savings"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
         
         .text-center
-          .form-group
-            .checkbox
-              %label
-                = check_box_tag :bank_account_terms, 1, 1, :disabled => true
-                I have read and agree to the Terms of Service for the ACH transfers.  
+          = f.input :accept_terms, :as => :boolean, :label => 'I have read and agree to the Terms of Service for the ACH transfers.', :wrapper => :vertical_boolean, :input_html => {:checked => true}, :disabled => true
+          
           - if @payment.unfunded?          
             .form-action
               .btn-toolbar

@@ -23,7 +23,7 @@
       %h3.separator-line.text-primary.text-uppercase
         %span Step 1
         
-      .step-unit
+      .step-unit{:class => @investment.investor.is_accredited? ? 'complete-status' : ''}
         .step-content
           .step-header
             .media
@@ -35,14 +35,14 @@
             .step-body
               .media
                 .pull-right.hidden-xs
-                  = link_to 'Complete', '#', :class => 'btn btn-success btn-lg'
+                  = link_to 'Complete', '#', :class => 'btn btn-success btn-lg disabled'
                 .media-body
                   %table
                     %tr
                       %td
                         Thank you for verifying. This will allow us to comply with the SEC’s new rules to take “reasonable steps” to verify that you are an AI.
               .marg-top.hidden-sm.hidden-md.hidden-lg
-                = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block'
+                = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block disabled'
             .step-footer
               .status-text
                 Complete
@@ -65,7 +65,7 @@
       %h3.separator-line.text-primary.text-uppercase
         %span Step 2
         
-      .step-unit.complete-status
+      .step-unit{:class => @investment.has_online_payment? ? 'complete-status' : ''}
         .step-content
           .step-header
             .media
@@ -73,36 +73,36 @@
                 %i.fa.fa-check-circle
               .media-body
                 %h4 Select Your Payment Method and Transfer Funds Into Escrow
-        - if @investment.has_online_payment?
-          .step-body
-            .media
-              .pull-right.hidden-xs
-                = link_to 'Complete', '#', :class => 'btn btn-success btn-lg'
-              .media-body
-                %table
-                  %tr
-                    %td
-                      You have already set up the Payment Method for this Investment.
-            .marg-top.hidden-sm.hidden-md.hidden-lg
-              = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block'
-          .step-footer
-            .status-text
-              Complete
-        - else  
-          .step-body  
-            .media
-              .pull-right.hidden-xs
-                = link_to 'Start', campaign_investment_payment_type_path(:investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg'
-              .media-body
-                %table
-                  %tr
-                    %td
-                      After clicking Start, you will be able to select the method to transfer your Investment Amount into a 3rd party escrow.
-            .marg-top.hidden-sm.hidden-md.hidden-lg
-              = link_to 'Start', campaign_investment_payment_type_path(:investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg btn-block'
-          .step-footer
-            .status-text
-              Pending
+          - if @investment.has_online_payment?
+            .step-body
+              .media
+                .pull-right.hidden-xs
+                  = link_to 'Complete', '#', :class => 'btn btn-success btn-lg disabled'
+                .media-body
+                  %table
+                    %tr
+                      %td
+                        You have already set up the Payment Method for this Investment.
+              .marg-top.hidden-sm.hidden-md.hidden-lg
+                = link_to 'Complete', '#', :class => 'btn btn-success btn-lg btn-block disabled'
+            .step-footer
+              .status-text
+                Complete
+          - else  
+            .step-body  
+              .media
+                .pull-right.hidden-xs
+                  = link_to 'Start', campaign_investment_payment_type_path(:investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg'
+                .media-body
+                  %table
+                    %tr
+                      %td
+                        After clicking Start, you will be able to select the method to transfer your Investment Amount into a 3rd party escrow.
+              .marg-top.hidden-sm.hidden-md.hidden-lg
+                = link_to 'Start', campaign_investment_payment_type_path(:investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-primary btn-lg btn-block'
+            .step-footer
+              .status-text
+                Pending
        
       %h3.separator-line.text-primary.text-uppercase
         %span Step 3

@@ -1172,6 +1172,8 @@ textarea { resize: vertical; }
     @media (min-width: $screen-sm) {
       .btn { min-width: 138px; }
     }
+    
+    .btn-success.disabled { @include opacity(1); }
   }
   
   .step-footer { border-top: 1px solid #e4e5e7; color: #e75710; font: {size: 17px; weight: bold;} padding: 16px 0; }

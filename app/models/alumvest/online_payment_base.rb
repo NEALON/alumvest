@@ -14,6 +14,8 @@ class Alumvest::OnlinePaymentBase < ActiveRecord::Base
                   :nickname,
                   :accept_terms
                   
+  attr_accessor :accept_terms
+                  
   self.table_name = :online_payments
 
   belongs_to :investment,
@@ -25,5 +27,5 @@ class Alumvest::OnlinePaymentBase < ActiveRecord::Base
 
   validates_presence_of [:bank_account_number, :bank_account_type, :bank_account_holder, :bank_account_routing]
   
-  validates :accept_terms, :inclusion => {:in => [true]}
+  validates :accept_terms, :inclusion => {:in => ['1']}
 end
