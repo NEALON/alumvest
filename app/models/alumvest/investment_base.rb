@@ -39,4 +39,8 @@ class Alumvest::InvestmentBase < ActiveRecord::Base
     max = campaign.investment_term.max_investment
     errors.add(attr.to_sym, "must be no more than #{number_to_currency(max)}") if send(attr) > max
   end
+  
+  def has_online_payment?
+     online_payment
+  end
 end

@@ -17,9 +17,8 @@ class OnlinePaymentsController < ApplicationController
     @workflow = InvestmentWorkflow.new(@investment)
     authorize! :manage, @investment
     @payment = Alumvest::OnlinePaymentBase.create(params[:alumvest_online_payment_base])
-
     if @payment.valid?
-      redirect_to campaign_investment_online_payment_path(@campaign, @investment), :flash => {:success => 'Account information for online payment saved.' }
+      redirect_to campaign_investment_path(@campaign.id, @investment.id), :flash => {:success => 'Account information for online payment saved.' }
     else
       render :action => :new, :layout => 'investments'
     end

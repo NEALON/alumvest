@@ -76,4 +76,5 @@ class InvestmentsController < ApplicationController
     @company = @campaign.company
     @is_accredited = current_user.investor.is_accredited?
   end
+  
 end

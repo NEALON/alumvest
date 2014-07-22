@@ -11,10 +11,9 @@ class Alumvest::OnlinePaymentBase < ActiveRecord::Base
                   :bank_account_type,
                   :bank_account_routing,
                   :bank_account_number,
-                  :nickname
+                  :nickname,
+                  :accept_terms
                   
-  attr_accessor :accept_terms
-
   self.table_name = :online_payments
 
   belongs_to :investment,
