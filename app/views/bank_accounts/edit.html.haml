@@ -29,7 +29,7 @@
                       .has-feedback
                         %input{:type => 'text', :class => 'form-control'}
                         %i.glyphicon.glyphicon-ok.form-control-feedback
-                = f.input :bank_account_type, :as => :radio_buttons, :label => false, :collection => ["Checking", "Savings"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
+                = f.input :bank_account_type, :as => :radio_buttons, :label => false, :collection => ["CHECKING", "SAVING"], :item_wrapper_class => 'radio-inline', :wrapper => :vertical_radio_and_checkboxes
                 .form-action
                   = f.submit 'Save', :class => 'btn btn-primary btn-lg'
               

@@ -27,8 +27,7 @@
                   %span.text-primary or
                           
               .col-sm-6
-                -#= link_to campaign_investment_update_payment_type_path(@campaign, @investment, :payment_type => :offline), :class => 'method-item', :method => :put, :id => 'offline-link' do
-                = link_to '#', :class => 'method-item right', :method => :put, :id => 'offline-link' do
+                = link_to campaign_investment_update_payment_type_path(@campaign, @investment, :payment_type => :offline), :class => 'method-item', :method => :put, :id => 'offline-link' do
                   %span.title-method Offline Payment   
                   I will be paying by wire transfer (US or international investors) or by check (US investors only)
 

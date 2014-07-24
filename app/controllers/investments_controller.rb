@@ -62,11 +62,16 @@ class InvestmentsController < ApplicationController
     @workflow = InvestmentWorkflow.new(@investment)
   end
 
-  def update_payment_type
+  def update_payment_type 
     @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
     @investment = Alumvest::InvestmentBase.find(params[:investment_id])
     @investment.update_attributes(:payment_type => params[:payment_type])
-    redirect_to new_campaign_investment_online_payment_path(@campaign, @investment), :flash => {:success => "You have opted for online payment."}
+    if params[:payment_type] == 'online'
+      redirect_to campaign_investment_online_payment_path(@campaign, @investment, :payment_type =>'online'), :flash => {:success => "You have opted for online payment."}
+    else
+      redirect_to campaign_investment_online_payment_path(@campaign, @investment,:payment_type =>'wire'), :flash => {:success => "You have opted for online payment."}
+    end
+
   end
 
   private

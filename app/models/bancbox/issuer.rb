@@ -35,6 +35,7 @@ class Bancbox::Issuer < Bancbox::PersonBase
         :company_tax_id => self.company_tax_id,
       }
       options.merge!(common_options)
+      puts options
       next BancBoxCrowd.create_issuer options
     end
   end

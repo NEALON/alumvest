@@ -56,6 +56,14 @@ class OnlinePaymentsController < ApplicationController
     @workflow = InvestmentWorkflow.new(@investment)
     authorize! :manage, @investment
     @payment = @investment.online_payment
-    render :layout => 'investments'
+    if params[:payment_type] == 'wire'
+          redirect_to :action => :new
+          return
+    end
+    if @payment
+      render :layout => 'investments'
+    else
+       redirect_to :action => :new
+    end
   end
 end
