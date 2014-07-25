@@ -8,35 +8,41 @@
   %section.wrapper-page
     .page-body.text-center
       %p.text-green
-        Below are the wire transfer instructions applicable to the designated escrow account set-up specfically for this investment. 
-        %br
-        Please include your name & email in the reference for your wire transfer
+        These wiring instructions will be emailed to you after your order is placed.
       
-      = simple_form_for :fake_wire_transfer, :url => '', :html => {:class => 'form-horizontal wire-transfer-instructions-fr'}, :wrapper => :horizontal_form, :validate => true do |f|
+      = simple_form_for :fake_wire_transfer, :url => '', :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :validate => true do |f|
         = render 'shared/error_notification', :errors => f.error_notification
         
-        .row.text-left
-          .col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
-            .well.well-gray
-              = f.input :bank, :label => 'Bank'
-              %hr
-              = f.input :bank_address, :label => 'Bank Address'
-              %hr
-              = f.input :routing_number, :label => 'Routing Number'
-              %hr
-              = f.input :benificiary, :label => 'Benificiary'
-              %hr
-              = f.input :benificiary_address, :label => 'Benificiary Address' 
-              %hr       
-              = f.input :account_number, :label => 'Account Number'
-              %hr
-              = f.input :swift_code, :label => 'Swift Code'  
-              %hr
-              = f.input :amount, :label => 'Amount', :wrapper_html => {:class => 'no-marg-bottom'}
+        .text-center
+          .well.well-gray.display-inline.text-left
+            %label.no-marg-bottom 
+              Bank: 
+              %span.text-primary Four Oaks Bank & Trust
+            %hr
+            %label.no-marg-bottom 
+              Address: 
+              %span.text-primary 6144 US Highway 301 South
+            %hr
+            %label.no-marg-bottom 
+              Address: 
+              %span.text-primary Four Oaks, NC 27524
+            %hr
+            %label.no-marg-bottom 
+              Telephone: 
+              %span.text-primary (919) 963-2177
+            %hr
+            %label.no-marg-bottom 
+              Routing Number: 
+              %span.text-primary 053105059
+            %hr
+            %label.no-marg-bottom 
+              Account Number: 
+              %span.text-primary 540126111356
+            %hr
+            %label.no-marg-bottom 
+              For Credit: 
+              %span.text-primary Sajil Koroth #651309492428
         .form-action.text-center
-          %p
-            = f.button :button, :class => 'btn btn-primary btn-lg' do
-              Mark Wire Transfer <span class="hidden-xs">as Sent</span>
-          .small
-            If you have any questions, please email us at 
-            = link_to 'info@alumvest.com', 'mailto:info@alumvest.com' 
+          = f.button :button, :class => 'btn btn-primary btn-lg' do
+            %span.hidden-xs Return to Payment Steps
+            %span.hidden-sm.hidden-md.hidden-lg Back 
