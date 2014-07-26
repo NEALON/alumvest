@@ -28,7 +28,7 @@ $(document).ready(function() {
         $('.how-it-works-pages .nav-steps.show').removeClass('show');
         $(window).scrollTo($('a#trigger' + currentPhase), {
           duration: durationNext,
-          easing: 'easeOutQuart',
+          easing: 'easeInOutQuint',
           onAfter: function () {
             $('body').removeClass('scrolling');
             $('a#trigger' + currentPhase).parents('.page-content').find('.nav-pages').addClass('show');
@@ -45,7 +45,7 @@ $(document).ready(function() {
         $('.how-it-works-pages .nav-steps.show').removeClass('show');
         $(window).scrollTo($('a#trigger' + currentPhase), {
           duration: durationPrev,
-          easing: 'easeOutQuart',
+          easing: 'easeInOutQuint',
           onAfter: function () {
             $('body').removeClass('scrolling');
             $('a#trigger' + currentPhase).parents('.page-content').find('.nav-pages').addClass('show');

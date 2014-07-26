@@ -114,6 +114,30 @@
     .bg-step-5 { background-image: image-url("how-it-works/sturtups/05-step-bg.jpg"); }
   }
   
+  // Process Backgrounds
+  &.process {
+    .nav-pages { left: 20px; margin-top: -140px; position: absolute; top: 50%; }
+    
+    > .page-content {
+      &.first {
+        .nav-pages { margin-top: (-140px + $navbar-height); } 
+      }
+    }
+    
+    .bg-purple { background-color: #1a62d3; }
+    .bg-red { background-color: #f45353; }
+    .bg-blue { background-color: #58bde2; }
+    .bg-orange { background-color: #f2794a; }
+    .bg-pink { background-color: #ea2851; }
+    .bg-green { background-color: #68a30c; }
+    .bg-turquoise { background-color: #009fb0; color: $white; }
+    .bg-purple-dark { background-color: #5636b0; color: $white; }
+    .bg-pink-dark { background-color: #9800a0; color: $white; }
+    .bg-blue-dark { background-color: #2d88ef; color: $white; }
+    
+    .bg-page { height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
+  }
+  
   // Investors
   &.investors {
     .nav-pages { left: 20px; margin-top: -158px; position: absolute; top: 40%; }
@@ -123,7 +147,7 @@
         .nav-pages { margin-top: (-158px + $navbar-height); } 
       }
       
-      .bg-blue { background: #eaec6a; height: 100%; left: 0; position: absolute; top: 0; @include transition(background-color 2s); width: 100%; 
+      .bg-blue { background: #f0f1f1; height: 100%; left: 0; position: absolute; top: 0; @include transition(background-color 2s 1s); width: 100%; 
         &.in { background: #7bbaf4; }
       }
       
@@ -332,6 +356,102 @@
   .communities-investors-content { 
     .wrapper-img { max-width: em(269); }
     .media-body { right: 7%; top: 14%; width: em(710); }
+  }
+}
+
+/**
+ * Process Pages
+ */
+
+// Review Startup Content (Step 1)
+.process {
+  .review-startup-content { position: absolute; top: 10%; left: 0;
+    .h1 { margin-bottom: em(6, 39); 
+      + p { margin-bottom: em(34); }
+    }
+  }
+  
+  .table-review { display: table; font-size: 0.8em; margin-bottom: 10px; width: 100%; 
+    .tr { display: table-row; 
+      > .td { border-left: 10px solid #1a62d3; display: table-cell; padding: em(13) em(30); position: relative; vertical-align: top; 
+        &.col-step-1, &.col-step-2 { width: 350px; }
+        &.col-step-3, &.col-step-4 { width: 400px; }
+        
+        &.wrapper-img { padding: 0; }
+        
+        h3 { font: {size: em(56); weight: bold;} margin: 0 0 2px; }
+        p { margin-bottom: 0; }
+        
+        &:first-child { border-left: 0 none; }
+        
+        @media (min-width: $screen-xl) {
+          &.col-step-1, &.col-step-2 { width: 250px; }
+          &.col-step-3, &.col-step-4 { width: 320px; }
+          
+          h3 { font-size: em(72); }
+        }
+      }
+    }
+    
+    @media (min-width: $screen-xl) { font-size: 1em; }
+  }
+}
+
+.csstransforms3d .process {
+  .table-review .tr {
+    > .td {
+      &.col-step-1 {
+        .front { @include rotateY(-180deg); }
+      }
+      
+      &.col-step-2 {
+        .front { @include rotateX(180deg); }
+      }
+      
+      &.col-step-3 {
+        .front { @include rotateX(-180deg); }
+      }
+      
+      &.col-step-4 {
+        .front { @include rotateY(180deg); }
+      }
+      
+      .front, .back { @include backface-visibility(hidden); height: 100%; left: 0; padding: em(13) em(30); position: absolute; top: 0; width: 100%; }
+    }
+  }
+  
+  .review-startup-content.in {
+    .table-review .tr > .td {
+      &.col-step-1 {
+        .front { @include rotateY(0); }
+        .back { @include rotateY(-180deg); }
+        
+        .front, .back { @include transition-delay(1s); } 
+      }
+      
+      &.col-step-2 {
+        .front { @include rotateX(0); }
+        .back { @include rotateX(180deg); }
+        
+        .front, .back { @include transition-delay(1.6s); } 
+      }
+      
+      &.col-step-3 {
+        .front { @include rotateX(0); }
+        .back { @include rotateX(-180deg); }
+        
+        .front, .back { @include transition-delay(1.8s); }
+      }
+      
+      &.col-step-4 {
+        .front { @include rotateY(0); }
+        .back { @include rotateY(180deg); }
+        
+        .front, .back { @include transition-delay(1.3s); } 
+      }
+      
+      .front, .back { @include transition(all 1s); }
+    }
   }
 }
     

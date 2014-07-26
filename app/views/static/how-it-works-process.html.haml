@@ -1,0 +1,304 @@
+- content_for :body_classes, 'how-it-works-body loader-open'
+- content_for :without_footer, true
+
+.how-it-works-pages.process
+  %section.page-content.first{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a0', :id => 'trigger0'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content{"data-stellar-offset-parent" => "true"}
+      .container
+        .clearfix
+        
+          .review-startup-content.fade{"data-stellar-ratio" => "1"}
+            .h1.no-marg-top Review Startup Profile
+            %p Please carefully review the startup of your interest by clicking the “Company” tab on its profile page. You can also click on the 
+            
+            .table-review
+              .tr
+                .td.col-step-1
+                  .back.bg-blue
+                  .front.bg-turquoise
+                    %h3 1
+                    %p “Team” tab to learn about the founders, their school affiliations and how you know the founders,
+                .td.col-step-2
+                  .back.bg-green
+                  .front.bg-purple-dark
+                    %h3 2
+                    %p “Investment Terms” tab to review the terms of the investment,
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/review-startup-img1.jpg')
+            
+            .table-review
+              .tr
+                .td.col-step-3
+                  .back.bg-orange
+                  .front.bg-pink-dark
+                    %h3 3
+                    %p “FAQ” and “Updates” tabs to read about the founders’ responses to frequently asked investor questions or company updates
+                .td.col-step-4
+                  .back.bg-pink
+                  .front.bg-blue-dark
+                    %h3 4
+                    %p “Join Us” tab to see how you can get involved with the startup & (5) “Discussion” tab to ask another question of the founders.
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/review-startup-img2.jpg')
+              
+    / END .inner-content
+    
+    .bg-page.bg-purple
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.current.first= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a1', :id => 'trigger1'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          Invest Now
+    / END .inner-content
+    
+    .bg-page.bg-red
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.current= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a2', :id => 'trigger2'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          Choose Investment
+    / END .inner-content
+    
+    .bg-page.bg-blue
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.current= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a3', :id => 'trigger3'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          Verifty Officially
+    / END .inner-content
+    
+    .bg-page.bg-orange
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li.current= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a4', :id => 'trigger4'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          Payment Method
+    / END .inner-content
+    
+    .bg-page.bg-pink
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li.passed= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li.current= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content.last{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a5', :id => 'trigger5'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          Investment Doc’s
+    / END .inner-content
+    
+    .bg-page.bg-green
+    
+    .container      
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li.passed= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li.passed= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li.current= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+      / END .nav-pages
+        
+  / END .page-content
+  
+  .footer
+    .container  
+      = render :partial => 'layouts/copyright'
+
+- content_for :loader do      
+  / Loader Indicator
+  #loader.loader.fade.in
+    %h2.loader-text.fade.in Loaging&hellip;
+    .loader-corner.loading
+    .loader-backdrop.fade.in
+
+- content_for :scripts do
+  :javascript
+    $.stellar({
+      horizontalScrolling: false,
+      verticalScrolling: true,
+      positionProperty: 'position',
+      responsive: true,
+      hideDistantElements: true,
+      hideElement: function($elem) { 
+        $elem.removeClass('in');
+      },
+      showElement: function($elem) { 
+        $elem.addClass('in'); 
+      }
+    });
