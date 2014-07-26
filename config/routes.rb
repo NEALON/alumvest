@@ -58,6 +58,7 @@ Av::Application.routes.draw do
     resources :investments do
       resource :online_payment do
         get :show
+        get :wire_instructions
         resource :funding_xn
       end
       resource :offline_payment

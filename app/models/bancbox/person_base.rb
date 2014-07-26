@@ -56,6 +56,17 @@ class Bancbox::PersonBase < ActiveRecord::Base
   end
 
   def submit!(bank_account)
+    if bank_account
+       bank_account_number = bank_account.bank_account_number
+       bank_account_type = bank_account.bank_account_type
+       bank_account_holder = bank_account.bank_account_holder
+       bank_account_routing = bank_account.bank_account_routing
+    else
+       bank_account_number = ''
+       bank_account_type = ''
+       bank_account_holder = ''
+       bank_account_routing = ''
+    end
     create_reference_id!
     options = {
         :first_name => first_name,
@@ -67,10 +78,10 @@ class Bancbox::PersonBase < ActiveRecord::Base
         :city => city,
         :state => state,
         :zip => zip,
-        :bank_account_number => bank_account.bank_account_number,
-        :bank_account_type => bank_account.bank_account_type,
-        :bank_account_holder => bank_account.bank_account_holder,
-        :bank_account_routing => bank_account.bank_account_routing,
+        :bank_account_number => bank_account_number,
+        :bank_account_type => bank_account_type,
+        :bank_account_holder => bank_account_holder,
+        :bank_account_routing => bank_account_routing,
         :created_by => 'Alumvest',
         :internal => 1,
         :verification_required => 0,
@@ -87,7 +98,9 @@ class Bancbox::PersonBase < ActiveRecord::Base
       self.account_type = ret['account_type']
 
       fire_bancbox_status_event(:submit) # aka submit event in state machine
-      bank_account.save
+      if bank_account
+         bank_account.save
+      end
 
       save
     else

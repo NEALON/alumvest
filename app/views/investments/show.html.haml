@@ -84,7 +84,7 @@
                       %td
                         You have already set up the Payment Method for this Investment.
               .marg-top.hidden-sm.hidden-md.hidden-lg
-                = link_to 'Complete',campaign_investment_payment_type_path(:investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-success btn-lg btn-block disabled'
+                = link_to 'Complete',campaign_investment_payment_type_path(:investment_id=>@investment.id,:redirect=>'payment'), :method => :get, :class => 'btn btn-success btn-lg btn-block'
             .step-footer
               .status-text
                 Complete

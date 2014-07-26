@@ -13,7 +13,7 @@ class TalksToBancbox
             :agreement => true)
 
     bancbox_investor.populate_fields_from_user(user)
-
+    bancbox_investor.save
     begin
       bancbox_investor.submit!(bank_account)
     rescue BancBoxCrowd::Error => e

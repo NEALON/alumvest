@@ -69,7 +69,7 @@ class InvestmentsController < ApplicationController
     if params[:payment_type] == 'online'
       redirect_to campaign_investment_online_payment_path(@campaign, @investment, :payment_type =>'online'), :flash => {:success => "You have opted for online payment."}
     else
-      redirect_to campaign_investment_online_payment_path(@campaign, @investment,:payment_type =>'wire'), :flash => {:success => "You have opted for online payment."}
+      redirect_to wire_instructions_campaign_investment_online_payment_path(@campaign, @investment,:payment_type =>'wire'), :flash => {:success => "You have opted for online payment."}
     end
 
   end

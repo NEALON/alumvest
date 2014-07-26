@@ -66,4 +66,12 @@ class OnlinePaymentsController < ApplicationController
        redirect_to :action => :new
     end
   end
+  
+  def wire_instructions
+     @investment = Alumvest::InvestmentBase.find(params[:investment_id])
+     @campaign = Alumvest::CampaignBase.find(params[:campaign_id])
+     if !@investment.investor.bancbox_investor #Create new BancBox Investor
+       TalksToBancbox.submit_investor!(@investment.investor.user, @bank_account)
+     end
+  end
 end
