@@ -365,17 +365,25 @@
 
 // Review Startup Content (Step 1)
 .process {
+  .h1 { margin-bottom: em(15, 39); }
+  
   .review-startup-content { position: absolute; top: 10%; left: 0;
     .h1 { margin-bottom: em(6, 39); 
       + p { margin-bottom: em(34); }
     }
+    
+    .table-review { font-size: 0.8em;
+      @media (min-width: $screen-xl) { font-size: 1em; }
+    }
   }
   
-  .table-review { display: table; font-size: 0.8em; margin-bottom: 10px; width: 100%; 
+  .table-review { display: table; margin-bottom: 10px; width: 100%; 
     .tr { display: table-row; 
-      > .td { border-left: 10px solid #1a62d3; display: table-cell; padding: em(13) em(30); position: relative; vertical-align: top; 
+      > .td { border-left: 10px solid #1a62d3; display: table-cell; line-height: 1.5; padding: em(13) em(30); position: relative; vertical-align: top; 
         &.col-step-1, &.col-step-2 { width: 350px; }
         &.col-step-3, &.col-step-4 { width: 400px; }
+        
+        &.col-info { vertical-align: middle; width: 47%; }
         
         &.wrapper-img { padding: 0; }
         
@@ -392,9 +400,27 @@
         }
       }
     }
-    
-    @media (min-width: $screen-xl) { font-size: 1em; }
   }
+}
+
+// Invest Now Content (Step 2, Step 3, Step 4, Step 5, Step 6)
+.process {
+  .middle-content { position: absolute; top: 50%; left: 0; margin-top: em((-320 / 2) - 60); width: 100%; }
+  
+  // Step 2
+  .invest-now-content .table-review .tr > .td { border-color: #f45353; }
+  
+  // Step 3
+  .choose-investment-content .table-review .tr > .td { border-color: #58bde2; }
+  
+  // Step 4
+  .verifty-officially-content .table-review .tr > .td { border-color: #f2794a; }
+  
+  // Step 5
+  .payment-method-content .table-review .tr > .td { border-color: #ea2851; }
+  
+  // Step 6
+  .investment-docs-content .table-review .tr > .td { border-color: #68a30c; }
 }
 
 .csstransforms3d .process {
@@ -416,11 +442,31 @@
         .front { @include rotateY(180deg); }
       }
       
+      &.col-info { padding: 0;
+        .front { padding: 0; 
+          > table { height: 100%; left: 0; margin: 0; position: absolute; top: 0; width: 100%;
+            td { padding: em(13) em(30); text-align: justify; vertical-align: middle; }
+          }
+        }
+      }
+      
       .front, .back { @include backface-visibility(hidden); height: 100%; left: 0; padding: em(13) em(30); position: absolute; top: 0; width: 100%; }
     }
   }
   
-  .review-startup-content.in {
+  // Step 2 & Step 6
+  .invest-now-content .table-review .tr > .td.col-info .front, .investment-docs-content .table-review .tr > .td.col-info .front { @include rotateY(180deg); }
+  
+  // Step 3
+  .choose-investment-content .table-review .tr > .td.col-info .front { @include rotateX(180deg); }
+  
+  // Step 4
+  .verifty-officially-content .table-review .tr > .td.col-info .front { @include rotateY(-180deg); }
+  
+  // Step 5
+  .payment-method-content .table-review .tr > .td.col-info .front { @include rotateX(-180deg); }
+  
+  .in {
     .table-review .tr > .td {
       &.col-step-1 {
         .front { @include rotateY(0); }
@@ -450,8 +496,55 @@
         .front, .back { @include transition-delay(1.3s); } 
       }
       
+      &.col-info {
+        .front, .back { @include transition-delay(.7s); } 
+      }
+      
       .front, .back { @include transition(all 1s); }
     }
+    
+    // Step 2 & Step 6
+    &.invest-now-content .table-review .tr > .td.col-info, &.investment-docs-content .table-review .tr > .td.col-info {
+      .front { @include rotateY(0); }
+      .back { @include rotateY(180deg); }
+    }
+    
+    // Step 3
+    &.choose-investment-content .table-review .tr > .td.col-info {
+      .front { @include rotateX(0); }
+      .back { @include rotateX(180deg); }
+    }
+    
+    // Step 4
+    &.verifty-officially-content .table-review .tr > .td.col-info {
+      .front { @include rotateY(0); }
+      .back { @include rotateY(-180deg); }
+    }
+    
+    // Step 5
+    &.payment-method-content .table-review .tr > .td.col-info {
+      .front { @include rotateX(0); }
+      .back { @include rotateX(-180deg); }
+    }
+  }
+}
+
+// To support old browsers
+.no-csstransforms3d .process {
+  .bg-fallback-purple { background-color: #1a62d3; }
+  .bg-fallback-red { background-color: #f45353; }
+  .bg-fallback-blue { background-color: #58bde2; }
+  .bg-fallback-orange { background-color: #f2794a; }
+  .bg-fallback-pink { background-color: #ea2851; }
+  .bg-fallback-green { background-color: #68a30c; }
+  .bg-fallback-turquoise { background-color: #009fb0; color: $white; }
+  .bg-fallback-purple-dark { background-color: #5636b0; color: $white; }
+  .bg-fallback-pink-dark { background-color: #9800a0; color: $white; }
+  .bg-fallback-blue-dark { background-color: #2d88ef; color: $white; }
+  
+  // Navigations Steps
+  .nav-steps a {
+    &:after, &:before { display: none; }
   }
 }
     
