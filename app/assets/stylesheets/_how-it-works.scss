@@ -16,7 +16,7 @@
     .trigger { display: block; height: 1px; left: 0; position: absolute; top: 0; width: 1px; }
   }
   
-  h1, .h1 { font: {size: em(39); weight: 700;} line-height: 1.17; margin-bottom: em(21, 39);
+  h1, .h1 { font: {size: em(37); weight: 700;} line-height: 1.17; margin-bottom: em(21, 37);
     .media .pull-left { margin-right: 25px; 
       .fa { font-size: em(96, 39); }
       .glyphicon { font-size: em(82, 39); }
@@ -206,25 +206,39 @@
     .media { @include opacity(1); @include transition(all .7s .7s); } 
     .description { padding-top: em(58); @include transition(all .7s 1.7s);  }
   }
-}
+} 
 
 // Review Sturtup Content (Step 2)
 .inner-content {
   .review-sturtup-content {
-    .h1 { left: 0; margin: 0; position: absolute; top: 10%; width: 100%;
+    .h1 { left: em(170, 39); margin: 0; position: absolute; top: 10%; width: 100%; }
+    .well { margin: {top: em(100);} padding: em(25) em(30); position: absolute; right: 0; top: 10%; width: em(324);  }
+  }
+} 
+
+.csstransitions .inner-content {
+  .review-sturtup-content {
+    .h1 { left: 0;
       &.in { left: em(170, 39); @include transition(opacity 2s, left 2s); }
     }
-    .well { margin: {top: em(100);} padding: em(25) em(30); position: absolute; right: 50%; top: 10%; width: em(324);       
+    .well { right: 50%;     
       &.in { right: 0; @include transition(opacity 1.5s .5s, right 1.5s .5s); }
     }
   }
-} 
+}
 
 // Join & Raise Funds (Step 3)
 .inner-content {
   .raisefunds-sturtup-content { left: 0; padding-left: em(280); position: absolute; top: 10%; width: 100%;
-    .h1 { border-radius: 3px 3px 0 3px; padding: em(20, 39) em(27, 39) em(20, 39) em(17, 39); margin: 0; }
-    .description { border-radius: 0 0 3px 3px; color: $white; margin-left: em(230); padding: 0 em(27) em(25) em(33); }
+    .h1 { background: $green; border-radius: 3px 3px 0 3px; padding: em(20, 39) em(27, 39) em(20, 39) em(17, 39); margin: 0; }
+    .description { background: $green; border-radius: 0 0 3px 3px; color: $white; margin-left: em(230); padding: 0 em(27) em(25) em(33); }
+  }
+}
+
+.csstransitions .inner-content {
+  .raisefunds-sturtup-content {
+    .h1 { background: none transparent; }
+    .description { background: none transparent; }
   }
   
   &.in .raisefunds-sturtup-content {
@@ -237,7 +251,7 @@
 .inner-content {
   .manage-sturtup-content {
     .top-info { height: em(146); position: absolute; right: 0; top: 10%; width: em(844); 
-      > div { background: $blue-darken; left: -130px; margin: 0 em(42); padding: em(25) em(15); position: relative;
+      > div { background: $blue-darken; left: -130px; margin: 0 em(42); min-height: em(146); padding: em(25) em(15); position: relative;
         .h1 { margin: 0; }
         
         &:after, &:before { content: ''; height: 0; position: absolute; top: 0; width: 0; }
@@ -380,8 +394,8 @@
   .table-review { display: table; margin-bottom: 10px; width: 100%; 
     .tr { display: table-row; 
       > .td { border-left: 10px solid #1a62d3; display: table-cell; line-height: 1.5; padding: em(13) em(30); position: relative; vertical-align: top; 
-        &.col-step-1, &.col-step-2 { width: 350px; }
-        &.col-step-3, &.col-step-4 { width: 400px; }
+        &.col-step-1, &.col-step-2 { width: 349px; }
+        &.col-step-3, &.col-step-4 { width: 394px; }
         
         &.col-info { vertical-align: middle; width: 47%; }
         
@@ -425,7 +439,9 @@
 
 .csstransforms3d .process {
   .table-review .tr {
-    > .td {
+    > .td { padding: 0;
+      .inner-cell { height: 242px; position: relative; width: 100%; }
+      
       &.col-step-1 {
         .front { @include rotateY(-180deg); }
       }
@@ -452,6 +468,10 @@
       
       .front, .back { @include backface-visibility(hidden); height: 100%; left: 0; padding: em(13) em(30); position: absolute; top: 0; width: 100%; }
     }
+  }
+  
+  .review-startup-content .table-review .tr > .td .inner-cell { height: 155px;
+    @media (min-width: $screen-xl) { height: 242px; }
   }
   
   // Step 2 & Step 6
@@ -541,9 +561,11 @@
   .bg-fallback-purple-dark { background-color: #5636b0; color: $white; }
   .bg-fallback-pink-dark { background-color: #9800a0; color: $white; }
   .bg-fallback-blue-dark { background-color: #2d88ef; color: $white; }
-  
+}
+
+.no-csstransforms3d .how-it-works-pages {
   // Navigations Steps
-  .nav-steps a {
+  .nav-steps a { margin: {left: 0; right: 0;}
     &:after, &:before { display: none; }
   }
 }

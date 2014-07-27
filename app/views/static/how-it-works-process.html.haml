@@ -33,25 +33,28 @@
                       %h3 1
                       %p “Team” tab to learn about the founders, their school affiliations and how you know the founders,
                 .td.col-step-2.bg-fallback-purple-dark
-                  .back.bg-green
-                  .front.bg-purple-dark
-                    %h3 2
-                    %p “Investment Terms” tab to review the terms of the investment,
+                  .inner-cell
+                    .back.bg-green
+                    .front.bg-purple-dark
+                      %h3 2
+                      %p “Investment Terms” tab to review the terms of the investment,
                 .td.wrapper-img
                   = image_tag('how-it-works/process/review-startup-img1.jpg')
             
             .table-review
               .tr
                 .td.col-step-3.bg-fallback-pink-dark
-                  .back.bg-orange
-                  .front.bg-pink-dark
-                    %h3 3
-                    %p “FAQ” and “Updates” tabs to read about the founders’ responses to frequently asked investor questions or company updates
+                  .inner-cell
+                    .back.bg-orange
+                    .front.bg-pink-dark
+                      %h3 3
+                      %p “FAQ” and “Updates” tabs to read about the founders’ responses to frequently asked investor questions or company updates
                 .td.col-step-4.bg-fallback-blue-dark
-                  .back.bg-pink
-                  .front.bg-blue-dark
-                    %h3 4
-                    %p “Join Us” tab to see how you can get involved with the startup & (5) “Discussion” tab to ask another question of the founders.
+                  .inner-cell
+                    .back.bg-pink
+                    .front.bg-blue-dark
+                      %h3 4
+                      %p “Join Us” tab to see how you can get involved with the startup & (5) “Discussion” tab to ask another question of the founders.
                 .td.wrapper-img
                   = image_tag('how-it-works/process/review-startup-img2.jpg')
               
@@ -98,11 +101,12 @@
             .table-review
               .tr
                 .td.col-info.bg-fallback-purple
-                  .back.bg-blue
-                  .front.bg-purple
-                    %table
-                      %tr
-                        %td Once you are ready to proceed with your desired investment in the startup (or the fund that will invest in the startup), please click on the Invest Now button to begin the simple investment process, transfer your desired Investment Amount & e-sign the investment documents
+                  .inner-cell
+                    .back.bg-blue
+                    .front.bg-purple
+                      %table
+                        %tr
+                          %td Once you are ready to proceed with your desired investment in the startup (or the fund that will invest in the startup), please click on the Invest Now button to begin the simple investment process, transfer your desired Investment Amount & e-sign the investment documents
                 .td.wrapper-img
                   = image_tag('how-it-works/process/invest-now-img1.jpg')
           
@@ -152,11 +156,12 @@
             .table-review
               .tr
                 .td.col-info.bg-fallback-red
-                  .back.bg-orange
-                  .front.bg-red
-                    %table
-                      %tr
-                        %td After clicking the Invest Now button, you will be taken to a page where you can input your desired Investment Amount.  Please be aware of the applicable minimum investment size & any administrative fees which may be added on top of your Investment Amount.
+                  .inner-cell
+                    .back.bg-orange
+                    .front.bg-red
+                      %table
+                        %tr
+                          %td After clicking the Invest Now button, you will be taken to a page where you can input your desired Investment Amount.  Please be aware of the applicable minimum investment size & any administrative fees which may be added on top of your Investment Amount.
                 .td.wrapper-img
                   = image_tag('how-it-works/process/choose-investment-img1.jpg')
                   
@@ -206,11 +211,12 @@
             .table-review
               .tr
                 .td.col-info.bg-fallback-blue
-                  .back.bg-pink
-                  .front.bg-blue
-                    %table
-                      %tr
-                        %td After clicking the blue Start button, you will be able to officially verify you accredited investor (“AI”) status via our trusted third party providers. Under the SEC”s new rules, we are required to take “reasonable steps” to verify that you are an AI. Whether you are an individual or an entity, we have several methods for you to use to seamlessly verify your AI status
+                  .inner-cell
+                    .back.bg-pink
+                    .front.bg-blue
+                      %table
+                        %tr
+                          %td After clicking the blue Start button, you will be able to officially verify you accredited investor (“AI”) status via our trusted third party providers. Under the SEC”s new rules, we are required to take “reasonable steps” to verify that you are an AI. Whether you are an individual or an entity, we have several methods for you to use to seamlessly verify your AI status
                 .td.wrapper-img
                   = image_tag('how-it-works/process/verifty-officially-img1.jpg')
                   
@@ -260,11 +266,12 @@
             .table-review
               .tr
                 .td.col-info.bg-fallback-orange
-                  .back.bg-green
-                  .front.bg-orange
-                    %table
-                      %tr
-                        %td After clicking the blue Start button, you will be able to transferthe funds for your Investment Amount into an independent 3rdparty escrow account. You can seamlessly transfer funds online from your bank account or transfer funds offline via a wire or check. Depending on the method you choose, instructions on how to transfer your funds will be shown on the screen
+                  .inner-cell
+                    .back.bg-green
+                    .front.bg-orange
+                      %table
+                        %tr
+                          %td After clicking the blue Start button, you will be able to transferthe funds for your Investment Amount into an independent 3rdparty escrow account. You can seamlessly transfer funds online from your bank account or transfer funds offline via a wire or check. Depending on the method you choose, instructions on how to transfer your funds will be shown on the screen
                 .td.wrapper-img
                   = image_tag('how-it-works/process/payment-method-img1.jpg')
           
@@ -314,11 +321,12 @@
             .table-review
               .tr
                 .td.col-info.bg-fallback-pink
-                  .back.bg-purple
-                  .front.bg-pink
-                    %table
-                      %tr
-                        %td After clicking the blue Start button, you will be able to complete the entire process of electronically signing all of the required Investment Documents.  E-signing is done via our trusted third party provider. Once the investment round closes, you will receive via email a copy of your fully executed Investment Documents.
+                  .inner-cell
+                    .back.bg-purple
+                    .front.bg-pink
+                      %table
+                        %tr
+                          %td After clicking the blue Start button, you will be able to complete the entire process of electronically signing all of the required Investment Documents.  E-signing is done via our trusted third party provider. Once the investment round closes, you will receive via email a copy of your fully executed Investment Documents.
                 .td.wrapper-img
                   = image_tag('how-it-works/process/investment-docs-img1.jpg')
           
@@ -363,8 +371,12 @@
       hideDistantElements: true,
       hideElement: function($elem) { 
         $elem.removeClass('in');
+        $elem.hide();
       },
       showElement: function($elem) { 
-        $elem.addClass('in'); 
+        $elem.show();
+        setTimeout(function() {
+          $elem.addClass('in');
+        }, 50);
       }
     });

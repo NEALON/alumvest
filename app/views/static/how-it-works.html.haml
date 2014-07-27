@@ -258,8 +258,12 @@
       hideDistantElements: true,
       hideElement: function($elem) { 
         $elem.removeClass('in');
+        $elem.hide();
       },
       showElement: function($elem) { 
-        $elem.addClass('in'); 
+        $elem.show();
+        setTimeout(function() {
+          $elem.addClass('in');
+        }, 50);
       }
     });
