@@ -6,6 +6,7 @@ class AccountInfosController < ApplicationController
   end
 
   def update
+    puts 'test'
     @user = Alumvest::UserBase.find(params[:user_id])
     authorize! :manage, @user
     @user.update_attributes(params[:alumvest_user_base])
