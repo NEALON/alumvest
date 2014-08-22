@@ -1,0 +1,382 @@
+- content_for :body_classes, 'how-it-works-body loader-open'
+- content_for :without_footer, true
+
+.how-it-works-pages.process
+  %section.page-content.first{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a0', :id => 'trigger0'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/about/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/about/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/about/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content{"data-stellar-offset-parent" => "true"}
+      .container
+        .clearfix
+        
+          .review-startup-content.fade{"data-stellar-ratio" => "1"}
+            .h1.no-marg-top Review Startup Profile
+            %p Please carefully review the startup of your interest by clicking the “Company” tab on its profile page. You can also click on the 
+            
+            .table-review
+              .tr
+                .td.col-step-1.bg-fallback-turquoise
+                  .inner-cell
+                    .back.bg-blue
+                    .front.bg-turquoise
+                      %h3 1
+                      %p “Team” tab to learn about the founders, their school affiliations and how you know the founders,
+                .td.col-step-2.bg-fallback-purple-dark
+                  .inner-cell
+                    .back.bg-green
+                    .front.bg-purple-dark
+                      %h3 2
+                      %p “Investment Terms” tab to review the terms of the investment,
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/review-startup-img1.jpg')
+            
+            .table-review
+              .tr
+                .td.col-step-3.bg-fallback-pink-dark
+                  .inner-cell
+                    .back.bg-orange
+                    .front.bg-pink-dark
+                      %h3 3
+                      %p “FAQ” and “Updates” tabs to read about the founders’ responses to frequently asked investor questions or company updates
+                .td.col-step-4.bg-fallback-blue-dark
+                  .inner-cell
+                    .back.bg-pink
+                    .front.bg-blue-dark
+                      %h3 4
+                      %p “Join Us” tab to see how you can get involved with the startup & (5) “Discussion” tab to ask another question of the founders.
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/review-startup-img2.jpg')
+              
+    / END .inner-content
+    
+    .bg-page.bg-purple
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.current.first= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a1', :id => 'trigger1'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/about/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/about/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/about/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          
+          .invest-now-content.middle-content.fade{"data-stellar-ratio" => "2"}
+            .h1 Click Invest Now
+            .table-review
+              .tr
+                .td.col-info.bg-fallback-purple
+                  .inner-cell
+                    .back.bg-blue
+                    .front.bg-purple
+                      %table
+                        %tr
+                          %td Once you are ready to proceed with your desired investment in the startup (or the fund that will invest in the startup), please click on the Invest Now button to begin the simple investment process, transfer your desired Investment Amount & e-sign the investment documents
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/invest-now-img1.jpg')
+          
+    / END .inner-content
+    
+    .bg-page.bg-red
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.current= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a2', :id => 'trigger2'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/about/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/about/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/about/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          
+          .choose-investment-content.middle-content.fade{"data-stellar-ratio" => "2"}
+            .h1 Choose Your Investment Amount
+            .table-review
+              .tr
+                .td.col-info.bg-fallback-red
+                  .inner-cell
+                    .back.bg-orange
+                    .front.bg-red
+                      %table
+                        %tr
+                          %td After clicking the Invest Now button, you will be taken to a page where you can input your desired Investment Amount.  Please be aware of the applicable minimum investment size & any administrative fees which may be added on top of your Investment Amount.
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/choose-investment-img1.jpg')
+                  
+    / END .inner-content
+    
+    .bg-page.bg-blue
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.current= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a3', :id => 'trigger3'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/about/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/about/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/about/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          
+          .verifty-officially-content.middle-content.fade{"data-stellar-ratio" => "2"}
+            .h1 Officially Verify Your Accredited Investor Status
+            .table-review
+              .tr
+                .td.col-info.bg-fallback-blue
+                  .inner-cell
+                    .back.bg-pink
+                    .front.bg-blue
+                      %table
+                        %tr
+                          %td After clicking the blue Start button, you will be able to officially verify you accredited investor (“AI”) status via our trusted third party providers. Under the SEC”s new rules, we are required to take “reasonable steps” to verify that you are an AI. Whether you are an individual or an entity, we have several methods for you to use to seamlessly verify your AI status
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/verifty-officially-img1.jpg')
+                  
+    / END .inner-content
+    
+    .bg-page.bg-orange
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li.current= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a4', :id => 'trigger4'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/about/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/about/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/about/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          
+          .payment-method-content.middle-content.fade{"data-stellar-ratio" => "2"}
+            .h1 Choose Your Payment Method & Transfer Funds Into Escrow
+            .table-review
+              .tr
+                .td.col-info.bg-fallback-orange
+                  .inner-cell
+                    .back.bg-green
+                    .front.bg-orange
+                      %table
+                        %tr
+                          %td After clicking the blue Start button, you will be able to transferthe funds for your Investment Amount into an independent 3rdparty escrow account. You can seamlessly transfer funds online from your bank account or transfer funds offline via a wire or check. Depending on the method you choose, instructions on how to transfer your funds will be shown on the screen
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/payment-method-img1.jpg')
+          
+    / END .inner-content
+    
+    .bg-page.bg-pink
+    
+    .container
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li.passed= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li.current= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+          %li.next
+            = link_to '#trigger0', :class => 'next' do
+              %i.fa.fa-angle-double-down
+      / END .nav-pages
+        
+  / END .page-content
+  
+  %section.page-content.last{"data-stellar-offset-parent" => "true"}
+    = link_to '', '', :class => 'trigger', :name => 'a5', :id => 'trigger5'
+
+    .nav-steps.show
+      .container
+        .row
+          .col-sm-4
+            = link_to 'Startups', '/about/how-it-works'
+          .col-sm-4
+            = link_to 'Investors', '/about/how-it-works-investors'
+          .col-sm-4
+            = link_to 'Process', '/about/how-it-works-process', :class => 'active'
+    / END .nav-steps
+          
+    .inner-content
+      .container
+        .clearfix
+          
+          .investment-docs-content.middle-content.fade{"data-stellar-ratio" => "2"}
+            .h1 Electronically Sign Investment Documents
+            .table-review
+              .tr
+                .td.col-info.bg-fallback-pink
+                  .inner-cell
+                    .back.bg-purple
+                    .front.bg-pink
+                      %table
+                        %tr
+                          %td After clicking the blue Start button, you will be able to complete the entire process of electronically signing all of the required Investment Documents.  E-signing is done via our trusted third party provider. Once the investment round closes, you will receive via email a copy of your fully executed Investment Documents.
+                .td.wrapper-img
+                  = image_tag('how-it-works/process/investment-docs-img1.jpg')
+          
+    / END .inner-content
+    
+    .bg-page.bg-green
+    
+    .container      
+      %nav.nav-pages.show
+        %ul.list-unstyled
+          %li.prev
+            = link_to '#trigger0', :class => 'prev' do
+              %i.fa.fa-angle-double-up
+          %li.first.passed= link_to '1', '#trigger0', :class => 'bullet', :rel => 0, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Review Startup'
+          %li.passed= link_to '2', '#trigger1', :class => 'bullet', :rel => 1, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Invest Now'
+          %li.passed= link_to '3', '#trigger2', :class => 'bullet', :rel => 2, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Choose Investment'
+          %li.passed= link_to '4', '#trigger3', :class => 'bullet', :rel => 3, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Verifty Officially'
+          %li.passed= link_to '5', '#trigger4', :class => 'bullet', :rel => 4, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Payment Method'
+          %li.current= link_to '6', '#trigger5', :class => 'bullet', :rel => 5, :data => {:toggle => 'tooltip', :placement => 'right', :container => 'body'}, :title => 'Investment Doc’s'
+      / END .nav-pages
+        
+  / END .page-content
+  
+  .footer
+    .container  
+      = render :partial => 'layouts/copyright'
+
+- content_for :loader do      
+  / Loader Indicator
+  #loader.loader.fade.in
+    %h2.loader-text.fade.in Loaging&hellip;
+    .loader-corner.loading
+    .loader-backdrop.fade.in
+
+- content_for :scripts do
+  :javascript
+    $.stellar({
+      horizontalScrolling: false,
+      verticalScrolling: true,
+      positionProperty: 'position',
+      responsive: true,
+      hideDistantElements: true,
+      hideElement: function($elem) { 
+        $elem.removeClass('in');
+        $elem.hide();
+      },
+      showElement: function($elem) { 
+        $elem.show();
+        setTimeout(function() {
+          $elem.addClass('in');
+        }, 50);
+      }
+    });

@@ -25,4 +25,15 @@ class StaticController < ApplicationController
     session[:user_id] = user.id
     @current_user = user
   end
+  
+  def howItWorks
+  end
+  
+  def howItWorksInvestors
+    
+  end
+  
+  def howItWorksProcess
+    
+  end
 end
