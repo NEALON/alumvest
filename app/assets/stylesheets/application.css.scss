@@ -25,7 +25,7 @@
 
 
 // Import Fonts
-@import url(//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic,700,700italic|Roboto:700,700italic,400,400italic|Open+Sans:400italic,400);
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic,700,700italic|Roboto:700,700italic,400,400italic|Open+Sans:400italic,400,600,600italic);
 
 
 /* ==========================================================================
@@ -76,6 +76,25 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   &.panel-primary {
     .panel-heading .close { color: $white; text-shadow: 0px 1px rgba($black, .3); }
   }  
+  
+  &.panel-campaign { border: 0 none; @include box-shadow(1px 1px 0 0 #e0e0e0); 
+    .panel-heading { background: $blue; color: $white; font: {size: 22px; weight: 400; family: $font-family-open-sans;} padding: 14px 25px; }
+    .panel-body { color: $gray-dark; line-height: 1.4; padding: 25px 25px 9px; text-align: justify; 
+      > ul { list-style: none; margin: 0; padding: 0;
+        > li { margin-bottom: 16px; padding-left: 20px; position: relative;
+          &:after { content: "\f105"; font-family: FontAwesome; left: 0; position: absolute; top: 0; }
+        }
+      }
+      
+      > ol { padding-left: 20px; 
+        > li { margin-bottom: 16px; }
+      }
+    }
+  }
+}
+
+.no-boxshadow .panel {
+  &.panel-campaign { border: 1px solid #e0e0e0; }
 }
 
 .panel-heading, .panel-title { font: {family: $font-family-sans-serif; weight: bold; size: 15px;} 
@@ -117,6 +136,13 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   &.well-green { background: $green; border-color: $green; color: $white; }
   &.well-blue { background: $blue-darken; border-color: $blue-darken; color: $white; }
   &.well-gray { background: #f7f7f7; border-color: #f7f7f7; color: $gray-dark; }
+  &.well-campaign { border: 0 none; @include box-shadow(1px 1px 0 0 #e0e0e0); margin-bottom: 21px; padding: 10px; 
+    &.video-campaign { margin-bottom: 30px; }
+  }
+}
+
+.no-boxshadow .well {
+  &.well-campaign { border: 1px solid #e0e0e0; }
 }
 
 // Tooltip styles
@@ -1247,15 +1273,88 @@ textarea { resize: vertical; }
 }
 
 /**
- * Campaign Masthead
+ * Campaign
  */
-.masthead-campaign { background: #4c4c4f; color: $white; padding: 70px 0 80px; text-shadow: -1px -1px $black; 
+
+
+// Campaign Masthead
+.masthead-campaign { background: image-url("bg-campaign-masthead.jpg") center center no-repeat #4c4c4f; background-size: 100% 100%; color: $white; padding: 70px 0 80px; text-shadow: -1px -1px $black; 
+  a { color: $white; text-decoration: none; 
+    &:hover, &:focus { text-decoration: underline; }
+  }
+  
+  .logotype-campaign {
+    @media (min-width: $screen-sm) { margin-right: 30px; }
+  }
+  
   .title-campaign { font-weight: 300; line-height: 1.0; margin: {top: 0; bottom: 4px;}
-    @media (min-width: $screen-sm) { font-size: 28px; margin-top: -3px; }
+    @media (min-width: $screen-sm) { font-size: 28px; margin-top: -2px; }
   }
   
   .summary-campaign { font-weight: 300; margin-top: 0; 
     @media (min-width: $screen-sm) { font-size: 20px; }
+  }
+  
+  .bottom-info { margin: {top: 52px; bottom: 0;}
+    > li { display: inline; padding-right: 30px; }
+    
+    @media (min-width: $screen-sm) { font-size: 15px; }
+  }
+}
+
+// Campaign Navbar
+$blue-darken-campaign: #3175b4;
+
+.navbar-campaign { background: $blue; color: $white; margin-bottom: 46px;
+  .navbar { border: 0 none; }
+  
+  .navbar-nav { text-transform: uppercase;
+    > li {
+      > a { color: $white; }
+    }
+    
+    &.navbar-left { background: $blue-darken-campaign; 
+      > li {
+        + li { border-left: 1px solid $blue; }
+        
+        > a { padding: 10px 30px 9px; text-shadow: -1px -1px rgba($black, .8); @include transition(all .3s);
+          &:hover, &:focus { background: darken($blue-darken-campaign, 10%); }
+        
+          .top-icon { display: block; font-size: 17px; height: 22px; text-align: center; 
+            .fa-plus { font-size: 10px; position: relative; top: -3px; }
+          }
+        }
+        
+        &.active {
+          + li { border: 0 none; }
+          
+          a { background: darken($white, 5%); color: $blue-darken-campaign; text-shadow: none; }
+        }
+      }
+    }
+    
+    &.navbar-right {
+      > li {
+        > a { font-size: 28px; line-height: 24px; margin: 16px 7px; padding: 0; text-shadow: 0 1px $black; 
+          &:hover, &:focus { background: none transparent; text-shadow: none; }
+        }
+        
+        .navbar-text { font-size: 13px; line-height: 19px; text-shadow: -1px -1px rgba($black, .8); 
+          .fa-share-alt { margin-right: 4px; }
+        }
+      } 
+    }
+  }
+}
+
+// Campaign Content 
+.campaign-content {
+  .campaign-left-info {
+    @media (min-width: $screen-sm) { margin-right: -8px; }
+  }
+  
+  .campaign-right-info { 
+    @media (min-width: $screen-sm) { margin-left: 28px; }
   }
 }
 
@@ -1353,8 +1452,10 @@ textarea { resize: vertical; }
 }
 
 .text-lato { font-family: $font-family-serif !important; }
+.text-open-sans { font-family: $font-family-open-sans !important; }
 
 .text-book { font-weight: 300 !important; }
+.text-normal { font-weight: 400 !important; }
 
 .strong, .bold { font-weight: bold; }
 .stronger, .bolder { font-weight: bolder; }

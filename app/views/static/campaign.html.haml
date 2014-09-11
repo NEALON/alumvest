@@ -6,14 +6,142 @@
       .pull-left.logotype-campaign
         = image_tag('campaign/logotype.jpg', :width => 149)
       .media-body
-        %h2.upper.title-campaign.text-lato.text-book Rocking App
+        %h2.upper.title-campaign.text-lato.text-normal Rocking App
         %h3.summary-campaign.text-lato.text-book Connecting Doctors and Health App
         %h4.school-campaign.text-lato.text-book Universties : New york University, Columbia University, Harvard University
-        %ul.list-unstyled.text-lato.text-book
-          %li Lead Investors : Lynn Chen, Sasha, Alan Hua.
+        %ul.bottom-info.list-unstyled.text-lato.text-book
+          %li 
+            = "Lead Investors : "
+            = link_to 'Lynn Chen', '#'
+            = ","
+            = link_to 'Sasha', '#'
+            = "," 
+            = link_to 'Alan Hua', '#'
+            = "."
           %li Locations : New youk, Columbia, Canada
-/ END .masthead-company
+/ END .masthead-campaign
+
+.navbar-campaign
+  %nav.navbar
+    .container
+      %ul.nav.navbar-nav.text-open-sans.navbar-left.strong 
+        %li.active
+          = link_to '#' do
+            %span.top-icon
+              %i.fa.fa-th
+            %span Company
+        %li
+          = link_to '#' do
+            %span.top-icon
+              %i.fa.fa-users
+            %span Team
+        %li
+          = link_to '#' do
+            %span.top-icon
+              %i.fa.fa-file-text-o
+            %span Investment Terms
+        %li
+          = link_to '#' do
+            %span.top-icon
+              %i.fa.fa-question
+            %span Faq’s
+        %li
+          = link_to '#' do
+            %span.top-icon
+              %i.fa.fa-repeat
+            %span Updates
+        %li
+          = link_to '#' do
+            %span.top-icon
+              %i.fa.fa-user
+              %i.fa.fa-plus
+            %span Join Us
+      %ul.nav.navbar-nav.navbar-right.text-open-sans.strong
+        %li
+          %p.navbar-text
+            %i.fa.fa-share-alt
+            Share it on :
+        %li
+          = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Facebook" do
+            %i.fa.fa-facebook-square
+        %li
+          = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Twitter" do
+            %i.fa.fa-twitter-square
+        %li
+          = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on LinkedIn" do
+            %i.fa.fa-linkedin-square
+                
+/ END .navbar-campaign
 
 .container
-  213123
+  .campaign-content
+    .row
+      .col-sm-8
+        .campaign-left-info
+          .well.well-campaign.video-campaign
+            .flex-video.widescreen
+              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "//www.youtube.com/embed/V60xEKf8DQM", :width => "853"}
+          .panel.panel-campaign
+            .panel-heading Elevator Pitch
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Key Highlights
+            .panel-body
+              %ul
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Nsectetur adipisicing elit, sed sed do eiusmod incididunt
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Nsectetur adipisicing elit, sed sed do eiusmod incididunt
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Nsectetur adipisicing elit, sed sed do eiusmod incididunt
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Nsectetur adipisicing elit, sed sed do eiusmod incididunt 
+          .panel.panel-campaign
+            .panel-heading Product Service Description
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Business Model
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Addressable Market
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Competition
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading User Customer Testimonials
+            .panel-body
+              %ol
+                %li "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  - Mark
+                %li "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -  James Cameron 
+          .panel.panel-campaign
+            .panel-heading Investor Details
+            .panel-body
+              %ol
+                %li "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  - Mark
+                %li "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -  James Cameron 
+          .panel.panel-campaign
+            .panel-heading Press Coverage
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Planned Use of Proceeds
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Risks & Challenges
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          .panel.panel-campaign
+            .panel-heading Addressable Market
+            .panel-body
+              %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          
+      .col-sm-4
+        .campaign-right-info
+          23324
+  / END .campaign-content
 
