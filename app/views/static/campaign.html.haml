@@ -21,57 +21,58 @@
           %li Locations : New youk, Columbia, Canada
 / END .masthead-campaign
 
-.navbar-campaign
-  %nav.navbar
-    .container
-      %ul.nav.navbar-nav.text-open-sans.navbar-left.strong 
-        %li.active
-          = link_to '#' do
-            %span.top-icon
-              %i.fa.fa-th
-            %span Company
-        %li
-          = link_to '#' do
-            %span.top-icon
-              %i.fa.fa-users
-            %span Team
-        %li
-          = link_to '#' do
-            %span.top-icon
-              %i.fa.fa-file-text-o
-            %span Investment Terms
-        %li
-          = link_to '#' do
-            %span.top-icon
-              %i.fa.fa-question
-            %span Faq’s
-        %li
-          = link_to '#' do
-            %span.top-icon
-              %i.fa.fa-repeat
-            %span Updates
-        %li
-          = link_to '#' do
-            %span.top-icon
-              %i.fa.fa-user
-              %i.fa.fa-plus
-            %span Join Us
-      %ul.nav.navbar-nav.navbar-right.text-open-sans.strong
-        %li
-          %p.navbar-text
-            %i.fa.fa-share-alt
-            Share it on :
-        %li
-          = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Facebook" do
-            %i.fa.fa-facebook-square
-        %li
-          = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Twitter" do
-            %i.fa.fa-twitter-square
-        %li
-          = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on LinkedIn" do
-            %i.fa.fa-linkedin-square
-                
-/ END .navbar-campaign
+.wrapper-navbar-campaign
+  .navbar-campaign{:data => {:spy => "affix", 'offset-top' => "360"}}
+    %nav.navbar
+      .container
+        %ul.nav.navbar-nav.text-open-sans.navbar-left.strong 
+          %li.active
+            = link_to '#' do
+              %span.top-icon
+                %i.fa.fa-th
+              %span Company
+          %li
+            = link_to '#' do
+              %span.top-icon
+                %i.fa.fa-users
+              %span Team
+          %li
+            = link_to '#' do
+              %span.top-icon
+                %i.fa.fa-file-text-o
+              %span Investment Terms
+          %li
+            = link_to '#' do
+              %span.top-icon
+                %i.fa.fa-question
+              %span Faq’s
+          %li
+            = link_to '#' do
+              %span.top-icon
+                %i.fa.fa-repeat
+              %span Updates
+          %li
+            = link_to '#' do
+              %span.top-icon
+                %i.fa.fa-user
+                %i.fa.fa-plus
+              %span Join Us
+        %ul.nav.navbar-nav.navbar-right.text-open-sans.strong
+          %li
+            %p.navbar-text
+              %i.fa.fa-share-alt
+              Share it on :
+          %li
+            = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Facebook" do
+              %i.fa.fa-facebook-square
+          %li
+            = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Twitter" do
+              %i.fa.fa-twitter-square
+          %li
+            = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on LinkedIn" do
+              %i.fa.fa-linkedin-square
+                  
+  / END .navbar-campaign
 
 .container
   .campaign-content
@@ -142,6 +143,120 @@
           
       .col-sm-4
         .campaign-right-info
-          23324
+          .well.well-campaign.campaign-summary-info.text-lato
+            -#
+              .well-heading 
+                %h5 23 people invested
+            .well-heading.gray-heading 
+              %h5 No of people invested
+            .well-body.no-pad-top
+              .campaign-raise-summary
+                %ul.list-unstyled.no-marg-bottom
+                  %li
+                    $120000
+                    %strong 
+                      %i.glyphicon.glyphicon-ok-sign
+                      Goal
+                  %li
+                    $5000000
+                    %strong 
+                      %i.glyphicon.glyphicon-flag
+                      from campaign start Left
+                  %li
+                    3 Days
+                    %strong 
+                      %i.glyphicon.glyphicon-time
+                      Time Left
+              .row-text.campaign-investment.clearfix
+                .pull-left
+                  Min
+                  %br
+                  Investment
+                  .price-text $10.00
+                .pull-right
+                  Max
+                  %br
+                  Investment
+                  .price-text $100.00
+              .row-text.gray-row.strong
+                Security Type: Convertible Note 
+              .row-text.strong
+                Commitments: 0
+              .campaign-progress
+                .media
+                  .pull-right
+                    70%
+                  .media-body
+                    .progress
+                      .progress-bar.progress-bar-primary{:role => "progressbar", :aria => {:valuenow => "70", :valuemin => "0", :valuemax => "100"}, :style => "width: 70%;"}
+                        %span.sr-only 70% Complete
+              = link_to 'Invest now', '#', :class => 'btn btn-primary btn-lg upper btn-block'
+          / END .campaign-summary-info
+          
+          .well.well-campaign
+            .well-heading 
+              %h5 Company Info
+            .well-body
+              .campaign-info
+                %ul.list-unstyled
+                  %li.top-info
+                    .media
+                      .pull-left
+                        = image_tag('noavatar.gif', :width => '60')
+                      .media-body
+                        %h6
+                          = link_to 'Kevin Boye', '#'
+                        %p CEO
+                        %p.location Location : Newyork
+                  %li
+                    .media
+                      .pull-left
+                        Website
+                      .media-body
+                        = link_to 'www.medicomates.com', '#', :target => '_blank'
+                  %li
+                    .media
+                      .pull-left
+                        Rewards
+                      .media-body
+                        $1500
+          / END .campaign-info
+          
+          .well.well-campaign
+            .well-heading 
+              %h5 Key Highlights
+            .well-body
+              %ul
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. 
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. 
+                %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. 
+          / END .campaign-key-highlights
+          
+          .well.well-campaign
+            .well-heading 
+              %h5 54 of people followers
+            .well-body
+              .campaign-followers
+                %ul.list-unstyled
+                  %li
+                    = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Kevin Boye" do
+                      = image_tag('noavatar.gif', :width => '40')
+                  %li
+                    = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Kevin Boye" do
+                      = image_tag('noavatar.gif', :width => '40')
+                  %li
+                    = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Kevin Boye" do
+                      = image_tag('noavatar.gif', :width => '40')
+                  %li
+                    = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Kevin Boye" do
+                      = image_tag('noavatar.gif', :width => '40')
+                  %li
+                    = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Kevin Boye" do
+                      = image_tag('noavatar.gif', :width => '40')
+                  %li
+                    = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Kevin Boye" do
+                      = image_tag('noavatar.gif', :width => '40')
+              = link_to 'Follow', '#', :class => 'btn btn-success btn-lg upper btn-block'
+          / END .campaign-followers
   / END .campaign-content
 

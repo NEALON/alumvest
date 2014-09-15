@@ -84,10 +84,20 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
         > li { margin-bottom: 16px; padding-left: 20px; position: relative;
           &:after { content: "\f105"; font-family: FontAwesome; left: 0; position: absolute; top: 0; }
         }
+        
+        &.list-unstyled { padding-left: 0;
+          > li { margin-bottom: 0; padding-left: 0; 
+            &:after { content: ''; display: none; }
+          }
+        }
       }
       
       > ol { padding-left: 20px; 
         > li { margin-bottom: 16px; }
+        
+        &.list-unstyled { padding-left: 0;
+          > li { margin-bottom: 0; }
+        }
       }
     }
   }
@@ -127,7 +137,7 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 
 // Well styles
 .well { border-radius: 0; @include box-shadow(none); padding: 17px 20px;
-  .well-heading {
+  .well-heading { @include clearfix;
     h5, .h5 { font: {size: 15px; family: $font-family-serif; weight: normal;} margin-bottom: 14px; 
       @media (min-width: $screen-sm) { font-size: 17px; }
     }
@@ -138,6 +148,40 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   &.well-gray { background: #f7f7f7; border-color: #f7f7f7; color: $gray-dark; }
   &.well-campaign { border: 0 none; @include box-shadow(1px 1px 0 0 #e0e0e0); margin-bottom: 21px; padding: 10px; 
     &.video-campaign { margin-bottom: 30px; }
+    
+    .well-body { color: $gray-dark; font-size: 13px; line-height: 1.4; padding-top: 23px;
+      > ul { list-style: none; margin: 0; padding: 0;
+        > li { margin-bottom: 8px; padding-left: 20px; position: relative;
+          &:after { content: "\f105"; font-family: FontAwesome; left: 2px; position: absolute; top: 0; }
+        }
+        
+        &.list-unstyled {
+          > li { margin-bottom: 0; padding-left: 0; 
+            &:after { content: ''; display: none; }
+          }
+        }
+      }
+      
+      p { margin-bottom: 8px; }
+      
+      > ol { padding-left: 20px; 
+        > li { margin-bottom: 8px; }
+        
+        &.list-unstyled { padding-left: 0;
+          > li { margin-bottom: 0; }
+        }
+      }
+    }
+    
+    .well-heading { background: $green; color: $white; padding: 12px 0; text: {align: center; shadow: -1px -1px 0 rgba($black, .4);} 
+      h5, .h5 { margin: 0; }
+      
+      &.gray-heading { background: #a2a2a2; }
+    } 
+    
+    @media (min-width: $screen-sm) {
+      .btn-lg { font-size: 24px; }
+    }
   }
 }
 
@@ -257,6 +301,8 @@ dt, dd { line-height: 1.1; }
     .fa { color: #BEBEBE; font-size: 15px; left: 4px; position: relative; text-shadow: 1px 1px $white; top: 1px; }
   }
 }
+
+.btn-success, .btn-primary, .btn-info, .btn-warning, .btn-danger { text-shadow: -1px -1px rgba($black, .4); }
 
 .btn-link {
   &:hover, &:focus { text-decoration: none; }
@@ -1305,7 +1351,9 @@ textarea { resize: vertical; }
 // Campaign Navbar
 $blue-darken-campaign: #3175b4;
 
-.navbar-campaign { background: $blue; color: $white; margin-bottom: 46px;
+.wrapper-navbar-campaign { height: 60px; margin-bottom: 46px; }
+
+.navbar-campaign { background: $blue; color: $white;
   .navbar { border: 0 none; }
   
   .navbar-nav { text-transform: uppercase;
@@ -1345,6 +1393,8 @@ $blue-darken-campaign: #3175b4;
       } 
     }
   }
+  
+  &.affix { position: fixed; top: 0; width: 100%; z-index: $zindex-navbar-fixed; }
 }
 
 // Campaign Content 
@@ -1355,6 +1405,65 @@ $blue-darken-campaign: #3175b4;
   
   .campaign-right-info { 
     @media (min-width: $screen-sm) { margin-left: 28px; }
+  }
+}
+
+// Campaign Summary Info
+.campaign-summary-info.well {
+  .well-body { color: #b5b5b5; font-size: $font-size-base; }
+  
+  strong, b, .strong { font-weight: 700; }
+  
+  .campaign-raise-summary { color: #619bd0; font: {size: 32px; weight: 400;} margin-top: 3px; 
+    > ul > li { background: #f9f9f9; padding: 15px 34px 17px;
+      + li { margin-top: 2px; }
+      
+      > strong { color: #b5b5b5; display: block; font-size: 14px; line-height: 26px; margin-top: 4px;
+        .glyphicon { font-size: 18px; float: left; line-height: 18px; margin-top: 3px; width: 24px; }
+      }
+    }
+  }
+  
+  .row-text { padding: 13px 17px; 
+    &.gray-row { background: #f9f9f9; }
+  }
+  
+  .campaign-investment { font-weight: 700; line-height: 1.2; 
+    .price-text { color: #619bd0; font: {weight: 400; size: 17px;} margin-top: 9px; }
+  }
+  
+  .campaign-progress { margin: 18px 2px;
+    > .media > .pull-right { font: {size: 16px; weight: 700;} line-height: 20px; text-align: right; width: 75px; }
+    
+    .progress { background: #595959; @include box-shadow(#{none}); border-radius: 20px; color: $white; height: 12px; margin: 5px 0 0; 
+      .progress-bar { font-size: 10px; line-height: 12px; }
+    }
+  }
+}
+
+// Campaign Info
+.campaign-info { font: {size: 12px; weight: 700;} 
+  h6, .h6 { font: {size: 14px; weight: 700;} margin: 0; }
+  .location { margin-top: 12px; }
+  
+  > ul { margin-bottom: 0;
+    > li { padding: 14px 3px;
+      .media > .pull-left { width: 65px; }
+      
+      + li { border-top: 1px solid #e2e2e2; }
+      
+      &.top-info { padding: 0 0 10px; 
+        .media > .pull-left { width: 68px; }
+      }
+    }
+  }
+}
+
+.campaign-followers { text-align: center; margin-bottom: 18px;
+  > ul { display: inline-block; margin: 0; @include clearfix;
+    > li { float: left; margin-bottom: 4px; 
+      + li { margin-left: 4px; }
+    }
   }
 }
 
@@ -1471,3 +1580,21 @@ $blue-darken-campaign: #3175b4;
 .display-inline { display: inline-block !important; }
 
 
+// NEED TO DELETE IN FUTURE
+
+// import mixins, variables and functions
+@import "core/color";
+@import "core/font";
+
+@import "layout/header";
+@import "layout/modal";
+@import "layout/footer";
+
+@import "home/main";
+@import "users/main";
+@import "company/main";
+@import "dashboard/main";
+
+@import "content/team";
+@import "content/privacy";
+@import "content/how-it-works";
