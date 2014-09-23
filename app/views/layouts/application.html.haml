@@ -65,6 +65,9 @@
         
       / END .wrapper-content
       
+      - if content_for? :inside_container_section
+        = yield :inside_container_section
+      
       - unless content_for? :without_footer
         = render :partial => 'shared/what_next'        
         = render :partial => 'shared/featured'

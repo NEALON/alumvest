@@ -192,6 +192,11 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 // Tooltip styles
 .tooltip { font-size: 11px; }
 
+// Wrapper White Box 
+.wrapper-white-box { background: $white; @include box-shadow(0 0 20px 0 rgba($black, .1)); margin: 130px 0 0; padding: 58px 0 16px; }
+
+.no-boxshadow .wrapper-white-box { border: 1px solid #e0e0e0; border-width: 1px 0; }
+
 
 /* ==========================================================================
    Typography
@@ -227,9 +232,10 @@ h6, .h6 {
   }
   
   @media (min-width: $screen-sm) {
-    > span { padding: {left: 76px; right: 76px;} }
-    &:after { margin-right: -38px; }
-    &:before { margin-left: -38px; }
+    > span { padding: {left: 76px; right: 76px;} 
+      &:after { margin-right: -38px; }
+      &:before { margin-left: -38px; }
+    }
   }
   
   &.separator-sm {
@@ -245,6 +251,20 @@ h6, .h6 {
     > span {
       &:after, &:before { background: $btn-info-bg; }
     }
+  }
+  
+  &.separator-gray {
+    > span {
+      &:after, &:before { background: #c3c5c9; }
+    }
+    
+    &:after, &:before { color: #c3c5c9; }
+  }
+  
+  &.separator-arrows {
+    &:after, &:before { font: {family: FontAwesome; size: 15px;} height: 9px; line-height: 9px; margin-top: -4px; position: absolute; top: 50%; z-index: 2; }
+    &:after { content: '\f0d9'; left: 0; }
+    &:before { content: '\f0da'; right: 0; }
   }
 }
 
@@ -1318,10 +1338,10 @@ textarea { resize: vertical; }
   }
 }
 
+
 /**
  * Campaign
  */
-
 
 // Campaign Masthead
 .masthead-campaign { background: image-url("bg-campaign-masthead.jpg") center center no-repeat #4c4c4f; background-size: 100% 100%; color: $white; padding: 70px 0 80px; text-shadow: -1px -1px $black; 
@@ -1459,12 +1479,69 @@ $blue-darken-campaign: #3175b4;
   }
 }
 
+// Campaign Followers
 .campaign-followers { text-align: center; margin-bottom: 18px;
   > ul { display: inline-block; margin: 0; @include clearfix;
     > li { float: left; margin-bottom: 4px; 
       + li { margin-left: 4px; }
     }
   }
+}
+
+// Campaign Team
+.campaign-team {
+  .team-list { margin-top: 39px;
+    $gutter-campaign: 48px;
+    
+    @media (min-width: $screen-lg-min) {
+      > .row { @include make-row($gutter-campaign); 
+        [class^="col-lg"], [class*=" col-lg"] { padding: {left:  ($gutter-campaign / 2); right: ($gutter-campaign / 2);} }
+      }
+    }
+    
+    .team-item { background: #f6f6f6; border-radius: 3px 3px 0 0; color: #878c93; @include clearfix; margin: {top: 86px; bottom: 45px;} text-align: center; 
+      .team-body { padding: 0 35px 14px; }
+      
+      .pentagon-image { margin-top: -86px; }
+      
+      .name-person { margin: {top: 25px; bottom: 5px;} }
+      
+      .desc-person { font-size: 13px; margin-top: 21px; }
+      
+      .name-person, .title-person { 
+        a { color: #878c93; 
+          &:hover, &:focus { color: $link-color; }
+        }
+      }
+      
+      .soc-list { font-size: 28px; line-height: 1.0; margin-top: 31px;
+        .list-inline > li { padding: {left: 3px; right: 3px;} }
+        
+        a { color: lighten($black, 30%); text-shadow: 0 1px 0 $white; }
+        
+        .soc-twitter a {
+          &:hover, &:focus { color: $twitter-blue; }
+        }
+        .soc-facebook a {
+          &:hover, &:focus { color: $facebook-blue; }
+        }
+        .soc-linkedin a { 
+          &:hover, &:focus { color: $linkedin-blue; } 
+        }
+      }
+      
+      .team-footer { border-top: 2px solid $white; 
+        .btn { border-radius: 0; font-size: 16px; padding: 15px 0; text-shadow: none; 
+          .fa { margin-right: 7px; }
+        }
+      }
+    }
+  }
+}
+
+// Pentagon Image
+.pentagon-image { height: 148px; margin: 0 auto 20px; position: relative; width: 148px; z-index: 1;
+  .mask { background: {image: image-url("pentagon-mask.png"); position: center center; repeat: no-repeat;} background-size: cover; display: block; height: 148px; left: 0; position: absolute; top: 0; width: 148px; z-index: 3; }
 }
 
 
@@ -1561,6 +1638,7 @@ $blue-darken-campaign: #3175b4;
 }
 
 .text-lato { font-family: $font-family-serif !important; }
+.text-roboto { font-family: $font-family-sans-serif !important; }
 .text-open-sans { font-family: $font-family-open-sans !important; }
 
 .text-book { font-weight: 300 !important; }

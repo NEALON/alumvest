@@ -1,4 +1,4 @@
-- content_for :wrapper_classes, 'no-pad-top'
+- content_for :wrapper_classes, 'no-pad-top no-pad-bottom'
 
 .masthead-campaign
   .container
@@ -259,4 +259,217 @@
               = link_to 'Follow', '#', :class => 'btn btn-success btn-lg upper btn-block'
           / END .campaign-followers
   / END .campaign-content
+
+- content_for :inside_container_section do
+  .campaign-team.wrapper-white-box
+    .container
+      %h2.separator-line.separator-gray.separator-arrows
+        %span Our Team  
+      
+      .team-list
+        .row
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img1-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Lynn Chen', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+          
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img2-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Rebecca Thomson', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+          
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img3-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Ryan', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+              
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img4-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Linpin', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+          
+          / After Each 4 items
+          .clearfix.visible-lg-block
+          
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img2-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Rebecca Thomson', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+          
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img3-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Ryan', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+              
+          .col-lg-3
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    = image_tag('team/img4-148x148.jpg', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to 'Linpin', '#'
+                %p.title-person CEO
+                %p.desc-person Lorem Ipsum has been the industry's standard dummy text ever 
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to '#', :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+  / END .campaign-team
+  
+  .campaign-faq
+    .container
+      %h2.text-roboto.bold FAQ's       
+
 
