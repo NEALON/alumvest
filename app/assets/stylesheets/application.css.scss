@@ -135,6 +135,44 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   .table-responsive { border: 0 none; margin: {right: -1px; bottom: 0;} }
 }
 
+// Accordion List
+.accordion-list {
+  .panel-heading, .panel-title { background: none transparent; font: {size: 15px; family: $font-family-base; weight: 400;} padding: 0; }
+  
+  .panel-group .panel-heading + .panel-collapse .panel-body { border: 0 none; }
+  
+  .panel-group {
+    .panel { background: none transparent;
+      .panel-title {
+        > a { color: $text-color; display: block; line-height: 24px; padding: 23px 3px;
+          &:hover, &:focus { color: $link-color; }
+          
+          .fa { float: right; line-height: 24px; margin-left: 20px; text-align: right;
+            &.fa-minus { display: none; }
+          }
+        }
+      }
+      
+      .panel-body { border: 0 none; font-size: 14px; line-height: 1.85; padding: 0 0 20px;
+        > .inner { background: $white; border-radius: 4px; color: #767676; padding: 12px 20px; }
+      }
+      
+      &.active {
+        .panel-title > a { color: $link-color; font-weight: 700; 
+          &:hover, &:focus { color: darken($link-color, 10%); }
+          
+          .fa {
+            &.fa-plus { display: none; }
+            &.fa-minus { display: inline; }
+          }
+        }
+      }
+      
+      + .panel { border-top: 1px solid #e9e9e9; margin: 0; }
+    }
+  }
+}
+
 // Well styles
 .well { border-radius: 0; @include box-shadow(none); padding: 17px 20px;
   .well-heading { @include clearfix;
@@ -232,7 +270,7 @@ h6, .h6 {
   }
   
   @media (min-width: $screen-sm) {
-    > span { padding: {left: 76px; right: 76px;} 
+    > span { min-width: 335px; padding: {left: 76px; right: 76px;} 
       &:after { margin-right: -38px; }
       &:before { margin-left: -38px; }
     }
@@ -577,8 +615,11 @@ textarea { resize: vertical; }
 .datepicker.dropdown-menu { padding: 4px; }
 
 // Input Large
-@include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large - 4px, $line-height-large, $border-radius-large); 
+@include input-size('.input-lg', $input-height-large + 4px, $padding-large-vertical, $padding-large-horizontal, $font-size-large - 4px, 1.1, $border-radius-large); 
 
+.modal {
+  @include input-size('.input-lg', $input-height-large, $padding-large-vertical, $padding-large-horizontal, $font-size-large - 4px, 1.2, $border-radius-large); 
+}
 
 /* ==========================================================================
    Table Styles
@@ -1361,10 +1402,13 @@ textarea { resize: vertical; }
     @media (min-width: $screen-sm) { font-size: 20px; }
   }
   
-  .bottom-info { margin: {top: 52px; bottom: 0;}
-    > li { display: inline; padding-right: 30px; }
+  .bottom-info { margin: {top: 20px; bottom: 0;}
+    > li { display: block; margin-top: 10px; padding-right: 30px; }
     
     @media (min-width: $screen-sm) { font-size: 15px; }
+    @media (min-width: $screen-md) { margin-top: 52px; 
+      > li { display: inline; margin-top: 0; padding-right: 30px; }
+    }
   }
 }
 
@@ -1373,7 +1417,7 @@ $blue-darken-campaign: #3175b4;
 
 .wrapper-navbar-campaign { height: 60px; margin-bottom: 46px; }
 
-.navbar-campaign { background: $blue; color: $white;
+.navbar-campaign { background: $blue; color: $white; font-size: 11px;
   .navbar { border: 0 none; }
   
   .navbar-nav { text-transform: uppercase;
@@ -1385,12 +1429,14 @@ $blue-darken-campaign: #3175b4;
       > li {
         + li { border-left: 1px solid $blue; }
         
-        > a { padding: 10px 30px 9px; text-shadow: -1px -1px rgba($black, .8); @include transition(all .3s);
+        > a { min-width: 80px; padding: 10px 10px 9px; text: {align: center; shadow: -1px -1px rgba($black, .8);} @include transition(all .3s);
           &:hover, &:focus { background: darken($blue-darken-campaign, 10%); }
         
           .top-icon { display: block; font-size: 17px; height: 22px; text-align: center; 
             .fa-plus { font-size: 10px; position: relative; top: -3px; }
           }
+          
+          @media (min-width: $screen-md) { min-width: 0; padding: {left: 30px; right: 30px;} }
         }
         
         &.active {
@@ -1407,24 +1453,34 @@ $blue-darken-campaign: #3175b4;
           &:hover, &:focus { background: none transparent; text-shadow: none; }
         }
         
-        .navbar-text { font-size: 13px; line-height: 19px; text-shadow: -1px -1px rgba($black, .8); 
+        .navbar-text { font-size: 11px; line-height: 19px; text-shadow: -1px -1px rgba($black, .8); 
           .fa-share-alt { margin-right: 4px; }
+          
+          @media (min-width: $screen-lg) { font-size: 13px; }
         }
       } 
+      
+      &:last-child {
+        @media (min-width: $screen-sm) { margin-right: -7px; }
+      }
     }
   }
   
   &.affix { position: fixed; top: 0; width: 100%; z-index: $zindex-navbar-fixed; }
+  
+  @media (min-width: $screen-lg) { font-size: 14px; }
 }
 
 // Campaign Content 
 .campaign-content {
   .campaign-left-info {
-    @media (min-width: $screen-sm) { margin-right: -8px; }
+    @media (min-width: $screen-sm) { margin-right: 50px; }
+    @media (min-width: $screen-md) { margin-right: -8px; }
   }
   
   .campaign-right-info { 
-    @media (min-width: $screen-sm) { margin-left: 28px; }
+    @media (min-width: $screen-sm) { margin-left: -50px; }
+    @media (min-width: $screen-md) { margin-left: 28px; }
   }
 }
 
@@ -1481,10 +1537,8 @@ $blue-darken-campaign: #3175b4;
 
 // Campaign Followers
 .campaign-followers { text-align: center; margin-bottom: 18px;
-  > ul { display: inline-block; margin: 0; @include clearfix;
-    > li { float: left; margin-bottom: 4px; 
-      + li { margin-left: 4px; }
-    }
+  > ul { display: inline-block; height: 42px; overflow: hidden; margin: 0; @include clearfix;
+    > li { display: inline-block; margin: 0 2px 4px; }
   }
 }
 
@@ -1542,6 +1596,61 @@ $blue-darken-campaign: #3175b4;
 // Pentagon Image
 .pentagon-image { height: 148px; margin: 0 auto 20px; position: relative; width: 148px; z-index: 1;
   .mask { background: {image: image-url("pentagon-mask.png"); position: center center; repeat: no-repeat;} background-size: cover; display: block; height: 148px; left: 0; position: absolute; top: 0; width: 148px; z-index: 3; }
+}
+
+// Campaign FAQ
+.campaign-faq { padding: {top: 94px; bottom: 65px;}
+  h2 { color: #272727; margin: 0 0 7px; }
+}
+
+// Campaign Ask
+.campaign-ask { background: $white; border: 1px solid #d9d9d9; border-width: 1px 0; padding: {top: 64px; bottom: 49px;}
+  h2 { color: #272727; margin: 0 0 7px; }
+  
+  .form-group { background: $white; border: 1px solid #dadada; border-radius: 5px; @include box-shadow(0 4px 5px -2px rgba($black, .1)); margin-top: 29px; padding: 6px;
+    .form-control { border-color: transparent; }
+    
+    .input-group-btn { padding-left: 5px; 
+      .btn { border-radius: $border-radius-large; }
+    }
+  }
+}
+
+// Campaign Press Release
+.campaign-press-release { background: #aeb0b5; color: $white; 
+  .separator-line.separator-gray > span:after, .separator-line.separator-gray > span:before { background: $white; }
+  .separator-line.separator-gray:after, .separator-line.separator-gray:before { color: $white; }
+  
+  h2 { text-shadow: -1px -1px rgba($black, .3); }
+}
+
+.campaign-updates, .campaign-press-release { padding-top: 69px;  
+  .lead {
+    @media (min-width: $screen-lg-min) { font-size: 19px; }
+  }
+}
+
+// List Posts 
+.list-posts { margin: {top: 49px; bottom: 43px;} min-height: 120px; overflow: hidden;
+  .post-item { border-bottom: 1px solid #8a8e94; @include box-shadow(0 1px 0 0 $white); font-size: 13px; margin-bottom: 77px; padding-bottom: 27px;
+    h2 { margin: {bottom: 10px; top: 0;} } 
+    .text-desc { margin-top: 23px; }
+  }
+  
+  $gutter-posts: 105px;
+  $gutter-posts-sm: 60px;
+    
+  @media (min-width: $screen-lg-min) {
+    > .row { @include make-row($gutter-posts); 
+      [class^="col-lg"], [class*=" col-lg"] { padding: {left:  ($gutter-posts / 2); right: ($gutter-posts / 2);} }
+    }
+  }
+  
+  @media (min-width: $screen-sm) {
+    > .row { @include make-row($gutter-posts-sm); 
+      [class^="col-sm"], [class*=" col-sm"] { padding: {left:  ($gutter-posts-sm / 2); right: ($gutter-posts-sm / 2);} }
+    }
+  }
 }
 
 

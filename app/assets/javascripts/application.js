@@ -59,4 +59,19 @@ $(document).ready(function() {
     prefetch: "/data/schools-list.json"
   });
   
+  // Init Toggle Class for Accordion Items
+  $(document).on('click', '[data-toggle="collapse"]', function() {
+    var _this = $(this),
+        dataParent = _this.data('parent'),
+        itemParent = _this.parents('.panel');
+    
+    if(itemParent.hasClass('active')) {
+      itemParent.toggleClass('active');
+    }
+    else {
+      $(dataParent).find('.panel.active').removeClass('active');
+      itemParent.addClass('active');
+    }
+  });
+  
 });

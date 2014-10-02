@@ -27,32 +27,32 @@
       .container
         %ul.nav.navbar-nav.text-open-sans.navbar-left.strong 
           %li.active
-            = link_to '#' do
+            = link_to '#company-anchor' do
               %span.top-icon
                 %i.fa.fa-th
               %span Company
           %li
-            = link_to '#' do
+            = link_to '#team-anchor' do
               %span.top-icon
                 %i.fa.fa-users
               %span Team
           %li
-            = link_to '#' do
+            = link_to '#terms-anchor' do
               %span.top-icon
                 %i.fa.fa-file-text-o
               %span Investment Terms
           %li
-            = link_to '#' do
+            = link_to '#faqs-anchor' do
               %span.top-icon
                 %i.fa.fa-question
               %span Faq’s
           %li
-            = link_to '#' do
+            = link_to '#updates-anchor' do
               %span.top-icon
                 %i.fa.fa-repeat
               %span Updates
           %li
-            = link_to '#' do
+            = link_to '#join-anchor' do
               %span.top-icon
                 %i.fa.fa-user
                 %i.fa.fa-plus
@@ -61,7 +61,7 @@
           %li
             %p.navbar-text
               %i.fa.fa-share-alt
-              Share it on :
+              Share<span class="visible-md-inline visible-lg-inline"> it on</span> :
           %li
             = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Facebook" do
               %i.fa.fa-facebook-square
@@ -75,7 +75,7 @@
   / END .navbar-campaign
 
 .container
-  .campaign-content
+  .campaign-content#company-anchor
     .row
       .col-sm-8
         .campaign-left-info
@@ -261,14 +261,14 @@
   / END .campaign-content
 
 - content_for :inside_container_section do
-  .campaign-team.wrapper-white-box
+  .campaign-team.wrapper-white-box#team-anchor
     .container
       %h2.separator-line.separator-gray.separator-arrows
         %span Our Team  
       
       .team-list
         .row
-          .col-lg-3
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -296,7 +296,7 @@
                   %i.fa.fa-play
                   Video of the founder!
           
-          .col-lg-3
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -324,7 +324,10 @@
                   %i.fa.fa-play
                   Video of the founder!
           
-          .col-lg-3
+          / After Each 2 items (middle screen)
+          .clearfix.visible-sm-block
+          
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -351,8 +354,11 @@
                 = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
                   %i.fa.fa-play
                   Video of the founder!
+                  
+          / After Each 3 items (middle screen)
+          .clearfix.visible-md-block
               
-          .col-lg-3
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -380,10 +386,14 @@
                   %i.fa.fa-play
                   Video of the founder!
           
+          
+          / After Each 2 items (middle screen)
+          .clearfix.visible-sm-block
+          
           / After Each 4 items
           .clearfix.visible-lg-block
           
-          .col-lg-3
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -411,7 +421,7 @@
                   %i.fa.fa-play
                   Video of the founder!
           
-          .col-lg-3
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -438,8 +448,14 @@
                 = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
                   %i.fa.fa-play
                   Video of the founder!
-              
-          .col-lg-3
+          
+          / After Each 2 items (middle screen)
+          .clearfix.visible-sm-block
+          
+          / After Each 3 items (middle screen)
+          .clearfix.visible-md-block
+          
+          .col-sm-6.col-md-4.col-lg-3.clearfix
             .team-item
               .team-heading
                 .pentagon-image
@@ -468,8 +484,139 @@
                   Video of the founder!
   / END .campaign-team
   
-  .campaign-faq
+  .campaign-faq#faqs-anchor
     .container
-      %h2.text-roboto.bold FAQ's       
+      .row
+        .col-lg-11.col-centered
+          %h2.text-roboto.bold FAQ's       
+          
+          .accordion-list
+            .panel-group#faq-list
+              .panel.active
+                .panel-heading
+                  .panel-title 
+                    = link_to '#faq-0', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                      %i.fa.fa-plus.fa-fw
+                      %i.fa.fa-minus.fa-fw
+                      Why did you pick this idea to work on?
+                .panel-collapse.collapse.in#faq-0
+                  .panel-body
+                    .inner
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              .panel
+                .panel-heading
+                  .panel-title 
+                    = link_to '#faq-1', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                      %i.fa.fa-plus.fa-fw
+                      %i.fa.fa-minus.fa-fw
+                      Do you have domain expertise in this area?
+                .panel-collapse.collapse#faq-1
+                  .panel-body
+                    .inner
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              .panel
+                .panel-heading
+                  .panel-title 
+                    = link_to '#faq-2', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                      %i.fa.fa-plus.fa-fw
+                      %i.fa.fa-minus.fa-fw
+                      What's different about Zenefits?
+                .panel-collapse.collapse#faq-2
+                  .panel-body
+                    .inner
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              .panel
+                .panel-heading
+                  .panel-title 
+                    = link_to '#faq-3', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                      %i.fa.fa-plus.fa-fw
+                      %i.fa.fa-minus.fa-fw
+                      Who are your competitors?
+                .panel-collapse.collapse#faq-3
+                  .panel-body
+                    .inner
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  / END .campaign-faq    
+  
+  .campaign-ask
+    .container
+      .row
+        .col-lg-11.col-centered
+          %h2.text-roboto.bold Ask a Question
+          
+          = simple_form_for :fake_ask_question_form, :url => '', :html => {:class => 'form-vertical ask-question-fr'}, :wrapper => :vertical_form, :validate => true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification
+            
+            = f.input :question, :wrapper => :vertical_input_group, :label => false do
+              = f.input_field :question, :class => "form-control input-lg", :placeholder => 'Type your question here!'
+              .input-group-btn
+                %button{:class => "btn btn-primary btn-lg", :type => "button"} Submit
+  / END .campaign-ask
+  
+  .campaign-updates#updates-anchor              
+    .container
+      %h2.separator-line.separator-gray.separator-arrows
+        %span Updates  
+      
+      .list-posts
+        %p.lead.text-center.text-open-sans There are no updates for this campaign.  
+        
+      %h2.separator-line.separator-gray.separator-arrows
+        %span Jobs
+      
+      .list-posts  
+        %p.lead.text-center.text-open-sans There are no jobs for this campaign. 
+  / END .campaign-updates
+  
+  .campaign-press-release
+    .container
+      %h2.separator-line.separator-gray.separator-arrows
+        %span Press Release
+        
+      .list-posts
+        .row
+          .col-sm-6.col-lg-6
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."  
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          
+          .col-sm-6.col-lg-6
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."   
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      / END .list-posts
+  / END .campaign-press-release
 
-
+- content_for :scripts do
+  :javascript
+    $('body').scrollspy({ target: '.navbar-campaign' });
