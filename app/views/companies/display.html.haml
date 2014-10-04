@@ -1,29 +1,105 @@
-.container
-  = render 'campaigns/heading'
-  = render 'campaigns/navigation', :active => :company
-#company-tab.row-bg1
-  .container
-    = render 'company'
-- if @campaign.team
-  #team-tab
+- content_for :wrapper_classes, 'no-pad-top no-pad-bottom'
+
+= render 'company'
+
+- content_for :inside_container_section do
+  - if @campaign.team
+    = render 'teams/team'
+  
+  = render 'faq'
+  
+  .campaign-ask
     .container
-      = render 'teams/team'
-- if @investment_term
-  #investment-term-tab
+      .row
+        .col-lg-11.col-centered
+          %h2.text-roboto.bold Ask a Question
+          
+          = simple_form_for :fake_ask_question_form, :url => '', :html => {:class => 'form-vertical ask-question-fr'}, :wrapper => :vertical_form, :validate => true do |f|
+            = render 'shared/error_notification', :errors => f.error_notification
+            
+            = f.input :question, :wrapper => :vertical_input_group, :label => false do
+              = f.input_field :question, :class => "form-control input-lg", :placeholder => 'Type your question here!'
+              .input-group-btn
+                %button{:class => "btn btn-primary btn-lg", :type => "button"} Submit
+  / END .campaign-ask
+  
+  .campaign-updates#updates-anchor              
     .container
-      = render 'investment_terms/investment_terms'
-#faq-tab
-  .container
-    = render 'faq'
-#update-tab
-  .container
-    = render 'display_updates/update'
-#join-us-tab
-  .container
-    = render 'display_jobs/job'
-#discussion-tab
-  .container
-    %hr.campaign-separator
-    .row
-      .col-md-12
-        = render 'disqus' if Rails.env.production?
+      = render 'display_updates/update'
+      = render 'display_jobs/job'
+      
+  / END .campaign-updates
+  
+  .campaign-press-release#join-anchor
+    .container
+      %h2.separator-line.separator-gray.separator-arrows
+        %span Press Release
+        
+      .list-posts
+        .row
+          .col-sm-6.col-lg-6
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."  
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          
+          .col-sm-6.col-lg-6
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."   
+            .post-item
+              %h2
+                %strong Medicare 
+                Startup on 
+                %br
+                Tech Chrunch
+              %p.text-date Octorber 10th 2013
+              .text-desc
+                %p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      / END .list-posts
+  / END .campaign-press-release
+
+- content_for :scripts do
+  :javascript
+    $('body').scrollspy({ target: '.navbar-campaign' });
+
+-#
+  - if @investment_term
+    #investment-term-tab
+      .container
+        = render 'investment_terms/investment_terms'
+  #faq-tab
+    .container
+      = render 'faq'
+  #update-tab
+    .container
+      = render 'display_updates/update'
+  #join-us-tab
+    .container
+      = render 'display_jobs/job'
+  #discussion-tab
+    .container
+      %hr.campaign-separator
+      .row
+        .col-md-12
+          = render 'disqus' if Rails.env.production?

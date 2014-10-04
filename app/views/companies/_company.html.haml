@@ -1,41 +1,50 @@
--#= javascript_include_tag 'http://cdn.embed.ly/jquery.embedly-3.0.5.min.js'
-
-.row
-  - if current_user && current_user.is_admin?
-    .col-md-12
+.masthead-campaign
+  .container
+    - if current_user && current_user.is_admin?
       = render :partial => 'admin_campaign', :locals => {:just_data => false}
+    
+    - if @is_preview
+      .alert.alert-warning.alert-dismissible.marg-bottom-lg
+        %button.close{"data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        This is a preview of the campaign.
+        
+    = render 'heading' 
+          
+/ END .masthead-campaign
 
-  - if @is_preview
-    #preview-alert.alert.alert-info.alert-dismissable
-      %button{:type => 'button', :class => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'}
-        &times;
-      This is a preview of the campaign
-  = hidden_field_tag :invest_url, new_campaign_investment_path(@company.campaign),
-    :id =>'invest-url'
-  -# main (left)
-  .col-md-8
-    = render 'heading'
-    - if @company.video_url.present?
-      = render 'shared/youtube', :video_url => @company.video_url, :width => 630, :height => 404
-    - if @company.slideshare_url.present?
-      = render 'shared/slideshare', :width => 597, :height => 486
-    - if @company.home_photo_url.present?
-      .company-video.company-block
-        - unless @company.home_photo_url.blank? # or Rails.env.test?
-          %div
-            %iframe{:src => "#{@company.slideshare_embed_url}", :width => "597", :height => "486"}
+= render 'campaigns/navigation', :active => :company
 
-    = render 'company_details'
-    = render 'company_highlights'
+.container
+  .campaign-content#company-anchor
+    .row
+      .col-sm-8
+        .campaign-left-info
+          - if @company.video_url.present?
+            .well.well-campaign.video-campaign
+              .flex-video.widescreen
+                = render 'shared/youtube', :video_url => @company.video_url, :width => 853, :height => 480
+          - if @company.slideshare_url.present?
+            .well.well-campaign.video-campaign
+              .flex-video.widescreen
+                = render 'shared/slideshare', :width => 853, :height => 480
+          - if @company.home_photo_url.present?
+            - unless @company.home_photo_url.blank? # or Rails.env.test?
+              .well.well-campaign.video-campaign
+                .flex-video.widescreen
+                  %iframe{:src => "#{@company.slideshare_embed_url}", :allowfullscreen => "", :frameborder => "0", :height => "480", :width => "853"}
+          
+          = render 'company_details'
+          = render 'company_highlights'
+          
+          .panel.panel-campaign
+            .panel-heading Team Highlights
+            .panel-body
+              %p= raw @campaign.team.team_highlights
+          
+      .col-sm-4
+        = render :partial => 'raise_summary', :locals => {:just_data => false}     
+   
+  / END .campaign-content
 
-  -# right sidebar
-  .col-md-4
-    = render :partial => 'raise_summary', :locals => {:just_data => false}
-
-  -#:javascript
-    $('document').ready(function(){
-      $('div#embed').embedly({
-        query: { maxwidth: 254, maxheight: 139, wmode: 'transparent' },
-        key: '6df201d3d6b8438983bfa7de1d9c8854'
-      })
-    });

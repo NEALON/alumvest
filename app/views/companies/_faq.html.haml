@@ -1,3 +1,58 @@
-%hr.campaign-separator
-%h3.text-center.compaign-section-header FAQ
-%p= raw @company.faq
+.campaign-faq#faqs-anchor
+  .container
+    .row
+      .col-lg-11.col-centered
+        %h2.text-roboto.bold FAQ's       
+        
+        .accordion-list
+          .panel-group#faq-list
+            .panel.active
+              .panel-heading
+                .panel-title 
+                  = link_to '#faq-0', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                    %i.fa.fa-plus.fa-fw
+                    %i.fa.fa-minus.fa-fw
+                    Why did you pick this idea to work on?
+              .panel-collapse.collapse.in#faq-0
+                .panel-body
+                  .inner
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            .panel
+              .panel-heading
+                .panel-title 
+                  = link_to '#faq-1', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                    %i.fa.fa-plus.fa-fw
+                    %i.fa.fa-minus.fa-fw
+                    Do you have domain expertise in this area?
+              .panel-collapse.collapse#faq-1
+                .panel-body
+                  .inner
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            .panel
+              .panel-heading
+                .panel-title 
+                  = link_to '#faq-2', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                    %i.fa.fa-plus.fa-fw
+                    %i.fa.fa-minus.fa-fw
+                    What's different about Zenefits?
+              .panel-collapse.collapse#faq-2
+                .panel-body
+                  .inner
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            .panel
+              .panel-heading
+                .panel-title 
+                  = link_to '#faq-3', :data => {:parent => '#faq-list', :toggle => 'collapse'} do
+                    %i.fa.fa-plus.fa-fw
+                    %i.fa.fa-minus.fa-fw
+                    Who are your competitors?
+              .panel-collapse.collapse#faq-3
+                .panel-body
+                  .inner
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+/ END .campaign-faq    
+
+-#
+  %hr.campaign-separator
+  %h3.text-center.compaign-section-header FAQ
+  %p= raw @company.faq

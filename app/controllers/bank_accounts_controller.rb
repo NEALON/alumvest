@@ -54,7 +54,7 @@ class BankAccountsController < ApplicationController
       unless bancbox_entity.has_bancbox_account?
         create_bancbox_account
       else
-        redirect_to edit_user_bank_account_path(@user), :flash => {:sucess => 'Your bank account information was saved.'}
+        redirect_to edit_user_bank_account_path(@user), :flash => {:success => 'Your bank account information was saved.'}
       end
     else
       render :action => :edit
@@ -70,7 +70,7 @@ class BankAccountsController < ApplicationController
       result = TalksToBancbox.submit_issuer!(@user, @bank_account)
     end
     unless result.class == BancBoxCrowd::Error
-      redirect_to edit_user_bank_account_path(@user), :flash => {:sucess => 'Your bank account information was saved.'}
+      redirect_to edit_user_bank_account_path(@user), :flash => {:success => 'Your bank account information was saved.'}
     else
       redirect_to edit_user_bank_account_path(@user), :flash => {:warning => "Bancbox error: #{eval(result.message)['message']}"}
     end

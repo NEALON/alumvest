@@ -9,7 +9,7 @@ module Alumvest::UserPresenters
     end
 
     def avatar_small
-      avatar_url.blank? ? '/images/user_24.png' : avatar(:w => 24, :h => 24)
+      avatar_url.blank? ? 'noavatar.gif' : avatar(:w => 40, :h => 40)
     end
 
     def address

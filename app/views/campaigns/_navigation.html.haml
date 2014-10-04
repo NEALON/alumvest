@@ -1,25 +1,54 @@
-- content_for :sub_navigation do
-  .vertical-spacer-1-em
-    #company-nav-container.container
-      #company-nav
-        .col-md-10
-          %ul.nav.nav-pills
-            %li{:class => "#{'active' if active == :company}"}= link_to 'Company', '#company-tab'
-            %li{:class => "#{'active' if active == :team}"}= link_to 'Team', '#team-tab'
-            %li{:class => "#{'active' if active == :investment_terms}"}= link_to 'Investment Terms', '#investment-term-tab'
-            %li{:class => "#{'active' if active == :faq}"}= link_to 'FAQ', '#faq-tab'
-            %li{:class => "#{'active' if active == :updates}"}= link_to 'Updates', '#update-tab'
-            %li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', '#join-us-tab'
-            %li{:class => "#{'active' if active == :discussion}"}= link_to 'Discussion', '#discussion-tab'
-        .col-md-2
-          - path = @is_preview ? '#' : new_campaign_investment_path(@company.campaign)
-          = button_to 'Start Investment', path, :class => "btn btn-large btn-primary invest-now", :id => 'invest-now-btn', :method => :get
-
-        -#%ul.nav.nav-pills
-          -#%li{:class => "#{'active' if active == :company}"}= link_to 'Company', display_campaign_company_path(@campaign)
-          -#%li{:class => "#{'active' if active == :team}"}= link_to 'Team', display_campaign_team_path(@campaign)
-          -#%li{:class => "#{'active' if active == :investment_terms}"}= link_to 'Investment Terms', display_campaign_investment_term_path(@campaign)
-          -#- if current_user && current_user.is_investor?
-            -#%li{:class => "#{'active' if active == :invest}"}= link_to 'Invest', new_campaign_investment_path(@campaign)
-          -#%li{:class => "#{'active' if active == :updates}"}= link_to 'Updates', campaign_company_display_updates_path(@campaign)
-          -#%li{:class => "#{'active' if active == :jobs}"}= link_to 'Join Us', campaign_company_display_jobs_path(@campaign)
+.wrapper-navbar-campaign
+  .navbar-campaign{:data => {:spy => "affix", 'offset-top' => "360"}}
+    %nav.navbar
+      .container
+        %ul.nav.navbar-nav.text-open-sans.navbar-left.strong 
+          %li.col-xs-2{:class => "#{'active' if active == :company}"}
+            = link_to '#company-anchor' do
+              %span.top-icon
+                %i.fa.fa-th
+              %span.bottom-text Company
+          %li.col-xs-2{:class => "#{'active' if active == :team}"}
+            = link_to '#team-anchor' do
+              %span.top-icon
+                %i.fa.fa-users
+              %span.bottom-text Team
+          %li.col-xs-2{:class => "#{'active' if active == :investment_terms}"}
+            = link_to '#terms-anchor' do
+              %span.top-icon
+                %i.fa.fa-file-text-o
+              %span.bottom-text 
+                %span.visible-sm-inline.visible-md-inline.visible-lg-inline Investment 
+                Terms
+          %li.col-xs-2{:class => "#{'active' if active == :faq}"}
+            = link_to '#faqs-anchor' do
+              %span.top-icon
+                %i.fa.fa-question
+              %span.bottom-text Faq’s
+          %li.col-xs-2{:class => "#{'active' if active == :updates}"}
+            = link_to '#updates-anchor' do
+              %span.top-icon
+                %i.fa.fa-repeat
+              %span.bottom-text Updates
+          %li.col-xs-2{:class => "#{'active' if active == :join_us}"}
+            = link_to '#join-anchor' do
+              %span.top-icon
+                %i.fa.fa-user
+                %i.fa.fa-plus
+              %span.bottom-text Join Us
+        %ul.nav.navbar-nav.navbar-right.text-open-sans.strong.visible-sm-block.visible-md-block.visible-lg-block
+          %li
+            %p.navbar-text
+              %i.fa.fa-share-alt
+              Share<span class="visible-md-inline visible-lg-inline"> it on</span> :
+          %li
+            = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Facebook" do
+              %i.fa.fa-facebook-square
+          %li
+            = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on Twitter" do
+              %i.fa.fa-twitter-square
+          %li
+            = link_to '#', :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => "Share on LinkedIn" do
+              %i.fa.fa-linkedin-square
+                  
+  / END .navbar-campaign

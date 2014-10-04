@@ -1,0 +1,29 @@
+.container
+  = render 'campaigns/heading'
+  = render 'campaigns/navigation', :active => :company
+#company-tab.row-bg1
+  .container
+    = render 'company'
+- if @campaign.team
+  #team-tab
+    .container
+      = render 'teams/team'
+- if @investment_term
+  #investment-term-tab
+    .container
+      = render 'investment_terms/investment_terms'
+#faq-tab
+  .container
+    = render 'faq'
+#update-tab
+  .container
+    = render 'display_updates/update'
+#join-us-tab
+  .container
+    = render 'display_jobs/job'
+#discussion-tab
+  .container
+    %hr.campaign-separator
+    .row
+      .col-md-12
+        = render 'disqus' if Rails.env.production?

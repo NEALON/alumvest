@@ -1,16 +1,38 @@
-%hr.campaign-separator
-%h3.text-center.compaign-section-header Updates
-.row
-  .col-md-12
-    - if @updates.blank?
-      %div{:style => "padding-top: 40px"}
-        There are no updates for this campaign.
-    - else
+%h2.separator-line.separator-gray.separator-arrows
+  %span Updates  
 
-      - @updates.each do |update|
-        %h4= update.subject
-        %p= "Last updated #{time_ago_in_words(update.updated_at)} ago"
-        %p= raw update.details
-        %p= "Visible to: #{update.visibility}"
-        - if update.video_url
-          %p= render 'shared/youtube', :video_url => update.video_url, :width => 590, :height => 400
+.list-posts
+  - if @updates.blank?
+    %p.lead.text-center.text-open-sans There are no updates for this campaign. 
+  - else
+    .row
+      - @updates.in_groups_of(2, false).each do |updates|
+        .col-sm-6.col-lg-6
+          - updates.each do |update|
+            .post-item
+              %h2= update.subject
+              %p.text-date= "Last updated #{time_ago_in_words(update.updated_at)} ago"
+              .text-desc
+                - if update.video_url && update.video_url != ''
+                  .flex-video.widescreen
+                    = render 'shared/youtube', :video_url => update.video_url, :width => 853, :height => 480
+                %p= raw update.details
+                
+
+-#
+  %hr.campaign-separator
+  %h3.text-center.compaign-section-header Updates
+  .row
+    .col-md-12
+      - if @updates.blank?
+        %div{:style => "padding-top: 40px"}
+          There are no updates for this campaign.
+      - else
+  
+        - @updates.each do |update|
+          %h4= update.subject
+          %p= "Last updated #{time_ago_in_words(update.updated_at)} ago"
+          %p= raw update.details
+          %p= "Visible to: #{update.visibility}"
+          - if update.video_url
+            %p= render 'shared/youtube', :video_url => update.video_url, :width => 590, :height => 400

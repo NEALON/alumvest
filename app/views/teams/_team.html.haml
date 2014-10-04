@@ -1,32 +1,87 @@
-%hr.campaign-separator
+.campaign-team.wrapper-white-box#team-anchor
+  .container
+    %h2.separator-line.separator-gray.separator-arrows
+      %span Our Team  
+    
+    .team-list
+      .row
+        
+        - @campaign.team.team_members.each_with_index do | member, index |
+          
+          .col-sm-6.col-md-4.col-lg-3.clearfix
+            .team-item
+              .team-heading
+                .pentagon-image
+                  = link_to '#' do
+                    %span.mask
+                    - if not member.avatar.blank?
+                      = image_tag(member.avatar, :width => 148, :height => 148)
+                    - else
+                      = image_tag('noavatar.gif', :width => 148, :height => 148)
+              .team-body
+                %h4.name-person
+                  = link_to member.full_name, '#'
+                %p.title-person= "#{member.title}"
+                %p.desc-person= raw member.introduction
+                .soc-list
+                  %ul.list-inline
+                    %li.soc-facebook 
+                      = link_to "http://www.facebook.com/#{member.facebook}", :target => '_blank' do
+                        %i.fa.fa-facebook-square
+                    %li.soc-twitter 
+                      = link_to "http://www.twitter.com/#{member.twitter}", :target => '_blank' do
+                        %i.fa.fa-twitter-square
+                    %li.soc-linkedin 
+                      = link_to "http://www.linkedin.com/#{member.linkedin}", :target => '_blank' do
+                        %i.fa.fa-linkedin-square
+              .team-footer
+                = link_to '#', :class => 'btn btn-primary btn-md btn-block' do
+                  %i.fa.fa-play
+                  Video of the founder!
+          - if (index + 1) % 2 == 0
+            / After Each 2 items (middle screen)
+            .clearfix.visible-sm-block
+          
+          - if (index + 1) % 3 == 0       
+            / After Each 3 items (middle screen)
+            .clearfix.visible-md-block
+          
+          - if (index + 1) % 4 == 0
+            / After Each 4 items
+            .clearfix.visible-lg-block
+        
+/ END .campaign-team
 
-.team-highlights
-  %h3.text-center.compaign-section-header Our Team
-  = raw @campaign.team.team_highlights
-
-.team-members
-  .row
-    - @campaign.team.team_members.each do |member|
-      .col-md-4
-        - if not member.avatar.blank?
-          %img.img-circle{:src => member.avatar}
-        .team-member-info
-          %h4.text-center= "#{member.full_name}"
-          %h5.text-center= "#{member.title}"
-
-          - if member.introduction
-            .introduction= raw member.introduction
-
-          - if member.video_url
-            %p= render 'shared/youtube', :video_url => member.video_url, :width => 450, :height => 300
-
-          .share-buttons.text-center
-            - if member.facebook
-              = link_to "http://www.facebook.com/#{member.facebook}" do
-                %span.glyphicon.glyphicon-share-alt
-            - if member.twitter
-              = link_to "http://www.twitter.com/#{member.twitter}" do
-                %span.glyphicon.glyphicon-share-alt
-            - if member.linkedin
-              = link_to "http://www.linkedin.com/#{member.linkedin}" do
-                %span.glyphicon.glyphicon-share-alt
+-#
+  %hr.campaign-separator
+  
+  .team-highlights
+    %h3.text-center.compaign-section-header Our Team
+    = raw @campaign.team.team_highlights
+  
+  .team-members
+    .row
+      - @campaign.team.team_members.each do |member|
+        .col-md-4
+          - if not member.avatar.blank?
+            %img.img-circle{:src => member.avatar}
+          .team-member-info
+            %h4.text-center= "#{member.full_name}"
+            %h5.text-center= "#{member.title}"
+  
+            - if member.introduction
+              .introduction= raw member.introduction
+  
+            - if member.video_url
+              %p= render 'shared/youtube', :video_url => member.video_url, :width => 450, :height => 300
+  
+            .share-buttons.text-center
+              - if member.facebook
+                = link_to "http://www.facebook.com/#{member.facebook}" do
+                  %span.glyphicon.glyphicon-share-alt
+              - if member.twitter
+                = link_to "http://www.twitter.com/#{member.twitter}" do
+                  %span.glyphicon.glyphicon-share-alt
+              - if member.linkedin
+                = link_to "http://www.linkedin.com/#{member.linkedin}" do
+                  %span.glyphicon.glyphicon-share-alt

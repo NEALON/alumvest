@@ -1,71 +1,199 @@
-%div.company-raise-summary.company-block
-  %div.double-level
-    - if can? :view_exact_funding_amount, @campaign
-      = number_to_currency (@company.campaign.raised)
-      %p.raise-label Raised
-    - else
-      = render 'partials/signup_to_see_small'
+.campaign-right-info
+  .well.well-campaign.campaign-summary-info.text-lato
+    -#
+      .well-heading 
+        %h5 23 people invested
+    .well-heading.gray-heading 
+      %h5 No of people invested
+    .well-body.no-pad-top
+      .campaign-raise-summary
+        %ul.list-unstyled.no-marg-bottom
+          %li
+            = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
+            %strong 
+              %i.glyphicon.glyphicon-ok-sign
+              Goal
+          %li
+            = number_to_currency (@company.campaign.raised)
+            %strong 
+              %i.glyphicon.glyphicon-flag
+              from campaign start Left
+          %li
+            = @company.campaign.humanize_time_left
+            %strong 
+              %i.glyphicon.glyphicon-time
+              Time Left
+      .row-text.campaign-investment.clearfix
+        .pull-left
+          Min
+          %br
+          Investment
+          .price-text= number_to_currency(@company.campaign.investment_term.try(:min_investment))
+        .pull-right
+          Max
+          %br
+          Investment
+          .price-text= number_to_currency(@company.campaign.investment_term.try(:max_investment))
+      .row-text.gray-row.strong
+        Security Type:
+        = @company.campaign.investment_term.try(:equity_type)
+      .row-text.strong
+        Commitments:
+        = @campaign.investors.count
+      .campaign-progress
+        .media
+          .pull-right
+            #{@campaign.percent_complete_for_display}%
+          .media-body
+            .progress
+              .progress-bar.progress-bar-primary{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display}%;"}
+                %span.sr-only #{@campaign.percent_complete_for_display}% Complete
+      - if current_user and current_user.is_investor?
+        - unless just_data || @is_preview
+          = link_to_campaign_investment(current_user.investor, @company.campaign)
+  / END .campaign-summary-info
+  
+  .well.well-campaign
+    .well-heading 
+      %h5 Company Info
+    .well-body
+      .campaign-info
+        %ul.list-unstyled
+          %li.top-info
+            .media
+              .pull-left
+                = image_tag('noavatar.gif', :width => '60')
+              .media-body
+                %h6
+                  = link_to 'Kevin Boye', '#'
+                %p CEO
+                %p.location Location : Newyork
+          %li
+            .media
+              .pull-left
+                Website
+              .media-body
+                = link_to 'www.medicomates.com', '#', :target => '_blank'
+          %li
+            .media
+              .pull-left
+                Rewards
+              .media-body
+                $1500
+  / END .campaign-info
+  
+  .well.well-campaign
+    .well-heading 
+      %h5 Key Highlights
+    .well-body
+      %ul
+        %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. 
+        %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. 
+        %li Nsectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. 
+  / END .campaign-key-highlights
+  
+  .well.well-campaign
+    .well-heading 
+      %h5 #{@campaign.follows.count} of people followers
+    .well-body
+      - if @campaign.follows.count == 0
+        %p.text-center No followers
+      - else
+        .campaign-followers
+          %ul.list-unstyled
+            - @campaign.follows.first(10).each do |f|
+              %li
+                = link_to user_path(f.user), :data => {:toggle => "tooltip", :placement => "top", :container => 'body'}, :title => f.user.name do
+                  = image_tag(f.user.avatar_small, :width => '40', :height => '40')
+            
+    - if current_user
+      - if current_user.following?(@campaign)
+        - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
+        = form_for follow, :url => campaign_unfollow_path do |f|
+          %fieldset
+            = f.hidden_field :campaign_id
+            = f.hidden_field :user_id
+            = f.submit 'Unfollow', :class => 'btn btn-default btn-lg upper btn-block'
 
-  %div.double-level
-    = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
-    %p.raise-label Goal
-  %div.double-level
-    = @company.campaign.humanize_time_left
-    %p.raise-label Left
-  %div.table-term
-    %table{:width => "100%"}
-      %tr
-        %td
-          %span.raise-label
-            Min Investment:
-        %td
-          = number_to_currency(@company.campaign.investment_term.try(:min_investment))
-      %tr
-        %td
-          %span.raise-label
-            Max Investment:
-        %td
-          = number_to_currency(@company.campaign.investment_term.try(:max_investment))
-  %div
-    %span.raise-label Security Type:
-    = @company.campaign.investment_term.try(:equity_type)
-  %div
-    %span.raise-label Commitments:
-    = @campaign.investors.count
-  %p.progress
-    %p.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
-  - if current_user and current_user.is_investor?
-    - unless just_data || @is_preview
+      - else
+        - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
+        = form_for follow, :url => campaign_follow_path do |f|
+          %fieldset
+            = f.hidden_field :campaign_id
+            = f.hidden_field :user_id
+            = f.submit 'Follow', :class => 'btn btn-success btn-lg upper btn-block'
+  / END .campaign-followers
+
+
+-#
+  %div.company-raise-summary.company-block
+    %div.double-level
+      - if can? :view_exact_funding_amount, @campaign
+        = number_to_currency (@company.campaign.raised)
+        %p.raise-label Raised
+      - else
+        = render 'partials/signup_to_see_small'
+  
+    %div.double-level
+      = number_to_currency @company.campaign.investment_term.try(:fundraising_amount)
+      %p.raise-label Goal
+    %div.double-level
+      = @company.campaign.humanize_time_left
+      %p.raise-label Left
+    %div.table-term
+      %table{:width => "100%"}
+        %tr
+          %td
+            %span.raise-label
+              Min Investment:
+          %td
+            = number_to_currency(@company.campaign.investment_term.try(:min_investment))
+        %tr
+          %td
+            %span.raise-label
+              Max Investment:
+          %td
+            = number_to_currency(@company.campaign.investment_term.try(:max_investment))
+    %div
+      %span.raise-label Security Type:
+      = @company.campaign.investment_term.try(:equity_type)
+    %div
+      %span.raise-label Commitments:
+      = @campaign.investors.count
+    %p.progress
+      %p.progress-bar.progress-bar-success{:role => "progressbar", :style => "width: #{@campaign.percent_complete_for_display }%"}
+    - if current_user and current_user.is_investor?
+      - unless just_data || @is_preview
+        %p
+          = link_to_campaign_investment(current_user.investor, @company.campaign)
+  
+  - unless just_data
+  
+    %div.company-follow.company-block
       %p
-        = link_to_campaign_investment(current_user.investor, @company.campaign)
-
-- unless just_data
-
-  %div.company-follow.company-block
-    %p
-      .followers
-        Followers:
-        - if @campaign.follows.count == 0
-          0
-        - else
-        - @campaign.follows.first(10).each do |f|
-          = link_to user_path f.user do
-            = image_tag f.user.avatar_small
-        - if @campaign.follows.count > 10
-          and #{@campaign.follows.count - 10} more
-      - if current_user
-        - if current_user.following?(@campaign)
-          - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
-          = form_for follow, :url => campaign_unfollow_path do |f|
-            %fieldset
-              = f.hidden_field :campaign_id
-              = f.hidden_field :user_id
-              = f.submit 'Un-follow this Campaign', :class => 'btn btn-unfollow'
-
-        - else
-          - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
-          = form_for follow, :url => campaign_follow_path do |f|
-            %fieldset
-              = f.hidden_field :campaign_id
-              = f.hidden_field :user_id
-              = f.submit 'Follow this Campaign', :class => 'btn btn-follow'
+        .followers
+          Followers:
+          - if @campaign.follows.count == 0
+            0
+          - else
+          - @campaign.follows.first(10).each do |f|
+            = link_to user_path f.user do
+              = image_tag f.user.avatar_small
+          - if @campaign.follows.count > 10
+            and #{@campaign.follows.count - 10} more
+        - if current_user
+          - if current_user.following?(@campaign)
+            - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
+            = form_for follow, :url => campaign_unfollow_path do |f|
+              %fieldset
+                = f.hidden_field :campaign_id
+                = f.hidden_field :user_id
+                = f.submit 'Un-follow this Campaign', :class => 'btn btn-unfollow'
+  
+          - else
+            - follow = Alumvest::Follow.new(:campaign => @campaign, :user => current_user)
+            = form_for follow, :url => campaign_follow_path do |f|
+              %fieldset
+                = f.hidden_field :campaign_id
+                = f.hidden_field :user_id
+                = f.submit 'Follow this Campaign', :class => 'btn btn-follow'

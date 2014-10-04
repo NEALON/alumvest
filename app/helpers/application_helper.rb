@@ -2,9 +2,9 @@ module ApplicationHelper
 
   def link_to_campaign_investment(investor, campaign)
     if investor.invested_in?(@campaign)
-      link_to 'Manage Investment', campaign_investment_path(@campaign, investor.investments.find_by_campaign_id(@campaign.id)), :class => "btn invest-now", :method => :get
+      link_to 'Manage Investment', campaign_investment_path(@campaign, investor.investments.find_by_campaign_id(@campaign.id)), :class => "btn btn-primary btn-lg upper btn-block", :method => :get
     else
-      link_to 'Invest Now', new_campaign_investment_path(@company.campaign), :class => "btn invest-now", :method => :get
+      link_to 'Invest now', new_campaign_investment_path(@company.campaign), :class => "btn btn-primary btn-lg upper btn-block", :method => :get
     end
   end
 

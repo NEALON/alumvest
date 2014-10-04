@@ -1,4 +1,4 @@
-.company-highlights.company-block
-  %h3 Company Highlights
-  %p.company-url= link_to @company.company_name, @company.company_url
-  %p.company-highlights-content= raw @company.company_highlights
+.panel.panel-campaign
+  .panel-heading Company Highlights
+  .panel-body
+    %p= raw @company.company_highlights

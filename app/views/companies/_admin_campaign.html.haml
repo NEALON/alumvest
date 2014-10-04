@@ -1,19 +1,23 @@
-%div.company-summary.company-block
-  %p Admin Functions
-  %hr
-  %p
-    = "The current state of this campaign is '#{@campaign.status}'"
-
-  - if @campaign.live?
-    %p
-      = link_to 'Disable this campaign', disable_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
-    %p
-      = link_to 'End this campaign (successfully) and close the escrow account', close_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
-    %p
-      = link_to 'End this campaign (unsuccessfully) and cancel the escrow account', cancel_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
-    %p
-      = link_to 'Edit the Escrow Account', escrow_account_user_admin_path(current_user, :campaign_id => @campaign.id)
-
-  - if @campaign.disabled?
-    %p
-      = link_to 'Enable this campaign', enable_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
+.panel.panel-primary.marg-bottom-lg
+  .panel-heading 
+    %h3.panel-title Admin Functions
+  .panel-body
+    %p.lead.no-marg-bottom 
+      = "The current state of this campaign is '#{@campaign.status}'"
+    
+    - if @campaign.live?
+      .marg-top
+        %p
+          = link_to 'Disable this campaign', disable_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
+        %p
+          = link_to 'End this campaign (successfully) and close the escrow account', close_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
+        %p
+          = link_to 'End this campaign (unsuccessfully) and cancel the escrow account', cancel_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
+        %p
+          = link_to 'Edit the Escrow Account', escrow_account_user_admin_path(current_user, :campaign_id => @campaign.id)
+  
+    - if @campaign.disabled?
+      .marg-top
+        %p
+          = link_to 'Enable this campaign', enable_campaign_user_admin_path(current_user, :campaign_id => @campaign.id), :method => :put
+    

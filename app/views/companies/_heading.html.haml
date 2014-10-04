@@ -1,13 +1,16 @@
-.company-heading
+.masthead-content
   .media
-    .pull-left
-      = image_tag @company.logo(:w => 100, :h => 100) unless @company.logo.blank?
+    .pull-left.logotype-campaign
+      = image_tag @company.logo(:w => 149, :h => 149) unless @company.logo.blank?
     .media-body
-      %h3.text-primary.no-marg-top.no-marg-bottom
+      %h2.upper.title-campaign.text-lato.text-normal
         = @company.company_name
-      %hr
-      %h4= @company.campaign_title
-      %p= @company.short_description
-      %p.no-marg-bottom
-        %i= "@Founded #{(@company.founded_on_year)}"
+      %h3.summary-campaign.text-lato.text-book
+        = @company.campaign_title
+      %h4.school-campaign.text-lato.text-book
+        = @company.short_description
+      %ul.bottom-info.list-unstyled.text-lato.text-book
+        %li 
+          = "@Founded #{(@company.founded_on_year)}"
         
+

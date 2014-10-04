@@ -78,7 +78,10 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
   }  
   
   &.panel-campaign { border: 0 none; @include box-shadow(1px 1px 0 0 #e0e0e0); 
-    .panel-heading { background: $blue; color: $white; font: {size: 22px; weight: 400; family: $font-family-open-sans;} padding: 14px 25px; }
+    .panel-heading { background: $blue; color: $white; font: {size: 15px; weight: 400; family: $font-family-open-sans;} padding: 14px 25px; 
+      @media (min-width: $screen-sm) { font-size: 17px; }
+      @media (min-width: $screen-lg) { font-size: 22px; }
+    }
     .panel-body { color: $gray-dark; line-height: 1.4; padding: 25px 25px 9px; text-align: justify; 
       > ul { list-style: none; margin: 0; padding: 0;
         > li { margin-bottom: 16px; padding-left: 20px; position: relative;
@@ -137,7 +140,9 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
 
 // Accordion List
 .accordion-list {
-  .panel-heading, .panel-title { background: none transparent; font: {size: 15px; family: $font-family-base; weight: 400;} padding: 0; }
+  .panel-heading, .panel-title { background: none transparent; font: {size: 13px; family: $font-family-base; weight: 400;} padding: 0; 
+    @media (min-width: $screen-xs) { font-size: 15px; }
+  }
   
   .panel-group .panel-heading + .panel-collapse .panel-body { border: 0 none; }
   
@@ -218,7 +223,7 @@ a, button, .btn, .form-control, .form-control-feedback { @include transition(box
     } 
     
     @media (min-width: $screen-sm) {
-      .btn-lg { font-size: 24px; }
+      .btn-lg { font-size: 22px; }
     }
   }
 }
@@ -465,6 +470,8 @@ dt, dd { line-height: 1.1; }
   
   .separator-line { color: $white; font: {size: 14px; weight: bold;} margin: {top: 11px; bottom: 8px;} max-width: 100px; 
     .left-circle, .right-circle { background: $blue; }
+    
+    > span { margin: {left: -55px; right: -55px;} min-width: 0; padding: {left: 55px; right: 55px;} }
   }
 
   @media (min-width: $screen-xs) { padding: 0 0 26px; }
@@ -1385,12 +1392,15 @@ textarea { resize: vertical; }
  */
 
 // Campaign Masthead
-.masthead-campaign { background: image-url("bg-campaign-masthead.jpg") center center no-repeat #4c4c4f; background-size: 100% 100%; color: $white; padding: 70px 0 80px; text-shadow: -1px -1px $black; 
-  a { color: $white; text-decoration: none; 
-    &:hover, &:focus { text-decoration: underline; }
+.masthead-campaign { background: image-url("bg-campaign-masthead.jpg") center center no-repeat #4c4c4f; background-size: 100% 100%; padding: 70px 0 80px; 
+  .masthead-content { color: $white; text-shadow: -1px -1px $black; 
+    a { color: $white; text-decoration: none; 
+      &:hover, &:focus { text-decoration: underline; }
+    }
   }
   
-  .logotype-campaign {
+  .logotype-campaign { width: 70px;
+    @media (min-width: $screen-xs) { max-width: 149px; width: auto; }
     @media (min-width: $screen-sm) { margin-right: 30px; }
   }
   
@@ -1420,22 +1430,32 @@ $blue-darken-campaign: #3175b4;
 .navbar-campaign { background: $blue; color: $white; font-size: 11px;
   .navbar { border: 0 none; }
   
-  .navbar-nav { text-transform: uppercase;
-    > li {
+  .navbar-nav { text-transform: uppercase; margin: {top: 0; bottom: 0;}
+    > li { float: left; padding: {left: 0; right: 0;}
       > a { color: $white; }
+      
+      @media (min-width: $screen-sm) { width: auto; }
     }
     
     &.navbar-left { background: $blue-darken-campaign; 
       > li {
         + li { border-left: 1px solid $blue; }
         
-        > a { min-width: 80px; padding: 10px 10px 9px; text: {align: center; shadow: -1px -1px rgba($black, .8);} @include transition(all .3s);
+        > a { padding: 10px 10px 9px; text: {align: center; shadow: -1px -1px rgba($black, .8);} @include transition(all .3s);
           &:hover, &:focus { background: darken($blue-darken-campaign, 10%); }
-        
-          .top-icon { display: block; font-size: 17px; height: 22px; text-align: center; 
+          
+          .bottom-text { display: none; 
+            @media (min-width: $screen-xs) { display: inline; }
+          } 
+          
+          .top-icon { display: block; font-size: 21px; height: 41px; line-height: 41px; text-align: center; 
             .fa-plus { font-size: 10px; position: relative; top: -3px; }
+            
+            @media (min-width: $screen-xs) { font-size: 17px; height: 22px; line-height: inherit; }
           }
           
+          @media (min-width: $screen-sm) { min-width: 80px; }
+            
           @media (min-width: $screen-md) { min-width: 0; padding: {left: 30px; right: 30px;} }
         }
         
@@ -1607,11 +1627,17 @@ $blue-darken-campaign: #3175b4;
 .campaign-ask { background: $white; border: 1px solid #d9d9d9; border-width: 1px 0; padding: {top: 64px; bottom: 49px;}
   h2 { color: #272727; margin: 0 0 7px; }
   
-  .form-group { background: $white; border: 1px solid #dadada; border-radius: 5px; @include box-shadow(0 4px 5px -2px rgba($black, .1)); margin-top: 29px; padding: 6px;
-    .form-control { border-color: transparent; }
+  .form-group { background: $white; border: 1px solid #dadada; border-radius: 5px; @include box-shadow(0 4px 5px -2px rgba($black, .1)); margin-top: 29px; padding: 3px;
+    .form-control { border-color: transparent; font-size: 13px; }
     
     .input-group-btn { padding-left: 5px; 
-      .btn { border-radius: $border-radius-large; }
+      .btn { border-radius: $border-radius-large; font-size: 15px; line-height: 26px; padding: {left: 10px; right: 10px;} }
+    }
+    
+    @media (min-width: $screen-xs) { padding: 6px; 
+      .form-control { font-size: 16px; }
+      
+      .input-group-btn .btn { padding: {left: 30px; right: 30px;} font-size: 20px; line-height: 1.33; }
     }
   }
 }
